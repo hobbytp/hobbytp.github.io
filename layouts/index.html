@@ -9,7 +9,7 @@
     {{ range $categories }}
     {{ $category := . }}
     <section class="category-section">
-        <h2>{{ title . }}</h2>
+        <h2>{{ i18n . }}</h2>
         <div class="post-list">
             {{ range where $.Site.RegularPages "Params.categories" "intersect" (slice $category) }}
             <article class="post-item">

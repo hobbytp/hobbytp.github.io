@@ -47,3 +47,9 @@ weight = 5
 name = "产品介绍"
 url = "/categories/products/"
 weight = 6
+
+[outputs]
+home = ["HTML"]
+section = ["HTML", "RSS"]
+taxonomy = ["HTML", "RSS"]
+term = ["HTML", "RSS"]
