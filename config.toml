@@ -50,6 +50,6 @@ weight = 6
 
 [outputs]
 home = ["HTML"]
-section = ["HTML", "RSS"]
-taxonomy = ["HTML", "RSS"]
-term = ["HTML", "RSS"]
+section = ["HTML"]
+taxonomy = ["HTML"]
+term = ["HTML"]
