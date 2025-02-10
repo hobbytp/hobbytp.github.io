@@ -2,12 +2,17 @@
     <h1>{{ .Site.Title }}</h1>
     <nav>
         <ul>
-            <li><a href="{{ " /" | relLangURL }}">首页</a></li>
-            {{ range .Site.Languages }}
-            {{ if ne .Lang $.Site.Language.Lang }}
-            <li><a href="{{ .Lang | relLangURL }}">{{ .LanguageName }}</a></li>
+            <li><a href="{{ " /" | relLangURL }}">{{ i18n "home" }}</a></li>
+            {{ range .Site.Menus.main }}
+            <li><a href="{{ .URL | relLangURL }}">{{ i18n .Identifier }}</a></li>
             {{ end }}
-            {{ end }}
+            <li class="language-switch">
+                {{ range .Site.Languages }}
+                {{ if ne .Lang $.Site.Language.Lang }}
+                <a href="{{ .Lang | relLangURL }}" class="lang-item">{{ .LanguageName }}</a>
+                {{ end }}
+                {{ end }}
+            </li>
         </ul>
     </nav>
 </header>

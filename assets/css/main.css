@@ -61,3 +61,32 @@
     color: #666;
     margin: 0.5rem 0 0;
 }
+
+/* 在现有样式后添加 */
+.language-switch {
+    margin-left: auto;
+}
+
+.lang-item {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: #42b983;
+    color: white;
+    text-decoration: none;
+}
+
+.lang-item:hover {
+    background: #3aa876;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
