@@ -12,18 +12,25 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
+        with:
+          submodules: true  # 如果使用主题子模块，需要添加这行
+          fetch-depth: 0    # 获取完整的历史记录
 
       # 示例使用 Hugo 构建站点
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.110.0'
+          extended: true    # 如果使用 SCSS/SASS，需要 extended 版本
 
       - name: Build Site
-        run: hugo --gc --minify
+        run: |
+          hugo version
+          hugo --gc --minify --debug
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public 
+          publish_dir: ./public
+          commit_message: ${{ github.event.head_commit.message }} 
