@@ -1,0 +1,36 @@
+{{ define "main" }}
+<div class="home-content">
+    <h1>{{ .Site.Title }}</h1>
+    <p>{{ .Site.Params.description }}</p>
+
+    <!-- 按分类显示文章 -->
+    {{ $categories := slice "papers" "technologies" "projects" "interviews" "news" "products" }}
+
+    {{ range $categories }}
+    {{ $category := . }}
+    <section class="category-section">
+        <h2>{{ title . }}</h2>
+        <div class="post-list">
+            {{ range where $.Site.RegularPages "Params.categories" "intersect" (slice $category) }}
+            <article class="post-item">
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <div class="post-meta">
+                    <time>{{ .Date.Format "2006-01-02" }}</time>
+                    {{ with .Params.tags }}
+                    <span class="tags">
+                        {{ range . }}
+                        <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+                        {{ end }}
+                    </span>
+                    {{ end }}
+                </div>
+                {{ with .Description }}
+                <p class="description">{{ . }}</p>
+                {{ end }}
+            </article>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+</div>
+{{ end }}
