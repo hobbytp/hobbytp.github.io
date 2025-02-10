@@ -7,9 +7,12 @@ defaultContentLanguage = "zh"
 [languages.zh]
 languageName = "中文"
 weight = 1
+contentDir = "content/zh"
+
 [languages.en]
 languageName = "English"
 weight = 2
+contentDir = "content/en"
 
 [params]
 description = "一个关注 AI 各领域的专题博客，涵盖论文、技术、项目、访谈、动态和产品介绍。"
