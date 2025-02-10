@@ -13,3 +13,37 @@ weight = 2
 
 [params]
 description = "一个关注 AI 各领域的专题博客，涵盖论文、技术、项目、访谈、动态和产品介绍。"
+mainSections = [
+    "papers",
+    "technologies",
+    "projects",
+    "interviews",
+    "news",
+    "products",
+]
+
+[menu]
+[[menu.main]]
+name = "论文解读"
+url = "/categories/papers/"
+weight = 1
+[[menu.main]]
+name = "技术解析"
+url = "/categories/technologies/"
+weight = 2
+[[menu.main]]
+name = "项目分享"
+url = "/categories/projects/"
+weight = 3
+[[menu.main]]
+name = "人物访谈"
+url = "/categories/interviews/"
+weight = 4
+[[menu.main]]
+name = "行业动态"
+url = "/categories/news/"
+weight = 5
+[[menu.main]]
+name = "产品介绍"
+url = "/categories/products/"
+weight = 6
