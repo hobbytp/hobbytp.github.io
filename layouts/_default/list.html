@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="list-content">
+    <h1>{{ .Title }}</h1>
+    {{ range .Pages }}
+    <article class="post-item">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <div class="post-meta">
+            <time>{{ .Date.Format "2006-01-02" }}</time>
+            {{ with .Params.tags }}
+            <span class="tags">
+                {{ range . }}
+                <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+                {{ end }}
+            </span>
+            {{ end }}
+        </div>
+        {{ with .Description }}
+        <p class="description">{{ . }}</p>
+        {{ end }}
+    </article>
+    {{ end }}
+</div>
+{{ end }}
