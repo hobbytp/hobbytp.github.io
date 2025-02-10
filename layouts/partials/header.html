@@ -1,0 +1,13 @@
+<header>
+    <h1>{{ .Site.Title }}</h1>
+    <nav>
+        <ul>
+            <li><a href="{{ " /" | relLangURL }}">首页</a></li>
+            {{ range .Site.Languages }}
+            {{ if ne .Lang $.Site.Language.Lang }}
+            <li><a href="{{ .Lang | relLangURL }}">{{ .LanguageName }}</a></li>
+            {{ end }}
+            {{ end }}
+        </ul>
+    </nav>
+</header>
