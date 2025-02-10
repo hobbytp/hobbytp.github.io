@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repo
@@ -25,11 +27,13 @@ jobs:
       - name: Build Site
         run: |
           hugo version
-          hugo --gc --minify --debug
+          hugo --minify
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true
           commit_message: ${{ github.event.head_commit.message }}
