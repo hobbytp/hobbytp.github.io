@@ -1,38 +1,84 @@
-.home-content {
-    max-width: 1200px;
-    margin: 0 auto;
+/* 基础样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 主布局 */
+.site-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* 左侧导航栏 */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: white;
     padding: 2rem;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-.category-section {
-    margin: 2rem 0;
-    padding: 1rem;
-    background: #f5f5f5;
-    border-radius: 8px;
+.sidebar h1 {
+    margin: 0 0 2rem;
+    font-size: 1.5rem;
 }
 
-.category-section h2 {
-    color: #333;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 0.5rem;
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
+.sidebar nav li {
+    margin: 0.5rem 0;
+}
+
+.sidebar nav a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.sidebar nav a:hover {
+    background: #34495e;
+}
+
+/* 右侧内容区 */
+.main-content {
+    flex: 1;
+    margin-left: 250px;
+    padding: 2rem;
+    min-height: calc(100vh - 100px);
+}
+
+/* 文章卡片 */
 .post-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
-    margin-top: 1rem;
 }
 
 .post-item {
     background: white;
-    padding: 1rem;
-    border-radius: 6px;
+    padding: 1.5rem;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.post-item:hover {
+    transform: translateY(-2px);
 }
 
 .post-item h3 {
-    margin: 0 0 0.5rem;
+    margin: 0 0 1rem;
 }
 
 .post-item a {
@@ -40,43 +86,61 @@
     text-decoration: none;
 }
 
-.post-item a:hover {
-    color: #42b983;
-}
-
 .post-meta {
     font-size: 0.9rem;
     color: #666;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .tags a {
     display: inline-block;
-    margin-left: 0.5rem;
-    color: #42b983;
-}
-
-.description {
-    font-size: 0.9rem;
+    padding: 0.2rem 0.5rem;
+    margin: 0.2rem;
+    background: #f0f0f0;
+    border-radius: 3px;
     color: #666;
-    margin: 0.5rem 0 0;
+    text-decoration: none;
+    font-size: 0.8rem;
 }
 
-/* 在现有样式后添加 */
+.tags a:hover {
+    background: #e0e0e0;
+}
+
+/* 语言切换 */
 .language-switch {
-    margin-left: auto;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .lang-item {
-    padding: 4px 8px;
-    border-radius: 4px;
-    background: #42b983;
     color: white;
     text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .lang-item:hover {
-    background: #3aa876;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.home-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.category-section {
+    margin-bottom: 3rem;
+}
+
+.category-section h3 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
 }
 
 nav ul {
@@ -89,4 +153,31 @@ nav ul {
 
 nav ul li {
     margin: 0 1rem;
+}
+
+/* 添加内容头部样式 */
+.content-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.content-header h2 {
+    margin: 0 0 1rem;
+    color: #2c3e50;
+}
+
+.content-header p {
+    color: #666;
+    margin: 0;
+}
+
+/* 在文件末尾添加 footer 样式 */
+footer {
+    margin-left: 250px;
+    padding: 2rem;
+    background: #f5f5f5;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
 }
