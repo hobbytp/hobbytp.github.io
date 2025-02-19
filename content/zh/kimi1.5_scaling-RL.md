@@ -3,7 +3,7 @@ title = "Kimi k1.5: Scaling Reinforcement Learning with LLMs"
 date = "2025-02-13T22:30:00+08:00"
 draft = true
 tags = ["强化学习", "LLM", "Kimi", "k1.5", "AI"]
-categories = ["papers", "MoonshotAI", "RL"]
+categories = ["papers", "training", "MoonshotAI"]
 description = "MoonshotAI开源的Kimi k1.5项目，并对其技术原理、功能特点、应用前景和伦理风险进行了详细解读。"
 +++
 
