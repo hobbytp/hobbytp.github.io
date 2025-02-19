@@ -35,21 +35,29 @@ name = "技术解析"
 url = "/categories/technologies/"
 weight = 2
 [[menu.main]]
-name = "项目分享"
-url = "/categories/projects/"
+name = "模型训练"
+url = "/categories/training/"
 weight = 3
+[[menu.main]]
+name = "开源项目"
+url = "/categories/opensource/"
+weight = 4
 [[menu.main]]
 name = "人物访谈"
 url = "/categories/interviews/"
-weight = 4
+weight = 5
 [[menu.main]]
 name = "行业动态"
 url = "/categories/news/"
-weight = 5
+weight = 6
+[[menu.main]]
+name = "行业规范"
+url = "/categories/spec/"
+weight = 7
 [[menu.main]]
 name = "产品介绍"
 url = "/categories/products/"
-weight = 6
+weight = 8
 
 [outputs]
 home = ["HTML"]

@@ -1,36 +1,58 @@
 {{ define "main" }}
-<div class="home-content">
-    <h1>{{ .Site.Title }}</h1>
-    <p>{{ .Site.Params.description }}</p>
-
-    <!-- 按分类显示文章 -->
-    {{ $categories := slice "papers" "technologies" "projects" "interviews" "news" "products" }}
-
-    {{ range $categories }}
-    {{ $category := . }}
-    <section class="category-section">
-        <h2>{{ i18n . }}</h2>
-        <div class="post-list">
-            {{ range where $.Site.RegularPages "Params.categories" "intersect" (slice $category) }}
-            <article class="post-item">
-                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                <div class="post-meta">
-                    <time>{{ .Date.Format "2006-01-02" }}</time>
-                    {{ with .Params.tags }}
-                    <span class="tags">
-                        {{ range . }}
-                        <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
-                        {{ end }}
-                    </span>
-                    {{ end }}
-                </div>
-                {{ with .Description }}
-                <p class="description">{{ . }}</p>
+<div class="site-container">
+    <!-- 左侧导航栏 -->
+    <aside class="sidebar">
+        <h1>{{ .Site.Title }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ " /" | relLangURL }}">{{ i18n "home" }}</a></li>
+                {{ range .Site.Menus.main }}
+                <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
                 {{ end }}
-            </article>
+            </ul>
+        </nav>
+        <div class="language-switch">
+            {{ range .Site.Languages }}
+            {{ if ne .Lang $.Site.Language.Lang }}
+            <a href="{{ .Lang | relLangURL }}" class="lang-item">{{ .LanguageName }}</a>
+            {{ end }}
             {{ end }}
         </div>
-    </section>
-    {{ end }}
+    </aside>
+
+    <!-- 右侧内容区 -->
+    <main class="main-content">
+        <div class="content-header">
+            <h2>{{ i18n "categories" }}</h2>
+            <p>{{ .Site.Params.description }}</p>
+        </div>
+
+        {{ range .Site.Menus.main }}
+        {{ $category := .Identifier }}
+        <section class="category-section">
+            <h3>{{ .Name }}</h3>
+            <div class="post-list">
+                {{ range where $.Site.RegularPages "Params.categories" "intersect" (slice $category) }}
+                <article class="post-item">
+                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    <div class="post-meta">
+                        <time>{{ .Date.Format "2006-01-02" }}</time>
+                        {{ with .Params.tags }}
+                        <div class="tags">
+                            {{ range . }}
+                            <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                    {{ with .Description }}
+                    <p class="description">{{ . }}</p>
+                    {{ end }}
+                </article>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
+    </main>
 </div>
 {{ end }}
