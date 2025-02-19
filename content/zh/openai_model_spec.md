@@ -3,7 +3,7 @@ title = "OpenAI Model Spec 解读"
 date = "2025-02-13T20:22:48+08:00"
 draft = true
 tags = ["OpenAI", "Model Spec", "AI"]
-categories = ["papers", "openai", "model_spec"]
+categories = ["spec", "openai"]
 description = "OpenAI Model Spec 解读"
 +++
 

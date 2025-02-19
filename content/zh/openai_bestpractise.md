@@ -3,7 +3,7 @@ title = "OpenAI 推理模型最佳实践总结"
 date = "2025-02-14T20:54:00+08:00"
 draft = false
 tags = ["AI", "OpenAI", "推理模型", "最佳实践"]
-categories = ["AI", "OpenAI", "推理模型", "最佳实践"]
+categories = ["technologies", "openai"]
 description = "本文总结了OpenAI推理模型最佳实践。"
 +++
 
