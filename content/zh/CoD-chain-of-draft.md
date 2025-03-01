@@ -83,6 +83,42 @@ description = "本文介绍了Chain of Draft（CoD）论文，并对其技术原
 
 ## CoD 与 CoT 的对比
 
+Prompt 示例：
+
+```bash
+# Standard
+Answer the question directly. Do not return any preamble, explanation, or reasoning.
+
+# Chain-of-Thought
+Think step by step to answer the following question. Return the answer at the end of the response after a separator ####.
+
+# Chain-of-Draft
+Think step by step, but only keep a minimum draft for each thinking step, with 5 words at most. Return the answer at the end of the response after a separator ####.
+```
+
+CoD 和 CoT 在不同模型上的效果对比表格：
+
+| 任务       | 模型              | Prompt | 准确率   | Token 使用量 | 延迟 (秒) |
+| :--------- | :---------------- | :----- | :------- | :----------- | :-------- |
+| 算术推理   | GPT-4o            | CoT    | 95.4%    | 205.1        | 4.2       |
+|            |                   | CoD    | 91.1%    | 43.9         | 1.0       |
+|            | Claude 3.5 Sonnet | CoT    | 95.8%    | 190.0        | 3.1       |
+|            |                   | CoD    | 91.4%    | 39.8         | 1.6       |
+| 常识推理 (日期理解) | GPT-4o            | CoT    | 90.2%    | 75.7         | 1.7       |
+|            |                   | CoD    | 88.1%    | 30.2         | 1.3       |
+|            | Claude 3.5 Sonnet | CoT    | 87.0%    | 172.5        | 3.2       |
+|            |                   | CoD    | 89.7%    | 31.3         | 1.4       |
+| 常识推理 (体育理解) | GPT-4o            | CoT    | 95.9%    | 28.7         | 0.9       |
+|            |                   | CoD    | 98.3%    | 15.0         | 0.7       |
+|            | Claude 3.5 Sonnet | CoT    | 93.2%    | 189.4        | 3.6       |
+|            |                   | CoD    | 97.3%    | 14.3         | 1.0       |
+| 符号推理 (抛硬币)   | GPT-4o            | CoT    | 100.0%   | 52.4         | 1.4       |
+|            |                   | CoD    | 100.0%   | 16.8         | 0.8       |
+|            | Claude 3.5 Sonnet | CoT    | 100.0%   | 135.3        | 3.1       |
+|            |                   | CoD    | 100.0%   | 18.9         | 1.6       |
+
+从以上数据可以看出，**CoD 在保持或提高准确性的同时，显著减少了 token 的使用量和延迟**。这表明 CoD 是一种更高效的推理策略。
+
 相对于 Chain of Draft (CoD)，Chain-of-Thought (CoT) 存在以下缺陷：
 
 * **冗长性**：CoT 提供详细的推理过程，但通常包含不必要的细节。例如，在解决数学问题时，CoT 可能会包含与解题无关的背景信息。这种冗长性导致 token 数量增加，计算成本上升.
@@ -92,6 +128,32 @@ description = "本文介绍了Chain of Draft（CoD）论文，并对其技术原
 * **成本较高**：由于 CoT 需要生成大量的 token，因此在使用 LLM 时会产生更高的成本。这在需要大规模部署 LLM 或预算有限的情况下是一个重要考虑因素.
 
 总而言之，CoT 的主要缺陷在于其**冗长性、高延迟、资源消耗和成本较高**。CoD 通过鼓励 LLM 生成简洁、信息密集的推理步骤，**在保持或提高准确性的同时，显著减少了 token 的使用量和延迟**。
+
+## 论文中提到的其他方法
+
+论文中提到了几个CoT类似的理论，并在论文中分析了它们的优缺点。这些理论包括：
+
+* **Concise Thoughts (CCoT)**：CCoT 建议为推理步骤使用固定的全局 token 预算。
+
+  * **优点**：旨在通过限制 token 数量来提高效率。
+  * **缺点**：不同的任务可能需要不同的预算才能在性能和成本之间取得最佳平衡。LLM 可能无法遵守不切实际的预算，经常生成比预期更多的 token。
+
+* **Token-budget-aware LLM reasoning (TALE)**：TALE 通过动态估计不同问题的全局 token 预算来扩展 CCoT 的思想，预算基于推理的复杂性。
+
+  * **优点**：试图根据任务的复杂性动态调整 token 预算，从而更有效地利用资源。
+  * **缺点**：需要额外的 LLM 调用来估计预算，这会增加延迟。它假设模型可以准确预测请求的复杂性，这限制了其在更复杂任务中的适用性，在这些任务中，可能需要在推理过程中进行反思、自我纠正或外部知识检索。
+
+* **Skeleton-of-Thought (SoT)**：SoT 首先引导 LLM 生成答案的骨架大纲，然后进行并行解码以减少延迟。
+
+  * **优点**：有助于降低延迟，通过并行解码加速生成过程。
+  * **缺点**：不降低计算成本，仅限于可以有效并行化的任务。
+
+* **Continuous Latent Space Reasoning (Coconut)**：Coconut 训练 LLM 在连续潜在空间中执行推理，而不是在传统的自然语言空间中使用 LLM 的最终隐藏状态来表示推理过程.
+
+  * **优点**：减少延迟和计算成本。
+  * **缺点**：在复杂任务（如 GSM8k）中，准确性降低。此外，它失去了自然语言推理的可解释性，并且不能应用于像 GPT 和 Claude 这样的黑盒模型。
+
+总的来说，这些方法都试图在推理的准确性和效率之间找到平衡，但各有优缺点。**CoD 的优势在于它采用了一种更灵活的策略，允许每个步骤有不同的 token 预算，从而更好地适应各种结构化推理技术**。
 
 ## 论文不足之处
 
