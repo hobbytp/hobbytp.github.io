@@ -1,66 +1,56 @@
 baseURL = "https://hobbytp.github.io/"
+languageCode = "zh-cn"
 title = "My AI Blog"
-languageCode = "zh"
-defaultContentLanguage = "zh"
-# 多语言支持
-[languages]
-[languages.zh]
-languageName = "中文"
-weight = 1
-contentDir = "content/zh"
-
-[languages.en]
-languageName = "English"
-weight = 2
-contentDir = "content/en"
+theme = "tailwind"
 
 [params]
-description = "一个关注 AI 各领域的专题博客，涵盖论文、技术、项目、访谈、动态和产品介绍。"
-mainSections = [
-    "papers",
-    "technologies",
-    "projects",
-    "interviews",
-    "news",
-    "products",
-]
+description = "一个关注 AI 各领域的专题博客"
+author = "Your Name"
+
+[markup]
+[markup.highlight]
+style = "dracula"
+[markup.goldmark.renderer]
+unsafe = true
 
 [menu]
 [[menu.main]]
-name = "论文解读"
-url = "/categories/papers/"
+name = "首页"
+url = "/"
 weight = 1
 [[menu.main]]
-name = "技术解析"
-url = "/categories/technologies/"
+name = "DeepSeek"
+url = "/deepseek/"
 weight = 2
 [[menu.main]]
-name = "模型训练"
-url = "/categories/training/"
+name = "Claude"
+url = "/claude/"
 weight = 3
 [[menu.main]]
-name = "开源项目"
-url = "/categories/opensource/"
+name = "CAMEL"
+url = "/camel/"
 weight = 4
 [[menu.main]]
-name = "人物访谈"
-url = "/categories/interviews/"
+name = "通义千问"
+url = "/qwen/"
 weight = 5
 [[menu.main]]
-name = "行业动态"
-url = "/categories/news/"
+name = "AGI研究"
+url = "/agi/"
 weight = 6
 [[menu.main]]
-name = "行业规范"
-url = "/categories/spec/"
+name = "基础理论"
+url = "/base/"
 weight = 7
-[[menu.main]]
-name = "产品介绍"
-url = "/categories/products/"
-weight = 8
 
-[outputs]
-home = ["HTML"]
-section = ["HTML"]
-taxonomy = ["HTML"]
-term = ["HTML"]
+[taxonomies]
+category = "categories"
+tag = "tags"
+
+[permalinks]
+deepseek = "/deepseek/:filename/"
+claude = "/claude/:filename/"
+camel = "/camel/:filename/"
+qwen = "/qwen/:filename/"
+agi = "/agi/:filename/"
+base = "/base/:filename/"

@@ -1,0 +1,34 @@
+{{ define "main" }}
+<article class="container mx-auto px-4 py-8 max-w-4xl">
+    <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+        <div class="flex items-center gap-4 text-gray-600">
+            <time>{{ .Date.Format "2006-01-02" }}</time>
+            {{ with .Params.tags }}
+            <div class="flex flex-wrap gap-2">
+                {{ range . }}
+                <span class="px-2 py-1 bg-gray-100 text-gray-700 text-sm rounded">
+                    #{{ . }}
+                </span>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none">
+        {{ .Content }}
+    </div>
+
+    <footer class="mt-8 pt-8 border-t border-gray-200">
+        <div class="flex justify-between items-center">
+            {{ with .PrevInSection }}
+            <a href="{{ .RelPermalink }}" class="text-blue-600 hover:text-blue-800">← {{ .Title }}</a>
+            {{ end }}
+            {{ with .NextInSection }}
+            <a href="{{ .RelPermalink }}" class="text-blue-600 hover:text-blue-800">{{ .Title }} →</a>
+            {{ end }}
+        </div>
+    </footer>
+</article>
+{{ end }}
