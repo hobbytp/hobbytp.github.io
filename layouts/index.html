@@ -19,6 +19,17 @@
             {{ end }}
             {{ end }}
         </div>
+
+        <!-- 标签云 -->
+        <div class="tag-cloud">
+            <h3>标签云</h3>
+            {{ range .Site.Taxonomies.tags }}
+            <a href="{{ .Page.Permalink }}" class="tag-item"
+                style="font-size: {{ math.Log .Count | mul 0.8 | add 0.8 }}em">
+                {{ .Page.Title }} ({{ .Count }})
+            </a>
+            {{ end }}
+        </div>
     </aside>
 
     <!-- 右侧内容区 -->
@@ -42,14 +53,18 @@
         <section class="latest-posts">
             <h3>最新文章</h3>
             <div class="post-grid">
-                {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
-                {{ range $paginator.Pages }}
+                {{ $pages := where .Site.RegularPages "Type" "in" (slice "posts" "zh") }}
+                {{ range first 6 $pages.ByDate.Reverse }}
                 <article class="post-item">
                     <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
                     <div class="post-meta">
                         <time>{{ .Date.Format "2006-01-02" }}</time>
                         {{ with .Params.categories }}
-                        <span class="category">{{ index . 0 }}</span>
+                        <div class="categories">
+                            {{ range . }}
+                            <span class="category">{{ . }}</span>
+                            {{ end }}
+                        </div>
                         {{ end }}
                     </div>
                     {{ with .Description }}
@@ -65,8 +80,40 @@
                 </article>
                 {{ end }}
             </div>
-            {{ template "_internal/pagination.html" . }}
         </section>
+
+        <!-- 分类文章区域 -->
+        {{ $categories := slice "papers" "technologies" "projects" "interviews" "news" "products" }}
+        {{ range $categories }}
+        {{ $category := . }}
+        <section class="category-section">
+            <div class="category-header">
+                <h3>{{ humanize . }}</h3>
+                <a href="/categories/{{ . | urlize }}" class="view-all">查看全部</a>
+            </div>
+            <div class="post-grid">
+                {{ $categoryPosts := where $.Site.RegularPages "Params.categories" "intersect" (slice . ) }}
+                {{ range first 3 $categoryPosts.ByDate.Reverse }}
+                <article class="post-item">
+                    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+                    <div class="post-meta">
+                        <time>{{ .Date.Format "2006-01-02" }}</time>
+                        {{ with .Params.tags }}
+                        <div class="tags">
+                            {{ range . }}
+                            <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+                            {{ end }}
+                        </div>
+                        {{ end }}
+                    </div>
+                    {{ with .Description }}
+                    <p class="description">{{ . }}</p>
+                    {{ end }}
+                </article>
+                {{ end }}
+            </div>
+        </section>
+        {{ end }}
     </main>
 </div>
 
@@ -102,7 +149,7 @@
     .sidebar nav ul {
         list-style: none;
         padding: 0;
-        margin: 0;
+        margin: 0 0 2rem;
     }
 
     .sidebar nav li {
@@ -117,6 +164,33 @@
 
     .sidebar nav a:hover {
         color: var(--primary);
+    }
+
+    .tag-cloud {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .tag-cloud h3 {
+        margin: 0 0 1rem;
+        font-size: 1.1rem;
+    }
+
+    .tag-item {
+        display: inline-block;
+        margin: 0.2rem;
+        padding: 0.2rem 0.5rem;
+        background: var(--code-bg);
+        border-radius: 4px;
+        color: var(--secondary);
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .tag-item:hover {
+        background: var(--primary);
+        color: white;
     }
 
     .main-content {
@@ -160,6 +234,28 @@
         background: var(--primary-darker);
     }
 
+    .category-section {
+        margin-bottom: 3rem;
+    }
+
+    .category-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .category-header h3 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    .view-all {
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 0.9rem;
+    }
+
     .post-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -195,6 +291,19 @@
         color: var(--secondary);
     }
 
+    .categories {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .category {
+        padding: 0.2rem 0.5rem;
+        background: var(--code-bg);
+        border-radius: 4px;
+        font-size: 0.8rem;
+    }
+
     .tags {
         display: flex;
         gap: 0.5rem;
@@ -212,27 +321,6 @@
         margin: 0.5rem 0;
         color: var(--secondary);
         font-size: 0.95rem;
-    }
-
-    .pagination {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 2rem;
-    }
-
-    .pagination a {
-        padding: 0.5rem 1rem;
-        background: var(--entry);
-        color: var(--primary);
-        text-decoration: none;
-        border-radius: 4px;
-        transition: background 0.3s;
-    }
-
-    .pagination a:hover {
-        background: var(--primary);
-        color: white;
     }
 </style>
 {{ end }}
