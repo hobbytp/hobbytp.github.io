@@ -1,6 +1,5 @@
 baseURL = "https://hobbytp.github.io/"
 title = "My AI Blog"
-paginate = 5
 theme = "PaperMod"
 defaultContentLanguage = "zh"
 
@@ -8,6 +7,14 @@ enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
+
+[pagination]
+pageSize = 5
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
 
 [params]
 env = "production"
