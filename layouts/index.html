@@ -27,14 +27,43 @@
             <p>{{ .Site.Params.description }}</p>
         </div>
 
+        <!-- 分类导航栏 -->
+        <div class="category-nav">
+            {{ range .Site.Menus.main }}
+            <a href="#{{ .Identifier }}" class="category-link">{{ .Name }}</a>
+            {{ end }}
+        </div>
+
+        <!-- 最新文章区域 -->
+        <section class="latest-posts">
+            <h3>{{ i18n "latest_posts" }}</h3>
+            <div class="post-list">
+                {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
+                <article class="post-item">
+                    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+                    <div class="post-meta">
+                        <time>{{ .Date.Format "2006-01-02" }}</time>
+                        {{ with .Params.categories }}
+                        <span class="category">{{ index . 0 }}</span>
+                        {{ end }}
+                    </div>
+                </article>
+                {{ end }}
+            </div>
+        </section>
+
+        <!-- 分类文章区域 -->
         {{ range .Site.Menus.main }}
         {{ $category := .Identifier }}
-        <section class="category-section">
-            <h3>{{ .Name }}</h3>
+        <section id="{{ $category }}" class="category-section">
+            <div class="category-header">
+                <h3>{{ .Name }}</h3>
+                <a href="{{ .URL | relLangURL }}" class="view-all">{{ i18n "view_all" }}</a>
+            </div>
             <div class="post-list">
-                {{ range where $.Site.RegularPages "Params.categories" "intersect" (slice $category) }}
+                {{ range first 3 (where $.Site.RegularPages "Params.categories" "intersect" (slice $category)) }}
                 <article class="post-item">
-                    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
                     <div class="post-meta">
                         <time>{{ .Date.Format "2006-01-02" }}</time>
                         {{ with .Params.tags }}
@@ -55,4 +84,86 @@
         {{ end }}
     </main>
 </div>
+
+<style>
+    .category-nav {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+        padding: 1rem;
+        background: var(--card-bg);
+        border-radius: 8px;
+        flex-wrap: wrap;
+    }
+
+    .category-link {
+        padding: 0.5rem 1rem;
+        background: var(--primary);
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    .category-link:hover {
+        background: var(--primary-dark);
+    }
+
+    .category-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .view-all {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    .latest-posts {
+        margin-bottom: 3rem;
+    }
+
+    .post-list {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .post-item {
+        padding: 1.5rem;
+        background: var(--card-bg);
+        border-radius: 8px;
+        transition: transform 0.3s;
+    }
+
+    .post-item:hover {
+        transform: translateY(-2px);
+    }
+
+    .post-meta {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        color: var(--secondary);
+    }
+
+    .tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .tags a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    .description {
+        margin-top: 0.5rem;
+        color: var(--text);
+    }
+</style>
 {{ end }}
