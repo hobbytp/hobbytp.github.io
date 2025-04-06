@@ -2,12 +2,13 @@
 <div class="site-container">
     <!-- 左侧导航栏 -->
     <aside class="sidebar">
-        <h1>{{ .Site.Title }}</h1>
+        <h1><a href="{{ " /" | relLangURL }}">{{ .Site.Title }}</a></h1>
         <nav>
             <ul>
-                <li><a href="{{ " /" | relLangURL }}">{{ i18n "home" }}</a></li>
                 {{ range .Site.Menus.main }}
+                {{ if ne .Name "首页" }}
                 <li><a href="{{ .URL | relLangURL }}">{{ .Name }}</a></li>
+                {{ end }}
                 {{ end }}
             </ul>
         </nav>
@@ -22,23 +23,27 @@
 
     <!-- 右侧内容区 -->
     <main class="main-content">
-        <div class="content-header">
-            <h2>{{ i18n "categories" }}</h2>
-            <p>{{ .Site.Params.description }}</p>
-        </div>
-
-        <!-- 分类导航栏 -->
-        <div class="category-nav">
-            {{ range .Site.Menus.main }}
-            <a href="#{{ .Identifier }}" class="category-link">{{ .Name }}</a>
+        {{ if .Site.Params.profileMode.enabled }}
+        <div class="profile-section">
+            {{ with .Site.Params.profileMode.imageUrl }}
+            <img src="{{ . }}" alt="{{ $.Site.Params.profileMode.imageTitle }}" class="profile-image">
             {{ end }}
+            <h2>{{ .Site.Params.profileMode.title }}</h2>
+            <p>{{ .Site.Params.profileMode.subtitle }}</p>
+            <div class="profile-buttons">
+                {{ range .Site.Params.profileMode.buttons }}
+                <a href="{{ .url }}" class="profile-button">{{ .name }}</a>
+                {{ end }}
+            </div>
         </div>
+        {{ end }}
 
         <!-- 最新文章区域 -->
         <section class="latest-posts">
-            <h3>{{ i18n "latest_posts" }}</h3>
-            <div class="post-list">
-                {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
+            <h3>最新文章</h3>
+            <div class="post-grid">
+                {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+                {{ range $paginator.Pages }}
                 <article class="post-item">
                     <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
                     <div class="post-meta">
@@ -47,92 +52,123 @@
                         <span class="category">{{ index . 0 }}</span>
                         {{ end }}
                     </div>
-                </article>
-                {{ end }}
-            </div>
-        </section>
-
-        <!-- 分类文章区域 -->
-        {{ range .Site.Menus.main }}
-        {{ $category := .Identifier }}
-        <section id="{{ $category }}" class="category-section">
-            <div class="category-header">
-                <h3>{{ .Name }}</h3>
-                <a href="{{ .URL | relLangURL }}" class="view-all">{{ i18n "view_all" }}</a>
-            </div>
-            <div class="post-list">
-                {{ range first 3 (where $.Site.RegularPages "Params.categories" "intersect" (slice $category)) }}
-                <article class="post-item">
-                    <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
-                    <div class="post-meta">
-                        <time>{{ .Date.Format "2006-01-02" }}</time>
-                        {{ with .Params.tags }}
-                        <div class="tags">
-                            {{ range . }}
-                            <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
-                            {{ end }}
-                        </div>
-                        {{ end }}
-                    </div>
                     {{ with .Description }}
                     <p class="description">{{ . }}</p>
+                    {{ end }}
+                    {{ with .Params.tags }}
+                    <div class="tags">
+                        {{ range . }}
+                        <a href="/tags/{{ . | urlize }}">#{{ . }}</a>
+                        {{ end }}
+                    </div>
                     {{ end }}
                 </article>
                 {{ end }}
             </div>
+            {{ template "_internal/pagination.html" . }}
         </section>
-        {{ end }}
     </main>
 </div>
 
 <style>
-    .category-nav {
+    .site-container {
         display: flex;
-        gap: 1rem;
-        margin: 2rem 0;
-        padding: 1rem;
-        background: var(--card-bg);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .sidebar {
+        flex: 0 0 250px;
+        padding: 1.5rem;
+        background: var(--entry);
         border-radius: 8px;
-        flex-wrap: wrap;
+        position: sticky;
+        top: 2rem;
+        height: fit-content;
     }
 
-    .category-link {
-        padding: 0.5rem 1rem;
-        background: var(--primary);
-        color: white;
-        border-radius: 4px;
-        text-decoration: none;
-        transition: background 0.3s;
+    .sidebar h1 {
+        margin: 0 0 1.5rem;
+        font-size: 1.5rem;
     }
 
-    .category-link:hover {
-        background: var(--primary-dark);
-    }
-
-    .category-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .view-all {
+    .sidebar h1 a {
         color: var(--primary);
         text-decoration: none;
     }
 
-    .latest-posts {
-        margin-bottom: 3rem;
+    .sidebar nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
-    .post-list {
+    .sidebar nav li {
+        margin-bottom: 0.5rem;
+    }
+
+    .sidebar nav a {
+        color: var(--secondary);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .sidebar nav a:hover {
+        color: var(--primary);
+    }
+
+    .main-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .profile-section {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem;
+        background: var(--entry);
+        border-radius: 8px;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+    }
+
+    .profile-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .profile-button {
+        padding: 0.5rem 1rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+
+    .profile-button:hover {
+        background: var(--primary-darker);
+    }
+
+    .post-grid {
         display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 1.5rem;
     }
 
     .post-item {
         padding: 1.5rem;
-        background: var(--card-bg);
+        background: var(--entry);
         border-radius: 8px;
         transition: transform 0.3s;
     }
@@ -141,11 +177,20 @@
         transform: translateY(-2px);
     }
 
+    .post-item h4 {
+        margin: 0 0 1rem;
+    }
+
+    .post-item h4 a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
     .post-meta {
         display: flex;
         gap: 1rem;
         align-items: center;
-        margin: 0.5rem 0;
+        margin-bottom: 0.5rem;
         font-size: 0.9rem;
         color: var(--secondary);
     }
@@ -154,16 +199,40 @@
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
+        margin-top: 0.5rem;
     }
 
     .tags a {
         color: var(--primary);
         text-decoration: none;
+        font-size: 0.9rem;
     }
 
     .description {
-        margin-top: 0.5rem;
-        color: var(--text);
+        margin: 0.5rem 0;
+        color: var(--secondary);
+        font-size: 0.95rem;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .pagination a {
+        padding: 0.5rem 1rem;
+        background: var(--entry);
+        color: var(--primary);
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background 0.3s;
+    }
+
+    .pagination a:hover {
+        background: var(--primary);
+        color: white;
     }
 </style>
 {{ end }}
