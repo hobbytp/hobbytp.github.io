@@ -1,58 +1,86 @@
 baseURL = "https://hobbytp.github.io/"
-languageCode = "zh-cn"
 title = "My AI Blog"
+paginate = 5
+theme = "PaperMod"
+defaultContentLanguage = "zh"
 
-[module]
-[[module.imports]]
-path = "github.com/hugomods/tailwind"
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
 
 [params]
+env = "production"
+title = "My AI Blog"
 description = "一个关注 AI 各领域的专题博客"
-author = "Your Name"
+author = "Peng Tan"
+mainSections = ["posts"]
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowToc = true
 
-[markup]
-[markup.highlight]
-style = "dracula"
-[markup.goldmark.renderer]
-unsafe = true
+[params.profileMode]
+enabled = true
+title = "Peng Tan's AI Blog"
+subtitle = "关注 AI 领域的论文解读、最新技术、开源项目、知名人物访谈、动态和商业产品介绍"
+imageUrl = "/images/profile.jpg"
+imageTitle = "Peng Tan"
+
+[[params.profileMode.buttons]]
+name = "论文解读"
+url = "/papers"
+
+[[params.profileMode.buttons]]
+name = "技术解析"
+url = "/technologies"
+
+[[params.profileMode.buttons]]
+name = "开源项目"
+url = "/projects"
 
 [menu]
 [[menu.main]]
 name = "首页"
 url = "/"
 weight = 1
+
 [[menu.main]]
 name = "论文解读"
-url = "/categories/papers/"
+url = "/papers"
 weight = 2
+
 [[menu.main]]
 name = "技术解析"
-url = "/categories/technologies/"
+url = "/technologies"
 weight = 3
+
 [[menu.main]]
 name = "开源项目"
-url = "/categories/projects/"
+url = "/projects"
 weight = 4
+
 [[menu.main]]
 name = "人物访谈"
-url = "/categories/interviews/"
+url = "/interviews"
 weight = 5
+
 [[menu.main]]
 name = "行业动态"
-url = "/categories/news/"
+url = "/news"
 weight = 6
-[[menu.main]]
-name = "行业规范"
-url = "/categories/spec/"
-weight = 7
+
 [[menu.main]]
 name = "产品介绍"
-url = "/categories/products/"
+url = "/products"
+weight = 7
+
+[[menu.main]]
+name = "搜索"
+url = "/search"
 weight = 8
 
-[taxonomies]
-category = "categories"
-tag = "tags"
-
-[permalinks]
-pages = "/:filename/"
+[outputs]
+home = ["HTML", "RSS", "JSON"]
