@@ -19,38 +19,37 @@ name = "首页"
 url = "/"
 weight = 1
 [[menu.main]]
-name = "DeepSeek"
-url = "/deepseek/"
+name = "论文解读"
+url = "/categories/papers/"
 weight = 2
 [[menu.main]]
-name = "Claude"
-url = "/claude/"
+name = "技术解析"
+url = "/categories/technologies/"
 weight = 3
 [[menu.main]]
-name = "CAMEL"
-url = "/camel/"
+name = "开源项目"
+url = "/categories/projects/"
 weight = 4
 [[menu.main]]
-name = "通义千问"
-url = "/qwen/"
+name = "人物访谈"
+url = "/categories/interviews/"
 weight = 5
 [[menu.main]]
-name = "AGI研究"
-url = "/agi/"
+name = "行业动态"
+url = "/categories/news/"
 weight = 6
 [[menu.main]]
-name = "基础理论"
-url = "/base/"
+name = "行业规范"
+url = "/categories/spec/"
 weight = 7
+[[menu.main]]
+name = "产品介绍"
+url = "/categories/products/"
+weight = 8
 
 [taxonomies]
 category = "categories"
 tag = "tags"
 
 [permalinks]
-deepseek = "/deepseek/:filename/"
-claude = "/claude/:filename/"
-camel = "/camel/:filename/"
-qwen = "/qwen/:filename/"
-agi = "/agi/:filename/"
-base = "/base/:filename/"
+pages = "/:filename/"
