@@ -26,8 +26,7 @@
         <div class="tag-cloud">
             <h3>标签云</h3>
             {{ range .Site.Taxonomies.tags }}
-            <a href="{{ .Page.Permalink }}" class="tag-item"
-                style="font-size: {{ math.Log .Count | mul 0.8 | add 0.8 }}em">
+            <a href="{{ .Page.Permalink }}" class="tag-item tag-size-{{ math.Log .Count | mul 0.8 | add 0.8 | int }}">
                 {{ .Page.Title }} ({{ .Count }})
             </a>
             {{ end }}
@@ -217,6 +216,7 @@
         transform: translateX(5px);
     }
 
+    /* 标签云样式 */
     .tag-cloud {
         margin-top: 1.5rem;
         padding-top: 1rem;
@@ -242,6 +242,26 @@
     .tag-item:hover {
         background: var(--primary);
         color: var(--theme);
+    }
+
+    .tag-size-1 {
+        font-size: 0.8em;
+    }
+
+    .tag-size-2 {
+        font-size: 1em;
+    }
+
+    .tag-size-3 {
+        font-size: 1.2em;
+    }
+
+    .tag-size-4 {
+        font-size: 1.4em;
+    }
+
+    .tag-size-5 {
+        font-size: 1.6em;
     }
 
     .main-content {
