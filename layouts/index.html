@@ -12,12 +12,14 @@
                 {{ end }}
             </ul>
         </nav>
-        <div class="language-switch">
-            {{ range .Site.Languages }}
-            {{ if ne .Lang $.Site.Language.Lang }}
-            <a href="{{ .Lang | relLangURL }}" class="lang-item">{{ .LanguageName }}</a>
+
+        <!-- 个人资料卡片 -->
+        <div class="profile-card">
+            {{ with .Site.Params.profileMode.imageUrl }}
+            <img src="{{ . }}" alt="{{ $.Site.Params.profileMode.imageTitle }}" class="profile-image">
             {{ end }}
-            {{ end }}
+            <h2>{{ .Site.Params.profileMode.title }}</h2>
+            <p>{{ .Site.Params.profileMode.subtitle }}</p>
         </div>
 
         <!-- 标签云 -->
@@ -30,25 +32,17 @@
             </a>
             {{ end }}
         </div>
+
+        <!-- 快速导航按钮 -->
+        <div class="quick-nav">
+            {{ range .Site.Params.profileMode.buttons }}
+            <a href="{{ .url }}" class="nav-button">{{ .name }}</a>
+            {{ end }}
+        </div>
     </aside>
 
     <!-- 右侧内容区 -->
     <main class="main-content">
-        {{ if .Site.Params.profileMode.enabled }}
-        <div class="profile-section">
-            {{ with .Site.Params.profileMode.imageUrl }}
-            <img src="{{ . }}" alt="{{ $.Site.Params.profileMode.imageTitle }}" class="profile-image">
-            {{ end }}
-            <h2>{{ .Site.Params.profileMode.title }}</h2>
-            <p>{{ .Site.Params.profileMode.subtitle }}</p>
-            <div class="profile-buttons">
-                {{ range .Site.Params.profileMode.buttons }}
-                <a href="{{ .url }}" class="profile-button">{{ .name }}</a>
-                {{ end }}
-            </div>
-        </div>
-        {{ end }}
-
         <!-- 最新文章区域 -->
         <section class="latest-posts">
             <h3>最新文章</h3>
@@ -149,7 +143,7 @@
     .sidebar nav ul {
         list-style: none;
         padding: 0;
-        margin: 0 0 2rem;
+        margin: 0 0 1.5rem;
     }
 
     .sidebar nav li {
@@ -166,8 +160,61 @@
         color: var(--primary);
     }
 
+    /* 个人资料卡片样式 */
+    .profile-card {
+        text-align: center;
+        margin: 1.5rem 0;
+        padding: 1rem;
+        border-radius: 8px;
+        background: var(--code-bg);
+    }
+
+    .profile-card .profile-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        border: 3px solid var(--primary);
+    }
+
+    .profile-card h2 {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+        color: var(--primary);
+    }
+
+    .profile-card p {
+        font-size: 0.9rem;
+        color: var(--secondary);
+        margin: 0.5rem 0;
+    }
+
+    /* 快速导航按钮样式 */
+    .quick-nav {
+        margin: 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-button {
+        display: block;
+        padding: 0.5rem;
+        background: var(--primary);
+        color: var(--theme);
+        text-decoration: none;
+        border-radius: 4px;
+        text-align: center;
+        transition: all 0.3s;
+    }
+
+    .nav-button:hover {
+        background: var(--secondary);
+        transform: translateX(5px);
+    }
+
     .tag-cloud {
-        margin-top: 2rem;
+        margin-top: 1.5rem;
         padding-top: 1rem;
         border-top: 1px solid var(--border);
     }
@@ -190,70 +237,12 @@
 
     .tag-item:hover {
         background: var(--primary);
-        color: white;
+        color: var(--theme);
     }
 
     .main-content {
         flex: 1;
         min-width: 0;
-    }
-
-    .profile-section {
-        text-align: center;
-        margin-bottom: 3rem;
-        padding: 2rem;
-        background: var(--entry);
-        border-radius: 8px;
-    }
-
-    .profile-image {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        margin-bottom: 1rem;
-    }
-
-    .profile-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 1.5rem;
-    }
-
-    .profile-button {
-        padding: 0.5rem 1rem;
-        background: var(--primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-        transition: background 0.3s;
-    }
-
-    .profile-button:hover {
-        background: var(--primary-darker);
-    }
-
-    .category-section {
-        margin-bottom: 3rem;
-    }
-
-    .category-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-    }
-
-    .category-header h3 {
-        margin: 0;
-        font-size: 1.5rem;
-    }
-
-    .view-all {
-        color: var(--primary);
-        text-decoration: none;
-        font-size: 0.9rem;
     }
 
     .post-grid {
@@ -321,6 +310,23 @@
         margin: 0.5rem 0;
         color: var(--secondary);
         font-size: 0.95rem;
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+        .site-container {
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .sidebar {
+            position: static;
+            width: 100%;
+        }
+
+        .post-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
 {{ end }}
