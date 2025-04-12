@@ -4,7 +4,7 @@ title = "Competitive Programming with Large Reasoning Models（大型推理模�
 date = "2025-02-17T20:22:48+08:00"
 draft = true
 tags = ["Competitive Programming", "Large Reasoning Models", "AI"]
-categories = ["papers", "Competitive Programming", "Large Reasoning Models"]
+categories = ["papers", "program", "training"]
 description = "Competitive Programming with Large Reasoning Models（大型推理模型在编程竞赛中的应用）"
 +++
 
