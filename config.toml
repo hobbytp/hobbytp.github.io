@@ -28,7 +28,7 @@ ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
 ShowToc = true
-enableSchemaOrg = false
+enableSchemaOrg = true
 
 [params.profileMode]
 enabled = true
