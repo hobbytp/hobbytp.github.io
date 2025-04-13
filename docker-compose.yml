@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  hugo:
+    build: .
+    container_name: hugo-blog
+    volumes:
+      - .:/src
+    ports:
+      - "1313:1313"
+    environment:
+      - HUGO_ENV=development
+    command: server --bind 0.0.0.0 -D --disableFastRender
+    
+  # 生产环境构建服务
+  hugo-build:
+    build: .
+    volumes:
+      - .:/src
+    command: build --minify
+    profiles:
+      - build 

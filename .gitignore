@@ -1,0 +1,93 @@
+# Hugo default output directory
+/public/
+
+# Hugo generated resources directory
+/resources/_gen/
+/assets/jsconfig.json
+.hugo_build.lock
+
+# Docker
+.docker/
+docker-compose.override.yml
+*.env
+.env*
+!.env.example
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE/Editor directories
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+*.code-workspace
+
+# Node modules (if using any Node.js tools)
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local development server files
+.hugo_build.lock
+
+# Compiled Object files, Static and Dynamic libs (if any)
+*.o
+*.a
+*.so
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Dependency directories (remove if not using)
+/vendor/
+/bin/
+
+# Cache directories
+.cache/
+.npm/
+
+# Draft content (optional, uncomment if you want to ignore drafts)
+# content/drafts/
+
+# Local Netlify folder
+.netlify/
+
+# Vercel
+.vercel/
+
+# Firebase
+.firebase/
+.firebaserc
+firebase-debug.log
+
+# Custom backup files
+*.bak
+*.backup
+_backup/ 
