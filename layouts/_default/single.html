@@ -1,34 +1,334 @@
 {{ define "main" }}
-<article class="container mx-auto px-4 py-8 max-w-4xl">
-    <header class="mb-8">
-        <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
-        <div class="flex items-center gap-4 text-gray-600">
-            <time>{{ .Date.Format "2006-01-02" }}</time>
-            {{ with .Params.tags }}
-            <div class="flex flex-wrap gap-2">
-                {{ range . }}
-                <span class="px-2 py-1 bg-gray-100 text-gray-700 text-sm rounded">
-                    #{{ . }}
-                </span>
-                {{ end }}
+<div class="site-container">
+    <!-- 左侧导航栏 -->
+    <aside class="sidebar">
+        <div class="back-home">
+            {{- $home := "/" | relLangURL -}}
+            <a href="{{ $home }}" class="back-link">
+                <span class="back-arrow">←</span>
+                <span>返回主页</span>
+            </a>
+        </div>
+
+        <!-- 文章目录 -->
+        <div class="toc-container">
+            <h3 class="toc-title">目录</h3>
+            <div class="toc-content">
+                {{ .TableOfContents }}
             </div>
-            {{ end }}
         </div>
-    </header>
+    </aside>
 
-    <div class="prose prose-lg max-w-none">
-        {{ .Content }}
-    </div>
+    <!-- 右侧内容区 -->
+    <main class="main-content">
+        <article class="article-container">
+            <header class="article-header">
+                <h1 class="article-title">{{ .Title }}</h1>
+                <div class="article-meta">
+                    <time class="article-date">{{ .Date.Format "2006-01-02" }}</time>
+                    {{ with .Params.categories }}
+                    <div class="article-categories">
+                        {{ range . }}
+                        <span class="category">{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                    {{ with .Params.tags }}
+                    <div class="article-tags">
+                        {{ range . }}
+                        <span class="tag">#{{ . }}</span>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+            </header>
 
-    <footer class="mt-8 pt-8 border-t border-gray-200">
-        <div class="flex justify-between items-center">
-            {{ with .PrevInSection }}
-            <a href="{{ .RelPermalink }}" class="text-blue-600 hover:text-blue-800">← {{ .Title }}</a>
-            {{ end }}
-            {{ with .NextInSection }}
-            <a href="{{ .RelPermalink }}" class="text-blue-600 hover:text-blue-800">{{ .Title }} →</a>
-            {{ end }}
-        </div>
-    </footer>
-</article>
+            <div class="article-content">
+                {{ .Content }}
+            </div>
+
+            <footer class="article-footer">
+                <div class="article-navigation">
+                    {{ with .PrevInSection }}
+                    <a href="{{ .RelPermalink }}" class="nav-link prev">
+                        <span class="nav-arrow">←</span>
+                        <span class="nav-title">{{ .Title }}</span>
+                    </a>
+                    {{ end }}
+                    {{ with .NextInSection }}
+                    <a href="{{ .RelPermalink }}" class="nav-link next">
+                        <span class="nav-title">{{ .Title }}</span>
+                        <span class="nav-arrow">→</span>
+                    </a>
+                    {{ end }}
+                </div>
+            </footer>
+        </article>
+    </main>
+</div>
+
+<style>
+    .site-container {
+        display: flex;
+        gap: 1.5rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .sidebar {
+        flex: 0 0 250px;
+        position: sticky;
+        top: 1.5rem;
+        height: fit-content;
+        max-height: calc(100vh - 3rem);
+        overflow-y: auto;
+    }
+
+    .back-home {
+        margin-bottom: 1.5rem;
+    }
+
+    .back-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.5rem;
+        border-radius: 6px;
+        transition: all 0.3s;
+    }
+
+    .back-link:hover {
+        background: var(--code-bg);
+        color: var(--primary);
+    }
+
+    .back-arrow {
+        font-size: 1.2rem;
+    }
+
+    .toc-container {
+        background: var(--entry);
+        border-radius: 12px;
+        padding: 1.2rem;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .toc-title {
+        color: var(--primary);
+        margin: 0 0 1rem;
+        font-size: 1.1rem;
+    }
+
+    .toc-content {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .toc-content ul {
+        list-style: none;
+        padding-left: 0.5rem;
+        margin: 0;
+    }
+
+    .toc-content li {
+        margin: 0.3rem 0;
+    }
+
+    .toc-content a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: all 0.3s;
+        display: block;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+    }
+
+    .toc-content a:hover {
+        color: var(--primary);
+        background: var(--code-bg);
+    }
+
+    .main-content {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .article-container {
+        background: var(--entry);
+        border-radius: 12px;
+        padding: 2rem;
+        border: 1px solid var(--border);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .article-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .article-title {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .article-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    .article-date {
+        background: var(--code-bg);
+        padding: 0.3rem 0.6rem;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+
+    .article-categories {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .article-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .article-content {
+        color: var(--text);
+        line-height: 1.8;
+        font-size: 1.1rem;
+    }
+
+    .article-content h2 {
+        color: var(--primary);
+        margin: 2rem 0 1rem;
+        font-size: 1.5rem;
+    }
+
+    .article-content h3 {
+        color: var(--primary);
+        margin: 1.5rem 0 1rem;
+        font-size: 1.3rem;
+    }
+
+    .article-content p {
+        margin: 1rem 0;
+    }
+
+    .article-content code {
+        background: var(--code-bg);
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.9em;
+    }
+
+    .article-content pre {
+        background: var(--code-bg);
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+    }
+
+    .article-content blockquote {
+        border-left: 4px solid var(--primary);
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        color: var(--text-secondary);
+    }
+
+    .article-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+    }
+
+    .article-footer {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .article-navigation {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: all 0.3s;
+        max-width: 45%;
+    }
+
+    .nav-link:hover {
+        background: var(--code-bg);
+        color: var(--primary);
+    }
+
+    .nav-arrow {
+        font-size: 1.2rem;
+    }
+
+    .nav-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+        .site-container {
+            flex-direction: column;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .sidebar {
+            position: static;
+            width: 100%;
+            max-height: none;
+        }
+
+        .article-container {
+            padding: 1.5rem;
+        }
+
+        .article-title {
+            font-size: 1.5rem;
+        }
+
+        .article-meta {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .article-navigation {
+            flex-direction: column;
+        }
+
+        .nav-link {
+            max-width: 100%;
+        }
+    }
+</style>
 {{ end }}
