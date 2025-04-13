@@ -27,7 +27,8 @@ jobs:
       - name: Build Site
         run: |
           hugo version
-          hugo --minify
+          HUGO_ENV=production hugo --minify --cleanDestinationDir
+          touch public/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -36,4 +37,5 @@ jobs:
           publish_dir: ./public
           publish_branch: gh-pages
           force_orphan: true
-          commit_message: ${{ github.event.head_commit.message }}
+          keep_files: false
+          commit_message: "Deploy: ${{ github.sha }}"
