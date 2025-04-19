@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>CAMEL on My AI Blog</title><link>https://hobbytp.github.io/tags/camel/</link><description>Recent content in CAMEL on My AI Blog</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 19 Mar 2025 23:20:00 +0800</lastBuildDate><atom:link href="https://hobbytp.github.io/tags/camel/index.xml" rel="self" type="application/rss+xml"/><item><title>CAMEL 工具包</title><link>https://hobbytp.github.io/zh/camel/camel_tools/</link><pubDate>Wed, 19 Mar 2025 23:20:00 +0800</pubDate><guid>https://hobbytp.github.io/zh/camel/camel_tools/</guid><description>CAMEL Tools CAMEL工具包是一个模块化框架，旨在通过统一接口扩展AI智能体的能力，使其能够连接外部服务、数据源和计算工具。它提供了多种工具包，涵盖搜索、学术、社交媒体、数据分析、媒体处理、开发、金融和生产力等领域，帮助开发者加速开发、提升可靠性并简化API集成。
+CAMEL工具包通过一致的API设计（基于BaseToolkit类）和模型上下文协议（MCP）标准化了工具使用，简化了学习和实施过程。 工具包解决了API集成开销、不一致的接口、网络和错误处理以及维护问题。 主要工具包包括： 网络和搜索工具包：支持多种搜索引擎和知识库，提供实时数据访问。 学术和研究工具包：如arXiv、Google Scholar、PubMed等，专注于学术文献检索和分析。 社交媒体和通信工具包：如Twitter、Reddit、LinkedIn等，支持社交媒体数据分析和交互。 数据分析和计算工具包：如数学、SymPy、NetworkX等，支持数学运算、网络分析和数据处理。 媒体处理工具包：如DALL-E、音频分析、视频分析等，用于图像、音频和视频内容的生成和分析。 开发和编码工具包：如GitHub、终端、代码执行工具包等，支持开发者任务自动化。 金融和商业工具包：如Stripe、OpenBB等，支持支付处理和金融数据分析。 生产力和集成工具包：如MCP、Notion、Excel等，支持项目管理、文档处理和跨平台集成。 CAMEL工具包的优势包括：加速开发、一致接口、可组合性、可靠性与未来兼容性。 不同工具包适用于不同场景，如信息获取、业务优化、创意生成、开发辅助和复杂AI系统。 CAMEL框架通过模块化设计支持工具包的轻松更新和扩展，满足不断变化的市场需求。 1. 网络和搜索类工具包 工具包名称 主要功能 适用场景 搜索工具包 • Google、Bing、DuckDuckGo等搜索引擎集成
+• Tavily、Linkup专业搜索
+• Wikipedia、Wolfram Alpha知识库访问 • 事实查询
+• 最新信息获取
+• 研究助手开发 浏览器工具包 • 网页导航
+• 内容提取
+• 表单填写
+• 会话管理 • 网站数据抓取
+• 表单自动化
+• 电商助手开发 天气工具包 • 全球天气数据获取
+• 天气预报
+• 历史记录查询 • 旅行规划
+• 物流路线优化
+• 环境感知服务 2. 学术和研究类工具包 工具包名称 主要功能 适用场景 Arxiv工具包 • 科学论文搜索</description></item></channel></rss>

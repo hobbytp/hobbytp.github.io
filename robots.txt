@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://hobbytp.github.io/sitemap.xml
