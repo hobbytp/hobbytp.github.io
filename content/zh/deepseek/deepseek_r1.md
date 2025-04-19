@@ -1,11 +1,11 @@
-+++
-title = "DeepSeek R1 论文解读"
-date = "2025-02-10T20:10:00+08:00"
-draft = false
-tags = ["AI", "深度思考", "DeepSeek-R1", "论文", "技术"]
-categories = ["papers", "deepseek", "training"]
-description = "本文介绍了深度求索（DeepSeek）公司推出的新一代推理模型DeepSeek-R1，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
-+++
+---
+title: "DeepSeek R1 论文解读"
+date: "2025-02-10T20:10:00+08:00"
+draft: false
+tags: ["AI", "深度思考", "DeepSeek-R1", "论文", "技术"]
+categories: ["papers", "deepseek", "training"]
+description: "本文介绍了深度求索（DeepSeek）公司推出的新一代推理模型DeepSeek-R1，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+---
 
 
 ## 引言
