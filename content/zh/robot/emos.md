@@ -8,7 +8,8 @@ description = "本文介绍了EMOS: Embodiment-Aware Multi-Robot Operating Syste
 +++
 
 
-EMOS: Embodiment-Aware Multi-Robot Operating System with LLM Agents
+## EMOS: Embodiment-Aware Multi-Robot Operating System with LLM Agents
+
 <https://openreview.net/pdf?id=Ey8KcabBpB>
 
 这份文档介绍了 **EMOS (Embodiment-Aware Heterogeneous Multi-Robot Operating System)**，一个利用大型语言模型（LLM）代理来操作异构多机器人系统的创新框架。**EMOS 的核心在于“机器人简历”**，这是一种通过分析机器人 URDF 文件并结合运动学工具自主生成的机器人物理能力描述，取代了人为的角色分配。为了评估这种框架，作者提出了一个新的基准测试 **Habitat-MAS**，专注于考察多智能体系统在需要理解机器人具体形态的任务中的表现，涵盖了操作、感知、导航和复杂的多楼层物体重排列。**实验结果表明，“机器人简历”和分层式的多智能体系统设计对于异构机器人在复杂环境中的有效协作至关重要。**
