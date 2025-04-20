@@ -47,7 +47,7 @@
         <section class="latest-posts">
             <h3>最新文章</h3>
             <div class="post-grid">
-                {{ $pages := where .Site.RegularPages "Type" "in" (slice "posts" "zh") }}
+                {{ $pages := .Site.RegularPages }}
                 {{ range first 6 $pages.ByDate.Reverse }}
                 <article class="post-item">
                     <a href="{{ .RelPermalink }}" class="post-link">
