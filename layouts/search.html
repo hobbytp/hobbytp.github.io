@@ -1,0 +1,35 @@
+{{ define "main" }}
+<header class="page-header">
+    <h1>搜索</h1>
+    <div class="post-description">输入关键词（如标签、标题、摘要）进行搜索</div>
+</header>
+<div id="searchbox">
+    <input id="searchInput" autofocus placeholder="搜索文章..." aria-label="search" type="search" autocomplete="off">
+    <ul id="searchResults" aria-label="search results"></ul>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script>
+    (async function () {
+        const res = await fetch('/index.json');
+        const data = await res.json();
+        const input = document.getElementById('searchInput');
+        const results = document.getElementById('searchResults');
+        const fuse = new Fuse(data, {
+            keys: ['title', 'content', 'summary'],
+            threshold: 0.3,
+            minMatchCharLength: 2
+        });
+        input.addEventListener('input', function () {
+            const q = input.value.trim();
+            results.innerHTML = '';
+            if (!q) return;
+            const found = fuse.search(q);
+            found.slice(0, 20).forEach(({ item }) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<a href="${item.permalink}"><strong>${item.title}</strong></a><br><small>${item.summary}</small>`;
+                results.appendChild(li);
+            });
+        });
+    })();
+</script>
+{{ end }}

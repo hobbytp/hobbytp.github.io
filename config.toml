@@ -56,39 +56,78 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-name = "论文解读"
-url = "/papers"
+name = "个人洞察"
+url = "/my_insights"
 weight = 2
 
 [[menu.main]]
-name = "技术解析"
-url = "/technologies"
+name = "名人洞察"
+url = "/celebrity_insights"
 weight = 3
+
+[[menu.main]]
+name = "AI标准规范"
+url = "/ai_spec"
+weight = 4
+
 
 [[menu.main]]
 name = "开源项目"
 url = "/projects"
-weight = 4
+weight = 5
 
 [[menu.main]]
-name = "人物访谈"
-url = "/interviews"
-weight = 5
+name = "大厂产品线"
+url = "/big_companies"
+weight = 6
+
+
+[[menu.main]]
+name = "论文解读"
+url = "/papers"
+weight = 7
+
+[[menu.main]]
+name = "技术解析"
+url = "/technologies"
+weight = 8
+
+[[menu.main]]
+name = "大模型"
+url = "/large_models"
+weight = 9
+
+[[menu.main]]
+name = "训练微调技术"
+url = "/training"
+weight = 10
+
+[[menu.main]]
+name = "RAG技术"
+url = "/rag"
+weight = 11
+
+[[menu.main]]
+name = "多代理技术"
+url = "/mas"
+weight = 12
+
+[[menu.main]]
+name = "AI 工具"
+url = "/ai_tools"
+weight = 13
+
 
 [[menu.main]]
 name = "行业动态"
 url = "/news"
-weight = 6
-
-[[menu.main]]
-name = "产品介绍"
-url = "/products"
-weight = 7
+weight = 14
 
 [[menu.main]]
 name = "搜索"
 url = "/search"
-weight = 8
+weight = 15
 
+# 这会生成 /index.json，供前端搜索用。
 [outputs]
 home = ["HTML", "RSS", "JSON"]
