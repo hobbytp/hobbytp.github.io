@@ -24,3 +24,6 @@ other = "Products"
 
 [home]
 other = "Home"
+
+[search]
+other = "Search"

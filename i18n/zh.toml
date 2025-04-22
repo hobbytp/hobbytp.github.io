@@ -24,3 +24,6 @@ other = "产品介绍"
 
 [home]
 other = "首页"
+
+[search]
+other = "搜索"

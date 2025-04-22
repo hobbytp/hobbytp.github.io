@@ -1,0 +1,183 @@
+{{ define "main" }}
+<div class="search-container">
+    <header class="search-header">
+        <h1>{{ .Title }}</h1>
+        <div class="search-description">{{ .Summary }}</div>
+    </header>
+    <div id="searchbox">
+        <input id="searchInput" autofocus placeholder="{{ .Params.placeholder }}" aria-label="search" type="search"
+            autocomplete="off">
+        <ul id="searchResults" aria-label="search results"></ul>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script>
+    (async function () {
+        try {
+            const res = await fetch('/index.json');
+            if (!res.ok) throw new Error('Failed to fetch search index');
+            const data = await res.json();
+
+            const input = document.getElementById('searchInput');
+            const results = document.getElementById('searchResults');
+
+            const fuse = new Fuse(data, {
+                keys: ['title', 'content', 'description', 'tags', 'categories'],
+                threshold: 0.3,
+                minMatchCharLength: 2,
+                useExtendedSearch: true
+            });
+
+            input.addEventListener('input', function () {
+                const q = input.value.trim();
+                results.innerHTML = '';
+                if (!q) return;
+
+                const found = fuse.search(q);
+                found.slice(0, 20).forEach(({ item }) => {
+                    const li = document.createElement('li');
+                    li.className = 'search-result-item';
+                    li.innerHTML = `
+                        <a href="${item.permalink}">
+                            <h3>${item.title}</h3>
+                            ${item.description ? `<p>${item.description}</p>` : ''}
+                            <div class="result-meta">
+                                ${item.date ? `<span class="result-date">${new Date(item.date).toLocaleDateString()}</span>` : ''}
+                                ${item.categories ? `<span class="result-categories">${item.categories.join(', ')}</span>` : ''}
+                            </div>
+                        </a>
+                    `;
+                    results.appendChild(li);
+                });
+
+                if (found.length === 0) {
+                    const li = document.createElement('li');
+                    li.className = 'no-results';
+                    li.textContent = '没有找到相关文章';
+                    results.appendChild(li);
+                }
+            });
+        } catch (error) {
+            console.error('Search initialization failed:', error);
+            document.getElementById('searchbox').innerHTML = '<p class="search-error">搜索功能暂时不可用</p>';
+        }
+    })();
+</script>
+
+<style>
+    .search-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .search-header {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .search-header h1 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .search-description {
+        color: var(--text-secondary);
+    }
+
+    #searchbox {
+        margin-bottom: 2rem;
+    }
+
+    #searchInput {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        border: 2px solid var(--border);
+        border-radius: 8px;
+        background: var(--entry);
+        color: var(--text);
+        transition: all 0.3s;
+    }
+
+    #searchInput:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+    }
+
+    #searchResults {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .search-result-item {
+        margin-bottom: 1.5rem;
+    }
+
+    .search-result-item a {
+        display: block;
+        padding: 1rem;
+        background: var(--entry);
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.3s;
+    }
+
+    .search-result-item a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-result-item h3 {
+        color: var(--primary);
+        margin: 0 0 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .search-result-item p {
+        color: var(--text-secondary);
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .result-meta {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+    }
+
+    .no-results {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-secondary);
+        background: var(--entry);
+        border-radius: 8px;
+    }
+
+    .search-error {
+        text-align: center;
+        padding: 2rem;
+        color: #ff5252;
+        background: var(--entry);
+        border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+        .search-container {
+            margin: 1rem auto;
+        }
+
+        #searchInput {
+            padding: 0.8rem;
+            font-size: 1rem;
+        }
+    }
+</style>
+{{ end }}

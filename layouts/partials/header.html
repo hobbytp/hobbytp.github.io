@@ -1,11 +1,20 @@
 <header>
-    <h1>{{ .Site.Title }}</h1>
+    <div class="header-container">
+        <div class="site-title">
+            <h1>{{ .Site.Title }}</h1>
+        </div>
+        <div class="header-search-container">
+            <input type="search" id="headerSearch" placeholder="{{ i18n " search" }}" aria-label="search">
+            <div id="headerSearchResults" class="search-results"></div>
+        </div>
+    </div>
     <nav>
         <ul>
             <li><a href="{{ " /" | relLangURL }}">{{ i18n "home" }}</a></li>
             {{ range .Site.Menus.main }}
             <li><a href="{{ .URL | relLangURL }}">{{ i18n .Identifier }}</a></li>
             {{ end }}
+            <li><a href="/search">{{ i18n "search" }}</a></li>
             <li class="language-switch">
                 {{ range .Site.Languages }}
                 {{ if ne .Lang $.Site.Language.Lang }}
@@ -16,3 +25,146 @@
         </ul>
     </nav>
 </header>
+
+<script>
+    (async function () {
+        try {
+            const res = await fetch('/index.json');
+            if (!res.ok) throw new Error('Failed to fetch search index');
+            const data = await res.json();
+
+            const input = document.getElementById('headerSearch');
+            const results = document.getElementById('headerSearchResults');
+
+            const fuse = new Fuse(data, {
+                keys: ['title', 'content', 'description', 'tags', 'categories'],
+                threshold: 0.3,
+                minMatchCharLength: 2,
+                useExtendedSearch: true
+            });
+
+            input.addEventListener('input', function () {
+                const q = input.value.trim();
+                results.innerHTML = '';
+                if (!q) {
+                    results.style.display = 'none';
+                    return;
+                }
+
+                const found = fuse.search(q);
+                if (found.length > 0) {
+                    results.style.display = 'block';
+                    found.slice(0, 5).forEach(({ item }) => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.innerHTML = `
+                            <a href="${item.permalink}">
+                                <h3>${item.title}</h3>
+                            </a>
+                        `;
+                        results.appendChild(div);
+                    });
+                } else {
+                    results.style.display = 'none';
+                }
+            });
+
+            // Hide results when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!input.contains(e.target) && !results.contains(e.target)) {
+                    results.style.display = 'none';
+                }
+            });
+        } catch (error) {
+            console.error('Header search initialization failed:', error);
+        }
+    })();
+</script>
+
+<style>
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .site-title {
+        flex: 1;
+    }
+
+    .header-search-container {
+        position: relative;
+        width: 250px;
+        margin-left: 1rem;
+    }
+
+    #headerSearch {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: var(--entry);
+        color: var(--text);
+    }
+
+    #headerSearch:focus {
+        outline: none;
+        border-color: var(--primary);
+    }
+
+    .search-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--entry);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        max-height: 300px;
+        overflow-y: auto;
+        display: none;
+        z-index: 1000;
+    }
+
+    .search-result-item {
+        padding: 0.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+
+    .search-result-item a {
+        text-decoration: none;
+        color: var(--text);
+    }
+
+    .search-result-item h3 {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    .search-result-item:hover {
+        background: var(--primary);
+    }
+
+    .search-result-item:hover a {
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .header-container {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .header-search-container {
+            width: 100%;
+            margin-left: 0;
+            margin-top: 1rem;
+        }
+    }
+</style>
