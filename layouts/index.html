@@ -4,6 +4,13 @@
     <aside class="sidebar">
         {{- $home := "/" | relLangURL -}}
         <h1><a href="{{ $home }}">{{ .Site.Title }}</a></h1>
+
+        <!-- 搜索框 -->
+        <div class="sidebar-search-container">
+            <input type="search" id="sidebarSearch" placeholder="{{ i18n " search" }}" aria-label="search">
+            <div id="sidebarSearchResults" class="search-results"></div>
+        </div>
+
         <nav>
             <ul>
                 {{ range .Site.Menus.main }}
@@ -447,5 +454,129 @@
     .main-content tr:hover {
         background: rgba(33, 150, 243, 0.1);
     }
+
+    /* 侧边栏搜索框样式 */
+    .sidebar-search-container {
+        position: relative;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    #sidebarSearch {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: var(--code-bg);
+        color: var(--text);
+    }
+
+    #sidebarSearch:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+    }
+
+    .search-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--entry);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        max-height: 300px;
+        overflow-y: auto;
+        display: none;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-result-item {
+        padding: 0.5rem;
+        border-bottom: 1px solid var(--border);
+        transition: all 0.2s;
+    }
+
+    .search-result-item:last-child {
+        border-bottom: none;
+    }
+
+    .search-result-item a {
+        text-decoration: none;
+        color: var(--text);
+        display: block;
+    }
+
+    .search-result-item h3 {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--primary);
+    }
+
+    .search-result-item:hover {
+        background: var(--primary-dark);
+    }
+
+    .search-result-item:hover h3 {
+        color: white;
+    }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script>
+    (async function () {
+        try {
+            const res = await fetch('/index.json');
+            if (!res.ok) throw new Error('Failed to fetch search index');
+            const data = await res.json();
+
+            const input = document.getElementById('sidebarSearch');
+            const results = document.getElementById('sidebarSearchResults');
+
+            const fuse = new Fuse(data, {
+                keys: ['title', 'content', 'description', 'tags', 'categories'],
+                threshold: 0.3,
+                minMatchCharLength: 2,
+                useExtendedSearch: true
+            });
+
+            input.addEventListener('input', function () {
+                const q = input.value.trim();
+                results.innerHTML = '';
+                if (!q) {
+                    results.style.display = 'none';
+                    return;
+                }
+
+                const found = fuse.search(q);
+                if (found.length > 0) {
+                    results.style.display = 'block';
+                    found.slice(0, 5).forEach(({ item }) => {
+                        const div = document.createElement('div');
+                        div.className = 'search-result-item';
+                        div.innerHTML = `
+                            <a href="${item.permalink}">
+                                <h3>${item.title}</h3>
+                            </a>
+                        `;
+                        results.appendChild(div);
+                    });
+                } else {
+                    results.style.display = 'none';
+                }
+            });
+
+            // Hide results when clicking outside
+            document.addEventListener('click', function (e) {
+                if (!input.contains(e.target) && !results.contains(e.target)) {
+                    results.style.display = 'none';
+                }
+            });
+        } catch (error) {
+            console.error('Sidebar search initialization failed:', error);
+        }
+    })();
+</script>
 {{ end }}
