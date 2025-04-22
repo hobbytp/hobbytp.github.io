@@ -68,9 +68,55 @@
 </div>
 
 <style>
+    /* 基础样式 */
+    :root {
+        --primary: #2196f3;
+        --primary-dark: #1a237e;
+        --secondary: #64b5f6;
+        --theme: #121212;
+        --entry: #1e1e1e;
+        --border: #2d2d2d;
+        --code-bg: #2d2d2d;
+        --text: #e0e0e0;
+        --text-secondary: #b0b0b0;
+    }
+
+    /* 表格样式 */
+    .article-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background: var(--entry);
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .article-content th,
+    .article-content td {
+        padding: 0.8rem;
+        text-align: left;
+        border: 1px solid var(--border);
+    }
+
+    .article-content th {
+        background: var(--primary-dark);
+        color: var(--text);
+        font-weight: 600;
+    }
+
+    .article-content tr:nth-child(even) {
+        background: var(--code-bg);
+    }
+
+    .article-content tr:hover {
+        background: rgba(33, 150, 243, 0.1);
+    }
+
+    /* 其他现有样式 */
     .site-container {
         display: flex;
-        gap: 1.5rem;
+        gap: 2rem;
         max-width: 1200px;
         margin: 0 auto;
         padding: 1.5rem;
@@ -81,8 +127,6 @@
         position: sticky;
         top: 1.5rem;
         height: fit-content;
-        max-height: calc(100vh - 3rem);
-        overflow-y: auto;
     }
 
     .back-home {
@@ -161,8 +205,7 @@
         background: var(--entry);
         border-radius: 12px;
         padding: 2rem;
-        border: 1px solid var(--border);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .article-header {
@@ -296,11 +339,11 @@
         white-space: nowrap;
     }
 
+    /* 响应式设计 */
     @media (max-width: 768px) {
         .site-container {
             flex-direction: column;
             padding: 1rem;
-            gap: 1rem;
         }
 
         .sidebar {
