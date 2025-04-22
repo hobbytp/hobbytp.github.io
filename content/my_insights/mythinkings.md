@@ -45,3 +45,7 @@ tags: ["AI Agent", "大模型", "计算不可约性", "数学", "物理", "数�
 ## 大模型Scaling Law失效了吗？
 
 ## 当前Transformer-based大模型的局限性在哪里？
+
+## AI 多Agent系统的发展趋势
+
+AI 多Agent系统的发展趋势主要体现在以下几个方面：
