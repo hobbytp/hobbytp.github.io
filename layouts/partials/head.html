@@ -184,16 +184,3 @@ resources.Minify }}
 <script>
     mermaid.initialize({ startOnLoad: true });
 </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll('pre > code.language-mermaid').forEach(function (block) {
-            const parent = block.parentElement;
-            const mermaidDiv = document.createElement('div');
-            mermaidDiv.className = 'mermaid';
-            mermaidDiv.textContent = block.textContent;
-            parent.parentElement.replaceChild(mermaidDiv, parent);
-        });
-        if (window.mermaid) mermaid.init();
-    });
-</script>
