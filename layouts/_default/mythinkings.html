@@ -1,0 +1,47 @@
+{{ define "main" }}
+<style>
+    .card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        margin: 2rem 0;
+        padding: 2rem 1.5rem;
+        transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h2 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        color: #2e2e33;
+    }
+
+    .card-content {
+        margin-top: 1rem;
+    }
+</style>
+<div class="mythinkings-cards">
+    {{ $re := `(?m)^##\s+(.+)$` }}
+    {{ $matches := findRE $re .RawContent }}
+    {{ $sections := split .RawContent "## " }}
+    {{ range $i, $section := $sections }}
+    {{ if gt $i 0 }}
+    <div class="card">
+        <h2>{{ index $matches (sub $i 1) | default "" }}</h2>
+        <div class="card-content">
+            {{ $section | markdownify }}
+        </div>
+    </div>
+    {{ else }}
+    <div class="card" style="background:#f8f8fa;">
+        <div class="card-content">
+            {{ $section | markdownify }}
+        </div>
+    </div>
+    {{ end }}
+    {{ end }}
+</div>
+{{ end }}
