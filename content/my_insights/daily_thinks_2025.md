@@ -3,7 +3,7 @@ title: "日常想法随手记-2025"
 date: "2025-05-13T20:10:00+08:00"
 draft: false
 tags: ["AI", "Thinking", "Daily","2025"]
-categories: ["AI", "Thinking"]
+categories: ["AI", "my_insights"]  
 description: "日常想法随手记"
 ---
 

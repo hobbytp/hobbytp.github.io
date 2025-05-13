@@ -3,7 +3,7 @@ title: "Agent经济：红杉资本2025 AI峰会释放的超级信号"
 date: "2025-05-13T20:10:00+08:00"
 draft: false
 tags: ["AI", "Ascent", "Agent", "红杉资本"]
-categories: ["AI", "Ascent", "Agent"]
+categories: ["AI", "my_insights"]
 description: "Agent经济：红杉资本2025 AI峰会释放的超级信号"
 ---
 
