@@ -3,7 +3,7 @@ title = "QwQ-32B Qwen推理大模型解读"
 date = "2025-03-06T20:21:00+08:00"
 draft = false
 tags = ["AI", "深度思考", "QwQ-32B", "大模型", "Qwen"]
-categories = ["llm", "qwen"]
+categories = ["llm", "qwen"，"large_models"]
 description = "本文介绍了深度求索（DeepSeek）公司推出的新一代推理模型QwQ-32B，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
 +++
 
