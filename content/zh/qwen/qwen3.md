@@ -1,11 +1,11 @@
-+++
+---
 title: "Qwen3 Tech Report解读"
 date: "2025-05-13T23:03:00+08:00"
 draft: false
 tags:  ["AI", "Qwen3", "大模型", "Qwen"，"Paper"]
 categories:  ["llm", "qwen", "large_models","Paper"]
 description: "全方位解读Qwen3的论文技术报告"
-+++
+---
 
 ## 模型介绍
 
