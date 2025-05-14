@@ -67,29 +67,29 @@ weight = 3
 
 [[menu.main]]
 name = "AI标准规范"
-url = "/ai_spec"
+url = "/categories/ai_spec"
 weight = 4
 
 
 [[menu.main]]
 name = "开源项目"
-url = "/projects"
+url = "/categories/projects"
 weight = 5
 
 [[menu.main]]
 name = "大厂产品线"
-url = "/big_companies"
+url = "/categories/big_companies"
 weight = 6
 
 
 [[menu.main]]
 name = "论文解读"
-url = "/papers"
+url = "/categories/papers"
 weight = 7
 
 [[menu.main]]
 name = "技术解析"
-url = "/technologies"
+url = "/categories/technologies"
 weight = 8
 
 [[menu.main]]
@@ -99,28 +99,28 @@ weight = 9
 
 [[menu.main]]
 name = "训练微调技术"
-url = "/training"
+url = "/categories/training"
 weight = 10
 
 [[menu.main]]
 name = "RAG技术"
-url = "/rag"
+url = "/categories/rag"
 weight = 11
 
 [[menu.main]]
 name = "多代理技术"
-url = "/mas"
+url = "/categories/mas"
 weight = 12
 
 [[menu.main]]
 name = "AI 工具"
-url = "/ai_tools"
+url = "/categories/ai_tools"
 weight = 13
 
 
 [[menu.main]]
 name = "行业动态"
-url = "/news"
+url = "/categories/news"
 weight = 14
 
 [[menu.main]]
