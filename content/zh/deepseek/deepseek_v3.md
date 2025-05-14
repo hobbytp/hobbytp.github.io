@@ -1,12 +1,11 @@
-
-+++
-title = "DeepSeek V3 论文解读"
-date = "2025-02-14T18:10:00+08:00"
-draft = false
-tags = ["AI", "DeepSeek-V3", "论文", "技术"]
-categories = ["papers", "deepseek", "training"]
-description = "本文介绍了深度求索（DeepSeek）公司推出的新一代推理模型DeepSeek-V3，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
-+++
+---
+title: "DeepSeek V3 论文解读"
+date: "2025-02-14T18:10:00+08:00"
+draft: false
+tags: ["AI", "DeepSeek-V3", "论文", "技术"]
+categories: ["papers", "large_models", "training"]
+description: "本文介绍了深度求索（DeepSeek）公司推出的新一代推理模型DeepSeek-V3，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+---
 
 ## 概要
 

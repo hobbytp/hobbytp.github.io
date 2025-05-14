@@ -1,4 +1,11 @@
-
+---
+title: "DeepSeek 微调"
+date: "2025-02-14T18:10:00+08:00"
+draft: false
+tags: ["AI", "DeepSeek", "论文", "技术"]
+categories: ["papers", "large_models", "training"]
+description: "本文介绍了如何使用合成推理数据集微调DeepSeek-R1模型."
+---
 ### 摘要  
 
 本文介绍了如何使用合成推理数据集微调DeepSeek-R1模型，以解决Python编程问题的具体任务。通过使用Synthetic Data Generator生成高质量数据集，并利用Unsloth库进行优化微调，展示了从生成数据到微调模型再到运行推理和评估结果的完整流程。
