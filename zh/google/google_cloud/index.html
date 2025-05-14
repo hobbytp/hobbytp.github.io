@@ -1,0 +1,247 @@
+<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="一个关注 AI 各领域的专题博客"><meta property="og:title" content=" - My AI Blog"><meta property="og:description" content="一个关注 AI 各领域的专题博客"><meta property="og:type" content="article"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content=" - My AI Blog"><meta name=twitter:description content="一个关注 AI 各领域的专题博客"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","headline":"","description":"一个关注 AI 各领域的专题博客","author":{"@type":"Person","name":"Your Name"},"datePublished":"0001-01-01T00:00:00Z"}</script><title>- My AI Blog</title><link rel=stylesheet href=/css/main.css></head><body><div class=site-container><aside class=sidebar><div class=back-home><a href=/ class=back-link><span class=back-arrow>←</span>
+<span>返回主页</span></a></div><div class=toc-container><h3 class=toc-title>目录</h3><div class=toc-content><nav id=TableOfContents><ul><li><a href=#google-cloud-platform-gcp-核心基础设施详解>Google Cloud Platform (GCP) 核心基础设施详解</a></li></ul></nav></div></div></aside><main class=main-content><article class=article-container><header class=article-header><h1 class=article-title></h1><div class=article-meta><time class=article-date>0001-01-01</time></div></header><div class=article-content><pre tabindex=0><code class=language-mermaid data-lang=mermaid>graph TD
+    subgraph GCP [&#34;Google Cloud Platform&#34;]
+        direction LR
+
+        subgraph GlobalInfrastructure [&#34;全球基础设施&#34;]
+            direction TB
+            Region1[&#34;区域 1 (例如: us-central1)&#34;]
+            Region2[&#34;区域 N (例如: asia-northeast1)&#34;]
+            Zone1A[&#34;可用区 1-A&#34;]
+            Zone1B[&#34;可用区 1-B&#34;]
+            ZoneNA[&#34;可用区 N-A&#34;]
+            PoP[&#34;边缘节点 PoP&#34;]
+
+            Region1 --- Zone1A &amp; Zone1B
+            Region2 --- ZoneNA
+            GlobalNetwork[&#34;全球高速网络&#34;] --- Region1 &amp; Region2 &amp; PoP
+        end
+
+        subgraph CoreServices [&#34;核心服务&#34;]
+            direction TB
+
+            subgraph Compute [&#34;计算服务&#34;]
+                GCE[&#34;Compute Engine (VMs)&#34;]
+                GKE[&#34;Kubernetes Engine (容器)&#34;]
+                AppEngine[&#34;App Engine (PaaS)&#34;]
+                CloudFunctions[&#34;Cloud Functions (FaaS)&#34;]
+            end
+
+            subgraph Storage [&#34;存储服务&#34;]
+                CloudStorage[&#34;Cloud Storage (对象)&#34;]
+                PersistentDisk[&#34;Persistent Disk (块)&#34;]
+                Filestore[&#34;Filestore (文件)&#34;]
+                CloudSQL[&#34;Cloud SQL (关系型DB)&#34;]
+                Spanner[&#34;Spanner (全球DB)&#34;]
+                Bigtable[&#34;Bigtable (NoSQL)&#34;]
+            end
+
+            subgraph Networking [&#34;网络服务&#34;]
+                VPC[&#34;VPC 网络&#34;]
+                LoadBalancing[&#34;Cloud Load Balancing&#34;]
+                CloudDNS[&#34;Cloud DNS&#34;]
+                CloudCDN[&#34;Cloud CDN&#34;]
+            end
+
+            subgraph DataAnalytics [&#34;数据与分析&#34;]
+                BigQuery[&#34;BigQuery (数据仓库)&#34;]
+                Dataflow[&#34;Dataflow (数据处理)&#34;]
+                PubSub[&#34;Pub/Sub (消息传递)&#34;]
+            end
+
+            %% 连接关系 (高层次示意)
+            Compute -- 使用 --&gt; Storage
+            Compute -- 连接 --&gt; Networking
+            Networking -- 连接 --&gt; GlobalInfrastructure
+            PoP -- 集成 --&gt; CloudCDN
+            DataAnalytics -- 处理 --&gt; Storage
+            DataAnalytics -- 交互 --&gt; PubSub
+            AppEngine &amp; CloudFunctions -- 触发 --&gt; PubSub
+        end
+
+        subgraph ManagementSecurity [&#34;管理与安全 (贯穿各层)&#34;]
+            direction TB
+            IAM[&#34;Identity &amp; Access Management (IAM)&#34;]
+            SecurityCommand[&#34;Security Command Center&#34;]
+            CloudArmor[&#34;Cloud Armor&#34;]
+            Monitoring[&#34;Cloud Monitoring&#34;]
+            Logging[&#34;Cloud Logging&#34;]
+            Console[&#34;Cloud Console / CLI&#34;]
+        end
+
+        %% 整体关系
+        CoreServices -- 运行于 --&gt; GlobalInfrastructure
+        ManagementSecurity -- 管理与保护 --&gt; CoreServices &amp; GlobalInfrastructure
+
+    end
+
+    User[&#34;用户 / 应用&#34;] --&gt; LoadBalancing
+    User --&gt; CloudCDN
+    User --&gt; Console
+
+    %% 样式 (可选)
+    classDef default fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef infra fill:#e6f2ff,stroke:#36c,stroke-width:2px;
+    classDef compute fill:#fff0e6,stroke:#f60,stroke-width:2px;
+    classDef storage fill:#e6ffe6,stroke:#090,stroke-width:2px;
+    classDef network fill:#ffe6e6,stroke:#c00,stroke-width:2px;
+    classDef data fill:#ffffcc,stroke:#cc0,stroke-width:2px;
+    classDef mgmt fill:#f0f0f0,stroke:#666,stroke-width:2px;
+
+    class GlobalInfrastructure,Region1,Region2,Zone1A,Zone1B,ZoneNA,PoP,GlobalNetwork infra;
+    class Compute,GCE,GKE,AppEngine,CloudFunctions compute;
+    class Storage,CloudStorage,PersistentDisk,Filestore,CloudSQL,Spanner,Bigtable storage;
+    class Networking,VPC,LoadBalancing,CloudDNS,CloudCDN network;
+    class DataAnalytics,BigQuery,Dataflow,PubSub data;
+    class ManagementSecurity,IAM,SecurityCommand,CloudArmor,Monitoring,Logging,Console mgmt;
+</code></pre><h2 id=google-cloud-platform-gcp-核心基础设施详解>Google Cloud Platform (GCP) 核心基础设施详解</h2><p><strong>全球基础设施与核心服务概览</strong></p><pre tabindex=0><code class=language-mermaid data-lang=mermaid>graph TD
+    subgraph GCP [Google Cloud Platform]
+        direction LR
+
+        subgraph GlobalInfrastructure [全球基础设施]
+            direction TB
+            Region1[&#34;区域 1 (例如: us-central1)&#34;]
+            Region2[&#34;区域 N (例如: asia-northeast1)&#34;]
+            Zone1A[&#34;可用区 1-A&#34;]
+            Zone1B[&#34;可用区 1-B&#34;]
+            ZoneNA[&#34;可用区 N-A&#34;]
+            PoP[&#34;边缘节点 PoP&#34;]
+
+            Region1 --- Zone1A &amp; Zone1B
+            Region2 --- ZoneNA
+            GlobalNetwork[全球高速网络] --- Region1 &amp; Region2 &amp; PoP
+        end
+
+        subgraph ServiceCategories [核心服务类别]
+            direction TB
+            ComputeCat[&#34;计算服务&#34;]
+            StorageCat[&#34;存储服务&#34;]
+            NetworkingCat[&#34;网络服务&#34;]
+            DataAnalyticsCat[&#34;数据与分析&#34;]
+            ManagementSecurityCat[&#34;管理与安全&#34;]
+        end
+
+        %% 关系
+        ServiceCategories -- 运行于 --&gt; GlobalInfrastructure
+        ManagementSecurityCat -- 贯穿 --&gt; ComputeCat &amp; StorageCat &amp; NetworkingCat &amp; DataAnalyticsCat
+        NetworkingCat -- 连接 --&gt; GlobalInfrastructure
+        PoP -- 支持 --&gt; NetworkingCat
+
+    end
+
+    UserApp[用户 / 应用] --&gt; NetworkingCat
+    UserApp --&gt; PoP
+
+    %% 样式 (可选)
+    classDef infra fill:#e6f2ff,stroke:#36c,stroke-width:2px;
+    classDef svc_cat fill:#f0f0f0,stroke:#666,stroke-width:2px;
+    class GlobalInfrastructure,Region1,Region2,Zone1A,Zone1B,ZoneNA,PoP,GlobalNetwork infra;
+    class ServiceCategories,ComputeCat,StorageCat,NetworkingCat,DataAnalyticsCat,ManagementSecurityCat svc_cat;
+</code></pre><p><strong>计算与存储服务详解</strong></p><pre tabindex=0><code class=language-mermaid data-lang=mermaid>graph TD
+    subgraph ComputeServices [计算服务]
+        direction TB
+        GCE[&#34;Compute Engine (VMs)&#34;]
+        GKE[&#34;Kubernetes Engine (容器)&#34;]
+        AppEngine[&#34;App Engine (PaaS)&#34;]
+        CloudFunctions[&#34;Cloud Functions (FaaS)&#34;]
+    end
+
+    subgraph StorageServices [存储服务]
+        direction TB
+        CloudStorage[&#34;Cloud Storage (对象)&#34;]
+        PersistentDisk[&#34;Persistent Disk (块)&#34;]
+        Filestore[&#34;Filestore (文件)&#34;]
+        CloudSQL[&#34;Cloud SQL (关系型DB)&#34;]
+        Spanner[&#34;Spanner (全球DB)&#34;]
+        Bigtable[&#34;Bigtable (NoSQL)&#34;]
+    end
+
+    %% 交互关系
+    GCE -- 使用 --&gt; PersistentDisk
+    GCE -- 访问 --&gt; CloudStorage
+    GKE -- 使用 --&gt; PersistentDisk &amp; CloudStorage
+    AppEngine -- 使用 --&gt; CloudSQL &amp; Spanner &amp; Bigtable &amp; CloudStorage
+    CloudFunctions -- 访问 --&gt; CloudStorage &amp; CloudSQL &amp; Spanner &amp; Bigtable
+
+    %% 样式 (可选)
+    classDef compute fill:#fff0e6,stroke:#f60,stroke-width:2px;
+    classDef storage fill:#e6ffe6,stroke:#090,stroke-width:2px;
+    class ComputeServices,GCE,GKE,AppEngine,CloudFunctions compute;
+    class StorageServices,CloudStorage,PersistentDisk,Filestore,CloudSQL,Spanner,Bigtable storage;
+</code></pre><p><strong>网络与数据分析服务详解</strong></p><pre tabindex=0><code class=language-mermaid data-lang=mermaid>graph TD
+    subgraph NetworkingServices [网络服务]
+        direction TB
+        VPC[VPC 网络]
+        LoadBalancing[Cloud Load Balancing]
+        CloudDNS[Cloud DNS]
+        CloudCDN[Cloud CDN]
+        PoP[边缘节点 PoP] -- 集成 --&gt; CloudCDN &amp; LoadBalancing
+        VPC -- 包含 --&gt; Subnets[子网] &amp; Firewall[防火墙规则]
+        LoadBalancing -- 分发流量至 --&gt; ComputeServices[计算服务实例]
+        CloudDNS -- 解析 --&gt; LoadBalancing &amp; ComputeServices
+    end
+
+    subgraph DataAnalyticsServices [数据与分析服务]
+        direction TB
+        BigQuery[&#34;BigQuery (数据仓库)&#34;]
+        Dataflow[&#34;Dataflow (数据处理)&#34;]
+        PubSub[&#34;Pub/Sub (消息传递)&#34;]
+        StorageServices[存储服务] -- 作为数据源/目的地 --&gt; BigQuery &amp; Dataflow
+        Dataflow -- 处理 --&gt; PubSub
+        ComputeServices2[计算服务] -- 推送/拉取 --&gt; PubSub
+        ComputeServices2 -- 查询 --&gt; BigQuery
+    end
+
+    %% 交互关系
+    NetworkingServices -- 连接 --&gt; ComputeServices &amp; StorageServices &amp; DataAnalyticsServices
+    UserApp[用户 / 应用] --&gt; LoadBalancing &amp; CloudCDN
+
+    %% 样式 (可选)
+    classDef network fill:#ffe6e6,stroke:#c00,stroke-width:2px;
+    classDef data fill:#ffffcc,stroke:#cc0,stroke-width:2px;
+    classDef compute fill:#fff0e6,stroke:#f60,stroke-width:2px;
+    classDef storage fill:#e6ffe6,stroke:#090,stroke-width:2px;
+    class NetworkingServices,VPC,LoadBalancing,CloudDNS,CloudCDN,PoP,Subnets,Firewall network;
+    class DataAnalyticsServices,BigQuery,Dataflow,PubSub data;
+    class ComputeServices,ComputeServices2 compute;
+    class StorageServices storage;
+</code></pre><p><strong>管理与安全服务详解</strong></p><pre tabindex=0><code class=language-mermaid data-lang=mermaid>graph TD
+    subgraph ManagementSecurity [管理与安全服务]
+        direction TB
+        IAM[&#34;Identity &amp; Access Management (IAM)&#34;]
+        SecurityCommand[&#34;Security Command Center&#34;]
+        CloudArmor[&#34;Cloud Armor&#34;]
+        KMS[&#34;密钥管理服务 (KMS)&#34;]
+        Monitoring[&#34;Cloud Monitoring&#34;]
+        Logging[&#34;Cloud Logging&#34;]
+        Console[&#34;Cloud Console / CLI / IaC&#34;]
+
+        subgraph TargetServices [作用于: 核心服务]
+            ComputeCat[&#34;计算服务&#34;]
+            StorageCat[&#34;存储服务&#34;]
+            NetworkingCat[&#34;网络服务&#34;]
+            DataAnalyticsCat[&#34;数据与分析&#34;]
+        end
+
+        %% 关系
+        IAM -- 控制访问 --&gt; TargetServices
+        SecurityCommand -- 监控安全 --&gt; TargetServices
+        CloudArmor -- 保护 --&gt; NetworkingCat[&#34;网络服务 (如 LB)&#34;]
+        KMS -- 加密 --&gt; StorageCat &amp; DataAnalyticsCat
+        Monitoring &amp; Logging -- 监控/记录 --&gt; TargetServices
+        Console -- 管理 --&gt; TargetServices
+    end
+
+    AdminUser[管理员 / DevOps] --&gt; Console
+    AdminUser -- 定义 --&gt; IAM
+
+    %% 样式 (可选)
+    classDef mgmt fill:#f0f0f0,stroke:#666,stroke-width:2px;
+    classDef svc_cat fill:#d9d9d9,stroke:#333,stroke-width:1px,linetype:dashed;
+    class ManagementSecurity,IAM,SecurityCommand,CloudArmor,KMS,Monitoring,Logging,Console mgmt;
+    class TargetServices,ComputeCat,StorageCat,NetworkingCat,DataAnalyticsCat svc_cat;
+</code></pre><p>Google Cloud Platform 提供了一整套强大的云计算服务，其核心基础设施是构建和运行各种应用程序和工作负载的基础。以下是 GCP 的一些关键核心基础设施组件及其作用：</p><ol><li><p><strong>全球网络 (Global Network)</strong></p><ul><li>作用: 这是 GCP 的骨干，连接着全球各地的数据中心。它由大量的区域 (Regions) 和可用区 (Zones) 组成，并通过高速的光纤网络互连。</li><li>组件:<ul><li><strong>区域 (Regions):</strong> 独立的地理区域，例如 us-central1 (爱荷华州) 或 asia-northeast1 (东京)。每个区域包含多个可用区。选择区域可以优化延迟、满足数据驻留要求。</li><li><strong>可用区 (Zones):</strong> 区域内物理上隔离的位置，例如 us-central1-a。可用区之间具有高带宽、低延迟的网络连接。将应用部署在多个可用区可以提高容错能力。</li><li><strong>网络边缘节点 (Points of Presence - PoPs):</strong> 分布在全球各地，用于缓存内容 (Cloud CDN) 和提供更靠近用户的网络接入点，减少延迟。</li></ul></li></ul></li><li><p><strong>计算 (Compute)</strong></p><ul><li>作用: 提供运行应用程序和工作负载所需的计算能力。</li><li>核心服务:<ul><li><strong>Compute Engine (GCE):</strong> 提供可定制的虚拟机 (VM)，用户可以完全控制操作系统和环境。适用于需要高度控制或迁移现有应用场景。</li><li><strong>Google Kubernetes Engine (GKE):</strong> 用于大规模部署、管理和扩展容器化应用程序的托管式 Kubernetes 服务。适用于微服务架构和容器化工作负载。</li><li><strong>App Engine:</strong> 一个完全托管的平台，用于构建和部署可扩展的 Web 应用程序和移动后端，无需管理底层基础设施。分为标准环境和灵活环境。</li><li><strong>Cloud Functions:</strong> 事件驱动的无服务器计算平台，用于运行响应事件的代码片段，无需预配或管理服务器。适用于处理异步任务、API 后端等。</li></ul></li></ul></li><li><p><strong>存储 (Storage)</strong></p><ul><li>作用: 提供可扩展、持久且安全的数据存储解决方案。</li><li>核心服务:<ul><li><strong>Cloud Storage:</strong> 高度可扩展的对象存储服务，适用于存储非结构化数据，如图片、视频、备份文件等。提供不同的存储类别以优化成本和访问速度。</li><li><strong>Persistent Disk:</strong> 为 Compute Engine 虚拟机提供高性能、可靠的块存储（类似硬盘）。</li><li><strong>Filestore:</strong> 完全托管的 NFS 文件存储服务，适用于需要共享文件系统的应用。</li><li><strong>Cloud SQL:</strong> 完全托管的关系型数据库服务 (MySQL, PostgreSQL, SQL Server)。</li><li><strong>Cloud Spanner:</strong> 全球分布式、强一致性的关系型数据库，具有高可用性和水平扩展能力。</li><li><strong>Cloud Bigtable:</strong> 高性能、完全托管的 NoSQL 宽列数据库，适用于大规模分析和操作性工作负载。</li></ul></li></ul></li><li><p><strong>网络 (Networking)</strong></p><ul><li>作用: 定义和管理云资源之间的网络连接以及与外部网络的连接。</li><li>核心服务:<ul><li><strong>Virtual Private Cloud (VPC):</strong> 在 GCP 内创建的隔离的私有网络环境，可以控制 IP 地址范围、子网、路由和防火墙规则。</li><li><strong>Cloud Load Balancing:</strong> 将流量分发到多个后端实例（虚拟机、容器等），提高应用的可用性和可扩展性。提供多种类型的负载均衡器（全局、区域、HTTP(S)、TCP/UDP）。</li><li><strong>Cloud DNS:</strong> 可靠、低延迟的托管式 DNS 服务，将域名解析为 IP 地址。</li><li><strong>Cloud CDN (Content Delivery Network):</strong> 利用 Google 的全球边缘网络缓存内容，加速内容分发，降低源站负载。</li></ul></li></ul></li><li><p><strong>安全 (Security)</strong></p><ul><li>作用: 保护 GCP 资源和数据的安全。</li><li>核心服务:<ul><li><strong>Identity and Access Management (IAM):</strong> 精细控制谁（用户、服务账号）可以对哪些资源执行什么操作。</li><li><strong>Cloud Armor:</strong> 提供针对 DDoS 攻击和 Web 应用攻击（如 SQL 注入、跨站脚本）的防护。</li><li><strong>Security Command Center:</strong> 集中式的安全和风险管理平台，提供资产发现、漏洞检测、威胁防护等功能。</li><li><strong>密钥管理服务 (KMS):</strong> 管理加密密钥。</li></ul></li></ul></li><li><p><strong>数据与分析 (Data & Analytics)</strong></p><ul><li>作用: 提供处理、分析和可视化大规模数据集的工具。</li><li>核心服务:<ul><li><strong>BigQuery:</strong> 完全托管、PB 级数据仓库，支持快速 SQL 查询和分析。</li><li><strong>Dataflow:</strong> 用于流式和批处理数据处理的统一编程模型和托管服务。</li><li><strong>Pub/Sub:</strong> 全球性的实时消息传递服务，用于解耦服务和处理事件流。</li></ul></li></ul></li><li><p><strong>管理工具 (Management Tools)</strong></p><ul><li>作用: 提供监控、日志记录、部署和管理 GCP 资源的工具。</li><li>核心服务:<ul><li><strong>Google Cloud Console:</strong> 基于 Web 的图形用户界面，用于管理 GCP 资源。</li><li><strong>Cloud Monitoring:</strong> 收集指标、设置告警、创建仪表板，监控云资源和应用的性能。</li><li><strong>Cloud Logging:</strong> 集中存储、查看、搜索和分析来自 GCP 资源和应用的日志数据。</li><li><strong>Cloud Deployment Manager / Terraform:</strong> 用于以代码形式定义和部署基础设施 (Infrastructure as Code)。</li></ul></li></ul></li></ol><p>这些核心基础设施组件共同构成了 Google Cloud Platform 的基础，使用户能够构建、部署和扩展各种规模和复杂性的应用程序。</p></div><footer class=article-footer><div class=article-navigation><a href=/zh/knowledge_graph/ class="nav-link prev"><span class=nav-arrow>←</span>
+<span class=nav-title></span></a>
+<a href=/zh/google/gemini/ class="nav-link next"><span class=nav-title></span>
+<span class=nav-arrow>→</span></a></div></footer></article></main></div><style>:root{--primary:#2196f3;--primary-dark:#1a237e;--secondary:#64b5f6;--theme:#121212;--entry:#1e1e1e;--border:#2d2d2d;--code-bg:#2d2d2d;--text:#e0e0e0;--text-secondary:#b0b0b0}.article-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;background:var(--entry);border-radius:8px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.1)}.article-content th,.article-content td{padding:.8rem;text-align:left;border:1px solid var(--border)}.article-content th{background:var(--primary-dark);color:var(--text);font-weight:600}.article-content tr:nth-child(even){background:var(--code-bg)}.article-content tr:hover{background:rgba(33,150,243,.1)}.site-container{display:flex;gap:2rem;max-width:1200px;margin:0 auto;padding:1.5rem}.sidebar{flex:0 0 250px;position:sticky;top:1.5rem;height:fit-content}.back-home{margin-bottom:1.5rem}.back-link{display:flex;align-items:center;gap:.5rem;color:var(--text-secondary);text-decoration:none;padding:.5rem;border-radius:6px;transition:all .3s}.back-link:hover{background:var(--code-bg);color:var(--primary)}.back-arrow{font-size:1.2rem}.toc-container{background:var(--entry);border-radius:12px;padding:1.2rem;border:1px solid var(--border);box-shadow:0 4px 6px rgba(0,0,0,.3)}.toc-title{color:var(--primary);margin:0 0 1rem;font-size:1.1rem}.toc-content{font-size:.9rem;line-height:1.6}.toc-content ul{list-style:none;padding-left:.5rem;margin:0}.toc-content li{margin:.3rem 0}.toc-content a{color:var(--text-secondary);text-decoration:none;transition:all .3s;display:block;padding:.2rem .5rem;border-radius:4px}.toc-content a:hover{color:var(--primary);background:var(--code-bg)}.main-content{flex:1;min-width:0}.article-container{background:var(--entry);border-radius:12px;padding:2rem;box-shadow:0 2px 4px rgba(0,0,0,.1)}.article-header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}.article-title{font-size:2rem;color:var(--primary);margin-bottom:1rem;line-height:1.3}.article-meta{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;color:var(--text-secondary);font-size:.9rem}.article-date{background:var(--code-bg);padding:.3rem .6rem;border-radius:4px;font-family:monospace}.article-categories{display:flex;gap:.5rem}.article-tags{display:flex;gap:.5rem;flex-wrap:wrap}.article-content{color:var(--text);line-height:1.8;font-size:1.1rem}.article-content h2{color:var(--primary);margin:2rem 0 1rem;font-size:1.5rem}.article-content h3{color:var(--primary);margin:1.5rem 0 1rem;font-size:1.3rem}.article-content p{margin:1rem 0}.article-content code{background:var(--code-bg);padding:.2rem .4rem;border-radius:4px;font-family:monospace;font-size:.9em}.article-content pre{background:var(--code-bg);padding:1rem;border-radius:8px;overflow-x:auto;margin:1.5rem 0}.article-content blockquote{border-left:4px solid var(--primary);padding-left:1rem;margin:1.5rem 0;color:var(--text-secondary)}.article-content img{max-width:100%;height:auto;border-radius:8px;margin:1.5rem 0}.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}.article-navigation{display:flex;justify-content:space-between;gap:1rem}.nav-link{display:flex;align-items:center;gap:.5rem;color:var(--text-secondary);text-decoration:none;padding:.5rem 1rem;border-radius:6px;transition:all .3s;max-width:45%}.nav-link:hover{background:var(--code-bg);color:var(--primary)}.nav-arrow{font-size:1.2rem}.nav-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media(max-width:768px){.site-container{flex-direction:column;padding:1rem}.sidebar{position:static;width:100%;max-height:none}.article-container{padding:1.5rem}.article-title{font-size:1.5rem}.article-meta{flex-direction:column;align-items:flex-start}.article-navigation{flex-direction:column}.nav-link{max-width:100%}}</style><footer><p>&copy; 2025 My AI Blog. All rights reserved.</p><p><a href=https://github.com/hobbytp/hobbytp.github.io target=_blank>GitHub</a> |
+<a href=https://github.com/hobbytp/hobbytp.github.io/issues target=_blank>反馈</a></p></footer><script>document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll("pre > code.language-mermaid").forEach(function(e){const n=e.parentElement,t=document.createElement("div");t.className="mermaid",t.textContent=e.textContent,n.parentElement.replaceChild(t,n)}),window.mermaid&&mermaid.init()})</script></body></html>

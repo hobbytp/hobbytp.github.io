@@ -1,0 +1,239 @@
+<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="一个关注 AI 各领域的专题博客"><meta property="og:title" content="模型上下文协议（MCP）深度解析：Agent互操作性的新纪元 - My AI Blog"><meta property="og:description" content="一个关注 AI 各领域的专题博客"><meta property="og:type" content="article"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="模型上下文协议（MCP）深度解析：Agent互操作性的新纪元 - My AI Blog"><meta name=twitter:description content="一个关注 AI 各领域的专题博客"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","headline":"模型上下文协议（MCP）深度解析：Agent互操作性的新纪元","description":"一个关注 AI 各领域的专题博客","author":{"@type":"Person","name":"Your Name"},"datePublished":"2025-04-29T20:10:00\u002b08:00"}</script><title>模型上下文协议（MCP）深度解析：Agent互操作性的新纪元 - My AI Blog</title><link rel=stylesheet href=/css/main.css></head><body><div class=site-container><aside class=sidebar><div class=back-home><a href=/ class=back-link><span class=back-arrow>←</span>
+<span>返回主页</span></a></div><div class=toc-container><h3 class=toc-title>目录</h3><div class=toc-content><nav id=TableOfContents><ul><li><a href=#mcp-hub-列表>MCP Hub 列表</a><ul><li><a href=#国内的mcp服务器列表>国内的MCP服务器列表</a></li></ul></li><li><a href=#常用mcp-server>常用MCP Server</a><ul><li><a href=#测试用mcp-server---everything-mcp-server>测试用MCP Server - Everything MCP Server</a></li><li><a href=#github-mcp-server>Github MCP Server</a></li><li><a href=#playwright-mcp-server>Playwright MCP Server</a></li><li><a href=#desktop-commander-mcp-server>Desktop Commander MCP Server</a></li><li><a href=#alipay-mcp-server>Alipay MCP Server</a></li></ul></li></ul><ul><li><a href=#cursor-mcp-使用>Cursor MCP 使用</a><ul><li><a href=#全局mcp服务器配置方法>全局MCP服务器配置方法</a></li><li><a href=#单个开发项目mcp服务器配置方法>单个开发项目MCP服务器配置方法</a></li></ul></li><li><a href=#vs-code-mcp-使用>VS Code MCP 使用</a><ul><li><a href=#vs-code中的mcp服务器配置方法>VS Code中的MCP服务器配置方法</a></li><li><a href=#配置示例>配置示例</a></li><li><a href=#在代理模式下使用mcp工具>在代理模式下使用MCP工具</a></li><li><a href=#创建mcp-server>创建MCP Server</a></li><li><a href=#参考>参考</a></li></ul></li></ul></nav></div></div></aside><main class=main-content><article class=article-container><header class=article-header><h1 class=article-title>模型上下文协议（MCP）深度解析：Agent互操作性的新纪元</h1><div class=article-meta><time class=article-date>2025-04-29</time><div class=article-categories><span class=category>ai_tools</span></div><div class=article-tags><span class=tag>#AI</span>
+<span class=tag>#Agent</span>
+<span class=tag>#MCP</span>
+<span class=tag>#Protocol</span></div></div></header><div class=article-content><h2 id=mcp-hub-列表>MCP Hub 列表</h2><ul><li><p>Anthropic 官网提供的MCP Server 列表 - <a href=https://github.com/modelcontextprotocol/servers>MCP Services</a></p></li><li><p><a href="https://hub.docker.com/catalogs/mcp?_gl=1*1fxq5hc*_gcl_au*MjA3MDc2MTAzNy4xNzQ2MDE2OTY4*_ga*MjA5NzI1NDY0My4xNzQ0ODk1MTg0*_ga_XJWPQMJYHQ*MTc0NjAxNjg3MS41LjEuMTc0NjAxNjk2OC41OS4wLjA">DockerHub的MCP Server列表</a> - 探索精心挑选的100多个安全、高质量的MCP服务器Docker镜像集合，涵盖数据库解决方案、开发工具、生产力平台和API集成</p></li><li><p><a href=https://www.aibase.com/zh/repos/topic/mcp>Mcp 相关的热门 GitHub AI项目仓库</a></p></li></ul><h3 id=国内的mcp服务器列表>国内的MCP服务器列表</h3><ul><li><a href=https://www.modelscope.cn/mcp>魔搭MCP广场</a> - 平台验证可托管的MCP服务，已通过标记。 更多社区MCP服务验证中。</li><li><a href=https://tbox.alipay.com/plugin-market>阿里pay百宝箱</a></li><li><a href=https://www.aibase.com/zh/repos/topic/mcp>AIBase</a></li></ul><h2 id=常用mcp-server>常用MCP Server</h2><h3 id=测试用mcp-server---everything-mcp-server>测试用MCP Server - Everything MCP Server</h3><ul><li><a href=https://hub.docker.com/r/mcp/everything>Dockerhub Everything MCP Server</a> -> Docker Image: mcp/everything</li><li><a href=https://github.com/modelcontextprotocol/servers/src/everything>Github Everything MCP Server</a></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;mcpServers&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;everything&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;npx&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;-y&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;@modelcontextprotocol/server-everything&#34;</span>
+</span></span><span style=display:flex><span>      ]
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=github-mcp-server>Github MCP Server</h3><p>github官方推出的封装Github API的MCP Server <a href=https://github.com/github/github-mcp-server>github mcp server</a>
+魔搭上也有相应的说明：<a href=https://www.modelscope.cn/mcp/servers/@modelcontextprotocol/github>https://www.modelscope.cn/mcp/servers/@modelcontextprotocol/github</a><br>Dockerhub上也有相应的说明：<a href=https://hub.docker.com/r/mcp/github-mcp-server>https://hub.docker.com/r/mcp/github-mcp-server</a></p><h3 id=playwright-mcp-server>Playwright MCP Server</h3><p>使用 Playwright 提供浏览器自动化功能的MCP Server 能使 LLM 能够通过结构化的辅助功能快照与网页进行交互，而无需屏幕截图或视觉调整模型。</p><ul><li><a href=https://github.com/microsoft/playwright-mcp-server>Playwright的MCP Server</a></li><li><a href=https://github.com/microsoft/playwright-mcp/blob/main/Dockerfile>Playwright MCP Server Dockerfile</a></li><li><a href=https://www.npmjs.com/package/@playwright/mcp>Playwright MCP Server NPM</a></li></ul><h4 id=playwright-mcp-server-客户端配置示例>Playwright MCP Server 客户端配置示例</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;mcpServers&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;playwright&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;npx&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;@playwright/mcp@latest&#34;</span>
+</span></span><span style=display:flex><span>      ]
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h4 id=playwright-mcp-server-本身完整配置示例>Playwright MCP Server 本身完整配置示例</h4><p>Playwright MCP 服务器可以通过一个 JSON 配置文件进行配置(参考<a href="https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#configuration-file">Playwright MCP Server 配置文件</a>)。以下是完整的配置格式：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Browser configuration
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#960050;background-color:#1e0010>browser?:</span> <span style=color:#960050;background-color:#1e0010>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Browser type to use (chromium, firefox, or webkit)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>browserName?:</span> <span style=color:#960050;background-color:#1e0010>&#39;chromium&#39;</span> <span style=color:#960050;background-color:#1e0010>|</span> <span style=color:#960050;background-color:#1e0010>&#39;firefox&#39;</span> <span style=color:#960050;background-color:#1e0010>|</span> <span style=color:#960050;background-color:#1e0010>&#39;webkit&#39;;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Path to user data directory for browser profile persistence
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>userDataDir?:</span> <span style=color:#960050;background-color:#1e0010>string;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Browser launch options (see Playwright docs)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// @see https://playwright.dev/docs/api/class-browsertype#browser-type-launch
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>launchOptions?:</span> <span style=color:#960050;background-color:#1e0010>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#960050;background-color:#1e0010>channel?:</span> <span style=color:#960050;background-color:#1e0010>string;</span>        <span style=color:#75715e>// Browser channel (e.g. &#39;chrome&#39;)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#960050;background-color:#1e0010>headless?:</span> <span style=color:#960050;background-color:#1e0010>boolean;</span>      <span style=color:#75715e>// Run in headless mode
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#960050;background-color:#1e0010>executablePath?:</span> <span style=color:#960050;background-color:#1e0010>string;</span> <span style=color:#75715e>// Path to browser executable
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#75715e>// ... other Playwright launch options
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    }<span style=color:#960050;background-color:#1e0010>;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Browser context options
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#75715e>// @see https://playwright.dev/docs/api/class-browser#browser-new-context
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>contextOptions?:</span> {
+</span></span><span style=display:flex><span>      <span style=color:#960050;background-color:#1e0010>viewport?:</span> <span style=color:#960050;background-color:#1e0010>{</span> <span style=color:#960050;background-color:#1e0010>width:</span> <span style=color:#960050;background-color:#1e0010>number,</span> <span style=color:#960050;background-color:#1e0010>height:</span> <span style=color:#960050;background-color:#1e0010>number</span> }<span style=color:#960050;background-color:#1e0010>;</span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e>// ... other Playwright context options
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>};</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// CDP endpoint for connecting to existing browser
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>cdpEndpoint?:</span> <span style=color:#960050;background-color:#1e0010>string;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Remote Playwright server endpoint
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>remoteEndpoint?:</span> <span style=color:#960050;background-color:#1e0010>string;</span>
+</span></span><span style=display:flex><span>  <span style=color:#960050;background-color:#1e0010>},</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Server configuration
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#960050;background-color:#1e0010>server?:</span> {
+</span></span><span style=display:flex><span>    <span style=color:#960050;background-color:#1e0010>port?:</span> <span style=color:#960050;background-color:#1e0010>number;</span>  <span style=color:#75715e>// Port to listen on
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>host?:</span> <span style=color:#960050;background-color:#1e0010>string;</span>  <span style=color:#75715e>// Host to bind to (default: localhost)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  }<span style=color:#960050;background-color:#1e0010>,</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// List of enabled capabilities
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#960050;background-color:#1e0010>capabilities?:</span> <span style=color:#960050;background-color:#1e0010>Array&lt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#960050;background-color:#1e0010>&#39;core&#39;</span> <span style=color:#960050;background-color:#1e0010>|</span>    <span style=color:#75715e>// Core browser automation
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>&#39;tabs&#39;</span> <span style=color:#960050;background-color:#1e0010>|</span>    <span style=color:#75715e>// Tab management
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>&#39;pdf&#39;</span> <span style=color:#960050;background-color:#1e0010>|</span>     <span style=color:#75715e>// PDF generation
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>&#39;history&#39;</span> <span style=color:#960050;background-color:#1e0010>|</span> <span style=color:#75715e>// Browser history
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>&#39;wait&#39;</span> <span style=color:#960050;background-color:#1e0010>|</span>    <span style=color:#75715e>// Wait utilities
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>&#39;files&#39;</span> <span style=color:#960050;background-color:#1e0010>|</span>   <span style=color:#75715e>// File handling
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#960050;background-color:#1e0010>&#39;install&#39;</span>   <span style=color:#75715e>// Browser installation
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#960050;background-color:#1e0010>&gt;;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Enable vision mode (screenshots instead of accessibility snapshots)
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#960050;background-color:#1e0010>vision?:</span> <span style=color:#960050;background-color:#1e0010>boolean;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Directory for output files
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#960050;background-color:#1e0010>outputDir?:</span> <span style=color:#960050;background-color:#1e0010>string;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Tool-specific configurations
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#960050;background-color:#1e0010>tools?:</span> {
+</span></span><span style=display:flex><span>    <span style=color:#960050;background-color:#1e0010>browser_take_screenshot?:</span> <span style=color:#960050;background-color:#1e0010>{</span>
+</span></span><span style=display:flex><span>      <span style=color:#75715e>// Disable base64-encoded image responses
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>      <span style=color:#960050;background-color:#1e0010>omitBase64?:</span> <span style=color:#960050;background-color:#1e0010>boolean;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  <span style=color:#960050;background-color:#1e0010>}</span>
+</span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>}</span>
+</span></span></code></pre></div><p>用户可以使用&ndash;config命令行选项指定配置文件：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>npx @playwright/mcp@latest --config path/to/config.json
+</span></span></code></pre></div><p>另外playwright支持两种模式，这两种模式代表了自动化测试的两种不同方法：</p><ul><li><p><a href="https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#snapshot-based-interactions">快照Snapshot模式</a>（缺省模式）：这个是基于 DOM 的测试，通过访问页面的 DOM 结构来识别和操作元素，速度快且可靠，但在某些复杂或动态界面可能受限。</p></li><li><p><a href="https://github.com/microsoft/playwright-mcp?tab=readme-ov-file#vision-based-interactions">视觉Vision模式</a>：通过图像识别和坐标定位来操作元素，能够处理传统选择器难以识别的元素，但可能更消耗资源。</p></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;mcpServers&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;playwright&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;npx&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;@playwright/mcp@latest&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;--vision&#34;</span>
+</span></span><span style=display:flex><span>      ]
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=desktop-commander-mcp-server>Desktop Commander MCP Server</h3><p>这是面向Claude的MCP服务器，它赋予Claude终端控制、文件系统搜索以及差异文件编辑功能。</p><ul><li><a href=https://hub.docker.com/r/mcp/desktop-commander>Dockerhub 地址</a></li><li><a href=https://github.com/wonderwhy-er/DesktopCommanderMCP>Github 地址</a></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;mcpServers&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;desktop-commander&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;npx&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;-y&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;@wonderwhy-er/desktop-commander&#34;</span>
+</span></span><span style=display:flex><span>      ]
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=alipay-mcp-server>Alipay MCP Server</h3><p><a href=https://www.modelscope.cn/mcp/servers/@alipay/mcp-server-alipay>支付宝Alipay的MCP Server</a></p><pre><code> 最终用户设备                     Agent 运行环境
+</code></pre><p>+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+ +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+ +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+
+| | 交流 | 支付宝 MCP Server + | | |
+| 小程序/WebApp |&lt;&mdash;&mdash;>| 其他 MCP Server + |&lt;&mdash;->| 支付服务 |
+| | 支付 | Agent 开发工具 | | 交易/退款/查询 |
++&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;+ +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;+ +&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-+
+创作服务买家 智能工具开发者 支付宝开放平台</p><pre><code>  (最终用户)                         (创作者)
+</code></pre><h4 id=支付宝mcp-server-配置示例>支付宝MCP Server 配置示例</h4><p>@alipay/mcp-server-alipay 是支付宝开放平台提供的 MCP Server，让你可以轻松将支付宝开放平台提供的交易创建、查询、退款等能力集成到你的 LLM 应用中，并进一步创建具备支付能力的智能工具。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;mcpServers&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;mcp-server-alipay&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;npx&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [<span style=color:#e6db74>&#34;-y&#34;</span>, <span style=color:#e6db74>&#34;@alipay/mcp-server-alipay&#34;</span>],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;env&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;AP_APP_ID&#34;</span>: <span style=color:#e6db74>&#34;2014...222&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;AP_APP_KEY&#34;</span>: <span style=color:#e6db74>&#34;MIIE...DZdM=&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;AP_PUB_KEY&#34;</span>: <span style=color:#e6db74>&#34;MIIB...DAQAB&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;AP_RETURN_URL&#34;</span>: <span style=color:#e6db74>&#34;https://success-page&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;AP_NOTIFY_URL&#34;</span>: <span style=color:#e6db74>&#34;https://your-own-server&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;...其他参数&#34;</span>: <span style=color:#e6db74>&#34;...其他值&#34;</span>
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;其他工具&#34;</span>: { 
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;...&#34;</span>: <span style=color:#e6db74>&#34;...&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><strong>所有环境变量</strong>
+支付宝 MCP Server 通过环境变量接收参数。所有参数和默认值包括:</p><p>AP_APP_ID=2014&mldr;222 # 商户在开放平台申请的应用 ID（APPID）。必需。
+AP_APP_KEY=MIIE&mldr;DZdM= # 商户在开放平台申请的应用私钥。必需。
+AP_PUB_KEY=MIIB&mldr;DAQAB # 用于验证支付宝服务端数据签名的支付宝公钥，在开放平台获取。必需。
+AP_RETURN_URL=<a href=https://success-page>https://success-page</a> # 网页支付完成后对付款用户展示的「同步结果返回地址」。
+AP_NOTIFY_URL=<a href=https://your-own-server>https://your-own-server</a> # 支付完成后，用于告知开发者支付结果的「异步结果通知地址」。
+AP_ENCRYPTION_ALGO=RSA2 # 商户在开放平台配置的参数签名方式。可选值为 &ldquo;RSA2&rdquo; 或 &ldquo;RSA&rdquo;。缺省值为 &ldquo;RSA2&rdquo;。
+AP_CURRENT_ENV=prod # 连接的支付宝开放平台环境。可选值为 &ldquo;prod&rdquo;（线上环境）或 &ldquo;sandbox&rdquo;（沙箱环境）。缺省值为 &ldquo;prod&rdquo;。</p><h1 id=mcp-server-配置>MCP Server 配置</h1><p>AP_SELECT_TOOLS=all # 允许使用的工具。可选值为 &ldquo;all&rdquo; 或逗号分隔的工具名称列表。工具名称包括 <code>mobilePay</code>, <code>webPagePay</code>, <code>queryPay</code>, <code>refundPay</code>, <code>refundQuery</code>。缺省值为 &ldquo;all&rdquo;。
+AP_LOG_ENABLED=true # 是否在 $HOME/mcp-server-alipay.log 中记录日志。默认值为 true。</p><h2 id=cursor-mcp-使用>Cursor MCP 使用</h2><h3 id=全局mcp服务器配置方法>全局MCP服务器配置方法</h3><p>进入Cursor Settings > MCP >&ldquo;Add New Global MCP server&rdquo;。</p><p>下面是使用github-mcp-server的配置示例：
+该格式是Anthropic MCP服务器的配置格式。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;mcpServers&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;github&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;docker&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;run&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;-i&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;--rm&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;-e&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;GITHUB_PERSONAL_ACCESS_TOKEN&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;ghcr.io/github/github-mcp-server&#34;</span>
+</span></span><span style=display:flex><span>      ],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;env&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;GITHUB_PERSONAL_ACCESS_TOKEN&#34;</span>: <span style=color:#e6db74>&#34;Your GitHub Personal Access Token&#34;</span>
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=单个开发项目mcp服务器配置方法>单个开发项目MCP服务器配置方法</h3><p>在.cursor/mcp.json 加入MCP Server的配置，和全局方式类似。</p><h2 id=vs-code-mcp-使用>VS Code MCP 使用</h2><p>VS Code支持MCP服务器传输的本地标准输入/输出（stdio）和服务器发送事件（sse）。目前，在三个<a href=https://modelcontextprotocol.io/specification/2025-03-26#features>原语</a>（tools, prompts, resources）中，服务器只能向Copilot的代理模式提供工具。工具的列表和描述可以使用列表更改事件动态更新。VS Code使用roots（<a href=https://modelcontextprotocol.io/docs/concepts/roots>规范</a>）向服务器提供当前工作区文件夹。</p><p><a href=https://github.com/modelcontextprotocol/servers>MCP的官方服务器存储库</a>是一个很好的起点，可用于参考官方和社区贡献的服务器，这些服务器展示了MCP的多功能性。你可以探索具有各种功能的服务器，例如文件系统操作、数据库交互和Web服务。</p><h3 id=vs-code中的mcp服务器配置方法>VS Code中的MCP服务器配置方法</h3><p>在Visual Studio Code中配置MCP Server的方法有以下几种：</p><h4 id=1-工作区设置>1. 工作区设置</h4><ul><li>在工作区中添加<code>.vscode/mcp.json</code>文件，用于配置MCP服务器，并可与团队成员共享配置。</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 💡 Inputs are prompted on first server start, then stored securely by VS Code.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#f92672>&#34;inputs&#34;</span>: [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;promptString&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;perplexity-key&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Perplexity API Key&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;password&#34;</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  ],
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;servers&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// https://github.com/ppl-ai/modelcontextprotocol/
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#f92672>&#34;Perplexity&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;stdio&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;npx&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [<span style=color:#e6db74>&#34;-y&#34;</span>, <span style=color:#e6db74>&#34;@modelcontextprotocol/server-perplexity-ask&#34;</span>],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;env&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;PERPLEXITY_API_KEY&#34;</span>: <span style=color:#e6db74>&#34;${input:perplexity-key}&#34;</span>
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h4 id=2-用户设置>2. 用户设置</h4><ul><li>在<a href=https://code.visualstudio.com/docs/getstarted/personalize-vscode#_configure-settings>用户设置</a>中指定服务器配置，这样可以在所有工作区中启用MCP服务器。</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#75715e>// settings.json
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;mcp&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;servers&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;my-mcp-server&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;stdio&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;my-command&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;args&#34;</span>: []
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h4 id=3-自动发现>3. 自动发现</h4><ul><li>启用MCP服务器的自动发现功能，可以自动检测在其他工具（如Claude Desktop）中定义的MCP服务器。</li></ul><p>通过 <a href=vscode://settings/chat.mcp.discovery.enabled>chat.mcp.discovery.enabled</a> 设置启用自动发现功能。</p><h3 id=配置示例>配置示例</h3><p>以下代码片段展示了一个示例MCP服务器配置，该配置指定了三台服务器，并为API密钥定义了一个输入占位符。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span><span style=color:#75715e>// Example .vscode/mcp.json
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>{
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// 💡 Inputs will be prompted on first server start,
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#75715e>//    then stored securely by VS Code.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#f92672>&#34;inputs&#34;</span>: [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;promptString&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;id&#34;</span>: <span style=color:#e6db74>&#34;perplexity-key&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Perplexity API Key&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;password&#34;</span>: <span style=color:#66d9ef>true</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  ],
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;servers&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// https://github.com/ppl-ai/modelcontextprotocol/
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#f92672>&#34;Perplexity&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;stdio&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;docker&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [<span style=color:#e6db74>&#34;run&#34;</span>, <span style=color:#e6db74>&#34;-i&#34;</span>, <span style=color:#e6db74>&#34;--rm&#34;</span>, <span style=color:#e6db74>&#34;-e&#34;</span>, <span style=color:#e6db74>&#34;PERPLEXITY_API_KEY&#34;</span>, <span style=color:#e6db74>&#34;mcp/perplexity-ask&#34;</span>],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;env&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;PERPLEXITY_API_KEY&#34;</span>: <span style=color:#e6db74>&#34;${input:perplexity-key}&#34;</span>
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// https://github.com/modelcontextprotocol/servers/tree/main/src/fetch
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#f92672>&#34;fetch&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;stdio&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;command&#34;</span>: <span style=color:#e6db74>&#34;uvx&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;args&#34;</span>: [<span style=color:#e6db74>&#34;mcp-server-fetch&#34;</span>]
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;my-remote-server&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;type&#34;</span>: <span style=color:#e6db74>&#34;sse&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;url&#34;</span>: <span style=color:#e6db74>&#34;http://api.contoso.com/sse&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;headers&#34;</span>: { <span style=color:#f92672>&#34;VERSION&#34;</span>: <span style=color:#e6db74>&#34;1.2&#34;</span> }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ul><li>“servers”：{}字段保存MCP服务器列表，并遵循Claude桌面版的配置格式。</li><li>“inputs”：[]字段允许你为配置值定义自定义占位符，避免硬编码敏感信息。</li></ul><h3 id=在代理模式下使用mcp工具>在代理模式下使用MCP工具</h3><p>添加 MCP 服务器后（比如在上面的“2. 用户设置”之后），您可以在代理模式下使用它提供的工具。要在代理模式下使用 MCP 工具：</p><ul><li>打开聊天视图（按Ctrl+Alt+I），然后从下拉菜单中选择“Agent”。</li><li>选择“工具”按钮以查看可用工具列表。<ul><li>你也可以通过输入“#”加上工具名称，在提示中直接引用某个工具。在所有聊天模式（提问、编辑和智能体模式）下都能这样做。</li></ul></li><li>现在你可以在聊天输入框中输入提示，留意工具是如何根据需要自动调用的。<ul><li>默认情况下，调用工具时，需要在运行前确认操作。这是因为工具可能会在您的本地计算机上运行，并且可能会执行修改文件或数据的操作。使用“继续”按钮的下拉选项，可针对当前会话、工作区或所有未来调用自动确认特定工具。</li></ul></li><li>（Optionally），在运行工具之前验证并编辑工具输入参数。）<ul><li>选择工具名称旁边的箭头，以查看其详细信息和输入参数。在运行该工具之前，您可以编辑输入参数。</li></ul></li></ul><h3 id=创建mcp-server>创建MCP Server</h3><p>VS Code 拥有开发自己的 MCP 服务器所需的所有工具。虽然 MCP 服务器可以用任何能够处理标准输出的语言编写，但 MCP 的官方软件开发工具包（SDK）是一个很好的起点：</p><ul><li><a href=https://github.com/modelcontextprotocol/typescript-sdk>TypeScript SDK</a></li><li><a href=https://github.com/modelcontextprotocol/python-sdk>Python SDK</a></li><li><a href=https://github.com/modelcontextprotocol/java-sdk>Java SDK</a></li><li><a href=https://github.com/modelcontextprotocol/kotlin-sdk>Kotlin SDK</a></li><li><a href=https://github.com/modelcontextprotocol/csharp-sdk>C# SDK</a></li></ul><h3 id=参考>参考</h3><ul><li><a href=https://code.visualstudio.com/docs/copilot/chat/mcp-servers>Use MCP servers in VS Code (Preview)</a></li></ul></div><footer class=article-footer><div class=article-navigation><a href=/zh/validation/code_level/ class="nav-link prev"><span class=nav-arrow>←</span>
+<span class=nav-title>编程能力对比分析一撇</span></a>
+<a href=/zh/claude/mcp_analysis/ class="nav-link next"><span class=nav-title>模型上下文协议（MCP）深度解析：Agent互操作性的新纪元</span>
+<span class=nav-arrow>→</span></a></div></footer></article></main></div><style>:root{--primary:#2196f3;--primary-dark:#1a237e;--secondary:#64b5f6;--theme:#121212;--entry:#1e1e1e;--border:#2d2d2d;--code-bg:#2d2d2d;--text:#e0e0e0;--text-secondary:#b0b0b0}.article-content table{width:100%;border-collapse:collapse;margin:1.5rem 0;background:var(--entry);border-radius:8px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.1)}.article-content th,.article-content td{padding:.8rem;text-align:left;border:1px solid var(--border)}.article-content th{background:var(--primary-dark);color:var(--text);font-weight:600}.article-content tr:nth-child(even){background:var(--code-bg)}.article-content tr:hover{background:rgba(33,150,243,.1)}.site-container{display:flex;gap:2rem;max-width:1200px;margin:0 auto;padding:1.5rem}.sidebar{flex:0 0 250px;position:sticky;top:1.5rem;height:fit-content}.back-home{margin-bottom:1.5rem}.back-link{display:flex;align-items:center;gap:.5rem;color:var(--text-secondary);text-decoration:none;padding:.5rem;border-radius:6px;transition:all .3s}.back-link:hover{background:var(--code-bg);color:var(--primary)}.back-arrow{font-size:1.2rem}.toc-container{background:var(--entry);border-radius:12px;padding:1.2rem;border:1px solid var(--border);box-shadow:0 4px 6px rgba(0,0,0,.3)}.toc-title{color:var(--primary);margin:0 0 1rem;font-size:1.1rem}.toc-content{font-size:.9rem;line-height:1.6}.toc-content ul{list-style:none;padding-left:.5rem;margin:0}.toc-content li{margin:.3rem 0}.toc-content a{color:var(--text-secondary);text-decoration:none;transition:all .3s;display:block;padding:.2rem .5rem;border-radius:4px}.toc-content a:hover{color:var(--primary);background:var(--code-bg)}.main-content{flex:1;min-width:0}.article-container{background:var(--entry);border-radius:12px;padding:2rem;box-shadow:0 2px 4px rgba(0,0,0,.1)}.article-header{margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}.article-title{font-size:2rem;color:var(--primary);margin-bottom:1rem;line-height:1.3}.article-meta{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;color:var(--text-secondary);font-size:.9rem}.article-date{background:var(--code-bg);padding:.3rem .6rem;border-radius:4px;font-family:monospace}.article-categories{display:flex;gap:.5rem}.article-tags{display:flex;gap:.5rem;flex-wrap:wrap}.article-content{color:var(--text);line-height:1.8;font-size:1.1rem}.article-content h2{color:var(--primary);margin:2rem 0 1rem;font-size:1.5rem}.article-content h3{color:var(--primary);margin:1.5rem 0 1rem;font-size:1.3rem}.article-content p{margin:1rem 0}.article-content code{background:var(--code-bg);padding:.2rem .4rem;border-radius:4px;font-family:monospace;font-size:.9em}.article-content pre{background:var(--code-bg);padding:1rem;border-radius:8px;overflow-x:auto;margin:1.5rem 0}.article-content blockquote{border-left:4px solid var(--primary);padding-left:1rem;margin:1.5rem 0;color:var(--text-secondary)}.article-content img{max-width:100%;height:auto;border-radius:8px;margin:1.5rem 0}.article-footer{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}.article-navigation{display:flex;justify-content:space-between;gap:1rem}.nav-link{display:flex;align-items:center;gap:.5rem;color:var(--text-secondary);text-decoration:none;padding:.5rem 1rem;border-radius:6px;transition:all .3s;max-width:45%}.nav-link:hover{background:var(--code-bg);color:var(--primary)}.nav-arrow{font-size:1.2rem}.nav-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media(max-width:768px){.site-container{flex-direction:column;padding:1rem}.sidebar{position:static;width:100%;max-height:none}.article-container{padding:1.5rem}.article-title{font-size:1.5rem}.article-meta{flex-direction:column;align-items:flex-start}.article-navigation{flex-direction:column}.nav-link{max-width:100%}}</style><footer><p>&copy; 2025 My AI Blog. All rights reserved.</p><p><a href=https://github.com/hobbytp/hobbytp.github.io target=_blank>GitHub</a> |
+<a href=https://github.com/hobbytp/hobbytp.github.io/issues target=_blank>反馈</a></p></footer><script>document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll("pre > code.language-mermaid").forEach(function(e){const n=e.parentElement,t=document.createElement("div");t.className="mermaid",t.textContent=e.textContent,n.parentElement.replaceChild(t,n)}),window.mermaid&&mermaid.init()})</script></body></html>
