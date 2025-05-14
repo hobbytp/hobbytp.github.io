@@ -1,3 +1,11 @@
+---
+title: "Llama 4 模型系列"
+date: "2025-05-14T16:10:00+08:00"
+draft: false
+tags: ["AI", "Llama", "LLM", "技术"]
+categories: ["large_models"]
+description: "本文介绍了Llama 4 模型系列详细解读。"
+---
 
 到目前为止还没有明确的证据表明有单独的技术报告或论文。可能的细节将在2025年4月29日的LlamaCon上分享。
 
