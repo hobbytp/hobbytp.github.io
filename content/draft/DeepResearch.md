@@ -1,4 +1,15 @@
-
+---
+title: "Agent经济：红杉资本2025 AI峰会释放的超级信号"
+date: "2025-04-13T15:10:00+08:00"
+lastmod: "2025-05-13"
+changelog:
+  - date: "2025-05-13"
+    change: "添加了字节跳动的DeerFlow和LangGraph的local DR"
+draft: false
+description: "Agent经济：红杉资本2025 AI峰会释放的超级信号"
+tags: ["AI", "Ascent", "Agent", "红杉资本"]
+categories: ["mas"]
+---
 ## 1. 什么是DeepResearch
 
 下面开始讨论Deep Research 的定义、目的和预期影响
@@ -12,10 +23,7 @@ Deep Research 是一种新兴的 AI 工作流程或能力，旨在超越传统�
 
 具体而言，Deep Research 旨在完成需要对在线信息进行大量探索和分析的**复杂、多步研究任务**。它旨在提供**全面、有洞察力的研究报告**，达到研究分析师的水平。它可以帮助用户**快速了解任何主题** 或对复杂主题进行深入研究。
 
-
-
 **Deep Research 核心功能**
-
 
 1. **多步骤自主研究与动态优化**
    - 通过强化学习驱动的推理模型（如 o3、r1），自主规划研究路径、检索信息、分析数据，并根据过程动态调整策略。
@@ -45,7 +53,6 @@ Deep Research 是一种新兴的 AI 工作流程或能力，旨在超越传统�
 
 这些核心功能使 Deep Research 能够自动化、系统化地完成复杂、耗时的研究任务，帮助用户高效深入理解任何主题，支持各类知识工作和决策过程。
 
-
 ### 局限性和挑战
 
 综合来看，这些来源指出 Deep Research 作为一个新兴的 AI 工作流程和智能体能力，在带来巨大价值的同时，也面临着一些固有的挑战和局限性。主要可以归纳为以下几个方面：
@@ -70,7 +77,6 @@ Deep Research 是一种新兴的 AI 工作流程或能力，旨在超越传统�
 
 通过提供全面、有引用的内容，Deep Research 旨在帮助用户做出更明智的决策。
 
-
 **Deep Research 的预期影响：**
 
 引入 Deep Research 被视为**改变我们与信息互动方式的根本性转变**。它将**信息检索和分析的边界向前推进**，使以前只有人类研究人员和分析师才能进行的更高推理层级的知识工作成为可能。
@@ -83,17 +89,14 @@ OpenAI 认为 Deep Research 能够帮助**企业简化流程，提高工人的�
 
 ## 2. 开源Deep Research项目
 
-有来自著名开源组织或项目的，Huggingface的，有来自LangChain的，
-有来自著名大学的，比如Stanford的STORM，国内的
-还有来自GPT Research的
+有来自著名开源组织或项目的，Huggingface的，有来自LangChain的 Open Deep Research，有来自著名大学的，比如Stanford的STORM，还有来自GPT Research.
 
-### 2.1 Huggingface的Open DeepResearch
+### Huggingface的Open DeepResearch
 
-开源DeepResearch来自Huggingface的基于Huggingface的MAS开源框架smolagents （一个轻量级的智能代理框架），该项目旨在通过大规模的自动化研究探索，实现深度洞察。
+开源DeepResearch来自Huggingface的基于Huggingface的MAS开源框架smolagents （一个轻量级的智能代理框架），该项目旨在通过大规模的自动化研究探索，实现深度洞察。smolagents借鉴了微软的[Magentic-One](https://www.microsoft.com/en-us/research/articles/magentic-one-a-generalist-multi-agent-system-for-solving-complex-tasks/)的使用tool的实现。
 
-github: https://github.com/huggingface/smolagents/tree/main/examples/open_deep_research
-blog: https://huggingface.co/blog/open-deep-research
-借鉴了微软的[Magentic-One](https://www.microsoft.com/en-us/research/articles/magentic-one-a-generalist-multi-agent-system-for-solving-complex-tasks/)的使用tool的实现。
+- 官网：<https://huggingface.co/blog/open-deep-research>
+- 代码：<https://github.com/huggingface/smolagents/tree/main/examples/open_deep_research>
 
 #### Deep Research的算法原理
 
@@ -103,14 +106,14 @@ TBD
 
 TBD
 
-### 2.2 基于GPT Research的 DeepResearch实现
+### 基于GPT Research的 DeepResearch实现
 
-https://docs.gptr.dev/blog
+- 官网：<https://docs.gptr.dev/blog>
+- 代码：<https://github.com/assafelovic/gpt-researcher>
 
 ### GPT Research的Deep Research实现原理
 
 ![GPT Researcher's DeepResearch](./images/gpt-researcher-deep-research.png)
-
 
 GPT Research的Deep Research 实现“深度”的主要技术原理
 
@@ -126,7 +129,6 @@ GPT Research的Deep Research 实现“深度”的主要技术原理
 | 自我优化与元学习机制                             | 系统根据历史表现自动调整策略，自我发现值得深挖方向。                                        | 持续优化研究效果。                                                                          |
 | 多模态深度研究                                   | 支持文本、图片、音频、视频等多模态信息深度分析。                                            | 实现全方位“深度洞察”。                                                                     |
 
-
 #### 技术亮点与创新
 
 - **递归+并发**：  
@@ -139,7 +141,6 @@ GPT Research的Deep Research 实现“深度”的主要技术原理
 ---
 
 #### 我的思考
-
 
 1. **引入Agent协作与自适应分工**  
    - 让每个分支由不同特长的AI Agent负责（如检索型、推理型、批判型），并能动态分配任务，实现“专家小组”式协作研究。
@@ -156,19 +157,25 @@ GPT Research的Deep Research 实现“深度”的主要技术原理
 5. **多模态深度研究**  
    - 不限于文本，还能深度分析图片、音频、视频等多模态信息，真正实现全方位“深度洞察”。
 
+### ByteDance的DeepResearch
 
-#### 参考
-github: https://github.com/assafelovic/gpt-researcher
-blog：https://gptr.dev/blog
+- github: <https://github.com/bytedance/deer-flow>
+- 官网：<htts://deerflow.tech/>
 
-### 2.3 dzhng的DeepResearch
-github: https://github.com/dzhng/deep-research
-blog: https://github.com/dzhng/deep-research
+DeerFlow是一个由社区驱动的深度研究框架，结合语言模型和工具进行任务，如网络搜索、抓取和Python代码执行，旨在为开源社区做出贡献。该项目由字节跳动（Bytedance）维护，拥有模块化多代理系统架构，支持MCP无缝集成、人工协作和文本到语音转换等多项功能。它使用**LangGraph**进行工作流管理，提供丰富的配置选项和交互模式，以实现高效的深度研究流程，并能生成包括播客在内的多种内容。该项目以Python和Node.js开发，支持通过Docker进行部署，并提供详细的安装和配置指南。DeerFlow遵循MIT协议，自豪地基于开源社区的贡献构建。
+
+**架构**
+DeerFlow实现了一种模块化的多智能体系统架构，专为自动化研究和代码分析而设计。该系统基于LangGraph构建，支持灵活的基于状态的工作流程，各组件通过定义明确的消息传递系统进行通信。支持搜索引擎：Tavily DuckDuckGo，Brave Search，Arxiv
+工作流程： <https://deerflow.tech/#multi-agent-architecture>
+
+### dzhng的DeepResearch
+
+- github: <https://github.com/dzhng/deep-research>
+- blog: <https://github.com/dzhng/deep-research>
 
 "deep-research"是一个由dzhng创建的AI驱动的研究助理项目，旨在对任何主题进行迭代的深入研究。该项目结合了搜索引擎、网络爬虫和大型语言模型，其核心目标是提供简化的深度研究代理实现，代码行数控制在500行以内以便于理解和扩展。
 
 主要功能包括生成智能查询、广度和深度控制、并发处理、以及生成包含详细信息和来源的综合报告。用户需配置Node.js环境及相关API密钥（如Firecrawl和OpenAI）进行设置。项目支持Docker运行，并在MIT许可下开放。项目定位于通过递归探索提升研究质量，并最终生成markdown格式的研究报告。
-
 
 #### 技术实现细节
 
@@ -177,7 +184,6 @@ blog: https://github.com/dzhng/deep-research
 - 深度与广度控制：可配置参数，用于控制研究的广度（宽度）和深度
 - 智能跟进：生成跟进问题，以更好地理解研究需求
 - 综合报告：生成包含研究结果和来源的详细Markdown报告
-
 
 ```mermaid
 flowchart TB
@@ -236,47 +242,34 @@ flowchart TB
     class NL,ND results
 ```
 
+### LangGraph Open Deep Research
 
+- github: <https://github.com/langchain-ai/open_deep_research>
+- blog: <https://www.langchain.com/blog/open-deep-research>
 
-
-### 2.4 LangGraph Open Deep Research
-github: https://github.com/langchain-ai/open_deep_research
 ![LangGraph Open Deep Research](./images/langgraph-open-deepresearch.png)
 
+### LangGraph Local Deep Research
 
-### 2.5 STORM: Stanford Open Virtual Assistant for Research (SOVAR)
-https://github.com/stanford-oval/storm
+- github: <https://github.com/langchain-ai/local-deep-researcher>
+- youtube: <https://www.youtube.com/watch?v=sGUjmyfof4Q>
+### STORM: Stanford Open Virtual Assistant for Research (SOVAR)
 
+- github: <https://github.com/stanford-oval/storm>
 
+### 其他轻量级DeepResearch实现
 
-
-### 2.6 其他轻量级DeepResearch实现
-khoj: https://khoj.dev/
-github: https://github.com/khoj-ai/khoj
-blog:https://blog.khoj.dev/
-
-
-
-
-
-
-
-
-
+khoj: <https://khoj.dev/>
+github: <https://github.com/khoj-ai/khoj>
+blog:<https://blog.khoj.dev/>
 
 #### 效果看起来一般的DeepResearch实现
 
 ##### BTAHIR的Open-Deep-Research
 
-github: https://github.com/btahir/open-deep-research
+github: <https://github.com/btahir/open-deep-research>
 
 Open-Deep-Research是一个开源的强大研究助手，能从网络搜索结果生成基于AI的综合报告。该应用支持与多个AI平台（如Google、OpenAI、Anthropic、DeepSeek及本地模型）的无缝集成，为用户提供自定义AI模型选择和搜索配置的自由。其主要功能包括灵活的网络搜索、内容提取、多平台AI支持、报告生成与多种导出格式、知识库管理以及本地文件支持。此外，该应用还提供“流”特性，支持递归探索和报告整合。技术栈包括Next.js、TypeScript、Tailwind CSS等。通过配置文件，用户可以自定义搜索提供商和AI模型选项。该项目遵循MIT许可证，欢迎贡献和进一步协作。
-
-
-
-
-
-
 
 ## OpenAI Deep Research
 
@@ -284,43 +277,39 @@ Open-Deep-Research是一个开源的强大研究助手，能从网络搜索结�
 
 ## Perplexity Deep Research
 
-
 ## CoherAI Deep Research
-
-
 
 ## 其他的Deep Research实现
 
 ### 叫DeepResearch名的非DR项目
+
 #### Jina AI的DeepResearch
-来自Jina AI的DeepResearch项目：https://github.com/jina-ai/node-DeepResearch： 与OpenAI/Gemini/Perplexity的“深度研究”不同，该项目只专注于通过迭代过程找到正确答案。其并不针对长篇文章进行优化，那是完全不同的问题 —— 因此，如果你需要从深度搜索中获得快速、简洁的答案，那你来对地方了。如果要找像 OpenAI/Gemini/Perplexity 那样由人工智能生成的长篇报告，这个项目不适合。
+
+来自Jina AI的DeepResearch项目：<https://github.com/jina-ai/node-DeepResearch：> 与OpenAI/Gemini/Perplexity的“深度研究”不同，该项目只专注于通过迭代过程找到正确答案。其并不针对长篇文章进行优化，那是完全不同的问题 —— 因此，如果你需要从深度搜索中获得快速、简洁的答案，那你来对地方了。如果要找像 OpenAI/Gemini/Perplexity 那样由人工智能生成的长篇报告，这个项目不适合。
 
 ### mshumer的OpenDeepResearcher
-https://github.com/mshumer/OpenDeepResearcher
 
-### AI sCientist
+<https://github.com/mshumer/OpenDeepResearcher>
+
+### AI scientist
+
 The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery
-https://github.com/SakanaAI/AI-Scientist
+<https://github.com/SakanaAI/AI-Scientist>
 
 人工智能面临的重大挑战之一是开发能够开展科学研究并发现新知识的智能体。虽然前沿模型已经被用于协助人类科学家，比如用于头脑风暴想法或编写代码，但它们仍然需要大量人工监督，或者在很大程度上局限于特定任务。
 我们很高兴推出人工智能科学家，这是首个用于全自动科学发现的综合系统，使基础模型（如大语言模型（LLMs））能够独立进行研究。
 我们在此处提供论文中的所有运行过程和数据，我们在每个模板上对每个基础模型运行约 50 个想法。我们强烈建议阅读一些克劳德（Claude）相关论文，以了解该系统的优缺点。
 
 ### zilliztech的deep-searcher
-https://github.com/zilliztech/deep-searcher
 
+[Zilliz’s Deep Searcher](https://github.com/zilliztech/deep-searcher) 是一个开源的OpenAI的深度研究本地替代品，是一个具代理性RAG框架，重新定义了AI驱动的企业搜索。它结合了先进的推理模型、复杂的搜索功能以及集成的研究助手，使用Milvus高性能向量数据库进行本地数据整合，提供更快更相关的搜索结果，并支持模型切换以定制体验。DeepSearcher通过将查询拆分为多个子问题，进行多轮实时检索，具备主动问题解决、动态自我纠正和复杂推理任务的能力。此外，它全面记录搜索和推理过程，为调试和优化提供透明度，适合构建企业搜索解决方案或为数据密集型项目提供强大的研究助手，代表了开放源代码可定制AI代理的发展趋势。
 
 ## 如何评估DeepResearch输出的质量？
 
-
-
-
 ## 对自己开发DeepResearch的启发
 
+##
 
-
-
-## 
 有哪些DeepResearch？各自如何实现，各自优缺点？
 如何评估DeepResearch？使用什么数据集来评估？评估标准。
 DeepResearch如何处理一些版权问题和网站需要登录信息才能访问，一些网站需要订阅才能阅读的问题。
@@ -329,17 +318,7 @@ DeepResearch和Notebook LM，Learn About的关系。
 DeepResearch和早期的AutoGPT, AgentGPT等自动化Research是什么关系？
 个人收集一些困难的问题来难倒O1或R1模型？社区上贡献的问题。
 
-
-
-
-
-
-
-公众号：https://mp.weixin.qq.com/s?__biz=Mzg2ODEwNjU0Nw==&mid=2247487014&idx=1&sn=7b4efaff7cce0f18045fbde5433b679a&chksm=cfffebdd182175c80612b299b71d8cac45d2b818e4b8f16b138ddfc84a08e206f1f07cffg工作公众号：
-
-
-
-
+公众号：<https://mp.weixin.qq.com/s?__biz=Mzg2ODEwNjU0Nw==&mid=2247487014&idx=1&sn=7b4efaff7cce0f18045fbde5433b679a&chksm=cfffebdd182175c80612b299b71d8cac45d2b818e4b8f16b138ddfc84a08e206f1f07cffg工作公众号：>
 
 ## TBD
 
