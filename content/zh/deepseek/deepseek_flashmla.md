@@ -1,11 +1,11 @@
-+++
-title = "DeepSeek FlashMLA 代码解读"
-date = "2025-02-24T16:10:00+08:00"
-draft = false
-tags = ["AI", "deepseek", "FlashMLA", "代码", "技术"]
-categories = ["open source", "deepseek"]
-description = "本文介绍了深度求索（DeepSeek）公司FlashMLA代码详细解读。"
-+++
+---
+title: "DeepSeek FlashMLA 代码解读"
+date: "2025-02-24T16:10:00+08:00"
+draft: false
+tags: ["AI", "deepseek", "FlashMLA", "代码", "技术"]
+categories: ["large_models"]
+description: "本文介绍了深度求索（DeepSeek）公司FlashMLA代码详细解读。"
+---
 
 ## 项目用途和核心功能
 
@@ -311,7 +311,7 @@ FlashMLA项目是一个高效的注意力机制库，特别优化了在GPU上的
 
 - FlashMLA Github: <https://github.com/deepseek-ai/FlashMLA>
 - FlashMLA 论文: <https://arxiv.org/abs/2410.09133>
-- 
+-
 
 ## 附录
 
