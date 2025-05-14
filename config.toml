@@ -94,7 +94,7 @@ weight = 8
 
 [[menu.main]]
 name = "大模型"
-url = "/large_models"
+url = "/categories/large_models/"
 weight = 9
 
 [[menu.main]]
