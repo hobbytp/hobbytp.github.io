@@ -2,9 +2,9 @@
 title: "日常想法随手记-2025"
 date: "2025-05-13T14:20:00+08:00"
 draft: false
-tags: ["AI", "Thinking", "Daily","2025"]
-categories: ["AI", "my_insights"]  
 description: "日常想法随手记"
+tags: ["AI", "Thinking", "Daily","2025"]
+categories: ["my_insights"]  
 ---
 
 这里随手记下当天对看到的新闻、文章、视频等的想法。
