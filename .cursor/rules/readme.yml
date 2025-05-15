@@ -1,0 +1,3 @@
+- description: "README.md 需包含中英文两个版本"
+  applies_to: "README.md"
+  action: "warn_if_not_bilingual"

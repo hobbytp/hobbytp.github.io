@@ -3,7 +3,7 @@ title = "Cursor AI 最佳实践：提升编码效率与代码质量的权威指�
 date = "2025-04-12T21:10:00+08:00"
 draft = false
 tags = ["Cursor", "AI", "论文", "技术"]
-categories = ["Cursor", "product", ""]
+categories = ["ai_tools"]
 description = "Cursor AI 最佳实践：提升编码效率与代码质量的权威指南"
 +++
 

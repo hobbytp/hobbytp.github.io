@@ -1,0 +1,3 @@
+- description: "每次部署前应清理并更新 Hugo module 依赖"
+  applies_to: "deploy"
+  action: "suggest: hugo mod clean && hugo mod get -u"
