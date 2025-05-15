@@ -1,0 +1,7 @@
+- description: "Hugo 主题应通过 git submodule 管理，且 .gitmodules 指向官方仓库"
+  applies_to: "themes/PaperMod"
+  action: "warn_if_not_submodule"
+
+- description: "不要将 themes/PaperMod 作为普通目录 add 到主仓库"
+  applies_to: "themes/PaperMod/.git"
+  action: "warn_if_embedded_repo"
