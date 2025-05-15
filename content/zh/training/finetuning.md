@@ -1,11 +1,11 @@
-+++
-title = "微调"
-date = "2025-02-26T22:14:00+08:00"
-draft = false
-tags = ["training", "finetuning", "DeepSeek-R1", "Unsloth", "LoRA"]
-categories = ["training", "finetuning"]
-description = "本文介绍了微调的常见挑战及其克服方法，并详细介绍了如何使用Unsloth在消费级GPU上对DeepSeek-R1进行微调。"
-+++
+---
+title: "微调"
+date: "2025-02-26T22:14:00+08:00"
+draft: false
+tags: ["training", "finetuning", "DeepSeek-R1", "Unsloth", "LoRA"]
+categories: ["training", "finetuning"]
+description: "本文介绍了微调的常见挑战及其克服方法，并详细介绍了如何使用Unsloth在消费级GPU上对DeepSeek-R1进行微调。"
+---
 
 ## 为什么需要微调？
 

@@ -1,12 +1,12 @@
 ---
-title: "Agent经济：红杉资本2025 AI峰会释放的超级信号"
+title: "Deep Research 深度研究"
 date: "2025-04-13T15:10:00+08:00"
 lastmod: "2025-05-13"
 changelog:
   - date: "2025-05-13"
     change: "添加了字节跳动的DeerFlow和LangGraph的local DR"
 draft: false
-description: "Agent经济：红杉资本2025 AI峰会释放的超级信号"
+description: "Deep Research 深度研究"
 tags: ["AI", "Ascent", "Agent", "红杉资本"]
 categories: ["mas"]
 ---
@@ -253,6 +253,7 @@ flowchart TB
 
 - github: <https://github.com/langchain-ai/local-deep-researcher>
 - youtube: <https://www.youtube.com/watch?v=sGUjmyfof4Q>
+
 ### STORM: Stanford Open Virtual Assistant for Research (SOVAR)
 
 - github: <https://github.com/stanford-oval/storm>

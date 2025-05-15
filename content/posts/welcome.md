@@ -3,7 +3,7 @@ title: "欢迎来到我的AI博客"
 date: 2024-04-06
 description: "这是一个专注于AI领域的技术博客，包含论文解读、技术分析、项目介绍等内容"
 categories: ["公告"]
-tags: ["AI", "机器学习", "深度学习"]
+tags: ["AI", "博客", "学习"]
 ---
 
 ## 欢迎
@@ -35,6 +35,7 @@ tags: ["AI", "机器学习", "深度学习"]
 如果您对博客内容有任何问题或建议，欢迎通过以下方式联系我：
 
 - GitHub: [hobbytp](https://github.com/hobbytp)
-- Email: your.email@example.com
+- Email: <hobbytp@gmail.com>
+- Twitter: [@PengTan0614](https://x.com/PengTan0614)
 
-感谢您的关注！ 
+感谢您的关注！
