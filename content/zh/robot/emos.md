@@ -3,7 +3,7 @@ title = "EMOS: Embodiment-Aware Multi-Robot Operating System with LLM Agents"
 date = "2025-04-18T20:10:00+08:00"
 draft = false
 tags = ["AI", "robotics", "Agents", "论文", "技术"]
-categories = ["paper", "emos", "robotics"]
+categories = ["paper", "technologies"]
 description = "本文介绍了EMOS: Embodiment-Aware Multi-Robot Operating System with LLM Agents，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
 +++
 
