@@ -300,3 +300,18 @@ Llama 4的争议暴露了AI竞赛中的深层矛盾：
 建议开发者谨慎选择：若需代码生成，优先考虑DeepSeek V3或Qwen-QWQ；若需多模态能力，GPT-4o和Claude 3.5仍是更可靠的选择。
 
 还是让子弹再飞一会吧。
+
+## 参考文献
+
+* [Llama 4 吃瓜](https://www.zhihu.com/question/631310300)
+* [Llama 3.2 从零开始](https://huggingface.co/rasbt/llama-3.2-from-scratch)
+* [LLM](https://bbycroft.net/llm)
+* [minGPT](https://github.com/karpathy/minGPT)
+* [zero-to-hero](https://karpathy.ai/zero-to-hero.html)
+* [Hacker News](https://news.ycombinator.com/item?id=40215592)
+* [Hacker News](https://news.ycombinator.com/item?id=39700256)
+* [Hacker News](https://news.ycombinator.com/item?id=40213292)
+* [arxiv](https://arxiv.org/pdf/2404.17625)
+* [Hacker News](https://news.ycombinator.com/item?id=40408880)
+* [Build Your Own Llama 3 Architecture from Scratch Using PyTorch](https://pub.towardsai.net/build-your-own-llama-3-architecture-from-scratch-using-pytorch-2ce1ecaa901c)
+* [GPT in 60 Lines of NumPy](https://jaykmody.com/blog/gpt-from-scratch/)
