@@ -1,3 +1,12 @@
+---
+title: "AI Agent Gateway"
+date: "2025-04-10T23:03:00+08:00"
+draft: false
+tags:  ["AI","Agent Gateway","MCP","A2A"]
+categories: ["projects"]
+description: "AI Agent Gateway"
+---
+
 ## Agent Gateway
 
 AgentGateway是istio主要服务提供商solo开发的一个专门针对MCP和A2A协议的网关产品。它由rust开发。
