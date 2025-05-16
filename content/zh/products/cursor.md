@@ -1,6 +1,7 @@
 +++
 title = "Cursor AI 最佳实践：提升编码效率与代码质量的权威指南"
 date = "2025-04-12T21:10:00+08:00"
+lastmod = "2025-05-16T22:10:00+08:00"
 draft = false
 tags = ["Cursor", "AI", "论文", "技术"]
 categories = ["ai_tools"]
@@ -220,6 +221,48 @@ Cursor 的 AI 能力不仅限于生成新代码，在理解和改进现有代码
   * **手动重新同步：** 在频繁添加、删除或重命名文件后，AI 的索引可能会过时，导致它引用不存在的文件或给出错误的建议 17。这时需要手动触发重新同步。可以通过 Cursor Settings \> Features \> Codebase Index \> Resync Index 或类似路径（具体路径可能随版本变化）来更新索引 41。保持索引的最新状态对于获取准确的 AI 辅助至关重要。
 
 通过熟练运用 @ 符号、精心配置 AI 规则以及适时管理代码库索引，开发者可以极大地提升 Cursor AI 理解代码上下文的准确性，从而获得更高质量的辅助。
+
+### 如何添加 @Docs 引用
+
+下面以添加LangGraph的doc为例，介绍如何添加@Docs引用。
+
+1. **获取LangGraph的doc**
+
+```bash
+# 进入LangGraph的docs目录，github.com/LangChain-AI/langgraph,导出所有doc到一个Markdown文件。
+
+cd docs/docs
+find . -name "*.md" -type f -print0 | xargs -0 cat > ../LangGraphDoc.md
+```
+
+2. **导入个人公开gist**
+
+在<https://gist.github.com/>页面里填入下面信息：
+
+```
+“Description”： LangGraph Document
+“FileName”：LangGraphDoc.md
+把LangGraphDoc.md文件拖到页面里，点击“Add File”。
+点击 “Create Public gist”会生成<https://gist.github.com/hobbytp/><gist_id>，
+所有我的创建的gist可以在<https://gist.github.com/hobbytp>找到。
+```
+
+3. **在Cursor Settings中添加全局@Docs引用**
+进入cursor settings=》Features，拉到最下面，添加@Docs引用。
+
+```
+# 在Cursor中添加@Docs引用
+@Docs https://gist.github.com/hobbytp/<gist_id>
+```
+
+4. **在Cursor中使用@Docs引用**
+这个其实在chat里面会自动查找@Docs引用的，不需要手动添加。
+当然也可以在chat中添加@Docs引用。
+
+```
+# 在Cursor中使用@Docs引用
+@Docs https://gist.github.com/hobbytp/<gist_id>
+```
 
 ## **X. 高级工作流与社区洞见**
 
