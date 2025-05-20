@@ -82,3 +82,5 @@ TRICO (Turn-aware Reason-Interaction Chain Optimization) 是 VAGEN 框架内的�
 - [VAGEN](https://mll-lab.notion.site/vagen)
 - [TRICO](https://mll-lab.notion.site/TRICO-Turn-aware-Reason-Interaction-Chain-Optimization-10000000000000000000000000000000)
 - [RAGEN](https://ragen-ai.github.io/)
+
+<https://mas-2025.github.io/MAS-2025/>
