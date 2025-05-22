@@ -11,6 +11,200 @@ description: "本文介绍了Google I/O 2025 大会亮点。"
 
 Google I/O 2025的亮点主要集中在AI技术革新、搜索体验升级、硬件生态拓展以及开发者工具优化等方面。以下是具体内容：
 
+<div style="border:1px solid #ccc;padding:10px;">
+  <h2>Google AI产品生态图</h2>
+  <p><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>谷歌AI产品生态圈 (Google I/O 2025)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .category-card {
+            border-left-width: 4px;
+            transition: all 0.3s ease-in-out;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .gemini-hub {
+            background: linear-gradient(135deg, #4F46E5 0%, #818CF8 100%);
+            box-shadow: 0 0 30px rgba(79, 70, 229, 0.5);
+        }
+        .connector-line-vertical {
+            width: 2px;
+            background-color: #4A5568; /* gray-600 */
+            margin: 0 auto;
+        }
+         .connector-line-horizontal {
+            height: 2px;
+            background-color: #4A5568; /* gray-600 */
+        }
+        .item-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .section-title-icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 p-4 md:p-8 min-h-screen">
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-10 md:mb-16">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-indigo-400">谷歌 AI 产品生态圈</h1>
+            <p class="text-gray-400 mt-2 text-lg">基于 Google I/O 2025 深度分析报告</p>
+            <p class="text-xs text-gray-500 mt-1">（概念性可视化表示）</p>
+        </header>
+
+        <div class="flex flex-col items-center mb-10 md:mb-16">
+            <div class="gemini-hub p-6 sm:p-8 rounded-xl text-white text-center w-full max-w-md">
+                <svg class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3 text-indigo-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5M19.5 8.25h1.5m-15 0h1.5M12 4.5a7.5 7.5 0 00-7.5 7.5 7.5 7.5 0 007.5 7.5 7.5 7.5 0 007.5-7.5 7.5 7.5 0 00-7.5-7.5z" />
+                </svg>
+                <h2 class="text-2xl sm:text-3xl font-semibold">Gemini AI</h2>
+                <p class="text-sm sm:text-base text-indigo-200">核心驱动模型</p>
+                <p class="text-xs text-indigo-300 mt-1">(2.5 Pro, 2.5 Flash, "深度思考" Deep Think)</p>
+            </div>
+            <div class="connector-line-vertical h-8 sm:h-12 mt-1"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+            <div class="category-card bg-gray-800 p-5 rounded-lg shadow-lg border-orange-500">
+                <h3 class="text-xl font-semibold text-orange-400 mb-4 flex items-center">
+                    <svg class="section-title-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+                    谷歌搜索
+                </h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li class="flex items-center"><div class="item-dot bg-orange-400"></div>AI模式 (复杂查询, 个性化情境)</li>
+                    <li class="flex items-center"><div class="item-dot bg-orange-400"></div>深度搜索 (专家级报告)</li>
+                    <li class="flex items-center"><div class="item-dot bg-orange-400"></div>Search Live (Project Astra 视觉搜索)</li>
+                    <li class="flex items-center"><div class="item-dot bg-orange-400"></div>Project Mariner 集成 (AI代理：票务、购物)</li>
+                    <li class="flex items-center"><div class="item-dot bg-orange-400"></div>AI摘要 (AI Overviews)</li>
+                </ul>
+            </div>
+
+            <div class="category-card bg-gray-800 p-5 rounded-lg shadow-lg border-purple-500">
+                <h3 class="text-xl font-semibold text-purple-400 mb-4 flex items-center">
+                    <svg class="section-title-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" /><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" /></svg>
+                    生成式AI媒体
+                </h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li class="flex items-center"><div class="item-dot bg-purple-400"></div>Veo 3 (原生音频视频生成)</li>
+                    <li class="flex items-center"><div class="item-dot bg-purple-400"></div>Imagen 4 (高质量图像, 文本处理)</li>
+                    <li class="flex items-center"><div class="item-dot bg-purple-400"></div>Flow (AI电影制作工具)</li>
+                </ul>
+            </div>
+
+            <div class="category-card bg-gray-800 p-5 rounded-lg shadow-lg border-teal-500">
+                <h3 class="text-xl font-semibold text-teal-400 mb-4 flex items-center">
+                    <svg class="section-title-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.375 .75A2.25 2.25 0 016.75 21h-3a2.25 2.25 0 01-2.25-2.25v-6.75a2.25 2.25 0 012.25-2.25h3.75a3 3 0 01.75.375V17.25z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 17.25v1.007a3 3 0 00.375.75A2.25 2.25 0 0017.25 21h3a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25h-3.75a3 3 0 00-.75.375V17.25z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 3.75H6.75A2.25 2.25 0 004.5 6v6.75A2.25 2.25 0 006.75 15h3.75m0-11.25h3.75A2.25 2.25 0 0119.5 6v6.75A2.25 2.25 0 0117.25 15h-3.75M9 3.75h.008v.008H9V3.75zm3 0h.008v.008H12V3.75zm3 0h.008v.008H15V3.75z" /></svg>
+                    硬件
+                </h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li class="flex items-center"><div class="item-dot bg-teal-400"></div>Android XR (统一平台)</li>
+                    <li class="flex items-center pl-4"><div class="item-dot bg-teal-600"></div>Project Moohan (三星XR头显)</li>
+                    <li class="flex items-center pl-4"><div class="item-dot bg-teal-600"></div>Project Aura (XREAL AR眼镜)</li>
+                    <li class="flex items-center pl-4"><div class="item-dot bg-teal-600"></div>时尚品牌合作眼镜</li>
+                    <li class="flex items-center pl-4"><div class="item-dot bg-teal-600"></div>谷歌AI眼镜原型</li>
+                    <li class="flex items-center"><div class="item-dot bg-teal-400"></div>Google Beam (AI 3D视频通讯, HP合作)</li>
+                </ul>
+            </div>
+
+            <div class="category-card bg-gray-800 p-5 rounded-lg shadow-lg border-indigo-500 lg:col-span-2">
+                <h3 class="text-xl font-semibold text-indigo-400 mb-4 flex items-center">
+                     <svg class="section-title-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" /></svg>
+                    开发者工具与平台
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>Gemini in Android Studio</li>
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>Firebase Studio</li>
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>Jules (异步编码代理)</li>
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>Stitch (AI UI设计/代码生成)</li>
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>Agentic Colab</li>
+                    </ul>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>Gemini Code Assist (200万token)</li>
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>Google AI Studio (Gemini 2.5 Pro集成)</li>
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>Gemini API 更新 (异步, Computer Use API)</li>
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>ML Kit GenAI API (Gemini Nano)</li>
+                        <li class="flex items-center"><div class="item-dot bg-indigo-400"></div>新模型开放 (Gemma 3n, Gemini Diffusion)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="category-card bg-gray-800 p-5 rounded-lg shadow-lg border-pink-500">
+                <h3 class="text-xl font-semibold text-pink-400 mb-4 flex items-center">
+                    <svg class="section-title-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    AI代理与世界模型
+                </h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li class="flex items-center"><div class="item-dot bg-pink-400"></div>Project Astra (通用AI助手)</li>
+                    <li class="flex items-center"><div class="item-dot bg-pink-400"></div>Project Mariner (AI代理原型)</li>
+                    <li class="flex items-center"><div class="item-dot bg-pink-400"></div>代理模式 (Agent Mode in Gemini App)</li>
+                    <li class="flex items-center"><div class="item-dot bg-pink-400"></div>"世界模型" AI理念</li>
+                </ul>
+            </div>
+
+            <div class="category-card bg-gray-800 p-5 rounded-lg shadow-lg border-yellow-500">
+                <h3 class="text-xl font-semibold text-yellow-400 mb-4 flex items-center">
+                   <svg class="section-title-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+                    操作系统与平台
+                </h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li class="flex items-center"><div class="item-dot bg-yellow-400"></div>Android 16 (Material 3 Expressive, Gemini集成)</li>
+                    <li class="flex items-center"><div class="item-dot bg-yellow-400"></div>Wear OS 6 (Material 3 Expressive, Gemini集成)</li>
+                    <li class="flex items-center"><div class="item-dot bg-yellow-400"></div>Kotlin Multiplatform (KMP) 支持增强</li>
+                    <li class="flex items-center"><div class="item-dot bg-yellow-400"></div>Google Play 生态更新</li>
+                     <li class="flex items-center"><div class="item-dot bg-yellow-400"></div>Workspace (Gemini集成Gmail, Docs等)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div class="category-card bg-gray-800 p-5 rounded-lg shadow-lg border-gray-500">
+                <h3 class="text-xl font-semibold text-gray-400 mb-4 flex items-center">
+                    <svg class="section-title-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z" /></svg>
+                    底层基础设施
+                </h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li class="flex items-center"><div class="item-dot bg-gray-400"></div>TPU (第七代 Ironwood)</li>
+                </ul>
+            </div>
+
+            <div class="category-card bg-gray-800 p-5 rounded-lg shadow-lg border-red-500">
+                <h3 class="text-xl font-semibold text-red-400 mb-4 flex items-center">
+                    <svg class="section-title-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 11.21 12.768 11 12 11c-.768 0-1.536.21-2.121.727l-.879.659z" /></svg>
+                    订阅服务
+                </h3>
+                <ul class="space-y-2 text-gray-300 text-sm">
+                    <li class="flex items-center"><div class="item-dot bg-red-400"></div>Google AI Pro</li>
+                    <li class="flex items-center"><div class="item-dot bg-red-400"></div>Google AI Ultra (含Veo 3, Deep Think访问)</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="text-center mt-12 md:mt-20 py-8 border-t border-gray-700">
+            <p class="text-gray-500 text-sm">&copy; 2025 谷歌AI生态圈概念图. 所有信息基于公开的I/O 2025报告分析.</p>
+        </footer>
+    </div>
+</body>
+</html>
+</p>
+</div>
+
 ### 1. **AI模型与工具的全面升级**
 
 - **Gemini 2.5系列模型**：包括Gemini 2.5 Pro和Gemini 2.5 Flash版本，显著提升多模态理解、推理能力和生成效率。新增**Deep Think模式**，通过增强型推理机制处理复杂任务（如数学、编程和多模态交互），类似OpenAI的o1-pro模型逻辑。
