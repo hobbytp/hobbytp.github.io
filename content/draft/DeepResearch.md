@@ -111,7 +111,7 @@ TBD
 - 官网：<https://docs.gptr.dev/blog>
 - 代码：<https://github.com/assafelovic/gpt-researcher>
 
-### GPT Research的Deep Research实现原理
+#### GPT Research的Deep Research实现原理
 
 ![GPT Researcher's DeepResearch](./images/gpt-researcher-deep-research.png)
 
