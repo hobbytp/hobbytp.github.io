@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>谷歌I/O 2025：AI驱动的行业趋势与市场研究信息图</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <!-- 
+        Infographic Plan Summary:
+        Narrative: Showcase Google's AI-driven market strategy and its impact on industry trends, based on I/O 2025.
+        Structure:
+        1.  引言：AI新纪元，谷歌的战略核心。
+        2.  Gemini模型家族：AI引擎的飞跃。
+        3.  AI重塑核心产品：搜索、生成式媒体、硬件、开发者工具。
+        4.  商业化与市场竞争：订阅服务与行业格局。
+        5.  未来展望与挑战：趋势、机遇与社会责任。
+        Conclusion: AI赋能的未来。
+
+        Color Palette Chosen: "Energetic & Playful" (Conceptual - using similar vibrant tones)
+        - Primary: #4ECDC4 (Turquoise/Teal)
+        - Accent 1: #FF6B6B (Coral Pink)
+        - Accent 2: #F7B731 (Bright Yellow/Orange)
+        - Accent 3: #45B7D1 (Bright Blue)
+        - Accent 4: #9B59B6 (Purple)
+        - Background: #1F2937 (Cool Gray 800)
+        - Card Background: #374151 (Cool Gray 700)
+        - Text on Dark: #F3F4F6 (Cool Gray 100)
+        - Text on Light Card (if any): #111827 (Cool Gray 900)
+
+        Visualization Choices Summary (Confirming NO SVG, NO MERMAID JS):
+        - 引言: 大号数字 (HTML), 关键信息 (HTML).
+        - Gemini模型: HTML/CSS结构图, 大号数字 (HTML), HTML表格.
+        - AI重塑产品:
+            - 搜索: 条形图 (Chart.js), 甜甜圈图 (Chart.js), HTML/CSS流程图, 大号数字 (HTML).
+            - 生成式媒体: HTML/CSS卡片 + Unicode字符图标.
+            - 硬件: HTML/CSS结构图 + Unicode字符图标.
+            - 开发者工具: 条形图 (Chart.js) 或 HTML/CSS列表 + Unicode字符图标.
+        - 市场竞争: 雷达图 (Chart.js), HTML表格, 甜甜圈图 (Chart.js).
+        - 未来展望: HTML/CSS列表 + Unicode字符图标.
+        - 所有图表使用Chart.js (Canvas). 所有图示和流程图使用HTML/CSS.
+
+        SVG/Mermaid Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output.
+    -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* Default max-width, can be overridden by Tailwind */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            /* Base height */
+            max-height: 450px;
+            /* Max height */
+        }
+
+        @media (min-width: 768px) {
+
+            /* md breakpoint */
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+
+            /* lg breakpoint */
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        .stat-card {
+            background-color: #374151;
+            /* gray-700 */
+            border-left-width: 4px;
+        }
+
+        .section-title {
+            border-bottom: 2px solid #4ECDC4;
+            /* Turquoise/Teal */
+            padding-bottom: 0.5rem;
+        }
+
+        .flow-step {
+            border: 2px solid #4ECDC4;
+            /* Turquoise/Teal */
+            background-color: #4B5563;
+            /* gray-600 */
+        }
+
+        .flow-arrow {
+            color: #4ECDC4;
+            /* Turquoise/Teal */
+        }
+
+        .key-metric-value {
+            font-size: 2.5rem;
+            /* Equivalent to text-4xl or larger */
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .key-metric-label {
+            font-size: 0.875rem;
+            /* text-sm */
+            color: #9CA3AF;
+            /* gray-400 */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100 antialiased">
+    <div class="container mx-auto px-4 py-8 md:py-12">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1
+                class="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 mb-3">
+                谷歌I/O 2025：AI驱动的行业趋势与市场研究
+            </h1>
+            <p class="text-lg text-gray-300">人工智能已全面渗透，正从前瞻研究迈向规模化实际应用。</p>
+        </header>
+
+        <section id="gemini-engine" class="mb-12 md:mb-16">
+            <h2 class="text-3xl font-semibold mb-8 section-title text-teal-400">Gemini模型家族：AI引擎的飞跃</h2>
+            <p class="text-gray-300 mb-6 text-lg">
+                谷歌的Gemini AI模型家族在I/O 2025上展现了显著的性能提升和功能扩展，成为驱动谷歌AI生态的核心引擎。其进步得益于强大的基础设施支持，如第七代TPU Ironwood。
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="stat-card p-6 rounded-lg shadow-xl border-pink-500">
+                    <p class="key-metric-value text-pink-400">+300分</p>
+                    <p class="key-metric-label">Gemini Pro Elo评分提升</p>
+                </div>
+                <div class="stat-card p-6 rounded-lg shadow-xl border-yellow-500">
+                    <p class="key-metric-value text-yellow-400">10倍</p>
+                    <p class="key-metric-label">TPU Ironwood 性能提升</p>
+                </div>
+                <div class="stat-card p-6 rounded-lg shadow-xl border-blue-500">
+                    <p class="key-metric-value text-blue-400">42.5 Exaflops</p>
+                    <p class="key-metric-label">TPU Ironwood 每个Pod算力</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-lg shadow-xl mb-8">
+                <h3 class="text-2xl font-semibold text-teal-300 mb-4">Gemini 2.5 Pro 与 2.5 Flash 对比</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm text-left text-gray-300">
+                        <thead class="text-xs text-teal-400 uppercase bg-gray-700">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">特性</th>
+                                <th scope="col" class="px-6 py-3">Gemini 2.5 Pro</th>
+                                <th scope="col" class="px-6 py-3">Gemini 2.5 Flash</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-800 border-b border-gray-700">
+                                <td class="px-6 py-4 font-medium">主要优势</td>
+                                <td class="px-6 py-4">顶级推理、复杂任务、代码生成、长上下文</td>
+                                <td class="px-6 py-4">极高速度与效率、成本效益优越</td>
+                            </tr>
+                            <tr class="bg-gray-800 border-b border-gray-700">
+                                <td class="px-6 py-4 font-medium">“深度思考”模式</td>
+                                <td class="px-6 py-4">支持 (强化推理)</td>
+                                <td class="px-6 py-4">不支持</td>
+                            </tr>
+                            <tr class="bg-gray-800">
+                                <td class="px-6 py-4 font-medium">典型应用</td>
+                                <td class="px-6 py-4">企业级方案、复杂研究、高级AI编程</td>
+                                <td class="px-6 py-4">快速聊天机器人、大规模内容生成</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-xs text-gray-400">数据来源：谷歌I/O 2025报告。表格内容为关键特性摘要。</p>
+            </div>
+            <p class="text-gray-300 mt-4">
+                “深度思考”（Deep Think）模式的引入，使得Gemini 2.5
+                Pro能够进行更深层次的逻辑分析和方案评估，显著提升了处理复杂问题的能力。同时，谷歌提出了“世界模型”AI理念，旨在让AI能更深刻理解和交互物理世界，Project Astra正是这一理念的实践。
+            </p>
+        </section>
+
+        <section id="ai-transformation" class="mb-12 md:mb-16">
+            <h2 class="text-3xl font-semibold mb-8 section-title text-pink-400">AI重塑核心产品：多领域创新</h2>
+            <p class="text-gray-300 mb-8 text-lg">
+                谷歌将AI深度融入其核心产品线，从搜索体验的革命性升级，到生成式媒体工具的创新，再到硬件和开发者平台的智能化，全方位展现了AI的赋能力量。
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold text-yellow-400 mb-4">谷歌搜索革命</h3>
+                    <p class="text-gray-300 mb-4">AI模式（AI Mode）将搜索从“链接列表”转变为“答案与解决方案的提供者”，支持复杂查询、深度搜索，并整合AI代理能力（Project
+                        Mariner）执行任务。</p>
+                    <div class="mb-6">
+                        <p class="text-lg font-medium text-gray-200 mb-1">AI摘要（AI Overviews）用户规模</p>
+                        <div class="key-metric-value text-yellow-300">15亿+ 用户</div>
+                        <p class="key-metric-label">遍及200+国家和地区</p>
+                    </div>
+                    <div class="chart-container max-w-md h-64 md:h-72">
+                        <canvas id="searchClickRateChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-xs text-gray-400 text-center">图表：AI摘要对搜索点击率的潜在影响（概念性）。</p>
+                    <p class="text-gray-300 mt-4">
+                        尽管AI摘要提升了用户满意度和搜索频率（特定查询增长>10%），但也引发了对传统网站流量（部分研究称点击率下降~30%）和出版商商业模式的担忧。
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-4">生成式AI媒体创新</h3>
+                    <p class="text-gray-300 mb-6">Veo 3、Imagen 4和Flow等工具的推出，旨在降低高质量内容创作门槛，赋能广泛创作者。</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start p-4 bg-gray-700 rounded-md">
+                            <span class="text-2xl mr-3">🎬</span>
+                            <div>
+                                <h4 class="font-semibold text-purple-300">Veo 3</h4>
+                                <p class="text-sm text-gray-300">原生音视频同步生成，电影级视频创作，增强可控性。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-700 rounded-md">
+                            <span class="text-2xl mr-3">🖼️</span>
+                            <div>
+                                <h4 class="font-semibold text-purple-300">Imagen 4</h4>
+                                <p class="text-sm text-gray-300">提升图像质量与细节，增强图像内文本处理能力，支持2K分辨率。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start p-4 bg-gray-700 rounded-md">
+                            <span class="text-2xl mr-3">✨</span>
+                            <div>
+                                <h4 class="font-semibold text-purple-300">Flow</h4>
+                                <p class="text-sm text-gray-300">AI电影制作工具，整合Veo与Imagen，提供精细化场景与角色控制。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mt-6">
+                        这些工具在提高创作效率的同时，也带来了关于“深度伪造”和内容版权的伦理挑战。
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold text-blue-400 mb-4">硬件新纪元：Android XR 与 Google Beam</h3>
+                    <p class="text-gray-300 mb-6">谷歌通过Android XR平台和Google Beam通讯系统，将AI能力延伸至更沉浸的物理世界交互和沟通体验。</p>
+                    <div class="mb-4">
+                        <h4 class="font-semibold text-blue-300 mb-2">Android XR 生态系统</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-300 space-y-1 pl-2">
+                            <li><span class="font-medium">Project Moohan:</span> 与三星合作的XR头显，集成Gemini。</li>
+                            <li><span class="font-medium">Project Aura:</span> 与XREAL合作的轻量级AR眼镜。</li>
+                            <li><span class="font-medium">时尚品牌合作:</span> Gentle Monster, Warby Parker 打造时尚XR眼镜。</li>
+                            <li><span class="font-medium">谷歌AI眼镜原型:</span> 实时翻译、导航、信息搜索。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-blue-300 mb-2">Google Beam</h4>
+                        <p class="text-sm text-gray-300">AI赋能的3D视频通讯（无需眼镜），与HP合作商业化，集成实时翻译。</p>
+                    </div>
+                    <p class="text-gray-300 mt-6">
+                        XR领域面临苹果Vision Pro和Meta Quest的激烈竞争，技术成熟度、应用场景和隐私保护是关键挑战。
+                    </p>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold text-green-400 mb-4">赋能开发者：新一代AI工具与平台</h3>
+                    <p class="text-gray-300 mb-6">谷歌推出一系列AI驱动的开发工具，旨在降低AI应用开发门槛，提升效率。</p>
+                    <div class="chart-container max-w-md h-72 md:h-80">
+                        <canvas id="devToolsChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-xs text-gray-400 text-center">图表：关键AI开发者工具及特性（概念性）。</p>
+                    <ul class="mt-4 text-sm text-gray-300 space-y-1">
+                        <li><span class="font-semibold text-green-300">Gemini in Android Studio:</span> Image to Code,
+                            智能辅助。</li>
+                        <li><span class="font-semibold text-green-300">Firebase Studio:</span> 云端AI工作空间，全栈AI应用开发。</li>
+                        <li><span class="font-semibold text-green-300">Jules & Stitch:</span> 异步编码代理与AI UI设计/代码生成。</li>
+                        <li><span class="font-semibold text-green-300">Gemini Code Assist:</span> 支持高达200万token上下文。</li>
+                        <li><span class="font-semibold text-green-300">ML Kit GenAI API:</span> 基于Gemini Nano的设备端AI。
+                        </li>
+                    </ul>
+                    <p class="text-gray-300 mt-6">
+                        Android 16和Wear OS 6引入Material 3 Expressive设计语言，并深度集成Gemini。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="market-dynamics" class="mb-12 md:mb-16">
+            <h2 class="text-3xl font-semibold mb-8 section-title text-orange-400">商业化与市场竞争：AI订阅与行业格局</h2>
+            <p class="text-gray-300 mb-8 text-lg">
+                谷歌通过推出Google AI Pro与AI Ultra订阅服务，加速AI能力的商业化变现，并积极应对与OpenAI、苹果、Meta等巨头的激烈市场竞争。
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold text-orange-300 mb-4">Google AI 订阅计划</h3>
+                    <table class="min-w-full text-sm text-left text-gray-300">
+                        <thead class="text-xs text-orange-400 uppercase bg-gray-700">
+                            <tr>
+                                <th scope="col" class="px-4 py-2">特性</th>
+                                <th scope="col" class="px-4 py-2">AI Pro ($19.99/月)</th>
+                                <th scope="col" class="px-4 py-2">AI Ultra ($249.99/月)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-gray-800 border-b border-gray-700">
+                                <td class="px-4 py-2 font-medium">核心Gemini</td>
+                                <td class="px-4 py-2">2.5 Pro, Veo 2</td>
+                                <td class="px-4 py-2">2.5 Pro (Deep Think), Veo 3</td>
+                            </tr>
+                            <tr class="bg-gray-800 border-b border-gray-700">
+                                <td class="px-4 py-2 font-medium">Project Mariner</td>
+                                <td class="px-4 py-2">不包含</td>
+                                <td class="px-4 py-2">早期访问</td>
+                            </tr>
+                            <tr class="bg-gray-800">
+                                <td class="px-4 py-2 font-medium">云存储</td>
+                                <td class="px-4 py-2">2TB</td>
+                                <td class="px-4 py-2">30TB + YouTube Premium</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-4 text-xs text-gray-400">AI Ultra的高定价反映了其对顶级AI能力的自信和对专业市场的定位。</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold text-orange-300 mb-4">华尔街分析师情绪</h3>
+                    <div class="chart-container max-w-xs h-64 md:h-72 mx-auto">
+                        <canvas id="analystSentimentChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-xs text-gray-400 text-center">图表：分析师对谷歌I/O 2025的反应（概念性）。</p>
+                    <p class="text-gray-300 mt-2 text-sm">多数分析师对谷歌的AI战略和执行能力持积极看法，但也存在对搜索份额和AI商业化前景的谨慎观点。</p>
+                </div>
+            </div>
+            <div class="mt-8 bg-gray-800 p-6 rounded-lg shadow-xl">
+                <h3 class="text-2xl font-semibold text-orange-300 mb-4">谷歌AI竞争力雷达图 (概念性)</h3>
+                <div class="chart-container h-80 md:h-96">
+                    <canvas id="competitorRadarChart"></canvas>
+                </div>
+                <p class="mt-4 text-xs text-gray-400 text-center">此雷达图概念性地展示了谷歌在关键AI竞争力维度上的相对优势。</p>
+                <p class="text-gray-300 mt-2 text-sm">谷歌凭借其庞大的产品生态和用户基础，在AI技术落地应用上具有优势，但在XR等领域面临激烈竞争。</p>
+            </div>
+        </section>
+
+        <section id="future-outlook" class="mb-12 md:mb-16">
+            <h2 class="text-3xl font-semibold mb-8 section-title text-indigo-400">未来展望与关键挑战</h2>
+            <p class="text-gray-300 mb-8 text-lg">
+                谷歌I/O 2025描绘了AI驱动的智能化未来，但也伴随着技术伦理、数据隐私、社会责任以及AI自身发展瓶颈等多重挑战。
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold text-indigo-300 mb-4">主要趋势与机遇</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><span class="text-2xl mr-3">🤖</span>
+                            <div><span class="font-semibold">AI代理兴起:</span> Project Astra, Mariner等预示AI从被动响应向主动执行任务演进。
+                            </div>
+                        </li>
+                        <li class="flex items-center"><span class="text-2xl mr-3">🌍</span>
+                            <div><span class="font-semibold">“世界模型”愿景:</span> AI更深刻理解真实世界并与环境交互。</div>
+                        </li>
+                        <li class="flex items-center"><span class="text-2xl mr-3">🎯</span>
+                            <div><span class="font-semibold">深度个性化:</span> AI提供更贴合个人需求的智能服务。</div>
+                        </li>
+                        <li class="flex items-center"><span class="text-2xl mr-3">🔬</span>
+                            <div><span class="font-semibold">科学与医疗突破:</span> AI在药物发现、蛋白质结构预测等领域潜力巨大。</div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
+                    <h3 class="text-2xl font-semibold text-red-400 mb-4">关键挑战</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center"><span class="text-2xl mr-3">⚖️</span>
+                            <div><span class="font-semibold">技术伦理与数据隐私:</span> AI代理、个性化服务带来的数据安全与滥用风险。</div>
+                        </li>
+                        <li class="flex items-center"><span class="text-2xl mr-3">🤯</span>
+                            <div><span class="font-semibold">AI幻觉 (Hallucinations):</span> AI生成错误信息的风险，影响可信度。</div>
+                        </li>
+                        <li class="flex items-center"><span class="text-2xl mr-3">💰</span>
+                            <div><span class="font-semibold">成本与能源消耗:</span> 大模型训练和运行的高昂成本与环境影响。</div>
+                        </li>
+                        <li class="flex items-center"><span class="text-2xl mr-3">🌐</span>
+                            <div><span class="font-semibold">开放网络生态影响:</span> AI摘要对内容出版商流量与商业模式的冲击。</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-gray-300 mt-8">
+                谷歌正通过技术手段（如SynthID Detector）、强调用户授权和研发高效TPU等方式应对挑战。然而，许多深层问题需要行业、政府和公众共同努力解决。“负责任的AI”将是衡量未来AI技术成功的核心标准。
+            </p>
+        </section>
+
+        <footer class="text-center mt-12 md:mt-16 py-8 border-t border-gray-700">
+            <p class="text-gray-400 text-sm">信息图基于谷歌I/O 2025深度分析报告制作。所有数据和分析仅供参考。</p>
+            <p class="text-gray-500 text-xs mt-1">© 2025 AI趋势洞察</p>
+        </footer>
+    </div>
+
+    <script>
+        const CHART_COLORS = {
+            teal: '#4ECDC4',
+            pink: '#FF6B6B',
+            yellow: '#F7B731',
+            blue: '#45B7D1',
+            purple: '#9B59B6',
+            gray: '#9CA3AF'
+        };
+        const TEXT_COLOR = '#F3F4F6'; // gray-100 for text on dark charts
+
+        function wrapLabel(str, maxWidth) {
+            if (typeof str !== 'string' || str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let currentLine = '';
+            const lines = [];
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine.trim());
+            }
+            return lines.length > 0 ? lines : [str]; // Ensure it always returns at least the original string if no wrapping occurs
+        }
+
+        const defaultTooltipCallbacks = {
+            title: function (tooltipItems) {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            }
+        };
+
+        // Chart 1: Search Click Rate (Conceptual Donut)
+        const searchClickRateCtx = document.getElementById('searchClickRateChart')?.getContext('2d');
+        if (searchClickRateCtx) {
+            new Chart(searchClickRateCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [wrapLabel('AI摘要/直接答案满足 (约30%)', 16), wrapLabel('仍需点击原始链接 (约70%)', 16)],
+                    datasets: [{
+                        label: '搜索点击率影响',
+                        data: [30, 70],
+                        backgroundColor: [CHART_COLORS.pink, CHART_COLORS.teal],
+                        borderColor: '#374151', // Card background for separation
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'bottom', labels: { color: TEXT_COLOR, font: { size: 10 } } },
+                        title: { display: true, text: 'AI摘要对搜索点击率的潜在影响 (概念性)', color: TEXT_COLOR, font: { size: 12 } },
+                        tooltip: { callbacks: defaultTooltipCallbacks }
+                    }
+                }
+            });
+        }
+
+        // Chart 2: Developer Tools (Conceptual Bar)
+        const devToolsCtx = document.getElementById('devToolsChart')?.getContext('2d');
+        if (devToolsCtx) {
+            new Chart(devToolsCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        wrapLabel('Gemini in Android Studio', 16),
+                        wrapLabel('Firebase Studio', 16),
+                        wrapLabel('Gemini Code Assist (2M Tokens)', 16),
+                        wrapLabel('ML Kit (Gemini Nano)', 16)
+                    ],
+                    datasets: [{
+                        label: 'AI开发者工具关键特性 (概念性影响力/能力)',
+                        data: [85, 80, 95, 75], // Conceptual data representing impact/capability score
+                        backgroundColor: [CHART_COLORS.green, CHART_COLORS.blue, CHART_COLORS.purple, CHART_COLORS.yellow],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: { ticks: { color: TEXT_COLOR, font: { size: 10 } }, grid: { color: 'rgba(200,200,200,0.2)' } },
+                        y: { ticks: { color: TEXT_COLOR, font: { size: 10 } }, grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: '关键AI开发者工具及特性 (概念性)', color: TEXT_COLOR, font: { size: 12 } },
+                        tooltip: { callbacks: defaultTooltipCallbacks }
+                    }
+                }
+            });
+        }
+
+        // Chart 3: Analyst Sentiment (Donut)
+        const analystSentimentCtx = document.getElementById('analystSentimentChart')?.getContext('2d');
+        if (analystSentimentCtx) {
+            new Chart(analystSentimentCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [wrapLabel('积极 (高盛, Evercore, 花旗, 摩根大通)', 16), wrapLabel('谨慎 (Wolfe Research)', 16)],
+                    datasets: [{
+                        label: '分析师情绪',
+                        data: [80, 20], // Conceptual data: 4 positive, 1 cautious = 80/20 split
+                        backgroundColor: [CHART_COLORS.teal, CHART_COLORS.yellow],
+                        borderColor: '#374151',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: true, position: 'bottom', labels: { color: TEXT_COLOR, font: { size: 10 } } },
+                        title: { display: true, text: '华尔街分析师情绪 (概念性)', color: TEXT_COLOR, font: { size: 12 } },
+                        tooltip: { callbacks: defaultTooltipCallbacks }
+                    }
+                }
+            });
+        }
+
+        // Chart 4: Competitor Radar Chart (Conceptual)
+        const competitorRadarCtx = document.getElementById('competitorRadarChart')?.getContext('2d');
+        if (competitorRadarCtx) {
+            new Chart(competitorRadarCtx, {
+                type: 'radar',
+                data: {
+                    labels: [
+                        wrapLabel('模型能力 (Gemini)', 16),
+                        wrapLabel('生态整合', 16),
+                        wrapLabel('商业化进展', 16),
+                        wrapLabel('XR布局', 16),
+                        wrapLabel('开发者工具', 16),
+                        wrapLabel('AI伦理与责任', 16)
+                    ],
+                    datasets: [{
+                        label: '谷歌AI竞争力',
+                        data: [9, 9, 7, 7, 8, 7], // Conceptual scores for Google
+                        fill: true,
+                        backgroundColor: 'rgba(78, 205, 196, 0.2)', // CHART_COLORS.teal with alpha
+                        borderColor: CHART_COLORS.teal,
+                        pointBackgroundColor: CHART_COLORS.teal,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: CHART_COLORS.teal
+                    }, {
+                        label: '主要竞争对手平均 (概念性)',
+                        data: [8, 7, 8, 6, 7, 6], // Conceptual average scores for competitors
+                        fill: true,
+                        backgroundColor: 'rgba(255, 107, 107, 0.2)', // CHART_COLORS.pink with alpha
+                        borderColor: CHART_COLORS.pink,
+                        pointBackgroundColor: CHART_COLORS.pink,
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: CHART_COLORS.pink
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: { borderWidth: 2 }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(243, 244, 246, 0.3)' }, // gray-100 with alpha
+                            grid: { color: 'rgba(243, 244, 246, 0.3)' },
+                            pointLabels: { font: { size: 10 }, color: TEXT_COLOR },
+                            ticks: { backdropColor: 'transparent', color: TEXT_COLOR, font: { size: 9 } }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: true, position: 'top', labels: { color: TEXT_COLOR, font: { size: 11 } } },
+                        title: { display: false }, // Title is in HTML
+                        tooltip: { callbacks: defaultTooltipCallbacks }
+                    }
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>

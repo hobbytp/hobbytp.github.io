@@ -134,3 +134,4 @@ Google I/O 2025标志着AI从"工具"进化为"生态操作系统"，企业生�
 下面是Google I/O 2025 Deep Research Report：
 
 {{< IO2025 >}}
+{{< IO2025_Draw >}}
