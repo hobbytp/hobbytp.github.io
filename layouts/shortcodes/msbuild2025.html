@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微软Build 2025趋势洞察信息图</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #F0F4F8;
+            /* Light grayish blue background */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            /* Default max-width */
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            /* Default height sm:h-80 */
+            max-height: 400px;
+            /* Default max-height */
+        }
+
+        @media (min-width: 768px) {
+
+            /* md */
+            .chart-container {
+                height: 384px;
+                /* md:h-96 */
+            }
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            /* text-3xl */
+            font-weight: 700;
+            /* font-bold */
+            color: #073B4C;
+            /* Midnight Green from palette */
+            margin-bottom: 1.5rem;
+            /* mb-6 */
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            /* text-xl */
+            font-weight: 600;
+            /* font-semibold */
+            color: #118AB2;
+            /* Blue NCS from palette */
+            margin-bottom: 0.75rem;
+            /* mb-3 */
+        }
+
+        .card-text {
+            color: #073B4C;
+            /* Midnight Green for text */
+            font-size: 0.95rem;
+            /* Slightly larger than text-sm */
+            line-height: 1.6;
+        }
+
+        .highlight-stat {
+            font-size: 2.5rem;
+            /* text-4xl */
+            font-weight: 800;
+            /* font-extrabold */
+            color: #FF6B6B;
+            /* Coral Red from palette */
+        }
+
+        .icon-placeholder {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: #06D6A0;
+            /* Caribbean Green */
+        }
+
+        /* HTML/CSS Flowchart Styles */
+        .flowchart-node {
+            background-color: #FFD166;
+            /* Sunglow Yellow */
+            color: #073B4C;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            /* rounded-md */
+            text-align: center;
+            font-weight: 500;
+            /* font-medium */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-width: 120px;
+        }
+
+        .flowchart-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            /* text-2xl */
+            color: #118AB2;
+            /* Blue NCS */
+            margin: 0 0.5rem;
+            transform: translateY(-50%) translateX(50%) rotate(90deg);
+            /* For vertical arrows in horizontal flex */
+        }
+
+        .flowchart-container {
+            display: flex;
+            flex-direction: column;
+            /* Default for mobile */
+            align-items: center;
+            gap: 1rem;
+            /* space-y-4 / space-x-4 */
+        }
+
+        @media (min-width: 768px) {
+
+            /* md */
+            .flowchart-container.horizontal-flow {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .flowchart-container.horizontal-flow .flowchart-arrow {
+                transform: none;
+                /* Reset rotation for horizontal flow */
+            }
+        }
+
+        /* HTML/CSS Pyramid Diagram */
+        .pyramid-level {
+            background-color: #118AB2;
+            /* Blue NCS */
+            color: white;
+            padding: 0.75rem;
+            margin: 0.25rem auto;
+            text-align: center;
+            border-radius: 0.25rem;
+            /* rounded-sm */
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+    <!-- 
+        Infographic Plan Summary:
+        1. Title: AI Agents Leading Industrial Transformation
+        2. Section 1: The New AI-Driven Developer Paradigm (GitHub Copilot, Azure AI Foundry, Windows AI Foundry, Copilot Studio)
+        3. Section 2: Open Agentic Web - The Next Generation Internet (Core Idea, NLWeb, MCP)
+        4. Section 3: Deepening and Popularizing Enterprise AI (M365 Copilot Tuning, Multi-agent collaboration, Security, SQL Server 2025, Microsoft Discovery)
+        5. Section 4: Industry Impact & Market Landscape (Software Dev, Verticals, IoT/Edge, Competition, Startups)
+        6. Section 5: Embracing the Agentic Era: Strategy, Skills & Ethics
+        7. Conclusion: Opening a New Chapter for an Intelligent Future
+
+        Visualization Choices Summary (Confirming NO SVG, NO MERMAID JS):
+        - GitHub Copilot Evolution: HTML/CSS Feature Cards. Goal: Inform. Method: HTML/CSS.
+        - Azure AI Foundry Model Count: Single Big Number. Goal: Inform. Method: HTML/CSS.
+        - Windows AI Foundry: Icon + Text. Goal: Inform. Method: Unicode/HTML/CSS.
+        - Copilot Studio: List. Goal: Organize. Method: HTML/CSS.
+        - Open Agentic Web Concept: Relationship Diagram. Goal: Organize. Method: HTML/CSS with Tailwind.
+        - M365 Copilot Tuning: Feature Callout. Goal: Inform. Method: HTML/CSS.
+        - Multi-agent Collaboration: Flow Chart. Goal: Organize. Method: HTML/CSS with Tailwind.
+        - Security/Governance: Icon Grid. Goal: Organize. Method: Unicode/HTML/CSS.
+        - SQL Server 2025: Bar Chart (Conceptual). Goal: Compare. Method: Chart.js (Canvas).
+        - Microsoft Discovery Stat: Single Big Number. Goal: Inform. Method: HTML/CSS.
+        - Agentic DevOps Impact: Stacked Bar Chart (Conceptual). Goal: Compare. Method: Chart.js (Canvas).
+        - Vertical Applications: Icon Array. Goal: Compare. Method: Unicode/HTML/CSS.
+        - IoT & Edge AI Growth: Line Chart (Conceptual). Goal: Change. Method: Chart.js (Canvas).
+        - Competitive Landscape: Radar Chart (Qualitative). Goal: Compare. Method: Chart.js (Canvas).
+        - Startup Opportunities: List. Goal: Organize. Method: HTML/CSS.
+        - Enterprise AI Adoption: Pyramid Diagram. Goal: Organize. Method: HTML/CSS with Tailwind.
+        - Core Skills: Grouped Bar Chart (Conceptual). Goal: Compare. Method: Chart.js (Canvas).
+        - Ethical Considerations: List. Goal: Organize. Method: HTML/CSS.
+
+        Chosen Color Palette: "Energetic & Playful"
+        - #FF6B6B (Coral Red)
+        - #FFD166 (Sunglow Yellow)
+        - #06D6A0 (Caribbean Green)
+        - #118AB2 (Blue NCS)
+        - #073B4C (Midnight Green Eagle Green) - For text and dark accents
+        - Background: #F0F4F8 (Light Grayish Blue) or #FFFFFF (White for cards)
+
+        Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output. All visuals are HTML/CSS or Chart.js Canvas.
+    -->
+
+    <header class="py-12 bg-gradient-to-r from-[#118AB2] to-[#06D6A0] text-white text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">AI智能体引领产业变革</h1>
+            <p class="text-xl md:text-2xl">微软Build 2025趋势洞察</p>
+            <p class="text-md mt-2">基于微软Build 2025深度报告的市场研究与行业趋势分析</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <section class="mb-12">
+            <h2 class="section-title">第一部分：AI驱动的开发者新范式</h2>
+            <p class="text-center text-lg text-gray-700 mb-8">
+                微软正通过AI重塑开发工具与流程，旨在大幅提升生产力、优化代码质量，并降低创新门槛，引领软件开发进入一个由AI协同的新时代。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="icon-placeholder">💻</div>
+                    <h3 class="card-title">GitHub Copilot 进化：从“副驾驶”到“同行程序员”</h3>
+                    <p class="card-text mb-3">GitHub
+                        Copilot不再仅仅是代码建议者，已进化为能自主执行编码任务（如添加功能、修复Bug、代码重构）的“同行程序员”智能体。它能分析整个代码库，异步工作，并处理多模态输入，从根本上改变开发者的工作方式。
+                    </p>
+                    <ul class="list-disc list-inside card-text space-y-1">
+                        <li>自主添加新功能与修复错误</li>
+                        <li>扩展测试用例与重构代码</li>
+                        <li>分析代码库并迭代修正</li>
+                        <li>支持多模态输入（如错误截图）</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="icon-placeholder">🏭</div>
+                    <h3 class="card-title">Azure AI Foundry：企业级AI智能体“工厂”</h3>
+                    <p class="card-text mb-2">作为企业级AI应用与智能体的统一构建平台，Azure AI Foundry提供：</p>
+                    <div class="text-center my-4">
+                        <span class="highlight-stat">&gt;1900</span>
+                        <p class="text-lg text-[#073B4C] font-semibold">AI模型支持</p>
+                    </div>
+                    <p class="card-text">包括来自xAI (Grok), Meta (Llama),
+                        Anthropic等多种领先模型。其“模型路由器”能自动选择最优模型，平衡质量与成本，并提供模型评估与可观测性工具，助力企业构建强大的AI解决方案。</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="icon-placeholder">📱</div>
+                    <h3 class="card-title">Windows AI Foundry：赋能端侧AI创新</h3>
+                    <p class="card-text">Windows AI Foundry (原Windows Copilot Runtime)
+                        旨在将Windows打造成强大的端侧AI开发平台。它支持在客户端设备（包括Windows和Mac）上进行AI开发的全生命周期管理，推广如Phi-4-mini这样的小型语言模型（SLM）在设备本地运行，增强隐私和低延迟体验。
+                    </p>
+                    <ul class="list-disc list-inside card-text space-y-1 mt-2">
+                        <li>Foundry Local：本地模型部署与硬件检测</li>
+                        <li>支持Phi-4-mini等高效SLM</li>
+                        <li>集成NVIDIA Ollama/NIM模型目录</li>
+                        <li>LoRA技术优化本地模型</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="icon-placeholder">🚀</div>
+                    <h3 class="card-title">Copilot Studio 进化：专业开发者与多智能体</h3>
+                    <p class="card-text">Copilot Studio正从低代码工具演变为专业开发者构建复杂多智能体系统的平台。关键特性包括：</p>
+                    <ul class="list-disc list-inside card-text space-y-1">
+                        <li>多智能体编排：跨系统、团队协同工作。</li>
+                        <li>“计算机使用”：自动化UI交互任务。</li>
+                        <li>自带模型(BYOM)：访问Azure AI Foundry的1900+模型。</li>
+                        <li>Copilot Tuning：低代码训练企业专属智能体。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">第二部分：开放智能网络——下一代互联网</h2>
+            <p class="text-center text-lg text-gray-700 mb-8">
+                微软提出了构建“开放智能网络”的宏大愿景，旨在将互联网从信息展示平台转变为由AI智能体自主运作、协同交互的智能服务网络，重塑数字世界的交互方式。</p>
+            <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                <h3 class="card-title text-center mb-6">开放智能网络核心架构</h3>
+                <p class="card-text mb-6 text-center">
+                    该网络旨在创建一个生态系统，其中AI智能体能够跨个人、组织、团队乃至端到端的商业环境自主运作，代表用户或组织做出决策并执行任务。其核心技术包括：</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="border border-[#06D6A0] rounded-lg p-4">
+                        <div class="icon-placeholder">🌐</div>
+                        <h4 class="text-lg font-semibold text-[#118AB2] mb-2 text-center">NLWeb (自然语言网络)</h4>
+                        <p class="card-text text-sm">
+                            被誉为智能网络的“HTML”。它是一个开放框架，允许开发者用最少代码将对话式界面嵌入任何网站，使用户能通过自然语言与网络内容和服务交互，将网站转变为智能应用。</p>
+                    </div>
+                    <div class="border border-[#FFD166] rounded-lg p-4">
+                        <div class="icon-placeholder">🔗</div>
+                        <h4 class="text-lg font-semibold text-[#118AB2] mb-2 text-center">MCP (模型上下文协议)</h4>
+                        <p class="card-text text-sm">
+                            作为AI领域的“通用USB-C接口”，MCP旨在标准化AI模型、应用、智能体及工具连接外部数据和服务的方式，实现AI智能体间的无缝互操作。微软已在其各大平台深度集成MCP支持。</p>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <p class="card-text font-semibold text-center mb-2">开放智能网络示意：</p>
+                    <div class="flowchart-container horizontal-flow p-4 border border-gray-200 rounded-lg bg-gray-50">
+                        <div class="flowchart-node">用户/企业</div>
+                        <div
+                            class="flowchart-arrow text-2xl mx-2 md:mx-4 self-center md:self-auto transform md:transform-none rotate-90 md:rotate-0">
+                            ↔️</div>
+                        <div class="flex flex-col items-center">
+                            <div class="flowchart-node bg-[#06D6A0] text-white mb-2">AI智能体 A</div>
+                            <div class="text-xs text-gray-500">(NLWeb/MCP)</div>
+                        </div>
+                        <div
+                            class="flowchart-arrow text-2xl mx-2 md:mx-4 self-center md:self-auto transform md:transform-none rotate-90 md:rotate-0">
+                            ↔️</div>
+                        <div class="flex flex-col items-center">
+                            <div class="flowchart-node bg-[#06D6A0] text-white mb-2">AI智能体 B</div>
+                            <div class="text-xs text-gray-500">(NLWeb/MCP)</div>
+                        </div>
+                        <div
+                            class="flowchart-arrow text-2xl mx-2 md:mx-4 self-center md:self-auto transform md:transform-none rotate-90 md:rotate-0">
+                            ↔️</div>
+                        <div class="flowchart-node">网络服务/数据</div>
+                    </div>
+                    <p class="card-text text-xs text-center mt-2">AI智能体通过NLWeb和MCP协议，在开放网络中代表用户/企业与各种服务和数据进行智能交互和协作。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">第三部分：企业级AI的深化与普及</h2>
+            <p class="text-center text-lg text-gray-700 mb-8">微软正通过提供更易用、更安全、更强大的工具，推动AI从实验性应用走向企业核心业务流程，赋能各行各业的智能化转型。
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="icon-placeholder">🔧</div>
+                    <h3 class="card-title">M365 Copilot Tuning：低代码定制企业专属AI</h3>
+                    <p class="card-text">企业可利用自身数据、工作流和业务流程，通过低代码方式在Copilot
+                        Studio中训练和创建高度定制化的AI智能体。例如，律师事务所可生成符合其特有风格的法律文件。数据安全通过Microsoft 365服务边界和Purview信息保护得到保障。</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="icon-placeholder">🤝</div>
+                    <h3 class="card-title">多智能体协同：提升复杂任务处理能力</h3>
+                    <p class="card-text mb-3">Copilot Studio支持多智能体编排，允许跨M365、Azure
+                        AI和Fabric构建的智能体协同处理复杂任务（如新员工入职、销售自动化）。“计算机使用”功能进一步拓展自动化边界，实现与桌面应用的UI交互。</p>
+                    <p class="card-text font-semibold mb-2">示例：销售流程自动化</p>
+                    <div class="flowchart-container horizontal-flow text-sm">
+                        <div class="flowchart-node text-xs p-2">CRM数据提取</div>
+                        <div
+                            class="flowchart-arrow text-lg mx-1 self-center transform md:transform-none rotate-90 md:rotate-0">
+                            ➡️</div>
+                        <div class="flowchart-node text-xs p-2">Word提案生成</div>
+                        <div
+                            class="flowchart-arrow text-lg mx-1 self-center transform md:transform-none rotate-90 md:rotate-0">
+                            ➡️</div>
+                        <div class="flowchart-node text-xs p-2">Outlook安排跟进</div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300 md:col-span-2">
+                    <div class="icon-placeholder">🛡️</div>
+                    <h3 class="card-title text-center">安全性、合规性与治理是核心</h3>
+                    <p class="card-text text-center mb-4">微软将Entra、Defender for Cloud和Purview等安全与合规服务深度嵌入Azure AI
+                        Foundry和Copilot Studio，确保AI应用全生命周期的安全。</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="text-center p-3 border border-[#FF6B6B] rounded-lg w-40">
+                            <span class="text-3xl">🆔</span>
+                            <p class="font-semibold text-sm mt-1">Entra Agent ID</p>
+                            <p class="text-xs">为智能体分配唯一身份</p>
+                        </div>
+                        <div class="text-center p-3 border border-[#FFD166] rounded-lg w-40">
+                            <span class="text-3xl">🔎</span>
+                            <p class="font-semibold text-sm mt-1">Purview 集成</p>
+                            <p class="text-xs">数据安全与合规控制</p>
+                        </div>
+                        <div class="text-center p-3 border border-[#06D6A0] rounded-lg w-40">
+                            <span class="text-3xl">☁️</span>
+                            <p class="font-semibold text-sm mt-1">Defender for Cloud</p>
+                            <p class="text-xs">云安全态势管理</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="icon-placeholder">📊</div>
+                    <h3 class="card-title">SQL Server 2025：AI驱动的智能数据库</h3>
+                    <p class="card-text mb-4">SQL Server 2025将AI直接集成到数据库引擎，通过内置向量搜索等功能，支持语义搜索，发现深层数据关联，并提供自然对话式体验。</p>
+                    <div class="chart-container h-64 md:h-72">
+                        <canvas id="sqlServerChart"></canvas>
+                    </div>
+                    <p class="card-text text-xs text-center mt-2">示意图：AI增强型数据库在查询效率和洞察深度上的提升。</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <div class="icon-placeholder">🔬</div>
+                    <h3 class="card-title">Microsoft Discovery：加速科学研究</h3>
+                    <p class="card-text">全新的企业级AI平台，利用智能体AI变革研发流程，在药物研发、材料科学等领域加速创新。</p>
+                    <div class="text-center my-4">
+                        <span class="highlight-stat">200</span>
+                        <p class="text-lg text-[#073B4C] font-semibold">小时发现新型冷却剂原型</p>
+                    </div>
+                    <p class="card-text">研究人员可与专业AI智能体团队和知识引擎协作，实现更快、更大规模、更高准确性的科学发现。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">第四部分：行业影响与市场格局</h2>
+            <p class="text-center text-lg text-gray-700 mb-8">
+                微软的AI智能体战略正深刻影响软件开发、垂直行业及物联网领域，同时加剧科技巨头间的竞争，并为初创企业带来新的机遇与挑战。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="card-title">软件开发行业：Agentic DevOps 提升效率</h3>
+                    <p class="card-text mb-4">Agentic DevOps有望自动化和优化整个软件生命周期，大幅提升开发效率和应用质量。</p>
+                    <div class="chart-container h-72 md:h-80">
+                        <canvas id="devOpsImpactChart"></canvas>
+                    </div>
+                    <p class="card-text text-xs text-center mt-2">示意图：Agentic DevOps在各开发阶段的潜在效率提升。</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="card-title">垂直行业应用赋能</h3>
+                    <p class="card-text mb-4">AI智能体正在赋能各行各业，提升效率、优化决策并创造新价值。</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">🏭</span>
+                            <div><span class="font-semibold text-[#118AB2]">制造业 (如富士通):</span> 销售自动化、生产优化。</div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">⚕️</span>
+                            <div><span class="font-semibold text-[#118AB2]">医疗健康 (如斯坦福医疗):</span> 临床决策支持、药物发现加速。</div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">💰</span>
+                            <div><span class="font-semibold text-[#118AB2]">金融 (如毕马威):</span> 欺诈检测、合规自动化、风险评估。</div>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-2xl mr-3">🛒</span>
+                            <div><span class="font-semibold text-[#118AB2]">零售/客服 (如Eneco):</span> 个性化体验、库存管理。</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="card-title">物联网(IoT)与边缘AI变革</h3>
+                    <p class="card-text mb-4">Windows AI Foundry和Fabric数字孪生等技术，推动边缘AI在物联网场景中的应用，实现低延迟、高隐私的智能控制。</p>
+                    <div class="chart-container h-72 md:h-80">
+                        <canvas id="edgeAiGrowthChart"></canvas>
+                    </div>
+                    <p class="card-text text-xs text-center mt-2">示意图：全球边缘AI市场预计持续增长。</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="card-title">科技巨头AI竞争格局</h3>
+                    <p class="card-text mb-4">微软凭借多模型策略、企业级服务和端侧AI布局，在与谷歌、AWS、苹果的竞争中展现独特优势。</p>
+                    <div class="chart-container h-80 md:h-96">
+                        <canvas id="competitiveLandscapeChart"></canvas>
+                    </div>
+                    <p class="card-text text-xs text-center mt-2">示意图：主要科技公司在AI领域的战略重点比较（定性评估）。</p>
+                </div>
+                <div
+                    class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300 md:col-span-2">
+                    <h3 class="card-title text-center">初创企业的机遇与挑战</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-lg text-[#06D6A0] mb-2">新机遇领域：</h4>
+                            <ul class="list-disc list-inside card-text space-y-1">
+                                <li>垂直领域AI智能体开发</li>
+                                <li>AI智能体生命周期管理工具</li>
+                                <li>AI安全与伦理合规解决方案</li>
+                                <li>AI就绪数据与遗留代码重构服务</li>
+                                <li>AI成本优化工具</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-lg text-[#FF6B6B] mb-2">面临的挑战：</h4>
+                            <ul class="list-disc list-inside card-text space-y-1">
+                                <li>基础AI功能（如聊天机器人）商品化</li>
+                                <li>与大型平台原生工具的竞争</li>
+                                <li>需要深度领域知识和差异化价值</li>
+                                <li>快速的技术迭代和市场变化</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="card-text mt-4 text-center">初创企业需专注于利基市场、提供独特价值，并利用大型平台生态加速发展，以在激烈的竞争中脱颖而出。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="section-title">第五部分：迎接智能体时代：战略、技能与伦理</h2>
+            <p class="text-center text-lg text-gray-700 mb-8">成功驾驭AI智能体带来的变革，企业和个人都需要在战略、技能和伦理层面进行深思熟虑的规划和持续的演进。</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="card-title">企业采纳AI智能体战略</h3>
+                    <p class="card-text mb-4">企业应制定清晰的AI采纳路线图，从小处着手，衡量结果，并进行迭代优化，同时重视变革管理和人才培养。</p>
+                    <div class="pyramid-container my-4">
+                        <div class="pyramid-level w-full md:w-5/6">顶层：AI驱动的业务转型与创新</div>
+                        <div class="pyramid-level w-full md:w-4/6 bg-[#06D6A0]">中层：多智能体协同与核心流程优化</div>
+                        <div class="pyramid-level w-full md:w-3/6 bg-[#FFD166] text-[#073B4C]">底层：基础AI能力建设与试点应用</div>
+                    </div>
+                    <p class="card-text text-xs text-center">示意图：企业AI智能体采纳成熟度模型。</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="card-title">未来工作模式与“AI智能体老板”</h3>
+                    <p class="card-text">
+                        未来工作将更强调人机协作。微软预测将出现“AI智能体老板”这一新角色，负责构建、委派并管理自主AI智能体团队。员工需具备像管理AI驱动初创公司CEO那样的思维。</p>
+                    <div class="text-center mt-4">
+                        <span class="text-5xl">🧑‍💼➡️🤖</span>
+                        <p class="font-semibold text-[#118AB2] mt-2">人类指导，AI执行，协同创造</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300 md:col-span-2">
+                    <h3 class="card-title text-center">智能体时代所需核心技能</h3>
+                    <p class="card-text text-center mb-4">技术、战略、协作、伦理及软技能的全面发展至关重要。</p>
+                    <div class="chart-container h-96 md:h-[450px]">
+                        <canvas id="coreSkillsChart"></canvas>
+                    </div>
+                    <p class="card-text text-xs text-center mt-2">示意图：AI智能体时代关键技能领域的重要性（定性评估）。</p>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg shadow-xl p-6 hover:shadow-2xl transition-shadow duration-300 md:col-span-2">
+                    <h3 class="card-title text-center">治理、伦理与社会影响</h3>
+                    <p class="card-text text-center mb-4">负责任的AI发展需要关注问责制、数据隐私、算法偏见，并积极应对其对就业市场和社会结构的长期影响。</p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 card-text">
+                        <li class="bg-red-50 p-3 rounded-lg border border-[#FF6B6B]"><strong
+                                class="text-[#FF6B6B]">AI问责制:</strong> 明确自主智能体行为的责任归属。</li>
+                        <li class="bg-yellow-50 p-3 rounded-lg border border-[#FFD166]"><strong
+                                class="text-[#FFD166]">数据隐私:</strong> 保护个人和企业数据在智能体交互中的安全。</li>
+                        <li class="bg-green-50 p-3 rounded-lg border border-[#06D6A0]"><strong
+                                class="text-[#06D6A0]">算法偏见:</strong> 检测并减轻AI决策中的不公平性。</li>
+                        <li class="bg-blue-50 p-3 rounded-lg border border-[#118AB2]"><strong
+                                class="text-[#118AB2]">信息真实性:</strong> 打击AI幻觉和错误信息传播。</li>
+                        <li class="bg-indigo-50 p-3 rounded-lg border border-indigo-400"><strong
+                                class="text-indigo-500">就业市场转型:</strong> 应对岗位变化，推动技能重塑。</li>
+                        <li class="bg-purple-50 p-3 rounded-lg border border-purple-400"><strong
+                                class="text-purple-500">数字鸿沟:</strong> 确保AI工具和素养的公平获取。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="text-center py-12 bg-gradient-to-r from-[#073B4C] to-[#118AB2] text-white rounded-lg shadow-xl">
+            <h2 class="text-3xl font-bold mb-4">结论：开启智能未来的新篇章</h2>
+            <p class="text-lg max-w-3xl mx-auto mb-6 px-4">Microsoft Build
+                2025揭示了一个由AI智能体驱动、人机协同的未来。这不仅是技术的飞跃，更是对工作方式、商业模式乃至社会结构的深刻预演。唯有积极拥抱变化，持续学习和创新，才能在智能体时代的浪潮中把握先机，共创智能未来。
+            </p>
+            <div class="text-4xl">🚀✨💡</div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 text-sm text-gray-600 bg-gray-100">
+        <p>&copy; 2025 AI趋势洞察信息图。基于公开信息分析。</p>
+    </footer>
+
+    <script>
+        const CHART_COLORS = {
+            red: '#FF6B6B',
+            yellow: '#FFD166',
+            green: '#06D6A0',
+            blue: '#118AB2',
+            darkBlue: '#073B4C',
+            lightGray: '#E0E0E0'
+        };
+
+        function wrapLabels(labels, maxWidth) {
+            return labels.map(label => {
+                if (typeof label === 'string' && label.length > maxWidth) {
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    words.forEach(word => {
+                        if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                            lines.push(currentLine.trim());
+                            currentLine = word + ' ';
+                        } else {
+                            currentLine += word + ' ';
+                        }
+                    });
+                    lines.push(currentLine.trim());
+                    return lines;
+                }
+                return label;
+            });
+        }
+
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function (tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) {
+                        return label.join(' ');
+                    }
+                    return label;
+                }
+            }
+        };
+
+        // Chart 1: SQL Server 2025 AI Enhancement (Conceptual Bar Chart)
+        const sqlCtx = document.getElementById('sqlServerChart');
+        if (sqlCtx) {
+            new Chart(sqlCtx, {
+                type: 'bar',
+                data: {
+                    labels: wrapLabels(['传统查询速度', 'AI增强查询速度', '传统洞察深度', 'AI增强洞察深度'], 16),
+                    datasets: [{
+                        label: '性能/深度评分 (概念值)',
+                        data: [60, 90, 50, 85],
+                        backgroundColor: [CHART_COLORS.blue, CHART_COLORS.green, CHART_COLORS.blue, CHART_COLORS.green],
+                        borderColor: [CHART_COLORS.darkBlue, CHART_COLORS.darkBlue, CHART_COLORS.darkBlue, CHART_COLORS.darkBlue],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            title: { display: true, text: '评分 (0-100)' }
+                        }
+                    },
+                    plugins: {
+                        title: { display: true, text: 'SQL Server AI增强概念对比' },
+                        legend: { display: false },
+                        tooltip: commonTooltipOptions
+                    }
+                }
+            });
+        }
+
+        // Chart 2: Agentic DevOps Impact (Conceptual Stacked Bar Chart)
+        const devOpsCtx = document.getElementById('devOpsImpactChart');
+        if (devOpsCtx) {
+            new Chart(devOpsCtx, {
+                type: 'bar',
+                data: {
+                    labels: wrapLabels(['需求分析', '设计与架构', '编码与单元测试', '集成与测试', '部署与运维'], 16),
+                    datasets: [
+                        {
+                            label: '传统方法耗时占比',
+                            data: [15, 20, 40, 15, 10],
+                            backgroundColor: CHART_COLORS.lightGray,
+                        },
+                        {
+                            label: 'AI提效后预估耗时占比',
+                            data: [10, 15, 20, 10, 5],
+                            backgroundColor: CHART_COLORS.green,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { stacked: true },
+                        y: { stacked: true, title: { display: true, text: '相对耗时占比 (%)' } }
+                    },
+                    plugins: {
+                        title: { display: true, text: 'Agentic DevOps 概念性效率提升' },
+                        tooltip: {
+                            ...commonTooltipOptions,
+                            mode: 'index',
+                            intersect: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Chart 3: Edge AI Market Growth (Conceptual Line Chart)
+        const edgeAiCtx = document.getElementById('edgeAiGrowthChart');
+        if (edgeAiCtx) {
+            new Chart(edgeAiCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2023', '2024', '2025 (预测)', '2026 (预测)', '2027 (预测)'],
+                    datasets: [{
+                        label: '全球边缘AI市场规模指数 (概念)',
+                        data: [100, 130, 170, 220, 280],
+                        borderColor: CHART_COLORS.green,
+                        backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            title: { display: true, text: '市场规模指数' }
+                        }
+                    },
+                    plugins: {
+                        title: { display: true, text: '边缘AI市场增长趋势 (概念)' },
+                        tooltip: commonTooltipOptions
+                    }
+                }
+            });
+        }
+
+        // Chart 4: Competitive Landscape (Conceptual Radar Chart)
+        const landscapeCtx = document.getElementById('competitiveLandscapeChart');
+        if (landscapeCtx) {
+            new Chart(landscapeCtx, {
+                type: 'radar',
+                data: {
+                    labels: wrapLabels([
+                        '模型选择多样性', '企业级服务能力', '开发者生态系统',
+                        '端侧AI布局', '多智能体技术', '开放性与互操作性'
+                    ], 16),
+                    datasets: [
+                        {
+                            label: '微软 (MSFT)',
+                            data: [9, 9, 8, 8, 9, 7],
+                            borderColor: CHART_COLORS.blue,
+                            backgroundColor: 'rgba(17, 138, 178, 0.2)',
+                            pointBackgroundColor: CHART_COLORS.blue,
+                        },
+                        {
+                            label: '谷歌 (GOOG)',
+                            data: [7, 7, 8, 7, 8, 8],
+                            borderColor: CHART_COLORS.red,
+                            backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                            pointBackgroundColor: CHART_COLORS.red,
+                        },
+                        {
+                            label: 'AWS',
+                            data: [8, 8, 7, 6, 7, 6],
+                            borderColor: CHART_COLORS.yellow,
+                            backgroundColor: 'rgba(255, 209, 102, 0.2)',
+                            pointBackgroundColor: CHART_COLORS.yellow,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 10,
+                            pointLabels: {
+                                font: { size: 10 } // Adjust if labels overlap
+                            },
+                            ticks: {
+                                stepSize: 2
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: { display: true, text: 'AI领域主要参与者战略比较 (定性)' },
+                        tooltip: commonTooltipOptions
+                    }
+                }
+            });
+        }
+
+        // Chart 5: Core Skills for Agentic Era (Conceptual Grouped Bar Chart)
+        const skillsCtx = document.getElementById('coreSkillsChart');
+        if (skillsCtx) {
+            new Chart(skillsCtx, {
+                type: 'bar',
+                data: {
+                    labels: wrapLabels([
+                        '技术技能 (如智能体开发、提示工程)',
+                        '战略思维 (如AI委派、业务重塑)',
+                        '协作与管理 (如人机团队、变革管理)',
+                        '伦理与治理 (如偏见检测、数据隐私)',
+                        '软技能 (如批判性思维、适应性)'
+                    ], 20), // Increased wrap width for longer labels
+                    datasets: [
+                        {
+                            label: '当前需求度 (概念)',
+                            data: [8, 7, 7, 6, 9],
+                            backgroundColor: CHART_COLORS.blue,
+                        },
+                        {
+                            label: '未来重要性 (概念)',
+                            data: [9, 9, 8, 9, 10],
+                            backgroundColor: CHART_COLORS.green,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y', // Horizontal bar chart for better label readability
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 10,
+                            title: { display: true, text: '重要性/需求度评分 (0-10)' }
+                        },
+                        y: {
+                            ticks: {
+                                autoSkip: false, // Ensure all labels are shown
+                                font: { size: 10 }
+                            }
+                        }
+                    },
+                    plugins: {
+                        title: { display: true, text: 'AI智能体时代核心技能重要性 (定性)' },
+                        tooltip: commonTooltipOptions
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
