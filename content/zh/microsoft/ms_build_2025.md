@@ -7,4 +7,4 @@ categories: ["big_companies"]
 description: "本文介绍了Microsoft Build 2025 趋势洞察。"
 ---
 
-{{ msbuild2025}}
+{{< msbuild2025 >}}
