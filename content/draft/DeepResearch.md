@@ -5,6 +5,8 @@ lastmod: "2025-05-13"
 changelog:
   - date: "2025-05-13"
     change: "添加了字节跳动的DeerFlow和LangGraph的local DR"
+  - date: "2025-05-25"
+    change: "添加了u14app的DeepResearch"
 draft: false
 description: "Deep Research 深度研究"
 tags: ["AI", "Ascent", "Agent", "红杉资本"]
@@ -168,6 +170,12 @@ DeerFlow是一个由社区驱动的深度研究框架，结合语言模型和工
 DeerFlow实现了一种模块化的多智能体系统架构，专为自动化研究和代码分析而设计。该系统基于LangGraph构建，支持灵活的基于状态的工作流程，各组件通过定义明确的消息传递系统进行通信。支持搜索引擎：Tavily DuckDuckGo，Brave Search，Arxiv
 工作流程： <https://deerflow.tech/#multi-agent-architecture>
 
+### 天工的DeepResearch
+
+- 官网：<https://tiangong.ai/>
+- 外网链接：<https://skywork.ai/>  #我使用这个，送token
+- 代码：<https://github.com/SkyworkAI/DeepResearchAgent>
+
 ### dzhng的DeepResearch
 
 - github: <https://github.com/dzhng/deep-research>
@@ -257,6 +265,35 @@ flowchart TB
 ### STORM: Stanford Open Virtual Assistant for Research (SOVAR)
 
 - github: <https://github.com/stanford-oval/storm>
+
+### u14app的DeepResearch
+
+- 使用任何LLM（大型语言模型）进行深入研究。支持SSE API和MCP服务器。Hobby: 这个效果貌似不错，和天工的类似。
+- Demo: <https://research.u14.app/>
+- github: <https://github.com/u14app/deep-research>
+- Deepwiki: <https://deepwiki.com/u14app/deep-research>
+
+**功能**：
+
+- 极速深度调研: 约2分钟内生成全面的研究报告，大幅加速你的调研流程。
+- 多平台支持: 支持快速部署至 Vercel、Cloudflare 等多个平台。
+- AI驱动: 利用先进的AI模型，提供准确且有洞见的分析。
+- 注重隐私: 你的数据始终本地存储于浏览器，确保隐私与安全。
+- 多大模型兼容: 支持多种主流大语言模型，包括 Gemini、OpenAI、Anthropic、Deepseek、Grok、Mistral、Azure OpenAI、所有兼容 OpenAI 的 LLM、OpenRouter、Ollama 等。
+- 支持网页搜索: 支持 Searxng、Tavily、Firecrawl、Exa、Bocha 等搜索引擎，让不自带搜索能力的 LLM 也能便捷使用网页搜索功能。
+- 思维与任务模型: 采用先进的“思维”和“任务”模型，兼顾深度与速度，确保高质量、快速输出。支持切换不同调研模型。
+- 支持进一步调研: 在项目任意阶段均可细化或调整调研内容，并支持从该阶段重新调研。
+- 本地知识库: 支持上传和处理文本、Office、PDF 等资源文件，生成本地知识库。
+- 成果编辑: 支持对调研内容进行编辑，提供 WYSIWYM 和 Markdown 两种编辑模式，可调整阅读难度、文章长度及全文翻译。
+- 知识图谱: 支持一键生成知识图谱，系统化理解报告内容。
+- 调研历史: 支持保存调研历史，随时回顾以往成果，并可进行二次深度研究。
+- 本地与服务器API: 支持本地和服务器API调用方式，灵活满足不同需求。
+- 支持SaaS与MCP: 可通过 SSE API 作为深度调研服务（SaaS）使用，也可通过 MCP 服务集成至其他AI服务。
+- 支持PWA: 采用渐进式Web应用（PWA）技术，可像软件一样使用本项目。
+- 多密钥并发: 支持多密钥并发调用，提升API响应效率。
+- 多语言支持: 支持英语、简体中文、西班牙语等多语言。
+- 现代技术栈: 基于 Next.js 15 和 Shadcn UI 开发，带来现代、高性能和美观的用户体验。
+- MIT开源协议: 开源且免费，可自由用于个人和商业用途，遵循 MIT 许可证。
 
 ### 其他轻量级DeepResearch实现
 
