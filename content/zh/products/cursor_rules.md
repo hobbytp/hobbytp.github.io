@@ -62,12 +62,6 @@ Cursor 的 `.cursor/rules` 既可以是**单一规则文件**，也可以是**�
 方法二：
     使用在线工具“<https://cursorrules.agnt.one/chat>”，通过聊天的方式，提出需求，让网站根据你的需求，生成一个规则文件。
 
-```
+# 参考
 
-
-
-
-
-
-
-
+- <https://github.com/sanjeed5/awesome-cursor-rules-mdc/blob/main/rules-mdc/ant-design.mdc>
