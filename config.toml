@@ -39,7 +39,6 @@ imageUrl = "/images/profile.jpg"
 imageTitle = "Peng Tan"
 
 
-
 [menu]
 [[menu.main]]
 name = "首页"
@@ -53,7 +52,7 @@ weight = 2
 
 [[menu.main]]
 name = "名人洞察"
-url = "/celebrity_insights"
+url = "/categories/celebrity_insights"
 weight = 3
 
 [[menu.main]]
