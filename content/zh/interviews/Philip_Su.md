@@ -1,6 +1,6 @@
 ---
 title: "微软/Meta/OpenAI工程师Philip Su访谈"
-date: "2025-05-26T18:30:00+08:00"
+date: "2025-05-27T18:30:00+08:00"
 draft: false
 tags: ["engineer", "career"]
 categories: ["celebrity_insights","interview"]
