@@ -5,6 +5,7 @@ draft: false
 description: "我在AI领域的一些思考"
 tags: ["AI", "大模型", "个人思考", "Thinking"]
 categories: ["my_insights"]  
+lastmod: "2025-05-29T22:10:00+08:00"
 # layout: mythinkings
 ---
 这里会持续更新我在AI领域的一些思考。这是一个动态更新的过程，但是我会保留最开始的粗略想法和其演进过程，尽可能保留所有的痕迹。
