@@ -1,7 +1,7 @@
 ---
 title: "日常想法随手记-2025"
 date: "2025-05-13T14:20:00+08:00"
-lastmod: "2025-05-15T22:20:00+08:00"
+lastmod: "2025-05-29T22:10:00+08:00"
 draft: false
 description: "日常想法随手记"
 tags: ["AI", "Thinking", "Daily","2025"]
