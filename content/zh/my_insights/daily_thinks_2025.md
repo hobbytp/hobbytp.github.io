@@ -12,6 +12,15 @@ categories: ["my_insights"]
 
 ## 2025 May
 
+### 2025-05-29
+
+学习需要结合从上到下的整体理解和从下到上的基础夯实，是一个动态的过程，在不同场景中灵活切换——有时先从上到下（如程序员熟悉新开源代码），有时先从下到上（如学生掌握相对论），有时是以一个为主，另一为辅等等，以实现更有效的知识掌握和应用。
+
+### 2025-05-27
+
+- 微软/Meta/OpenAI Distinguished Engineer- Philip Su访谈, 可以看[这里](https://hobbytp.github.io/zh/interviews/Philip_Su/)
+-
+
 ### 2025-05-22
 
 - 我给Google IO 2025做了个[总结](https://hobbytp.github.io/zh/google/google_io_2025/)
