@@ -144,6 +144,348 @@ ACI(Agent-Computer Interfaces)
 [smithery](https://smithery.ai/)
 [Github库：Awesome MCP Server](https://github.com/appcypher/awesome-mcp-servers?tab=readme-ov-file)
 
+## Demos
+
+### LangChain + Firecrawl MCP Server
+
+LangChain 可以通过 langchain-mcp-adapters 库调用 Firecrawl 的 MCP 工具，需设置 MCP 服务器。
+Firecrawl MCP 服务器通过 npx -y firecrawl-mcp 启动，需配置 FIRECRAWL_API_KEY。
+根据提供的 JSON 配置，Firecrawl MCP 服务器通过以下命令启动：
+{
+  "mcpServers": {
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+在 Python 代码中，使用 langchain-mcp-adapters 的 StdioServerParameters 配置此服务器。
+
+```python
+import os
+from langchain_mcp_adapters import StdioServerParameters, StdioMCPClient
+from langchain.agents import initialize_agent, AgentType
+from langchain_openai import OpenAI
+
+# 设置 OpenAI API 密钥（根据需要替换为其他 LLM）
+os.environ["OPENAI_API_KEY"] = "your_openai_api_key"
+
+# 确保 FIRECRAWL_API_KEY 已设置
+assert "FIRECRAWL_API_KEY" in os.environ, "请设置 FIRECRAWL_API_KEY 环境变量"
+
+# 配置 MCP 客户端
+server_params = StdioServerParameters(
+    command="npx",
+    args=["-y", "firecrawl-mcp"],
+    env={"FIRECRAWL_API_KEY": os.environ["FIRECRAWL_API_KEY"]}
+)
+
+mcp_client = StdioMCPClient(server_params)
+tools = mcp_client.get_tools()
+
+# 初始化 LLM
+llm = OpenAI(temperature=0)
+
+# 初始化代理
+agent = initialize_agent(
+    tools,
+    llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
+)
+
+# 示例：运行代理以抓取网页内容
+response = agent.run("请抓取 https://firecrawl.dev 的内容")
+print(response)
+```
+
+#### 关键要点
+
+- LangChain 可以通过 `langchain-mcp-adapters` 库调用 Firecrawl 的 MCP 工具，需设置 MCP 服务器。
+- Firecrawl MCP 服务器通过 `npx -y firecrawl-mcp` 启动，需配置 `FIRECRAWL_API_KEY`。
+- LangChain 代理可以利用 Firecrawl 的工具（如抓取、爬取、搜索）执行网页数据提取任务。
+- 需要安装 `langchain-mcp-adapters`、`langchain` 和 `langchain-openai`，并确保 `npx` 已安装。
+- 直接调用 Firecrawl 工具无需 MCP，但用户明确要求通过 MCP。
+
+#### 设置环境
+
+要使用 LangChain 通过 MCP 调用 Firecrawl 工具，首先需要安装必要的 Python 包和 Node.js 的 `npx` 工具。运行以下命令：
+
+```bash
+pip install langchain-mcp-adapters langchain langchain-openai
+```
+
+确保已安装 Node.js 和 npm，因为 `npx` 用于启动 Firecrawl MCP 服务器。获取 Firecrawl API 密钥并设置环境变量：
+
+```bash
+export FIRECRAWL_API_KEY=your_api_key_here
+```
+
+#### 配置 MCP 服务器
+
+根据提供的 JSON 配置，Firecrawl MCP 服务器通过以下命令启动：
+
+```json
+{
+  "mcpServers": {
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+在 Python 代码中，使用 `langchain-mcp-adapters` 的 `StdioServerParameters` 配置此服务器。
+
+#### 示例代码
+
+以下 Python 代码展示了如何通过 MCP 调用 Firecrawl 工具并在 LangChain 代理中使用：
+
+```python
+import os
+from langchain_mcp_adapters import StdioServerParameters, StdioMCPClient
+from langchain.agents import initialize_agent, AgentType
+from langchain_openai import OpenAI
+
+# 设置 OpenAI API 密钥（根据需要替换为其他 LLM）
+os.environ["OPENAI_API_KEY"] = "your_openai_api_key"
+
+# 确保 FIRECRAWL_API_KEY 已设置
+assert "FIRECRAWL_API_KEY" in os.environ, "请设置 FIRECRAWL_API_KEY 环境变量"
+
+# 配置 MCP 客户端
+server_params = StdioServerParameters(
+    command="npx",
+    args=["-y", "firecrawl-mcp"],
+    env={"FIRECRAWL_API_KEY": os.environ["FIRECRAWL_API_KEY"]}
+)
+
+mcp_client = StdioMCPClient(server_params)
+tools = mcp_client.get_tools()
+
+# 初始化 LLM
+llm = OpenAI(temperature=0)
+
+# 初始化代理
+agent = initialize_agent(
+    tools,
+    llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
+)
+
+# 示例：运行代理以抓取网页内容
+response = agent.run("请抓取 https://firecrawl.dev 的内容")
+print(response)
+```
+
+#### 使用说明
+
+- **运行代理**：上述代码创建一个 LangChain 代理，自动选择合适的 Firecrawl 工具（如 `scrape`）来处理请求。
+- **直接调用工具**：如果需要调用特定工具（如 `scrape`），可以从 `tools` 列表中选择并运行，例如：
+
+```python
+scrape_tool = next(tool for tool in tools if tool.name == "scrape")
+result = scrape_tool.run({"url": "https://firecrawl.dev"})
+```
+
+- **注意事项**：确保 `npx` 可执行，且 `firecrawl-mcp` 包已通过 npm 全局安装（`npm install -g firecrawl-mcp`）。如果遇到问题，可尝试在 Windows 上运行 `cmd /c "set FIRECRAWL_API_KEY=your-api-key && npx -y firecrawl-mcp"`。
+
+---
+
+### 详细报告
+
+用户提供的 JSON 配置表明，Firecrawl MCP 服务器通过 `npx -y firecrawl-mcp` 启动，并需要设置 `FIRECRAWL_API_KEY` 环境变量。本报告详细说明如何在 LangChain 中通过 MCP 调用 Firecrawl 工具，并提供完整的 Python 代码实现。
+
+#### Firecrawl 功能
+
+Firecrawl 提供多种功能，适合 LLM 应用：
+
+- **抓取（Scrape）**：提取单个 URL 的内容，返回 markdown 或 HTML。
+- **批量抓取（Batch Scrape）**：处理多个 URL，返回 markdown 或 HTML 数组。
+- **爬取（Crawl）**：爬取网站及其子页面，返回每页的 markdown 或 HTML。
+- **映射（Map）**：发现相关 URL，返回 URL 列表。
+- **搜索（Search）**：执行网页搜索，返回结果列表。
+- **提取（Extract）**：将网页内容转换为结构化 JSON 数据。
+- **深度研究（Deep Research）**：进行深入分析，返回摘要和来源。
+- **生成 LLMs.txt**：创建特定格式的文本文件。
+
+这些功能通过 Firecrawl MCP 服务器以工具形式提供，LangChain 可以通过 `langchain-mcp-adapters` 库访问这些工具。
+
+#### MCP 协议
+
+MCP（Model Context Protocol）是一个开放协议，旨在标准化 AI 代理与外部工具的交互。它允许 LLM 动态发现和调用工具，无需为每个工具编写自定义代码。Firecrawl 的 MCP 服务器（`firecrawl-mcp`）通过 Node.js 包运行，提供上述工具的接口。LangChain 通过 `langchain-mcp-adapters` 库支持 MCP，将 MCP 工具转换为 LangChain 兼容的工具。
+
+#### 设置环境
+
+要通过 MCP 在 LangChain 中调用 Firecrawl，需要以下准备：
+
+1. **安装 Python 包**：
+
+   ```bash
+   pip install langchain-mcp-adapters langchain langchain-openai
+   ```
+
+2. **安装 Node.js 和 npm**：确保 `npx` 可执行，用于运行 `firecrawl-mcp`。
+3. **获取 API 密钥**：从 [Firecrawl API 密钥页面](https://www.firecrawl.dev/app/api-keys) 获取 `FIRECRAWL_API_KEY` 并设置环境变量：
+
+   ```bash
+   export FIRECRAWL_API_KEY=your_api_key_here
+   ```
+
+4. **安装 Firecrawl MCP（可选）**：全局安装 `firecrawl-mcp` 以确保命令可用：
+
+   ```bash
+   npm install -g firecrawl-mcp
+   ```
+
+#### 配置 MCP 服务器
+
+用户提供的 JSON 配置如下：
+
+```json
+{
+  "mcpServers": {
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp"],
+      "env": {
+        "FIRECRAWL_API_KEY": "your_api_key_here"
+      }
+    }
+  }
+}
+```
+
+此配置指定使用 `npx -y firecrawl-mcp` 启动 Firecrawl MCP 服务器，并通过环境变量传递 API 密钥。在 LangChain 中，使用 `StdioServerParameters` 实现此配置。
+
+#### Python 代码实现
+
+以下是完整的 Python 代码，用于通过 MCP 调用 Firecrawl 工具并在 LangChain 代理中使用：
+
+```python
+import os
+from langchain_mcp_adapters import StdioServerParameters, StdioMCPClient
+from langchain.agents import initialize_agent, AgentType
+from langchain_openai import OpenAI
+
+# 设置 OpenAI API 密钥（可替换为其他 LLM）
+os.environ["OPENAI_API_KEY"] = "your_openai_api_key"
+
+# 确保 FIRECRAWL_API_KEY 已设置
+assert "FIRECRAWL_API_KEY" in os.environ, "请设置 FIRECRAWL_API_KEY 环境变量"
+
+# 配置 MCP 客户端
+server_params = StdioServerParameters(
+    command="npx",
+    args=["-y", "firecrawl-mcp"],
+    env={"FIRECRAWL_API_KEY": os.environ["FIRECRAWL_API_KEY"]}
+)
+
+mcp_client = StdioMCPClient(server_params)
+tools = mcp_client.get_tools()
+
+# 初始化 LLM
+llm = OpenAI(temperature=0)
+
+# 初始化代理
+agent = initialize_agent(
+    tools,
+    llm,
+    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
+)
+
+# 示例：运行代理以抓取网页内容
+response = agent.run("请抓取 https://firecrawl.dev 的内容")
+print(response)
+```
+
+#### 代码说明
+
+- **环境变量**：代码检查 `FIRECRAWL_API_KEY` 是否设置，并设置 `OPENAI_API_KEY`（如使用 OpenAI LLM）。
+- **MCP 客户端**：`StdioServerParameters` 配置 `npx -y firecrawl-mcp` 命令和环境变量，`StdioMCPClient` 启动服务器并获取工具。
+- **代理初始化**：使用 `initialize_agent` 创建一个零样本 ReAct 代理，加载 Firecrawl 工具，允许根据自然语言查询选择合适的工具。
+- **运行示例**：代理运行查询“请抓取 <https://firecrawl.dev> 的内容”，自动调用 Firecrawl 的 `scrape` 工具。
+
+#### 直接调用特定工具
+
+如果需要直接调用特定 Firecrawl 工具（如 `scrape`），可以从 `tools` 列表中选择并运行：
+
+```python
+scrape_tool = next(tool for tool in tools if tool.name == "scrape")
+result = scrape_tool.run({"url": "https://firecrawl.dev"})
+print(result)
+```
+
+#### 替代方法：直接集成
+
+虽然用户要求通过 MCP 调用 Firecrawl，LangChain 也支持直接使用 `FireCrawlLoader` 调用 Firecrawl，无需 MCP：
+
+```python
+from langchain_community.document_loaders.firecrawl import FireCrawlLoader
+
+loader = FireCrawlLoader(
+    api_key=os.environ["FIRECRAWL_API_KEY"],
+    url="https://firecrawl.dev",
+    mode="scrape"
+)
+documents = loader.load()
+```
+
+此方法更简单，但不使用 MCP，可能不符合用户要求。
+
+#### 注意事项
+
+- **依赖项**：确保 `npx` 和 `firecrawl-mcp` 可用。如果遇到问题，可尝试手动安装 `firecrawl-mcp` 或在 Windows 上使用 `cmd /c "set FIRECRAWL_API_KEY=your-api-key && npx -y firecrawl-mcp"`。
+- **LLM 选择**：代码使用 OpenAI，但可替换为其他 LangChain 支持的 LLM（如 Hugging Face 模型）。
+- **错误处理**：MCP 服务器支持自动重试（最多 3 次，初始延迟 1000ms，最大延迟 10000ms，退避因子 2），但需确保网络稳定。
+- **性能优化**：对于批量操作，可使用 Firecrawl 的 `batch_scrape` 或 `crawl` 工具，通过 MCP 客户端调用。
+
+#### 工具列表
+
+Firecrawl MCP 服务器提供的工具包括：
+
+| 工具名称         | 功能描述                              | 返回格式            |
+|------------------|-------------------------------------|-------------------|
+| Scrape           | 抓取单个 URL 的内容                  | Markdown/HTML     |
+| Batch Scrape     | 抓取多个 URL 的内容                  | Markdown/HTML 数组 |
+| Crawl            | 爬取网站及其子页面                   | Markdown/HTML 数组 |
+| Map              | 发现相关 URL                        | URL 列表          |
+| Search           | 执行网页搜索                        | 结果列表          |
+| Extract          | 将网页内容转换为结构化数据            | JSON              |
+| Deep Research    | 进行深入分析，返回摘要和来源          | 摘要和来源        |
+| Generate LLMs.txt| 创建特定格式的文本文件               | 文本              |
+
+#### 结论
+
+通过 `langchain-mcp-adapters`，LangChain 可以无缝调用 Firecrawl MCP 服务器的工具，适合需要动态网页抓取的 AI 应用。用户提供的配置通过 `StdioServerParameters` 实现，代理可以根据自然语言查询自动选择工具。直接调用特定工具也是可行的，具体取决于应用需求。
+
 ## 参考
 
-[cline + DS + MCP](https://mp.weixin.qq.com/s/PuHwfJk3EZv8eR4y10EAvQ)
+- [cline + DS + MCP](https://mp.weixin.qq.com/s/PuHwfJk3EZv8eR4y10EAvQ)
+关键引用
+- [Firecrawl 官方网站](https://www.firecrawl.dev/)
+- [LangChain MCP Adapters GitHub](https://github.com/langchain-ai/langchain-mcp-adapters)
+- [Model Context Protocol 介绍](https://modelcontextprotocol.io/introduction)
+- [LangChain 文档](https://python.langchain.com/docs/)
+- [Firecrawl MCP Server GitHub](https://github.com/mendableai/firecrawl-mcp-server)
+- [LangChain Firecrawl 集成](https://python.langchain.com/docs/integrations/document_loaders/firecrawl/)
+- [LangChain MCP 适配器公告](https://changelog.langchain.com/announcements/mcp-adapters-for-langchain-and-langgraph)
+- [使用 LangChain 和 MCP](https://cobusgreyling.medium.com/using-langchain-with-model-context-protocol-mcp-e89b87ee3c4c)
+- [创建 MCP 客户端服务器](https://www.analyticsvidhya.com/blog/2025/04/mcp-client-server-using-langchain/)
+- [MCP 介绍](https://huggingface.co/blog/Kseniase/mcp)
+- [LangChain.js 连接 MCP 服务器](https://blog.marcnuri.com/connecting-to-mcp-server-with-langchainjs)
+- [LangChain MCP 工具 PyPI](https://pypi.org/project/langchain-mcp-tools/)
+- [LangChain MCP 适配器指南](https://composio.dev/blog/langchain-mcp-adapter-a-step-by-step-guide-to-build-mcp-agents/)
+- [LangDB Firecrawl MCP](https://langdb.ai/app/mcp-servers/firecrawl)
+- [Langfuse Firecrawl 监控](https://langfuse.com/docs/integrations/other/firecrawl)
+- [Firecrawl 初学者教程](https://apidog.com/blog/firecrawl-web-scraping/)
+- [LangChain MCP RAG 教程](https://gaodalie.substack.com/p/langchain-mcp-rag-ollama-the-key)

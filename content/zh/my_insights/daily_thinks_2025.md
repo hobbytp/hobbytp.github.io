@@ -12,6 +12,40 @@ categories: ["my_insights"]
 
 ## 2025 May
 
+### 2025-05-30
+
+最新公布的DeepSeek R1-0528 非常不错。
+![DeepSeek R1-0528 成绩](./images/DS-R1-0528.png)
+
+| Category | Benchmark (Metric)                       | DeepSeek R1 | DeepSeek R1 0528 |
+|----------|------------------------------------------|-------------|------------------|
+| General  | MMLU-Redux (EM)                         | 92.9        | 93.4             |
+|          | MMLU-Pro (EM)                           | 84.0        | 85.0             |
+|          | GPQA-Diamond (Pass@1)                   | 71.5        | 81.0             |
+|          | SimpleQA (Correct)                      | 30.1        | 27.8             |
+|          | FRAMES (Acc.)                           | 82.5        | 83.0             |
+|          | Humanity's Last Exam (Pass@1)           | 8.5         | 17.7             |
+| Code     | LiveCodeBench (2408-2505) (Pass@1)      | 63.5        | 73.3             |
+|          | Codeforces-Div1 (Rating)                | 1530        | 1930             |
+|          | SWE Verified (Resolved)                 | 49.2        | 57.6             |
+|          | Aider-Polyglot (Acc.)                   | 53.3        | 71.6             |
+| Math     | AIME 2024 (Pass@1)                      | 79.8        | 91.4             |
+|          | AIME 2025 (Pass@1)                      | 70.0        | 87.5             |
+|          | HMMT 2025 (Pass@1)                      | 41.7        | 79.4             |
+|          | CNMO 2024 (Pass@1)                      | 78.8        | 86.9             |
+| Tools    | BFCL_v3_MultiTurn (Acc)                 | -           | 37.0             |
+|          | Tau-Bench (Pass@1)                      | -           | 53.5(Airline)/63.9(Retail) |
+
+| Model                         | AIME 24 | AIME 25 | HMMT Feb 25 | GPQA Diamond | LiveCodeBench (2408-2505) |
+|-------------------------------|---------|---------|-------------|--------------|---------------------------|
+| Qwen3-235B-A22B               | 85.7    | 81.5    | 62.5        | 71.1         | 66.5                      |
+| Qwen3-32B                     | 81.4    | 72.9    | -           | 68.4         | -                         |
+| Qwen3-8B                      | 76.0    | 67.3    | -           | 62.0         | -                         |
+| Phi-4-Reasoning-Plus-14B      | 81.3    | 78.0    | 53.6        | 69.3         | -                         |
+| Gemini-2.5-Flash-Thinking-0520| 82.3    | 72.0    | 64.2        | 82.8         | 62.3                      |
+| o3-mini (medium)              | 79.6    | 76.7    | 53.3        | 76.8         | 65.9                      |
+| DeepSeek-R1-0528-Qwen3-8B     | 86.0    | 76.3    | 61.5        | 61.1         | 60.5                      |
+
 ### 2025-05-29
 
 学习需要结合从上到下的整体理解和从下到上的基础夯实，是一个动态的过程，在不同场景中灵活切换——有时先从上到下（如程序员熟悉新开源代码），有时先从下到上（如学生掌握相对论），有时是以一个为主，另一为辅等等，以实现更有效的知识掌握和应用。
