@@ -1,7 +1,7 @@
 ---
 title: "日常想法随手记-2025"
 date: "2025-05-13T14:20:00+08:00"
-lastmod: "2025-05-30T22:55:00+08:00"
+lastmod: "2025-05-31T22:30:00+08:00"
 draft: false
 description: "日常想法随手记"
 tags: ["AI", "Thinking", "Daily","2025"]
@@ -11,6 +11,10 @@ categories: ["my_insights"]
 这里随手记下当天对看到的新闻、文章、视频等的想法。
 
 ## 2025 May
+
+### 2025-05-31
+
+通义灵码 AI IDE 正式上线，深度适配千问3大模型，集成智能编码助手功能，支持自动记忆和工程感知，提升开发者编程效率和体验。支持 MCP 协议，覆盖 3000 多个 MCP 服务，满足多场景开发需求，如快速创建地图类应用。[link](https://mp.weixin.qq.com/s/hpIWifxXo-UfxvtqboNmpw)
 
 ### 2025-05-30
 
