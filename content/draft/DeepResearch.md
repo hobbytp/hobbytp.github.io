@@ -7,6 +7,8 @@ changelog:
     change: "添加了字节跳动的DeerFlow和LangGraph的local DR"
   - date: "2025-05-25"
     change: "添加了u14app的DeepResearch"
+  - date: "2025-06-05"
+    change: "添加了Jini AI DeepResearch的介绍"
 draft: false
 description: "Deep Research 深度研究"
 tags: ["AI", "Ascent", "Agent", "红杉资本"]
@@ -159,6 +161,40 @@ GPT Research的Deep Research 实现“深度”的主要技术原理
 5. **多模态深度研究**  
    - 不限于文本，还能深度分析图片、音频、视频等多模态信息，真正实现全方位“深度洞察”。
 
+#### 如何实现研究的"Deep"？
+
+参考 <https://deepwiki.com/search/gptresearcherdeepresearchdeep_2bb033b2-7cc3-42c7-9729-842adf97288a>
+
+gpt-researcher通过以下几个核心机制实现DeepResearch中的"Deep"（深度洞见发现）：
+
+##### 1. 递归树状探索结构
+
+DeepResearch采用树状递归探索模式，通过`breadth`（广度）和`depth`（深度）参数控制研究的覆盖范围和深入程度。 [1](#0-0) 当研究深度大于1时，系统会自动为每个研究分支创建更深层次的查询，通过递归调用实现多层次探索。 [2](#0-1)
+
+##### 2. 多维度搜索策略
+
+系统首先为原始查询生成多个不同角度的搜索查询，每个查询都有明确的研究目标。 [3](#0-2) 这些查询会并发处理，通过信号量机制控制并发数量以优化性能。 [4](#0-3)
+
+##### 3. 智能洞察提取与分析
+
+DeepResearch使用专门的分析方法从研究结果中提取关键学习点（learnings）和后续探索问题（followUpQuestions）。 [5](#0-4) 系统会解析研究结果，提取深刻洞见，并为每个洞见维护引用信息以确保可追溯性。
+
+##### 4. 推理模型的高级分析
+
+系统使用推理大模型（如o3-mini）进行深度分析，并设置高推理努力等级来获得更深入的洞见。 [6](#0-5) 和 [7](#0-6) 这确保了系统能够从复杂信息中提炼出有价值的深层认知。
+
+##### 5. 研究计划生成与时间感知
+
+系统会基于初始搜索结果和当前时间生成有针对性的研究问题，确保研究覆盖不同方面和时间段。 [8](#0-7) 这种方法帮助发现最新发展和历史趋势中的深刻洞见。
+
+##### 6. 智能上下文管理
+
+系统通过上下文词数限制和智能修剪机制确保研究质量，同时聚合所有研究分支的结果。 [9](#0-8) 和 [10](#0-9)
+
+##### Notes
+
+DeepResearch的"Deep"本质在于它的**递归探索能力**、**多角度分析**、**智能洞察提取**以及**推理模型的深度思考**。它不是简单的信息搜集，而是一个能够从多个维度、多个层次深入探索主题的智能研究系统。默认配置为广度3、深度2、并发4， [11](#0-10) 用户可以根据需要调整这些参数来控制研究的深度和广度。
+
 ### ByteDance的DeepResearch
 
 - github: <https://github.com/bytedance/deer-flow>
@@ -170,11 +206,108 @@ DeerFlow是一个由社区驱动的深度研究框架，结合语言模型和工
 DeerFlow实现了一种模块化的多智能体系统架构，专为自动化研究和代码分析而设计。该系统基于LangGraph构建，支持灵活的基于状态的工作流程，各组件通过定义明确的消息传递系统进行通信。支持搜索引擎：Tavily DuckDuckGo，Brave Search，Arxiv
 工作流程： <https://deerflow.tech/#multi-agent-architecture>
 
+#### 如何实现研究的"Deep"？
+
+参考：<https://deepwiki.com/search/deerflowdeepresearchdeep_66dd4eac-520b-4f81-9e74-b9efd9e71dc8>
+
+deer-flow通过以下几个核心机制实现深度研究中的"深度"洞察发现：
+
+##### 1. 严格的深度标准和评估机制
+
+deer-flow在规划阶段设置了非常严格的信息充分性标准。系统明确定义了什么是"充分的上下文"，要求信息必须全面回答用户问题的所有方面，包含具体细节，来自可靠来源，没有重大缺口或矛盾，并且数据量足够支撑综合报告。 [1](#0-0)
+
+更重要的是，系统采用了"宁可过度收集也不不足"的原则：即使90%确定信息充分，也会选择收集更多信息。这确保了研究的深度和全面性。 [2](#0-1)
+
+##### 2. 多维度分析框架
+
+系统使用了8个关键维度来确保信息收集的全面性和深度：历史背景、当前状态、未来指标、利益相关者数据、定量数据、定性数据、比较数据和风险数据。 [3](#0-2)
+
+每个维度都要求收集"全面"和"详细"的信息，而不是表面层次的数据。这种结构化的分析框架确保了洞察的深度和广度。
+
+##### 3. 多智能体专业分工协作
+
+deer-flow采用了多智能体架构，包括协调器、规划器、研究团队（研究员和编程员）和报告员。 [4](#0-3)
+
+研究员专门负责深度信息收集，配备了网络搜索、爬虫等工具，并要求"忘记以前的知识"，完全依靠工具检索最新信息。 [5](#0-4)
+
+编程员则负责数据处理和分析，使用Python进行复杂计算和统计分析。 [6](#0-5)
+
+##### 4. 背景调查机制
+
+在正式规划之前，系统会进行背景调查，通过搜索引擎收集用户查询的初步信息。 [7](#0-6)
+
+这个机制为后续的深度规划提供了基础上下文，避免了盲目规划，确保研究方向的准确性。
+
+##### 5. 迭代式深化研究
+
+系统支持多轮规划迭代，当信息不充分时会自动进入下一轮研究。 [8](#0-7)
+
+每个研究步骤完成后，系统会评估是否需要进一步深化，形成了一个持续深化的研究循环。 [9](#0-8)
+
+##### 6. 工具链的深度集成
+
+系统集成了多种专业工具，包括Tavily、Brave Search、DuckDuckGo等搜索引擎，以及网页爬虫和Python执行环境。 [10](#0-9)
+
+还支持通过MCP（模型上下文协议）动态加载更多专业工具，扩展系统的深度分析能力。 [11](#0-10)
+
+##### 7. 信息质量和数量标准
+
+系统明确要求信息必须具备"综合覆盖"、"充分深度"和"足够数量"三个标准。表面层次的信息被明确定义为不可接受，系统要求收集丰富的相关信息，因为"高质量信息越多越好"。 [12](#0-11)
+
+#### Notes
+
+deer-flow的"深度"实现不是单一机制，而是通过严格的标准设定、多智能体协作、迭代式规划、工具链集成等多重机制的有机结合。系统的核心哲学是"宁可过度收集也不信息不足"，通过结构化的分析框架和专业分工，确保能够发现深刻的洞见而不是停留在表面信息。这种设计使得deer-flow能够产生真正有价值的深度研究报告。
+
 ### 天工的DeepResearch
 
 - 官网：<https://tiangong.ai/>
 - 外网链接：<https://skywork.ai/>  #我使用这个，送token
 - 代码：<https://github.com/SkyworkAI/DeepResearchAgent>
+
+#### 如何实现研究的"Deep"？
+
+参考 <https://deepwiki.com/search/deepresearchagentdeepresearchd_4ef378dd-c116-4feb-9454-b7922f6f2a44>
+DeepResearchAgent通过多层次的分析和研究机制来实现"Deep"（深度）洞见发现，主要体现在以下几个方面：
+
+##### 分层架构实现深度分析
+
+DeepResearchAgent采用两层架构来实现深度研究：顶层规划代理协调多个专业化的底层代理，每个代理都专注于特定类型的深度分析 [1](#0-0) 。
+
+##### 专业化代理的深度能力
+
+###### Deep Analyzer Agent
+
+专门进行深度分析，能够提取关键洞见和潜在需求，支持多种数据类型的分析 [2](#0-1) 。其提示配置要求进行详细推理和分析 [3](#0-2) 。
+
+###### Deep Researcher Agent  
+
+进行彻底的主题研究，检索和综合高质量信息，能够自动生成研究报告或知识摘要 [4](#0-3) 。其核心工具`deep_researcher`专门用于网络搜索和答案发现 [5](#0-4) 。
+
+##### 洞见提取机制
+
+系统通过`_analyze_content`方法从内容中提取基于查询相关性的洞见。该方法使用专门的提示模板来分析内容，并通过结构化的JSON响应处理来提取洞见 [6](#0-5) 。
+
+##### ReAct框架的深度思考
+
+所有代理都基于ReAct（推理和行动）框架，通过Action/Observation循环进行多步骤深度思考。系统提示要求代理"逐步思考解决任务" [7](#0-6) 。
+
+##### 多维度信息整合
+
+通过分层代理协作，系统能够从多个角度和维度收集信息：
+
+- 网络搜索和实时信息获取
+- 文档分析和结构化数据处理  
+- 浏览器自动化进行深度网页交互
+- 计算和统计分析
+
+##### Notes
+
+"Deep"的实现主要通过专业化分工、多步骤推理、结构化洞见提取和分层协作来达成。系统的深度不仅体现在单个代理的专业能力上，更体现在整个多代理系统的协同工作中，能够从不同角度深入分析问题并发现深刻洞见。
+
+Wiki pages you might want to explore:
+
+- [System Architecture (SkyworkAI/DeepResearchAgent)](/wiki/SkyworkAI/DeepResearchAgent#3)
+- [Prompt System (SkyworkAI/DeepResearchAgent)](/wiki/SkyworkAI/DeepResearchAgent#4.6)
 
 ### dzhng的DeepResearch
 
@@ -250,6 +383,52 @@ flowchart TB
     class NL,ND results
 ```
 
+#### 如何实现研究的"Deep"？
+
+参考：<https://deepwiki.com/search/deepresearchdeep_625085b6-6135-431e-a384-1f562f2ce46a>
+
+DeepResearch中的"Deep"功能通过以下几个核心机制实现深刻洞见的发现：
+
+##### 1. 递归搜索机制
+
+DeepResearch的核心是一个递归调用机制，通过控制深度参数来实现层层深入的研究。 [1](#0-0)
+
+当深度大于0时，系统会基于当前的研究目标和新发现的后续问题构建新的查询，然后递归调用deepResearch函数进行更深层次的研究。
+
+##### 2. 动态查询生成
+
+系统能够基于已有的学习成果生成更有针对性的搜索查询。 [2](#0-1)
+
+这个机制使得每次搜索都能建立在前面发现的基础上，避免重复性搜索，而是朝着更深入、更具体的方向发展。
+
+##### 3. 智能学习提取
+
+系统从搜索结果中提取关键学习点和后续研究方向。 [3](#0-2)
+
+这个处理过程不仅提取信息密集的学习点，还生成后续研究问题，为下一轮深入研究提供方向。
+
+##### 4. 专家级系统提示
+
+系统使用专门设计的提示来引导AI进行深度分析。 [4](#0-3)
+
+这个系统提示要求AI作为专家研究员，提供详细分析、考虑新技术和反传统观念，并进行高层次的推测和预测。
+
+##### 5. 模型选择和优化
+
+系统优先使用高级推理模型如DeepSeek R1和OpenAI o3-mini来支持深度分析。 [5](#0-4)
+
+##### 6. 迭代参数控制
+
+系统通过调整广度和深度参数来控制每轮搜索的范围和深度。 [6](#0-5)
+
+每次深入时，广度会减半，深度减一，这样既保证了深度探索，又避免了指数级的搜索爆炸。
+
+##### Notes
+
+DeepResearch的"Deep"功能本质上是一个**迭代深化的知识发现过程**。它不是简单的关键词搜索，而是通过AI驱动的智能查询生成、结果分析和方向规划来实现层层递进的深入研究。每一轮搜索都建立在前面发现的基础上，形成了一个螺旋式上升的知识发现模式。
+
+这种设计使得系统能够从表面信息逐步深入到核心洞见，发现那些通过单次搜索难以获得的深层次联系和见解。整个过程类似于专业研究员的工作方式：先获得基础信息，然后基于初步发现提出更深入的问题，再进行针对性的深入研究。
+
 ### LangGraph Open Deep Research
 
 - github: <https://github.com/langchain-ai/open_deep_research>
@@ -257,10 +436,16 @@ flowchart TB
 
 ![LangGraph Open Deep Research](./images/langgraph-open-deepresearch.png)
 
+#### 如何实现研究的"Deep"？
+
+参考：<https://deepwiki.com/search/deepresearchdeep_6805e5e8-0065-45b4-9102-993c51e5cb49>
+
 ### LangGraph Local Deep Research
 
 - github: <https://github.com/langchain-ai/local-deep-researcher>
 - youtube: <https://www.youtube.com/watch?v=sGUjmyfof4Q>
+
+#### 如何实现研究的"Deep"？
 
 ### STORM: Stanford Open Virtual Assistant for Research (SOVAR)
 
@@ -295,6 +480,62 @@ flowchart TB
 - 现代技术栈: 基于 Next.js 15 和 Shadcn UI 开发，带来现代、高性能和美观的用户体验。
 - MIT开源协议: 开源且免费，可自由用于个人和商业用途，遵循 MIT 许可证。
 
+#### 如何实现研究的"Deep"？
+
+参考：<https://deepwiki.com/search/deepresearchdeep_03884d01-480f-4cf5-ae52-36de564b696d>
+
+DeepResearch实现"Deep"（深刻洞见）的核心机制包括以下几个关键方面：
+
+##### 多阶段深度研究流程
+
+DeepResearch通过一个精心设计的多阶段工作流实现深度研究。首先将用户的初始查询转化为具体的研究问题 [1](#0-0) ，然后生成结构化的搜索查询 [2](#0-1) ，最后将所有研究成果综合成完整报告 [3](#0-2) 。
+
+##### AI模型角色专门化
+
+系统采用双模型架构来实现深度分析：
+
+- **Thinking Models**：负责复杂推理任务，如问题生成、结果分析和报告写作
+- **Networking Models**：专门处理信息检索和搜索结果处理
+
+这种分工确保了分析深度与执行效率的平衡 [4](#0-3) 。
+
+##### 迭代式研究深化
+
+系统具备自动评估研究完整性的能力。当完成初始搜索后，AI会分析现有发现并判断是否需要进一步研究。如果需要，会自动生成新的搜索查询，实现研究的迭代深化 [5](#0-4) 。
+
+##### 精心设计的提示工程
+
+系统通过专门的提示词来指导AI模型进行深度分析：
+
+- **系统提示词**定义了专业研究者的角色，强调准确性、详细性和前瞻性思维 [6](#0-5)
+- **搜索结果处理提示词**指导AI从搜索结果中提取深度洞见，包括具体的实体、指标、数字和日期等详细信息 [7](#0-6)
+- **最终报告生成提示词**确保输出全面详细的研究报告，包含所有研究发现 [8](#0-7)
+
+##### 并行搜索与综合分析
+
+系统支持并行执行多个搜索任务，显著提高研究效率 [9](#0-8) 。每个搜索任务都有明确的研究目标，AI会根据这些目标从搜索结果中提取相关洞见。
+
+##### 多维度信息整合
+
+系统整合多种搜索引擎的结果，并支持AI模型的内置搜索功能，确保信息来源的多样性和全面性。所有搜索结果都会被AI模型处理，提取出与研究目标相关的深度学习成果 [10](#0-9) 。
+
+##### 结构化输出与质量保证
+
+系统使用结构化的JSON架构来确保搜索查询的质量和一致性 [11](#0-10) ，并通过输出指导原则确保最终报告的格式化和可读性 [12](#0-11) 。
+
+##### Notes
+
+DeepResearch的"Deep"不仅体现在技术架构上，更体现在整个研究方法论上。它模拟了人类研究者的思维过程：从提出问题开始，逐步深入探索，不断迭代和完善研究方向，最终形成全面深入的洞见。通过AI的加速处理能力，原本需要数小时或数天的深度研究工作可以在几分钟内完成，同时保持了研究的深度和质量。
+
+#### Jina AI的DeepResearch
+
+来自Jina AI的DeepResearch项目：<https://github.com/jina-ai/node-DeepResearch> 与OpenAI/Gemini/Perplexity的“深度研究”不同，该项目只专注于通过迭代过程找到正确答案。其并不针对长篇文章进行优化，那是完全不同的问题 —— 因此，如果你需要从深度搜索中获得快速、简洁的答案，那你来对地方了。如果要找像 OpenAI/Gemini/Perplexity 那样由人工智能生成的长篇报告，这个项目不适合。
+Demo: <https://search.jina.ai/>
+<b><span style="color: red">注意: </span></b>他们提供了两篇非常优秀的公众号文章，值得阅读：
+
+- [DeepSearch 与 DeepResearch 的设计和实现](https://mp.weixin.qq.com/s/-pPhHDi2nz8hp5R3Lm_mww)
+- [DeepSearch/DeepResearch中最优文本段选择和URL重排](https://mp.weixin.qq.com/s/apnorBj4TZs3-Mo23xUReQ)
+
 ### 其他轻量级DeepResearch实现
 
 khoj: <https://khoj.dev/>
@@ -309,21 +550,86 @@ github: <https://github.com/btahir/open-deep-research>
 
 Open-Deep-Research是一个开源的强大研究助手，能从网络搜索结果生成基于AI的综合报告。该应用支持与多个AI平台（如Google、OpenAI、Anthropic、DeepSeek及本地模型）的无缝集成，为用户提供自定义AI模型选择和搜索配置的自由。其主要功能包括灵活的网络搜索、内容提取、多平台AI支持、报告生成与多种导出格式、知识库管理以及本地文件支持。此外，该应用还提供“流”特性，支持递归探索和报告整合。技术栈包括Next.js、TypeScript、Tailwind CSS等。通过配置文件，用户可以自定义搜索提供商和AI模型选项。该项目遵循MIT许可证，欢迎贡献和进一步协作。
 
-## OpenAI Deep Research
+### Google Gemini Fullstack LangGraph Quickstart
 
-## Gemini Deep Research
+注意这个不是在Gemini页面上的那个Deep Research。
+github: <https://github.com/google-gemini/gemini-fullstack-langgraph-quickstart>
 
-## Perplexity Deep Research
+该项目名为 **Gemini Fullstack LangGraph Quickstart**，展示了一个完整的全栈应用，前端使用 React 和 Vite，后端基于 LangGraph 和 Google's Gemini 模型，旨在构建支持增强型研究和对话式 AI 的应用。
 
-## CoherAI Deep Research
+#### 核心功能
+
+- 💬 使用 React 前端和 LangGraph 后端的完整全栈应用。
+- 🧠 支持高阶搜索与对话式 AI 的 LangGraph 智能代理。
+- 🔍 利用 Google Gemini 模型动态生成搜索查询。
+- 🌐 集成 Google 搜索 API 进行网络数据检索。
+- 🤔 自动反思及知识差距分析，优化迭代查询。
+- 📄 生成带引用来源的详细答案。
+- 🔄 热更新开发环境支持前后端开发。
+
+#### 核心流程
+
+![Gemini Fullstack LangGraph Quickstart](./images/gemini-fullstack-langgraph-quickstart.png)
+
+```mermaid
+graph TD
+    START((START)) --> generate_query[生成搜索查询]
+    
+    generate_query --> |条件分支| condition1{是否继续搜索?}
+    condition1 --> |生成并行搜索分支| web_research[执行网页搜索]
+    
+    web_research --> reflection[分析研究结果]
+    
+    reflection --> |条件分支| condition2{是否满足条件?}
+    condition2 --> |继续搜索| web_research
+    condition2 --> |结束研究| finalize_answer[生成最终报告]
+    
+    finalize_answer --> END((END))
+
+    style generate_query fill:#f9f,stroke:#333
+    style web_research fill:#9f9,stroke:#333
+    style reflection fill:#99f,stroke:#333
+    style finalize_answer fill:#f99,stroke:#333
+```
+
+#### 项目结构
+
+1. **frontend/**: 基于 Vite 构建的 React 应用。
+2. **backend/**: 使用 LangGraph 和 FastAPI 的后端逻辑。
+
+#### 快速启动步骤
+
+1. 安装依赖：需安装 Node.js、npm (或 yarn/pnpm)、Python 3.8+，以及配置 Google Gemini API 密钥。
+2. 启动开发环境：运行 `make dev` 启动前后端服务器，或者分别单独运行前后端开发服务器。
+   - 前端地址：<http://localhost:5173/app>
+   - 后端地址：<http://127.0.0.1:2024> (提供 LangGraph UI)
+
+#### 后端智能代理逻辑
+
+1. **生成初始查询**：基于用户输入生成搜索关键词。
+2. **网络研究**：通过 Google 搜索 API 获取相关网络内容。
+3. **反思分析**：利用 Gemini 模型评估知识完整性并定位知识差距。
+4. **迭代优化**：根据反思结果生成改进后的查询。
+5. **生成答案**：在信息充分后，整合结果并生成包含引用的答案。
+
+#### 部署
+
+- 支持 Docker 部署，需 Redis 和 Postgres 支持。
+- 使用 `docker-compose up` 启动生产环境服务，访问地址为 <http://localhost:8123。>
+
+#### 核心技术
+
+- **前端**: React (Vite)、Tailwind CSS、Shadcn UI。
+- **后端**: LangGraph、FastAPI、Google Gemini 模型。
+
+#### 开源协议
+
+项目基于 Apache-2.0 许可证发布。
+此项目非常适合作为**研究增强型对话式应用**开发的学习和参考案例，目前在 GitHub 上拥有 **5.9k 个 Star** 和 **714 个 Fork**(到2025-06-05)。
 
 ## 其他的Deep Research实现
 
 ### 叫DeepResearch名的非DR项目
-
-#### Jina AI的DeepResearch
-
-来自Jina AI的DeepResearch项目：<https://github.com/jina-ai/node-DeepResearch：> 与OpenAI/Gemini/Perplexity的“深度研究”不同，该项目只专注于通过迭代过程找到正确答案。其并不针对长篇文章进行优化，那是完全不同的问题 —— 因此，如果你需要从深度搜索中获得快速、简洁的答案，那你来对地方了。如果要找像 OpenAI/Gemini/Perplexity 那样由人工智能生成的长篇报告，这个项目不适合。
 
 ### mshumer的OpenDeepResearcher
 
@@ -342,14 +648,65 @@ The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery
 
 [Zilliz’s Deep Searcher](https://github.com/zilliztech/deep-searcher) 是一个开源的OpenAI的深度研究本地替代品，是一个具代理性RAG框架，重新定义了AI驱动的企业搜索。它结合了先进的推理模型、复杂的搜索功能以及集成的研究助手，使用Milvus高性能向量数据库进行本地数据整合，提供更快更相关的搜索结果，并支持模型切换以定制体验。DeepSearcher通过将查询拆分为多个子问题，进行多轮实时检索，具备主动问题解决、动态自我纠正和复杂推理任务的能力。此外，它全面记录搜索和推理过程，为调试和优化提供透明度，适合构建企业搜索解决方案或为数据密集型项目提供强大的研究助手，代表了开放源代码可定制AI代理的发展趋势。
 
+### 上海交大GAIR-NLP的DeepResearcher
+
+github: <https://github.com/GAIR-NLP/DeepResearcher>
+
+DeepResearcher是一个通过在真实网络环境中扩展强化学习（RL）来训练基于大语言模型（LLM）的深度研究代理的综合框架。其主要特点包括计划制定、多源信息交叉验证、自省以调整研究方向，以及在无法找到明确答案时保持诚实的能力。  
+
+框架的具体表现：  
+
+1. 部署了DeepResearcher-7b模型（可在Huggingface获取）。  
+2. 实验结果表明，相较于基于提示的基线模型和RAG基RL代理，性能分别提升了28.9分和7.2分。  
+
+主要功能包括：  
+
+- 支持真实网络搜索交互的端到端深度学习训练。  
+- 使用Ray进行模型训练。  
+- 提供训练、评估、生成回合展开等使用脚本。  
+
+安装和运行：  
+
+- 包括环境依赖配置、Ray服务端以及后端handler的运行指导。  
+
+贡献和引用：  
+该项目受到Deepseek-R1的启发，技术实现基于veRL和Search-r1。如项目相关内容对您有帮助，请引用此仓库。  
+
+仓库信息：  
+
+- Star：417  
+- Fork：32  
+- 开发语言：Python (97.3%)  
+
+许可证：Apache-2.0  
+
+完整代码和更多细节参见官方Github页面：<https://github.com/GAIR-NLP/DeepResearcher>  
+
+### OpenAI Deep Research
+
+### Gemini Deep Research
+
+### Perplexity Deep Research
+
+### CoherAI Deep Research
+
 ## 如何评估DeepResearch输出的质量？
+
+## 相关技术
+
+TBD
 
 ## 对自己开发DeepResearch的启发
 
-##
+### deep search vs. deep research
 
-有哪些DeepResearch？各自如何实现，各自优缺点？
-如何评估DeepResearch？使用什么数据集来评估？评估标准。
+**DeepSearch** 是一个集成了多种网络工具（如搜索引擎、网页阅读器）的 LLM Agent，它通过分析当前获得的信息和历史操作记录，动态决策下一步是直接回答还是继续检索信息。这一过程本质上是一种状态机架构，由 LLM 控制状态的切换。
+在每个决策点，有两种实现方式：一是通过精心设计的提示词让基础生成模型输出操作指令，二是用如 Deepseek-r1 这样的推理模型自动推导下一步行动。即便用推理模型，也需要定期中断生成，把工具的新输出注入上下文，再继续推理。
+无论采用哪种方式，DeepSearch 的核心原则始终是：不断循环“搜索—阅读—推理”这三个步骤。
+**DeepResearch** 是在 DeepSearch 的基础上，增加了一个结构化的框架，用于生成长篇的研究报告。它的工作流程一般从创建目录开始，然后系统性地将 DeepSearch 应用于报告的每一个所需部分：从引言到相关工作、再到方法论，直至最后的结论。报告的每个章节都是通过将特定的研究问题输入到 DeepSearch 中来生成的。最后将所有章节整合到一个提示词中，以提高报告整体叙述的连贯性。
+
+### 如何评估DeepResearch？使用什么数据集来评估？评估标准
+
 DeepResearch如何处理一些版权问题和网站需要登录信息才能访问，一些网站需要订阅才能阅读的问题。
 DeepResearch和DeepThinking的关系。
 DeepResearch和Notebook LM，Learn About的关系。
@@ -365,3 +722,12 @@ Deep Research 是一个新兴的 AI 工作流程和一种能力。它是一种�
 Deep Research 的工作方式通常遵循一种递归的树状探索模式 或多步过程。它通常包括规划（将查询转化为研究计划）、搜索和深入浏览网页以查找信息、推理和迭代处理信息，以及将发现综合成全面报告。它能够在探索过程中根据新信息调整计划。这种系统具有智能体特性，可以自主执行多步搜索、评估信息质量、识别知识差距，并将发现综合成连贯的报告。
 
 值得注意的是，Deep Research 可能会花费比标准研究更长的时间，例如 5 分钟甚至 30 分钟才能完成，这被认为是其执行自主任务能力的核心。
+
+## 参考
+
+### 论文
+
+### 公众号文章
+
+- [DeepSearch 与 DeepResearch 的设计和实现](https://mp.weixin.qq.com/s/-pPhHDi2nz8hp5R3Lm_mww)
+- [DeepSearch/DeepResearch中最优文本段选择和URL重排](https://mp.weixin.qq.com/s/apnorBj4TZs3-Mo23xUReQ)
