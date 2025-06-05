@@ -10,6 +10,20 @@ categories: ["my_insights"]
 
 这里随手记下当天对看到的新闻、文章、视频等的想法。
 
+## 2025 June
+
+### 2025-06-05
+
+- 今天读了[General agents need world models](https://hobbytp.github.io/zh/papers/agents_need_world_models/)，这篇论文的结论是：**智能体本身就是世界模型**。
+
+### 2025-06-04
+
+- 今天读了[OmniThink: Expanding Knowledge Boundaries in Machine Writing through Thinking](https://hobbytp.github.io/zh/papers/OmniThink/)，这篇论文的结论是：**OmniThink 是一个基于信息树和概念池的“慢思考”方法，旨在解决机器写作中的知识边界扩展问题**。
+
+### 2025-06-03
+
+- 最近一直在对比各种DeepResearch开源项目实现是如何实现“Deep”和“Research”的。
+
 ## 2025 May
 
 ### 2025-05-31
