@@ -17,8 +17,17 @@
             parent.parentElement.replaceChild(mermaidDiv, parent);
         });
 
-        // 初始化Mermaid
+        // 统一的Mermaid初始化
         if (window.mermaid) {
+            mermaid.initialize({
+                startOnLoad: false, // 因为我们手动处理
+                theme: 'default',
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true
+                }
+            });
+            // 手动初始化所有mermaid图表
             mermaid.init(undefined, document.querySelectorAll('.mermaid'));
         }
     });
