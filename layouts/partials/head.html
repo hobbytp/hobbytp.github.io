@@ -173,7 +173,7 @@ resources.Minify }}
 {{- partial "extend_head.html" . -}}
 
 <!-- 自定义CSS -->
-<link rel="stylesheet" href="{{ " css/custom.css" | absURL }}">
+<link rel="stylesheet" href="{{ " /css/custom.css" | absURL }}">
 
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}

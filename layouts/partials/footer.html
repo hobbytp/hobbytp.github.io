@@ -13,8 +13,6 @@
             const parent = block.parentElement;
             const mermaidDiv = document.createElement('div');
             mermaidDiv.className = 'mermaid';
-            mermaidDiv.style.textAlign = 'center';
-            mermaidDiv.style.margin = '20px 0';
             mermaidDiv.textContent = block.textContent;
             parent.parentElement.replaceChild(mermaidDiv, parent);
         });
