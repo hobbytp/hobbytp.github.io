@@ -1,0 +1,132 @@
+/* 自定义样式优化 */
+
+/* 字体优化 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.7;
+}
+
+code,
+pre {
+    font-family: "SF Mono", Monaco, "Inconsolata", "Roboto Mono", "Source Code Pro", Menlo, Consolas, monospace;
+}
+
+/* 表格样式优化 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+table th,
+table td {
+    border: 1px solid var(--border, #ddd);
+    padding: 12px 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: var(--theme, #f8f9fa);
+    font-weight: 600;
+    color: var(--primary, #333);
+}
+
+table tr:nth-child(even) {
+    background-color: var(--code-bg, #f8f9fa);
+}
+
+table tr:hover {
+    background-color: var(--tertiary, #e9ecef);
+}
+
+/* Mermaid图表样式 */
+.mermaid {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* 代码块优化 */
+pre {
+    overflow-x: auto;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px 0;
+}
+
+/* 引用块样式 */
+blockquote {
+    border-left: 4px solid var(--primary, #007acc);
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: var(--code-bg, #f8f9fa);
+    font-style: italic;
+}
+
+/* 列表样式优化 */
+ul,
+ol {
+    margin: 16px 0;
+    padding-left: 24px;
+}
+
+li {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+/* 标题间距优化 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+h1 {
+    border-bottom: 2px solid var(--border, #ddd);
+    padding-bottom: 8px;
+}
+
+h2 {
+    border-bottom: 1px solid var(--border, #ddd);
+    padding-bottom: 4px;
+}
+
+/* 响应式表格 */
+@media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+
+    table th,
+    table td {
+        padding: 8px 4px;
+    }
+}
+
+/* 暗色主题适配 */
+.dark table th {
+    background-color: var(--entry, #2d3748);
+    color: var(--primary, #e2e8f0);
+}
+
+.dark table tr:nth-child(even) {
+    background-color: var(--code-bg, #2d3748);
+}
+
+.dark table tr:hover {
+    background-color: var(--tertiary, #4a5568);
+}
+
+.dark blockquote {
+    background-color: var(--code-bg, #2d3748);
+    border-left-color: var(--primary, #63b3ed);
+}
