@@ -175,6 +175,7 @@ resources.Minify }}
 <!-- 自定义CSS -->
 {{- $customCSS := resources.Get "css/custom.css" }}
 {{- if $customCSS }}
+{{- $customCSS := $customCSS | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $customCSS.RelPermalink }}">
 {{- end }}
 
@@ -186,6 +187,6 @@ resources.Minify }}
 {{- template "_internal/schema.html" . }}
 {{- end -}}
 
-<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js" defer
     integrity="sha384-OLBgp1GsljhM2TJ+sbHjaiH9txEUvgdDTAzHv2P24donTt6/529l+9Ua0vFImLlb"
     crossorigin="anonymous"></script>
