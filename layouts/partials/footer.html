@@ -8,13 +8,20 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // 处理Mermaid代码块
         document.querySelectorAll('pre > code.language-mermaid').forEach(function (block) {
             const parent = block.parentElement;
             const mermaidDiv = document.createElement('div');
             mermaidDiv.className = 'mermaid';
+            mermaidDiv.style.textAlign = 'center';
+            mermaidDiv.style.margin = '20px 0';
             mermaidDiv.textContent = block.textContent;
             parent.parentElement.replaceChild(mermaidDiv, parent);
         });
-        if (window.mermaid) mermaid.init();
+
+        // 初始化Mermaid
+        if (window.mermaid) {
+            mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+        }
     });
 </script>

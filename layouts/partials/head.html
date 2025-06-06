@@ -172,6 +172,9 @@ resources.Minify }}
 
 {{- partial "extend_head.html" . -}}
 
+<!-- 自定义CSS -->
+<link rel="stylesheet" href="{{ " css/custom.css" | absURL }}">
+
 {{- /* Misc */}}
 {{- if hugo.IsProduction | or (eq site.Params.env "production") }}
 {{- template "_internal/google_analytics.html" . }}
@@ -180,7 +183,14 @@ resources.Minify }}
 {{- template "_internal/schema.html" . }}
 {{- end -}}
 
-<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>
-    mermaid.initialize({ startOnLoad: true });
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'default',
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true
+        }
+    });
 </script>
