@@ -12,6 +12,37 @@ categories: ["my_insights"]
 
 ## 2025 June
 
+### 2025-06-12
+
+- 今天读了[阿里云AI搜索Agentic RAG技术实践](https://mp.weixin.qq.com/s/QmvhG__82zhlAHvjRKkLrg)，这篇论文描述的RAG技术演进之路具有普遍性。而我认为，Agentic RAG 2.0 虽然和Deep Research有一定相似之处，但是前者是“工程驱动的智能协作”，而后者的目标“智能驱动的自我进化”，目标上有差异，但技术上有相互借鉴之处。
+
+### 2025-06-11
+
+今天找了一题给不同的推理模型做，答案是D是酸，A是碱。只有Gemini 2.5 pro, Cloud 3.7 Sonnet Thinking, 元宝R1 答对.奇怪的是DS R1在推理了非常非常非常久后，得出了错误答案，但是元宝R1却答对了。
+
+```note
+实验室中有五种无色液体：A、B、C、D、E。已知条件：
+
+    ​A 和 B 混合​ → 产生蓝色沉淀；
+    ​B 和 C 混合​ → 无反应；
+    ​C 和 D 混合​ → 溶液变红色；
+    ​D 和 E 混合​ → 生成无色气体；
+    ​A 和 E 混合​ → 无反应。
+
+其中一种液体是酸，一种是碱，其余三种为中性物质。
+
+​问题​：请推断哪种液体是酸？哪种是碱？并解释推理过程。
+```
+
+| 模型 | 酸 | 碱 |
+|------|----|----|
+| O3/4O | D | E |
+| G-2.5p | D | A |
+| Claud-37T | D | A |
+| Grok3 | D | B |
+| R1 | D | B |
+| 元宝R1 | D | A |
+
 ### 2025-06-05
 
 - 今天读了[General agents need world models](https://hobbytp.github.io/zh/papers/agents_need_world_models/)，这篇论文的结论是：**智能体本身就是世界模型**。
