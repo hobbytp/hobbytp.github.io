@@ -26,23 +26,24 @@ DeepResearchAgent是SkyworkAI开发的一款基于DeepSeek大模型的智能研�
 
 ## 代码分析
 
-[deepwiki分析](https://deepwiki.com/search/deepresearchagentplanagentmerm_6e9d1aa2-1fa5-4d39-bb5b-3c835a8c3ef8)
+deepwiki分析页面参考【[这里](https://deepwiki.com/search/deepresearchagentplanagentmerm_6e9d1aa2-1fa5-4d39-bb5b-3c835a8c3ef8)】
+
 基于对DeepResearchAgent代码的深入分析，我将从实现层面详细阐述其planning机制、agent流转以及深层次信息挖掘的实现方式。
 
 ## Planning机制实现
 
-DeepResearchAgent采用分层规划架构，其中**PlanningAgent**作为顶层控制器负责任务分解和调度。 [1](#0-0)
+DeepResearchAgent采用分层规划架构，其中**PlanningAgent**作为顶层控制器负责任务分解和调度。
 
 Planning的核心实现包括两个阶段：
 
 1. **初始规划阶段**：系统会根据任务生成初始计划，使用预定义的提示模板引导规划过程
 2. **动态更新阶段**：在执行过程中根据planning_interval参数定期更新计划
 
-PlanningAgent通过YAML配置的提示模板进行任务规划，其中包含了详细的任务指令和团队成员调度策略。 [2](#0-1)
+PlanningAgent通过YAML配置的提示模板进行任务规划，其中包含了详细的任务指令和团队成员调度策略。
 
 ## Agent间流转机制
 
-DeepResearchAgent采用**分层多智能体架构**，实现了灵活的agent流转机制： [3](#0-2)
+DeepResearchAgent采用**分层多智能体架构**，实现了灵活的agent流转机制：
 
 ### 1. 架构层次
 
@@ -54,7 +55,7 @@ DeepResearchAgent采用**分层多智能体架构**，实现了灵活的agent流
 
 ### 2. 流转实现机制
 
-Agent间的流转通过**工具调用机制**实现，PlanningAgent通过`execute_tool_call`方法调度子智能体： [4](#0-3)
+Agent间的流转通过**工具调用机制**实现，PlanningAgent通过`execute_tool_call`方法调度子智能体：
 
 关键实现特点：
 
@@ -66,19 +67,19 @@ Agent间的流转通过**工具调用机制**实现，PlanningAgent通过`execut
 
 ### 1. 多层次搜索策略
 
-系统配置了多个层次的深度挖掘参数： [5](#0-4)
+系统配置了多个层次的深度挖掘参数：
 
 ### 2. 专门化Agent设计
 
 每个子智能体都针对特定类型的深度挖掘任务进行了优化：
 
-- **DeepResearcherAgent**：专门负责深度网络搜索 [6](#0-5)
+- **DeepResearcherAgent**：专门负责深度网络搜索
 - **BrowserUseAgent**：负责复杂网页交互和信息提取
 - **DeepAnalyzerAgent**：执行深度分析和计算任务
 
 ### 3. 迭代探索机制
 
-通过ReAct框架的Action-Observation循环实现深层次挖掘： [7](#0-6)
+通过ReAct框架的Action-Observation循环实现深层次挖掘：
 
 ## 系统流程图
 
