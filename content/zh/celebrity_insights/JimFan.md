@@ -1,3 +1,11 @@
+---
+title: "Jim Fan在各个场合的观点"
+date: "2025-05-8T23:03:00+08:00"
+draft: false
+tags:  ["AI","Jim Fan"]
+categories: ["celebrity_insights"]
+description: "Jim Fan在各个场合的观点"
+---
 
 ## 红杉资本2025年AI峰会上的演进 - 物理图灵测试
 
