@@ -79,6 +79,74 @@ graph TD
     %% class Frontend,Backend,AgentNodes,Tools subgraphstyle;
 ```
 
+#### 主LangGraph流程图细节
+
+下面由Gemini 2.5 pro在cursor里基于graph, agent, tools 3个目录的代码生成. 这个 `builder.py` 文件使用 `langgraph` 库定义了一个智能体工作流程的状态图。我们可以通过分析其中的节点和边来理解其工作流程。
+
+以下是根据 `src/graph/builder.py` 文件内容绘制的流程图。
+
+这个图展示了智能体内部不同模块（节点）之间的协作关系和控制流程。
+
+```mermaid
+graph TD
+    A[START] --> B(coordinator);
+    B --> C{has_initial_plan?};
+    C -- Yes --> E(research_team);
+    C -- No --> D(background_investigator);
+    D --> F(planner);
+    F --> G{is_human_in_the_loop?};
+    G -- Yes --> H(human_feedback);
+    H --> E;
+    G -- No --> E;
+    E --> I{continue_to_running_research_team};
+    I -- research --> J(researcher);
+    I -- processing --> K(coder);
+    I -- plan --> F;
+    J --> E;
+    K --> E;
+    E -- all steps complete --> L(reporter);
+    L --> M[END];
+
+    subgraph "Main Agent Logic"
+        direction LR
+        B
+        C
+        D
+        F
+        G
+        H
+        E
+        I
+        J
+        K
+        L
+    end
+
+    style START fill:#f9f,stroke:#333,stroke-width:2px
+    style END fill:#f9f,stroke:#333,stroke-width:2px
+```
+
+### 流程图解析
+
+1. **START**: 流程起始点。
+2. **coordinator**: 协调器节点，是整个流程的入口。它会判断当前是否存在初始计划。
+    * 如果**有**，则直接进入 `research_team` 节点开始执行。
+    * 如果**没有**，则进入 `background_investigator` 进行背景调查。
+3. **background\_investigator**: 背景调查节点，负责收集初始信息。
+4. **planner**: 规划器节点，根据背景调查信息或现有状态制定或修正计划。
+5. **human\_feedback**: 人工反馈节点。在规划之后，可以选择性地引入人工审核和反馈，然后再将更新后的计划交给 `research_team`。
+6. **research\_team**: 这是图的核心部分，一个超级节点（子图），负责管理和执行计划。它本身不直接执行任务，而是根据计划中每个步骤的类型，将任务分发给具体的执行者（`planner`、`researcher` 或 `coder`）。
+7. **continue\_to\_running\_research\_team (Conditional Edge)**: 这是一个条件判断。`research_team` 节点执行后，会根据 `continue_to_running_research_team` 函数的逻辑进行跳转：
+    * 如果计划中的步骤是 `RESEARCH` 类型，则调用 `researcher` 节点。
+    * 如果计划中的步骤是 `PROCESSING` 类型，则调用 `coder` 节点。
+    * 如果所有步骤都已完成或需要重新规划，则返回 `planner` 节点。
+8. **researcher**: 研究员节点，负责执行研究任务。
+9. **coder**: 程序员节点，负责执行代码或数据处理任务。
+10. **reporter**: 报告生成器节点。当 `research_team` 的所有计划步骤都执行完毕后，流程会进入此节点，生成最终的报告。
+11. **END**: 流程结束点。
+
+这个流程图清晰地展示了一个由"协调-规划-执行-反馈"构成的闭环，其中 `research_team` 是一个核心的调度中心，通过条件边将任务动态地分配给不同的执行单元。
+
 ### 多代理工作流
 
 ## 限制

@@ -12,6 +12,10 @@ categories: ["my_insights"]
 
 ## 2025 June
 
+### 2025-06-17
+
+AI的越来越强大，将成为越来越大的杠杆，想不被拉下，需要尽早使用AI，并不断提升自己的技能水平。
+
 ### 2025-06-05
 
 - 今天读了[General agents need world models](https://hobbytp.github.io/zh/papers/agents_need_world_models/)，这篇论文的结论是：**智能体本身就是世界模型**。
