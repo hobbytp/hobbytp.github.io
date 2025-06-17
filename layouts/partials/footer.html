@@ -8,6 +8,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // 处理Mermaid代码块
         document.querySelectorAll('pre > code.language-mermaid').forEach(function (block) {
             const parent = block.parentElement;
             const mermaidDiv = document.createElement('div');
@@ -15,6 +16,19 @@
             mermaidDiv.textContent = block.textContent;
             parent.parentElement.replaceChild(mermaidDiv, parent);
         });
-        if (window.mermaid) mermaid.init();
+
+        // 统一的Mermaid初始化
+        if (window.mermaid) {
+            mermaid.initialize({
+                startOnLoad: false, // 因为我们手动处理
+                theme: 'default',
+                flowchart: {
+                    useMaxWidth: true,
+                    htmlLabels: true
+                }
+            });
+            // 手动初始化所有mermaid图表
+            mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+        }
     });
 </script>
