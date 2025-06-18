@@ -1,12 +1,17 @@
 ---
 title: "DeerFlow - 字节跳动开源的Deep Research"
 date: "2025-05-21T22:30:00+08:00"
+lastmod: "2025-06-18T22:30:00+08:00"
 draft: false
 tags:  ["Deerflow","Deep Research","LangGraph","MCP"]
 categories: ["projects"]
 description: "DeerFlow - 字节跳动开源的Deep Research"
 ---
 
+更新历史:
+
+- 2025-06-18: 添加了多Agent和Graph的协同工作设计原理
+- 2025-05-21: DeerFlow 项目介绍。
 
 ## 介绍
 
@@ -130,16 +135,16 @@ graph TD
 
 1. **START**: 流程起始点。
 2. **coordinator**: 协调器节点，是整个流程的入口。它会判断当前是否存在初始计划。
-    * 如果**有**，则直接进入 `research_team` 节点开始执行。
-    * 如果**没有**，则进入 `background_investigator` 进行背景调查。
+    - 如果**有**，则直接进入 `research_team` 节点开始执行。
+    - 如果**没有**，则进入 `background_investigator` 进行背景调查。
 3. **background\_investigator**: 背景调查节点，负责收集初始信息。
 4. **planner**: 规划器节点，根据背景调查信息或现有状态制定或修正计划。
 5. **human\_feedback**: 人工反馈节点。在规划之后，可以选择性地引入人工审核和反馈，然后再将更新后的计划交给 `research_team`。
 6. **research\_team**: 这是图的核心部分，一个超级节点（子图），负责管理和执行计划。它本身不直接执行任务，而是根据计划中每个步骤的类型，将任务分发给具体的执行者（`planner`、`researcher` 或 `coder`）。
 7. **continue\_to\_running\_research\_team (Conditional Edge)**: 这是一个条件判断。`research_team` 节点执行后，会根据 `continue_to_running_research_team` 函数的逻辑进行跳转：
-    * 如果计划中的步骤是 `RESEARCH` 类型，则调用 `researcher` 节点。
-    * 如果计划中的步骤是 `PROCESSING` 类型，则调用 `coder` 节点。
-    * 如果所有步骤都已完成或需要重新规划，则返回 `planner` 节点。
+    - 如果计划中的步骤是 `RESEARCH` 类型，则调用 `researcher` 节点。
+    - 如果计划中的步骤是 `PROCESSING` 类型，则调用 `coder` 节点。
+    - 如果所有步骤都已完成或需要重新规划，则返回 `planner` 节点。
 8. **researcher**: 研究员节点，负责执行研究任务。
 9. **coder**: 程序员节点，负责执行代码或数据处理任务。
 10. **reporter**: 报告生成器节点。当 `research_team` 的所有计划步骤都执行完毕后，流程会进入此节点，生成最终的报告。
@@ -147,7 +152,163 @@ graph TD
 
 这个流程图清晰地展示了一个由"协调-规划-执行-反馈"构成的闭环，其中 `research_team` 是一个核心的调度中心，通过条件边将任务动态地分配给不同的执行单元。
 
-### 多代理工作流
+### 多Agent和Graph的协同工作设计原理
+
+deer-flow通过LangGraph框架实现了Agent和Graph的解耦设计，同时通过统一的接口让Agent支持Graph中的不同Node。
+
+#### 解耦与集成的架构设计
+
+#### Graph层面的解耦
+
+Graph的构建完全独立于具体的Agent实现。在`src/graph/builder.py`中，Graph通过节点名称和路由逻辑来定义工作流结构：
+
+```python
+def _build_base_graph():
+    """Build and return the base state graph with all nodes and edges."""
+    builder = StateGraph(State)
+    builder.add_edge(START, "coordinator")
+    builder.add_node("coordinator", coordinator_node)
+    builder.add_node("background_investigator", background_investigation_node)
+    builder.add_node("planner", planner_node)
+    builder.add_node("reporter", reporter_node)
+    builder.add_node("research_team", research_team_node)
+    builder.add_node("researcher", researcher_node)
+    builder.add_node("coder", coder_node)
+    builder.add_node("human_feedback", human_feedback_node)
+    builder.add_edge("background_investigator", "planner")
+    builder.add_conditional_edges(
+        "research_team",
+        continue_to_running_research_team,
+        ["planner", "researcher", "coder"],
+    )
+    builder.add_edge("reporter", END)
+    return builder
+```
+
+Graph只关心节点之间的连接关系和状态流转，不依赖具体的Agent实现细节。
+
+#### Agent的统一接口设计
+
+所有Agent都遵循相同的函数签名模式，接收`State`和`RunnableConfig`参数，返回`Command`对象：
+
+```python
+def planner_node(
+    state: State, config: RunnableConfig
+) -> Command[Literal["human_feedback", "reporter"]]:
+    """Planner node that generate the full plan."""
+```
+
+```python
+async def researcher_node(
+    state: State, config: RunnableConfig
+) -> Command[Literal["research_team"]]:
+    """Researcher node that do research"""
+```
+
+#### 通过工具系统实现Agent能力差异化
+
+不同的Agent通过配置不同的工具集来实现专业化分工：
+
+- **researcher_node**使用搜索和爬虫工具：
+
+```python
+async def researcher_node(
+    state: State, config: RunnableConfig
+) -> Command[Literal["research_team"]]:
+    """Researcher node that do research"""
+    logger.info("Researcher node is researching.")
+    configurable = Configuration.from_runnable_config(config)
+    tools = [get_web_search_tool(configurable.max_search_results), crawl_tool]
+    retriever_tool = get_retriever_tool(state.get("resources", []))
+    if retriever_tool:
+        tools.insert(0, retriever_tool)
+    logger.info(f"Researcher tools: {tools}")
+    return await _setup_and_execute_agent_step(
+        state,
+        config,
+        "researcher",
+        tools,
+    )
+```
+
+- **coder_node**使用Python REPL工具：
+
+```python
+
+async def coder_node(
+    state: State, config: RunnableConfig
+) -> Command[Literal["research_team"]]:
+    """Coder node that do code analysis."""
+    logger.info("Coder node is coding.")
+    return await _setup_and_execute_agent_step(
+        state,
+        config,
+        "coder",
+        [python_repl_tool],
+    )
+```
+
+#### 统一的Agent执行框架
+
+所有Agent的实际执行都通过`_execute_agent_step`函数统一处理，这个函数负责：
+
+1. 从状态中获取当前执行步骤
+2. 格式化Agent输入
+3. 调用Agent执行
+4. 更新状态
+
+```python
+async def _execute_agent_step(
+    state: State, agent, agent_name: str
+) -> Command[Literal["research_team"]]:
+    """Helper function to execute a step using the specified agent."""
+    current_plan = state.get("current_plan")
+    observations = state.get("observations", [])
+
+    # Find the first unexecuted step
+    current_step = None
+    completed_steps = []
+    for step in current_plan.steps:
+        if not step.execution_res:
+            current_step = step
+            break
+        else:
+            completed_steps.append(step)
+
+    if not current_step:
+        logger.warning("No unexecuted step found")
+        return Command(goto="research_team")
+```
+
+#### 动态路由机制
+
+Graph通过`continue_to_running_research_team`函数根据步骤类型动态路由到不同的Agent：
+
+```python
+def continue_to_running_research_team(state: State):
+    current_plan = state.get("current_plan")
+    if not current_plan or not current_plan.steps:
+        return "planner"
+    if all(step.execution_res for step in current_plan.steps):
+        return "planner"
+    for step in current_plan.steps:
+        if not step.execution_res:
+            break
+    if step.step_type and step.step_type == StepType.RESEARCH:
+        return "researcher"
+    if step.step_type and step.step_type == StepType.PROCESSING:
+        return "coder"
+    return "planner"
+```
+
+#### 核心优势
+
+这种架构设计的核心优势是：
+
+1. **解耦性**：Graph结构与Agent实现完全分离，可以独立修改
+2. **可扩展性**：新增Agent只需实现统一接口并注册到Graph中
+3. **灵活性**：通过工具配置实现Agent的专业化分工
+4. **统一性**：所有Agent共享相同的执行框架和状态管理机制
 
 ## 限制
 
