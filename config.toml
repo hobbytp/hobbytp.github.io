@@ -16,9 +16,20 @@ pageSize = 5
 [markup.goldmark]
 [markup.goldmark.renderer]
 unsafe = true
+hardwraps = false
+xhtml = false
 [markup.goldmark.parser]
 autoHeadingID = true
 autoHeadingIDType = "github"
+attribute = true
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+linkify = true
+strikethrough = true
+table = true
+taskList = true
+typographer = true
 [markup.tableOfContents]
 endLevel = 6
 ordered = false
@@ -27,6 +38,16 @@ startLevel = 2
 lineNos = true
 lineNumbersInTable = true
 style = "github"
+anchorLineNos = false
+codeFences = true
+guessSyntax = false
+hl_Lines = ""
+hl_inline = false
+lineAnchors = ""
+lineNoStart = 1
+noClasses = true
+noHl = false
+tabWidth = 4
 
 [params]
 env = "production"
