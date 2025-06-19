@@ -1,6 +1,6 @@
 ---
 title: "Ilya Sutskever在各个场合的观点"
-date: "2025-06-8T23:03:00+08:00"
+date: "2025-06-18T23:03:00+08:00"
 draft: false
 tags:  ["AI","Ilya Sutskever"]
 categories: ["celebrity_insights"]
