@@ -37,7 +37,189 @@ Co-STORM 是 STORM 的一个增强版本，它支持人与 LLM 系统的协作�
 8. 维基百科编辑对 STORM 的看法如何？
 根据对经验丰富的维基百科编辑的人工评估，所有参与者都认为 STORM 对他们的预写作阶段很有帮助。70% 的编辑认为它对于编辑新主题的维基百科文章很有用，而 70% 的编辑也认为它对维基百科社区是一个潜在的有用的工具。这表明 STORM 的方法论和产出得到了目标用户群体的积极反馈，尤其是在协助研究和组织信息方面。
 
-## CO-STORM
+## STORM工作流程
+
+基于我对STORM代码的深入分析，创建一个详细的STORM工作流程的Mermaid图表。
+
+```mermaid
+graph TD
+    A["开始: STORM 系统"] --> B["初始化配置"]
+    B --> B1["配置多层次LM模型<br/>- 对话模拟器LM<br/>- 问题提问LM<br/>- 大纲生成LM<br/>- 文章生成LM<br/>- 文章润色LM"]
+    B --> B2["配置检索模块<br/>- YouRM, BingSearch<br/>- VectorRM, SerperRM等"]
+    B --> B3["设置运行参数<br/>- 最大对话轮数<br/>- 最大视角数<br/>- 搜索top-k<br/>- 并发线程数等"]
+    
+    B1 --> C["预写作阶段 (Pre-writing Stage)"]
+    B2 --> C
+    B3 --> C
+    
+    subgraph "预写作阶段: 知识管理"
+        C --> C1["视角发现"]
+        C1 --> C1a["查找相关主题<br/>搜索相关Wikipedia页面"]
+        C1a --> C1b["分析相关页面大纲<br/>提取目录结构"]
+        C1b --> C1c["生成多视角人物角色<br/>例: 基础事实写手、专业研究者、产业专家"]
+        C1c --> C2["多视角对话模拟"]
+        
+        C2 --> C2a["为每个视角创建Wikipedia写手"]
+        C2a --> C2b["并行启动多个对话"]
+        C2b --> C3["单个对话流程"]
+        
+        C3 --> C3a["Wikipedia写手提问<br/>基于角色视角生成问题"]
+        C3a --> C3b["主题专家回答"]
+        C3b --> C3c["专家生成搜索查询<br/>查询分解: 问题→多个搜索查询"]
+        C3c --> C3d["并行信息检索<br/>多线程搜索外部知识源"]
+        C3d --> C3e["信息过滤<br/>排除不可靠来源"]
+        C3e --> C3f["基于检索信息生成答案<br/>包含内联引用"]
+        
+        C3f --> C3g{"对话是否继续?<br/>检查最大轮数"}
+        C3g --> |"是"| C3a
+        C3g --> |"否"| C4["对话记录存储"]
+        
+        C4 --> C4a["存储对话历史<br/>DialogueTurn对象"]
+        C4a --> C4b["构建信息表<br/>URL到信息映射"]
+        C4b --> C4c["收集所有搜索结果<br/>去重和整理"]
+        C4c --> D["写作阶段 (Writing Stage)"]
+    end
+    
+    subgraph "写作阶段: 文章生成"
+        D --> D1["大纲生成模块"]
+        D1 --> D1a["初步大纲生成<br/>基于LM参数知识"]
+        D1a --> D1b["对话历史处理<br/>清理和截断对话内容"]
+        D1b --> D1c["大纲优化<br/>基于对话信息改进大纲"]
+        D1c --> D1d["生成层次化大纲<br/># ## ### 表示层级"]
+        
+        D1d --> D2["文章生成模块"]
+        D2 --> D2a["准备信息表<br/>编码片段用于检索"]
+        D2a --> D2b["获取一级章节列表"]
+        D2b --> D2c["并行章节生成"]
+        
+        D2c --> D2d["单个章节生成流程"]
+        D2d --> D2e["章节查询构建<br/>基于大纲生成搜索查询"]
+        D2e --> D2f["信息检索<br/>从信息表中检索相关内容"]
+        D2f --> D2g["章节内容生成<br/>基于检索信息写作"]
+        D2g --> D2h["内联引用处理<br/>添加[1][2]格式引用"]
+        
+        D2h --> D3["文章组装"]
+        D3 --> D3a["合并所有章节"]
+        D3a --> D3b["引用索引统一<br/>重新排序引用编号"]
+        D3b --> D3c["文章后处理<br/>格式化和清理"]
+        
+        D3c --> D4["文章润色模块"]
+        D4 --> D4a["生成引言章节<br/>概述性导言"]
+        D4a --> D4b{"是否去重?"}
+        D4b --> |"是"| D4c["重复内容检测<br/>删除冗余信息"]
+        D4b --> |"否"| D5
+        D4c --> D5["最终文章输出"]
+    end
+    
+    D5 --> E["后处理阶段"]
+    E --> E1["保存配置日志<br/>run_config.json"]
+    E --> E2["保存LLM调用历史<br/>llm_call_history.jsonl"]
+    E --> E3["保存中间结果<br/>- conversation_log.json<br/>- storm_gen_outline.txt<br/>- storm_gen_article.txt<br/>- storm_gen_article_polished.txt"]
+    E --> F["完成"]
+    
+    subgraph "核心数据结构"
+        DS1["DialogueTurn<br/>- 用户问题<br/>- 专家回答<br/>- 搜索查询<br/>- 搜索结果"]
+        DS2["StormInformationTable<br/>- 对话集合<br/>- URL到信息映射<br/>- 检索功能"]
+        DS3["StormArticle<br/>- 主题名称<br/>- 层次化章节结构<br/>- 引用管理"]
+    end
+    
+    subgraph "关键算法组件"
+        ALG1["视角引导的问题提问<br/>Perspective-Guided Question Asking"]
+        ALG2["模拟对话<br/>Simulated Conversation"]
+        ALG3["多线程并行处理<br/>Multi-threading Processing"]
+        ALG4["信息检索与过滤<br/>Information Retrieval & Filtering"]
+    end
+    
+    subgraph "LLM模型专业化分工"
+        LLM1["对话模拟器LM<br/>gpt-4o-mini<br/>处理对话历史和答案合成"]
+        LLM2["问题提问LM<br/>gpt-4o-mini<br/>基于视角生成问题"]
+        LLM3["大纲生成LM<br/>gpt-4-0125-preview<br/>结构化大纲生成"]
+        LLM4["文章生成LM<br/>gpt-4o<br/>高质量内容生成"]
+        LLM5["文章润色LM<br/>gpt-4o<br/>引言写作和内容优化"]
+    end
+    
+    style A fill:#e1f5fe
+    style C fill:#f3e5f5
+    style D fill:#e8f5e8
+    style E fill:#fff3e0
+    style F fill:#ffebee
+    
+    classDef processBox fill:#ffffff,stroke:#333,stroke-width:2px
+    classDef dataBox fill:#f0f0f0,stroke:#666,stroke-width:1px
+    classDef algBox fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
+    classDef llmBox fill:#f1f8e9,stroke:#689f38,stroke-width:2px
+    
+    class DS1,DS2,DS3 dataBox
+    class ALG1,ALG2,ALG3,ALG4 algBox
+    class LLM1,LLM2,LLM3,LLM4,LLM5 llmBox
+```
+
+## STORM 工作流程详解
+
+### **两个核心阶段**
+
+#### **1. 预写作阶段 (Pre-writing Stage) - 知识管理**
+
+**视角发现策略**：
+
+- **相关主题发现**: 通过LLM查找与主题相关的Wikipedia页面
+- **页面结构分析**: 解析相关页面的目录结构，提取常见的章节组织方式
+- **多视角人物生成**: 基于分析结果生成不同视角的Wikipedia写手角色
+
+**模拟对话机制**：
+
+- **角色设定**: 每个写手都有特定的专业视角和关注重点
+- **对话流程**: Wikipedia写手提问 → 主题专家基于检索回答 → 迭代进行
+- **问题生成**: 基于角色视角和对话历史生成有深度的后续问题
+- **信息检索**: 专家将问题分解为多个搜索查询，并行检索外部知识
+
+#### **2. 写作阶段 (Writing Stage) - 文章生成**
+
+**大纲生成**：
+
+- **双层大纲策略**: 先生成基础大纲，再基于对话信息优化
+- **层次化结构**: 使用 `#` `##` `###` 表示不同层级的章节
+
+**并行文章生成**：
+
+- **章节级并行**: 每个一级章节独立并行生成
+- **信息检索**: 为每个章节从信息表中检索最相关的内容
+- **引用管理**: 自动处理内联引用的编号和统一
+
+**文章润色**：
+
+- **引言生成**: 专门的LLM生成概述性的引言章节
+- **去重处理**: 可选的重复内容检测和删除
+- **格式优化**: 统一引用格式和文章结构
+
+### **核心创新点**
+
+1. **视角引导的问题提问 (Perspective-Guided Question Asking)**
+   - 不是直接让LLM提问，而是先发现不同视角，再从这些视角出发提问
+   - 确保问题的深度和广度
+
+2. **模拟对话 (Simulated Conversation)**
+   - Wikipedia写手和主题专家之间的多轮对话
+   - 让LLM能够基于先前回答更新理解，提出更深入的后续问题
+
+3. **多层次LLM专业化**
+   - 不同复杂度的任务使用不同能力的模型
+   - 在成本和质量之间达到平衡
+
+4. **信息表检索机制**
+   - 将对话中收集的所有信息构建成可检索的表格
+   - 支持章节级别的精确信息检索
+
+### **与Co-STORM的区别**
+
+- **STORM**: 完全自动化的两阶段流程，无人类参与
+- **Co-STORM**: 在STORM基础上增加了人机协作和实时知识库管理
+
+**STORM的设计哲学**是将长文档生成分解为**结构化的信息收集**和**有组织的内容生成**两个阶段，通过多视角对话模拟来提高信息收集的质量，再通过专业化的LLM分工来提高文章生成的效率和质量。
+
+这个工作流程体现了STORM作为一个**自动化维基百科式文章生成系统**的核心特点，它能够从零开始，仅基于主题名称就生成结构完整、引用充分的长篇文章。
+
+## CO-STORM工作流程
 
 基于我对Co-STORM代码的深入分析，创建一个详细的Mermaid流程图来描述Co-STORM的工作流程。
 
