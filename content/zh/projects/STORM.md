@@ -560,7 +560,7 @@ graph TB
 - 使用长上下文LLM进行最终优化（final_optimization）
 - 输出Wikipedia风格的完整文章（final_article）
 
-## 关键特性
+### 关键特性
 
 1. **多视角研究**：通过不同角色的编辑者确保内容全面性（multi-perspective）
 2. **搜索增强**：每个问答都通过实时搜索获取最新信息（search_enhancement）
@@ -569,6 +569,165 @@ graph TB
 5. **两阶段LLM**：快速LLM处理大量任务，长上下文LLM处理复杂分析（two-stage_llm）
 
 这个工作流程的核心创新在于通过多视角的"模拟专家访谈"来获取更全面、更深入的信息，从而生成高质量的研究文章。
+
+## Breeze-Agent (LangGraph-based STORM)
+
+**注意：** <https://github.com/hobbytp/breeze-agent> forked自 <https://github.com/andrestorres123/breeze-agent> 并做了相应的修改。
+
+BREEZE (Balanced Research and Expert Engagement for Zonal Exploration) 是一个用于生成类似维基百科文章的精简研究系统，通过多视角专家互动和专题探索，实现高质量的文章输出。其主要功能包括：  
+
+- **多视角研究**：通过模拟主题专家的对话，保证内容的全面性和中立性。  
+- **专家访谈系统**：与 AI 专家进行聚焦式对话，并实现信息验证和引用管理。  
+- **结构化文章生成**：提供清晰的章节结构、规范的引用和一致的写作风格。  
+- **专题探索**：高效定义研究边界，确保主题的深度和专注。  
+
+本系统适合生成基于多方观点的专题文章，如技术（例如大型语言模型对软件开发的影响）、商业（如 AI 客服的崛起）和通用话题（如电动车历史与演变）。
+
+需注意，文章质量依赖于在线信息来源，可能需要对广义主题进行细化研究。此项目基于 STORM 框架，并进行了针对维基百科风格文章生成的改进，使用 Python 开发，遵循 MIT 许可协议。
+
+### 整体架构分析
+
+这是一个智能的网络研究和文章生成系统，主要包含以下组件：
+
+#### 核心组件
+
+1. **主工作流图** (`web_research_graph/graph.py`) - 协调整个研究和文章生成过程
+2. **面试子图** (`interviews_graph/`) - 模拟专家采访过程
+3. **答案生成子图** (`answers_graph/`) - 处理专家问答
+
+#### 状态管理
+
+- **State** - 主要状态，包含主题、大纲、观点、文章等
+- **InterviewState** - 面试过程的状态管理
+- **TopicValidation** - 主题验证结构
+
+#### 主要节点功能
+
+1. **主题处理**: `validate_topic`, `request_topic`
+2. **内容规划**: `generate_outline`, `expand_topics`, `generate_perspectives`
+3. **专家采访**: `conduct_interviews` (子图)
+4. **内容生成**: `refine_outline`, `generate_article`
+
+```mermaid
+graph TD
+    A[START] --> B[validate_topic<br/>主题验证]
+    B --> C{主题是否有效?}
+    C -->|否| D[request_topic<br/>请求主题输入]
+    C -->|是| E[generate_outline<br/>生成大纲]
+    D --> B
+    E --> F[expand_topics<br/>扩展相关主题]
+    F --> G[generate_perspectives<br/>生成观点视角]
+    G --> H[conduct_interviews<br/>进行专家采访]
+    H --> I[refine_outline<br/>完善大纲]
+    I --> J[generate_article<br/>生成文章]
+    J --> K[END]
+    
+    %% 子图：面试流程
+    subgraph interviews ["面试子图 (conduct_interviews)"]
+        H1[START] --> H2[initialize<br/>初始化面试]
+        H2 --> H3[ask_question<br/>生成问题]
+        H3 --> H4[answer_question<br/>回答问题]
+        H4 --> H5{路由判断}
+        H5 -->|继续提问| H3
+        H5 -->|下一位编辑| H6[next_editor<br/>切换编辑]
+        H5 -->|结束| H7[END]
+        H6 --> H8{是否完成?}
+        H8 -->|否| H3
+        H8 -->|是| H7
+    end
+    
+    %% 子图：答案生成流程  
+    subgraph answers ["答案生成子图 (answer_question)"]
+        A1[START] --> A2[search_context<br/>搜索上下文]
+        A2 --> A3[generate_answer<br/>生成专家回答]
+        A3 --> A4[END]
+    end
+    
+    %% 样式
+    classDef startEnd fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef process fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef decision fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    
+    class A,K,H1,H7,A1,A4 startEnd
+    class B,D,E,F,G,I,J,H2,H3,H4,H6,A2,A3 process
+    class C,H5,H8 decision
+```
+
+### 代码整体架构详细说明
+
+#### 1. **主要架构特点**
+
+这个项目是一个基于**LangGraph**的智能网络研究代理，采用**多层级工作流**设计：
+
+- **主工作流**：负责整个研究和文章生成流程
+- **面试子图**：模拟多个编辑与专家的对话过程  
+- **答案生成子图**：处理专家对编辑问题的回答
+
+#### 2. **核心工作流程**
+
+##### **阶段一：主题验证与准备**
+
+- `validate_topic`：验证用户输入的研究主题
+- `request_topic`：如果主题无效，请求用户重新输入
+- `generate_outline`：基于有效主题生成初始大纲
+
+##### **阶段二：研究扩展与观点生成**
+
+- `expand_topics`：扩展相关研究主题
+- `generate_perspectives`：生成不同视角的编辑角色
+
+##### **阶段三：专家采访过程**
+
+- `conduct_interviews`：执行面试子图
+  - `initialize`：初始化面试环境和编辑列表
+  - `ask_question`：编辑向专家提问
+  - `answer_question`：专家搜索并回答（调用答案生成子图）
+  - `next_editor`：切换到下一位编辑
+  - **路由逻辑**：最多3轮对话，智能判断何时结束
+
+##### **阶段四：内容完善与生成**
+
+- `refine_outline`：基于采访结果完善大纲
+- `generate_article`：生成最终文章
+
+#### 3. **状态管理架构**
+
+##### **主状态 (State)**
+
+```python
+- topic: TopicValidation  # 主题验证信息
+- outline: Outline        # 文章大纲
+- related_topics: RelatedTopics  # 相关主题
+- perspectives: Perspectives     # 编辑观点
+- article: str           # 最终文章
+- references: dict       # 参考资料
+```
+
+##### **面试状态 (InterviewState)**
+
+```python  
+- messages: List[AnyMessage]     # 对话消息
+- editor: Editor                 # 当前编辑
+- editors: List[Editor]          # 所有编辑列表
+- current_editor_index: int      # 当前编辑索引
+- is_complete: bool             # 是否完成
+```
+
+#### 4. **关键设计特色**
+
+1. **中断机制**：在`request_topic`节点后设置中断，允许人工干预
+2. **重试策略**：面试节点配置最多5次重试
+3. **智能路由**：基于对话轮数和内容判断流程走向
+4. **模块化设计**：清晰的职责分离，易于维护和扩展
+
+#### 5. **技术栈**
+
+- **LangGraph**：工作流编排
+- **LangChain**：LLM集成和消息处理
+- **Pydantic**：数据结构验证
+- **Python dataclasses**：状态管理
+
+这个架构实现了一个完整的AI驱动的研究和写作流水线，能够自动进行主题研究、专家访谈、内容组织和文章生成，体现了现代AI工作流设计的最佳实践。
 
 ## 参考
 
