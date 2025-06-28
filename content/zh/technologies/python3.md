@@ -30,8 +30,9 @@ categories: ["technologies"]
 | 3.8   | Walrus运算符、f-strings改进、异步迭代器和异步生成器改进                  |
 | 3.9   | 字典合并运算符、类型提示改进、新的标准库模块                            |
 | 3.10  | 匹配模式、结构化的异常上下文、zoneinfo模块改进                          |
-| 3.11  | 新的标准库模块、新的语法特性、新的标准库模块                            |
-| 3.12  | 新的标准库模块、新的语法特性、新的标准库模块                            |
+| [3.11](https://docs.python.org/3.11/whatsnew/3.11.html#)  | 整体性能提升显著（平均加速约25%，部分场景快60%），引入了异常组与 except* 语法（[PEP 654](https://peps.python.org/pep-0654/)）支持同时处理多个异常，异常对象可添加注释（[PEP 678](https://peps.python.org/pep-0678/)），traceback 错误追踪定位更细致（[PEP 657](https://peps.python.org/pep-0657/)），类型系统大幅增强（如变参泛型、Self 类型、TypedDict 字段可选、LiteralString 等），并新增 tomllib 标准库模块支持 TOML 解析，asyncio、enum、dataclasses 等标准库多处改进，同时弃用和移除了一批老旧模块与API。整体上，Python 3.11在性能、类型安全、异常处理和开发体验方面都有质的飞跃。                            |
+| [3.12](https://docs.python.org/3.12/whatsnew/3.12.html#)  | 引入了更简洁的类型参数和类型别名声明语法（[PEP 695](https://peps.python.org/pep-0695/)），f字符串表达能力大幅增强（[PEP 701](https://peps.python.org/pep-0701/)），支持每个解释器独立GIL以便更好地利用多核（[PEP 684](https://peps.python.org/pep-0684/)），推导式性能提升（[PEP 709](https://peps.python.org/pep-0709/)），错误提示和类型提示（如TypedDict和override装饰器）更加智能和精确，标准库如asyncio、os、pathlib等性能和可用性显著提升，同时移除了distutils、asyncore、asynchat等过时模块，整体上让Python在类型系统、性能、安全性和开发体验上都迈进了一大步。                            |
+| [3.13](https://docs.python.org/3.13/whatsnew/3.13.html#)  | 引入了全新交互式解释器（带多行编辑和彩色提示）、实验性支持**无GIL**的自由线程模式（[PEP 703](https://peps.python.org/pep-0703/)）、加入了基础版JIT即时编译器（[PEP 744](https://peps.python.org/pep-0744/)）、改进了错误提示的可读性和智能性、对iOS和Android的官方支持、标准库移除了19个历史遗留模块（如cgi、crypt等），并对API和C API进行了多项现代化和安全性调整。                            |
 
 ## **第一章：注释、类型提示与函数签名增强**
 
@@ -729,7 +730,172 @@ Python 一直支持使用 \* 来解包可迭代对象（如列表、元组）以
   * **提高可读性**：解包语法直观地表达了合并或扩展集合的意图。  
   * **灵活性**：可以方便地在字面量构造的任何位置插入解包的可迭代对象或字典。
 
+### **6.3 推导式（Comprehensions）**
+
+1. **列表推导式：**
+
+    ```python
+    squares = [x**2 for x in range(10)]  # [0, 1, 4, 9, ..., 81]
+    evens = [x for x in range(20) if x % 2 == 0]  # 条件过滤
+    ```
+
+2. **字典推导式：**
+
+    ```python
+    squares_dict = {x: x**2 for x in range(5)}  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+    inverted = {v: k for k, v in original_dict.items()}  # 键值互换
+    ```
+
+3. **集合推导式：**
+
+    ```python
+    unique_lengths = {len(word) for word in words}  # 单词长度的唯一集合
+    ```
+
+4. **生成器表达式：**
+
+    ```python
+    gen_squares = (x**2 for x in range(1000000))  # 惰性求值，节省内存
+    large_sum = sum(x * x for x in range(1000000))  # 常用于聚合函数参数
+    ```
+
+## **6.4 扩展解包（Packing/Unpacking）**
+
+5. **星号解包可迭代对象：**
+
+    ```python
+    first, *middle, last = [1, 2, 3, 4, 5]  # first=1, middle=[2, 3, 4], last=5
+    combined = [*list1, *list2]  # 合并列表
+    merged_dict = {**dict1, **dict2}  # 合并字典（Python 3.5+）
+    ```
+
+6. **双星号解包字典：**
+
+    ```python
+    def func(a, b, c):
+        pass
+    kwargs = {'b': 2, 'c': 3}
+    func(1, **kwargs)  # 等价于 func(1, b=2, c=3)
+    ```
+
 高级解包特性是 Python 语言表达力增强的又一体现，它建立在已有的解包机制之上，通过扩展其应用场景，为处理和组合集合数据提供了更优雅、更 Pythonic 的方式。
+
+## **6.5 赋值表达式（海象运算符 `:=` ，Python 3.8+）**
+
+7. **在表达式内部赋值：**
+
+    ```python
+    # 传统方式
+    n = len(data)
+    if n > 10:
+        print(f"List has {n} items")
+
+    # 使用海象运算符
+    if (n := len(data)) > 10:
+        print(f"List has {n} items")
+
+    # 用于 while 循环
+    while (chunk := file.read(1024)):
+        process(chunk)
+    # 用于推导式（谨慎使用，避免可读性降低）
+    results = [result for item in items if (result := process(item)) is not None]
+    ```
+
+## **6.6 高级字符串格式化（f-Strings, Python 3.6+）**
+
+8. **格式化字符串字面值：**
+
+    ```python
+    name = "Alice"
+    age = 30
+    greeting = f"Hello, {name}! You are {age} years old."
+    # 内嵌表达式、函数调用、格式规范
+    price = 19.99
+    message = f"Total: ${price * 1.08:.2f}"  # Total: $21.59
+    ```
+
+## **6.7 字典操作符（Python 3.9+）**
+
+9. **字典合并 (`|`)：**
+
+    ```python
+    d1 = {'a': 1, 'b': 2}
+    d2 = {'b': 3, 'c': 4}
+    d3 = d1 | d2  # {'a': 1, 'b': 3, 'c': 4} (d2 覆盖 d1 的键)
+    ```
+
+10. **字典合并赋值 (`|=`)：**
+
+    ```python
+    d1 |= d2  # 等效于 d1.update(d2)
+    ```
+
+## **6.8 高级函数相关**
+
+11. **Lambda 表达式：**
+
+    ```python
+    # 匿名函数
+    adder = lambda x, y: x + y
+    sorted_points = sorted(points, key=lambda p: p[0]**2 + p[1]**2)  # 按点到原点距离平方排序
+    ```
+
+12. **`yield from` 表达式：**
+
+    ```python
+    def flatten(nested_list):
+        for sublist in nested_list:
+            yield from sublist  # 委托生成给内层可迭代对象
+    ```
+
+## **6.9 高级迭代与控制**
+
+13. **三元条件表达式：**
+
+    ```python
+    value = true_value if condition else false_value
+    ```
+
+14. **`any()` 和 `all()` 函数：**
+
+    ```python
+    has_even = any(x % 2 == 0 for x in numbers)  # 是否有偶数
+    all_positive = all(x > 0 for x in numbers)   # 是否全为正数
+    ```
+
+15. **条件生成器表达式：**
+
+    ```python
+    positive_numbers = (x for x in numbers if x > 0)  # 生成器版本的条件过滤
+    ```
+
+## **6.10 模式匹配 (Structural Pattern Matching, Python 3.10+)**
+
+16. **match-case 语句：**
+
+    ```python
+    def handle_command(command):
+        match command.split():
+            case ["quit"]: ...
+            case ["load", filename]: ...
+            case ["save" | "saveas", filename]: ...  # 或模式
+            case ["move", (x, y)] | ["move", x, y]: ... # 解构
+            case [action, value] if action in ('add', 'sub'): ... # 守卫
+            case _: ...  # 通配符
+    ```
+
+## **6.11 总结**
+
+Python 3 的表达式特性主要聚焦于：
+
+1. **简洁性与表现力：** 推导式（列表、字典、集合、生成器）、三元表达式、f-字符串。
+2. **解构与重组：** 扩展解包（`*`, `**`）。
+3. **流程内赋值：** 海象运算符 `:=`。
+4. **新操作符：** 字典合并 `|` 和 `|=`。
+5. **高级结构化逻辑：** 模式匹配 (`match-case`)。
+6. **函数式编程支持：** `lambda`, `any()`, `all()`, 条件生成器，`yield from`。
+
+这些特性共同提升了 Python 代码的编写效率、可读性以及对复杂逻辑的处理能力。理解并合理运用这些特性能显著提高代码质量。
 
 ## **第七章：链式异常处理 (PEP 3134)：改进错误追踪**
 
@@ -815,6 +981,72 @@ Python 一直支持使用 \* 来解包可迭代对象（如列表、元组）以
 * **更清晰的错误报告**：通过 raise from，可以创建更具信息量的、层次化的错误报告，明确区分直接原因和间接后果。
 
 链式异常是 Python 3.x 在提升开发者生产力和改善调试体验方面做出的一项重要改进，它使得处理和理解运行时错误变得更加系统和透明。
+
+## **第八章：Python 3.x 性能提升关键特性总结**
+
+Python 3.x 系列在性能方面取得了显著且持续的进展，尤其是在近期的版本中，通过对核心解释器、数据结构、并发机制和语言特性的多维度优化，显著提升了执行效率。
+
+### 核心解释器与运行时优化
+
+* **CPython 优化器 (Python 3.11 及更高版本)**：这是 Python 3.x 性能飞跃的核心。
+  * **特化自适应解释器 (Python 3.11)**：通过针对热点代码自动优化字节码，实现指令的“专业化”，使得 Python 代码整体性能提升 **10-60%，平均约 25%**。
+  * **分层解释器与二级缓存 (Python 3.12, 3.13)**：在 3.11 的基础上，进一步完善了解释器，引入分层执行和二级缓存机制，持续减少字节码查找和执行开销。
+* **零成本异常处理 (Python 3.11)**：`try-except` 块在没有触发异常时，几乎没有任何性能损耗，使得异常处理在正常执行路径中变得高效。
+* **内联 Python 函数调用 (Python 3.11)**：通过优化内部机制，减少了函数调用的开销，提高了函数执行效率。
+* **快速启动 (Python 3.11)**：通过冻结核心模块的代码对象，解释器启动速度提升了约 **10-15%**，改善了小型脚本的响应时间。
+* **Opcode 缓存机制优化**：
+  * **`LOAD_ATTR` 优化 (Python 3.10)**：通过“每操作码缓存”机制，使常规属性访问速度提升 36%，槽属性访问快 44%。
+  * **`LOAD_GLOBAL` 优化 (Python 3.8)**：引入了针对全局变量访问的优化，使其速度提升约 **40%**。
+* **`yield from` 语法 (Python 3.3)**：优化了生成器委托，减少了在处理复杂生成器逻辑时的开销。
+
+---
+
+### 数据结构与操作优化
+
+* **字典实现重构与优化**：
+  * **内存使用减少 (Python 3.6)**：通过采用更紧凑的存储结构，字典的内存使用减少了 **20-25%**。
+  * **默认保序 (Python 3.7)**：字典默认保持插入顺序，且性能几乎没有损耗。
+  * **合并运算符 (Python 3.9)**：引入 `|` 和 `|=` 运算符，提供了更高效的字典合并和更新方式。
+* **列表和集合操作优化**：对内置列表和集合的常见操作进行了底层优化。
+
+---
+
+### 并发与异步编程
+
+* **Asyncio 模块成熟与优化 (Python 3.4 及更高版本)**：
+  * **模块引入 (Python 3.4)**：奠定了 Python 高性能异步 I/O 的基础。
+  * **`async/await` 语法 (Python 3.5)**：极大简化了异步编程模型，使其更易于编写和维护。
+  * **持续优化 (Python 3.6+)**：对 `asyncio` 内部实现持续进行优化，并支持异步生成器和推导式，进一步提升异步代码性能。
+* **可选的 GIL 移除 (No-GIL CPython) (Python 3.13+)**：通过 **PEP 703**，Python 3.13 提供了 **可选的无 GIL 构建版本**。这意味着，如果选择此版本，多线程的 Python 代码将能够真正并行执行 CPU 密集型任务，充分利用多核处理器，解锁了传统 Python 在 CPU 密集型场景的并发瓶颈。
+* **`concurrent.futures` 模块 (Python 3.2)**：提供了线程池和进程池等高级并发执行接口，简化了并行任务的开发和管理。
+* **优化的 GIL (Python 3.2)**：即使在未移除 GIL 的版本中，Python 也持续对 GIL 自身进行了优化，以尽可能减少其对多线程性能的影响。
+
+---
+
+### 语言特性与工具辅助优化
+
+* **f-strings (Python 3.6, 3.8)**：
+  * Python 3.6 引入了 f-strings，比传统的 `%` 和 `.format()` 方法快约 **2 倍**。
+  * Python 3.8 进一步优化了 f-strings 的调试特性 (`=` 说明符)，同时保持了高效性能。
+* **赋值表达式（海象运算符 `:=`）(Python 3.8)**：允许在表达式中进行赋值，减少重复计算，从而提升代码效率和可读性。
+* **`vectorcall` 协议扩展 (Python 3.9)**：更多内置函数支持快速调用协议，减少了函数调用的开销。
+* **类型提示性能优化 (Python 3.9)**：减少了运行时类型检查的开销，鼓励开发者使用类型提示，从而有助于静态分析工具进行优化。
+* **`functools.lru_cache` (Python 3.2)**：内置的 LRU 缓存装饰器，可以高效缓存函数结果，避免重复计算，极大地提升了重复调用的函数性能。
+* **`breakpoint()` 内置函数 (Python 3.7)**：虽然主要用于调试，但它提供了一个统一且性能优化的调试入口。
+* **`tracemalloc` (Python 3.4) 和 `faulthandler` (Python 3.3)**：这些内存分析和崩溃调试工具虽然不直接提升代码运行速度，但它们帮助开发者定位和优化内存使用问题，以及更稳定地进行调试，从而间接促进了整体性能的改进。
+
+---
+
+### 通用优化趋势
+
+Python 3.x 的性能提升是一个持续的工程，其核心驱动力包括：
+
+* **内存优化**：通过更紧凑的对象表示和数据结构，减少内存使用量，改善缓存局部性。
+* **字节码优化**：持续改进解释器对字节码的执行方式，包括分层解释、操作码缓存和专业化，使其更加高效。
+* **C API 改进**：为 C 扩展模块提供更稳定、更高效的接口，从而提升依赖这些模块的 Python 应用的性能。
+* **并发改进**：在持续优化 GIL 的同时，大力发展异步编程模型并探索可选的 GIL 移除，以充分应对现代多核和 I/O 密集型应用的需求。
+
+这些关键特性共同推动了 Python 3.x 成为一个性能更强、更适合现代计算需求的编程语言。
 
 ## **第八章：总结**
 
