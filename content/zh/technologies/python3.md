@@ -2,6 +2,7 @@
 title: "Python 3.x 高级语法与语言特性深度剖析"
 date: "2025-04-22T10:34:00+08:00"
 description: "Python 3.x 高级语法与语言特性深度剖析"
+lastmod: "2025-06-28T11:40:00+08:00"
 tags: ["Python 3.x", "高级语法", "语言特性"]
 categories: ["technologies"]
 ---
