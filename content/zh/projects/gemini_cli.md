@@ -1,7 +1,6 @@
 ---
 title: Gemini CLI 开源项目分析
-date: 2025-06-28
-lastmod: "2025-06-28T11:40:00+08:00"
+date: "2025-06-28T23:03:00+08:00"
 tags: ["gemini_cli", "architecture", "uml"]
 categories: ["projects"]
 draft: false
