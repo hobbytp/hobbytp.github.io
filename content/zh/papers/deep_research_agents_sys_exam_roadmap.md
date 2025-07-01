@@ -7,8 +7,6 @@ categories: ["papers"]
 description: "本文介绍了深度研究智能体：系统性审查与路线图。"
 ---
 
-{{< deep_research_agents_sys_exam_roadmap >}}
-
 DEEP RESEARCH AGENTS: A SYSTEMATIC EXAMINATION AND ROADMAP
 [深度研究智能体：系统性审查与路线图](https://arxiv.org/pdf/2506.18096)
 
