@@ -1,6 +1,6 @@
 ---
 title: "ERNIE 4.5 技术报告解读"
-date: "2025-07-01T22:10:00+08:00"
+date: "2025-06-30T22:10:00+08:00"
 draft: false
 tags: ["Opensource", "ERNIE-4.5", "论文", "技术"]
 categories: ["large_models"]
