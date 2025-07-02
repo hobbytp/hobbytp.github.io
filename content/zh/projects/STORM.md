@@ -384,6 +384,7 @@ graph TD
 
 ## LangGraph STORM实现分析
 
+[参考代码](./github/storm.ipynb)
 LangGraph里面有个基于STORM论文和LangGraph实现，我基于这个实现，创建了一个详细的STORM工作流程图。这个流程图展示了STORM（Synthesis of Topic Outline through Retrieval and Multi-perspective question asking）系统的完整工作流程，包括以下关键阶段：
 
 ```mermaid
