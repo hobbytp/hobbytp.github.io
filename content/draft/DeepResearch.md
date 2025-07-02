@@ -19,6 +19,15 @@ categories: ["mas"]
 下面开始讨论Deep Research 的定义、目的和预期影响
 
 **什么是 Deep Research？**
+来自OpenAI：
+深度研究是一种专门的人工智能能力，旨在利用公共网络上的数据进行深入、多步骤的研究。它基于 OpenAI 的 o3 推理模型进行了微调，能够自主地从各种在线来源搜索和阅读信息。这使它能够就复杂主题生成详尽、有记录且引用清晰的报告。
+深度研究非常适合在金融、科学和法律等领域从事高强度知识工作的人士，以及需要全面、精确和可靠研究的学者和精明的消费者。每一份输出都有完整的文档记录，并附有清晰的来源引用，便于验证和参考信息。深度研究尤其擅长在多个网站间进行多步骤操作，从而找到小众且非直观的信息。
+
+来自Google：
+规划：Deep Research 能够根据你的需求，将简单的提示转化为专属的多维度研究计划
+搜索：Deep Research 能够自主完成网络搜索和深度资料挖掘，为你找到最相关、最新的信息
+推理：Deep Research 会不断根据收集到的信息进行推理，思考后才进行下一步，并将整个思路呈现在你眼前
+报告：Deep Research 可在几分钟内为你生成内容丰富、高度定制的研究报告，其中包含深入的细节和独到的见解，还能转换为音频概览，替你节省数小时的宝贵时间
 
 Deep Research 是由 OpenAI 开发的一款人工智能智能体（AI Agent），旨在通过多步骤推理、动态信息检索与多模态数据整合，自动化完成复杂研究任务并生成专业级分析报告。其核心目标是为用户提供高效、精准的深度研究支持，适用于学术、商业、政策等领域的高强度知识工作。
 
@@ -118,6 +127,25 @@ TBD
 #### GPT Research的Deep Research实现原理
 
 ![GPT Researcher's DeepResearch](./images/gpt-researcher-deep-research.png)
+
+```mermaid
+graph TD
+    A["Browser (初步研究)"] --> B["Planner (规划研究)"];
+    B --> C{"Human (人工审核)"};
+    C -- "接受 / human_feedback is None" --> D["Researcher (并行研究)"];
+    C -- "修订 / human_feedback is not None" --> B;
+    D --> E["Writer (撰写报告)"];
+    E --> F["Publisher (发布报告)"];
+    F --> G((END));
+```
+
+```mermaid
+graph TD
+    A["Researcher (入口)"] --> B{"Reviewer (评审)"};
+    B -- "接受 (review is None)" --> C("结束");
+    B -- "修订 (review is not None)" --> D["Reviser (修订)"];
+    D --> B;
+```
 
 GPT Research的Deep Research 实现“深度”的主要技术原理
 
@@ -258,7 +286,7 @@ deer-flow采用了多智能体架构，包括协调器、规划器、研究团�
 
 deer-flow的"深度"实现不是单一机制，而是通过严格的标准设定、多智能体协作、迭代式规划、工具链集成等多重机制的有机结合。系统的核心哲学是"宁可过度收集也不信息不足"，通过结构化的分析框架和专业分工，确保能够发现深刻的洞见而不是停留在表面信息。这种设计使得deer-flow能够产生真正有价值的深度研究报告。
 
-### 天工的DeepResearch
+### 天工的DeepResearchAgent
 
 - 官网：<https://tiangong.ai/>
 - 外网链接：<https://skywork.ai/>  #我使用这个，送token
@@ -271,7 +299,7 @@ DeepResearchAgent通过多层次的分析和研究机制来实现"Deep"（深度
 
 ##### 分层架构实现深度分析
 
-DeepResearchAgent采用两层架构来实现深度研究：顶层规划代理协调多个专业化的底层代理，每个代理都专注于特定类型的深度分析 [1](#0-0) 。
+DeepResearchAgent采用两层架构来实现深度研究：顶层规划代理协调多个专业化的底层代理，每个代理都专注于特定类型的深度分析。
 
 ##### 专业化代理的深度能力
 
@@ -457,6 +485,8 @@ DeepResearch的"Deep"功能本质上是一个**迭代深化的知识发现过程
 - Demo: <https://research.u14.app/>
 - github: <https://github.com/u14app/deep-research>
 - Deepwiki: <https://deepwiki.com/u14app/deep-research>
+- 角色Prompt: <https://github.com/u14app/deep-research/blob/main/src/constants/prompts.ts>
+-
 
 **功能**：
 
@@ -535,6 +565,83 @@ Demo: <https://search.jina.ai/>
 
 - [DeepSearch 与 DeepResearch 的设计和实现](https://mp.weixin.qq.com/s/-pPhHDi2nz8hp5R3Lm_mww)
 - [DeepSearch/DeepResearch中最优文本段选择和URL重排](https://mp.weixin.qq.com/s/apnorBj4TZs3-Mo23xUReQ)
+
+下面的流程图是根据上面第一篇公众号文章中的描述信息而自动绘制的。
+
+```mermaid
+graph TD
+    A[用户查询] --> B{开始};
+
+    subgraph DeepResearch框架[（生成长报告）]
+        direction TB
+        B -- 需要长报告 --> DR1[1.生成报告大纲 （TOC）];
+        DR1 --> DR2{2.对每个章节};
+        DR2 -- 应用 DeepSearch --> DS_Start[（DeepSearch 核心）];
+        DS_End --> DR3[收集章节结果];
+        DR3 --> DR2;
+        DR2 -- 所有章节完成 --> DR4[3.整合 & 精炼报告];
+        DR4 --> Z[输出:最终报告];
+    end
+
+    B -- 直接回答查询 --> DS_Start;
+
+    subgraph DS [DeepSearch 核心循环]
+        direction TB
+        DS_Start --> DS1[1.推理（LLM / 推理模型）];
+        DS1 --> DS_Decide{2.决定下一步行动};
+
+        DS_Decide -- 反思（Reflect）--> DS_Gaps{识别知识空白?};
+        DS_Gaps -- 是 --> DS_Queue[添加到 FIFO 队列];
+        DS_Queue --> DS_NextQ[获取下一个问题];
+        DS_NextQ --> DS1;
+        DS_Gaps -- 否 --> DS1;
+
+        DS_Decide -- 搜索 （Search） --> DS_Rewrite[3a.查询重写/扩展];
+        DS_Rewrite --> DS_Dedup[3b.查询去重 （Embeddings）];
+        DS_Dedup --> DS_Search[3c.执行网络搜索];
+        DS_Search --> DS_StoreURLs[存储URL/结果];
+        DS_StoreURLs --> DS1;
+
+        DS_Decide -- 阅读/访问 （Read/Visit） --> DS_Read[4.读取URL内容 （Jina Reader）];
+        DS_Read --> DS_StoreKnowledge[存储知识（上下文记忆）];
+        DS_StoreKnowledge --> DS1;
+
+        DS_Decide -- 回答 （Answer） --> DS_Eval[5.评估答案 （独立步骤）];
+        DS_Eval -- 通过 --> DS_End[（退出循环: 找到答案）];
+        DS_Eval -- 失败 --> DS_LogFail[记录失败尝试];
+        DS_LogFail --> DS1;
+
+        DS1 -- 检查停止条件 --> DS_Stop{停止?（Token预算/尝试次数）};
+        DS_Stop -- 是 --> DS_Beast[野兽模式:强制生成答案];
+        DS_Beast --> DS_End;
+        DS_Stop -- 否 --> DS_Decide;
+    end
+
+    DS_End --> Z;
+
+    %% --- 关键决策与权衡注解 ---
+    note1["1.推理（LLM/推理模型）": 核心驱动力，控制状态转换。XML Prompts + JSON Schema 保证结构化输出。]
+    note1 -.- DS1
+
+    note2["添加到 FIFO 队列": 优先于递归，利于预算控制和上下文共享。]
+    note2 -.- DS_Queue
+
+    note3["3b.查询去重 （Embeddings）": Embedding 模型在跨语言语义去重上优于 LLM。查询重写/扩展是关键。]
+    note3 -.- DS_Dedup
+    note4["存储知识（上下文记忆）": 利用长上下文能力，避免了向量数据库的复杂性。]
+    note4 -.- DS_StoreKnowledge
+    
+    note5["5.评估答案（独立步骤）":分离评估步骤，提高可靠性。]
+    note5 -.- DS_Eval
+    
+    note6["停止?（Token预算/尝试次数）":预算控制旨在保证推理深度，而非单纯节约。野兽模式确保有结果输出。]
+    note6 -.- DS_Stop
+    note7["DeepSearch核心循环": 倾向于直接与 LLM 交互，避免过度抽象的 Agent 框架。]
+    note7 -.- DS
+
+    note8["DeepResearch框架（生成长报告）":在DeepSearch 基础上增加结构化报告生成流程，依赖长上下文整合内容。]
+    note8 -.- DeepResearch框架
+```
 
 ### 其他轻量级DeepResearch实现
 
@@ -637,16 +744,42 @@ graph TD
 
 ### AI scientist
 
-The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery
-<https://github.com/SakanaAI/AI-Scientist>
-
 人工智能面临的重大挑战之一是开发能够开展科学研究并发现新知识的智能体。虽然前沿模型已经被用于协助人类科学家，比如用于头脑风暴想法或编写代码，但它们仍然需要大量人工监督，或者在很大程度上局限于特定任务。
 我们很高兴推出人工智能科学家，这是首个用于全自动科学发现的综合系统，使基础模型（如大语言模型（LLMs））能够独立进行研究。
 我们在此处提供论文中的所有运行过程和数据，我们在每个模板上对每个基础模型运行约 50 个想法。我们强烈建议阅读一些克劳德（Claude）相关论文，以了解该系统的优缺点。
 
+#### v1
+
+[The AI Scientist-v1: Towards Fully Automated Open-Ended Scientific Discovery](https://github.com/SakanaAI/AI-Scientist)
+
+#### v2
+
+[The AI Scientist-v2: Workshop-Level Automated Scientific Discovery via Agentic Tree Search](https://github.com/SakanaAI/AI-Scientist-v2)
+
+AI-Scientist-v2 是一个自动化科学发现的工具，通过代理性树搜索实现从研究假设生成到实验执行、结果分析和论文撰写的全流程支持。与前一版本相比，v2 不再依赖模板化设计，支持更广泛的机器学习领域探索，但对于明确目标的任务，v1 的成功率仍更高。
+
+功能亮点：
+
+1. 自动生成研究假设，进行实验并撰写文章。
+2. 使用支持 CUDA 的 PyTorch GPU 环境运行，支持 OpenAI、Gemini 和 Claude 等 LLM 模型。
+3. 包含实验树搜索配置（例如并行路径和节点优化）。
+4. 生成的论文已通过同行评审并发表在研讨会上。
+
+使用注意事项：
+
+- 确保使用环境为受控的沙箱（如 Docker），以避免自动代码执行带来的安全问题。
+- 使用者需提供像 OpenAI API Key 和 Semantic Scholar Key 等必要凭据。
+- 系统依赖较大的模型，可能会有显著成本和计算需求。
+
+适用场景：支持开放性科学研究，用于生成研究想法和探索学术可能性。
+
+项目代码以 Apache-2.0 许可开源。
+
 ### zilliztech的deep-searcher
 
 [Zilliz’s Deep Searcher](https://github.com/zilliztech/deep-searcher) 是一个开源的OpenAI的深度研究本地替代品，是一个具代理性RAG框架，重新定义了AI驱动的企业搜索。它结合了先进的推理模型、复杂的搜索功能以及集成的研究助手，使用Milvus高性能向量数据库进行本地数据整合，提供更快更相关的搜索结果，并支持模型切换以定制体验。DeepSearcher通过将查询拆分为多个子问题，进行多轮实时检索，具备主动问题解决、动态自我纠正和复杂推理任务的能力。此外，它全面记录搜索和推理过程，为调试和优化提供透明度，适合构建企业搜索解决方案或为数据密集型项目提供强大的研究助手，代表了开放源代码可定制AI代理的发展趋势。
+
+![Zilliz’s DeepSearcher Arch](./images/zilliz_deepresearch_arch.png)
 
 ### 上海交大GAIR-NLP的DeepResearcher
 
