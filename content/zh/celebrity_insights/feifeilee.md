@@ -1,6 +1,6 @@
 ---
 title: "李飞飞博士的生平与洞见"
-date: "2025-07-02T23:03:00+08:00"
+date: "2025-07-02T22:03:00+08:00"
 draft: false
 tags:  ["AI","李飞飞"]
 categories: ["celebrity_insights"]
