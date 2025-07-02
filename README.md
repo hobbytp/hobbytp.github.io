@@ -1,25 +1,266 @@
-# 个人 AI 博客
+# 个人 AI 技术博客 🤖
 
-欢迎来到我的个人 AI 博客，本博客主要关注 AI 领域的论文解读、最新技术、开源项目、知名人物访谈、动态和商业产品介绍。
+[![部署状态](https://img.shields.io/badge/部署-成功-green)](https://hobbytp.github.io)
+[![Hugo](https://img.shields.io/badge/Hugo-v0.120+-blue)](https://gohugo.io)
+[![许可证](https://img.shields.io/badge/许可证-MIT-blue)](LICENSE)
 
-## 用户反馈
+欢迎来到我的个人 AI 技术博客！这是一个基于 Hugo 构建的静态网站，专注于分享 AI 领域的深度内容和前沿技术。
 
-如有疑问或建议，请点击页面底部的反馈链接，或直接在 [GitHub Issue](https://github.com/yourusername/yourrepo/issues) 提交反馈。
+## 📖 博客内容
+
+本博客涵盖以下主要领域：
+
+### 🎯 核心内容
+
+- **论文解读**：深度解析最新的 AI/ML 论文，从理论到实践
+- **技术分析**：前沿技术深度剖析，包括大语言模型、多智能体系统等
+- **开源项目**：优秀开源项目介绍与实战指南
+- **行业动态**：AI 领域最新发展趋势和重要事件
+- **产品评测**：商业 AI 产品深度体验与对比分析
+
+### 🏢 重点关注
+
+- **知名企业**：OpenAI、Google、微软、百度、阿里巴巴等
+- **技术领域**：LLM、RAG、Agent、多模态、训练优化
+- **开发工具**：Cursor、Claude MCP、LangChain、AutoGen 等
+- **名人访谈**：行业专家观点与技术分享
+
+## 🛠️ 技术栈
+
+- **框架**：[Hugo](https://gohugo.io/) - 快速静态网站生成器
+- **主题**：DoIt & PaperMod - 响应式设计，支持暗色模式
+- **部署**：GitHub Pages - 自动化 CI/CD
+- **语言支持**：中文/英文双语
+- **搜索功能**：集成全文搜索
+- **评论系统**：支持多种评论插件
+
+## 🚀 快速开始
+
+### 环境要求
+
+- Hugo Extended v0.120.0+
+- Git
+- Node.js (可选，用于主题开发)
+
+### 本地运行
+
+```bash
+# 克隆项目
+git clone https://github.com/hobbytp/hobbytp.github.io.git
+cd hobbytp.github.io
+
+# 初始化子模块（主题）
+git submodule update --init --recursive
+
+# 启动开发服务器
+hugo server -D --bind 0.0.0.0
+
+# 访问 http://localhost:1313
+```
+
+### Docker 部署
+
+```bash
+# 使用 Docker Compose
+docker-compose up -d
+
+# 或使用 Docker
+docker build -t ai-blog .
+docker run -p 1313:1313 ai-blog
+```
+
+## 📁 项目结构
+
+```
+├── content/                 # 内容目录
+│   ├── zh/                 # 中文内容
+│   │   ├── papers/         # 论文解读
+│   │   ├── projects/       # 项目介绍
+│   │   ├── news/          # 行业动态
+│   │   └── ...
+│   ├── en/                # 英文内容
+│   └── draft/             # 草稿文件
+├── themes/                # Hugo 主题
+│   ├── DoIt/             # 主主题
+│   └── PaperMod/         # 备用主题
+├── static/               # 静态资源
+├── layouts/              # 自定义布局
+├── config.toml           # 网站配置
+└── docker-compose.yml    # Docker 配置
+```
+
+## ✍️ 内容创作
+
+### 添加新文章
+
+```bash
+# 创建新的技术文章
+hugo new content/zh/technologies/new-article.md
+
+# 创建新的论文解读
+hugo new content/zh/papers/paper-review.md
+
+# 创建项目介绍
+hugo new content/zh/projects/project-intro.md
+```
+
+### 文章 Front Matter 示例
+
+```yaml
+---
+title: "文章标题"
+date: 2024-01-15T10:00:00+08:00
+draft: false
+tags: ["AI", "LLM", "技术"]
+categories: ["技术分析"]
+author: "作者名"
+description: "文章简介"
+---
+```
+
+## 🌍 多语言支持
+
+- **中文**：主要语言，包含完整内容
+- **英文**：部分重要内容的英文版本
+- 配置文件：`i18n/` 目录下的语言配置
+
+## 🎨 自定义配置
+
+### 主题配置
+
+主要配置文件：`config.toml`
+
+### 自定义样式
+
+- CSS 文件：`assets/css/main.css`
+- 布局文件：`layouts/` 目录
+
+### 搜索功能
+
+集成了全文搜索，支持中英文内容检索。
+
+## 📊 部署与CI/CD
+
+- **自动部署**：推送到 main 分支自动触发 GitHub Pages 部署
+- **构建状态**：可在 Actions 页面查看构建状态
+- **CDN 加速**：静态资源通过 CDN 加速访问
+
+## 🤝 贡献指南
+
+欢迎各种形式的贡献：
+
+1. **内容贡献**：提交优质的技术文章或翻译
+2. **错误修正**：发现错误请提交 Issue 或 PR
+3. **功能建议**：通过 Issue 提出新功能建议
+4. **主题优化**：改进网站设计和用户体验
+
+### 提交流程
+
+1. Fork 项目
+2. 创建特性分支
+3. 提交更改
+4. 发起 Pull Request
+
+## 📬 联系与反馈
+
+- **GitHub Issue**：[提交问题或建议](https://github.com/hobbytp/hobbytp.github.io/issues)
+- **邮箱**：通过 GitHub Profile 联系
+- **博客评论**：在相应文章下留言
+
+## 📄 许可证
+
+本项目采用 [MIT 许可证](LICENSE)，欢迎自由使用和分发。
+
+## 🙏 致谢
+
+感谢以下开源项目：
+
+- [Hugo](https://gohugo.io/) - 静态网站生成器
+- [DoIt 主题](https://github.com/HEIGE-PCloud/DoIt) - 美观的 Hugo 主题
+- [PaperMod 主题](https://github.com/adityatelange/hugo-PaperMod) - 简洁的 Hugo 主题
 
 ---
 
-测试部署 - {{ timestamp }}
+**最后更新**：{{ .Date.Format "2006-01-02" }}
+
+⭐ 如果这个项目对你有帮助，请给个 Star 支持一下！
 
 ---
 
-# Personal AI Blog
+# Personal AI Tech Blog 🤖
 
-Welcome to my personal AI blog. This blog mainly focuses on AI paper reviews, the latest technologies, open-source projects, interviews with well-known figures, trends, and commercial product introductions.
+[![Deployment Status](https://img.shields.io/badge/Deployment-Success-green)](https://hobbytp.github.io)
+[![Hugo](https://img.shields.io/badge/Hugo-v0.120+-blue)](https://gohugo.io)
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
-## User Feedback
+Welcome to my personal AI tech blog! This is a Hugo-based static website focused on sharing in-depth AI content and cutting-edge technologies.
 
-If you have any questions or suggestions, please click the feedback link at the bottom of the page, or submit feedback directly via [GitHub Issue](https://github.com/yourusername/yourrepo/issues).
+## 📖 Blog Content
+
+This blog covers the following main areas:
+
+### 🎯 Core Content
+
+- **Paper Reviews**: In-depth analysis of the latest AI/ML papers, from theory to practice
+- **Technical Analysis**: Deep dive into frontier technologies, including LLMs, multi-agent systems, etc.
+- **Open Source Projects**: Introduction and practical guides for excellent open source projects
+- **Industry Trends**: Latest developments and important events in the AI field
+- **Product Reviews**: In-depth experience and comparative analysis of commercial AI products
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Hugo](https://gohugo.io/) - Fast static site generator
+- **Themes**: DoIt & PaperMod - Responsive design with dark mode support
+- **Deployment**: GitHub Pages - Automated CI/CD
+- **Language Support**: Chinese/English bilingual
+- **Search**: Integrated full-text search
+- **Comments**: Support for multiple comment plugins
+
+## 🚀 Quick Start
+
+### Requirements
+
+- Hugo Extended v0.120.0+
+- Git
+- Node.js (optional, for theme development)
+
+### Local Development
+
+```bash
+# Clone the project
+git clone https://github.com/hobbytp/hobbytp.github.io.git
+cd hobbytp.github.io
+
+# Initialize submodules (themes)
+git submodule update --init --recursive
+
+# Start development server
+hugo server -D --bind 0.0.0.0
+
+# Visit http://localhost:1313
+```
+
+## 🤝 Contributing
+
+All forms of contributions are welcome:
+
+1. **Content Contribution**: Submit quality technical articles or translations
+2. **Error Correction**: Submit Issues or PRs when finding errors
+3. **Feature Suggestions**: Propose new features through Issues
+4. **Theme Optimization**: Improve website design and user experience
+
+## 📬 Contact & Feedback
+
+- **GitHub Issue**: [Submit questions or suggestions](https://github.com/hobbytp/hobbytp.github.io/issues)
+- **Email**: Contact through GitHub Profile
+- **Blog Comments**: Leave comments under relevant articles
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE), free to use and distribute.
 
 ---
 
-Test Deployment - {{ timestamp }}
+**Last Updated**: {{ .Date.Format "2025-07-02" }}
+
+⭐ If this project helps you, please give it a Star for support!
