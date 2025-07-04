@@ -12,6 +12,10 @@ categories: ["my_insights"]
 
 ## 2025 July
 
+### 2025-07-04
+
+- 今天读了[Reflect, Retry, Reward: 大型语言模型的自我进化新范式](https://hobbytp.github.io/zh/papers/Reflect_Retry_Reward_RL_Finetunning/)，这篇论文的结论是：通过“反思、重试、奖励”方法在微调过程中通过自我反思和强化学习，实现LLM在缺乏外部监督和特定任务数据情况下的自我改进。
+
 ### 2025-07-01
 
 - 今天读了[深度研究智能体：系统性审查与路线图](https://hobbytp.github.io/zh/papers/deep_research_agents_sys_exam_roadmap/)，这篇论文的结论是：**深度研究智能体（DR）是基于大型语言模型（LLMs）的智能体，能够通过结合动态推理、自适应长时规划、多跳信息检索、迭代工具使用以及生成结构化分析报告来处理复杂的、多轮的信息研究任务**。
@@ -76,6 +80,10 @@ MiniMax 推出了他们的首个推理模型：MiniMax M1，这是继 DeepSeek R
 | Grok3 | D | B |
 | R1 | D | B |
 | 元宝R1 | D | A |
+
+### 2025-06-10
+
+互联网女王”Mary Meeker的AI趋势报告，<https://www.bondcap.com/reports/tai>
 
 ### 2025-06-05
 
