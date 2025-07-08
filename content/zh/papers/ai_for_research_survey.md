@@ -1,6 +1,6 @@
 ---
 title: AI for Research Survey
-date: "2025-07-02T23:03:00+08:00"
+date: "2025-07-06T23:03:00+08:00"
 tags: ["ai", "research", "survey"]
 categories: ["papers"]
 draft: false
