@@ -1,11 +1,11 @@
 ---
-title: Reflect, Retry, Reward: 大型语言模型的自我进化新范式
+title: "Reflect, Retry, Reward: 大型语言模型的自我进化新范式"
 date: "2025-07-04T22:30:00+08:00"
 lastmod: "2025-07-04T22:30:00+08:00"
 draft: false
-tags:  ["Reflect, Retry, Reward","LLM"]
+tags:  ["Reflect, Retry, Reward","LLM","training"]
 categories: ["papers","training"]
-description: Reflect, Retry, Reward: 大型语言模型的自我进化新范式
+description: "Reflect, Retry, Reward: 大型语言模型的自我进化新范式"
 --- 
 
 该论文提出一种新的微调方式，利用自我反思和强化学习的方法来提高了大型语言模型的性能。
@@ -62,3 +62,8 @@ description: Reflect, Retry, Reward: 大型语言模型的自我进化新范式
   * “你觉得你的答案已经完全满足问题要求了吗？请详细说明。”
 
 通过这些迭代式的交互和有目的的引导，能够更好地激发LLM的潜力，使其在面对复杂任务时展现出更强的自我纠错和性能提升能力。这标志着LLM发展的一个重要里程碑：从单纯的知识库向更具智能、更自主的学习实体迈进。
+
+## 参考
+
+* <https://huggingface.co/papers/2505.24726>
+* [我的NotebookLM](https://notebooklm.google.com/notebook/8783f180-3cce-4e1d-8768-abed5b1cac79)
