@@ -10,7 +10,8 @@ description: Gemini CLI 开源项目分析
 
 ## 项目简介
 
-Gemini CLI 是一个开源的 AI 命令行工具，旨在加速开发者的工作流程并增强代码和工具的交互能力。类似openai CodeX。
+Gemini CLI 是一个开源的 AI 命令行工具，旨在加速开发者的工作流程并增强代码和工具的交互能力。
+对标openai CodeX和Claude Code.
 主要功能包括：
 
 1. 查询和编辑大型代码库，超出 1M token 上下文窗口。
@@ -39,7 +40,9 @@ Gemini CLI 是一个开源的 AI 命令行工具，旨在加速开发者的工�
 
 现在我来为您创建多种 UML 图表来展示 Gemini CLI 系统的架构：
 
-## 1. 系统整体架构图 (Mermaid)
+## 各种系统架构图
+
+### 1. 系统整体架构图 (Mermaid)
 
 ```mermaid
 graph TB
@@ -132,7 +135,7 @@ graph TB
     class GeminiAPI,MCP,Docker externalLayer
 ```
 
-## 2. 类图 (Mermaid)
+### 2. 类图 (Mermaid)
 
 ```mermaid
 classDiagram
@@ -230,7 +233,7 @@ classDiagram
     useGeminiStream --> Config
 ```
 
-## 3. 组件交互时序图 (Mermaid)
+### 3. 组件交互时序图 (Mermaid)
 
 ```mermaid
 sequenceDiagram
@@ -267,7 +270,7 @@ sequenceDiagram
     App-->>User: 展示最终结果
 ```
 
-## 4. 包依赖关系图 (Mermaid)
+### 4. 包依赖关系图 (Mermaid)
 
 ```mermaid
 graph LR
@@ -309,7 +312,7 @@ graph LR
     Services --> NodeJS
 ```
 
-## 5. 工具系统架构图 (Mermaid)
+### 5. 工具系统架构图 (Mermaid)
 
 ```mermaid
 graph TB
@@ -387,7 +390,7 @@ graph TB
     class Executor,Validator,Result execution
 ```
 
-## 6. 状态管理流程图 (Mermaid)
+### 6. 状态管理流程图 (Mermaid)
 
 ```mermaid
 stateDiagram-v2
@@ -421,7 +424,7 @@ stateDiagram-v2
     退出 --> [*]
 ```
 
-## 7. 数据流图 (Mermaid)
+### 7. 数据流图 (Mermaid)
 
 ```mermaid
 flowchart TD
@@ -634,3 +637,201 @@ gemini-cli/
 4. **状态管理** - 通过 React Context 管理应用状态
 
 这个架构设计非常现代化，采用了 React + TypeScript 的技术栈，具有良好的可维护性和扩展性。
+
+## 使用Gemini CLI创建一个项目
+
+使用~/.gemini/settings.json来管理该项目的Gemini CLI的配置，包括mcp server的配置，以及用户设置等。
+使用GEMINI.md来管理该项目的Gemini CLI的memory，
+在gemini cli的界面中使用命令“/mcp”来查看mcp server的列表.
+
+### 例子
+
+例子一：
+> 使用context7搜索Autogen最新版本新增的新特性。
+
+例子二：
+> 使用context7搜索Autogen最新版本新增的新特性，并为我开发一个能够根据需求编写代码的agent，编写的代码由第二个agent给出优化建议，再由第三个agent根据第一个agent写的代码和第二个agent的建议，写成最终的代码。最后提供相关的文档。
+
+>
+### 问题
+
+gemini CLI运行过程中的memory是如何管理的，我能把memory保存到本地吗？比如把对最新AutoGen的文档（从context7获取的）保存到某个地方之类的。
+
+## 快速掌握Gemini CLI核心用法
+
+参考： <https://www.aivi.fyi/aiagents/introduce-Gemini-CLI>
+
+步骤一：快速安装
+
+```bash
+# 直接运行（推荐）
+npx https://github.com/google-gemini/gemini-cli
+
+# 或全局安装
+npm install -g @google/gemini-cli
+```
+
+步骤二：配置
+
+- 配置settings.json (包括MCP server的配置)
+- 配置Memory: GEMINI.md （架构，开发环境，编程规范（代码风格，导入约定，基本模式（样板代码）），项目结构， 开发要点（最佳实践，）， 文档和资源获取（使用context7获取文档，使用context7搜索相关知识） ）
+
+步骤三：使用
+
+### 配置
+
+- 项目级别配置： .gemini/settings.json within your project's root directory.
+- 用户全局配置： ~/.gemini/settings.json
+
+**settings.json配置项**
+**注意**：settings.json里面可以使用环境变量，比如 "apiKey": "$MY_API_TOKEN".
+
+- contextFileName： 指定上下文文件的文件名（例如，GEMINI.md（缺省）），可以是单个文件名或被接受的文件名列表。
+- fileFiltering: 控制 @命令和文件发现工具的 Git 感知文件过滤行为。
+
+```json
+"fileFiltering": {
+  "respectGitIgnore": true,                # 在发现文件时是否遵循.gitignore 模式。当设置为 true 时，被 git 忽略的文件（如 node_modules/、dist/
+  "enableRecursiveFileSearch": false   #在提示符中完成 @前缀时，是否启用在当前目录树中递归搜索文件名。
+}
+```
+
+- **coreTools**: 可以指定一组核心工具名称，使模型可用，并可用于限制[内置工具](https://github.com/hobbytp/gemini-cli/blob/main/docs/core/tools-api.md#built-in-tools)的集合。还可以为支持的工具指定命令特定的限制，例如，"coreTools": ["ShellTool(ls -l)"]仅允许执行ls -l命令。
+
+- **excludeTools**:允许您指定一组应从模型中排除的核心工具名称。出现在excludeTools和coreTools中的工具会被排除。您还可以为支持的工具指定特定命令的限制，例如ShellTool。例如，"excludeTools": ["ShellTool(rm -rf)"]将阻止rm -rf命令。
+
+- **autoAccept (false)**: 控制 CLI 是否自动接受并执行被认为是安全的（例如只读操作）工具调用，而无需用户明确确认。如果设置为 true，CLI 将绕过对被认为安全的工具的确认提示。
+
+- **sandbox(false)**: 用于控制工具执行时的沙盒使用方式。如果设置为真，Gemini CLI将使用预构建的gemini-cli-sandbox Docker镜像。
+
+- **toolDiscoveryCommand**: 定义一个自定义的shell命令，用于发现项目中的工具。该命令必须在标准输出上返回一个包含函数声明的JSON数组。工具包装器是可选的。Example: "toolDiscoveryCommand": "bin/get_tools"
+
+- **toolCallCommand**: (Example: "toolCallCommand": "bin/call_
+定义了一个自定义的 shell 命令，用于调用通过 toolDiscoveryCommand 发现的特定工具。这个 shell 命令必须符合以下标准：
+程序需接收函数名称作为第一个命令行参数，从标准输入读取函数参数的JSON格式，并以JSON格式将函数输出返回到标准输出。
+
+- **mcpServers (object)**:
+ <SERVER_NAME> (object): The server parameters for the named server.
+
+  - command (string, required): The command to execute to start the MCP server.
+  - args (array of strings, optional): Arguments to pass to the command.
+  - env (object, optional): Environment variables to set for the server process.
+  - cwd (string, optional): The working directory in which to start the server.
+  - timeout (number, optional): Timeout in milliseconds for requests to this MCP server.
+  - trust (boolean, optional): Trust this server and bypass all tool call confirmations.
+
+```json
+"mcpServers": {
+  "myPythonServer": {
+    "command": "python",
+    "args": ["mcp_server.py", "--port", "8080"],
+    "cwd": "./mcp_tools/python",
+    "timeout": 5000
+  },
+  "myNodeServer": {
+    "command": "node",
+    "args": ["mcp_server.js"],
+    "cwd": "./mcp_tools/node"
+  },
+  "myDockerServer": {
+    "command": "docker",
+    "args": ["run", "i", "--rm", "-e", "API_KEY", "ghcr.io/foo/bar"],
+    "env": {
+      "API_KEY": "$MY_API_TOKEN"
+    }
+  },
+}
+```
+
+- **checkpointing {"enabled": false}**: 配置检查点功能，可保存和恢复对话及文件状态，详细信息请参见检查点文档。 当true时，/restore命令可用。参考[checkpoint doc](https://github.com/hobbytp/gemini-cli/blob/main/docs/checkpointing.md)
+
+- **preferredEditor ("vscode")**: Example: "preferredEditor": "vscode"
+
+- **telemetry**:
+
+```json
+"telemetry": {
+  "enabled": true,
+  "target": "local", # or "gcp"
+  "otlpEndpoint": "http://localhost:16686",  #OTLP 导出器的端点。
+  "logPrompts": false  #是否在日志中包含用户提示的内容。
+}
+```
+
+**settings.json例子**
+
+```json
+{
+  "theme": "GitHub",
+  "sandbox": "docker",
+  "toolDiscoveryCommand": "bin/get_tools",
+  "toolCallCommand": "bin/call_tool",
+  "mcpServers": {
+    "mainServer": {
+      "command": "bin/mcp_server.py"
+    },
+    "anotherServer": {
+      "command": "node",
+      "args": ["mcp_server.js", "--verbose"]
+    }
+  },
+  "telemetry": {
+    "enabled": true,
+    "target": "local",
+    "otlpEndpoint": "http://localhost:4317",
+    "logPrompts": true
+  },
+  "usageStatisticsEnabled": true,
+  "hideTips": false
+}
+
+```
+
+### 设置环境变量
+
+ you can add the environment variable to your .env file (located in the project directory or user home directory) or your shell's configuration file (like ~/.bashrc, ~/.zshrc, or ~/.profile)
+
+### 配置沙箱
+
+### 常用命令
+
+**chat命令**
+
+- /chat ==> 进入聊天模式
+- /chat save <tag>   ==>后面可以使用/chat resume <tag>来从之前的保存点恢复对话。
+- /chat list  ==> 罗列之前的session，以便恢复某个对话
+
+**compress命令**
+
+- /compress： 用摘要替换整个聊天上下文。这既能节省未来任务使用的令牌，又能保留所发生事情的高级摘要。
+
+**memory命令**
+
+- /memory: 从GEMINI.md文件加载的分层记忆
+- /memory add <text to remember>
+- /memory show ==> 显示当前从所有GEMINI.md文件加载的层次记忆的完整内容，以便检查提供给Gemini模型的指令上下文
+- /memory refresh ==> 重新加载所有配置位置（全局、项目/祖先和子目录）中找到的GEMINI.md文件的层次教学记忆，该命令将模型更新为最新的GEMINI.md内容。
+
+**editor命令**
+
+- /editor： 比如可以使用cursor或VS code来当缺省的编辑器
+
+**mcp命令**
+
+- /mcp  ==>罗列配置的mcp server。
+- /mcp desc <mcp>
+- /mcp nodesc 只罗列tool names: 注意： 随时按下Ctrl+T组合键，在显示和隐藏工具说明之间进行切换。
+- /mcp schema: 显示该工具已配置参数的完整 JSON 模式。
+
+## 其他用法
+
+**stats命令: 看token使用量**
+
+- /stats ==> 看token使用数量，token caching only available when using API key authentication (Gemini API key or Vertex AI).
+
+**checkpoint命令**
+当配置里面有下面的配置时
+  "checkpointing": {
+    "enabled": true
+  },
+“/restore ”可以罗列checkpoint 文件，“/restore <checkpoint_file>”可以回滚到某个checkpoint 文件。比如：/restore 2025-06-22T10-00-00_000Z-my-file.txt-write_file
