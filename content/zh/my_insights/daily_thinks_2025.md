@@ -12,6 +12,10 @@ categories: ["my_insights"]
 
 ## 2025 July
 
+### 2025-07-20
+
+- 今天写了[Claude Code 介绍](https://hobbytp.github.io/zh/claude/claude_code/)，并把它和Kimi K2模型关联了起来，准备关联更多的MCP server，然后对比一下Claude Code，Cursor，Gemini Code的优劣。
+
 ### 2025-07-04
 
 - 今天读了[Reflect, Retry, Reward: 大型语言模型的自我进化新范式](https://hobbytp.github.io/zh/papers/Reflect_Retry_Reward_RL_Finetunning/)，这篇论文的结论是：通过“反思、重试、奖励”方法在微调过程中通过自我反思和强化学习，实现LLM在缺乏外部监督和特定任务数据情况下的自我改进。
