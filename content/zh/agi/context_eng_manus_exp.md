@@ -8,7 +8,7 @@ description: "本文介绍了Manus项目经验的上下文工程精华内容,总
 ---
 
 以下是基于Manus项目经验的上下文工程精华内容,总结为6个问题和解决方案。
-参考来自Manus的blog：[Context Engineering for AI Agents: Lessons from Building Manus](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
+参考来自Manus的blog (July 19, 2025)：[Context Engineering for AI Agents: Lessons from Building Manus](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
 
 ## 问题1：如何提升AI代理在生产环境下的KV缓存命中率？
 
