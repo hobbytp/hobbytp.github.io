@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAIC 2025: 洞察信息图 - 一个世界，两种未来</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .kpi-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .flow-chart-node {
+            background-color: #4A5568;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-width: 180px;
+        }
+        .flow-chart-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            font-size: 2rem;
+            margin: 0 1rem;
+        }
+        .flow-chart-connector {
+            width: 2px;
+            background-color: #CBD5E0;
+            height: 40px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-[#003F5C] mb-2">一个世界，两种未来</h1>
+            <p class="text-xl text-[#58508D]">2025年世界人工智能大会（WAIC）深度洞察</p>
+        </header>
+
+        <section id="geopolitics" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#003F5C]">第一部分: 上海共识——构建全球AI新秩序</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="kpi-card">
+                    <h3 class="text-2xl font-semibold mb-4 text-[#58508D]">全球治理的“中国方案”</h3>
+                    <p class="mb-4 text-gray-600">中国在WAIC 2025上正式提议成立“世界人工智能合作组织”，旨在构建一个以多边主义为基础的全球AI治理新框架，与现有西方主导体系形成区别，开启全球AI治理的“双轨制”格局。</p>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="governancePrinciplesChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500 text-center">该组织的核心原则旨在团结“全球南方”，提供区别于美国的替代方案。</p>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-2xl font-semibold mb-4 text-[#58508D]">《人工智能全球治理行动计划》解析</h3>
+                    <p class="mb-4 text-gray-600">大会发布的《行动计划》是中国AI治理理念的全面阐述，覆盖从基础设施到安全伦理的多个层面，旨在为全球标准的制定提供“中国模板”。</p>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="actionPlanChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500 text-center">行动计划的五大支柱，系统性地展示了中国的战略意图。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="philosophy" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#003F5C]">第二部分: 远见者——未来智能的哲学思辨</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="kpi-card p-8 flex flex-col justify-center items-center text-center">
+                    <div class="text-6xl mb-4">🐅</div>
+                    <h3 class="text-2xl font-semibold mb-2 text-[#BC5090]">杰弗里·辛顿: 驯服“猛虎”</h3>
+                    <p class="text-gray-600">“AI教父”辛顿以“养虎为患”为喻，警告AGI可能带来的生存性风险。他强调，一个超越人类的AI不会给人类留下“拔掉电源”的机会，呼吁全球合作研究“善良的AI”。他的科学警告为中国的全球治理倡议提供了道义合法性。</p>
+                </div>
+                <div class="kpi-card p-8 flex flex-col justify-center items-center text-center">
+                    <div class="text-6xl mb-4">🚀</div>
+                    <h3 class="text-2xl font-semibold mb-2 text-[#FF6361]">中国领袖: AI即生产力</h3>
+                    <p class="text-gray-600">与辛顿的忧思形成对比，百度、阿里等中国科技领袖强调AI作为生产力工具的务实价值。李彦宏提出，AI时代的成功标准是打造“超级能干”的应用，而非“超级应用”，将评价尺度从用户规模转向产业深度。</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="technology" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#003F5C]">第三部分: 技术前沿——从基础模型到具身现实</h2>
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h3 class="text-2xl font-semibold mb-4 text-center text-[#58508D]">路线之争：开源 vs. 闭源的双轨战略</h3>
+                <p class="text-center text-gray-600 mb-6">开源与闭源的争论已超越技术本身，成为商业与地缘政治博弈的缩影。中国正采取一种复杂的双轨战略：以开源谋求全球生态影响力，以闭源参与顶级商业竞争。</p>
+                <div class="flex flex-col md:flex-row justify-center items-center md:items-start space-y-4 md:space-y-0 md:space-x-8">
+                    <div class="flex flex-col items-center">
+                        <div class="flow-chart-node bg-[#BC5090]"><strong>国家倡导：开源</strong></div>
+                        <div class="w-px bg-gray-300 h-8"></div>
+                        <div class="text-sm text-gray-500 p-2 border rounded-md max-w-xs text-center">地缘政治工具<br>团结全球开发者<br>绕过技术限制</div>
+                    </div>
+                    <div class="flex items-center self-center h-full">
+                        <div class="text-3xl text-gray-400 mx-4">&harr;</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="flow-chart-node bg-[#FF6361]"><strong>企业拥抱：闭源</strong></div>
+                        <div class="w-px bg-gray-300 h-8"></div>
+                        <div class="text-sm text-gray-500 p-2 border rounded-md max-w-xs text-center">商业竞争优势<br>保护知识产权<br>构建技术护城河</div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="kpi-card">
+                    <h3 class="text-2xl font-semibold mb-4 text-[#58508D]">机器人崛起：具身智能走向中央</h3>
+                    <p class="mb-4 text-gray-600">AI正从数字世界迈向物理世界。超过60款智能机器人和50款智能终端在大会亮相，标志着具身智能已成为产业下一个核心焦点，竞争将在制造业、物流等物理世界展开。</p>
+                    <div class="chart-container">
+                        <canvas id="embodiedAiChart"></canvas>
+                    </div>
+                     <p class="mt-4 text-sm text-gray-500 text-center">具身智能成为大会明确聚焦的十大领域之一。</p>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-2xl font-semibold mb-4 text-[#58508D]">“AI+”落地为王：重塑垂直领域</h3>
+                    <p class="mb-4 text-gray-600">大会展示了大量成熟的“AI+”应用，核心焦点已从模型参数的“大”转向应用场景的“深”。从智能座舱到AI眼镜，技术正深度融入产业，创造可量化的商业价值。</p>
+                    <div class="chart-container">
+                        <canvas id="aiPlusApplicationsChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-sm text-gray-500 text-center">关键垂直领域的AI应用展示。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#003F5C]">第四部分: 战略家手册：驾驭AI新格局</h2>
+            <div class="space-y-6">
+                <div class="kpi-card">
+                    <h3 class="text-xl font-semibold text-[#FFA600] mb-2">致技术高管 (CTOs)</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li><strong>驾驭双轨世界：</strong>制定灵活的产品本地化和数据治理策略，适应中美不同的监管框架。</li>
+                        <li><strong>重估模型战略：</strong>根据市场和产品，重新审视在开源与闭源之争中的定位。</li>
+                        <li><strong>投资具身智能：</strong>积极寻求与硬件制造商的合作，抢占AI向物理世界转移的先机。</li>
+                    </ul>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-xl font-semibold text-[#FFA600] mb-2">致投资者 (Investors)</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li><strong>寻找“桥梁”公司：</strong>关注能连接中美两大生态系统的公司，如跨境数据合规、AI安全平台。</li>
+                        <li><strong>押注“AI+工业”赛道：</strong>在中国，AI与传统工业的结合是具备长期增长潜力的巨大市场。</li>
+                        <li><strong>理解“矛盾”中的机遇：</strong>识别能在国家（开源）与企业（闭源）战略张力中获利的公司。</li>
+                    </ul>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="text-xl font-semibold text-[#FFA600] mb-2">致政策制定者 (Policymakers)</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li><strong>安全合作，应用竞争：</strong>在AI武器化等全球安全议题上合作，在商业应用上鼓励竞争。</li>
+                        <li><strong>制定国家级具身智能战略：</strong>积极扶持机器人、先进制造等领域的“国家队”。</li>
+                        <li><strong>培育平衡生态：</strong>支持开源激发草根创新，同时扶持企业打造顶级专有模型。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-12 pt-8 border-t border-gray-300">
+            <p class="text-sm text-gray-500">本信息图基于对2025年世界人工智能大会公开内容的分析与洞察提炼。</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapText = (text, maxLen) => {
+            if (typeof text !== 'string' || text.length <= maxLen) {
+                return text;
+            }
+            const words = text.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).length > maxLen && currentLine.length > 0) {
+                    lines.push(currentLine);
+                    currentLine = word;
+                } else {
+                    currentLine += (currentLine.length === 0 ? '' : ' ') + word;
+                }
+            });
+            lines.push(currentLine);
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const sharedChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                    labels: {
+                        color: '#4A5568',
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const colors = {
+            blue: '#003F5C',
+            purple: '#58508D',
+            pink: '#BC5090',
+            red: '#FF6361',
+            orange: '#FFA600'
+        };
+
+        new Chart(document.getElementById('governancePrinciplesChart'), {
+            type: 'doughnut',
+            data: {
+                labels: ['多边主义', '面向“全球南方”', '国际公共产品', '上海为中心'],
+                datasets: [{
+                    label: '治理组织核心原则',
+                    data: [35, 30, 20, 15],
+                    backgroundColor: [colors.blue, colors.purple, colors.pink, colors.orange],
+                    borderColor: '#F0F4F8',
+                    borderWidth: 2
+                }]
+            },
+            options: { ...sharedChartOptions }
+        });
+
+        new Chart(document.getElementById('actionPlanChart'), {
+            type: 'bar',
+            data: {
+                labels: ['基础设施建设', '开放创新生态', '优质数据供给', '安全治理', '能力建设合作'].map(l => wrapText(l, 16)),
+                datasets: [{
+                    label: '战略意涵强度',
+                    data: [85, 90, 80, 75, 95],
+                    backgroundColor: [colors.blue, colors.purple, colors.pink, colors.red, colors.orange],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#E2E8F0'
+                        },
+                        ticks: {
+                           color: '#4A5568'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                         ticks: {
+                           color: '#4A5568'
+                        }
+                    }
+                },
+                indexAxis: 'y',
+            }
+        });
+        
+        new Chart(document.getElementById('embodiedAiChart'), {
+            type: 'radar',
+            data: {
+                labels: ['工业制造', '物流仓储', '家庭服务', '医疗康复', '国防安全'],
+                datasets: [{
+                    label: '2025 产业成熟度',
+                    data: [8, 9, 5, 6, 7],
+                    backgroundColor: 'rgba(255, 99, 97, 0.2)',
+                    borderColor: colors.red,
+                    pointBackgroundColor: colors.red,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: colors.red
+                }, {
+                    label: '未来5年潜力',
+                    data: [9, 8, 8, 9, 8],
+                    backgroundColor: 'rgba(88, 80, 141, 0.2)',
+                    borderColor: colors.purple,
+                    pointBackgroundColor: colors.purple,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: colors.purple
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: '#E2E8F0' },
+                        grid: { color: '#E2E8F0' },
+                        pointLabels: {
+                            font: { size: 14 },
+                            color: '#4A5568'
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: '#4A5568'
+                        }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('aiPlusApplicationsChart'), {
+            type: 'polarArea',
+            data: {
+                labels: ['智能汽车', '智慧城市', '智能穿戴', '企业服务', '工业AI'],
+                datasets: [{
+                    label: '市场应用深度',
+                    data: [8, 7, 6, 9, 8],
+                    backgroundColor: [
+                        'rgba(0, 63, 92, 0.7)',
+                        'rgba(88, 80, 141, 0.7)',
+                        'rgba(188, 80, 144, 0.7)',
+                        'rgba(255, 99, 97, 0.7)',
+                        'rgba(255, 166, 0, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                ...sharedChartOptions,
+                scales: {
+                    r: {
+                        grid: { color: '#E2E8F0' },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: '#4A5568'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
