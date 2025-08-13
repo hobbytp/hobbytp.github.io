@@ -11,6 +11,7 @@ description: "Claude Code 是 Claude 的命令行工具，用于代理编码，�
 
 Claude Code 是一种命令行工具，用于代理编码，提供灵活的、可定制的、可脚本化的和安全的编程方式。
 本文介绍Claude Code的快速上手，有用的功能，以及一些最佳实践。
+考虑到Claude账号对中国用户不友好，本文介绍的Claude Code 使用的是第三方和中国大陆的模型提供商。
 
 ### 关键点
 
@@ -23,7 +24,11 @@ Claude Code 是一种命令行工具，用于代理编码，提供灵活的、�
 - 多 Claude 工作流可以提高效率，例如一个 Claude 编写代码，另一个进行验证。
 - 使用 git worktrees 可以在同一代码库的不同分支上同时运行多个 Claude 会话。
 
-## 快速上手 （Windows版本 - VS code + powershell terminal）
+## 安装
+
+### 方式一： 直接使用Claude Code
+
+下面的步骤运行在Windows 11 + Powershell （比如 VS code + powershell terminal）
 
 Step 1:在VS code或Cursor里面的，打开一个powershell的terminal，输入以下命令：
 
@@ -46,17 +51,15 @@ Step 2: 在项目中进行配置
     "autoUpdates": true,
     "hasCompletedOnboarding": true,
     "env": {
-      "CLAUDE_CODE_MAX_OUTPUT_TOKENS": 1024000,
+      "CLAUDE_CODE_MAX_OUTPUT_TOKENS": 1M,
       "ANTHROPIC_BASE_URL": "https://api.moonshot.cn/anthropic/",
-      "ANTHROPIC_API_KEY": "sk-fIIumnFFi4BvpbbRrc8wI8vQYAOJ65MCr0M9BVnCGVeUci9x"
+      "ANTHROPIC_API_KEY": "xxx"
     },
-    "enabledMcpjsonServers": ["memory", "github"]
+    "enabledMcpjsonServers": ["memory", "github"]  # optional
 }
 ```
 
-Step 3: 集成Kimi K2 model
-
-Step 4: 配置MCP服务器
+Step 3: 配置MCP服务器
 在.claude文件夹里面建立一个mcp.json文件，内容如下：
 
 ```json
@@ -68,11 +71,11 @@ Step 4: 配置MCP服务器
    "env": {
     "ANTHROPIC_API_KEY": "ANTHROPIC_API_KEY_HERE",
     "PERPLEXITY_API_KEY": "PERPLEXITY_API_KEY_HERE",
-    "OPENAI_API_KEY": "sk-WO6DtsQqCPPd7YF3A94cC7E9E76a4dE0AbCf3f980c59CfB3",
-    "OPENAI_BASE_URL": "https://api.openai120.com/v1",
+    "OPENAI_API_KEY": "sk-xxx",
+    "OPENAI_BASE_URL": "https://api.openai.com/v1",
     "GOOGLE_API_KEY": "GOOGLE_API_KEY_HERE",
     "XAI_API_KEY": "XAI_API_KEY_HERE",
-    "OPENROUTER_API_KEY": "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",
+    "OPENROUTER_API_KEY": "xxx",
     "MISTRAL_API_KEY": "MISTRAL_API_KEY_HERE",
     "AZURE_OPENAI_API_KEY": "AZURE_OPENAI_API_KEY_HERE",
     "OLLAMA_API_KEY": "OLLAMA_API_KEY_HERE"
@@ -90,23 +93,290 @@ Step 4: 配置MCP服务器
 }
 ```
 
-Step 5: 集成到IDE
+### 方式二： 使用Claude-Code-Router
+
+环境： Windows 11 + Git bash + Claude Code + Claude Code Router
+
+Step 1： 安装Claude Code
+在visual code或cursor的git bash 终端里面运行下面命令：
+
+```bash
+
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code
+
+# Navigate to your project
+cd your-awesome-project
 
 # Start coding with Claude
-
 claude
+```
 
-Step 4: 集成到github action workflow
+Step 2: 安装Claude Code Router
+参考<https://github.com/musistudio/claude-code-router/blob/main/README_zh.md>
+
+```bash
+npm install -g @musistudio/claude-code-router
+```
+
+Step 3: 配置Claude Code Router
+创建并配置您的 ~/.claude-code-router/config.json 文件。具体参考[配置示例](https://github.com/musistudio/claude-code-router/blob/main/README_zh.md)
+如果router需要通过一个HTTP(s)_PROXY来链接外部大模型Provider，那么PROXY_URL是必须的。
+HOST 和APIKEY对本地部署router不是必须的。关键配置是Providers和Router。
+
+- Providers: 用于配置不同的模型提供商（比如Openrouter, OpenAI, Gemini, DeepSeek，Kimi等等）。
+- Router: 用于设置路由规则。default 指定默认模型，如果未配置其他路由，则该模型将用于所有请求。
+
+使用 router 启动 Claude Code：
+
+```
+ccr code
+```
+
+**注意**: 每次修改完配置文件，要使用"ccr restart"来重启router服务使配置生效。
+
+## Claude的能力
+
+Claude Code 会根据需要读取您的文件——您无需手动添加上下文。Claude 还可以访问其自身的文档，并能回答有关其功能和能力的问题。
+
+Claude Code 在修改文件前总是会请求许可。您可以批准单独的更改，或者在会话期间启用“全部接受”模式。
+
+和Git交互
+
+```
+what files have I changed?
+commit my changes with a descriptive message
+create a new branch called feature/quickstart
+show me the last 5 commits
+help me resolve merge conflicts
+```
+
+### 记忆能力
+
+CLAUDE.md 文件是Claude 在开始对话时会自动将其纳入上下文。可以理解为claude code的记忆文件或rules文件。该文件没有固定的格式要求。我们建议保持其简洁易懂、便于人类阅读。
+主要用于：
+
+- 开发环境设置（例如，使用 pyenv、conda，uv，哪些编译器可用）
+- 核心文件和实用函数
+- 代码风格指南
+- 测试说明
+- 该项目特有的任何意外行为或警告
+- 您希望Claude Code记住的其他信息
+
+#### CLAUDE.md最佳实践
+
+- **分层定义内容**：全局（**根目录**）放通用规范，模块目录放特定约定，**子目录**放特殊说明，既保证继承又避免冗余。
+- **定期审查聚合效果**：多层级聚合可能导致冲突或信息冗余，建议定期用Claude的“上下文预览”功能检查实际生效的内容。
+- **善用自动生成与编辑命令**：通过/init快速生成初始CLAUDE.md，用#指令实时补充，保持内容鲜活。让其自动整合到CLAUDE.md中。许多工程师在编码时经常使用#来记录命令、文件和风格指南，然后在提交时包括CLAUDE.md的更改，以便团队成员受益。
+- **版本化管理**：将主CLAUDE.md纳入git版本管理，辅助用CLAUDE.local.md满足个性化需求。
+- 自己独有的claude code用法习惯可以配置在“**~/.claude/CLAUDE.md**”
+- 应该优化CLAUDE.md文件，因为它们是Claude提示的一部分。常见错误是添加大量内容而不评估其效果。需要花时间实验，以找到最佳的指令执行方式。
+- 在Anthropic，他们偶尔会通过“**[提示改进器](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/prompt-improver)**”运行CLAUDE.md文件，并经常调整指令（例如用“IMPORTANT”或“YOU MUST”加以强调）以提高遵循度。
+
+#### 例子
+
+```
+# Bash commands
+- npm run build: Build the project
+- npm run typecheck: Run the typechecker
+
+# Code style
+- Use ES modules (import/export) syntax, not CommonJS (require)
+- Destructure imports when possible (eg. import { foo } from 'bar')
+
+# Workflow
+- Be sure to typecheck when you’re done making a series of code changes
+- Prefer running single tests, and not the whole test suite, for performance
+```
+
+## 用法
+
+用法1: 集成到github action workflow
 Claude code action 允许您在GitHub Actions工作流中运行Claude Code。您可以使用此功能在Claude Code基础上构建任何自定义工作流。
 
 参考[Claude Code Github Action 文档](https://docs.anthropic.com/en/docs/claude-code/github-actions)
 参考[claude-code-action](https://github.com/anthropics/claude-code-action)
 参考[claude-code-action 使用示例](https://github.com/anthropics/claude-code-action/blob/main/examples/)
 
+**case 1**: 介绍代码库
+
+```
+> I'm new to this codebase. Can you explain it to me?
+我对这个代码库还不熟悉。你能给我讲讲吗？
+```
+
+**case 2**: 解决issue
+
+```
+> Can you look at the open Github issues for the Financial Data Analyst project and fix ones that are relevant?
+你能查看一下“金融数据分析师”项目在 GitHub 上的未解决的问题，并解决那些与之相关的问题吗？
+```
+
+**case 3**: 重构代码
+
+```
+> Refactor the permission request components to share common UI elements and behavior.
+重构权限请求组件，以共享通用的用户界面元素和行为。
+```
+
+**case 4**: 编写测试
+
+```
+> write unit tests for the calculator functions
+```
+
+**case 5**: 更新文档
+
+```
+ update the README with installation instructions
+```
+
+**case 6**: 审查代码并提出改进建议
+
+```
+review my changes and suggest improvements
+```
+
+### 使用工具
+
+#### Git
+
+Claude可以使用gh CLI与GitHub进行交互，如创建问题、打开拉取请求、读取评论等。如果没有安装gh，Claude仍可以使用GitHub API或MCP服务器（如果已安装）。Claude Code 使用 Git 的场景包括：
+
+- 查询历史记录：通过搜索 Git 历史来回答诸如“v1.2.3 版本包含了哪些更改？”、“谁负责这个特定功能？”或“为什么这个 API 被设计成这样？”等问题。明确提示 Claude 检查 Git 历史可以帮助回答这些问题。
+
+- 编写提交信息：Claude 会自动查看你的更改和最近的历史记录，综合相关上下文生成合适的提交信息。
+
+- 处理复杂操作：帮助进行复杂的 Git 操作，如回滚文件、解决 rebase 冲突以及比较和应用补丁。
+
+#### MCP
+
+- 在.mcp.json  文件中配置MCP Server
+- 在使用 MCP 时，也可以通过用  --mcp-debug  标志启动 Claude 来帮助识别配置问题。
+
+#### Command
+
+- 可以将重复的工作流调试循环和日志分析等提示模板存储在 .claude/commands 文件夹的 Markdown 文件中，以便通过斜杠命令菜单使用，并可以提交到 git 供团队其他成员使用。
+
+例子： 用来自动拉取并修复 Github 问题的斜杠命令：
+
+该命令内容存在文件“.claude/commands/fix-github-issue.md”，在Claude code里面使用“/project:fix-github-issue 1234”来修复issue 1234。
+
+``` .claude/commands/fix-github-issue.md
+Please analyze and fix the GitHub issue: $ARGUMENTS.
+
+Follow these steps:
+
+1. Use `gh issue view` to get the issue details
+2. Understand the problem described in the issue
+3. Search the codebase for relevant files
+4. Implement the necessary changes to fix the issue
+5. Write and run tests to verify the fix
+6. Ensure code passes linting and type checking
+7. Create a descriptive commit message
+8. Push and create a PR
+
+Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
+```
+
+### Workflow
+
+#### WF 1: 探索、规划、编码、提交
+
+1. 探索 (Explore)：让 Claude 阅读 相关文件/图片/URL（给出大致指向或具体名称）。明确禁止写代码。仅作探索和信息收集。
+
+2. 规划 (Plan)：
+    1. 使用子代理 (Subagents), 复杂问题应在探索/规划阶段使用子代理验证细节和疑问，能更好地保持上下文。
+    2. 深度思考 (Think Mode)：​​要求 Claude 制定具体解决方案计划时，用 think， think hard， think harder， ultrathink 等词触发逐级增强的思考预算。
+    3. 产出计划文档： 若方案可行，生成文档（如README、GitHub Issue）作为回溯点。
+
+3. 编码 (Code)：让 Claude 编写代码实现解决方案。要求其在编码过程中实时验证解决方案的合理性。
+
+4. 提交 (Commit)：让 Claude 提交代码（Commit）。创建拉取请求 (Create PR)。 （可选）更新文档： 如修改 README 或变更日志，说明变更内容。
+
+**核心强调**：
+
+- 步骤1（探索）和2（规划）至关重要。 缺少它们会导致 Claude 过早开始编码，不利于需要深度思考的问题。
+- 规划阶段使用**子代理**和**深度思考模式**能显著提升复杂问题的处理效果。
+- 规划文档化提供了重要的回溯点。
+
+#### WF 2: 测试驱动开发
+
+工作流“Write tests, commit; code, iterate, commit” 的要点总结：
+
+1. 编写测试 (Write Tests)：
+    ◦   明确要求 Claude 基于期望输入/输出来编写测试（单元、集成、E2E）。
+    ◦   关键指令：声明使用测试驱动开发 (TDD)，防止它过早创建模拟实现（即使功能还不存在）。
+    ◦   确保测试覆盖预期行为。
+
+2. 运行测试并验证失败 (Run & Verify Failure)：
+    ◦   要求 Claude 运行刚写的测试。
+    ◦   关键指令：明确要求此时不写实现代码。
+    ◦   确认测试在实现缺失或不正确时确实失败。
+
+3. 提交测试用例 (Commit Tests)：
+    ◦   对测试满意后，让 Claude 提交这些测试用例到版本控制（如 Git）。形成明确的起点。
+4. 编写实现代码并迭代验证 (Code & Iterate)：
+    ◦   要求 Claude 编写代码以使测试通过。
+    ◦   关键指令：禁止修改测试本身（除非测试本身有误）。
+    ◦   让 Claude 持续迭代：编写代码 -> 运行测试 -> 调整代码 -> 运行测试，直至所有测试通过。
+    ◦   建议：在迭代中可要求 Claude 使用独立子代理验证实现是否过度拟合现有测试（即是否能泛化）。
+
+5. 提交实现代码 (Commit Code)：
+    ◦   对实现满意后，让 Claude 提交通过的代码。
+
+**核心优势与原理**：
+
+- 清晰目标驱动： 测试提供了明确的、可验证的目标（“靶子”），让 Claude 能聚焦迭代。
+- 迭代优化： 通过“写-测-调-测”循环实现渐进式改进。
+- TDD强化： AI 代理执行 TDD 流程（先写测试->失败->实现->通过）效果显著。
+- 防过拟合（可选）： 子代理验证有助于提高解决方案的健壮性。
+
+#### WF 3: 编写代码 → 截图对比 → 迭代优化
+
+（适用于视觉驱动的开发流程）
+
+1. 提供视觉目标
+
+- 让 Claude 能获取屏幕截图（方式可选）：  
+  • 使用 Puppeteer MCP 服务（浏览器自动化）  
+  • 使用 iOS 模拟器 MCP 服务  
+  • 手动复制/粘贴截图 到对话  
+  • 直接提供 图片文件路径  
+
+2. 设定视觉参考（Mock）
+
+- 通过 拖放图片、复制粘贴或文件路径 提供设计稿/目标效果图。  
+
+3. 编写代码 & 视觉对比迭代
+
+- 让 Claude 根据设计稿编写代码，并 截图当前实现。  
+- 对比截图与目标设计，调整代码，循环优化，直到匹配。  
+- 关键点：
+  - 通常 2-3 轮迭代 后效果显著提升。  
+  - 第一版可能接近，但多次优化后会更精准。
+
+4. 提交最终版本
+
+- 满意后，让 Claude 提交代码（Commit）。  
+
+**核心优势**
+
+- 视觉驱动开发：像人类开发者一样，Claude 通过 截图对比 能更精准调整 UI/视觉效果。  
+- 迭代提升质量：多次优化比单次输出效果更好。  
+- 适用于：前端开发、UI 调整、设计还原等场景。
+
 ### 有用或有趣的功能
 
 #### 自定义斜杠功能
 
-### 最佳实践
+## 参考
 
-[该文](https://www.anthropic.com/engineering/claude-code-best-practices)介绍了使用 Claude Code 的最佳实践，包括如何设置、优化以及常见的工作流程。
+[来自官网的最佳实践](https://www.anthropic.com/engineering/claude-code-best-practices)介绍了使用 Claude Code 的最佳实践，包括如何设置、优化以及常见的工作流程。
+[Claude Code 自己的主页](https://www.anthropic.com/claude-code)： 详尽的文档，涵盖了所有功能，并提供了更多示例、实现细节和高级技术。
+[Claude Code的Overview](https://docs.anthropic.com/en/docs/claude-code/overview)
+
+#### 还未翻译好的篇章
+
+(<https://docs.anthropic.com/en/docs/claude-code/changelog>)
+<https://www.anthropic.com/claude-code>
