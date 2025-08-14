@@ -137,6 +137,8 @@ graph TD
 - [通义千问论文翻译](https://www.tongyi.com/efficiency/doc/read?taskId=10583274)
 - [IMO官网](http://www.imo-official.org/year_info.aspx?year=2025)
 - [google blog](https://blog.google/machine-learning/model-advanced-mathematical-reasoning/)
+- [DeepMind DeepThink IMO 2025](https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/)
+  - [Deepmind DeepThink IMO 2025 解题步骤](https://storage.googleapis.com/deepmind-media/gemini/IMO_2025.pdf) ==>只专注于提供每个问题的完整数学证明和解题步骤，例如结构引理、归约定理、案例分析、辅助点引入以及代数计算等. 展示的是**“Gemini Deep Think”解决数学奥林匹克问题的结果和推导过程，而非其作为大型语言模型进行推理或解题的具体内部机制、算法或方法论**。换句话说，它呈现的是解决方案本身，而不是生成这些解决方案的AI的工作原理。
 
 ## Prompt附录
 
