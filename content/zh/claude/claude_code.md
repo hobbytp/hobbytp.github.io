@@ -212,7 +212,14 @@ Claude code action 允许您在GitHub Actions工作流中运行Claude Code。您
 你能查看一下“金融数据分析师”项目在 GitHub 上的未解决的问题，并解决那些与之相关的问题吗？
 ```
 
+Tips:
+>
+> - 告诉克劳德重现问题的指令，并获取一个堆栈跟踪。
+> - 请提及重现错误的任何步骤。
+> - 如果错误是间歇性的还是持续性的，请告知克劳德。
+
 **case 3**: 重构代码
+更多具体可参考：[重构代码](https://docs.anthropic.com/en/docs/claude-code/common-workflows#refactor-code)
 
 ```
 > Refactor the permission request components to share common UI elements and behavior.
@@ -236,6 +243,28 @@ Claude code action 允许您在GitHub Actions工作流中运行Claude Code。您
 ```
 review my changes and suggest improvements
 ```
+
+**case 7**: 生成技术文档
+比如，生成一个技术文档，方便新人学习已有代码库实现，或为后期AI Coder提供上下文。
+
+```
+trace the login process from front-end to database
+```
+
+更多例子：
+先从宽泛的问题入手，然后再逐步聚焦到具体领域。
+询问项目中使用的编码规范和模式
+请求一份项目专用术语表
+
+```
+give me an overview of this codebase 
+explain the main architecture patterns used here 
+what are the key data models?
+how is authentication handled?
+
+```
+
+**case 8**: 编写代码
 
 ### 使用工具
 
@@ -279,9 +308,9 @@ Follow these steps:
 Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 ```
 
-### Workflow
+### 使用Workflow
 
-#### WF 1: 探索、规划、编码、提交
+#### WF 1: 探索、规划、编码、提交 (解决复杂问题)
 
 1. 探索 (Explore)：让 Claude 阅读 相关文件/图片/URL（给出大致指向或具体名称）。明确禁止写代码。仅作探索和信息收集。
 
@@ -300,7 +329,7 @@ Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 - 规划阶段使用**子代理**和**深度思考模式**能显著提升复杂问题的处理效果。
 - 规划文档化提供了重要的回溯点。
 
-#### WF 2: 测试驱动开发
+#### WF 2: 测试驱动开发 （TDD开发流程）
 
 工作流“Write tests, commit; code, iterate, commit” 的要点总结：
 
@@ -332,9 +361,7 @@ Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 - TDD强化： AI 代理执行 TDD 流程（先写测试->失败->实现->通过）效果显著。
 - 防过拟合（可选）： 子代理验证有助于提高解决方案的健壮性。
 
-#### WF 3: 编写代码 → 截图对比 → 迭代优化
-
-（适用于视觉驱动的开发流程）
+#### WF 3: 编写代码 → 截图对比 → 迭代优化 （适用于视觉驱动的开发流程）
 
 1. 提供视觉目标
 
@@ -366,13 +393,177 @@ Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 - 迭代提升质量：多次优化比单次输出效果更好。  
 - 适用于：前端开发、UI 调整、设计还原等场景。
 
-### 有用或有趣的功能
+#### !!!TBD
 
-#### 自定义斜杠功能
+### Hooks
+
+<https://www.youtube.com/watch?v=J5B9UGTuNoM>
+
+### Subagent
+
+<https://www.youtube.com/watch?v=7B2HJr0Y68g>
+
+**注意**：Claude官方给出的[Subagent 最佳实践](https://docs.anthropic.com/en/docs/claude-code/sub-agents#best-practices):
+
+- **设计专注的子代理**：建议先用 Claude 生成初始子代理，再进行迭代和定制，以获得最佳效果。
+- **编写详细的提示**：在您的系统提示中包含具体的说明、示例和限制条件。您提供的指导越多，子代理的表现就会越好。
+- **限制工具访问权限**：仅授予子代理执行其任务所必需的工具。这有助于提高安全性，并使子代理能够专注于相关操作。
+- **版本控制**：将项目子代理程序签入版本控制系统，以便您的团队能够共同受益并改进它们。
+- **链接子代理**：对于复杂的流程，您可以串联多个子代理。e.g.
+  - 方法一：直接描述
+
+    ```
+    First use the code-analyzer subagent to find performance issues, then use the optimizer subagent to fix them
+    ```
+
+  - 方法二： 在claude code的一个command里面把不同的子代理链接起来，比如：
+
+    ```
+    Here are your instructions for the provided URL ($ARGUMENTS) :
+
+    第一步:使用post-creator生成帖子。
+    第二步:使用post-reviewer对帖子进行审核,并打分、给出解释。
+    第三步:将post-reviewer的反馈给到post-creator,由post-creator对帖子进行修改。
+    第四步:重复第一到第三步,最多三次。直到post-reviewer给出的分数超过90分。
+    第五步:将最终版的帖子存进根目录下,文件为Markdownif格式。
+    Don't run any other additional commands or instructions.
+
+    ```
+
+- **动态subagent选择**：
+  - Claude Code 会根据上下文智能地选择子代理。为了获得最佳效果，请将你的**description**字段设置得具体且具有行动导向。
+
+**注意**：
+
+- 关键概念：代理文件（.claude/agents/*.md）中的内容是配置子代理行为的系统提示，而非用户提示。这是创建代理时最常见的误解。
+- 强烈推荐的关于Subagent的Youtube视频：[My Claude Code Sub Agents BUILD THEMSELVES](https://www.youtube.com/watch?v=7B2HJr0Y68g)。
+
+#### 例子
+
+**官方给了3个Subagent的例子**
+
+1. [Code Reviewer](https://docs.anthropic.com/en/docs/claude-code/sub-agents#code-reviewer)
+2. [Debugger](https://docs.anthropic.com/en/docs/claude-code/sub-agents#debugger)
+3. [Data-Scientist](https://docs.anthropic.com/en/docs/claude-code/sub-agents#data-scientist)
+
+**Github里面Subagent的示例**
+在Github里面使用关键字“claude code subagent”可以找到更多的Subagent的示例。目测写的Prompt格式都不一样，不确定哪些效果更好。先暂时按照star数目排序(截止至2025/08/13)：(大多数都按类别分，方便查找)
+
+- <https://github.com/wshobson/agents> （8.1k）
+- <https://github.com/iannuttall/claude-agents> （1.6k）
+- <https://github.com/davepoon/claude-code-subagents-collection> （1.5k）
+- <https://github.com/VoltAgent/awesome-claude-code-subagents> (988)
+- <https://github.com/lst97/claude-code-sub-agents> (782)
+- <https://github.com/0xfurai/claude-code-subagents> (158) 这个只关注不同语言。
+
+**有趣的用法**
+
+- 可以使用“claude --verbose”这个详细模式来测试您的子代理。您将看到您的主代理发送给子代理的确切提示、详细步骤、工具执行情况以及子代理获取并返回给主代理的输出。这有助于您更好地优化子代理。一如既往，您的视频太棒了。我从您的视频中学到了很多。
+
+- 使用 --system-prompt 来突破主要代理瓶颈，直接查看代理情况
+
+- 基于meta-agent代码。可以建立一个很棒的循环，plan代理、build代理和review代理依次为用户执行任务（没有具体信息）。
+
+- 用 Puppeteer 做了一个“UI 摄影记者代理”，它会拍摄 UI 修复前后的画面，让主代理“看到”自己的工作成果。用的“Puppeteer”库，它有一个屏幕截图工具。Claude Code 可以帮忙设置其余部分…
+
+**有趣的观点**
+
+- ？？ Claude 不仅可以使用Subagent（子代理），而且可以设置主代理（meta-agent）。 主代理是其他代理集合的容器。子代理是元代理的一部分（例如，构建子代理、调试子代理等）。这种机制对团队非常有用，在这里您可以安排代理人来执行不同的任务。
+- Anthropic 团队正在发布这些极其宝贵、强大的基础模块，还不清楚他们接下来会怎么做，但一旦完成这些，我认为他们会开始构建顶层/抽象层，以清晰的方式整合所有这些模块，从而击败从高级（如 Loveable、Replit）到低级（如 Cursor、GitHub）的所有工具。
+
+- 我们需要类似代理协调器的东西，并验证一个代理给出的答案是否与另一个代理所期待的内容相兼容……考虑一下变量和代理合同（$variables and agent contracts）。或许可以有一个合同协调代理来处理对齐问题。
+
+- 有人对meta-agent做了微调：
+  - description: Builds new Claude Code sub agents from descriptions. Use PROACTIVELY if the user says 'create agent', 'build agent', 'new sub agent', 'meta-agent', or 'meta agent'. When prompting this agent, describe the specific role, capabilities, and tools the new agent should have.
+- 在 Claude Code 1.0.64 中，您可以指定子代理将使用哪个模型。
+
+- 您如何看待 BMAD 和 superclaude 这两个框架？您觉得它们有价值吗？或者它们与您正在使用的概念混合起来是否有价值？
+- 我很想看看它与 Claude-Flow 相比如何，Claude-Flow 是通过创建群集来实现目标的。
+- 您竟然没有使用 Wispr Flow 与终端进行交流，这让我感到很意外......
+- 但在设置好代理后，我看到响应中报告的代币使用量非常惊人。像只是返回它能做什么的简单描述这样的基本功能，就显示用了 2 万代币。但这一切都在几秒钟内完成，所以我不明白为什么代币使用量会这么高。每次基本功能都要用掉 2 万代币，这似乎还不太实用。丹，你那边情况如何？代币使用量是正常的，还是代理调用报告有误？
+- 今天我看到克劳德给一个二级代理打电话，那个二级代理又给另一个二级代理打了电话，我想知道这是不是新功能？还有其他人注意到吗？
+- 我在 claude-code 项目中发现了很多关于子代理无法生成其他代理的问题，存在一些技巧，比如生成无头的 Claude 实例，或者使用像 claude-flow 这样复杂的工具。对于简单的流程，尽量使用命令作为主要的“代理”来生成子代理。
+
+### 节约成本的最佳实践
+
+/clear
+/compress
+指定范围和文件。
+
+## 最佳实践
+
+A. 使用 claude.md 文件
+
+- 作用： 作为跨会话或团队共享状态的主要方式，弥补 Claude Code 没有内存的不足。
+- 工作原理： 在启动时，如果工作目录中存在 claude.md 文件，其内容会被加载到上下文（prompt）中，作为重要的开发人员指令。
+  - 放置位置：项目目录： 与团队共享项目特定说明。
+  - 用户主目录： 存储始终希望 Claude 知道的通用指令。
+  - 内容示例： 运行单元测试的方法、项目布局概述、测试位置、模块信息、风格指南等。
+  - 引用其他文件： 可以在 claude.md 中引用其他 claude.md 文件或相关文件（例如使用 @ 符号）。
+  - 多 claude.md 文件： 默认只读取当前工作目录的 claude.md 文件；子目录中的 claude.md 文件需要 Claude 在搜索时主动发现并读取。
+B. 权限管理
+  - 默认行为： 读取操作自动放行，写入或执行 Bash 命令等可能改变机器状态的操作需要用户确认（“yes”、“always allow”、“no”）。
+  - 加速工作流：自动接受模式（Autoaccept mode）： 按 Shift+Tab 可让 Claude 自动执行。
+  - 配置特定命令： 在设置中配置特定 Bash 命令始终被批准（例如 npm run test）。
+C. 集成设置（Integration Setup）
+  - CLI 工具： Claude 擅长使用终端，通过安装更多的 CLI 工具（如 GitHub 的 GH 工具）可以赋予其更多能力。推荐优先使用文档完善的 CLI 工具而非 MCP 服务器。
+  - 内部工具： 可以将内部专用工具（如 Anthropic 的 Koup）告知 Claude（通常通过 claude.md）。
+D. 上下文管理（Context Management）
+  - 上下文窗口限制： Anthropic 的模型有 200,000 个 tokens 的上下文窗口限制，长时间会话可能填满。
+  - 处理方法：/cle： 清除所有上下文，除 claude.md 外，重新开始新会话。
+  - /compact： 插入用户消息，让 Claude 总结当前会话，然后用此总结作为新会话的种子继续。
+E. 高效工作流
+  - 规划与待办事项：问题分析与计划： 不直接要求修复 bug，而是让 Claude 搜索原因并提供修复计划，由用户验证。
+  - 待办事项列表： Claude 在执行大型任务时会创建待办事项列表，用户可以监控并及时按 escape 介入纠正错误方向。
+  - 智能副驾驶编码（Smart Vibe Coding）：测试驱动开发（TDD）： 鼓励 Claude 小步修改、运行测试、确保通过。
+  - 持续检查： 让 Claude 检查 TypeScript 和 Linting。
+  - 定期提交： 确保可以回溯，避免大型错误。
+  - 使用截图引导与调试： Claude 基于多模态模型，可以直接粘贴截图或引用图片文件（如 mock.png）作为输入，引导其构建网站等。
+F. 高级技巧
+  - 同时运行多个 Claude 实例： 挑战用户尝试同时运行多个 Claude 实例（例如在 Tmux 或不同标签页中），进行编排。
+  - 使用 Escape 键：中断与干预： 在 Claude 工作时按 escape 中断并引导其更改方向。
+  - 双击 Escape： 隐藏功能，允许回溯对话，重置工具扩展。
+  - MCP 中的工具扩展： 如果 Bash 和内置工具无法满足需求，考虑使用 MCP 服务器。
+  - 无头自动化： 通过 GitHub Actions 等方式程序化地使用 Claude，探索更多创意集成点。
+IV. 最新功能与更新
+  - A. 模型选择与配置
+    - /model 命令： 查看当前运行的模型（例如 Sonnet）。
+    - /config 命令： 切换到不同的模型（例如 Opus）。
+  - B. 工具调用间的“思考”（Think Hard）
+    - 功能增强： Claude 4 模型现在可以在工具调用之间进行“思考”，这在旧模型中是不允许的，而这正是思考最关键的时候。
+    - 触发方式： 在提示中加入“think hard”或“extended thinking”。
+    - 视觉指示： 思考过程会显示为浅灰色文本。
+  - C. IDE 集成
+    - VS Code 与 JetBrains： Claude 现在与主流 IDE 有更好的集成，例如能感知用户正在编辑的文件。
+  - D. 保持更新
+    - 变更日志： 访问 Anthropic 在 GitHub 上的 Claude Code 公开项目，查看[变更日志](https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md)以获取最新功能和更新信息。
+
+## 集成不同工具使用
+
+### Claude Code Templates
+
+<https://www.aitmpl.com/>
+
+### Claude-Flow
+
+<https://deepwiki.com/ruvnet/claude-flow>
+
+### Claude Code Router
+
+支持多种大模型提供商。功能成熟。
+
+### Context Engineering Template
+
+<https://github.com/coleam00/context-engineering-intro>
+
+### KIMICC
+
+一步命令 npx kimicc 使用 Kimi K2 运行 Claude Code。参考开源项目[kimicc](https://github.com/kaichen/kimicc)
 
 ## 参考
 
-[来自官网的最佳实践](https://www.anthropic.com/engineering/claude-code-best-practices)介绍了使用 Claude Code 的最佳实践，包括如何设置、优化以及常见的工作流程。
+[来自官网的最佳实践](https://www.anthropic.com/engineering/claude-code-best-practices)介绍了使用 Claude Code 的最佳实践，包括如A何设置、优化以及常见的工作流程。
+[Anthropic团队如何使用Claude Code工作](https://www.anthropic.com/engineering/claude-code-at-anthropic)介绍了Anthropic不同团队（开发，安全工程师，产品设计师，项目经理，律师，数据科学家,数据基础设施）如何使用Claude Code工作，包括如何设置、优化以及常见的工作流程。
 [Claude Code 自己的主页](https://www.anthropic.com/claude-code)： 详尽的文档，涵盖了所有功能，并提供了更多示例、实现细节和高级技术。
 [Claude Code的Overview](https://docs.anthropic.com/en/docs/claude-code/overview)
 

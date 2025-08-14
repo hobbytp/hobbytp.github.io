@@ -116,8 +116,8 @@ url = "/categories/training"
 weight = 10
 
 [[menu.main]]
-name = "RAG技术"
-url = "/categories/rag"
+name = "上下文工程"
+url = "/categories/context_engineering"
 weight = 11
 
 [[menu.main]]
