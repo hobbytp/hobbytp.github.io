@@ -115,7 +115,7 @@ task-master generate
 task-master rules add windsurf,roo,vscode
 ```
 
-### 结合MCP Client使用
+### 方式二： 结合MCP Client使用 （我的主要使用方式）
 
 常见的客户端包括：Cursor, Windsurf，Claude Destop，Gemini CLI等。下面以**cursor**为例子。
 
