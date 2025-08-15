@@ -4,26 +4,36 @@
 产品线分为：
 模型，AI平台(开发和部署,比如Vertex AI， AI Studio)，AI应用（Gemini app, NotebookLM, Learn about, DeepResearch，Astra）
 
-
 ## 大模型
+
 多模态大模型： Gemini， Gemma
 图像大模型：Imagen， PaLM-E
 视频大模型： Veo
 
 ## 开发环境
-Google AI Studio
-Google Vertex AI
-Google Cloud AI
 
+- Google AI Studio
+- Google Vertex AI
+- Google Cloud AI
 
 ## 应用
-Google Learn about
-Google AI Research
-Google NotebookLM
-Google Gemini App
+
+- Google Learn about
+- Google AI Research
+- Google NotebookLM
+- Google Gemini App
+
+### NotebookLM
+
+<https://notebooklm.google/>
+
+我主要用它来阅读论文，科技报告，长篇技术文章等等。
+它的一些新功能不错，比如思维导图，生成双人播客（用户可以随时插入讨论），视频生成
+
 ### DeepResearch
 
 ### Astra (Project Astra)
+
 还在内测！
 
 谷歌的[Astra](https://deepmind.google/technologies/project-astra/)是由 DeepMind 开发的先进人工智能代理，旨在通过多模态功能无缝融入日常生活。Astra 处理并响应各种输入 —— 文本、图像、视频和音频 —— 使其成为高度交互和直观的助手。
@@ -58,11 +68,10 @@ Astra 的突出特点包括用于上下文理解的实时记忆、高级工具�
 - 可能引发关于人工智能在日常生活中作用的伦理问题
 - 依赖谷歌生态系统和互联网连接
 
-
-
 ### project-mariner
+
 还在内测！
-https://deepmind.google/technologies/project-mariner/
+<https://deepmind.google/technologies/project-mariner/>
 
 基于 Gemini 2.0 框架构建，这款实验性的 Chrome 扩展程序可以导航网站、理解屏幕内容并代表用户执行操作，标志着朝着更直观的人机交互迈出了重要一步。
 
@@ -77,17 +86,18 @@ https://deepmind.google/technologies/project-mariner/
 - 与谷歌生态系统集成，利用 Gemini AI 模型和 Chrome 浏览器。
 
 优点：
+
 - 简化基于网络的任务，节省时间和精力。
 - 适应各种场景，如在线购物、旅行预订和研究。
 - 为其操作提供逐步解释以提高透明度。
 - 仅在活动标签页中操作并寻求权限，确保用户控制。
 
 缺点：
+
 - 目前速度较慢，操作之间有明显延迟。
 - 仅局限于 Chrome 浏览器和活动标签页。
 - 不能执行某些操作，如接受 cookie 或完成购买。
 - 由于屏幕截图处理，存在潜在的隐私问题。
-
 
 ## 技术规范
 
@@ -98,5 +108,6 @@ https://deepmind.google/technologies/project-mariner/
 
 ## 学术
 
-### DeepMind 
-https://deepmind.google/discover/events/
+### DeepMind
+
+<https://deepmind.google/discover/events/>
