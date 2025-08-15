@@ -56,6 +56,8 @@ Context7 是一个用于 LLM 和 AI 编码编辑器的 MCP 服务器，可以提
   }
 ```
 
+**注意**：更多配置请参考[Context7 npmjs](https://www.npmjs.com/package/@upstash/context7-mcp)
+
 ### 在Cursor中配置
 
 ### 在Gemini CLI中配置
