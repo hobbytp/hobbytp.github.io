@@ -103,6 +103,8 @@ OpenAI 认为 Deep Research 能够帮助**企业简化流程，提高工人的�
 ## 2. 开源Deep Research项目
 
 有来自著名开源组织或项目的，Huggingface的，有来自LangChain的 Open Deep Research，有来自著名大学的，比如Stanford的STORM，还有来自GPT Research.
+更多的开源Deep Research项目，请参考[awesome-deep-research-agent](https://github.com/ai-agents-2030/awesome-deep-research-agent)和[awesome-deep-research](https://github.com/DavidZWZ/Awesome-Deep-Research)
+更多的论文可以参考：<https://arxiv.org/search/?query=deep+research+agents&searchtype=all&source=header&start=50> 和我的[NotebookLM](https://notebooklm.google.com/notebook/ce8efe5d-ed28-4895-8095-97181260cf10)
 
 ### Huggingface的Open DeepResearch
 
