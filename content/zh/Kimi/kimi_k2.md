@@ -34,6 +34,8 @@ description: "本文介绍了MoonshotAI公司Kimi-K2模型简介和相关有意�
     - [1. 背景与需求分析](#1-背景与需求分析)
     - [2. 官方推荐方案](#2-官方推荐方案)
 - [Kimi-K2 API](#kimi-k2-api)
+  - [API key](#api-key)
+  - [代码示例](#代码示例)
   - [使用 Tools](#使用-tools)
 - [集成到AI 辅助编程助手](#集成到ai-辅助编程助手)
   - [集成到Claude Code CLI](#集成到claude-code-cli)
@@ -333,6 +335,13 @@ completion = client.chat.completions.create(
 
 它同时支持与 OpenAI 兼容和与 Anthropic 兼容的 API。
 这是使用它替代 OpenAI 模型所需的全部 Python 代码。
+
+### API key
+
+国内API主页：<https://platform.moonshot.cn/console/account>  #我用的是这个。
+国外API主页：<https://platform.moonshot.ai/console/account>
+
+### 代码示例
 
 ```python
 from openai import OpenAI
