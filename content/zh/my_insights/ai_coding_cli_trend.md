@@ -1,4 +1,6 @@
-# AI Coding向CLI方向发展的深层次原因
+# AI Coding向CLI方向发展的深层次原因 {#top}
+
+<!-- markdownlint-disable MD051 -->
 
 AI编程工具正经历从图形化IDE向命令行界面(CLI)的重要转向。这一趋势在2025年尤其明显，各大科技巨头纷纷推出基于终端的AI编程助手。
 
@@ -46,62 +48,62 @@ AI Coding向CLI方向发展不是简单的技术选择，而是**技术进步、
 
 ## 参考文献
 
- 1. {{< anchor id="ref-1" >}}[1](https://www.prompt.security/blog/ai-coding-assistants-make-a-cli-comeback)
- 2. {{< anchor id="ref-2" >}}[2](https://www.anthropic.com/claude-code)
- 3. {{< anchor id="ref-3" >}}[3](https://github.com/resources/articles/ai/what-is-agentic-ai)
- 4. {{< anchor id="ref-4" >}}[4](https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/)
- 5. {{< anchor id="ref-5" >}}[5](https://www.qodo.ai/blog/best-ai-coding-assistant-tools/)
- 6. {{< anchor id="ref-6" >}}[6](https://itsmehari.in/blog/terminal-Ai-vs-IDE-Ai-comparison-2025-trends.html)
- 7. {{< anchor id="ref-7" >}}[7](https://labs.appligent.com/appligent-labs/the-advantages-of-command-line-interfaces-over-sdks-and-dlls)
- 8. {{< anchor id="ref-8" >}}[8](https://blog.iron.io/pros-and-cons-of-a-command-line-interface/)
- 9. {{< anchor id="ref-9" >}}[9](https://www.alooba.com/skills/tools/devops/command-line-scripting/)
- 10. {{< anchor id="ref-10" >}}[10](https://arthvhanesa.hashnode.dev/5-reasons-why-command-line-interface-cli-is-more-efficient-than-gui)
- 11. {{< anchor id="ref-11" >}}[11](https://getstream.io/blog/agentic-cli-tools/)
- 12. {{< anchor id="ref-12" >}}[12](https://dev.to/forgecode/cli-vs-ide-coding-agents-choose-the-right-one-for-10x-productivity-5gkc)
- 13. {{< anchor id="ref-13" >}}[13](https://getdx.com/blog/ai-roi-enterprise/)
- 14. {{< anchor id="ref-14" >}}[14](https://www.damcogroup.com/insights/report/ai-coding-assistants)
- 15. {{< anchor id="ref-15" >}}[15](https://www.augmentcode.com/guides/cto-s-guide-to-ai-development-tool-roi)
- 16. {{< anchor id="ref-16" >}}[16](https://techcrunch.com/2025/07/15/ai-coding-tools-are-shifting-to-a-surprising-place-the-terminal/)
- 17. {{< anchor id="ref-17" >}}[17](https://www.infosys.com/iki/perspectives/agentic-ai-software-development.html)
- 18. {{< anchor id="ref-18" >}}[18](https://www.linkedin.com/pulse/great-ai-coding-cli-showdown-why-developers-ditching-ides-varis-a-4lwac)
- 19. {{< anchor id="ref-19" >}}[19](https://www.shakudo.io/blog/best-ai-coding-assistants)
- 20. {{< anchor id="ref-20" >}}[20](https://aider.chat)
- 21. {{< anchor id="ref-21" >}}[21](https://cline.bot)
- 22. {{< anchor id="ref-22" >}}[22](https://www.wsj.com/articles/cognition-cinches-about-500-million-to-advance-ai-code-generation-business-f65f71a9)
- 23. {{< anchor id="ref-23" >}}[23](https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups)
- 24. {{< anchor id="ref-24" >}}[24](https://openai.com/index/introducing-gpt-5/)
- 25. {{< anchor id="ref-25" >}}[25](https://www.anthropic.com/news/claude-3-5-sonnet)
- 26. {{< anchor id="ref-26" >}}[26](https://kanerika.com/blogs/ai-workflow-automation/)
- 27. {{< anchor id="ref-27" >}}[27](https://www.stack-ai.com/blog/top-examples-of-ai-use-in-the-enterprise)
- 28. {{< anchor id="ref-28" >}}[28](https://www.reddit.com/r/ChatGPTCoding/comments/1gsqxm5/codai_ai_code_assistant_in_terminal_with/)
- 29. {{< anchor id="ref-29" >}}[29](https://blog.netnerds.net/2024/10/aider-is-awesome/)
- 30. {{< anchor id="ref-30" >}}[30](https://codesignal.com/report-developers-and-ai-coding-assistant-trends/)
- 31. {{< anchor id="ref-31" >}}[31](https://codeassist.google)
- 32. {{< anchor id="ref-32" >}}[32](https://codesubmit.io/blog/ai-code-tools/)
- 33. {{< anchor id="ref-33" >}}[33](https://spacelift.io/blog/ai-coding-assistant-tools)
- 34. {{< anchor id="ref-34" >}}[34](https://zencoder.ai/blog/ai-tools-for-developers)
- 35. {{< anchor id="ref-35" >}}[35](http://willmcgugan.github.io/announcing-toad/)
- 36. {{< anchor id="ref-36" >}}[36](https://www.reddit.com/r/learnprogramming/comments/10pcflg/is_learning_how_to_use_clis_vital_to_the_majority/)
- 37. {{< anchor id="ref-37" >}}[37](https://www.reddit.com/r/ClaudeAI/comments/1lqgskt/why_cli_is_better_than_ide/)
- 38. {{< anchor id="ref-38" >}}[38](https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/rolling-out-github-copilot-at-scale/enabling-developers/integrating-agentic-ai)
- 39. {{< anchor id="ref-39" >}}[39](https://github.com/resources/articles/software-development/what-is-a-cli)
- 40. {{< anchor id="ref-40" >}}[40](https://www.producthunt.com/p/general/coding-with-an-ai-ide-visual-vs-ai-cli-terminal-what-s-better)
- 41. {{< anchor id="ref-41" >}}[41](https://www.hashicorp.com/en/blog/which-terraform-workflow-should-i-use-vcs-cli-or-api)
- 42. {{< anchor id="ref-42" >}}[42](https://www.reddit.com/r/linux/comments/1qyp0z/what_are_practical_reasons_to_use_terminalbased/)
- 43. {{< anchor id="ref-43" >}}[43](https://newsletter.pragmaticengineer.com/p/how-ai-will-change-software-engineering)
- 44. {{< anchor id="ref-44" >}}[44](https://www.linkedin.com/pulse/revolutionizing-coding-real-time-ides-vs-cli-based-tools-agrawal-hpsec)
- 45. {{< anchor id="ref-45" >}}[45](https://news.ycombinator.com/item?id=44623953)
- 46. {{< anchor id="ref-46" >}}[46](https://dev.to/forgecode/cli-vs-ide-coding-agents-choose-the-right-one-for-10x-productivity-5gkc/comments)
- 47. {{< anchor id="ref-47" >}}[47](https://addyo.substack.com/p/the-70-problem-hard-truths-about)
- 48. {{< anchor id="ref-48" >}}[48](https://www.reddit.com/r/AskProgramming/comments/1mkwgid/why_do_developers_still_use_vim_in_2025/)
- 49. {{< anchor id="ref-49" >}}[49](https://sanalabs.com/agents-blog/enterprise-ai-workflow-tools-2025)
- 50. {{< anchor id="ref-50" >}}[50](https://www.gumloop.com)
- 51. {{< anchor id="ref-51" >}}[51](https://community.openai.com/t/alpha-wave-agents-better-autonomous-task-completion/250897)
- 52. {{< anchor id="ref-52" >}}[52](https://www.reddit.com/r/AI_Agents/comments/1js1xjz/lets_build_our_own_agentic_loop_running_in_our/)
- 53. {{< anchor id="ref-53" >}}[53](https://www.willowtreeapps.com/craft/building-ai-agents-with-plan-and-execute)
- 54. {{< anchor id="ref-54" >}}[54](https://aws.amazon.com/what-is/agentic-ai/)
- 55. {{< anchor id="ref-55" >}}[55](https://www.inspyrsolutions.com/the-power-of-automation-scripting-your-way-to-productivity/)
- 56. {{< anchor id="ref-56" >}}[56](https://aiagentstore.ai/ai-agent/codex-cli)
- 57. {{< anchor id="ref-57" >}}[57](https://www.reddit.com/r/Python/comments/x3poxm/when_is_writing_scripts_for_automating_at_work/)
- 58. {{< anchor id="ref-58" >}}[58](https://www.reddit.com/r/AI_Agents/comments/1il8b1i/my_guide_on_what_tools_to_use_to_build_ai_agents/)
- 59. {{< anchor id="ref-59" >}}[59](https://www.bixal.com/blog/why-every-developer-should-master-command-line-interface)
+ 1. {{< anchor id="ref-1" >}}[1](https://www.prompt.security/blog/ai-coding-assistants-make-a-cli-comeback) {{< backref >}}
+ 2. {{< anchor id="ref-2" >}}[2](https://www.anthropic.com/claude-code) {{< backref >}}
+ 3. {{< anchor id="ref-3" >}}[3](https://github.com/resources/articles/ai/what-is-agentic-ai) {{< backref >}}
+ 4. {{< anchor id="ref-4" >}}[4](https://blog.google/technology/developers/introducing-gemini-cli-open-source-ai-agent/) {{< backref >}}
+ 5. {{< anchor id="ref-5" >}}[5](https://www.qodo.ai/blog/best-ai-coding-assistant-tools/) {{< backref >}}
+ 6. {{< anchor id="ref-6" >}}[6](https://itsmehari.in/blog/terminal-Ai-vs-IDE-Ai-comparison-2025-trends.html) {{< backref >}}
+ 7. {{< anchor id="ref-7" >}}[7](https://labs.appligent.com/appligent-labs/the-advantages-of-command-line-interfaces-over-sdks-and-dlls) {{< backref >}}
+ 8. {{< anchor id="ref-8" >}}[8](https://blog.iron.io/pros-and-cons-of-a-command-line-interface/) {{< backref >}}
+ 9. {{< anchor id="ref-9" >}}[9](https://www.alooba.com/skills/tools/devops/command-line-scripting/) {{< backref >}}
+ 10. {{< anchor id="ref-10" >}}[10](https://arthvhanesa.hashnode.dev/5-reasons-why-command-line-interface-cli-is-more-efficient-than-gui) {{< backref >}}
+ 11. {{< anchor id="ref-11" >}}[11](https://getstream.io/blog/agentic-cli-tools/) {{< backref >}}
+ 12. {{< anchor id="ref-12" >}}[12](https://dev.to/forgecode/cli-vs-ide-coding-agents-choose-the-right-one-for-10x-productivity-5gkc) {{< backref >}}
+ 13. {{< anchor id="ref-13" >}}[13](https://getdx.com/blog/ai-roi-enterprise/) {{< backref >}}
+ 14. {{< anchor id="ref-14" >}}[14](https://www.damcogroup.com/insights/report/ai-coding-assistants) {{< backref >}}
+ 15. {{< anchor id="ref-15" >}}[15](https://www.augmentcode.com/guides/cto-s-guide-to-ai-development-tool-roi) {{< backref >}}
+ 16. {{< anchor id="ref-16" >}}[16](https://techcrunch.com/2025/07/15/ai-coding-tools-are-shifting-to-a-surprising-place-the-terminal/) {{< backref >}}
+ 17. {{< anchor id="ref-17" >}}[17](https://www.infosys.com/iki/perspectives/agentic-ai-software-development.html) {{< backref >}}
+ 18. {{< anchor id="ref-18" >}}[18](https://www.linkedin.com/pulse/great-ai-coding-cli-showdown-why-developers-ditching-ides-varis-a-4lwac) {{< backref >}}
+ 19. {{< anchor id="ref-19" >}}[19](https://www.shakudo.io/blog/best-ai-coding-assistants) {{< backref >}}
+ 20. {{< anchor id="ref-20" >}}[20](https://aider.chat) {{< backref >}}
+ 21. {{< anchor id="ref-21" >}}[21](https://cline.bot) {{< backref >}}
+ 22. {{< anchor id="ref-22" >}}[22](https://www.wsj.com/articles/cognition-cinches-about-500-million-to-advance-ai-code-generation-business-f65f71a9) {{< backref >}}
+ 23. {{< anchor id="ref-23" >}}[23](https://www.crescendo.ai/news/latest-vc-investment-deals-in-ai-startups) {{< backref >}}
+ 24. {{< anchor id="ref-24" >}}[24](https://openai.com/index/introducing-gpt-5/) {{< backref >}}
+ 25. {{< anchor id="ref-25" >}}[25](https://www.anthropic.com/news/claude-3-5-sonnet) {{< backref >}}
+ 26. {{< anchor id="ref-26" >}}[26](https://kanerika.com/blogs/ai-workflow-automation/) {{< backref >}}
+ 27. {{< anchor id="ref-27" >}}[27](https://www.stack-ai.com/blog/top-examples-of-ai-use-in-the-enterprise) {{< backref >}}
+ 28. {{< anchor id="ref-28" >}}[28](https://www.reddit.com/r/ChatGPTCoding/comments/1gsqxm5/codai_ai_code_assistant_in_terminal_with/) {{< backref >}}
+ 29. {{< anchor id="ref-29" >}}[29](https://blog.netnerds.net/2024/10/aider-is-awesome/) {{< backref >}}
+ 30. {{< anchor id="ref-30" >}}[30](https://codesignal.com/report-developers-and-ai-coding-assistant-trends/) {{< backref >}}
+ 31. {{< anchor id="ref-31" >}}[31](https://codeassist.google) {{< backref >}}
+ 32. {{< anchor id="ref-32" >}}[32](https://codesubmit.io/blog/ai-code-tools/) {{< backref >}}
+ 33. {{< anchor id="ref-33" >}}[33](https://spacelift.io/blog/ai-coding-assistant-tools) {{< backref >}}
+ 34. {{< anchor id="ref-34" >}}[34](https://zencoder.ai/blog/ai-tools-for-developers) {{< backref >}}
+ 35. {{< anchor id="ref-35" >}}[35](http://willmcgugan.github.io/announcing-toad/) {{< backref >}}
+ 36. {{< anchor id="ref-36" >}}[36](https://www.reddit.com/r/learnprogramming/comments/10pcflg/is_learning_how_to_use_clis_vital_to_the_majority/) {{< backref >}}
+ 37. {{< anchor id="ref-37" >}}[37](https://www.reddit.com/r/ClaudeAI/comments/1lqgskt/why_cli_is_better_than_ide/) {{< backref >}}
+ 38. {{< anchor id="ref-38" >}}[38](https://docs.github.com/en/enterprise-cloud@latest/copilot/tutorials/rolling-out-github-copilot-at-scale/enabling-developers/integrating-agentic-ai) {{< backref >}}
+ 39. {{< anchor id="ref-39" >}}[39](https://github.com/resources/articles/software-development/what-is-a-cli) {{< backref >}}
+ 40. {{< anchor id="ref-40" >}}[40](https://www.producthunt.com/p/general/coding-with-an-ai-ide-visual-vs-ai-cli-terminal-what-s-better) {{< backref >}}
+ 41. {{< anchor id="ref-41" >}}[41](https://www.hashicorp.com/en/blog/which-terraform-workflow-should-i-use-vcs-cli-or-api) {{< backref >}}
+ 42. {{< anchor id="ref-42" >}}[42](https://www.reddit.com/r/linux/comments/1qyp0z/what_are_practical_reasons_to_use_terminalbased/) {{< backref >}}
+ 43. {{< anchor id="ref-43" >}}[43](https://newsletter.pragmaticengineer.com/p/how-ai-will-change-software-engineering) {{< backref >}}
+ 44. {{< anchor id="ref-44" >}}[44](https://www.linkedin.com/pulse/revolutionizing-coding-real-time-ides-vs-cli-based-tools-agrawal-hpsec) {{< backref >}}
+ 45. {{< anchor id="ref-45" >}}[45](https://news.ycombinator.com/item?id=44623953) {{< backref >}}
+ 46. {{< anchor id="ref-46" >}}[46](https://dev.to/forgecode/cli-vs-ide-coding-agents-choose-the-right-one-for-10x-productivity-5gkc/comments) {{< backref >}}
+ 47. {{< anchor id="ref-47" >}}[47](https://addyo.substack.com/p/the-70-problem-hard-truths-about) {{< backref >}}
+ 48. {{< anchor id="ref-48" >}}[48](https://www.reddit.com/r/AskProgramming/comments/1mkwgid/why_do_developers_still_use_vim_in_2025/) {{< backref >}}
+ 49. {{< anchor id="ref-49" >}}[49](https://sanalabs.com/agents-blog/enterprise-ai-workflow-tools-2025) {{< backref >}}
+ 50. {{< anchor id="ref-50" >}}[50](https://www.gumloop.com) {{< backref >}}
+ 51. {{< anchor id="ref-51" >}}[51](https://community.openai.com/t/alpha-wave-agents-better-autonomous-task-completion/250897) {{< backref >}}
+ 52. {{< anchor id="ref-52" >}}[52](https://www.reddit.com/r/AI_Agents/comments/1js1xjz/lets_build_our_own_agentic_loop_running_in_our/) {{< backref >}}
+ 53. {{< anchor id="ref-53" >}}[53](https://www.willowtreeapps.com/craft/building-ai-agents-with-plan-and-execute) {{< backref >}}
+ 54. {{< anchor id="ref-54" >}}[54](https://aws.amazon.com/what-is/agentic-ai/) {{< backref >}}
+ 55. {{< anchor id="ref-55" >}}[55](https://www.inspyrsolutions.com/the-power-of-automation-scripting-your-way-to-productivity/) {{< backref >}}
+ 56. {{< anchor id="ref-56" >}}[56](https://aiagentstore.ai/ai-agent/codex-cli) {{< backref >}}
+ 57. {{< anchor id="ref-57" >}}[57](https://www.reddit.com/r/Python/comments/x3poxm/when_is_writing_scripts_for_automating_at_work/) {{< backref >}}
+ 58. {{< anchor id="ref-58" >}}[58](https://www.reddit.com/r/AI_Agents/comments/1il8b1i/my_guide_on_what_tools_to_use_to_build_ai_agents/) {{< backref >}}
+ 59. {{< anchor id="ref-59" >}}[59](https://www.bixal.com/blog/why-every-developer-should-master-command-line-interface) {{< backref >}}
