@@ -1,6 +1,6 @@
 ---
 title: AI Coding向CLI方向发展的深层次原因
-date: "2025-08-25T22:10:00+08:00"
+date: "2025-08-24T22:10:00+08:00"
 description: AI编程工具正经历从图形化IDE向命令行界面(CLI)的重要转向。这一趋势在2025年尤其明显，各大科技巨头纷纷推出基于终端的AI编程助手。
 tags: [AI, CLI, Coding, Assistant, Tools]
 categories: ["my_insights"]
