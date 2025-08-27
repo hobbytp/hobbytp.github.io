@@ -1,0 +1,41 @@
+/* Custom tweaks for PaperMod: footnotes and reading list */
+
+/* Footnote markers as small superscripts */
+sup.footnote-ref {
+  font-size: 0.75em;
+  line-height: 1;
+  vertical-align: super;
+  font-weight: 600;
+  margin-left: 0.1em;
+}
+
+/* Footnotes block */
+.footnotes {
+  margin-top: 1.75rem;
+  color: var(--secondary);
+}
+.footnotes hr {
+  margin: 2rem 0 1rem;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+.footnotes ol {
+  padding-left: 1.25rem;
+}
+.footnotes li {
+  margin: 0.4rem 0;
+}
+.footnotes a.footnote-backref {
+  text-decoration: none;
+  margin-left: 0.35rem;
+  opacity: 0.7;
+}
+.footnotes a.footnote-backref:hover {
+  opacity: 1;
+}
+
+/* Reading list spacing */
+section.post-content ul {
+  /* keep bullets tidy inside dark backgrounds */
+  padding-left: 1.25rem;
+}
