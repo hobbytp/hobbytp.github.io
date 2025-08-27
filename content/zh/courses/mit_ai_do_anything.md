@@ -13,7 +13,7 @@ cover:
 ---
 
 这门课程得到吴恩达的推荐，以下是关于MIT课程《如何用AI（几乎）做任何事》（*How to AI (Almost) Anything*）的详细信息整理，结合课程官网内容和公开资料，帮助你快速掌握核心内容与资源获取方式：
-[课程链接](https://ocw.mit.edu/courses/mas-s60-how-to-ai-almost-anything-spring-2025/)
+[课程链接](https://mit-mi.github.io/how2ai-course/spring2025/)
 
 ---
 
