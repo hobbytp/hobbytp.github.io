@@ -137,9 +137,14 @@ url = "/categories/news"
 weight = 14
 
 [[menu.main]]
+name = "课程"
+url = "/categories/courses"
+weight = 15
+
+[[menu.main]]
 name = "搜索"
 url = "/search"
-weight = 15
+weight = 16
 
 # 这会生成 /index.json，供前端搜索用。
 [outputs]
