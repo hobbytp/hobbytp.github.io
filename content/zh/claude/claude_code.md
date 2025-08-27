@@ -540,6 +540,23 @@ IV. 最新功能与更新
 
 ## 集成不同工具使用
 
+### Super Claude Framework
+
+Super Claude Framework [github](https://github.com/SuperClaude-Org/SuperClaude_Framework)
+
+SuperClaude Framework是一个用于增强Claude Code的配置框架，带有专属命令、智能化人物角色及MCP服务器集成，旨在优化开发工作流程。主要特点包括：
+
+1. **专属命令**：支持16个开发任务相关的指令（如设计、构建、分析、测试等）。
+2. **智能人物角色**：提供多个AI专家角色，用于处理不同领域问题（如架构设计、安全性、文档等）。
+3. **MCP服务器集成**：可连接外部工具（Context7、Sequential等）实现文档、UI组件和浏览器自动化。
+4. **任务管理与Token优化**：帮助跟踪进度并改善长对话性能。
+
+当前版本是v3，处于初始发布阶段，重新设计了安装系统和框架结构，但仍存在一些已知问题（如Bug、功能不完善）。安装支持Python 3.8+，推荐使用现代化包管理器“uv”或“uvx”。
+
+未来计划（v4）包括重新设计Hooks系统、引入更多人物角色、更广泛的CLI兼容性与性能优化等。
+
+项目由MIT许可发布，并欢迎贡献者参与改进。
+
 ### Claude Code Templates
 
 <https://www.aitmpl.com/>
@@ -550,15 +567,121 @@ IV. 最新功能与更新
 
 ### Claude Code Router
 
-支持多种大模型提供商。功能成熟。
+Claude Code Router [github](https://github.com/musistudio/claude-code-router)是一个强大的工具，用于将 Claude Code 请求路由到不同的模型并自定义任何请求。本项目主要特点包括模型路由、多供应商支持、请求/响应转换、动态模型切换、GitHub Actions 集成以及插件扩展功能。
+
+核心功能：
+
+- 路由：根据任务需求将请求分配到不同模型。
+- 多供应商支持：兼容 OpenRouter、DeepSeek、Ollama、Gemini 等多种模型服务。
+- 自定义转换：通过 Transformer 修改请求和响应格式。
+- 动态切换：使用 /model 命令动态选择模型。
+- UI 模式：提供可视化配置界面（Beta）。
+- 环境变量支持：安全管理 API 密钥，通过环境变量插值配置。
+
+安装与使用：
+
+1. 安装：支持 npm 包安装。
+2. 配置：通过创建 `config.json` 文件设置模型供应商、路由规则及其他选项。
+3. 启动并运行：使用命令 `ccr code`启动Claude Code（需要先安装Claude Code） 或 `ccr restart` 启动router服务。
+4. 集成 GitHub Actions：自动化 Claude Code 工作流。
+
+高级功能：
+
+- 支持自定义路由规则，指定模型和供应商。
+- 内置与第三方模型交互的转换器，并支持插件加载扩展功能。
+
+适用场景包括代码解释、复杂推理任务、大上下文处理及实时搜索。用户可动态调整模型和路由，系统高度定制化。项目开源，提供中文 README 文档，采用 MIT 许可，鼓励社区支持与赞助。
+
+这是为构建基于 Claude Code 的编码基础设施而开发的项目，支持持续更新以及多种交互自定义选项。支持多种大模型提供商。功能成熟。
 
 ### Context Engineering Template
 
 <https://github.com/coleam00/context-engineering-intro>
 
+### Claude Context
+
+[Claude Context Github](https://github.com/zilliztech/claude-context) 是一个为 Claude Code 和其他 AI 编程助手添加语义代码搜索功能的 MCP 插件，能够从整个代码库中提供深度上下文。其核心功能包括：
+
+- 🧠 **语义搜索**：从数百万行代码中快速找到相关代码，无需多轮交互。
+- 💰 **成本优化**：通过将代码库存储在向量数据库中，仅使用相关代码上下文，降低大规模代码库的请求成本。
+- 🚀 **支持多种技术**：兼容多语言代码搜索，包括 TypeScript、Python、Java、C++ 等；支持多种嵌入模型和向量数据库（例如 Milvus 和 Zilliz Cloud）。
+- ⚡ **增量索引与智能分块**：使用 Merkle 树进行增量索引，仅重新索引更改的文件；应用 AST（抽象语法树）分块分析代码。
+- 🛠️ **可定制**：支持文件扩展名配置、忽略模式和嵌入模型设置。
+
+#### 快速开始
+
+1. 配置 Vector 数据库（Zilliz Cloud）。
+2. 获取 OpenAI API 密钥用于嵌入模型。
+3. 在 Claude Code 中添加 MCP 服务器，通过 CLI 命令完成。
+
+#### 支持的用法
+
+- **VSCode 插件**：直接从 IDE 中实现语义代码搜索。
+- **核心包 API**：用于自定义项目中代码索引和搜索的功能。
+- **其他 MCP 配置客户端**：包括 Gemini CLI、Cursor、Zencoder 等。
+
+#### 架构与未来计划
+
+- 🔍 支持更多嵌入模型
+- 🧩 改进代码分块和搜索结果排名
+- 💡 开发交互式智能搜索模式
+- 🌐 增强的 Chrome 插件
+
+项目采用 MIT 协议；贡献者可参考详尽的开发指南参与。
+
+### BMAD-METHOD
+
+BMAD-METHOD 是一个用于敏捷 AI 驱动开发的框架，旨在通过先进的人工智能工具优化软件开发和跨领域工作。
+
+项目核心创新：
+
+1. **代理规划**：提供专门的 AI 代理（如分析师、项目经理、架构师），结合高级提示工程和用户参与，生成详细的产品需求文档（PRD）和架构文件。
+2. **上下文工程开发**：Scrum Master 代理将规划转换为超详细的开发任务，确保开发代理完全理解实现所需的背景、细节和架构指导。
+
+主要功能：
+
+- **代码库展平工具**：将项目文件压缩为便于 AI 消费的结构化 XML，以支持分析、调试或开发帮助。
+- **扩展包**：用于创意写作、商业策略、健康与教育等不同领域的专用 AI 代理。
+- **快速安装与更新**：一键命令即可完成框架安装或升级，支持定制化文件的保留。
+
+资源与支持：
+
+- 用户指南与技术深潜文档
+- 社区支持（Discord）
+- 开源贡献指南
+
+此项目基于 MIT 许可协议，支持 Node.js v20+，并提供详细的快速启动和安装指导。
+
+### Claudia
+
+Claudia [github](https://github.com/getAsterisk/claudia)
+
 ### KIMICC
 
 一步命令 npx kimicc 使用 Kimi K2 运行 Claude Code。参考开源项目[kimicc](https://github.com/kaichen/kimicc)
+
+## 集成不同的MCP Server
+
+```bash
+# claude mcp add --transport http context7 https://mcp.context7.com/mcp
+claude mcp add context7 npx @upstash/context7-mcp
+claude mcp add sequential-thinking npx @modelcontextprotocol/server-sequential-thinking
+
+claude mcp add puppeteer npx @modelcontextprotocol/server-puppeteer
+
+claude mcp add magic npx @21st-dev/magic@latest --env API_KEY=<你的api key>
+```
+
+## 我使用Claude Code 的心得体会
+
+全新设计一个新项目时，开始花更多的时间和Claude Code讨论PRD.
+
+- 功能点，业务流程，架构的讨论
+架构的讨论
+- 技术栈的采用，前后端是否分离，是否使用微服务，是否使用容器化，是否使用云原生，是否使用AI辅助开发
+使用MCP task-master制定计划
+使用MCP task-master制定计划
+使用MCP task-master制定计划
 
 ## 参考
 
