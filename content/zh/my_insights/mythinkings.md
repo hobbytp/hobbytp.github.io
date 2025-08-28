@@ -10,6 +10,17 @@ lastmod: "2025-05-29T22:10:00+08:00"
 ---
 这里会持续更新我在AI领域的一些思考。这是一个动态更新的过程，但是我会保留最开始的粗略想法和其演进过程，尽可能保留所有的痕迹。
 
+## 2025-08-26
+
+Claude Code + Claude Code Router + KIMI K2就是个吞金兽啊。用了两次就花了100多。
+用Claude Code Router的时候也要小心，最后的选项里面有个longContext，这个选项会消耗大量的token，即使在Claude Code里面使用/model设置了大模型的名字，但是只要Claude Code router认为是longContext, 它就会最终调用到这个longContext对应的大模型，我不好彩配置了openrouter的gemini，结果一次就花了10美刀...
+
+## 2025-08-17
+
+## 2025-07-26
+
+《AI Coding 非共识报告》读后感
+
 ## 2025-06-17
 
 当前的AI确实很强大，大家也对此非常焦虑。但是要认清一点，AI对不同技能水平的人产生非均匀影响，呈现S形曲线效应。
