@@ -1,4 +1,10 @@
 
+## Agent Lightning
+
+<https://microsoft.github.io/agent-lightning/latest/>
+
+## RAGEN
+
 <https://gemini.google.com/app/9ece70bdfdaea0dc>
 
 RAGEN 是一个利用强化学习训练 LLM 推理代理的系统，旨在解决多回合互动和随机环境中的挑战。该项目通过 StarPO 框架优化轨迹级别的推理和行动策略。RAGEN 的模块化设计包括环境状态管理器、上下文管理器和代理代理，支持多种环境和实验。项目强调了其在不同环境复杂性中的泛化能力，并提供了详细的设置和评估指南。
