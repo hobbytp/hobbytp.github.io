@@ -1,7 +1,7 @@
 ---
 title: "日常想法随手记-2025"
 date: "2025-05-13T14:20:00+08:00"
-lastmod: "2025-09-05T22:30:00+08:00"
+lastmod: "2025-09-12T22:30:00+08:00"
 draft: false
 description: "日常想法随手记"
 tags: ["AI", "Thinking", "Daily","2025"]
@@ -11,6 +11,11 @@ categories: ["my_insights"]
 这里随手记下当天对看到的新闻、文章、视频等的想法。
 
 ## 2025 September
+
+### 2025-09-12
+
+使用了Monica里的Gpt5一段时间了, 发现他特别啰嗦，每次为一个问题，能回答是别的大模型2倍或更长的内容，所以为了减少我的阅读负担，每次都得让他精简。
+不过在cursor里面使用GPT5，发现比之前的GPT4强多了，所以也能理解为什么社区说现在OpenAI Codex + GPT5已经超过Claude Code + Claude 4了。
 
 ### 2025-09-05
 
