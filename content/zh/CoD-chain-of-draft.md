@@ -1,12 +1,11 @@
-
-+++
-title = "Chain of Draft 论文解读"
-date = "2025-03-01T20:00:00+08:00"
-draft = false
-tags = ["AI", "Chain of Draft", "论文", "技术"]
-categories = ["papers", "chain-of-draft"]
-description = "本文介绍了Chain of Draft（CoD）论文，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
-+++
+---
+title: "Chain of Draft 论文解读"
+date: "2025-03-01T20:00:00+08:00"
+draft: false
+tags: ["AI", "Chain of Draft", "论文", "技术"]
+categories: ["papers", "chain-of-draft"]
+description: "本文介绍了Chain of Draft（CoD）论文，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+---
 
 <https://arxiv.org/abs/2502.18600>
 
