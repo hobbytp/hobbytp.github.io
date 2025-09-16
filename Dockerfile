@@ -1,4 +1,4 @@
-FROM klakegg/hugo:0.110.0-ext
+FROM hugomods/hugo:latest
 
 # 设置工作目录
 WORKDIR /src
