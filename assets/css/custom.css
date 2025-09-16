@@ -39,3 +39,244 @@ section.post-content ul {
   /* keep bullets tidy inside dark backgrounds */
   padding-left: 1.25rem;
 }
+
+/* References section styling */
+.references {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background-color: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.references span[id^="ref"] {
+  font-weight: bold;
+  color: var(--primary);
+  margin-right: 0.5rem;
+}
+
+.references a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.references a:hover {
+  text-decoration: underline;
+  color: var(--accent);
+}
+
+.references em {
+  color: var(--secondary);
+  font-size: 0.85em;
+  display: block;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Citation links in text */
+a[href^="#ref"] {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  background-color: var(--theme);
+  border: 1px solid var(--border);
+  font-size: 0.85em;
+}
+
+a[href^="#ref"]:hover {
+  background-color: var(--primary);
+  color: var(--theme);
+  text-decoration: none;
+}
+
+/* Back reference links */
+.references a[href^="#ref"] {
+  color: var(--secondary);
+  font-size: 0.8em;
+  margin-left: 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.references a[href^="#ref"]:hover {
+  opacity: 1;
+  color: var(--primary);
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* ===== 增强链接样式 ===== */
+
+/* 文章内容中的链接样式 */
+.post-content a {
+  color: #0066cc !important;
+  text-decoration: none !important;
+  border-bottom: 2px solid #0066cc !important;
+  padding-bottom: 1px !important;
+  transition: all 0.2s ease !important;
+  font-weight: 500 !important;
+  position: relative !important;
+}
+
+/* 暗色模式下的链接样式 */
+.dark .post-content a {
+  color: #4a9eff !important;
+  border-bottom-color: #4a9eff !important;
+}
+
+/* 链接悬停效果 */
+.post-content a:hover {
+  color: #004499 !important;
+  border-bottom-color: #004499 !important;
+  background-color: rgba(0, 102, 204, 0.1) !important;
+  padding: 2px 4px !important;
+  margin: -2px -4px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+}
+
+/* 暗色模式下的悬停效果 */
+.dark .post-content a:hover {
+  color: #66b3ff !important;
+  border-bottom-color: #66b3ff !important;
+  background-color: rgba(74, 158, 255, 0.15) !important;
+}
+
+/* 外部链接特殊样式 */
+.post-content a[href^="http"]:not([href*="hobbytp.github.io"]) {
+  position: relative !important;
+}
+
+.post-content a[href^="http"]:not([href*="hobbytp.github.io"])::after {
+  content: "↗" !important;
+  font-size: 0.8em !important;
+  margin-left: 0.3em !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.post-content a[href^="http"]:not([href*="hobbytp.github.io"]):hover::after {
+  opacity: 1 !important;
+}
+
+/* 内部链接样式 */
+.post-content a[href^="/"], 
+.post-content a[href^="#"] {
+  color: #0066cc !important;
+  border-bottom: 2px solid #0066cc !important;
+}
+
+.dark .post-content a[href^="/"], 
+.dark .post-content a[href^="#"] {
+  color: #4a9eff !important;
+  border-bottom-color: #4a9eff !important;
+}
+
+/* 标题中的链接样式 */
+.post-content h1 a,
+.post-content h2 a,
+.post-content h3 a,
+.post-content h4 a,
+.post-content h5 a,
+.post-content h6 a {
+  color: inherit !important;
+  border-bottom: 2px solid currentColor !important;
+  opacity: 0.8 !important;
+  transition: opacity 0.2s ease !important;
+}
+
+.post-content h1 a:hover,
+.post-content h2 a:hover,
+.post-content h3 a:hover,
+.post-content h4 a:hover,
+.post-content h5 a:hover,
+.post-content h6 a:hover {
+  opacity: 1 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* 列表中的链接样式 */
+.post-content ul a,
+.post-content ol a {
+  color: #0066cc !important;
+  border-bottom: 1px solid #0066cc !important;
+  padding-bottom: 0.5px !important;
+}
+
+.dark .post-content ul a,
+.dark .post-content ol a {
+  color: #4a9eff !important;
+  border-bottom-color: #4a9eff !important;
+}
+
+/* 引用中的链接样式 */
+.post-content blockquote a {
+  color: #0066cc !important;
+  border-bottom: 1px dashed #0066cc !important;
+  opacity: 0.9 !important;
+}
+
+.dark .post-content blockquote a {
+  color: #4a9eff !important;
+  border-bottom-color: #4a9eff !important;
+}
+
+/* 代码块中的链接样式 */
+.post-content code a,
+.post-content pre a {
+  color: #0066cc !important;
+  border-bottom: 1px solid #0066cc !important;
+  background-color: rgba(0, 102, 204, 0.1) !important;
+  padding: 1px 3px !important;
+  border-radius: 2px !important;
+}
+
+.dark .post-content code a,
+.dark .post-content pre a {
+  color: #4a9eff !important;
+  border-bottom-color: #4a9eff !important;
+  background-color: rgba(74, 158, 255, 0.15) !important;
+}
+
+/* 特殊链接类型 */
+.post-content a[href*="youtube.com"],
+.post-content a[href*="youtu.be"] {
+  color: #ff0000 !important;
+  border-bottom-color: #ff0000 !important;
+}
+
+.post-content a[href*="github.com"] {
+  color: #333 !important;
+  border-bottom-color: #333 !important;
+}
+
+.dark .post-content a[href*="github.com"] {
+  color: #f0f6fc !important;
+  border-bottom-color: #f0f6fc !important;
+}
+
+.post-content a[href*="arxiv.org"] {
+  color: #b31b1b !important;
+  border-bottom-color: #b31b1b !important;
+}
+
+/* 移动端优化 */
+@media screen and (max-width: 768px) {
+  .post-content a {
+    border-bottom-width: 1px !important;
+    padding-bottom: 0.5px !important;
+  }
+  
+  .post-content a:hover {
+    padding: 1px 2px !important;
+    margin: -1px -2px !important;
+  }
+}
