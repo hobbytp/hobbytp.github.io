@@ -120,7 +120,7 @@ npm install -g @musistudio/claude-code-router
 ```
 
 Step 3: 配置Claude Code Router
-创建并配置您的 ~/.claude-code-router/config.json 文件。具体参考[配置示例](https://github.com/musistudio/claude-code-router/blob/main/README_zh.md)
+创建并配置你的 ~/.claude-code-router/config.json 文件。具体参考[配置示例](https://github.com/musistudio/claude-code-router/blob/main/README_zh.md)
 如果router需要通过一个HTTP(s)_PROXY来链接外部大模型Provider，那么PROXY_URL是必须的。
 HOST 和APIKEY对本地部署router不是必须的。关键配置是Providers和Router。
 
@@ -137,9 +137,9 @@ ccr code
 
 ## Claude的能力
 
-Claude Code 会根据需要读取您的文件——您无需手动添加上下文。Claude 还可以访问其自身的文档，并能回答有关其功能和能力的问题。
+Claude Code 会根据需要读取你的文件——你无需手动添加上下文。Claude 还可以访问其自身的文档，并能回答有关其功能和能力的问题。
 
-Claude Code 在修改文件前总是会请求许可。您可以批准单独的更改，或者在会话期间启用“全部接受”模式。
+Claude Code 在修改文件前总是会请求许可。你可以批准单独的更改，或者在会话期间启用“全部接受”模式。
 
 和Git交互
 
@@ -161,7 +161,7 @@ CLAUDE.md 文件是Claude 在开始对话时会自动将其纳入上下文。可
 - 代码风格指南
 - 测试说明
 - 该项目特有的任何意外行为或警告
-- 您希望Claude Code记住的其他信息
+- 你希望Claude Code记住的其他信息
 
 #### CLAUDE.md最佳实践
 
@@ -192,7 +192,7 @@ CLAUDE.md 文件是Claude 在开始对话时会自动将其纳入上下文。可
 ## 用法
 
 用法1: 集成到github action workflow
-Claude code action 允许您在GitHub Actions工作流中运行Claude Code。您可以使用此功能在Claude Code基础上构建任何自定义工作流。
+Claude code action 允许你在GitHub Actions工作流中运行Claude Code。你可以使用此功能在Claude Code基础上构建任何自定义工作流。
 
 参考[Claude Code Github Action 文档](https://docs.anthropic.com/en/docs/claude-code/github-actions)
 参考[claude-code-action](https://github.com/anthropics/claude-code-action)
@@ -406,10 +406,10 @@ Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 **注意**：Claude官方给出的[Subagent 最佳实践](https://docs.anthropic.com/en/docs/claude-code/sub-agents#best-practices):
 
 - **设计专注的子代理**：建议先用 Claude 生成初始子代理，再进行迭代和定制，以获得最佳效果。
-- **编写详细的提示**：在您的系统提示中包含具体的说明、示例和限制条件。您提供的指导越多，子代理的表现就会越好。
+- **编写详细的提示**：在你的系统提示中包含具体的说明、示例和限制条件。你提供的指导越多，子代理的表现就会越好。
 - **限制工具访问权限**：仅授予子代理执行其任务所必需的工具。这有助于提高安全性，并使子代理能够专注于相关操作。
-- **版本控制**：将项目子代理程序签入版本控制系统，以便您的团队能够共同受益并改进它们。
-- **链接子代理**：对于复杂的流程，您可以串联多个子代理。e.g.
+- **版本控制**：将项目子代理程序签入版本控制系统，以便你的团队能够共同受益并改进它们。
+- **链接子代理**：对于复杂的流程，你可以串联多个子代理。e.g.
   - 方法一：直接描述
 
     ```
@@ -458,7 +458,7 @@ Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 
 **有趣的用法**
 
-- 可以使用“claude --verbose”这个详细模式来测试您的子代理。您将看到您的主代理发送给子代理的确切提示、详细步骤、工具执行情况以及子代理获取并返回给主代理的输出。这有助于您更好地优化子代理。一如既往，您的视频太棒了。我从您的视频中学到了很多。
+- 可以使用“claude --verbose”这个详细模式来测试你的子代理。你将看到你的主代理发送给子代理的确切提示、详细步骤、工具执行情况以及子代理获取并返回给主代理的输出。这有助于你更好地优化子代理。一如既往，你的视频太棒了。我从你的视频中学到了很多。
 
 - 使用 --system-prompt 来突破主要代理瓶颈，直接查看代理情况
 
@@ -468,18 +468,18 @@ Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 
 **有趣的观点**
 
-- ？？ Claude 不仅可以使用Subagent（子代理），而且可以设置主代理（meta-agent）。 主代理是其他代理集合的容器。子代理是元代理的一部分（例如，构建子代理、调试子代理等）。这种机制对团队非常有用，在这里您可以安排代理人来执行不同的任务。
+- ？？ Claude 不仅可以使用Subagent（子代理），而且可以设置主代理（meta-agent）。 主代理是其他代理集合的容器。子代理是元代理的一部分（例如，构建子代理、调试子代理等）。这种机制对团队非常有用，在这里你可以安排代理人来执行不同的任务。
 - Anthropic 团队正在发布这些极其宝贵、强大的基础模块，还不清楚他们接下来会怎么做，但一旦完成这些，我认为他们会开始构建顶层/抽象层，以清晰的方式整合所有这些模块，从而击败从高级（如 Loveable、Replit）到低级（如 Cursor、GitHub）的所有工具。
 
 - 我们需要类似代理协调器的东西，并验证一个代理给出的答案是否与另一个代理所期待的内容相兼容……考虑一下变量和代理合同（$variables and agent contracts）。或许可以有一个合同协调代理来处理对齐问题。
 
 - 有人对meta-agent做了微调：
   - description: Builds new Claude Code sub agents from descriptions. Use PROACTIVELY if the user says 'create agent', 'build agent', 'new sub agent', 'meta-agent', or 'meta agent'. When prompting this agent, describe the specific role, capabilities, and tools the new agent should have.
-- 在 Claude Code 1.0.64 中，您可以指定子代理将使用哪个模型。
+- 在 Claude Code 1.0.64 中，你可以指定子代理将使用哪个模型。
 
-- 您如何看待 BMAD 和 superclaude 这两个框架？您觉得它们有价值吗？或者它们与您正在使用的概念混合起来是否有价值？
+- 你如何看待 BMAD 和 superclaude 这两个框架？你觉得它们有价值吗？或者它们与你正在使用的概念混合起来是否有价值？
 - 我很想看看它与 Claude-Flow 相比如何，Claude-Flow 是通过创建群集来实现目标的。
-- 您竟然没有使用 Wispr Flow 与终端进行交流，这让我感到很意外......
+- 你竟然没有使用 Wispr Flow 与终端进行交流，这让我感到很意外......
 - 但在设置好代理后，我看到响应中报告的代币使用量非常惊人。像只是返回它能做什么的简单描述这样的基本功能，就显示用了 2 万代币。但这一切都在几秒钟内完成，所以我不明白为什么代币使用量会这么高。每次基本功能都要用掉 2 万代币，这似乎还不太实用。丹，你那边情况如何？代币使用量是正常的，还是代理调用报告有误？
 - 今天我看到克劳德给一个二级代理打电话，那个二级代理又给另一个二级代理打了电话，我想知道这是不是新功能？还有其他人注意到吗？
 - 我在 claude-code 项目中发现了很多关于子代理无法生成其他代理的问题，存在一些技巧，比如生成无头的 Claude 实例，或者使用像 claude-flow 这样复杂的工具。对于简单的流程，尽量使用命令作为主要的“代理”来生成子代理。

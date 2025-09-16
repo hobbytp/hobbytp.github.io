@@ -82,6 +82,7 @@ AI Coding向CLI方向发展不是简单的技术选择，而是**技术进步、
 [^25]: <https://www.anthropic.com/news/claude-3-5-sonnet>
 [^26]: <https://kanerika.com/blogs/ai-workflow-automation/>
 [^27]: <https://www.stack-ai.com/blog/top-examples-of-ai-use-in-the-enterprise>
+
 **延伸阅读**
 
 - <https://www.reddit.com/r/ChatGPTCoding/comments/1gsqxm5/codai_ai_code_assistant_in_terminal_with/>
