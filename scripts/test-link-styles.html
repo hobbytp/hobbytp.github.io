@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链接样式测试</title>
+    <style>
+        /* 模拟PaperMod主题的CSS变量 */
+        :root {
+            --theme: rgb(255, 255, 255);
+            --primary: rgb(30, 30, 30);
+            --secondary: rgb(108, 108, 108);
+            --content: rgb(31, 31, 31);
+            --border: rgb(238, 238, 238);
+        }
+
+        .dark {
+            --theme: rgb(29, 30, 32);
+            --primary: rgb(218, 218, 219);
+            --secondary: rgb(155, 156, 157);
+            --content: rgb(196, 196, 197);
+            --border: rgb(51, 51, 51);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--theme);
+            color: var(--content);
+        }
+
+        .post-content {
+            color: var(--content);
+        }
+
+        /* 从custom.css复制的链接样式 */
+        .post-content a {
+            color: #0066cc !important;
+            text-decoration: none !important;
+            border-bottom: 2px solid #0066cc !important;
+            padding-bottom: 1px !important;
+            transition: all 0.2s ease !important;
+            font-weight: 500 !important;
+            position: relative !important;
+        }
+
+        .dark .post-content a {
+            color: #4a9eff !important;
+            border-bottom-color: #4a9eff !important;
+        }
+
+        .post-content a:hover {
+            color: #004499 !important;
+            border-bottom-color: #004499 !important;
+            background-color: rgba(0, 102, 204, 0.1) !important;
+            padding: 2px 4px !important;
+            margin: -2px -4px !important;
+            border-radius: 4px !important;
+            text-decoration: none !important;
+        }
+
+        .dark .post-content a:hover {
+            color: #66b3ff !important;
+            border-bottom-color: #66b3ff !important;
+            background-color: rgba(74, 158, 255, 0.15) !important;
+        }
+
+        .post-content a[href^="http"]:not([href*="hobbytp.github.io"])::after {
+            content: "↗" !important;
+            font-size: 0.8em !important;
+            margin-left: 0.3em !important;
+            opacity: 0.7 !important;
+            transition: opacity 0.2s ease !important;
+        }
+
+        .post-content a[href^="http"]:not([href*="hobbytp.github.io"]):hover::after {
+            opacity: 1 !important;
+        }
+
+        .post-content a[href*="youtube.com"],
+        .post-content a[href*="youtu.be"] {
+            color: #ff0000 !important;
+            border-bottom-color: #ff0000 !important;
+        }
+
+        .post-content a[href*="github.com"] {
+            color: #333 !important;
+            border-bottom-color: #333 !important;
+        }
+
+        .dark .post-content a[href*="github.com"] {
+            color: #f0f6fc !important;
+            border-bottom-color: #f0f6fc !important;
+        }
+
+        .post-content a[href*="arxiv.org"] {
+            color: #b31b1b !important;
+            border-bottom-color: #b31b1b !important;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: var(--theme);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.8;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary);
+        }
+
+        .test-section {
+            margin: 2rem 0;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">切换主题</button>
+    
+    <div class="post-content">
+        <h1>链接样式测试页面</h1>
+        
+        <div class="test-section">
+            <h2>普通链接测试</h2>
+            <p>这是一个包含普通链接的段落：<a href="https://example.com">Context Engineering for AI Agents: Lessons from Building Manus</a>，现在应该很明显地显示为蓝色并带有下划线。</p>
+        </div>
+
+        <div class="test-section">
+            <h2>外部链接测试</h2>
+            <p>外部链接会自动添加图标：</p>
+            <ul>
+                <li><a href="https://openai.com">OpenAI官网</a></li>
+                <li><a href="https://github.com">GitHub</a></li>
+                <li><a href="https://youtube.com/watch?v=example">YouTube视频</a></li>
+                <li><a href="https://arxiv.org/abs/2301.00001">ArXiv论文</a></li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>内部链接测试</h2>
+            <p>内部链接样式：</p>
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="/categories/papers">论文解读</a></li>
+                <li><a href="#test">锚点链接</a></li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>悬停效果测试</h2>
+            <p>将鼠标悬停在以下链接上查看效果：</p>
+            <p><a href="https://example.com">悬停我查看效果</a></p>
+            <p><a href="https://github.com/microsoft/vscode">GitHub链接悬停效果</a></p>
+            <p><a href="https://youtube.com/watch?v=test">YouTube链接悬停效果</a></p>
+        </div>
+
+        <div class="test-section">
+            <h2>暗色模式测试</h2>
+            <p>点击右上角的"切换主题"按钮来测试暗色模式下的链接样式。</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const button = document.querySelector('.theme-toggle');
+            button.textContent = document.body.classList.contains('dark') ? '浅色模式' : '暗色模式';
+        }
+    </script>
+</body>
+</html>
+
+
