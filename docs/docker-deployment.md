@@ -77,7 +77,7 @@ MSYS_NO_PATHCONV=1 docker run --rm -it \
   -v /d/Hobby/github/hobbytp.github.io:/src \
   -p 1313:1313 \
   -w /src \
-  klakegg/hugo:0.110.0-ext \
+  hugomods/hugo:exts-0.148.0 \
   server -D --bind=0.0.0.0
 ```
 
@@ -103,7 +103,7 @@ MSYS_NO_PATHCONV=1 docker run --rm -it \
   -v /d/Hobby/github/hobbytp.github.io:/src \
   -p 1313:1313 \
   -w /src \
-  klakegg/hugo:0.110.0-ext \
+  hugomods/hugo:exts-0.148.0 \
   server -D --bind=0.0.0.0
 ```
 
@@ -114,7 +114,7 @@ docker run --rm -it `
   -v ${PWD}:/src `
   -p 1313:1313 `
   -w /src `
-  klakegg/hugo:0.110.0-ext `
+  hugomods/hugo:exts-0.148.0 `
   server -D --bind=0.0.0.0
 ```
 
@@ -125,7 +125,7 @@ docker run --rm -it ^
   -v %cd%:/src ^
   -p 1313:1313 ^
   -w /src ^
-  klakegg/hugo:0.110.0-ext ^
+  hugomods/hugo:exts-0.148.0 ^
   server -D --bind=0.0.0.0
 ```
 
@@ -137,7 +137,7 @@ docker run --rm -it ^
 version: '3'
 services:
   hugo:
-    image: klakegg/hugo:0.110.0-ext
+    image: hugomods/hugo:exts-0.148.0
     ports:
       - "1313:1313"
     volumes:
@@ -164,14 +164,14 @@ dev:
   -v $(PWD):/src \
   -p 1313:1313 \
   -w /src \
-  klakegg/hugo:0.110.0-ext \
+  hugomods/hugo:exts-0.148.0 \
   server -D --bind=0.0.0.0
 
 build:
  docker run --rm \
   -v $(PWD):/src \
   -w /src \
-  klakegg/hugo:0.110.0-ext \
+  hugomods/hugo:exts-0.148.0 \
   build --minify
 
 clean:
@@ -258,7 +258,7 @@ docker run --rm -it \
   -v /d/Hobby/github/hobbytp.github.io:/src \
   -p 1314:1313 \
   -w /src \
-  klakegg/hugo:0.110.0-ext \
+  hugomods/hugo:exts-0.148.0 \
   server -D --bind=0.0.0.0
 ```
 
@@ -290,7 +290,7 @@ rm -rf public/ resources/_gen/
 docker run --rm \
   -v /d/Hobby/github/hobbytp.github.io:/src \
   -w /src \
-  klakegg/hugo:0.110.0-ext \
+  hugomods/hugo:exts-0.148.0 \
   build --minify
 ```
 
@@ -301,7 +301,7 @@ docker run --rm -it \
   -v /d/Hobby/github/hobbytp.github.io:/src \
   -p 1313:1313 \
   -w /src \
-  klakegg/hugo:0.110.0-ext \
+  hugomods/hugo:exts-0.148.0 \
   server -D --disableFastRender --theme PaperMod
 ```
 
