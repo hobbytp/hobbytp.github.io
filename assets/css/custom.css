@@ -280,3 +280,581 @@ a[href^="#ref"]:hover {
     margin: -1px -2px !important;
   }
 }
+
+/* ===== 标题层级优化 ===== */
+
+/* 主标题样式增强 */
+.post-content h1 {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: var(--primary) !important;
+  margin: 2.5rem 0 1.5rem 0 !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 3px solid var(--primary) !important;
+  line-height: 1.2 !important;
+}
+
+/* 二级标题样式 */
+.post-content h2 {
+  font-size: 2rem !important;
+  font-weight: 600 !important;
+  color: var(--primary) !important;
+  margin: 2rem 0 1rem 0 !important;
+  padding-left: 0.5rem !important;
+  border-left: 4px solid var(--primary) !important;
+  background: linear-gradient(90deg, rgba(var(--primary-rgb), 0.1), transparent) !important;
+  padding: 0.75rem 0 0.75rem 1rem !important;
+  border-radius: 0 8px 8px 0 !important;
+  line-height: 1.3 !important;
+}
+
+/* 三级标题样式 */
+.post-content h3 {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  color: var(--secondary) !important;
+  margin: 1.5rem 0 0.75rem 0 !important;
+  padding-bottom: 0.25rem !important;
+  border-bottom: 2px solid var(--border) !important;
+  line-height: 1.4 !important;
+}
+
+/* 四级标题样式 */
+.post-content h4 {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: var(--secondary) !important;
+  margin: 1.25rem 0 0.5rem 0 !important;
+  padding-left: 0.75rem !important;
+  border-left: 2px solid var(--border) !important;
+  line-height: 1.4 !important;
+}
+
+/* 五级标题样式 */
+.post-content h5 {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: var(--secondary) !important;
+  margin: 1rem 0 0.5rem 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  line-height: 1.4 !important;
+}
+
+/* 六级标题样式 */
+.post-content h6 {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--tertiary) !important;
+  margin: 0.75rem 0 0.5rem 0 !important;
+  font-style: italic !important;
+  line-height: 1.4 !important;
+}
+
+/* 标题悬停效果 */
+.post-content h1:hover,
+.post-content h2:hover,
+.post-content h3:hover,
+.post-content h4:hover,
+.post-content h5:hover,
+.post-content h6:hover {
+  transform: translateX(2px) !important;
+  transition: transform 0.2s ease !important;
+}
+
+/* 暗色模式下的标题样式调整 */
+.dark .post-content h1 {
+  color: #e2e8f0 !important;
+  border-bottom-color: #4a9eff !important;
+}
+
+.dark .post-content h2 {
+  color: #cbd5e1 !important;
+  border-left-color: #4a9eff !important;
+  background: linear-gradient(90deg, rgba(74, 158, 255, 0.1), transparent) !important;
+}
+
+.dark .post-content h3 {
+  color: #94a3b8 !important;
+  border-bottom-color: #475569 !important;
+}
+
+.dark .post-content h4 {
+  color: #94a3b8 !important;
+  border-left-color: #475569 !important;
+}
+
+.dark .post-content h5 {
+  color: #64748b !important;
+}
+
+.dark .post-content h6 {
+  color: #64748b !important;
+}
+
+/* 移动端标题优化 */
+@media screen and (max-width: 768px) {
+  .post-content h1 {
+    font-size: 2rem !important;
+    margin: 2rem 0 1rem 0 !important;
+  }
+  
+  .post-content h2 {
+    font-size: 1.5rem !important;
+    margin: 1.5rem 0 0.75rem 0 !important;
+    padding: 0.5rem 0 0.5rem 0.75rem !important;
+  }
+  
+  .post-content h3 {
+    font-size: 1.25rem !important;
+    margin: 1.25rem 0 0.5rem 0 !important;
+  }
+}
+
+/* ===== 内容排版优化 ===== */
+
+/* 段落间距优化 */
+.post-content p {
+  margin-bottom: 1.25rem !important;
+  line-height: 1.7 !important;
+  text-align: justify !important;
+}
+
+/* 列表样式优化 */
+.post-content ul,
+.post-content ol {
+  margin-bottom: 1.25rem !important;
+  padding-left: 1.5rem !important;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem !important;
+  line-height: 1.6 !important;
+}
+
+/* 引用块样式增强 */
+.post-content blockquote {
+  margin: 1.5rem 0 !important;
+  padding: 1rem 1.5rem !important;
+  border-left: 4px solid var(--primary) !important;
+  background: linear-gradient(90deg, rgba(var(--primary-rgb), 0.05), transparent) !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-style: italic !important;
+  color: var(--secondary) !important;
+}
+
+.dark .post-content blockquote {
+  background: linear-gradient(90deg, rgba(74, 158, 255, 0.1), transparent) !important;
+  color: #cbd5e1 !important;
+}
+
+/* 代码块样式优化 */
+.post-content code {
+  background: var(--code-bg) !important;
+  color: var(--primary) !important;
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 4px !important;
+  font-size: 0.9em !important;
+  font-weight: 500 !important;
+  border: 1px solid var(--border) !important;
+}
+
+.post-content pre {
+  background: var(--code-block-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  margin: 1.5rem 0 !important;
+  overflow-x: auto !important;
+}
+
+/* 表格样式优化 */
+.post-content table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 1.5rem 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.post-content th,
+.post-content td {
+  padding: 0.75rem 1rem !important;
+  text-align: left !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.post-content th {
+  background: var(--code-bg) !important;
+  font-weight: 600 !important;
+  color: var(--primary) !important;
+}
+
+.post-content tr:hover {
+  background: rgba(var(--primary-rgb), 0.05) !important;
+}
+
+/* 分隔线样式 */
+.post-content hr {
+  margin: 2rem 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, transparent, var(--border), transparent) !important;
+  border: none !important;
+}
+
+/* ===== 文章内容区域增强 ===== */
+
+/* 文章内容容器 */
+.post-content {
+  position: relative !important;
+  max-width: none !important;
+}
+
+/* 文章内容背景和边框 */
+.post-content::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -1rem !important;
+  left: -1rem !important;
+  right: -1rem !important;
+  bottom: -1rem !important;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.02), rgba(var(--secondary-rgb), 0.02)) !important;
+  border-radius: 12px !important;
+  z-index: -1 !important;
+}
+
+/* 段落首行缩进 */
+.post-content p:not(:first-child) {
+  text-indent: 2em !important;
+}
+
+/* 列表项增强 */
+.post-content ul li::marker {
+  color: var(--primary) !important;
+  font-weight: bold !important;
+}
+
+.post-content ol li::marker {
+  color: var(--primary) !important;
+  font-weight: bold !important;
+}
+
+/* 强调文本样式 */
+.post-content strong {
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+  background: linear-gradient(120deg, rgba(var(--primary-rgb), 0.1), transparent) !important;
+  padding: 0.1rem 0.3rem !important;
+  border-radius: 3px !important;
+}
+
+.post-content em {
+  color: var(--secondary) !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+}
+
+/* 链接在段落中的样式 */
+.post-content p a {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* 图片样式增强 */
+.post-content img {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  margin: 1.5rem 0 !important;
+}
+
+.post-content img:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 代码块增强 */
+.post-content pre {
+  position: relative !important;
+  background: var(--code-block-bg) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  padding: 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  overflow-x: auto !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.post-content pre::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 3px !important;
+  background: linear-gradient(90deg, var(--primary), var(--secondary)) !important;
+  border-radius: 8px 8px 0 0 !important;
+}
+
+/* 内联代码增强 */
+.post-content code:not(pre code) {
+  background: var(--code-bg) !important;
+  color: var(--primary) !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 4px !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease !important;
+}
+
+.post-content code:not(pre code):hover {
+  background: var(--primary) !important;
+  color: var(--theme) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 表格增强 */
+.post-content table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 2rem 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  background: var(--theme) !important;
+}
+
+.post-content th {
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  color: var(--theme) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: 0.9em !important;
+}
+
+.post-content td {
+  border-bottom: 1px solid var(--border) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.post-content tr:hover td {
+  background: rgba(var(--primary-rgb), 0.05) !important;
+}
+
+/* 引用块增强 */
+.post-content blockquote {
+  position: relative !important;
+  margin: 2rem 0 !important;
+  padding: 1.5rem 2rem !important;
+  border-left: 4px solid var(--primary) !important;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.05), rgba(var(--secondary-rgb), 0.02)) !important;
+  border-radius: 0 12px 12px 0 !important;
+  font-style: italic !important;
+  color: var(--secondary) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+.post-content blockquote::before {
+  content: '"' !important;
+  position: absolute !important;
+  top: -0.5rem !important;
+  left: 1rem !important;
+  font-size: 3rem !important;
+  color: var(--primary) !important;
+  opacity: 0.3 !important;
+  font-family: serif !important;
+}
+
+/* 暗色模式下的增强 */
+.dark .post-content::before {
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.05), rgba(148, 163, 184, 0.02)) !important;
+}
+
+.dark .post-content img {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .post-content img:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .post-content pre {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dark .post-content table {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dark .post-content blockquote {
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(148, 163, 184, 0.05)) !important;
+  color: #cbd5e1 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 移动端优化 */
+@media screen and (max-width: 768px) {
+  .post-content::before {
+    left: -0.5rem !important;
+    right: -0.5rem !important;
+  }
+  
+  .post-content p:not(:first-child) {
+    text-indent: 1em !important;
+  }
+  
+  .post-content blockquote {
+    padding: 1rem 1.5rem !important;
+    margin: 1.5rem 0 !important;
+  }
+  
+  .post-content pre {
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+  }
+}
+
+/* ===== SPA模式增强样式 ===== */
+
+/* 固定侧边栏样式 */
+.nav-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover::before,
+.nav-item.bg-blue-100::before {
+  transform: scaleY(1);
+}
+
+/* 卡片悬停效果增强 */
+.blog-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.blog-card:hover::before {
+  left: 100%;
+}
+
+/* 加载动画 */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+/* 响应式侧边栏 */
+@media screen and (max-width: 1024px) {
+  .fixed.left-0 {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .fixed.left-0.mobile-open {
+    transform: translateX(0);
+  }
+  
+  .ml-64 {
+    margin-left: 0;
+  }
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .blog-card {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+  
+  .blog-card:hover {
+    background-color: #374151;
+  }
+  
+  .nav-item {
+    color: #d1d5db;
+  }
+  
+  .nav-item:hover {
+    background-color: #374151;
+    color: #f3f4f6;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .fixed.left-0 {
+    display: none;
+  }
+  
+  .ml-64 {
+    margin-left: 0;
+  }
+  
+  .blog-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+}
