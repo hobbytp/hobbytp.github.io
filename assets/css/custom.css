@@ -283,58 +283,67 @@ a[href^="#ref"]:hover {
 
 /* ===== 标题层级优化 ===== */
 
-/* 主标题样式增强 */
-.post-content h1 {
+/* 主标题样式增强 - 针对文章内容区域 */
+article h1,
+.max-w-4xl h1,
+.flex-1 h1 {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
-  color: var(--primary) !important;
+  color: #1e40af !important;
   margin: 2.5rem 0 1.5rem 0 !important;
   padding-bottom: 0.5rem !important;
-  border-bottom: 3px solid var(--primary) !important;
+  border-bottom: 3px solid #1e40af !important;
   line-height: 1.2 !important;
 }
 
 /* 二级标题样式 */
-.post-content h2 {
+article h2,
+.max-w-4xl h2,
+.flex-1 h2 {
   font-size: 2rem !important;
   font-weight: 600 !important;
-  color: var(--primary) !important;
+  color: #1e40af !important;
   margin: 2rem 0 1rem 0 !important;
-  padding-left: 0.5rem !important;
-  border-left: 4px solid var(--primary) !important;
-  background: linear-gradient(90deg, rgba(var(--primary-rgb), 0.1), transparent) !important;
   padding: 0.75rem 0 0.75rem 1rem !important;
+  border-left: 4px solid #1e40af !important;
+  background: linear-gradient(90deg, rgba(30, 64, 175, 0.1), transparent) !important;
   border-radius: 0 8px 8px 0 !important;
   line-height: 1.3 !important;
 }
 
 /* 三级标题样式 */
-.post-content h3 {
+article h3,
+.max-w-4xl h3,
+.flex-1 h3 {
   font-size: 1.5rem !important;
   font-weight: 600 !important;
-  color: var(--secondary) !important;
+  color: #374151 !important;
   margin: 1.5rem 0 0.75rem 0 !important;
   padding-bottom: 0.25rem !important;
-  border-bottom: 2px solid var(--border) !important;
+  border-bottom: 2px solid #e5e7eb !important;
   line-height: 1.4 !important;
 }
 
 /* 四级标题样式 */
-.post-content h4 {
+article h4,
+.max-w-4xl h4,
+.flex-1 h4 {
   font-size: 1.25rem !important;
   font-weight: 600 !important;
-  color: var(--secondary) !important;
+  color: #374151 !important;
   margin: 1.25rem 0 0.5rem 0 !important;
   padding-left: 0.75rem !important;
-  border-left: 2px solid var(--border) !important;
+  border-left: 2px solid #e5e7eb !important;
   line-height: 1.4 !important;
 }
 
 /* 五级标题样式 */
-.post-content h5 {
+article h5,
+.max-w-4xl h5,
+.flex-1 h5 {
   font-size: 1.1rem !important;
   font-weight: 600 !important;
-  color: var(--secondary) !important;
+  color: #374151 !important;
   margin: 1rem 0 0.5rem 0 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
@@ -342,70 +351,102 @@ a[href^="#ref"]:hover {
 }
 
 /* 六级标题样式 */
-.post-content h6 {
+article h6,
+.max-w-4xl h6,
+.flex-1 h6 {
   font-size: 1rem !important;
   font-weight: 600 !important;
-  color: var(--tertiary) !important;
+  color: #6b7280 !important;
   margin: 0.75rem 0 0.5rem 0 !important;
   font-style: italic !important;
   line-height: 1.4 !important;
 }
 
 /* 标题悬停效果 */
-.post-content h1:hover,
-.post-content h2:hover,
-.post-content h3:hover,
-.post-content h4:hover,
-.post-content h5:hover,
-.post-content h6:hover {
+article h1:hover,
+article h2:hover,
+article h3:hover,
+article h4:hover,
+article h5:hover,
+article h6:hover,
+.max-w-4xl h1:hover,
+.max-w-4xl h2:hover,
+.max-w-4xl h3:hover,
+.max-w-4xl h4:hover,
+.max-w-4xl h5:hover,
+.max-w-4xl h6:hover,
+.flex-1 h1:hover,
+.flex-1 h2:hover,
+.flex-1 h3:hover,
+.flex-1 h4:hover,
+.flex-1 h5:hover,
+.flex-1 h6:hover {
   transform: translateX(2px) !important;
   transition: transform 0.2s ease !important;
 }
 
 /* 暗色模式下的标题样式调整 */
-.dark .post-content h1 {
+.dark article h1,
+.dark .max-w-4xl h1,
+.dark .flex-1 h1 {
   color: #e2e8f0 !important;
   border-bottom-color: #4a9eff !important;
 }
 
-.dark .post-content h2 {
+.dark article h2,
+.dark .max-w-4xl h2,
+.dark .flex-1 h2 {
   color: #cbd5e1 !important;
   border-left-color: #4a9eff !important;
   background: linear-gradient(90deg, rgba(74, 158, 255, 0.1), transparent) !important;
 }
 
-.dark .post-content h3 {
+.dark article h3,
+.dark .max-w-4xl h3,
+.dark .flex-1 h3 {
   color: #94a3b8 !important;
   border-bottom-color: #475569 !important;
 }
 
-.dark .post-content h4 {
+.dark article h4,
+.dark .max-w-4xl h4,
+.dark .flex-1 h4 {
   color: #94a3b8 !important;
   border-left-color: #475569 !important;
 }
 
-.dark .post-content h5 {
+.dark article h5,
+.dark .max-w-4xl h5,
+.dark .flex-1 h5 {
   color: #64748b !important;
 }
 
-.dark .post-content h6 {
+.dark article h6,
+.dark .max-w-4xl h6,
+.dark .flex-1 h6 {
   color: #64748b !important;
 }
 
 /* 移动端标题优化 */
 @media screen and (max-width: 768px) {
-  .post-content h1 {
+  article h1,
+  .max-w-4xl h1,
+  .flex-1 h1 {
     font-size: 2rem !important;
     margin: 2rem 0 1rem 0 !important;
   }
   
-  .post-content h2 {
+  article h2,
+  .max-w-4xl h2,
+  .flex-1 h2 {
     font-size: 1.5rem !important;
     margin: 1.5rem 0 0.75rem 0 !important;
     padding: 0.5rem 0 0.5rem 0.75rem !important;
   }
   
-  .post-content h3 {
+  article h3,
+  .max-w-4xl h3,
+  .flex-1 h3 {
     font-size: 1.25rem !important;
     margin: 1.25rem 0 0.5rem 0 !important;
   }
@@ -414,20 +455,28 @@ a[href^="#ref"]:hover {
 /* ===== 内容排版优化 ===== */
 
 /* 段落间距优化 */
-.post-content p {
+article p,
+.max-w-4xl p,
+.flex-1 p {
   margin-bottom: 1.25rem !important;
   line-height: 1.7 !important;
   text-align: justify !important;
 }
 
 /* 列表样式优化 */
-.post-content ul,
-.post-content ol {
+article ul,
+article ol,
+.max-w-4xl ul,
+.max-w-4xl ol,
+.flex-1 ul,
+.flex-1 ol {
   margin-bottom: 1.25rem !important;
   padding-left: 1.5rem !important;
 }
 
-.post-content li {
+article li,
+.max-w-4xl li,
+.flex-1 li {
   margin-bottom: 0.5rem !important;
   line-height: 1.6 !important;
 }
