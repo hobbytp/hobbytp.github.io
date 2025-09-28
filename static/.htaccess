@@ -1,0 +1,7 @@
+# MIME类型配置
+AddType text/css .css
+AddType application/javascript .js
+AddType image/svg+xml .svg
+AddType image/webp .webp
+AddType image/jpeg .jpg .jpeg
+AddType image/png .png
