@@ -1,6 +1,6 @@
 services:
   hugo:
-    image: hugomods/hugo:exts-0.148.0
+    image: hugomods/hugo:exts-0.149.0
     container_name: hugo-blog
     volumes:
       - .:/src
@@ -9,11 +9,11 @@ services:
     working_dir: /src
     environment:
       - HUGO_ENV=development
-    command: server --bind 0.0.0.0 -D --disableFastRender
+    command: server --bind 0.0.0.0 -D --disableFastRender --disableLiveReload
 
   # 生产环境构建服务
   hugo-build:
-    image: hugomods/hugo:exts-0.148.0
+    image: hugomods/hugo:exts-0.149.0
     volumes:
       - .:/src
     working_dir: /src

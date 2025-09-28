@@ -1,47 +1,196 @@
 {{ define "main" }}
-<style>
-    .card {
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        margin: 2rem 0;
-        padding: 2rem 1.5rem;
-        transition: box-shadow 0.2s;
-    }
+<div class="container mx-auto px-8 py-8">
+    <header class="mb-8">
+        <h1 class="text-4xl font-bold mb-4 text-gray-800">{{ .Title }}</h1>
+        {{ with .Content }}
+        <div class="prose prose-lg max-w-none mb-8 text-gray-600">
+            {{ . }}
+        </div>
+        {{ end }}
+    </header>
 
-    .card:hover {
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .card h2 {
-        margin-top: 0;
-        font-size: 1.5rem;
-        color: #2e2e33;
-    }
-
-    .card-content {
-        margin-top: 1rem;
-    }
-</style>
-<div class="mythinkings-cards">
-    {{ $re := `(?m)^##\s+(.+)$` }}
-    {{ $matches := findRE $re .RawContent }}
-    {{ $sections := split .RawContent "## " }}
-    {{ range $i, $section := $sections }}
-    {{ if gt $i 0 }}
-    <div class="card">
-        <h2>{{ index $matches (sub $i 1) | default "" }}</h2>
-        <div class="card-content">
-            {{ $section | markdownify }}
+    <!-- 搜索和筛选栏 -->
+    <div class="mb-8 flex flex-col sm:flex-row gap-4">
+        <div class="flex-1">
+            <input type="text" id="search-input" placeholder="搜索文章..." 
+                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+        </div>
+        <div class="flex gap-2">
+            <select id="sort-select" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                <option value="date-desc">最新优先</option>
+                <option value="date-asc">最旧优先</option>
+                <option value="title-asc">标题A-Z</option>
+                <option value="title-desc">标题Z-A</option>
+            </select>
         </div>
     </div>
-    {{ else }}
-    <div class="card" style="background:#f8f8fa;">
-        <div class="card-content">
-            {{ $section | markdownify }}
-        </div>
+
+    <!-- 文章卡片网格 -->
+    <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{ range .Pages.ByDate.Reverse }}
+        <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" 
+                 data-url="{{ .RelPermalink }}"
+                 data-title="{{ .Title | lower }}"
+                 data-date="{{ .Date.Format "2006-01-02" }}"
+                 data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}">
+            <!-- 文章封面图片 -->
+            {{ if .Params.featured_image }}
+            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 relative overflow-hidden">
+                <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" 
+                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+            </div>
+            {{ else }}
+            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+            </div>
+            {{ end }}
+
+            <div class="p-6">
+                <!-- 文章标题 -->
+                <h2 class="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">
+                    {{ .Title }}
+                </h2>
+
+                <!-- 文章描述 -->
+                {{ with .Description }}
+                <p class="text-gray-600 mb-4 line-clamp-3">{{ . }}</p>
+                {{ else }}
+                <p class="text-gray-600 mb-4 line-clamp-3">{{ .Summary | truncate 120 }}</p>
+                {{ end }}
+
+                <!-- 元信息 -->
+                <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <time>{{ .Date.Format "2006-01-02" }}</time>
+                    </div>
+                    {{ if .Params.tags }}
+                    <div class="flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                        <span>{{ len .Params.tags }} 标签</span>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <!-- 标签 -->
+                {{ with .Params.tags }}
+                <div class="flex flex-wrap gap-2 mb-4">
+                    {{ range first 3 . }}
+                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
+                        #{{ . }}
+                    </span>
+                    {{ end }}
+                    {{ if gt (len .) 3 }}
+                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                        +{{ sub (len .) 3 }}
+                    </span>
+                    {{ end }}
+                </div>
+                {{ end }}
+
+                <!-- 阅读按钮 -->
+                <div class="flex items-center justify-between">
+                    <span class="text-sm text-gray-500">
+                        {{ if .ReadingTime }}
+                        {{ .ReadingTime }} 分钟阅读
+                        {{ else }}
+                        快速阅读
+                        {{ end }}
+                    </span>
+                    <div class="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                        <span class="text-sm font-medium mr-1">阅读全文</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {{ end }}
     </div>
-    {{ end }}
-    {{ end }}
+
+    <!-- 无结果提示 -->
+    <div id="no-results" class="hidden text-center py-12">
+        <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+        <h3 class="text-lg font-medium text-gray-600 mb-2">没有找到相关文章</h3>
+        <p class="text-gray-500">尝试调整搜索条件或浏览其他分类</p>
+    </div>
 </div>
+
+<script>
+// 搜索和筛选功能
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('search-input');
+    const sortSelect = document.getElementById('sort-select');
+    const articlesGrid = document.getElementById('articles-grid');
+    const noResults = document.getElementById('no-results');
+    const articles = Array.from(document.querySelectorAll('.blog-card'));
+
+    function filterAndSort() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const sortBy = sortSelect.value;
+        
+        let filtered = articles.filter(article => {
+            const title = article.dataset.title;
+            const tags = article.dataset.tags;
+            return title.includes(searchTerm) || tags.includes(searchTerm);
+        });
+
+        // 排序
+        filtered.sort((a, b) => {
+            switch(sortBy) {
+                case 'date-desc':
+                    return new Date(b.dataset.date) - new Date(a.dataset.date);
+                case 'date-asc':
+                    return new Date(a.dataset.date) - new Date(b.dataset.date);
+                case 'title-asc':
+                    return a.dataset.title.localeCompare(b.dataset.title);
+                case 'title-desc':
+                    return b.dataset.title.localeCompare(a.dataset.title);
+                default:
+                    return 0;
+            }
+        });
+
+        // 显示结果
+        articlesGrid.innerHTML = '';
+        if (filtered.length === 0) {
+            noResults.classList.remove('hidden');
+        } else {
+            noResults.classList.add('hidden');
+            filtered.forEach(article => {
+                articlesGrid.appendChild(article);
+            });
+        }
+    }
+
+    searchInput.addEventListener('input', filterAndSort);
+    sortSelect.addEventListener('change', filterAndSort);
+});
+</script>
+
+<style>
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+</style>
 {{ end }}
