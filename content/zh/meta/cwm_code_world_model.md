@@ -61,3 +61,4 @@ CWM的出现，不仅仅是一个新模型的发布，更像是一个宣言。�
 ## 参考
 
 - [CWM: An Open-Weights LLM for Research on Code Generation with World Models](https://ai.meta.com/research/publications/cwm-an-open-weights-llm-for-research-on-code-generation-with-world-models/)
+- [CWM Github](https://github.com/facebookresearch/cwm)
