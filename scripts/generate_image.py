@@ -9,6 +9,7 @@ import sys
 import yaml
 import time
 import json
+import tempfile
 from pathlib import Path
 from typing import Dict, Optional
 from google import genai
@@ -84,10 +85,10 @@ class ImageGenerator:
                                 # 找到图片数据
                                 image_data = part.inline_data.data
                                 
-                                # 保存为临时文件
-                                temp_image_file = f"temp_generated_{int(time.time())}.png"
-                                with open(temp_image_file, 'wb') as f:
-                                    f.write(image_data)
+                                # 使用安全的临时文件处理
+                                with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+                                    temp_file.write(image_data)
+                                    temp_image_file = temp_file.name
                                 
                                 print(f"Successfully generated image: {temp_image_file}")
                                 return temp_image_file
