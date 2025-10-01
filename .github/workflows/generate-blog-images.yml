@@ -1,0 +1,92 @@
+name: Generate Blog Images
+
+on:
+  push:
+    paths:
+      - 'content/**/*.md'
+    branches:
+      - main
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  generate-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        cd scripts
+        pip install -r requirements.txt
+    
+    - name: Detect changed blog files
+      id: detect-changes
+      run: |
+        # 获取本次提交修改的.md文件
+        if [ "${{ github.event_name }}" = "push" ]; then
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' | grep '^content/' || true)
+        else
+          # 手动触发时处理所有没有图片的博客
+          CHANGED_FILES=""
+        fi
+        
+        echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+        echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+    
+    - name: Generate images for new blogs
+      if: steps.detect-changes.outputs.changed_files != ''
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: |
+        cd scripts
+        python generate_image.py ${{ steps.detect-changes.outputs.changed_files }}
+    
+    - name: Generate images for all blogs (manual trigger)
+      if: github.event_name == 'workflow_dispatch'
+      env:
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      run: |
+        cd scripts
+        python generate_image.py --backfill
+    
+    - name: Commit generated images
+      if: always()
+      run: |
+        # 检查是否有新的图片文件
+        if git diff --quiet --exit-code static/images/articles/; then
+          echo "No new images to commit"
+        else
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add static/images/articles/
+          git commit -m "Auto-generate blog images [skip ci]" || echo "No changes to commit"
+          git push
+        fi
+    
+    - name: Create summary
+      if: always()
+      run: |
+        echo "## Blog Image Generation Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Changed files:** ${{ steps.detect-changes.outputs.changed_files }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Generated Images:" >> $GITHUB_STEP_SUMMARY
+        if [ -d "static/images/articles" ]; then
+          ls -la static/images/articles/ | tail -n +2 | while read line; do
+            echo "- $line" >> $GITHUB_STEP_SUMMARY
+          done
+        else
+          echo "No images directory found" >> $GITHUB_STEP_SUMMARY
+        fi
