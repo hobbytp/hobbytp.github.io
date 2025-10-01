@@ -272,8 +272,8 @@
                     container.innerHTML = content;
                     this.animateContent();
                     
-                    // 如果是搜索页面，重新初始化搜索功能
-                    if (section === 'search') {
+                    // 如果页面包含搜索框，重新初始化搜索功能
+                    if (section === 'search' || document.getElementById('search-input')) {
                         this.initializeSearch();
                     }
                 } catch (error) {
@@ -389,8 +389,9 @@
                     if (!res.ok) throw new Error('Failed to fetch search index');
                     const data = await res.json();
 
-                    const input = document.getElementById('searchInput');
-                    const results = document.getElementById('searchResults');
+                    // 尝试不同的搜索框ID
+                    let input = document.getElementById('searchInput') || document.getElementById('search-input');
+                    let results = document.getElementById('searchResults') || document.getElementById('articles-grid');
 
                     if (!input || !results) {
                         console.error('Search elements not found');
@@ -410,31 +411,71 @@
                     // 创建新的搜索处理函数
                     this.searchHandler = function () {
                         const q = input.value.trim();
-                        results.innerHTML = '';
-                        if (!q) return;
+                        
+                        // 检查是否是分类页面的搜索（有articles-grid）
+                        if (results.id === 'articles-grid') {
+                            // 分类页面搜索逻辑
+                            const articles = Array.from(document.querySelectorAll('.blog-card'));
+                            const noResults = document.getElementById('no-results');
+                            
+                            if (!q) {
+                                // 清空搜索，显示所有文章
+                                articles.forEach(article => {
+                                    article.style.display = '';
+                                });
+                                if (noResults) noResults.style.display = 'none';
+                                return;
+                            }
+                            
+                            let filtered = articles.filter(article => {
+                                const title = article.dataset.title;
+                                const tags = article.dataset.tags;
+                                return title && title.toLowerCase().includes(q.toLowerCase()) || 
+                                       tags && tags.toLowerCase().includes(q.toLowerCase());
+                            });
+                            
+                            // 隐藏所有文章
+                            articles.forEach(article => {
+                                article.style.display = 'none';
+                            });
+                            
+                            // 显示匹配的文章
+                            filtered.forEach(article => {
+                                article.style.display = '';
+                            });
+                            
+                            // 显示或隐藏"没有找到相关文章"
+                            if (noResults) {
+                                noResults.style.display = filtered.length === 0 ? 'block' : 'none';
+                            }
+                        } else {
+                            // 专用搜索页面逻辑
+                            results.innerHTML = '';
+                            if (!q) return;
 
-                        const found = fuse.search(q);
-                        found.slice(0, 20).forEach(({ item }) => {
-                            const li = document.createElement('li');
-                            li.className = 'search-result-item';
-                            li.innerHTML = `
-                                <a href="${item.permalink}">
-                                    <h3>${item.title}</h3>
-                                    ${item.description ? `<p>${item.description}</p>` : ''}
-                                    <div class="result-meta">
-                                        ${item.date ? `<span class="result-date">${new Date(item.date).toLocaleDateString()}</span>` : ''}
-                                        ${item.categories ? `<span class="result-categories">${item.categories.join(', ')}</span>` : ''}
-                                    </div>
-                                </a>
-                            `;
-                            results.appendChild(li);
-                        });
+                            const found = fuse.search(q);
+                            found.slice(0, 20).forEach(({ item }) => {
+                                const li = document.createElement('li');
+                                li.className = 'search-result-item';
+                                li.innerHTML = `
+                                    <a href="${item.permalink}">
+                                        <h3>${item.title}</h3>
+                                        ${item.description ? `<p>${item.description}</p>` : ''}
+                                        <div class="result-meta">
+                                            ${item.date ? `<span class="result-date">${new Date(item.date).toLocaleDateString()}</span>` : ''}
+                                            ${item.categories ? `<span class="result-categories">${item.categories.join(', ')}</span>` : ''}
+                                        </div>
+                                    </a>
+                                `;
+                                results.appendChild(li);
+                            });
 
-                        if (found.length === 0) {
-                            const li = document.createElement('li');
-                            li.className = 'no-results';
-                            li.textContent = '没有找到相关文章';
-                            results.appendChild(li);
+                            if (found.length === 0) {
+                                const li = document.createElement('li');
+                                li.className = 'no-results';
+                                li.textContent = '没有找到相关文章';
+                                results.appendChild(li);
+                            }
                         }
                     };
 
