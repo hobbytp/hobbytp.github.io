@@ -127,22 +127,65 @@
 </div>
 
 <script>
-// 搜索和筛选功能
+// 智能搜索功能
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const sortSelect = document.getElementById('sort-select');
     const articlesGrid = document.getElementById('articles-grid');
     const noResults = document.getElementById('no-results');
     const articles = Array.from(document.querySelectorAll('.blog-card'));
+    
+    let isGlobalSearch = false;
+    let globalSearchResults = [];
+    let fuse = null;
 
-    function filterAndSort() {
-        const searchTerm = searchInput.value.toLowerCase();
-        const sortBy = sortSelect.value;
+    // 初始化全站搜索
+    async function initGlobalSearch() {
+        if (fuse) return;
         
+        try {
+            // 动态加载Fuse.js
+            if (typeof Fuse === 'undefined') {
+                await loadFuseJS();
+            }
+            
+            const res = await fetch('/index.json');
+            if (!res.ok) throw new Error('Failed to fetch search index');
+            const data = await res.json();
+            
+            fuse = new Fuse(data, {
+                keys: ['title', 'content', 'description', 'tags', 'categories'],
+                threshold: 0.3,
+                minMatchCharLength: 2,
+                useExtendedSearch: true
+            });
+        } catch (error) {
+            console.error('Failed to initialize global search:', error);
+        }
+    }
+
+    // 加载Fuse.js
+    function loadFuseJS() {
+        return new Promise((resolve, reject) => {
+            if (typeof Fuse !== 'undefined') {
+                resolve();
+                return;
+            }
+            
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2';
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+    }
+
+    // 本地搜索
+    function localSearch(searchTerm, sortBy) {
         let filtered = articles.filter(article => {
             const title = article.dataset.title;
             const tags = article.dataset.tags;
-            return title.includes(searchTerm) || tags.includes(searchTerm);
+            return title.toLowerCase().includes(searchTerm) || tags.toLowerCase().includes(searchTerm);
         });
 
         // 排序
@@ -161,20 +204,145 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // 显示结果
+        return filtered;
+    }
+
+    // 全站搜索
+    function globalSearch(searchTerm) {
+        if (!fuse) return [];
+        
+        const results = fuse.search(searchTerm);
+        return results.map(({ item }) => ({
+            title: item.title,
+            permalink: item.permalink,
+            description: item.description,
+            date: item.date,
+            categories: item.categories
+        }));
+    }
+
+    // 创建搜索结果卡片
+    function createSearchResultCard(item, isGlobal = false) {
+        const card = document.createElement('div');
+        card.className = 'blog-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6';
+        card.dataset.url = item.permalink;
+        
+        const date = item.date ? new Date(item.date).toLocaleDateString() : '';
+        const categories = item.categories ? item.categories.join(', ') : '';
+        
+        card.innerHTML = `
+            <div class="flex items-start space-x-4">
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                        <a href="${item.permalink}" class="hover:text-blue-600 transition-colors">
+                            ${item.title}
+                        </a>
+                    </h3>
+                    ${item.description ? `<p class="text-gray-600 text-sm mb-3">${item.description}</p>` : ''}
+                    <div class="flex items-center text-xs text-gray-500 space-x-4">
+                        ${date ? `<span>📅 ${date}</span>` : ''}
+                        ${categories ? `<span>🏷️ ${categories}</span>` : ''}
+                        ${isGlobal ? '<span class="text-blue-600">🌐 全站搜索</span>' : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        return card;
+    }
+
+    // 显示搜索结果
+    function displayResults(results, searchTerm, sortBy) {
         articlesGrid.innerHTML = '';
-        if (filtered.length === 0) {
+        
+        if (results.length === 0) {
             noResults.classList.remove('hidden');
+            noResults.innerHTML = `
+                <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <h3 class="text-lg font-medium text-gray-600 mb-2">没有找到相关文章</h3>
+                <p class="text-gray-500 mb-4">尝试调整搜索条件或浏览其他分类</p>
+                ${!isGlobalSearch ? `
+                    <button id="expand-search-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        🔍 搜索全站内容
+                    </button>
+                ` : `
+                    <button id="back-to-local-btn" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                        ← 返回当前分类
+                    </button>
+                `}
+            `;
         } else {
             noResults.classList.add('hidden');
-            filtered.forEach(article => {
-                articlesGrid.appendChild(article);
+            
+            // 显示结果
+            results.forEach(item => {
+                const card = createSearchResultCard(item, isGlobalSearch);
+                articlesGrid.appendChild(card);
             });
+            
+            // 如果本地搜索结果少于3个且不是全站搜索，显示扩展按钮
+            if (!isGlobalSearch && results.length < 3 && searchTerm.length > 1) {
+                const expandBtn = document.createElement('div');
+                expandBtn.className = 'text-center mt-6';
+                expandBtn.innerHTML = `
+                    <button id="expand-search-btn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-md">
+                        🔍 查看更多结果 (${globalSearchResults.length} 个)
+                    </button>
+                `;
+                articlesGrid.appendChild(expandBtn);
+            }
         }
     }
 
-    searchInput.addEventListener('input', filterAndSort);
-    sortSelect.addEventListener('change', filterAndSort);
+    // 执行搜索
+    async function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const sortBy = sortSelect.value;
+        
+        if (!searchTerm) {
+            // 清空搜索，显示所有文章
+            isGlobalSearch = false;
+            articlesGrid.innerHTML = '';
+            articles.forEach(article => {
+                articlesGrid.appendChild(article);
+            });
+            noResults.classList.add('hidden');
+            return;
+        }
+
+        if (isGlobalSearch) {
+            // 全站搜索
+            await initGlobalSearch();
+            const results = globalSearch(searchTerm);
+            displayResults(results, searchTerm, sortBy);
+        } else {
+            // 本地搜索
+            const localResults = localSearch(searchTerm, sortBy);
+            
+            // 同时准备全站搜索结果
+            await initGlobalSearch();
+            globalSearchResults = globalSearch(searchTerm);
+            
+            displayResults(localResults, searchTerm, sortBy);
+        }
+    }
+
+    // 事件监听
+    searchInput.addEventListener('input', performSearch);
+    sortSelect.addEventListener('change', performSearch);
+    
+    // 扩展搜索按钮事件
+    document.addEventListener('click', async function(e) {
+        if (e.target.id === 'expand-search-btn') {
+            isGlobalSearch = true;
+            await performSearch();
+        } else if (e.target.id === 'back-to-local-btn') {
+            isGlobalSearch = false;
+            await performSearch();
+        }
+    });
 });
 </script>
 
