@@ -11,7 +11,10 @@ import time
 import json
 from pathlib import Path
 from typing import Dict, Optional
-import google.generativeai as genai
+from google import genai
+from google.genai import types
+from PIL import Image
+from io import BytesIO
 from blog_analyzer import BlogAnalyzer
 from image_processor import ImageProcessor
 
@@ -27,8 +30,7 @@ class ImageGenerator:
         if not api_key:
             raise ValueError("GEMINI_API_KEY environment variable not set")
         
-        genai.configure(api_key=api_key)
-        self.model = genai.GenerativeModel('gemini-1.5-flash')
+        self.client = genai.Client(api_key=api_key)
         
     def load_config(self, config_path: str) -> Dict:
         """加载配置文件"""
@@ -62,30 +64,39 @@ class ImageGenerator:
         return prompt
     
     def generate_image_with_retry(self, prompt: str, max_retries: int = 3) -> Optional[str]:
-        """生成图片，带重试机制"""
+        """使用Gemini API生成图片，带重试机制"""
         for attempt in range(max_retries):
             try:
-                print(f"Generating image (attempt {attempt + 1}/{max_retries})...")
+                print(f"Generating image with Gemini API (attempt {attempt + 1}/{max_retries})...")
                 
                 # 调用Gemini API生成图片
-                response = self.model.generate_content(prompt)
+                response = self.client.models.generate_content(
+                    model="gemini-2.5-flash-image-preview",
+                    contents=[prompt],
+                )
                 
-                # 检查响应
-                if hasattr(response, 'parts') and response.parts:
-                    # Gemini API返回的是文本描述，我们需要使用其他方法生成图片
-                    # 这里我们使用一个简化的方法：生成一个描述文件
-                    description = response.text if hasattr(response, 'text') else str(response)
-                    
-                    # 创建一个临时的描述文件，实际项目中可能需要调用其他图片生成API
-                    temp_desc_file = f"temp_description_{int(time.time())}.txt"
-                    with open(temp_desc_file, 'w', encoding='utf-8') as f:
-                        f.write(f"Image description: {description}\n")
-                        f.write(f"Prompt: {prompt}\n")
-                    
-                    return temp_desc_file
-                else:
-                    print(f"Unexpected response format: {response}")
-                    return None
+                # 检查响应并提取图片数据
+                if hasattr(response, 'candidates') and response.candidates:
+                    candidate = response.candidates[0]
+                    if hasattr(candidate, 'content') and hasattr(candidate.content, 'parts'):
+                        for part in candidate.content.parts:
+                            if hasattr(part, 'inline_data') and part.inline_data:
+                                # 找到图片数据
+                                image_data = part.inline_data.data
+                                
+                                # 保存为临时文件
+                                temp_image_file = f"temp_generated_{int(time.time())}.png"
+                                with open(temp_image_file, 'wb') as f:
+                                    f.write(image_data)
+                                
+                                print(f"Successfully generated image: {temp_image_file}")
+                                return temp_image_file
+                            elif hasattr(part, 'text') and part.text:
+                                # 如果返回的是文本描述，记录日志
+                                print(f"Received text response: {part.text[:200]}...")
+                
+                print(f"No image data found in response")
+                return None
                     
             except Exception as e:
                 print(f"Error generating image (attempt {attempt + 1}): {e}")
@@ -96,57 +107,6 @@ class ImageGenerator:
         
         return None
     
-    def create_placeholder_image(self, blog_info: Dict, desc_file: str) -> bool:
-        """创建占位符图片（实际项目中应该调用真正的图片生成API）"""
-        try:
-            # 读取描述文件
-            with open(desc_file, 'r', encoding='utf-8') as f:
-                description = f.read()
-            
-            # 创建一个简单的占位符图片
-            from PIL import Image, ImageDraw, ImageFont
-            
-            # 创建图片
-            img = Image.new('RGB', (1200, 630), color='#1e3a8a')  # 深蓝色背景
-            draw = ImageDraw.Draw(img)
-            
-            # 添加渐变效果
-            for y in range(630):
-                color_value = int(30 + (y / 630) * 100)  # 从深蓝到浅蓝
-                color = (color_value, color_value + 50, color_value + 100)
-                draw.line([(0, y), (1200, y)], fill=color)
-            
-            # 添加几何图案
-            # 画一些圆形
-            for i in range(5):
-                x = 200 + i * 200
-                y = 315
-                radius = 50 + i * 10
-                draw.ellipse([x-radius, y-radius, x+radius, y+radius], 
-                           outline='white', width=3)
-            
-            # 添加标题（简化版）
-            try:
-                # 尝试使用系统字体
-                font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 40)
-            except:
-                # 使用默认字体
-                font = ImageFont.load_default()
-            
-            title = blog_info.get('title', 'Blog Post')[:30]  # 限制长度
-            draw.text((100, 100), title, fill='white', font=font)
-            
-            # 添加分类标签
-            category = blog_info.get('primary_category', 'general')
-            draw.text((100, 500), f"Category: {category}", fill='lightblue', font=font)
-            
-            # 保存图片
-            success = self.processor.process_image_from_pil(img, blog_info['image_path'])
-            return success
-            
-        except Exception as e:
-            print(f"Error creating placeholder image: {e}")
-            return False
     
     def generate_blog_image(self, blog_path: str) -> bool:
         """为单个博客生成图片"""
@@ -164,18 +124,18 @@ class ImageGenerator:
             prompt = self.generate_prompt(blog_info)
             print(f"Generated prompt: {prompt[:200]}...")
             
-            # 生成图片描述
-            desc_file = self.generate_image_with_retry(prompt)
-            if not desc_file:
-                print(f"Failed to generate image description for {blog_path}")
+            # 使用Gemini API生成图片
+            temp_image_file = self.generate_image_with_retry(prompt)
+            if not temp_image_file:
+                print(f"Failed to generate image for {blog_path}")
                 return False
             
-            # 创建一个占位符图片（实际项目中这里应该调用真正的图片生成API）
-            success = self.create_placeholder_image(blog_info, desc_file)
+            # 处理生成的图片
+            success = self.processor.process_image(temp_image_file, blog_info['image_path'])
             
             # 清理临时文件
-            if os.path.exists(desc_file):
-                os.remove(desc_file)
+            if os.path.exists(temp_image_file):
+                os.remove(temp_image_file)
             
             if success:
                 print(f"Successfully generated image: {blog_info['image_path']}")
