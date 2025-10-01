@@ -21,7 +21,22 @@ from image_processor import ImageProcessor
 
 
 class ImageGenerator:
-    def __init__(self, config_path: str = "config/image_config.yml"):
+    def __init__(self, config_path: str = None):
+        if config_path is None:
+            # 尝试从不同位置找到配置文件
+            possible_paths = [
+                "config/image_config.yml",  # 当前目录
+                "../config/image_config.yml",  # 从scripts目录
+                "config/image_config.yml"  # 绝对路径
+            ]
+            
+            for path in possible_paths:
+                if os.path.exists(path):
+                    config_path = path
+                    break
+            else:
+                config_path = "config/image_config.yml"  # 默认路径
+        
         self.config = self.load_config(config_path)
         self.analyzer = BlogAnalyzer()
         self.processor = ImageProcessor()
@@ -36,11 +51,28 @@ class ImageGenerator:
     def load_config(self, config_path: str) -> Dict:
         """加载配置文件"""
         try:
+            print(f"Loading config from: {config_path}")
             with open(config_path, 'r', encoding='utf-8') as f:
-                return yaml.safe_load(f)
+                config = yaml.safe_load(f)
+                print(f"Config loaded successfully: {list(config.keys())}")
+                return config
         except Exception as e:
-            print(f"Error loading config: {e}")
-            return {}
+            print(f"Error loading config from {config_path}: {e}")
+            # 返回默认配置
+            return {
+                'image_generation': {
+                    'style': 'modern_tech_blue',
+                    'dimensions': '1200x630',
+                    'output_path': 'static/images/articles',
+                    'color_scheme': 'blue_gradient',
+                    'avoid_colors': ['purple', 'pink']
+                },
+                'rate_limits': {
+                    'daily_limit': 5,
+                    'hourly_limit': 1
+                },
+                'prompt_template': 'Create a modern, minimalist, tech-focused blog cover image with blue gradient design, no text, 1200x630px dimensions.'
+            }
     
     def generate_prompt(self, blog_info: Dict) -> str:
         """根据博客信息生成提示词"""
