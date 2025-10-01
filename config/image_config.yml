@@ -1,0 +1,58 @@
+# 博客图片生成配置
+image_generation:
+  style: "modern_tech_blue"
+  dimensions: "1200x630"
+  output_path: "static/images/articles"
+  color_scheme: "blue_gradient"
+  avoid_colors: ["purple", "pink"]
+  
+rate_limits:
+  daily_limit: 5
+  hourly_limit: 1
+  
+# 提示词模板
+prompt_template: |
+  Create a modern, minimalist, tech-focused blog cover image with these specifications:
+
+  Visual Style:
+  - Modern minimalist design with strong tech aesthetic
+  - Professional, innovative, cutting-edge appearance
+  - Clean geometric shapes and subtle tech patterns
+  - No text or typography elements
+  - High-quality, crisp visuals
+
+  Color Scheme:
+  - Primary: Blue gradient (dark navy to bright blue)
+  - Secondary: White and light blue accents
+  - Avoid: Purple, pink, or overly bright colors
+  - Masculine, professional tone
+
+  Composition:
+  - Aspect ratio: 1200x630px (landscape format)
+  - Abstract geometric elements
+  - Subtle tech-inspired patterns
+  - Clean lines and modern shapes
+  - Professional blog cover suitable for sharing
+
+  Content Context:
+  Blog Title: {title}
+  Category: {category}
+  Tags: {tags}
+  Summary: {summary}
+
+# 分类风格映射
+category_styles:
+  ai: "AI circuit patterns, neural network visualization"
+  projects: "Code elements, development tools, clean interfaces"
+  papers: "Academic diagrams, research symbols, data visualization"
+  technologies: "Tech infrastructure, cloud computing, digital transformation"
+  tools: "Tool icons, interface elements, productivity symbols"
+  claude: "AI assistant interface, conversational design"
+  google: "Search and cloud computing elements"
+  openai: "AI model architecture, neural networks"
+  celebrity_insights: "Professional headshot style, executive look"
+  my_insights: "Personal reflection, thought leadership"
+  news: "Breaking news, information flow"
+  training: "Learning curves, educational elements"
+  rag: "Knowledge retrieval, information architecture"
+  mas: "Multi-agent systems, collaboration patterns"
