@@ -12,20 +12,30 @@ rate_limits:
   
 # 提示词模板
 prompt_template: |
-  Generate a modern, minimalist, tech-focused blog cover image with the following characteristics:
+  Create a modern, minimalist, tech-focused blog cover image with these specifications:
 
-  Style: Modern minimalist with strong tech aesthetic
-  Color scheme: Blue gradient (avoid purple), masculine tone
-  Mood: Professional, innovative, cutting-edge
-  Elements: Abstract geometric shapes, subtle tech patterns, clean lines
-  No text or typography elements
-  Aspect ratio: 1200x630px
-  Background: Blue gradient from dark navy to bright blue
-  Foreground: Subtle geometric tech patterns in lighter blue/white
-  Overall feel: Professional tech blog cover, suitable for AI/tech content
+  Visual Style:
+  - Modern minimalist design with strong tech aesthetic
+  - Professional, innovative, cutting-edge appearance
+  - Clean geometric shapes and subtle tech patterns
+  - No text or typography elements
+  - High-quality, crisp visuals
 
-  Based on blog content:
-  Title: {title}
+  Color Scheme:
+  - Primary: Blue gradient (dark navy to bright blue)
+  - Secondary: White and light blue accents
+  - Avoid: Purple, pink, or overly bright colors
+  - Masculine, professional tone
+
+  Composition:
+  - Aspect ratio: 1200x630px (landscape format)
+  - Abstract geometric elements
+  - Subtle tech-inspired patterns
+  - Clean lines and modern shapes
+  - Professional blog cover suitable for sharing
+
+  Content Context:
+  Blog Title: {title}
   Category: {category}
   Tags: {tags}
   Summary: {summary}
