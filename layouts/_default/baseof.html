@@ -271,6 +271,11 @@
                     
                     container.innerHTML = content;
                     this.animateContent();
+                    
+                    // 如果是搜索页面，重新初始化搜索功能
+                    if (section === 'search') {
+                        this.initializeSearch();
+                    }
                 } catch (error) {
                     console.error('Failed to load content:', error);
                     container.innerHTML = `
@@ -370,6 +375,92 @@
                     card.addEventListener('mouseleave', () => {
                         card.classList.remove('animate-float');
                     });
+                });
+            }
+
+            async initializeSearch() {
+                try {
+                    // 确保Fuse.js已加载
+                    if (typeof Fuse === 'undefined') {
+                        await this.loadFuseJS();
+                    }
+
+                    const res = await fetch('/index.json');
+                    if (!res.ok) throw new Error('Failed to fetch search index');
+                    const data = await res.json();
+
+                    const input = document.getElementById('searchInput');
+                    const results = document.getElementById('searchResults');
+
+                    if (!input || !results) {
+                        console.error('Search elements not found');
+                        return;
+                    }
+
+                    const fuse = new Fuse(data, {
+                        keys: ['title', 'content', 'description', 'tags', 'categories'],
+                        threshold: 0.3,
+                        minMatchCharLength: 2,
+                        useExtendedSearch: true
+                    });
+
+                    // 移除之前的事件监听器
+                    input.removeEventListener('input', this.searchHandler);
+                    
+                    // 创建新的搜索处理函数
+                    this.searchHandler = function () {
+                        const q = input.value.trim();
+                        results.innerHTML = '';
+                        if (!q) return;
+
+                        const found = fuse.search(q);
+                        found.slice(0, 20).forEach(({ item }) => {
+                            const li = document.createElement('li');
+                            li.className = 'search-result-item';
+                            li.innerHTML = `
+                                <a href="${item.permalink}">
+                                    <h3>${item.title}</h3>
+                                    ${item.description ? `<p>${item.description}</p>` : ''}
+                                    <div class="result-meta">
+                                        ${item.date ? `<span class="result-date">${new Date(item.date).toLocaleDateString()}</span>` : ''}
+                                        ${item.categories ? `<span class="result-categories">${item.categories.join(', ')}</span>` : ''}
+                                    </div>
+                                </a>
+                            `;
+                            results.appendChild(li);
+                        });
+
+                        if (found.length === 0) {
+                            const li = document.createElement('li');
+                            li.className = 'no-results';
+                            li.textContent = '没有找到相关文章';
+                            results.appendChild(li);
+                        }
+                    };
+
+                    input.addEventListener('input', this.searchHandler);
+                    console.log('Search functionality initialized successfully');
+                } catch (error) {
+                    console.error('Search initialization failed:', error);
+                    const searchbox = document.getElementById('searchbox');
+                    if (searchbox) {
+                        searchbox.innerHTML = '<p class="search-error">搜索功能暂时不可用</p>';
+                    }
+                }
+            }
+
+            async loadFuseJS() {
+                return new Promise((resolve, reject) => {
+                    if (typeof Fuse !== 'undefined') {
+                        resolve();
+                        return;
+                    }
+                    
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2';
+                    script.onload = resolve;
+                    script.onerror = reject;
+                    document.head.appendChild(script);
                 });
             }
 
