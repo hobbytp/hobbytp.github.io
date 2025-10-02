@@ -3,7 +3,7 @@
 /* ===== 参考样式实现 ===== */
 
 /* 文章页面整体布局优化 */
-.post-content {
+.flex-1 {
   background: #ffffff !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
@@ -12,7 +12,7 @@
 }
 
 /* 顶部渐变装饰条 */
-.post-content::before {
+.flex-1::before {
   content: '' !important;
   position: absolute !important;
   top: 0 !important;
@@ -24,7 +24,7 @@
 }
 
 /* 文章标题区域样式 */
-.post-content h1 {
+.flex-1 h1 {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
   color: #1f2937 !important;
@@ -34,7 +34,7 @@
 }
 
 /* 文章副标题/描述 */
-.post-content h1 + p {
+.flex-1 h1 + p {
   font-size: 1.1rem !important;
   color: #6b7280 !important;
   margin-bottom: 1.5rem !important;
@@ -43,13 +43,13 @@
 }
 
 /* 标题装饰样式 */
-.post-content h2 {
+.flex-1 h2 {
   position: relative !important;
   padding-left: 1.5rem !important;
   margin: 2rem 0 1rem 0 !important;
 }
 
-.post-content h2::before {
+.flex-1 h2::before {
   content: '' !important;
   position: absolute !important;
   left: 0 !important;
@@ -60,7 +60,7 @@
   border-radius: 2px !important;
 }
 
-.post-content h2::after {
+.flex-1 h2::after {
   content: '' !important;
   position: absolute !important;
   bottom: -0.5rem !important;
@@ -71,7 +71,7 @@
 }
 
 /* 三级标题样式 */
-.post-content h3 {
+.flex-1 h3 {
   color: #374151 !important;
   font-weight: 600 !important;
   margin: 1.5rem 0 0.75rem 0 !important;
@@ -79,14 +79,14 @@
 }
 
 /* 链接样式优化 */
-.post-content a {
+.flex-1 a {
   color: #3B82F6 !important;
   text-decoration: none !important;
   border-bottom: 1px solid transparent !important;
   transition: all 0.2s ease !important;
 }
 
-.post-content a:hover {
+.flex-1 a:hover {
   color: #1D4ED8 !important;
   border-bottom-color: #1D4ED8 !important;
   background-color: rgba(59, 130, 246, 0.1) !important;
@@ -96,7 +96,7 @@
 }
 
 /* 参考文献样式 */
-.post-content h2:last-of-type {
+.flex-1 h2:last-of-type {
   margin-top: 3rem !important;
   margin-bottom: 1.5rem !important;
   font-size: 1.5rem !important;
@@ -106,29 +106,29 @@
   padding-left: 0 !important;
 }
 
-.post-content h2:last-of-type::before,
-.post-content h2:last-of-type::after {
+.flex-1 h2:last-of-type::before,
+.flex-1 h2:last-of-type::after {
   display: none !important;
 }
 
-.post-content ul:last-child,
-.post-content ol:last-child {
+.flex-1 ul:last-child,
+.flex-1 ol:last-child {
   margin: 0 !important;
   padding: 0 !important;
   list-style: none !important;
   counter-reset: reference-counter !important;
 }
 
-.post-content ul:last-child li,
-.post-content ol:last-child li {
+.flex-1 ul:last-child li,
+.flex-1 ol:last-child li {
   counter-increment: reference-counter !important;
   margin-bottom: 0.75rem !important;
   padding-left: 0 !important;
   position: relative !important;
 }
 
-.post-content ul:last-child li::before,
-.post-content ol:last-child li::before {
+.flex-1 ul:last-child li::before,
+.flex-1 ol:last-child li::before {
   content: counter(reference-counter) ". " !important;
   position: absolute !important;
   left: 0 !important;
@@ -137,8 +137,8 @@
   color: #6b7280 !important;
 }
 
-.post-content ul:last-child a,
-.post-content ol:last-child a {
+.flex-1 ul:last-child a,
+.flex-1 ol:last-child a {
   color: #3B82F6 !important;
   text-decoration: none !important;
   font-weight: 500 !important;
@@ -147,8 +147,8 @@
   line-height: 1.5 !important;
 }
 
-.post-content ul:last-child a:hover,
-.post-content ol:last-child a:hover {
+.flex-1 ul:last-child a:hover,
+.flex-1 ol:last-child a:hover {
   color: #1D4ED8 !important;
   background-color: rgba(59, 130, 246, 0.1) !important;
   padding: 0.125rem 0.25rem !important;
@@ -157,49 +157,49 @@
 }
 
 /* 暗色模式适配 */
-.dark .post-content {
+.dark .flex-1 {
   background: #1f2937 !important;
   color: #f9fafb !important;
 }
 
-.dark .post-content h1 {
+.dark .flex-1 h1 {
   color: #f9fafb !important;
 }
 
-.dark .post-content h2 {
+.dark .flex-1 h2 {
   color: #e5e7eb !important;
 }
 
-.dark .post-content h3 {
+.dark .flex-1 h3 {
   color: #d1d5db !important;
 }
 
-.dark .post-content a {
+.dark .flex-1 a {
   color: #60a5fa !important;
 }
 
-.dark .post-content a:hover {
+.dark .flex-1 a:hover {
   color: #93c5fd !important;
   background-color: rgba(96, 165, 250, 0.1) !important;
 }
 
 /* 移动端优化 */
 @media screen and (max-width: 768px) {
-  .post-content h1 {
+  .flex-1 h1 {
     font-size: 2rem !important;
   }
-  
-  .post-content h2 {
+
+  .flex-1 h2 {
     font-size: 1.5rem !important;
     padding-left: 1rem !important;
   }
-  
-  .post-content h2::before {
+
+  .flex-1 h2::before {
     width: 3px !important;
     height: 1.25rem !important;
   }
-  
-  .post-content h2::after {
+
+  .flex-1 h2::after {
     left: 1rem !important;
   }
 }
