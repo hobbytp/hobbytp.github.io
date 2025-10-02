@@ -1,14 +1,18 @@
-# 个人 AI 技术博客 🤖
+# 个人 AI 技术博客 🤖 | AI Tech Blog
 
 [![部署状态](https://img.shields.io/badge/部署-成功-green)](https://hobbytp.github.io)
 [![Hugo](https://img.shields.io/badge/Hugo-v0.120+-blue)](https://gohugo.io)
 [![许可证](https://img.shields.io/badge/许可证-MIT-blue)](LICENSE)
+[![AI Blog](https://img.shields.io/badge/AI-Blog-orange)](https://hobbytp.github.io)
+[![Papers](https://img.shields.io/badge/Papers-Reviews-blue)](https://hobbytp.github.io/categories/papers)
 
-欢迎来到我的个人 AI 技术博客！这是一个基于 Hugo 构建的静态网站，专注于分享 AI 领域的深度内容和前沿技术。
+欢迎来到我的个人 AI 技术博客！这是一个基于 Hugo 构建的静态网站，专注于分享 AI 领域的深度内容和前沿技术。涵盖机器学习、深度学习、大语言模型、多智能体系统等热门技术领域。
 
 ## 📖 博客内容
 
 本博客涵盖以下主要领域：
+
+> **关键词**: AI博客, 机器学习, 深度学习, 大语言模型, LLM, 论文解读, 技术分析, 开源项目, 多智能体系统, RAG, Transformer, 神经网络, 自然语言处理, NLP, 人工智能研究
 
 ### 🎯 核心内容
 
@@ -33,6 +37,7 @@
 - **语言支持**：中文/英文双语
 - **搜索功能**：集成全文搜索
 - **评论系统**：支持多种评论插件
+- **链接样式**：增强的链接视觉效果，支持暗色模式
 
 ## 🚀 快速开始
 
@@ -41,6 +46,39 @@
 - Hugo Extended v0.120.0+
 - Git
 - Node.js (可选，用于主题开发)
+
+### GitHub Topics 设置
+
+为了提高仓库的搜索引擎可见性，建议添加相关标签：
+
+```bash
+# 方法1: 使用GitHub CLI
+./scripts/setup-github-topics.sh
+
+# 方法2: 使用Python脚本
+pip install -r scripts/requirements.txt
+export GITHUB_TOKEN=your_token
+python scripts/setup-github-topics.py
+
+# 方法3: 手动设置
+# 访问 https://github.com/hobbytp/hobbytp.github.io
+# 点击 About -> 添加 Topics
+```
+
+详细说明请参考：[GitHub Topics 配置指南](docs/github-topics-guide.md)
+
+### 链接样式增强
+
+博客采用了增强的链接样式，使链接更容易识别：
+
+- **明显标识**: 蓝色文字 + 2px 下划线
+- **悬停效果**: 背景色变化 + 圆角边框
+- **外部链接**: 自动添加 "↗" 图标
+- **特殊网站**: YouTube(红色)、GitHub(深色)、ArXiv(深红色)
+- **暗色模式**: 自动适配浅蓝色主题
+- **响应式**: 移动端优化显示
+
+详细说明请参考：[链接样式增强指南](docs/link-styling-guide.md)
 
 ### 本地运行
 
@@ -71,7 +109,7 @@ docker run -p 1313:1313 ai-blog
 
 ## 📁 项目结构
 
-```
+```text
 ├── content/                 # 内容目录
 │   ├── zh/                 # 中文内容
 │   │   ├── papers/         # 论文解读
@@ -185,9 +223,17 @@ description: "文章简介"
 
 ⭐ 如果这个项目对你有帮助，请给个 Star 支持一下！
 
+## 🏷️ 相关标签
+
+**GitHub Topics**: `ai-blog`, `hugo`, `machine-learning`, `deep-learning`, `llm`, `artificial-intelligence`, `paper-review`, `tech-analysis`, `open-source`, `github-pages`, `static-site`, `chinese`, `bilingual`, `rag`, `multi-agent`, `transformer`, `neural-networks`, `nlp`
+
+**技术栈**: Hugo, PaperMod, GitHub Pages, Markdown, CSS, JavaScript
+
+**内容分类**: 论文解读, 技术分析, 开源项目, 行业动态, 产品评测, 名人访谈
+
 ---
 
-# Personal AI Tech Blog 🤖
+## Personal AI Tech Blog 🤖
 
 [![Deployment Status](https://img.shields.io/badge/Deployment-Success-green)](https://hobbytp.github.io)
 [![Hugo](https://img.shields.io/badge/Hugo-v0.120+-blue)](https://gohugo.io)
@@ -262,5 +308,13 @@ This project is licensed under the [MIT License](LICENSE), free to use and distr
 ---
 
 **Last Updated**: {{ .Date.Format "2025-07-02" }}
+
+## 🏷️ Related Tags
+
+**GitHub Topics**: `ai-blog`, `hugo`, `machine-learning`, `deep-learning`, `llm`, `artificial-intelligence`, `paper-review`, `tech-analysis`, `open-source`, `github-pages`, `static-site`, `chinese`, `bilingual`, `rag`, `multi-agent`, `transformer`, `neural-networks`, `nlp`
+
+**Tech Stack**: Hugo, PaperMod, GitHub Pages, Markdown, CSS, JavaScript
+
+**Content Categories**: Paper Reviews, Technical Analysis, Open Source Projects, Industry News, Product Reviews, Celebrity Interviews
 
 ⭐ If this project helps you, please give it a Star for support!
