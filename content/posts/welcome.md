@@ -32,10 +32,10 @@ tags: ["AI", "博客", "学习"]
 
 ## 联系方式
 
-如果您对博客内容有任何问题或建议，欢迎通过以下方式联系我：
+如果你对博客内容有任何问题或建议，欢迎通过以下方式联系我：
 
 - GitHub: [hobbytp](https://github.com/hobbytp)
 - Email: <hobbytp@gmail.com>
 - Twitter: [@PengTan0614](https://x.com/PengTan0614)
 
-感谢您的关注！
+感谢你的关注！
