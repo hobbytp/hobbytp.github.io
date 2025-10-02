@@ -54,6 +54,9 @@ ShowCodeCopyButtons = true
 ShowToc = true
 enableSchemaOrg = true
 
+[params.assets]
+customCSS = ["/css/custom.css"]
+
 [params.profileMode]
 enabled = false
 title = "Peng Tan's AI Blog"

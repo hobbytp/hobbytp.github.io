@@ -5,11 +5,11 @@ image_generation:
   output_path: "static/images/articles"
   color_scheme: "blue_gradient"
   avoid_colors: ["purple", "pink"]
-  
+
 rate_limits:
   daily_limit: 5
   hourly_limit: 1
-  
+
 # 提示词模板
 prompt_template: |
   Create a modern, minimalist, tech-focused blog cover image with these specifications:
