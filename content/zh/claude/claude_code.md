@@ -673,16 +673,29 @@ ANTHROPIC_AUTH_TOKEN=xxx claude code
 
 ```
 
+3. 配置大模型
+手动修改配置文件  ~/.claude/settings.json：
+
+```json
+{
+  "env": {
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-4.6",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-4.6"
+  }
+}
+```
+
 使用GLM4.6套餐的方式大约是直接使用API的10%。
 具体套餐用量额度如下：
-· Lite 套餐：每 5 小时最多约 120 次 prompts，相当于 Claude Pro 套餐用量的 3 倍
-· Pro 套餐：每 5 小时最多约 600 次 prompts，相当于 Claude Max(5x) 套餐用量的 3 倍
-· Max 套餐：每 5 小时最多约 2400 次 prompts，相当于 Claude Max(20x) 套餐用量的 3 倍
-从可消耗 tokens 量来看，每次 prompt 预计可调用模型 15-20 次，每月总计可用总量高达几十亿到数百亿tokens，折算下来仅为 API 价格的 0.1 折，极具性价比。
-已支持 Claude Code、Roo Code、Kilo Code、Cline、OpenCode、Crush、Goose 等 10+ 编程工具，
-仅 Pro、Max 套餐支持视觉理解、联网搜索MCP工具，Lite 套餐调用视觉理解 MCP 需要单独收费，且暂未支持调用搜索工具。
 
-I found tweaking the params helps to reduce the syntax errors, in using min p 0.05, top p 0.95, temp 0.2 and top k of 20. Works much better with this for me.
+- Lite 套餐：每 5 小时最多约 120 次 prompts，相当于 Claude Pro 套餐用量的 3 倍
+- Pro 套餐：每 5 小时最多约 600 次 prompts，相当于 Claude Max(5x) 套餐用量的 3 倍
+- Max 套餐：每 5 小时最多约 2400 次 prompts，相当于 Claude Max(20x) 套餐用量的 3 倍
+- 从可消耗 tokens 量来看，每次 prompt 预计可调用模型 15-20 次，每月总计可用总量高达几十亿到数百亿tokens，折算下来仅为 API 价格的 0.1 折，极具性价比。
+- 已支持 Claude Code、Roo Code、Kilo Code、Cline、OpenCode、Crush、Goose 等 10+ 编程工具，
+- 仅 Pro、Max 套餐支持视觉理解、联网搜索MCP工具，Lite 套餐调用视觉理解 MCP 需要单独收费，且暂未支持调用搜索工具。
+- [AI 超元域的demo](https://www.youtube.com/watch?v=FJNBdBTXCJo)
 
 ## 集成不同的MCP Server
 
