@@ -1,5 +1,5 @@
 ---
-title: "Claude Code 介绍"
+title: "Claude Code 介绍以及开源生态"
 date: "2025-07-20T23:10:00+08:00"
 draft: false
 tags: ["Agent", "Claude", "Code"]
@@ -10,7 +10,7 @@ description: "Claude Code 是 Claude 的命令行工具，用于代理编码，�
 ## 摘要
 
 Claude Code 是一种命令行工具，用于代理编码，提供灵活的、可定制的、可脚本化的和安全的编程方式。
-本文介绍Claude Code的快速上手，有用的功能，以及一些最佳实践。
+本文介绍Claude Code的快速上手，有用的功能，以及一些最佳实践。以及Claude Code的开源生态。
 考虑到Claude账号对中国用户不友好，本文介绍的Claude Code 使用的是第三方和中国大陆的模型提供商。
 
 ### 关键点
@@ -540,63 +540,131 @@ IV. 最新功能与更新
 
 ## 集成不同工具使用
 
-### Super Claude Framework
+### Super Claude Framework (BMAD Style)
 
 Super Claude Framework [github](https://github.com/SuperClaude-Org/SuperClaude_Framework)
 
-SuperClaude Framework是一个用于增强Claude Code的配置框架，带有专属命令、智能化人物角色及MCP服务器集成，旨在优化开发工作流程。主要特点包括：
+SuperClaude Framework 是一个增强 Claude Code 的配置框架，通过注入行为指令和组件编排，将其转变为结构化开发平台，支持系统化的工作流自动化。它提供 25 条命令、15 个专门智能代理、7 种行为模式以及 8 个 MCP 服务器集成，实现从头脑风暴到部署的完整生命周期管理。使用 `/sc:help` 查看所有命令列表。  
 
-1. **专属命令**：支持16个开发任务相关的指令（如设计、构建、分析、测试等）。
-2. **智能人物角色**：提供多个AI专家角色，用于处理不同领域问题（如架构设计、安全性、文档等）。
-3. **MCP服务器集成**：可连接外部工具（Context7、Sequential等）实现文档、UI组件和浏览器自动化。
-4. **任务管理与Token优化**：帮助跟踪进度并改善长对话性能。
+最新版本 v4 引入以下核心功能：
 
-当前版本是v3，处于初始发布阶段，重新设计了安装系统和框架结构，但仍存在一些已知问题（如Bug、功能不完善）。安装支持Python 3.8+，推荐使用现代化包管理器“uv”或“uvx”。
+1. **智能代理系统**：15 个领域专用代理，包括深度研究、安全分析、前端架构等自动协调工具。
+2. **行为模式**：7 种适应性模式，如头脑风暴、任务管理、深度研究等。
+3. **MCP 服务器集成**：支持复杂分析、UI 组件生成、性能测试等强大功能。
+4. **深度研究体系**：适用于自主 Web 研究，支持多跳推理、质量评分和跨会话学习。
+5. **性能优化**：框架体积减小但支持更复杂任务。
 
-未来计划（v4）包括重新设计Hooks系统、引入更多人物角色、更广泛的CLI兼容性与性能优化等。
+支持多种安装方式（`pipx`、`pip` 和 `npm`），提供详细文档覆盖快速入门、命令参考、代理指南等领域，欢迎社区贡献代码、文档改进以及测试工作。
 
-项目由MIT许可发布，并欢迎贡献者参与改进。
+框架采用 MIT 开源许可，项目受到 Anthropic 公司的 Claude Code 启发，但非官方关联或认可。
 
-### Claude Code Templates
+### Zen MCP Server
 
-<https://www.aitmpl.com/>
+### Graphiti MCP Server
 
-### Claude-Flow
+### Claude Code Templates (BMAD Style & SDD Style & Claude Code Style(hook, command, mcp, setting, template))
 
-<https://deepwiki.com/ruvnet/claude-flow>
+[Claude Code Templates](https://github.com/davila7/claude-code-templates), 主页位于<https://www.aitmpl.com/> 是一个开源项目，提供针对 Anthropic 的 Claude Code 的配置工具集与开发模板。主要功能包括：
 
-### Claude Code Router
+- **模块分类**：
+  - AI代理（Agents）：领域专家智能代理，如安全审计员、性能优化器等。
+  - 命令（Commands）：自定义命令，如 /generate-tests, /optimize-bundle。
+  - 外部服务集成（MCPs）：支持 GitHub、PostgreSQL、Stripe 等服务。
+  - 配置（Settings）：相关参数设定，如超时设置、输出样式等。
+  - 自动触发（Hooks）：开发流程中的自动化操作。
+  - 项目模板（Templates）：框架定制化项目配置和最佳实践集合。
 
-Claude Code Router [github](https://github.com/musistudio/claude-code-router)是一个强大的工具，用于将 Claude Code 请求路由到不同的模型并自定义任何请求。本项目主要特点包括模型路由、多供应商支持、请求/响应转换、动态模型切换、GitHub Actions 集成以及插件扩展功能。
+- **核心工具**：
+  - Claude Code Analytics：实时监控开发过程中的性能和状态。
+  - 对话监控（Conversation Monitor）：支持本地与远程访问 Claude 回复。
+  - 健康检查（Health Check）：优化系统运行状况。
 
-核心功能：
+- **安装方式**：
+  - 使用 `npx` 快速安装整个开发栈或单个组件。
+  - 提供交互式浏览和模块安装方式。
 
-- 路由：根据任务需求将请求分配到不同模型。
-- 多供应商支持：兼容 OpenRouter、DeepSeek、Ollama、Gemini 等多种模型服务。
-- 自定义转换：通过 Transformer 修改请求和响应格式。
-- 动态切换：使用 /model 命令动态选择模型。
-- UI 模式：提供可视化配置界面（Beta）。
-- 环境变量支持：安全管理 API 密钥，通过环境变量插值配置。
+- **贡献与文档**：
+  - 欢迎用户按照详细指南贡献新模块与功能。
+  - 文档与教程可在项目官网或文档中心（docs.aitmpl.com）查看。
 
-安装与使用：
+项目采用 MIT 许可，支持多种编程语言（如 JavaScript, Python 等），拥有 6600+ 星标、586 次分叉，并持续部署更新。
 
-1. 安装：支持 npm 包安装。
-2. 配置：通过创建 `config.json` 文件设置模型供应商、路由规则及其他选项。
-3. 启动并运行：使用命令 `ccr code`启动Claude Code（需要先安装Claude Code） 或 `ccr restart` 启动router服务。
-4. 集成 GitHub Actions：自动化 Claude Code 工作流。
+### Claude-Flow (SDD Style)
 
-高级功能：
+[Claude-Flow](https://github.com/ruvnet/claude-flow) 是一个企业级 AI 协作平台，支持多智能体编排和自动化工作流，专注于利用 Claude Code 构建高效 AI 系统。主要特性包括：
 
-- 支持自定义路由规则，指定模型和供应商。
-- 内置与第三方模型交互的转换器，并支持插件加载扩展功能。
+1. **性能提升**：通过 Claude Code SDK，实现了 100-600x 的性能加速，支持实时查询控制、动态权限调整和快速智能体生成。
+2. **高级功能**：
+   - 会话分叉：支持实时控制、多智能体并行任务。
+   - 钩子匹配：优化触发速度，支持四级权限体系和智能缓存。
+   - 内置 MCP 服务器：通过内存节省和工具调用加速，提升执行效率。
+3. **云平台集成**：
+   - Flow Nexus 提供沙盒环境、分布式学习和模板市场。
+   - 支持自组织智能体架构、关键任务持久化存储以及 GitHub 自动化功能。
+4. **高效工作流**：通过 swarm 和 hive-mind 命令简化任务和项目管理，适用于从单一任务到复杂项目的各种场景。
+5. **文档与支持**：包含详细教程、API 参考和高效配置，社区支持活跃。
 
-适用场景包括代码解释、复杂推理任务、大上下文处理及实时搜索。用户可动态调整模型和路由，系统高度定制化。项目开源，提供中文 README 文档，采用 MIT 许可，鼓励社区支持与赞助。
+Claude-Flow 是多智能体框架领域的领导者，拥有 87 工具和 64 专业智能体，优化了 AI 编排流程，是构建高效对话系统和分布式智能体的理想选择。
 
-这是为构建基于 Claude Code 的编码基础设施而开发的项目，支持持续更新以及多种交互自定义选项。支持多种大模型提供商。功能成熟。
+### Context Engineering Template （SDD Style）
 
-### Context Engineering Template
+该GitHub项目[context-engineering-intro](https://github.com/coleam00/context-engineering-intro) 提供了一个**全面的模板**(没有代码），用于指导如何进行上下文工程（Context Engineering），以优化AI编码助手的工作效率。上下文工程是一种比传统提示工程（Prompt Engineering）更高效的方式，它通过提供全面的上下文（包括文档、示例、规则等），使AI能够完成复杂任务并减少失败率。
 
-<https://github.com/coleam00/context-engineering-intro>
+项目内容包括：
+
+1. **快速开始指南**：用户可通过克隆模板、设置规则（CLAUDE.md）、添加代码示例（examples/文件夹）、创建功能需求（INITIAL.md），生成并执行产品需求提示（PRP）。
+2. **优势分析**：上下文工程比仅提供任务提示的提示工程更强大，能够减少AI失误、确保一致性、支持多步实施并提供自校正功能。
+3. **模板结构**：文件夹包含CLAUDE.md（全局规则）、INITIAL.md（功能需求模板）、PRPs（产品需求提示模板）、examples/（代码示例）和README.md等。
+4. **分步指南**：从定义项目规则、创建初始需求到生成和执行PRP，强调利用示例代码、文档和验证门确保实施质量。
+5. **最佳实践**：注重详细需求描述、丰富代码示例、使用验证机制、引用文档以及定制项目规则。
+
+语言主要为Python，支持TypeScript和PLpgSQL。项目强调使用Claude Code作为主要AI助手工具，但方法适用于所有AI助手。
+
+此项目旨在推动上下文工程替代传统开发方式，使AI更高效可靠。
+
+Demo可以参考[AI 超元域](https://www.youtube.com/watch?v=oEZ7aN7jOEI)
+
+### Claude Code Spec Workflow (SDD Style)
+
+Claude Code Spec Workflow主要是为了Claude Code完美复现Kiro的Spec-Driven规范驱动开发。[claude-code-spec-workflow](https://github.com/Pimzino/claude-code-spec-workflow) 这个项目将不再支持，而是转到[spec-workflow-mcp](https://github.com/Pimzino/spec-workflow-mcp).
+
+> 需要注意的是，在Github Spec-Kit开源项目日益成熟后，这个项目可能会被spec-kit取代。
+
+Spec Workflow MCP 是一个基于模型上下文协议（MCP）的服务器，提供结构化的规范驱动开发工作流程工具，专注于 AI 辅助的软件开发。其主要功能包括实时 Web 仪表盘和 VSCode 插件，帮助开发者直接在开发环境中监控和管理项目进度。
+
+### 主要特点
+
+1. **结构化开发工作流程** - 包括需求、设计、任务的顺序规范创建。
+2. **实时仪表盘** - 提供实时更新的进度监控和任务管理。
+3. **VSCode 插件** - 集成侧边栏仪表盘，方便 VSCode 用户使用。
+4. **审批工作流程** - 完整审批流程支持修订反馈。
+5. **任务进度跟踪** - 可视化进度条及详细状态。
+6. **多语言支持** - 提供 11 种语言支持。
+
+### 快速开始
+
+- 添加至 MCP 配置。
+- 可选择通过 Web 仪表盘或 VSCode 插件使用。
+
+### 用法示例
+
+- "创建用户认证的规范"：自动生成完整开发规范。
+- "列出我的规范"：查看所有规范及状态。
+- "执行规范 user-auth 中的任务 1.2"：运行具体任务。
+
+### 项目结构与开发
+
+项目提供开发指南，支持依赖安装、构建，以及开发模式运行。开发者可通过 NPM 命令轻松进行设置。
+
+### 许可协议
+
+GPL-3.0
+
+此项目以 TypeScript 为主开发
+
+### Claude Code PM
+
+<https://www.aivi.fyi/aiagents/introduce-Claude-Code-Spec-Workflow>
 
 ### Claude Context
 
@@ -655,6 +723,35 @@ BMAD-METHOD 是一个用于敏捷 AI 驱动开发的框架，旨在通过先进�
 ### Claudia
 
 Claudia [github](https://github.com/getAsterisk/claudia)
+
+### Claude Code Router
+
+Claude Code Router [github](https://github.com/musistudio/claude-code-router)是一个强大的工具，用于将 Claude Code 请求路由到不同的模型并自定义任何请求。本项目主要特点包括模型路由、多供应商支持、请求/响应转换、动态模型切换、GitHub Actions 集成以及插件扩展功能。
+
+核心功能：
+
+- 路由：根据任务需求将请求分配到不同模型。
+- 多供应商支持：兼容 OpenRouter、DeepSeek、Ollama、Gemini 等多种模型服务。
+- 自定义转换：通过 Transformer 修改请求和响应格式。
+- 动态切换：使用 /model 命令动态选择模型。
+- UI 模式：提供可视化配置界面（Beta）。
+- 环境变量支持：安全管理 API 密钥，通过环境变量插值配置。
+
+安装与使用：
+
+1. 安装：支持 npm 包安装。
+2. 配置：通过创建 `config.json` 文件设置模型供应商、路由规则及其他选项。
+3. 启动并运行：使用命令 `ccr code`启动Claude Code（需要先安装Claude Code） 或 `ccr restart` 启动router服务。
+4. 集成 GitHub Actions：自动化 Claude Code 工作流。
+
+高级功能：
+
+- 支持自定义路由规则，指定模型和供应商。
+- 内置与第三方模型交互的转换器，并支持插件加载扩展功能。
+
+适用场景包括代码解释、复杂推理任务、大上下文处理及实时搜索。用户可动态调整模型和路由，系统高度定制化。项目开源，提供中文 README 文档，采用 MIT 许可，鼓励社区支持与赞助。
+
+这是为构建基于 Claude Code 的编码基础设施而开发的项目，支持持续更新以及多种交互自定义选项。支持多种大模型提供商。功能成熟。
 
 ### KIMICC
 
