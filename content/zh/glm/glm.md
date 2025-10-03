@@ -136,3 +136,7 @@ ChatGLM系列模型的核心在于其**通用语言模型（GLM）架构**，它
 ## 参考文献
 
 - [智谱chat官网](https://chat.z.ai/)
+- [智谱AI官方飞书文档](https://zhipu-ai.feishu.cn/wiki/YInmwPmyii67VRkzU3BchPNzncg)
+- [GLM4.5 Tech Report](https://arxiv.org/abs/2508.06471)
+- [GLM4.5 技术博客](https://z.ai/blog/glm-4.5)
+- [GLM4.5 GitHub](https://github.com/zai-org/GLM-4.5)
