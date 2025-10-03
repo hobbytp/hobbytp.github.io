@@ -660,6 +660,30 @@ Claudia [github](https://github.com/getAsterisk/claudia)
 
 一步命令 npx kimicc 使用 Kimi K2 运行 Claude Code。参考开源项目[kimicc](https://github.com/kaichen/kimicc)
 
+### 集成GLM4.6
+
+GLM4.6采取KIMI类似的方案，既可以直接兼容Claude API，也可以通过使用claude-code-router进行路由。下面是直接配置claude code配置文件或环境变量的方式来直接在Claude Code中使用GLM4.6。
+
+```bash
+#国内使用
+ANTHROPIC_BASE_URL=https://open.bigmodel.cn/anthropic/ 
+#国外使用
+ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic
+ANTHROPIC_AUTH_TOKEN=xxx claude code
+
+```
+
+使用GLM4.6套餐的方式大约是直接使用API的10%。
+具体套餐用量额度如下：
+· Lite 套餐：每 5 小时最多约 120 次 prompts，相当于 Claude Pro 套餐用量的 3 倍
+· Pro 套餐：每 5 小时最多约 600 次 prompts，相当于 Claude Max(5x) 套餐用量的 3 倍
+· Max 套餐：每 5 小时最多约 2400 次 prompts，相当于 Claude Max(20x) 套餐用量的 3 倍
+从可消耗 tokens 量来看，每次 prompt 预计可调用模型 15-20 次，每月总计可用总量高达几十亿到数百亿tokens，折算下来仅为 API 价格的 0.1 折，极具性价比。
+已支持 Claude Code、Roo Code、Kilo Code、Cline、OpenCode、Crush、Goose 等 10+ 编程工具，
+仅 Pro、Max 套餐支持视觉理解、联网搜索MCP工具，Lite 套餐调用视觉理解 MCP 需要单独收费，且暂未支持调用搜索工具。
+
+I found tweaking the params helps to reduce the syntax errors, in using min p 0.05, top p 0.95, temp 0.2 and top k of 20. Works much better with this for me.
+
 ## 集成不同的MCP Server
 
 ```bash
