@@ -1214,3 +1214,148 @@ html {
     margin-bottom: 0.5rem !important;
   }
 }
+
+/* ===== 从 PaperMod 子模块迁移的样式 ===== */
+
+/* 文章页面整体布局优化 - 使用更高特异性 */
+body .flex-1 {
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* 顶部渐变装饰条 */
+body .flex-1::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, #3B82F6, #1D4ED8, #3B82F6) !important;
+  z-index: 1 !important;
+}
+
+/* 文章标题区域样式 */
+body .flex-1 h1 {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+  margin: 2rem 0 1rem 0 !important;
+  line-height: 1.2 !important;
+  position: relative !important;
+}
+
+/* 标题装饰样式 */
+body .flex-1 h2 {
+  position: relative !important;
+  padding-left: 1.5rem !important;
+  margin: 2rem 0 1rem 0 !important;
+  font-size: 1.75rem !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+}
+
+body .flex-1 h2::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0.5rem !important;
+  width: 4px !important;
+  height: 1.5rem !important;
+  background: #3B82F6 !important;
+  border-radius: 2px !important;
+}
+
+body .flex-1 h2::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -0.5rem !important;
+  left: 1.5rem !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, #3B82F6, transparent) !important;
+}
+
+/* 三级标题样式 */
+body .flex-1 h3 {
+  color: #374151 !important;
+  font-weight: 600 !important;
+  margin: 1.5rem 0 0.75rem 0 !important;
+  position: relative !important;
+}
+
+/* 列表项目优化 */
+body .flex-1 ul,
+body .flex-1 ol {
+  margin: 1.25rem 0 !important;
+  padding-left: 1.5rem !important;
+}
+
+body .flex-1 li {
+  margin-bottom: 0.5rem !important;
+  line-height: 1.7 !important;
+  color: #374151 !important;
+}
+
+body .flex-1 li::marker {
+  color: #3B82F6 !important;
+  font-weight: bold !important;
+}
+
+/* 参考文献样式 */
+body .flex-1 h2:last-of-type {
+  margin-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #1f2937 !important;
+  border-bottom: none !important;
+  padding-left: 0 !important;
+}
+
+body .flex-1 h2:last-of-type::before,
+body .flex-1 h2:last-of-type::after {
+  display: none !important;
+}
+
+/* 暗色模式适配 */
+.dark body .flex-1 {
+  background: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.dark body .flex-1 h1 {
+  color: #f9fafb !important;
+}
+
+.dark body .flex-1 h2 {
+  color: #e5e7eb !important;
+}
+
+.dark body .flex-1 h3 {
+  color: #d1d5db !important;
+}
+
+/* 移动端优化 */
+@media screen and (max-width: 768px) {
+  body .flex-1 h1 {
+    font-size: 2rem !important;
+  }
+
+  body .flex-1 h2 {
+    font-size: 1.5rem !important;
+    padding-left: 1rem !important;
+  }
+
+  body .flex-1 h2::before {
+    width: 3px !important;
+    height: 1.25rem !important;
+  }
+
+  body .flex-1 h2::after {
+    left: 1rem !important;
+  }
+}
