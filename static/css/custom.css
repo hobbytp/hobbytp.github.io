@@ -1,5 +1,53 @@
 /* Custom tweaks for PaperMod: footnotes and reading list */
 
+/* ===== CSS自定义属性定义 ===== */
+:root {
+  /* 颜色变量定义 - 提高可维护性 */
+  --color-gray-300: #e5e7eb;  /* 浅灰色 - 用于边框和分隔线 */
+  --color-gray-700: #374151;  /* 深灰色 - 用于文本和暗色模式边框 */
+  --color-gray-800: var(--color-bg-dark);  /* 更深的灰色 - 用于暗色模式背景 */
+  --color-gray-900: #111827;  /* 最深的灰色 - 用于暗色模式文本 */
+  
+  /* 主题颜色变量 */
+  --color-primary: #3B82F6;   /* 主色调蓝色 */
+  --color-primary-dark: #1D4ED8; /* 深蓝色 */
+  --color-accent: #60a5fa;     /* 强调色 */
+  
+  /* 链接颜色变量 */
+  --color-link: #0066cc;       /* 链接颜色 */
+  --color-link-hover: #004499; /* 链接悬停颜色 */
+  --color-link-dark: #4a9eff;  /* 暗色模式链接颜色 */
+  --color-link-hover-dark: var(--color-link-hover-dark); /* 暗色模式链接悬停颜色 */
+  
+  /* 特殊链接颜色 */
+  --color-youtube: var(--color-youtube);    /* YouTube链接颜色 */
+  --color-github: #333;        /* GitHub链接颜色 */
+  --color-github-dark: #f0f6fc; /* 暗色模式GitHub链接颜色 */
+  --color-arxiv: #b31b1b;      /* ArXiv链接颜色 */
+  
+  /* 文本颜色变量 */
+  --color-text-primary: var(--color-bg-dark);   /* 主要文本颜色 */
+  --color-text-secondary: #6b7280; /* 次要文本颜色 */
+  --color-text-light: #9ca3af;     /* 浅色文本 */
+  
+  /* 暗色模式文本颜色 */
+  --color-text-dark-primary: var(--color-text-dark-primary);   /* 暗色模式主要文本 */
+  --color-text-dark-secondary: #d1d5db; /* 暗色模式次要文本 */
+  --color-text-dark-light: #94a3b8;     /* 暗色模式浅色文本 */
+  
+  /* 背景颜色变量 */
+  --color-bg-white: #ffffff;   /* 白色背景 */
+  --color-bg-dark: var(--color-bg-dark);    /* 暗色背景 */
+  --color-bg-light: #f1f1f1;   /* 浅色背景 */
+  
+  /* 间距变量 */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 2.5rem;
+}
+
 /* Navigation links - restore original PaperMod styling */
 .sidebar nav a {
   /* Let PaperMod handle the default styling */
@@ -120,9 +168,9 @@ a[href^="#ref"]:hover {
 
 /* 文章内容中的链接样式 */
 .post-content a {
-  color: #0066cc !important;
+  color: var(--color-link) !important;
   text-decoration: none !important;
-  border-bottom: 2px solid #0066cc !important;
+  border-bottom: 2px solid var(--color-link) !important;
   padding-bottom: 1px !important;
   transition: all 0.2s ease !important;
   font-weight: 500 !important;
@@ -131,14 +179,14 @@ a[href^="#ref"]:hover {
 
 /* 暗色模式下的链接样式 */
 .dark .post-content a {
-  color: #4a9eff !important;
-  border-bottom-color: #4a9eff !important;
+  color: var(--color-link-dark) !important;
+  border-bottom-color: var(--color-link-dark) !important;
 }
 
 /* 链接悬停效果 */
 .post-content a:hover {
-  color: #004499 !important;
-  border-bottom-color: #004499 !important;
+  color: var(--color-link-hover) !important;
+  border-bottom-color: var(--color-link-hover) !important;
   background-color: rgba(0, 102, 204, 0.1) !important;
   padding: 2px 4px !important;
   margin: -2px -4px !important;
@@ -148,8 +196,8 @@ a[href^="#ref"]:hover {
 
 /* 暗色模式下的悬停效果 */
 .dark .post-content a:hover {
-  color: #66b3ff !important;
-  border-bottom-color: #66b3ff !important;
+  color: var(--color-link-hover-dark) !important;
+  border-bottom-color: var(--color-link-hover-dark) !important;
   background-color: rgba(74, 158, 255, 0.15) !important;
 }
 
@@ -173,14 +221,14 @@ a[href^="#ref"]:hover {
 /* 内部链接样式 */
 .post-content a[href^="/"], 
 .post-content a[href^="#"] {
-  color: #0066cc !important;
-  border-bottom: 2px solid #0066cc !important;
+  color: var(--color-link) !important;
+  border-bottom: 2px solid var(--color-link) !important;
 }
 
 .dark .post-content a[href^="/"], 
 .dark .post-content a[href^="#"] {
-  color: #4a9eff !important;
-  border-bottom-color: #4a9eff !important;
+  color: var(--color-link-dark) !important;
+  border-bottom-color: var(--color-link-dark) !important;
 }
 
 /* 标题中的链接样式 */
@@ -211,34 +259,34 @@ a[href^="#ref"]:hover {
 /* 列表中的链接样式 */
 .post-content ul a,
 .post-content ol a {
-  color: #0066cc !important;
-  border-bottom: 1px solid #0066cc !important;
+  color: var(--color-link) !important;
+  border-bottom: 1px solid var(--color-link) !important;
   padding-bottom: 0.5px !important;
 }
 
 .dark .post-content ul a,
 .dark .post-content ol a {
-  color: #4a9eff !important;
-  border-bottom-color: #4a9eff !important;
+  color: var(--color-link-dark) !important;
+  border-bottom-color: var(--color-link-dark) !important;
 }
 
 /* 引用中的链接样式 */
 .post-content blockquote a {
-  color: #0066cc !important;
-  border-bottom: 1px dashed #0066cc !important;
+  color: var(--color-link) !important;
+  border-bottom: 1px dashed var(--color-link) !important;
   opacity: 0.9 !important;
 }
 
 .dark .post-content blockquote a {
-  color: #4a9eff !important;
-  border-bottom-color: #4a9eff !important;
+  color: var(--color-link-dark) !important;
+  border-bottom-color: var(--color-link-dark) !important;
 }
 
 /* 代码块中的链接样式 */
 .post-content code a,
 .post-content pre a {
-  color: #0066cc !important;
-  border-bottom: 1px solid #0066cc !important;
+  color: var(--color-link) !important;
+  border-bottom: 1px solid var(--color-link) !important;
   background-color: rgba(0, 102, 204, 0.1) !important;
   padding: 1px 3px !important;
   border-radius: 2px !important;
@@ -246,16 +294,16 @@ a[href^="#ref"]:hover {
 
 .dark .post-content code a,
 .dark .post-content pre a {
-  color: #4a9eff !important;
-  border-bottom-color: #4a9eff !important;
+  color: var(--color-link-dark) !important;
+  border-bottom-color: var(--color-link-dark) !important;
   background-color: rgba(74, 158, 255, 0.15) !important;
 }
 
 /* 特殊链接类型 */
 .post-content a[href*="youtube.com"],
 .post-content a[href*="youtu.be"] {
-  color: #ff0000 !important;
-  border-bottom-color: #ff0000 !important;
+  color: var(--color-youtube) !important;
+  border-bottom-color: var(--color-youtube) !important;
 }
 
 .post-content a[href*="github.com"] {
@@ -322,10 +370,10 @@ article h3,
 .flex-1 h3 {
   font-size: 1.5rem !important;
   font-weight: 600 !important;
-  color: #374151 !important;
+  color: var(--color-gray-700) !important;
   margin: 1.5rem 0 0.75rem 0 !important;
   padding-bottom: 0.25rem !important;
-  border-bottom: 2px solid #e5e7eb !important;
+  border-bottom: 2px solid var(--color-gray-300) !important;
   line-height: 1.4 !important;
 }
 
@@ -335,10 +383,10 @@ article h4,
 .flex-1 h4 {
   font-size: 1.25rem !important;
   font-weight: 600 !important;
-  color: #374151 !important;
+  color: var(--color-gray-700) !important;
   margin: 1.25rem 0 0.5rem 0 !important;
   padding-left: 0.75rem !important;
-  border-left: 2px solid #e5e7eb !important;
+  border-left: 2px solid var(--color-gray-300) !important;
   line-height: 1.4 !important;
 }
 
@@ -348,7 +396,7 @@ article h5,
 .flex-1 h5 {
   font-size: 1.1rem !important;
   font-weight: 600 !important;
-  color: #374151 !important;
+  color: var(--color-gray-700) !important;
   margin: 1rem 0 0.5rem 0 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
@@ -395,14 +443,14 @@ article h6:hover,
 .dark .max-w-4xl h1,
 .dark .flex-1 h1 {
   color: #e2e8f0 !important;
-  border-bottom-color: #4a9eff !important;
+  border-bottom-color: var(--color-link-dark) !important;
 }
 
 .dark article h2,
 .dark .max-w-4xl h2,
 .dark .flex-1 h2 {
   color: #cbd5e1 !important;
-  border-left-color: #4a9eff !important;
+  border-left-color: var(--color-link-dark) !important;
   background: linear-gradient(90deg, rgba(74, 158, 255, 0.1), transparent) !important;
 }
 
@@ -878,12 +926,12 @@ html {
 /* 暗色模式支持 */
 @media (prefers-color-scheme: dark) {
   .blog-card {
-    background-color: #1f2937;
-    color: #f9fafb;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark-primary);
   }
   
   .blog-card:hover {
-    background-color: #374151;
+    background-color: var(--color-gray-700);
   }
   
   .nav-item {
@@ -891,7 +939,7 @@ html {
   }
   
   .nav-item:hover {
-    background-color: #374151;
+    background-color: var(--color-gray-700);
     color: #f3f4f6;
   }
 }
@@ -909,7 +957,7 @@ html {
   .blog-card {
     break-inside: avoid;
     box-shadow: none;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-gray-300);
   }
 }
 
@@ -932,7 +980,7 @@ html {
   left: 0 !important;
   right: 0 !important;
   height: 4px !important;
-  background: linear-gradient(90deg, #3B82F6, #1D4ED8, #3B82F6) !important;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark), var(--color-primary)) !important;
   z-index: 1 !important;
 }
 
@@ -940,7 +988,7 @@ html {
 .post-content h1 {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
-  color: #1f2937 !important;
+  color: var(--color-bg-dark) !important;
   margin: 2rem 0 1rem 0 !important;
   line-height: 1.2 !important;
   position: relative !important;
@@ -990,7 +1038,7 @@ html {
   top: 0.5rem !important;
   width: 4px !important;
   height: 1.5rem !important;
-  background: #3B82F6 !important;
+  background: var(--color-primary) !important;
   border-radius: 2px !important;
 }
 
@@ -1001,12 +1049,12 @@ html {
   left: 1.5rem !important;
   right: 0 !important;
   height: 2px !important;
-  background: linear-gradient(90deg, #3B82F6, transparent) !important;
+  background: linear-gradient(90deg, var(--color-primary), transparent) !important;
 }
 
 /* 三级标题样式 */
 .post-content h3 {
-  color: #374151 !important;
+  color: var(--color-gray-700) !important;
   font-weight: 600 !important;
   margin: 1.5rem 0 0.75rem 0 !important;
   position: relative !important;
@@ -1014,15 +1062,15 @@ html {
 
 /* 链接样式优化 */
 .post-content a {
-  color: #3B82F6 !important;
+  color: var(--color-primary) !important;
   text-decoration: none !important;
   border-bottom: 1px solid transparent !important;
   transition: all 0.2s ease !important;
 }
 
 .post-content a:hover {
-  color: #1D4ED8 !important;
-  border-bottom-color: #1D4ED8 !important;
+  color: var(--color-primary-dark) !important;
+  border-bottom-color: var(--color-primary-dark) !important;
   background-color: rgba(59, 130, 246, 0.1) !important;
   padding: 0.125rem 0.25rem !important;
   margin: -0.125rem -0.25rem !important;
@@ -1031,16 +1079,16 @@ html {
 
 /* 暗色模式适配 */
 .dark .post-content {
-  background: #1f2937 !important;
-  color: #f9fafb !important;
+  background: var(--color-bg-dark) !important;
+  color: var(--color-text-dark-primary) !important;
 }
 
 .dark .post-content h1 {
-  color: #f9fafb !important;
+  color: var(--color-text-dark-primary) !important;
 }
 
 .dark .post-content h2 {
-  color: #e5e7eb !important;
+  color: var(--color-gray-300) !important;
 }
 
 .dark .post-content h3 {
@@ -1088,7 +1136,7 @@ html {
   margin-bottom: 1.5rem !important;
   font-size: 1.5rem !important;
   font-weight: 700 !important;
-  color: #1f2937 !important;
+  color: var(--color-bg-dark) !important;
   border-bottom: none !important;
   padding-left: 0 !important;
 }
@@ -1147,7 +1195,7 @@ html {
 /* 参考文献链接样式 */
 .post-content ol:last-child a,
 .post-content ul:last-child a {
-  color: #3B82F6 !important;
+  color: var(--color-primary) !important;
   text-decoration: none !important;
   font-weight: 500 !important;
   transition: all 0.2s ease !important;
@@ -1157,7 +1205,7 @@ html {
 
 .post-content ol:last-child a:hover,
 .post-content ul:last-child a:hover {
-  color: #1D4ED8 !important;
+  color: var(--color-primary-dark) !important;
   background-color: rgba(59, 130, 246, 0.1) !important;
   padding: 0.125rem 0.25rem !important;
   margin: -0.125rem -0.25rem !important;
@@ -1167,23 +1215,23 @@ html {
 /* 参考文献链接中的域名样式 */
 .post-content ol:last-child a[href*="github.com"],
 .post-content ul:last-child a[href*="github.com"] {
-  color: #3B82F6 !important;
+  color: var(--color-primary) !important;
 }
 
 .post-content ol:last-child a[href*="google.com"],
 .post-content ul:last-child a[href*="googleblog.com"] {
-  color: #3B82F6 !important;
+  color: var(--color-primary) !important;
 }
 
 .post-content ol:last-child a[href*="modelcontextprotocol.com"],
 .post-content ul:last-child a[href*="modelcontextprotocol.com"] {
-  color: #3B82F6 !important;
+  color: var(--color-primary) !important;
 }
 
 /* 暗色模式下的参考文献样式 */
 .dark .post-content h2:has(+ ol),
 .dark .post-content h2:has(+ ul) {
-  color: #f9fafb !important;
+  color: var(--color-text-dark-primary) !important;
 }
 
 .dark .post-content ol:last-child li::before {
@@ -1234,7 +1282,7 @@ body .flex-1::before {
   left: 0 !important;
   right: 0 !important;
   height: 4px !important;
-  background: linear-gradient(90deg, #3B82F6, #1D4ED8, #3B82F6) !important;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark), var(--color-primary)) !important;
   z-index: 1 !important;
 }
 
@@ -1242,7 +1290,7 @@ body .flex-1::before {
 body .flex-1 h1 {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
-  color: #1f2937 !important;
+  color: var(--color-bg-dark) !important;
   margin: 2rem 0 1rem 0 !important;
   line-height: 1.2 !important;
   position: relative !important;
@@ -1255,7 +1303,7 @@ body .flex-1 h2 {
   margin: 2rem 0 1rem 0 !important;
   font-size: 1.75rem !important;
   font-weight: 600 !important;
-  color: #374151 !important;
+  color: var(--color-gray-700) !important;
 }
 
 body .flex-1 h2::before {
@@ -1265,7 +1313,7 @@ body .flex-1 h2::before {
   top: 0.5rem !important;
   width: 4px !important;
   height: 1.5rem !important;
-  background: #3B82F6 !important;
+  background: var(--color-primary) !important;
   border-radius: 2px !important;
 }
 
@@ -1276,12 +1324,12 @@ body .flex-1 h2::after {
   left: 1.5rem !important;
   right: 0 !important;
   height: 2px !important;
-  background: linear-gradient(90deg, #3B82F6, transparent) !important;
+  background: linear-gradient(90deg, var(--color-primary), transparent) !important;
 }
 
 /* 三级标题样式 */
 body .flex-1 h3 {
-  color: #374151 !important;
+  color: var(--color-gray-700) !important;
   font-weight: 600 !important;
   margin: 1.5rem 0 0.75rem 0 !important;
   position: relative !important;
@@ -1297,11 +1345,11 @@ body .flex-1 ol {
 body .flex-1 li {
   margin-bottom: 0.5rem !important;
   line-height: 1.7 !important;
-  color: #374151 !important;
+  color: var(--color-gray-700) !important;
 }
 
 body .flex-1 li::marker {
-  color: #3B82F6 !important;
+  color: var(--color-primary) !important;
   font-weight: bold !important;
 }
 
@@ -1311,7 +1359,7 @@ body .flex-1 h2:last-of-type {
   margin-bottom: 1.5rem !important;
   font-size: 1.5rem !important;
   font-weight: 700 !important;
-  color: #1f2937 !important;
+  color: var(--color-bg-dark) !important;
   border-bottom: none !important;
   padding-left: 0 !important;
 }
@@ -1323,16 +1371,16 @@ body .flex-1 h2:last-of-type::after {
 
 /* 暗色模式适配 */
 .dark body .flex-1 {
-  background: #1f2937 !important;
-  color: #f9fafb !important;
+  background: var(--color-bg-dark) !important;
+  color: var(--color-text-dark-primary) !important;
 }
 
 .dark body .flex-1 h1 {
-  color: #f9fafb !important;
+  color: var(--color-text-dark-primary) !important;
 }
 
 .dark body .flex-1 h2 {
-  color: #e5e7eb !important;
+  color: var(--color-gray-300) !important;
 }
 
 .dark body .flex-1 h3 {
@@ -1390,7 +1438,7 @@ body .flex-1 h2:last-of-type::after {
   margin-top: 2.5rem !important;
   margin-bottom: 1.25rem !important;
   padding-bottom: 0.5rem !important;
-  border-bottom: 1px solid #e5e7eb !important;
+  border-bottom: 1px solid var(--color-gray-300) !important;
 }
 
 .post-content h3 {
@@ -1436,17 +1484,17 @@ body .flex-1 h2:last-of-type::after {
 .post-content hr {
   margin: 2.5rem 0 !important;
   height: 2px !important;
-  background: linear-gradient(90deg, transparent, #e5e7eb, transparent) !important;
+  background: linear-gradient(90deg, transparent, var(--color-gray-300), transparent) !important;
   border: none !important;
 }
 
 /* 暗色模式下的标题边框调整 */
 .dark .post-content h2 {
-  border-bottom-color: #374151 !important;
+  border-bottom-color: var(--color-gray-700) !important;
 }
 
 .dark .post-content hr {
-  background: linear-gradient(90deg, transparent, #374151, transparent) !important;
+  background: linear-gradient(90deg, transparent, var(--color-gray-700), transparent) !important;
 }
 
 /* 移动端段落间距调整 */
