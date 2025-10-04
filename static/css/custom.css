@@ -1265,12 +1265,33 @@ html {
 
 /* ===== 从 PaperMod 子模块迁移的样式 ===== */
 
+/* 修复页面滚动问题 - 使用最高特异性 */
+html body main.flex-1 {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 强制修复页面滚动问题 - 使用更高特异性 */
+html body main.flex-1.ml-64 {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 终极修复 - 使用最高特异性 */
+html body main.flex-1.ml-64[class*="flex-1"] {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
 /* 文章页面整体布局优化 - 使用更高特异性 */
 body .flex-1 {
   background: #ffffff !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   position: relative !important;
 }
 
