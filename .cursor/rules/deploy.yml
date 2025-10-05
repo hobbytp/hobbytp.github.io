@@ -1,3 +1,12 @@
 - description: "每次部署前应清理并更新 Hugo module 依赖"
   applies_to: "deploy"
   action: "suggest: hugo mod clean && hugo mod get -u"
+
+# 网络代理配置
+# 当网络不通时，使用以下代理设置：
+# HTTPS_PROXY=http://localhost:33210
+# 使用方法：
+# export HTTPS_PROXY=http://localhost:33210
+# git push
+# 或者：
+# HTTPS_PROXY=http://localhost:33210 git push
