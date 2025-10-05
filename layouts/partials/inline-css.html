@@ -7,8 +7,109 @@
   background: #ffffff !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   position: relative !important;
+}
+
+/* 修复页面滚动问题 - 使用最高特异性 */
+html body main.flex-1 {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 强制修复页面滚动问题 - 使用更高特异性 */
+html body main.flex-1.ml-64 {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 终极修复 - 使用最高特异性 */
+html body main.flex-1.ml-64[class*="flex-1"] {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 针对实际页面结构的修复 */
+main.flex-1.ml-64 {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 移除overflow-y-auto类的影响 */
+main.overflow-y-auto {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 终极修复 - 使用最高特异性覆盖所有可能的类 */
+main.flex-1.ml-64.overflow-y-auto {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 使用最高特异性覆盖所有可能的样式 */
+html body main.flex-1.ml-64.overflow-y-auto {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* 强制覆盖所有可能的overflow设置 */
+main[class*="overflow"] {
+  overflow: visible !important;
+  height: auto !important;
+  max-height: none !important;
+}
+
+/* ===== 博客正文阅读体验优化 ===== */
+
+/* 段落间距增强 - 解决视觉密度过高问题 */
+article p {
+  margin-bottom: 1.5rem !important;  /* 增加段落间距 */
+  line-height: 1.8 !important;       /* 增加行高，提升可读性 */
+  text-align: justify !important;    /* 两端对齐 */
+}
+
+/* 标题与段落间距优化 */
+article h1 + p,
+article h2 + p,
+article h3 + p,
+article h4 + p,
+article h5 + p,
+article h6 + p {
+  margin-top: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* 标题间距层次优化 */
+article h1 {
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+article h2 {
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.25rem !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+/* 列表项间距优化 */
+article ul,
+article ol {
+  margin-bottom: 1.5rem !important;
+  padding-left: 1.5rem !important;
+}
+
+article li {
+  margin-bottom: 0.75rem !important;
+  line-height: 1.7 !important;
 }
 
 /* 顶部渐变装饰条 */
