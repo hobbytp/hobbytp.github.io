@@ -1,3 +1,13 @@
+---
+title: "Stephen Wolfram：计算宇宙的拓荒者"
+date: 2024-01-01T00:00:00+08:00
+draft: false
+tags: ["Stephen Wolfram", "科学家", "企业家", "计算", "AI"]
+categories: ["名人洞察"]
+author: "Peng Tan"
+description: "Stephen Wolfram的生平、贡献和思想，包括计算不可约性理论和Mathematica等工具"
+---
+
 ## Stephen Wolfram：计算宇宙的拓荒者
 
 斯蒂芬·沃尔弗拉姆（Stephen Wolfram），1959年出生于伦敦，是一位横跨物理学、数学和人工智能（AI）领域的多才多艺科学家、企业家和思想家。他以非凡的学术天赋、创新精神和争议性理论闻名于世。

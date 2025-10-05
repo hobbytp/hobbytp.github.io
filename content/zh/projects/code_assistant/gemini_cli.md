@@ -38,7 +38,7 @@ Gemini CLI 是一个开源的 AI 命令行工具，旨在加速开发者的工�
 - packages/core/src/core/geminiChat.ts
 - packages/cli/src/ui/contexts/SessionContext.tsx
 
-现在我来为您创建多种 UML 图表来展示 Gemini CLI 系统的架构：
+现在我来为你创建多种 UML 图表来展示 Gemini CLI 系统的架构：
 
 ## 各种系统架构图
 
@@ -698,7 +698,7 @@ npm install -g @google/gemini-cli
 
 - **coreTools**: 可以指定一组核心工具名称，使模型可用，并可用于限制[内置工具](https://github.com/hobbytp/gemini-cli/blob/main/docs/core/tools-api.md#built-in-tools)的集合。还可以为支持的工具指定命令特定的限制，例如，"coreTools": ["ShellTool(ls -l)"]仅允许执行ls -l命令。
 
-- **excludeTools**:允许您指定一组应从模型中排除的核心工具名称。出现在excludeTools和coreTools中的工具会被排除。您还可以为支持的工具指定特定命令的限制，例如ShellTool。例如，"excludeTools": ["ShellTool(rm -rf)"]将阻止rm -rf命令。
+- **excludeTools**:允许你指定一组应从模型中排除的核心工具名称。出现在excludeTools和coreTools中的工具会被排除。你还可以为支持的工具指定特定命令的限制，例如ShellTool。例如，"excludeTools": ["ShellTool(rm -rf)"]将阻止rm -rf命令。
 
 - **autoAccept (false)**: 控制 CLI 是否自动接受并执行被认为是安全的（例如只读操作）工具调用，而无需用户明确确认。如果设置为 true，CLI 将绕过对被认为安全的工具的确认提示。
 
@@ -773,6 +773,10 @@ npm install -g @google/gemini-cli
     "anotherServer": {
       "command": "node",
       "args": ["mcp_server.js", "--verbose"]
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["chrome-devtools-mcp@latest"]
     }
   },
   "telemetry": {
@@ -822,6 +826,29 @@ npm install -g @google/gemini-cli
 - /mcp desc <mcp>
 - /mcp nodesc 只罗列tool names: 注意： 随时按下Ctrl+T组合键，在显示和隐藏工具说明之间进行切换。
 - /mcp schema: 显示该工具已配置参数的完整 JSON 模式。
+
+**添加MCP Server**
+
+- `gemini mcp add <name> <command>` - 添加MCP server
+- `gemini mcp remove <name>` - 移除MCP server  
+- `gemini mcp list` - 列出所有配置的MCP servers
+
+**Chrome DevTools MCP示例**
+
+```bash
+# 添加chrome-devtools MCP server
+gemini mcp add chrome-devtools npx chrome-devtools-mcp@latest
+
+# 查看配置的MCP servers
+gemini mcp list
+```
+
+Chrome DevTools MCP提供以下功能：
+
+- 浏览器自动化控制
+- 网页截图和性能分析
+- 元素交互和调试
+- 网络请求监控
 
 ## 其他用法
 

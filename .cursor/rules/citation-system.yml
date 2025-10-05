@@ -1,18 +1,18 @@
-- description: "文章中的引用标记格式：`[<a href=\"#refX\" id=\"citeX\">X</a>]`"
+- description: '文章中的引用标记格式：`[<a href="#refX" id="citeX">X</a>]`'
   applies_to: "content/zh/**/*.md"
-  action: "suggest: 使用标准引用格式 [<a href=\"#ref1\" id=\"cite1\">1</a>]"
+  action: 'suggest: 使用标准引用格式 [<a href="#ref1" id="cite1">1</a>]'
 
-- description: "参考条目格式：`**<span id=\"refX\">[X]</span>** [标题](链接) <a href=\"#citeX\" title=\"返回引用位置\">↩</a>`"
+- description: '参考条目格式：`**<span id="refX">[X]</span>** [标题](链接) <a href="#citeX" title="返回引用位置">↩</a>`'
   applies_to: "content/zh/**/*.md"
   action: "suggest: 使用标准参考条目格式"
 
-- description: "每个引用位置必须有唯一的id=\"citeX\"，参考条目必须有对应的id=\"refX\""
+- description: '每个引用位置必须有唯一的id="citeX"，参考条目必须有对应的id="refX"'
   applies_to: "content/zh/**/*.md"
   action: "warn_if_missing:cite_id"
 
-- description: "参考部分应使用<div class=\"references\">容器"
+- description: '参考部分应使用<div class="references">容器'
   applies_to: "content/zh/**/*.md"
-  action: "suggest: 使用 <div class=\"references\"> 包装参考条目"
+  action: 'suggest: 使用 <div class="references"> 包装参考条目'
 
 - description: "引用编号必须保持一致，同一引用多次出现时使用后缀：cite1, cite1b, cite1c"
   applies_to: "content/zh/**/*.md"
@@ -26,10 +26,10 @@
   applies_to: "assets/css/custom.css"
   action: "suggest: 添加 .references 样式类"
 
-- description: "引用链接样式：a[href^=\"#ref\"] 用于引用链接"
+- description: '引用链接样式：a[href^="#ref"] 用于引用链接'
   applies_to: "assets/css/custom.css"
   action: "suggest: 添加引用链接样式"
 
-- description: "返回链接样式：.references a[href^=\"#ref\"] 用于返回链接"
+- description: '返回链接样式：.references a[href^="#ref"] 用于返回链接'
   applies_to: "assets/css/custom.css"
   action: "suggest: 添加返回链接样式"
