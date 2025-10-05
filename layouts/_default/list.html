@@ -51,14 +51,14 @@
                  data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}">
             <!-- 文章封面图片 -->
             {{ if .Params.featured_image }}
-            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 relative overflow-hidden">
+            <div class="h-48 bg-gradient-to-br from-blue-700 to-blue-900 relative overflow-hidden">
                 <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" 
                      class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-20"></div>
             </div>
             {{ else }}
-            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="h-48 bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center">
+                <svg class="w-16 h-16 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
             </div>
