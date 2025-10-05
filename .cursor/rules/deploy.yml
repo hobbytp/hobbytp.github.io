@@ -1,3 +1,14 @@
 - description: "每次部署前应清理并更新 Hugo module 依赖"
   applies_to: "deploy"
   action: "suggest: hugo mod clean && hugo mod get -u"
+- description: "网络不通时使用代理：HTTPS_PROXY=http://localhost:33210"
+  applies_to: "git push"
+  action: "suggest: $env:HTTPS_PROXY='http://localhost:33210'; git push"
+
+- description: "Windows PowerShell代理设置：$env:HTTPS_PROXY='http://localhost:33210'"
+  applies_to: "Windows PowerShell"
+  action: "suggest: $env:HTTPS_PROXY='http://localhost:33210'; git push"
+
+- description: "Linux/macOS代理设置：export HTTPS_PROXY=http://localhost:33210"
+  applies_to: "Linux/macOS"
+  action: "suggest: export HTTPS_PROXY=http://localhost:33210 && git push"

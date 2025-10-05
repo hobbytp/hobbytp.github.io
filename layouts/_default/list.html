@@ -1,7 +1,23 @@
 {{ define "main" }}
+
+{{- if (and site.Params.profileMode.enabled .IsHome) }}
+{{- partial "index_profile.html" . }}
+{{- else }}
+
 <div class="container mx-auto px-8 py-8">
     <header class="mb-8">
-        <h1 class="text-4xl font-bold mb-4 text-gray-800">{{ .Title }}</h1>
+        <h1 class="text-4xl font-bold mb-4 text-gray-800">
+            {{- if eq .Kind "term" -}}
+                {{- $translatedTitle := i18n (lower .Title) -}}
+                {{- if ne $translatedTitle (lower .Title) -}}
+                    {{- $translatedTitle -}}
+                {{- else -}}
+                    {{- .Title -}}
+                {{- end -}}
+            {{- else -}}
+                {{- .Title -}}
+            {{- end -}}
+        </h1>
         {{ with .Content }}
         <div class="prose prose-lg max-w-none mb-8 text-gray-600">
             {{ . }}
@@ -361,4 +377,7 @@ document.addEventListener('DOMContentLoaded', function() {
     overflow: hidden;
 }
 </style>
+
+{{- end }}{{/* end profileMode */}}
+
 {{ end }}

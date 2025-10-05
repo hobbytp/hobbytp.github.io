@@ -5,3 +5,15 @@
 - description: "所有中文文章 front matter 必须包含 categories 字段"
   applies_to: "content/zh/**/*.md"
   action: "warn_if_missing:categories"
+
+- description: "Hugo页面类型：Section页面基于目录结构，Term页面基于分类/标签"
+  applies_to: "layouts/_default/list.html"
+  action: "suggest: 使用 {{- if eq .Kind \"term\" -}} 处理分类浏览页面"
+
+- description: "分类浏览页面 (/categories/xxx/) 是 term 类型，需要使用 (lower .Title) 处理大小写匹配"
+  applies_to: "layouts/_default/list.html"
+  action: "suggest: {{- $translatedTitle := i18n (lower .Title) -}}"
+
+- description: "中文标题映射应使用i18n系统，避免硬编码字典"
+  applies_to: "layouts/_default/list.html"
+  action: "suggest: 使用 i18n 函数进行标题翻译"
