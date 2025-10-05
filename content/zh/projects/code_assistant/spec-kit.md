@@ -86,6 +86,9 @@ uvx --from git+https://github.com/github/spec-kit.git specify init <PROJECT_NAME
 uvx --from git+https://github.com/github/spec-kit.git specify init --here --ai cursor --script sh --no-git --debug
 ```
 
+spec-kit代表了软件开发方法论的根本性转变，不是简单的自动化工具，而是将规范提升为开发的核心驱动力。通过结构化的模板、宪法约束和AI能力的结合，它实现了从意图到实现的无缝转换，同时保持了架构完整性和代码质量。这种方法特别适合现代快速迭代的产品开发环境，能够将需求变更从障碍转变为正常的工作流程。
+
 ## 参考文献
 
-spec-kit代表了软件开发方法论的根本性转变，不是简单的自动化工具，而是将规范提升为开发的核心驱动力。通过结构化的模板、宪法约束和AI能力的结合，它实现了从意图到实现的无缝转换，同时保持了架构完整性和代码质量。这种方法特别适合现代快速迭代的产品开发环境，能够将需求变更从障碍转变为正常的工作流程。
+- [spec-kit](https://github.com/github/spec-kit)
+- [spec-kit 文档](https://github.com/github/spec-kit/blob/main/spec-driven.md)
