@@ -61,7 +61,7 @@ customCSS = ["css/custom.css"]
 enabled = true
 title = "Peng Tan's AI Blog"
 subtitle = "关注 AI 领域的论文解读、最新技术、开源项目、知名人物访谈、动态和商业产品介绍"
-imageUrl = "/images/profile.png"
+imageUrl = "/images/profile.jpg"
 imageTitle = "Peng Tan"
 
 # 添加按钮链接到关于作者页面
