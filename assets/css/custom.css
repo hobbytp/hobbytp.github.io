@@ -1429,6 +1429,153 @@ body .flex-1 h2:last-of-type::after {
   }
 }
 
+/* ===== Profile区域左右布局优化 ===== */
+
+/* Profile容器布局 */
+.profile {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 2rem !important;
+  margin-bottom: 2rem !important;
+  padding: 1.5rem !important;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 197, 253, 0.05)) !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(59, 130, 246, 0.1) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Profile图片区域 */
+.profile img {
+  flex-shrink: 0 !important;
+  width: 150px !important;
+  height: 150px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  border: 4px solid #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.profile img:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Profile内容区域 */
+.profile_inner {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+/* Profile标题 */
+.profile h1 {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: var(--color-bg-dark) !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Profile副标题 */
+.profile span {
+  font-size: 1.1rem !important;
+  color: #6b7280 !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+/* Profile按钮区域 */
+.profile .buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.75rem !important;
+  margin-top: 0.5rem !important;
+}
+
+.profile .button {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.75rem 1.5rem !important;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.profile .button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary)) !important;
+}
+
+.profile .button svg {
+  width: 1rem !important;
+  height: 1rem !important;
+  transition: transform 0.3s ease !important;
+}
+
+.profile .button:hover svg {
+  transform: translateX(2px) !important;
+}
+
+/* 暗色模式适配 */
+.dark .profile {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.05)) !important;
+  border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark .profile h1 {
+  color: var(--color-text-dark-primary) !important;
+}
+
+.dark .profile span {
+  color: #94a3b8 !important;
+}
+
+.dark .profile img {
+  border-color: var(--color-bg-dark) !important;
+}
+
+/* 移动端优化 */
+@media screen and (max-width: 768px) {
+  .profile {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 1.5rem !important;
+    padding: 1rem !important;
+  }
+  
+  .profile img {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  .profile h1 {
+    font-size: 2rem !important;
+  }
+  
+  .profile span {
+    font-size: 1rem !important;
+  }
+  
+  .profile .buttons {
+    justify-content: center !important;
+  }
+  
+  .profile .button {
+    padding: 0.625rem 1.25rem !important;
+    font-size: 0.85rem !important;
+  }
+}
+
 /* ===== 博客正文阅读体验优化 ===== */
 
 /* 段落间距增强 - 解决视觉密度过高问题 */
