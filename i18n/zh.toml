@@ -27,3 +27,34 @@ other = "首页"
 
 [search]
 other = "搜索"
+
+# 新增分类翻译
+[my_insights]
+other = "个人洞察"
+
+[celebrity_insights]
+other = "名人洞察"
+
+[ai_spec]
+other = "AI标准规范"
+
+[big_companies]
+other = "大厂产品线"
+
+[large_models]
+other = "大模型"
+
+[training]
+other = "训练微调技术"
+
+[context_engineering]
+other = "上下文工程"
+
+[mas]
+other = "多代理技术"
+
+[ai_tools]
+other = "AI工具箱"
+
+[courses]
+other = "课程"
