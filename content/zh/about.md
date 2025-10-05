@@ -24,16 +24,15 @@ author: "Peng Tan"
 
 ## 📚 专业背景
 
-- **技术栈**：Python, JavaScript, Go, Rust
-- **AI 框架**：LangChain, LangGraph, AutoGen, CAMEL
+- **技术栈**：Python, Shell, Typescript, Go, Cloud Native, Cloud, MicroServices.
+- **AI 框架**：LangChain, LangGraph, AutoGen, CAMEL...
 - **云平台**：AWS, Google Cloud, Azure
-- **开发工具**：Hugo, Docker, Kubernetes
+- **开发工具**：Hugo, Docker, Kubernetes, Git, CI/CD, ChatGPT, Claude, Cursor...
 
 ## 🌟 主要贡献
 
 ### 开源项目
 
-- 多个 AI 工具和库的贡献者
 - 技术文档和教程的编写者
 - 社区技术分享的积极参与者
 
@@ -47,7 +46,7 @@ author: "Peng Tan"
 
 - **GitHub**: [@hobbytp](https://github.com/hobbytp)
 - **技术博客**: [hobbytp.github.io](https://hobbytp.github.io)
-- **邮箱**: [联系我](mailto:your-email@example.com)
+- **邮箱**: [联系我](mailto:hobbytp@gmail.com)
 
 ## 💡 写作理念
 
