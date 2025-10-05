@@ -6,29 +6,14 @@
   applies_to: "content/zh/**/*.md"
   action: "warn_if_missing:categories"
 
-# Hugo页面类型系统说明
-# Section vs Term 页面类型:
-# - Section页面 (/zh/my_insights/): 基于目录结构的内容组织页面
-#   - 有对应的目录结构 /content/zh/my_insights/
-#   - 可以包含 _index.md 文件
-#   - 用于内容分类和组织
-# - Term页面 (/categories/my_insights/): 基于分类/标签的浏览页面
-#   - 由Hugo自动生成
-#   - 基于文章front matter中的分类/标签
-#   - 用于分类浏览和标签筛选
-# 
-# 模板处理逻辑 (layouts/_default/list.html):
-# {{- if eq .Kind "term" -}}
-#     <!-- 处理分类浏览页面，使用中文标题映射 -->
-#     {{- $titleMap := dict "my_insights" "个人洞察" ... -}}
-#     {{- $chineseTitle := index $titleMap (lower .Title) -}}
-# {{- else -}}
-#     <!-- 处理其他类型页面 -->
-#     {{- .Title -}}
-# {{- end -}}
-#
-# 关键要点:
-# - 分类浏览页面 (/categories/xxx/) 是 term 类型
-# - 需要使用 (lower .Title) 处理大小写匹配
-# - 中文标题映射避免i18n复杂性
-# - 支持所有主要分类的中文显示
+- description: "Hugo页面类型：Section页面基于目录结构，Term页面基于分类/标签"
+  applies_to: "layouts/_default/list.html"
+  action: "suggest: 使用 {{- if eq .Kind \"term\" -}} 处理分类浏览页面"
+
+- description: "分类浏览页面 (/categories/xxx/) 是 term 类型，需要使用 (lower .Title) 处理大小写匹配"
+  applies_to: "layouts/_default/list.html"
+  action: "suggest: {{- $translatedTitle := i18n (lower .Title) -}}"
+
+- description: "中文标题映射应使用i18n系统，避免硬编码字典"
+  applies_to: "layouts/_default/list.html"
+  action: "suggest: 使用 i18n 函数进行标题翻译"
