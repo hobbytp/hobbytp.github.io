@@ -1,0 +1,54 @@
+# Hugo Blog Project Rules
+
+## 双向引用链接系统
+
+### 引用格式
+- 文章中的引用：`[<a href="#ref1" id="cite1">1</a>]`
+- 参考条目：`**<span id="ref1">[1]</span>** [标题](链接) <a href="#cite1" title="返回引用位置">↩</a>`
+
+### 实现要求
+1. 每个引用位置必须有唯一的`id="citeX"`
+2. 参考条目必须有对应的`id="refX"`
+3. 返回链接指向文章中的具体引用位置
+4. 使用`assets/css/custom.css`中的样式
+
+### 样式类
+- `.references` - 参考部分容器
+- `a[href^="#ref"]` - 引用链接样式
+- `.references a[href^="#ref"]` - 返回链接样式
+
+### 注意事项
+- 支持Hugo静态站点生成
+- 兼容PaperMod主题
+- 使用HTML锚点链接实现双向跳转
+
+## Hugo页面类型系统
+
+### Section vs Term 页面类型
+- **Section页面** (`/zh/my_insights/`): 基于目录结构的内容组织页面
+  - 有对应的目录结构 `/content/zh/my_insights/`
+  - 可以包含 `_index.md` 文件
+  - 用于内容分类和组织
+- **Term页面** (`/categories/my_insights/`): 基于分类/标签的浏览页面
+  - 由Hugo自动生成
+  - 基于文章front matter中的分类/标签
+  - 用于分类浏览和标签筛选
+
+### 模板处理逻辑
+在 `layouts/_default/list.html` 中需要区分处理：
+```html
+{{- if eq .Kind "term" -}}
+    <!-- 处理分类浏览页面，使用中文标题映射 -->
+    {{- $titleMap := dict "my_insights" "个人洞察" ... -}}
+    {{- $chineseTitle := index $titleMap (lower .Title) -}}
+{{- else -}}
+    <!-- 处理其他类型页面 -->
+    {{- .Title -}}
+{{- end -}}
+```
+
+### 关键要点
+- 分类浏览页面 (`/categories/xxx/`) 是 `term` 类型
+- 需要使用 `(lower .Title)` 处理大小写匹配
+- 中文标题映射避免i18n复杂性
+- 支持所有主要分类的中文显示
