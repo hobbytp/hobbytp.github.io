@@ -8,25 +8,9 @@
     <header class="mb-8">
         <h1 class="text-4xl font-bold mb-4 text-gray-800">
             {{- if eq .Kind "term" -}}
-                {{- $titleMap := dict 
-                    "my_insights" "个人洞察"
-                    "celebrity_insights" "名人洞察"
-                    "ai_spec" "AI标准规范"
-                    "big_companies" "大厂产品线"
-                    "large_models" "大模型"
-                    "training" "训练微调技术"
-                    "context_engineering" "上下文工程"
-                    "mas" "多代理技术"
-                    "ai_tools" "AI工具箱"
-                    "courses" "课程"
-                    "papers" "论文解读"
-                    "technologies" "技术解析"
-                    "projects" "开源项目"
-                    "news" "行业动态"
-                -}}
-                {{- $chineseTitle := index $titleMap (lower .Title) -}}
-                {{- if $chineseTitle -}}
-                    {{- $chineseTitle -}}
+                {{- $translatedTitle := i18n (lower .Title) -}}
+                {{- if ne $translatedTitle (lower .Title) -}}
+                    {{- $translatedTitle -}}
                 {{- else -}}
                     {{- .Title -}}
                 {{- end -}}
