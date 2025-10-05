@@ -27,3 +27,34 @@ other = "Home"
 
 [search]
 other = "Search"
+
+# 新增分类翻译
+[my_insights]
+other = "My Insights"
+
+[celebrity_insights]
+other = "Celebrity Insights"
+
+[ai_spec]
+other = "AI Standards"
+
+[big_companies]
+other = "Big Companies"
+
+[large_models]
+other = "Large Models"
+
+[training]
+other = "Training & Fine-tuning"
+
+[context_engineering]
+other = "Context Engineering"
+
+[mas]
+other = "Multi-Agent Systems"
+
+[ai_tools]
+other = "AI Tools"
+
+[courses]
+other = "Courses"
