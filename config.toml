@@ -18,6 +18,10 @@ pageSize = 5
 unsafe = true
 hardwraps = false
 xhtml = false
+
+[assets]
+[assets.css]
+[assets.css.minify]
 [markup.goldmark.parser]
 autoHeadingID = true
 autoHeadingIDType = "github"
