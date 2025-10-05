@@ -1,5 +1,5 @@
 baseURL = "https://hobbytp.github.io/"
-title = "My AI Blog"
+title = "Peng Tan's AI Blog"
 theme = "PaperMod"
 defaultContentLanguage = "zh"
 
@@ -42,10 +42,10 @@ noClasses = true
 
 [params]
 env = "production"
-title = "My AI Blog"
+title = "Peng Tan's AI Blog"
 description = "一个关注 AI 各领域的专题博客"
 author = "Peng Tan"
-mainSections = ["posts"]
+mainSections = ["zh"]
 ShowReadingTime = true
 ShowShareButtons = true
 ShowPostNavLinks = true
@@ -58,11 +58,24 @@ enableSchemaOrg = true
 customCSS = ["css/custom.css"]
 
 [params.profileMode]
-enabled = false
+enabled = true
 title = "Peng Tan's AI Blog"
 subtitle = "关注 AI 领域的论文解读、最新技术、开源项目、知名人物访谈、动态和商业产品介绍"
-imageUrl = "/images/profile.jpg"
+imageUrl = "/images/profile.png"
 imageTitle = "Peng Tan"
+
+# 添加按钮链接到关于作者页面
+[[params.profileMode.buttons]]
+name = "关于作者"
+url = "/zh/about"
+
+[[params.profileMode.buttons]]
+name = "GitHub"
+url = "https://github.com/hobbytp"
+
+[[params.profileMode.buttons]]
+name = "最新文章"
+url = "/zh"
 
 
 [menu]
@@ -145,9 +158,14 @@ url = "/categories/courses"
 weight = 15
 
 [[menu.main]]
+name = "关于作者"
+url = "/zh/about"
+weight = 16
+
+[[menu.main]]
 name = "搜索"
 url = "/search"
-weight = 16
+weight = 17
 
 # 这会生成 /index.json，供前端搜索用。
 [outputs]

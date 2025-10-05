@@ -8,7 +8,7 @@
 
 - description: "Hugo页面类型：Section页面基于目录结构，Term页面基于分类/标签"
   applies_to: "layouts/_default/list.html"
-  action: "suggest: 使用 {{- if eq .Kind \"term\" -}} 处理分类浏览页面"
+  action: 'suggest: 使用 {{- if eq .Kind "term" -}} 处理分类浏览页面'
 
 - description: "分类浏览页面 (/categories/xxx/) 是 term 类型，需要使用 (lower .Title) 处理大小写匹配"
   applies_to: "layouts/_default/list.html"
