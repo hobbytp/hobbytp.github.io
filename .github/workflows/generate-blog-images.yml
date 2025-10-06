@@ -1,12 +1,7 @@
 name: Generate Blog Images
 
 on:
-  push:
-    paths:
-      - "content/**/*.md"
-    branches:
-      - main
-  workflow_dispatch: # 允许手动触发
+  workflow_dispatch: # 只支持手动触发
 
 jobs:
   generate-images:

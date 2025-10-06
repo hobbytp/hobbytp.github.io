@@ -2,7 +2,7 @@ name: Backfill Blog Images
 
 on:
     schedule:
-        - cron: "0 2 * * *" # 每天UTC 2点（北京时间10点）
+        - cron: "0 2 * * 1" # 每周一UTC 2点（北京时间10点）
     workflow_dispatch: # 允许手动触发
 
 jobs:
