@@ -1577,17 +1577,21 @@ body .flex-1 h2:last-of-type::after {
   color: #ffffff !important;
   text-decoration: none !important;
   border-radius: var(--radius-lg) !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
   transition: all var(--transition-base) !important;
   box-shadow: var(--shadow-sm) !important;
-  border: none !important;
+  border: 2px solid var(--color-primary) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
 }
 
 .profile .button:hover {
   transform: translateY(-2px) !important;
   box-shadow: var(--shadow-md) !important;
   background: var(--color-primary-dark) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary-dark) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
 }
 
 .profile .button svg {
@@ -1616,6 +1620,59 @@ body .flex-1 h2:last-of-type::after {
 
 .dark .profile img {
   border-color: var(--color-primary-light) !important;
+}
+
+.dark .profile .button {
+  background: var(--color-primary-light) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary-light) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .profile .button:hover {
+  background: var(--color-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary) !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .profile .button {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #000000 !important;
+    text-shadow: none !important;
+  }
+  
+  .profile .button:hover {
+    background: #333333 !important;
+    border-color: #333333 !important;
+  }
+  
+  .dark .profile .button {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff !important;
+  }
+  
+  .dark .profile .button:hover {
+    background: #f0f0f0 !important;
+    border-color: #f0f0f0 !important;
+  }
+}
+
+/* 强制文字可见性 */
+.profile .button,
+.profile .button * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .profile .button,
+.dark .profile .button * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* 移动端优化 */
