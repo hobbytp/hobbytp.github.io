@@ -16,8 +16,10 @@ import yaml
 class DailyAICollector:
     def __init__(self):
         #self.openai_client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-        self.openai_client = openai.OpenAI(api_key=os.getenv('GEMINI_API_KEY'),
-            base_url="https://generativelanguage.googleapis.com/v1beta/openai/"),
+        self.openai_client = openai.OpenAI(
+            api_key=os.getenv('GEMINI_API_KEY'),
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+        )
 
         self.github_token = os.getenv('GITHUB_TOKEN')
         self.hf_token = os.getenv('HUGGINGFACE_API_KEY')
