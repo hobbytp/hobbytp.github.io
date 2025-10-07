@@ -57,19 +57,22 @@ python scripts/test_data_collection.py
 ## 🔧 API密钥获取指南
 
 ### GitHub Token
-1. 访问 https://github.com/settings/tokens
+
+1. 访问 <https://github.com/settings/tokens>
 2. 点击 "Generate new token" → "Generate new token (classic)"
 3. 选择权限：至少需要 `public_repo` 权限
 4. 复制生成的token
 
 ### Gemini API Key
-1. 访问 https://makersuite.google.com/app/apikey
+
+1. 访问 <https://makersuite.google.com/app/apikey>
 2. 登录Google账户
 3. 点击 "Create API Key"
 4. 复制生成的API密钥
 
 ### Hugging Face Token（可选）
-1. 访问 https://huggingface.co/settings/tokens
+
+1. 访问 <https://huggingface.co/settings/tokens>
 2. 登录Hugging Face账户
 3. 点击 "New token"
 4. 选择权限：`read` 即可
@@ -78,7 +81,9 @@ python scripts/test_data_collection.py
 ## 📊 测试脚本说明
 
 ### `test_data_collection.py`
+
 主要测试脚本，包含以下测试：
+
 - ✅ 环境变量检查
 - ✅ GitHub API测试
 - ✅ Hugging Face API测试
@@ -87,13 +92,17 @@ python scripts/test_data_collection.py
 - ✅ 完整数据收集流程测试
 
 ### `setup_test_env.py`
+
 环境设置脚本，帮助：
+
 - 检查Python包依赖
 - 验证API密钥设置
 - 创建配置文件模板
 
 ### `run_test.py`
+
 快速测试脚本，自动：
+
 - 加载.env文件
 - 运行完整测试套件
 
@@ -176,6 +185,7 @@ AI摘要生成: ✅ 通过
 ### 常见问题
 
 1. **"ImportError: No module named 'requests'"**
+
    ```bash
    pip install requests openai pyyaml
    ```
@@ -200,6 +210,7 @@ AI摘要生成: ✅ 通过
    - 注意API响应状态码
 
 2. **检查网络连接**
+
    ```bash
    # 测试GitHub API
    curl -H "Authorization: Bearer YOUR_TOKEN" https://api.github.com/user
@@ -209,12 +220,13 @@ AI摘要生成: ✅ 通过
    ```
 
 3. **验证API密钥**
-   - GitHub: 访问 https://api.github.com/user
+   - GitHub: 访问 <https://api.github.com/user>
    - Gemini: 使用API文档中的测试端点
 
 ## 📝 测试结果文件
 
 测试完成后会生成 `test_daily_ai_output.md` 文件，包含：
+
 - 数据收集统计
 - AI生成的摘要
 - 原始收集的数据（JSON格式）
@@ -224,6 +236,7 @@ AI摘要生成: ✅ 通过
 ## 🔄 持续测试
 
 建议定期运行测试以确保：
+
 - API密钥仍然有效
 - 数据收集功能正常
 - 网络连接稳定
