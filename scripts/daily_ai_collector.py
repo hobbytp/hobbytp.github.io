@@ -36,62 +36,82 @@ class DailyAICollector:
     def search_github_trending(self) -> List[Dict]:
         """搜索GitHub热门AI项目"""
         if not self.github_token:
+            print("⚠️ GitHub token未设置，跳过GitHub搜索")
             return []
             
-        headers = {'Authorization': f'token {self.github_token}'}
+        headers = {'Authorization': f'Bearer {self.github_token}'}
         url = 'https://api.github.com/search/repositories'
         
-        # 搜索过去24小时创建的AI相关项目
+        # 搜索过去7天创建的AI相关项目（放宽时间范围）
         yesterday, today = self.get_date_range()
-        date_str = yesterday.strftime('%Y-%m-%d')
+        date_str = (yesterday - datetime.timedelta(days=6)).strftime('%Y-%m-%d')
         
         params = {
-            'q': f'AI machine-learning deep-learning created:>{date_str}',
+            'q': f'AI machine-learning deep-learning created:>{date_str} language:python language:javascript',
             'sort': 'stars',
             'order': 'desc',
-            'per_page': 10
+            'per_page': 20
         }
         
         try:
+            print(f"🔍 搜索GitHub项目: {params['q']}")
             response = requests.get(url, headers=headers, params=params)
+            print(f"📊 GitHub API响应状态: {response.status_code}")
+            
             if response.status_code == 200:
                 data = response.json()
-                return data.get('items', [])
+                items = data.get('items', [])
+                print(f"✅ 找到 {len(items)} 个GitHub项目")
+                return items[:10]  # 返回前10个
+            else:
+                print(f"❌ GitHub API错误: {response.status_code} - {response.text}")
         except Exception as e:
-            print(f"GitHub搜索错误: {e}")
+            print(f"❌ GitHub搜索错误: {e}")
             
         return []
     
     def search_huggingface_models(self) -> List[Dict]:
         """搜索Hugging Face新模型"""
         if not self.hf_token:
+            print("⚠️ Hugging Face token未设置，跳过HF搜索")
             return []
             
         headers = {'Authorization': f'Bearer {self.hf_token}'}
         url = 'https://huggingface.co/api/models'
         
+        # 搜索过去7天创建的模型（放宽时间范围）
         yesterday, today = self.get_date_range()
-        date_str = yesterday.strftime('%Y-%m-%d')
+        date_str = (yesterday - datetime.timedelta(days=6)).strftime('%Y-%m-%d')
         
         params = {
             'filter': 'pytorch',
             'sort': 'downloads',
             'direction': -1,
-            'limit': 10
+            'limit': 50
         }
         
         try:
+            print(f"🔍 搜索Hugging Face模型")
             response = requests.get(url, headers=headers, params=params)
+            print(f"📊 HF API响应状态: {response.status_code}")
+            
             if response.status_code == 200:
                 models = response.json()
+                print(f"📊 获取到 {len(models)} 个模型")
+                
                 # 过滤最近创建的模型
-                recent_models = [
-                    model for model in models 
-                    if model.get('created_at', '').startswith(date_str)
-                ]
+                recent_models = []
+                for model in models:
+                    created_at = model.get('created_at', '')
+                    if created_at and created_at >= date_str:
+                        recent_models.append(model)
+                
+                print(f"✅ 找到 {len(recent_models)} 个最近创建的模型")
                 return recent_models[:5]
+            else:
+                print(f"❌ HF API错误: {response.status_code} - {response.text}")
         except Exception as e:
-            print(f"Hugging Face搜索错误: {e}")
+            print(f"❌ Hugging Face搜索错误: {e}")
             
         return []
     
@@ -99,19 +119,24 @@ class DailyAICollector:
         """搜索ArXiv最新AI论文"""
         url = 'http://export.arxiv.org/api/query'
         
+        # 搜索过去7天的论文（放宽时间范围）
         yesterday, today = self.get_date_range()
-        date_str = yesterday.strftime('%Y%m%d')
+        start_date = (yesterday - datetime.timedelta(days=6)).strftime('%Y%m%d')
+        end_date = today.strftime('%Y%m%d')
         
         params = {
-            'search_query': f'cat:cs.AI OR cat:cs.LG OR cat:cs.CL AND submittedDate:[{date_str}0000 TO {date_str}2359]',
+            'search_query': f'cat:cs.AI OR cat:cs.LG OR cat:cs.CL AND submittedDate:[{start_date}0000 TO {end_date}2359]',
             'start': 0,
-            'max_results': 10,
+            'max_results': 20,
             'sortBy': 'submittedDate',
             'sortOrder': 'descending'
         }
         
         try:
+            print(f"🔍 搜索ArXiv论文: {params['search_query']}")
             response = requests.get(url, params=params)
+            print(f"📊 ArXiv API响应状态: {response.status_code}")
+            
             if response.status_code == 200:
                 # 解析XML响应
                 import xml.etree.ElementTree as ET
@@ -119,22 +144,42 @@ class DailyAICollector:
                 
                 papers = []
                 for entry in root.findall('{http://www.w3.org/2005/Atom}entry'):
-                    paper = {
-                        'title': entry.find('{http://www.w3.org/2005/Atom}title').text,
-                        'authors': [author.find('{http://www.w3.org/2005/Atom}name').text 
-                                  for author in entry.findall('{http://www.w3.org/2005/Atom}author')],
-                        'summary': entry.find('{http://www.w3.org/2005/Atom}summary').text,
-                        'link': entry.find('{http://www.w3.org/2005/Atom}id').text
-                    }
-                    papers.append(paper)
+                    title_elem = entry.find('{http://www.w3.org/2005/Atom}title')
+                    summary_elem = entry.find('{http://www.w3.org/2005/Atom}summary')
+                    link_elem = entry.find('{http://www.w3.org/2005/Atom}id')
+                    
+                    if title_elem is not None and summary_elem is not None and link_elem is not None:
+                        paper = {
+                            'title': title_elem.text.strip() if title_elem.text else '无标题',
+                            'authors': [author.find('{http://www.w3.org/2005/Atom}name').text 
+                                      for author in entry.findall('{http://www.w3.org/2005/Atom}author')
+                                      if author.find('{http://www.w3.org/2005/Atom}name') is not None],
+                            'summary': summary_elem.text.strip() if summary_elem.text else '无摘要',
+                            'link': link_elem.text.strip() if link_elem.text else ''
+                        }
+                        papers.append(paper)
+                
+                print(f"✅ 找到 {len(papers)} 篇ArXiv论文")
                 return papers[:5]
+            else:
+                print(f"❌ ArXiv API错误: {response.status_code}")
         except Exception as e:
-            print(f"ArXiv搜索错误: {e}")
+            print(f"❌ ArXiv搜索错误: {e}")
             
         return []
     
     def generate_ai_summary(self, collected_data: Dict) -> str:
         """使用AI生成每日动态摘要"""
+        # 先打印收集到的数据统计
+        github_count = len(collected_data.get('github_projects', []))
+        hf_count = len(collected_data.get('hf_models', []))
+        arxiv_count = len(collected_data.get('arxiv_papers', []))
+        
+        print(f"📊 数据收集统计:")
+        print(f"   GitHub项目: {github_count}")
+        print(f"   HF模型: {hf_count}")
+        print(f"   ArXiv论文: {arxiv_count}")
+        
         prompt = f"""
         基于以下收集的AI技术动态数据，生成一份结构化的每日AI动态报告：
 
@@ -155,18 +200,21 @@ class DailyAICollector:
 
         每个分类下包含2-3个重要动态，每个动态包含标题、简要描述和链接。
         使用中文，内容要准确、简洁、有价值。
+        如果某个分类没有数据，请明确说明"今日无新增动态"。
         """
         
         try:
+            print("🤖 开始AI生成摘要...")
             response = self.openai_client.chat.completions.create(
                 model="gemini-2.5-flash",
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=2000,
                 temperature=0.7
             )
+            print("✅ AI摘要生成完成")
             return response.choices[0].message.content
         except Exception as e:
-            print(f"AI生成摘要错误: {e}")
+            print(f"❌ AI生成摘要错误: {e}")
             return self.generate_fallback_summary(collected_data)
     
     def generate_fallback_summary(self, collected_data: Dict) -> str:
@@ -199,7 +247,10 @@ class DailyAICollector:
         date_str = today.strftime('%Y-%m-%d')
         time_range = f"{yesterday.strftime('%Y年%m月%d日 %H:%M')} - {today.strftime('%Y年%m月%d日 %H:%M')}"
         
+        print(f"📅 时间范围: {time_range}")
+        
         # 收集数据
+        print("🔍 开始收集数据...")
         collected_data = {
             'github_projects': self.search_github_trending(),
             'hf_models': self.search_huggingface_models(),
