@@ -36,7 +36,7 @@ class DailyAICollector:
     def search_github_trending(self) -> List[Dict]:
         """搜索GitHub热门AI项目"""
         if not self.github_token:
-            print("⚠️ GitHub token未设置，跳过GitHub搜索")
+            print("WARNING GitHub token未设置，跳过GitHub搜索")
             return []
             
         headers = {'Authorization': f'Bearer {self.github_token}'}
@@ -54,26 +54,26 @@ class DailyAICollector:
         }
         
         try:
-            print(f"🔍 搜索GitHub项目: {params['q']}")
+            print(f"搜索GitHub项目: {params['q']}")
             response = requests.get(url, headers=headers, params=params)
-            print(f"📊 GitHub API响应状态: {response.status_code}")
+            print(f"GitHub API响应状态: {response.status_code}")
             
             if response.status_code == 200:
                 data = response.json()
                 items = data.get('items', [])
-                print(f"✅ 找到 {len(items)} 个GitHub项目")
+                print(f"找到 {len(items)} 个GitHub项目")
                 return items[:10]  # 返回前10个
             else:
-                print(f"❌ GitHub API错误: {response.status_code} - {response.text}")
+                print(f"GitHub API错误: {response.status_code} - {response.text}")
         except Exception as e:
-            print(f"❌ GitHub搜索错误: {e}")
+            print(f"GitHub搜索错误: {e}")
             
         return []
     
     def search_huggingface_models(self) -> List[Dict]:
         """搜索Hugging Face新模型"""
         if not self.hf_token:
-            print("⚠️ Hugging Face token未设置，跳过HF搜索")
+            print("WARNING Hugging Face token未设置，跳过HF搜索")
             return []
             
         headers = {'Authorization': f'Bearer {self.hf_token}'}
@@ -91,13 +91,13 @@ class DailyAICollector:
         }
         
         try:
-            print(f"🔍 搜索Hugging Face模型")
+            print(f"搜索Hugging Face模型")
             response = requests.get(url, headers=headers, params=params)
-            print(f"📊 HF API响应状态: {response.status_code}")
+            print(f"HF API响应状态: {response.status_code}")
             
             if response.status_code == 200:
                 models = response.json()
-                print(f"📊 获取到 {len(models)} 个模型")
+                print(f"获取到 {len(models)} 个模型")
                 
                 # 过滤最近创建的模型
                 recent_models = []
@@ -106,12 +106,12 @@ class DailyAICollector:
                     if created_at and created_at >= date_str:
                         recent_models.append(model)
                 
-                print(f"✅ 找到 {len(recent_models)} 个最近创建的模型")
+                print(f"找到 {len(recent_models)} 个最近创建的模型")
                 return recent_models[:5]
             else:
-                print(f"❌ HF API错误: {response.status_code} - {response.text}")
+                print(f"HF API错误: {response.status_code} - {response.text}")
         except Exception as e:
-            print(f"❌ Hugging Face搜索错误: {e}")
+            print(f"Hugging Face搜索错误: {e}")
             
         return []
     
@@ -133,9 +133,9 @@ class DailyAICollector:
         }
         
         try:
-            print(f"🔍 搜索ArXiv论文: {params['search_query']}")
+            print(f"搜索ArXiv论文: {params['search_query']}")
             response = requests.get(url, params=params)
-            print(f"📊 ArXiv API响应状态: {response.status_code}")
+            print(f"ArXiv API响应状态: {response.status_code}")
             
             if response.status_code == 200:
                 # 解析XML响应
@@ -159,12 +159,12 @@ class DailyAICollector:
                         }
                         papers.append(paper)
                 
-                print(f"✅ 找到 {len(papers)} 篇ArXiv论文")
+                print(f"找到 {len(papers)} 篇ArXiv论文")
                 return papers[:5]
             else:
-                print(f"❌ ArXiv API错误: {response.status_code}")
+                print(f"ArXiv API错误: {response.status_code}")
         except Exception as e:
-            print(f"❌ ArXiv搜索错误: {e}")
+            print(f"ArXiv搜索错误: {e}")
             
         return []
     
@@ -175,7 +175,7 @@ class DailyAICollector:
         hf_count = len(collected_data.get('hf_models', []))
         arxiv_count = len(collected_data.get('arxiv_papers', []))
         
-        print(f"📊 数据收集统计:")
+        print(f"数据收集统计:")
         print(f"   GitHub项目: {github_count}")
         print(f"   HF模型: {hf_count}")
         print(f"   ArXiv论文: {arxiv_count}")
@@ -187,16 +187,16 @@ class DailyAICollector:
         {json.dumps(collected_data, ensure_ascii=False, indent=2)}
 
         请按照以下格式生成内容：
-        1. 🤖 新模型发布
-        2. 🛠️ 新框架工具  
-        3. 📱 新应用产品
-        4. 📋 新标准规范
-        5. 🔬 新开源项目
-        6. 📄 新论文发布
-        7. 🎤 科技访谈
-        8. 📊 技术报告
-        9. 🏛️ 论坛会议
-        10. 📈 行业趋势
+        1. 新模型发布
+        2. 新框架工具  
+        3. 新应用产品
+        4. 新标准规范
+        5. 新开源项目
+        6. 新论文发布
+        7. 科技访谈
+        8. 技术报告
+        9. 论坛会议
+        10. 行业趋势
 
         每个分类下包含2-3个重要动态，每个动态包含标题、简要描述和链接。
         使用中文，内容要准确、简洁、有价值。
@@ -204,17 +204,17 @@ class DailyAICollector:
         """
         
         try:
-            print("🤖 开始AI生成摘要...")
+            print("开始AI生成摘要...")
             response = self.openai_client.chat.completions.create(
                 model="gemini-2.5-flash",
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=2000,
                 temperature=0.7
             )
-            print("✅ AI摘要生成完成")
+            print("AI摘要生成完成")
             return response.choices[0].message.content
         except Exception as e:
-            print(f"❌ AI生成摘要错误: {e}")
+            print(f"AI生成摘要错误: {e}")
             return self.generate_fallback_summary(collected_data)
     
     def generate_fallback_summary(self, collected_data: Dict) -> str:
@@ -222,19 +222,19 @@ class DailyAICollector:
         summary = "# 每日AI动态\n\n"
         
         if collected_data.get('github_projects'):
-            summary += "## 🔬 新开源项目\n"
+            summary += "## 新开源项目\n"
             for project in collected_data['github_projects'][:3]:
                 summary += f"- **{project['name']}**: {project.get('description', '无描述')}\n"
             summary += "\n"
         
         if collected_data.get('hf_models'):
-            summary += "## 🤖 新模型发布\n"
+            summary += "## 新模型发布\n"
             for model in collected_data['hf_models'][:3]:
                 summary += f"- **{model['modelId']}**: {model.get('pipeline_tag', '未知类型')}\n"
             summary += "\n"
         
         if collected_data.get('arxiv_papers'):
-            summary += "## 📄 新论文发布\n"
+            summary += "## 新论文发布\n"
             for paper in collected_data['arxiv_papers'][:3]:
                 summary += f"- **{paper['title']}**: {paper['summary'][:100]}...\n"
             summary += "\n"
@@ -247,10 +247,10 @@ class DailyAICollector:
         date_str = today.strftime('%Y-%m-%d')
         time_range = f"{yesterday.strftime('%Y年%m月%d日 %H:%M')} - {today.strftime('%Y年%m月%d日 %H:%M')}"
         
-        print(f"📅 时间范围: {time_range}")
+        print(f"时间范围: {time_range}")
         
         # 收集数据
-        print("🔍 开始收集数据...")
+        print("开始收集数据...")
         collected_data = {
             'github_projects': self.search_github_trending(),
             'hf_models': self.search_huggingface_models(),
@@ -292,17 +292,17 @@ description: "{date_str}的AI技术动态汇总"
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(content)
         
-        print(f"✅ 每日AI动态已保存到: {file_path}")
+        print(f"每日AI动态已保存到: {file_path}")
         return file_path
 
 def main():
     """主函数"""
-    print("🚀 开始收集每日AI动态...")
+    print("开始收集每日AI动态...")
     
     collector = DailyAICollector()
     file_path = collector.save_daily_content()
     
-    print(f"✅ 每日AI动态收集完成: {file_path}")
+    print(f"每日AI动态收集完成: {file_path}")
 
 if __name__ == "__main__":
     main()

@@ -150,3 +150,4 @@ if __name__ == "__main__":
     blogs_without_images = analyzer.find_blogs_without_images()
     print(f"\nFound {len(blogs_without_images)} blogs without images")
 
+

@@ -1,25 +1,15 @@
+---
+title: "gemini"
+date: 2024-01-01T00:00:00+08:00
+draft: false
+tags: ["资源", "链接"]
+categories: ["资源收集"]
+author: "Peng Tan"
+description: "gemini相关资源链接"
+---
 
-# google Gemini相关产品
+# gemini
 
-## 大模型平台：Gemini Pro
+## 相关链接
 
-Gemini 2.5 Pro
-
-## Gemini相关应用
-
-### Deep Research
-
-每天20个Deep Research
-
-2025年4月9日，Google Deep Research 使用 Gemini 2.5 Pro
-
-### NotebookLM
-
-目前支持
-
-- 生成播客,并且支持用户加入播客。
-- 生成脑图
-
-### 如何使用NotebookLM
-
-<https://notebooklm.com/docs/getting-started/overview>
+- [相关链接](https://notebooklm.com/docs/getting-started/overview)

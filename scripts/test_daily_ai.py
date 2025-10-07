@@ -18,7 +18,7 @@ def test_collector():
     print("🧪 开始测试每日AI动态收集器...")
     
     # 检查环境变量
-    required_env_vars = ['OPENAI_API_KEY', 'GITHUB_TOKEN']
+    required_env_vars = ['GEMINI_API_KEY', 'GITHUB_TOKEN']
     missing_vars = [var for var in required_env_vars if not os.getenv(var)]
     
     if missing_vars:
@@ -76,7 +76,7 @@ def main():
         print("✅ 所有测试通过！")
         print("\n📋 下一步:")
         print("1. 在GitHub仓库中设置以下Secrets:")
-        print("   - OPENAI_API_KEY: 你的OpenAI API密钥")
+        print("   - GEMINI_API_KEY: 你的Gemini API密钥")
         print("   - GITHUB_TOKEN: GitHub Personal Access Token")
         print("   - HUGGINGFACE_API_KEY: Hugging Face API密钥 (可选)")
         print("2. 推送代码到GitHub")

@@ -664,7 +664,17 @@ GPL-3.0
 
 ### Claude Code PM
 
-<https://www.aivi.fyi/aiagents/introduce-Claude-Code-Spec-Workflow>
+[Claude Code PM](https://github.com/automazeio/ccpm) 是一个利用GitHub Issues和Git工作树的智能项目管理系统，旨在通过多AI代理并行执行加速软件开发。核心功能包括：上下文保留、并行任务执行、GitHub原生集成，提供完整的追溯能力。主要特点：
+
+- 转换PRD为任务：通过结构化流程从产品需求文档（PRD）到技术实施、任务分解和代码交付。
+- 多代理并行工作：实现多个AI代理同时执行分解任务，提升开发速度。
+- GitHub协作：实时同步任务状态，促进团队协作与透明管理。
+- 严格规范设计：提供五阶段工作流程，确保每行代码都可以追溯到规范。
+- 支持情况：优先本地运行，显式与GitHub同步，避免外部工具复杂性。
+
+安装和配置过程简单，可在几分钟内启动，并提供针对团队透明度、开发高效性及错误减少的显著优化解决方案。项目托管于MIT协议，适合需要提升交付效率的开发团队。
+
+项目主页链接：[automaze.io/ccpm](https://automaze.io/ccpm)。
 
 ### Claude Context
 
