@@ -3,6 +3,9 @@ name: Generate Blog Images
 on:
   workflow_dispatch: # 只支持手动触发
 
+permissions:
+  contents: write
+
 jobs:
   generate-images:
     runs-on: ubuntu-latest

@@ -6,6 +6,10 @@ on:
         - cron: "0 0 * * *"
     workflow_dispatch: # 允许手动触发
 
+permissions:
+    contents: write
+    pull-requests: write
+
 jobs:
     update-daily-ai:
         runs-on: ubuntu-latest
@@ -28,7 +32,7 @@ jobs:
 
             - name: 运行AI动态收集脚本
               env:
-                  OPENAI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+                  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
                   GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
                   HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
               run: |
@@ -39,5 +43,5 @@ jobs:
                   git config --local user.email "action@github.com"
                   git config --local user.name "GitHub Action"
                   git add content/zh/daily_ai/
-                  git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 - $(date '+%Y-%m-%d')"
-                  git push
+                  git diff --staged --quiet || git commit -m "自动更新每日AI动态 - $(date '+%Y-%m-%d')"
+                  git push origin main
