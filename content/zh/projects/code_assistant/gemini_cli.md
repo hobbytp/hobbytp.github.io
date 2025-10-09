@@ -1,10 +1,9 @@
 ---
 title: Gemini CLI 开源项目分析
 date: "2025-06-28T23:03:00+08:00"
-tags: ["gemini_cli", "architecture", "uml"]
-categories: ["projects"]
+tags: ["gemini_cli", "architecture", "code_assistant"]
+categories: ["projects","ai_tools"]
 draft: false
-toc: true
 description: Gemini CLI 开源项目分析
 ---
 
