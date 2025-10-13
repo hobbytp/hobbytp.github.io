@@ -1,0 +1,41 @@
+# 精确简洁的 CSS 修改规则（针对 Hugo + PaperMod）
+
+- description: "主题基础样式只能在 assets/css/main.css 修改，不要改主题内置样式"
+  applies_to: "assets/css/main.css"
+  action: "allow_edit"
+
+- description: "文章扩展样式放在 assets/css/extended/*.css，属于低优先级扩展层"
+  applies_to: "assets/css/extended/*.css"
+  action: "allow_edit_with_warning: 避免覆盖 custom.css 的链接/脚注/参考文献样式"
+
+- description: "最终覆盖层仅在 assets/css/custom.css 修改，负责链接增强与学术组件样式"
+  applies_to: "assets/css/custom.css"
+  action: "allow_edit_with_warning: 使用主题变量 (--color-*)，谨慎使用 !important"
+
+- description: "禁止直接编辑 themes/PaperMod 内的样式与布局"
+  applies_to: "themes/PaperMod/**"
+  action: "warn_if_modified"
+
+- description: "样式打包统一通过 layouts/_default/baseof*.html 的 Hugo Pipes 管理"
+  applies_to: "layouts/_default/baseof.html"
+  action: "suggest: 维护 site.bundle.css 管线 (main + extended + custom)"
+
+- description: "SPA 模式同样使用统一样式管线"
+  applies_to: "layouts/_default/baseof-spa.html"
+  action: "suggest: 与 baseof.html 保持管线一致"
+
+- description: "新增扩展样式须使用主题变量，避免硬编码色值 (#RRGGBB)"
+  applies_to: "assets/css/extended/*.css"
+  action: "warn_if_hardcoded_colors"
+
+- description: "涉及链接、脚注、参考文献样式的变更只能在 custom.css 处理"
+  applies_to: "assets/css/extended/*.css"
+  action: "warn_if_edits_overlap: .post-content a, .footnotes, .references, a[href^='#ref']"
+
+- description: "启用指纹由 config.toml 的 params.assets.disableFingerprinting 控制"
+  applies_to: "config.toml"
+  action: "suggest: 设置 disableFingerprinting=false 以启用 SRI"
+
+- description: "不要在 static/css 下放置同名文件以避免与 Pipes 冲突"
+  applies_to: "static/css/**"
+  action: "warn_if_conflict_with_pipeline"
