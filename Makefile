@@ -1,4 +1,4 @@
-.PHONY: dev build clean
+.PHONY: dev build clean stop
 
 # 开发环境
 dev:
@@ -19,3 +19,7 @@ update-theme:
 
 # 启动新的开发会话（清理后启动）
 fresh: clean dev 
+
+# 停止正在运行的服务（不移除容器与卷）
+stop:
+	docker-compose stop
