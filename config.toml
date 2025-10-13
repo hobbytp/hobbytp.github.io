@@ -60,6 +60,7 @@ enableSchemaOrg = true
 
 [params.assets]
 customCSS = ["css/custom.css"]
+disableFingerprinting = false
 
 [params.profileMode]
 enabled = true
