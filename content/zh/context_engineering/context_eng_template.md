@@ -3,7 +3,7 @@ title: "Context Engineering Intro"
 date: "2025-08-14T20:10:00+08:00"
 draft: false
 tags: ["Context Engineering", "Template"]
-categories: ["context_engineering"]
+categories: ["context_engineering","projects"]
 description: "Context Engineering Intro 是一个全面的模板，用于实现上下文工程，这是通过为 AI 编码助手提供完整上下文来更高效地处理任务的技术。"
 ---
 
