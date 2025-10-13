@@ -143,7 +143,8 @@ body {
     border-bottom: 2px solid #eee;
 }
 
-nav ul {
+/* 仅在页眉导航中使用横向排列，避免影响侧边栏导航 */
+header nav ul {
     display: flex;
     list-style: none;
     padding: 0;
@@ -151,7 +152,7 @@ nav ul {
     align-items: center;
 }
 
-nav ul li {
+header nav ul li {
     margin: 0 1rem;
 }
 

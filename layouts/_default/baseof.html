@@ -4,7 +4,19 @@
 <head>
     {{ partial "seo.html" . }}
     <title>{{ .Title }} - {{ .Site.Title }}</title>
-    <link rel="stylesheet" href="/css/main.css">
+    {{/* Build a unified CSS bundle: main.css + extended/*.css + custom.css */}}
+    {{- $styles := slice (resources.Get "css/main.css") -}}
+    {{- range resources.Match "css/extended/*.css" -}}
+      {{- $styles = $styles | append . -}}
+    {{- end -}}
+    {{- $styles = $styles | append (resources.Get "css/custom.css") -}}
+    {{- $bundle := $styles | resources.Concat "css/site.bundle.css" | resources.Minify -}}
+    {{- if not site.Params.assets.disableFingerprinting -}}
+    {{- $bundlefp := $bundle | fingerprint -}}
+    <link crossorigin="anonymous" href="{{ $bundlefp.RelPermalink }}" integrity="{{ $bundlefp.Data.Integrity }}" rel="preload stylesheet" as="style">
+    {{- else -}}
+    <link crossorigin="anonymous" href="{{ $bundle.RelPermalink }}" rel="preload stylesheet" as="style">
+    {{- end -}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -35,7 +47,6 @@
         }
     </script>
     {{ partial "extend_head.html" . }}
-    <link rel="stylesheet" href="/css/custom.css">
     <style>
       /* Ensure heading hierarchy overrides apply after all styles */
       main.flex-1 article h1 { font-size: 2.5rem !important; font-weight: 800 !important; line-height: 1.2 !important; color: #1f2937 !important; }
