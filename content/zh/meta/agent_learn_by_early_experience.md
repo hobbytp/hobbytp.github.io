@@ -2,7 +2,7 @@
 title: "Agent训练新范式：Agent Learning via Early Experience"
 date: 2025-10-14T18:00:00+08:00
 draft: false
-tags: ["AI", "Meta", "研究"]
+tags: ["AI", "Meta", "Agent","RL","早期经验"]
 categories: ["papers"]
 description: "传统AI训练像是把人类所有的知识都强行灌输AI，而Meta的最新论文《Agent Learning via Early Experience》为我们展示了一条训练AI智能体的新路径: 可扩展、无需奖励的实用范式，通过将智能体自身的行为和结果转化为强大的监督信号，显著提升了AI的性能、数据效率和泛化能力。"
 ---
@@ -77,7 +77,7 @@ description: "传统AI训练像是把人类所有的知识都强行灌输AI，�
 
 正如论文的结论所言：
 
-Early experience is not merely an alternative to imitation learning, but a practical and scalable bridge to reinforcement learning...
+>Early experience is not merely an alternative to imitation learning, but a practical and scalable bridge to reinforcement learning...
 
 （早期经验不仅是模仿学习的一种替代方案，更是一座通往强化学习的、实用且可扩展的桥梁……）
 
