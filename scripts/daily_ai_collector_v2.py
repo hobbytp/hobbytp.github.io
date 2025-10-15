@@ -4,7 +4,7 @@
 自动收集AI领域的最新动态，包括新模型、新框架、新应用等
 新增功能：
 - Perplexity API 集成（获取 AI 新闻和趋势）
-- 缩短时间窗口至 24-48 小时
+- 缩短时间窗口至 24 小时（真正的每日动态）
 - 数据去重功能
 - 内容质量评分和排序
 - 简化的分类体系
@@ -112,8 +112,8 @@ class DailyAICollectorV2:
         self.seen_urls: Set[str] = set()
         self.seen_titles: Set[str] = set()
         
-    def get_date_range(self, hours_back: int = 48) -> tuple:
-        """获取时间范围（默认过去48小时）"""
+    def get_date_range(self, hours_back: int = 24) -> tuple:
+        """获取时间范围（默认过去24小时）"""
         now = datetime.datetime.now()
         today_8am = now.replace(hour=8, minute=0, second=0, microsecond=0)
         start_time = today_8am - datetime.timedelta(hours=hours_back)
@@ -227,7 +227,7 @@ class DailyAICollectorV2:
             return []
         
         try:
-            yesterday, today = self.get_date_range(hours_back=48)
+            yesterday, today = self.get_date_range(hours_back=24)
             date_str = yesterday.strftime('%Y-%m-%d')
             
             # 多查询搜索：AI新闻、模型发布、工具发布
@@ -289,7 +289,7 @@ class DailyAICollectorV2:
             return []
     
     def search_github_trending(self) -> List[Dict]:
-        """搜索GitHub热门AI项目（缩短时间窗口至48小时）"""
+        """搜索GitHub热门AI项目（缩短时间窗口至24小时）"""
         if not self.github_token:
             print("WARNING: GitHub token未设置，跳过GitHub搜索")
             return []
@@ -297,8 +297,8 @@ class DailyAICollectorV2:
         headers = {'Authorization': f'Bearer {self.github_token}'}
         url = 'https://api.github.com/search/repositories'
         
-        # 缩短为过去48小时
-        yesterday, today = self.get_date_range(hours_back=48)
+        # 缩短为过去24小时
+        yesterday, today = self.get_date_range(hours_back=24)
         date_str = yesterday.strftime('%Y-%m-%d')
         
         params = {
@@ -337,7 +337,7 @@ class DailyAICollectorV2:
         return []
     
     def search_huggingface_models(self) -> List[Dict]:
-        """搜索Hugging Face新模型（缩短时间窗口）"""
+        """搜索Hugging Face新模型（缩短时间窗口至24小时）"""
         if not self.hf_token:
             print("WARNING: Hugging Face token未设置，跳过HF搜索")
             return []
@@ -345,7 +345,7 @@ class DailyAICollectorV2:
         headers = {'Authorization': f'Bearer {self.hf_token}'}
         url = 'https://huggingface.co/api/models'
         
-        yesterday, today = self.get_date_range(hours_back=48)
+        yesterday, today = self.get_date_range(hours_back=24)
         date_str = yesterday.strftime('%Y-%m-%d')
         
         params = {
@@ -363,7 +363,7 @@ class DailyAICollectorV2:
             if response.status_code == 200:
                 models = response.json()
                 
-                # 过滤最近48小时的模型
+                # 过滤最近24小时的模型
                 filtered_models = []
                 for model in models:
                     created_at = model.get('createdAt', '')
@@ -384,10 +384,10 @@ class DailyAICollectorV2:
         return []
     
     def search_arxiv_papers(self) -> List[Dict]:
-        """搜索ArXiv最新AI论文（缩短时间窗口）"""
+        """搜索ArXiv最新AI论文（缩短时间窗口至24小时）"""
         url = 'http://export.arxiv.org/api/query'
         
-        yesterday, today = self.get_date_range(hours_back=48)
+        yesterday, today = self.get_date_range(hours_back=24)
         start_date = yesterday.strftime('%Y%m%d')
         end_date = today.strftime('%Y%m%d')
         
@@ -664,7 +664,7 @@ class DailyAICollectorV2:
     
     def create_daily_content(self) -> str:
         """创建每日内容文件"""
-        yesterday, today = self.get_date_range(hours_back=48)
+        yesterday, today = self.get_date_range(hours_back=24)
         date_str = today.strftime('%Y-%m-%d')
         time_range = f"{yesterday.strftime('%Y年%m月%d日 %H:%M')} - {today.strftime('%Y年%m月%d日 %H:%M')}"
         
@@ -764,7 +764,7 @@ def main():
     print(f"\n✅ 收集完成: {file_path}")
     print("\n新功能：")
     print("  ✅ Perplexity AI 新闻搜索")
-    print("  ✅ 48小时时间窗口")
+    print("  ✅ 24小时时间窗口（真正的每日动态）")
     print("  ✅ 智能去重")
     print("  ✅ 内容质量评分")
     print("  ✅ 新的分类体系")
