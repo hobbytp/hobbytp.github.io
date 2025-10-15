@@ -1,4 +1,4 @@
-name: 每日AI动态更新
+name: 每日AI动态更新 V2
 
 on:
     schedule:
@@ -29,27 +29,47 @@ jobs:
               run: |
                   python -m pip install --upgrade pip
                   pip install -r scripts/requirements.txt
+                  echo "============================================"
                   echo "已安装的包:"
-                  pip list | grep -E "(google-generativeai|openai)"
+                  pip list | grep -E "(google-generativeai|openai|perplexity)"
+                  echo "============================================"
 
-            - name: 诊断 Gemini API
+            - name: 诊断 API 连接
               env:
                   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+                  PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
               run: |
-                  python scripts/diagnose_gemini.py
+                  echo "运行诊断脚本..."
+                  python scripts/diagnose_gemini.py || true
 
-            - name: 运行AI动态收集脚本
+            - name: 运行AI动态收集脚本 V2
               env:
                   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+                  PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
                   GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
                   HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
               run: |
-                  python scripts/daily_ai_collector.py
+                  echo "============================================"
+                  echo "开始收集每日AI动态 (V2)"
+                  echo "============================================"
+                  python scripts/daily_ai_collector_v2.py
+                  echo "============================================"
+                  echo "收集完成"
+                  echo "============================================"
+
+            - name: 检查生成的文件
+              run: |
+                  echo "生成的文件:"
+                  ls -lh content/zh/daily_ai/ | tail -5
+                  echo ""
+                  echo "最新文件内容预览:"
+                  latest_file=$(ls -t content/zh/daily_ai/*.md | head -1)
+                  head -50 "$latest_file"
 
             - name: 提交更改
               run: |
                   git config --local user.email "action@github.com"
                   git config --local user.name "GitHub Action"
                   git add content/zh/daily_ai/
-                  git diff --staged --quiet || git commit -m "自动更新每日AI动态 - $(date '+%Y-%m-%d')"
+                  git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 V2 - $(date '+%Y-%m-%d')"
                   git push origin main
