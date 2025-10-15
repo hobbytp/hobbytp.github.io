@@ -15,14 +15,28 @@ import yaml
 
 class DailyAICollector:
     def __init__(self):
-        #self.openai_client = openai.OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-        self.openai_client = openai.OpenAI(
-            api_key=os.getenv('GEMINI_API_KEY'),
-            base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-        )
+        gemini_key = os.getenv('GEMINI_API_KEY')
+        if not gemini_key:
+            print("ERROR: GEMINI_API_KEY 未设置！")
+            self.openai_client = None
+        else:
+            print(f"GEMINI_API_KEY 已设置 (长度: {len(gemini_key)})")
+            try:
+                self.openai_client = openai.OpenAI(
+                    api_key=gemini_key,
+                    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+                )
+                print("OpenAI客户端初始化成功")
+            except Exception as e:
+                print(f"ERROR: OpenAI客户端初始化失败: {e}")
+                self.openai_client = None
 
         self.github_token = os.getenv('GITHUB_TOKEN')
         self.hf_token = os.getenv('HUGGINGFACE_API_KEY')
+        
+        print(f"GitHub Token: {'已设置' if self.github_token else '未设置'}")
+        print(f"HuggingFace Token: {'已设置' if self.hf_token else '未设置'}")
+        
         self.content_dir = Path("content/zh/daily_ai")
         self.content_dir.mkdir(exist_ok=True)
         
@@ -180,6 +194,16 @@ class DailyAICollector:
         print(f"   HF模型: {hf_count}")
         print(f"   ArXiv论文: {arxiv_count}")
         
+        # 如果没有收集到任何数据，直接使用fallback
+        if github_count == 0 and hf_count == 0 and arxiv_count == 0:
+            print("WARNING: 没有收集到任何数据，使用fallback摘要")
+            return self.generate_fallback_summary(collected_data)
+        
+        # 如果 OpenAI 客户端未初始化，直接使用fallback
+        if not self.openai_client:
+            print("WARNING: OpenAI客户端未初始化，使用fallback摘要")
+            return self.generate_fallback_summary(collected_data)
+        
         prompt = f"""
         基于以下收集的AI技术动态数据，生成一份结构化的每日AI动态报告：
 
@@ -206,38 +230,75 @@ class DailyAICollector:
         try:
             print("开始AI生成摘要...")
             response = self.openai_client.chat.completions.create(
-                model="gemini-2.5-flash",
+                model="gemini-1.5-flash",  # 修正模型名称
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=2000,
                 temperature=0.7
             )
             print("AI摘要生成完成")
-            return response.choices[0].message.content
+            content = response.choices[0].message.content
+            
+            # 检查返回内容是否有效
+            if not content or content.strip() == "" or content.lower() == "none":
+                print("WARNING: AI返回了空内容，使用fallback摘要")
+                return self.generate_fallback_summary(collected_data)
+            
+            return content
         except Exception as e:
             print(f"AI生成摘要错误: {e}")
+            import traceback
+            traceback.print_exc()  # 打印完整错误堆栈
             return self.generate_fallback_summary(collected_data)
     
     def generate_fallback_summary(self, collected_data: Dict) -> str:
         """生成备用摘要"""
-        summary = "# 每日AI动态\n\n"
+        print("使用fallback摘要生成器...")
+        summary = ""
+        has_content = False
         
         if collected_data.get('github_projects'):
-            summary += "## 新开源项目\n"
-            for project in collected_data['github_projects'][:3]:
-                summary += f"- **{project['name']}**: {project.get('description', '无描述')}\n"
-            summary += "\n"
+            summary += "## 新开源项目\n\n"
+            for project in collected_data['github_projects'][:5]:
+                name = project.get('name', '未知项目')
+                desc = project.get('description', '无描述')
+                url = project.get('html_url', '')
+                stars = project.get('stargazers_count', 0)
+                summary += f"### [{name}]({url})\n"
+                summary += f"- **描述**: {desc}\n"
+                summary += f"- **Stars**: {stars}\n\n"
+            has_content = True
         
         if collected_data.get('hf_models'):
-            summary += "## 新模型发布\n"
-            for model in collected_data['hf_models'][:3]:
-                summary += f"- **{model['modelId']}**: {model.get('pipeline_tag', '未知类型')}\n"
-            summary += "\n"
+            summary += "## 新模型发布\n\n"
+            for model in collected_data['hf_models'][:5]:
+                model_id = model.get('modelId', '未知模型')
+                pipeline = model.get('pipeline_tag', '未知类型')
+                downloads = model.get('downloads', 0)
+                summary += f"### {model_id}\n"
+                summary += f"- **类型**: {pipeline}\n"
+                summary += f"- **下载量**: {downloads}\n\n"
+            has_content = True
         
         if collected_data.get('arxiv_papers'):
-            summary += "## 新论文发布\n"
-            for paper in collected_data['arxiv_papers'][:3]:
-                summary += f"- **{paper['title']}**: {paper['summary'][:100]}...\n"
-            summary += "\n"
+            summary += "## 新论文发布\n\n"
+            for paper in collected_data['arxiv_papers'][:5]:
+                title = paper.get('title', '未知标题')
+                authors = ', '.join(paper.get('authors', [])[:3])
+                link = paper.get('link', '')
+                abstract = paper.get('summary', '无摘要')[:200]
+                summary += f"### [{title}]({link})\n"
+                summary += f"- **作者**: {authors}\n"
+                summary += f"- **摘要**: {abstract}...\n\n"
+            has_content = True
+        
+        if not has_content:
+            summary = "## 📭 今日暂无AI动态\n\n"
+            summary += "今日数据源未检测到新的AI相关项目、模型或论文发布。\n\n"
+            summary += "可能的原因：\n"
+            summary += "- API 配额限制\n"
+            summary += "- 数据源临时不可用\n"
+            summary += "- 时间段内确实无新增内容\n\n"
+            summary += "建议稍后查看或手动触发更新。\n"
         
         return summary
     
