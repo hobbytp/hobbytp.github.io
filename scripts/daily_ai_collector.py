@@ -230,7 +230,7 @@ class DailyAICollector:
         try:
             print("开始AI生成摘要...")
             response = self.openai_client.chat.completions.create(
-                model="gemini-1.5-flash",  # 修正模型名称
+                model="gemini-2.5-flash",  # 修正模型名称
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=2000,
                 temperature=0.7
