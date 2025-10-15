@@ -9,27 +9,59 @@ import json
 import requests
 import datetime
 from typing import List, Dict, Any
-import openai
 from pathlib import Path
 import yaml
+
+# 尝试导入 Google Gemini SDK
+try:
+    import google.generativeai as genai
+    USE_GOOGLE_SDK = True
+except ImportError:
+    USE_GOOGLE_SDK = False
+    try:
+        import openai
+    except ImportError:
+        print("ERROR: 既没有 google-generativeai 也没有 openai 库")
+        openai = None
 
 class DailyAICollector:
     def __init__(self):
         gemini_key = os.getenv('GEMINI_API_KEY')
         if not gemini_key:
             print("ERROR: GEMINI_API_KEY 未设置！")
-            self.openai_client = None
+            self.ai_client = None
+            self.use_google_sdk = False
         else:
             print(f"GEMINI_API_KEY 已设置 (长度: {len(gemini_key)})")
-            try:
-                self.openai_client = openai.OpenAI(
-                    api_key=gemini_key,
-                    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-                )
-                print("OpenAI客户端初始化成功")
-            except Exception as e:
-                print(f"ERROR: OpenAI客户端初始化失败: {e}")
-                self.openai_client = None
+            
+            # 优先使用 Google SDK
+            if USE_GOOGLE_SDK:
+                try:
+                    genai.configure(api_key=gemini_key)
+                    self.ai_client = genai.GenerativeModel('gemini-2.5-flash')
+                    self.use_google_sdk = True
+                    print("Google Gemini SDK 初始化成功 (模型: gemini-2.5-flash)")
+                except Exception as e:
+                    print(f"ERROR: Google SDK 初始化失败: {e}")
+                    self.ai_client = None
+                    self.use_google_sdk = False
+            # 回退到 OpenAI 兼容接口
+            elif openai:
+                try:
+                    self.ai_client = openai.OpenAI(
+                        api_key=gemini_key,
+                        base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+                    )
+                    self.use_google_sdk = False
+                    print("OpenAI兼容客户端初始化成功 (模型: gemini-2.5-flash)")
+                except Exception as e:
+                    print(f"ERROR: OpenAI客户端初始化失败: {e}")
+                    self.ai_client = None
+                    self.use_google_sdk = False
+            else:
+                print("ERROR: 没有可用的 AI 客户端库")
+                self.ai_client = None
+                self.use_google_sdk = False
 
         self.github_token = os.getenv('GITHUB_TOKEN')
         self.hf_token = os.getenv('HUGGINGFACE_API_KEY')
@@ -199,44 +231,78 @@ class DailyAICollector:
             print("WARNING: 没有收集到任何数据，使用fallback摘要")
             return self.generate_fallback_summary(collected_data)
         
-        # 如果 OpenAI 客户端未初始化，直接使用fallback
-        if not self.openai_client:
-            print("WARNING: OpenAI客户端未初始化，使用fallback摘要")
+        # 如果 AI 客户端未初始化，直接使用fallback
+        if not self.ai_client:
+            print("WARNING: AI客户端未初始化，使用fallback摘要")
             return self.generate_fallback_summary(collected_data)
         
-        prompt = f"""
-        基于以下收集的AI技术动态数据，生成一份结构化的每日AI动态报告：
+        prompt = f"""基于以下收集的AI技术动态数据，生成一份结构化的每日AI动态报告。
 
-        数据：
-        {json.dumps(collected_data, ensure_ascii=False, indent=2)}
+数据：
+{json.dumps(collected_data, ensure_ascii=False, indent=2)}
 
-        请按照以下格式生成内容：
-        1. 新模型发布
-        2. 新框架工具  
-        3. 新应用产品
-        4. 新标准规范
-        5. 新开源项目
-        6. 新论文发布
-        7. 科技访谈
-        8. 技术报告
-        9. 论坛会议
-        10. 行业趋势
+请按照以下格式生成内容：
+1. 新模型发布
+2. 新框架工具  
+3. 新应用产品
+4. 新标准规范
+5. 新开源项目
+6. 新论文发布
+7. 科技访谈
+8. 技术报告
+9. 论坛会议
+10. 行业趋势
 
-        每个分类下包含2-3个重要动态，每个动态包含标题、简要描述和链接。
-        使用中文，内容要准确、简洁、有价值。
-        如果某个分类没有数据，请明确说明"今日无新增动态"。
-        """
+每个分类下包含2-3个重要动态，每个动态包含标题、简要描述和链接。
+使用中文，内容要准确、简洁、有价值。
+如果某个分类没有数据，请明确说明"今日无新增动态"。
+"""
         
         try:
             print("开始AI生成摘要...")
-            response = self.openai_client.chat.completions.create(
-                model="gemini-2.5-flash",  # 修正模型名称
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=2000,
-                temperature=0.7
-            )
+            print(f"DEBUG: 使用{'Google SDK' if self.use_google_sdk else 'OpenAI兼容接口'}")
+            
+            if self.use_google_sdk:
+                # 使用 Google SDK
+                print("DEBUG: 调用 Google SDK generate_content...")
+                response = self.ai_client.generate_content(prompt)
+                print(f"DEBUG: Response type: {type(response)}")
+                
+                # 尝试多种方式提取内容
+                content = None
+                if hasattr(response, 'text'):
+                    content = response.text
+                    print(f"DEBUG: 从 response.text 提取，长度: {len(content) if content else 0}")
+                elif hasattr(response, 'candidates') and response.candidates:
+                    candidate = response.candidates[0]
+                    if hasattr(candidate, 'content') and hasattr(candidate.content, 'parts'):
+                        parts = candidate.content.parts
+                        content = ''.join(part.text for part in parts if hasattr(part, 'text'))
+                        print(f"DEBUG: 从 candidates[0].content.parts 提取，长度: {len(content) if content else 0}")
+                
+                if not content:
+                    print(f"DEBUG: 无法提取内容，response: {response}")
+                    print(f"DEBUG: Response dir: {dir(response)}")
+            else:
+                # 使用 OpenAI 兼容接口
+                print("DEBUG: 调用 OpenAI 兼容接口...")
+                response = self.ai_client.chat.completions.create(
+                    model="gemini-2.5-flash",
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=2000,
+                    temperature=0.7
+                )
+                print(f"DEBUG: Response type: {type(response)}")
+                content = response.choices[0].message.content
+                print(f"DEBUG: 提取的内容长度: {len(content) if content else 0}")
+            
             print("AI摘要生成完成")
-            content = response.choices[0].message.content
+            
+            if content:
+                preview = content[:100].replace('\n', ' ')
+                print(f"DEBUG: AI返回内容预览: {preview}...")
+            else:
+                print("DEBUG: content 为 None 或空")
             
             # 检查返回内容是否有效
             if not content or content.strip() == "" or content.lower() == "none":
