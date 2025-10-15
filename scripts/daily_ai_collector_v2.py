@@ -246,27 +246,33 @@ class DailyAICollectorV2:
             )
             
             all_results = []
+            query_types = ['news', 'models', 'tools']
+            
             if hasattr(search, 'results'):
                 # 处理多查询结果
                 for query_idx, query_results in enumerate(search.results):
+                    # 安全获取 query_type，超出索引则使用 'general'
+                    query_type = query_types[query_idx] if query_idx < len(query_types) else 'general'
+                    
                     if isinstance(query_results, list):
+                        # query_results 是列表
                         for result in query_results:
                             item = {
                                 'title': result.title if hasattr(result, 'title') else '',
                                 'url': result.url if hasattr(result, 'url') else '',
                                 'snippet': result.snippet if hasattr(result, 'snippet') else '',
                                 'date': result.date if hasattr(result, 'date') else '',
-                                'query_type': ['news', 'models', 'tools'][query_idx]
+                                'query_type': query_type
                             }
                             all_results.append(item)
                     else:
-                        # 单个结果对象
+                        # query_results 是单个结果对象
                         item = {
                             'title': query_results.title if hasattr(query_results, 'title') else '',
                             'url': query_results.url if hasattr(query_results, 'url') else '',
                             'snippet': query_results.snippet if hasattr(query_results, 'snippet') else '',
                             'date': query_results.date if hasattr(query_results, 'date') else '',
-                            'query_type': ['news', 'models', 'tools'][query_idx]
+                            'query_type': query_type
                         }
                         all_results.append(item)
             
@@ -275,8 +281,11 @@ class DailyAICollectorV2:
             
         except Exception as e:
             print(f"Perplexity 搜索错误: {e}")
+            print(f"错误类型: {type(e).__name__}")
             import traceback
+            print("完整错误堆栈:")
             traceback.print_exc()
+            print("提示: Perplexity API 调用失败，将跳过新闻搜索")
             return []
     
     def search_github_trending(self) -> List[Dict]:
