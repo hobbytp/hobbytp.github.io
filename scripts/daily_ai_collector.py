@@ -16,10 +16,13 @@ import yaml
 try:
     import google.generativeai as genai
     USE_GOOGLE_SDK = True
-except ImportError:
+    print("✅ google.generativeai 库导入成功")
+except ImportError as e:
     USE_GOOGLE_SDK = False
+    print(f"⚠️ google.generativeai 库导入失败: {e}")
     try:
         import openai
+        print("✅ openai 库导入成功（回退模式）")
     except ImportError:
         print("ERROR: 既没有 google-generativeai 也没有 openai 库")
         openai = None
@@ -293,7 +296,20 @@ class DailyAICollector:
                     temperature=0.7
                 )
                 print(f"DEBUG: Response type: {type(response)}")
-                content = response.choices[0].message.content
+                print(f"DEBUG: Response: {response}")
+                print(f"DEBUG: Choices length: {len(response.choices) if response.choices else 0}")
+                
+                if response.choices and len(response.choices) > 0:
+                    choice = response.choices[0]
+                    print(f"DEBUG: Choice: {choice}")
+                    print(f"DEBUG: Message: {choice.message}")
+                    print(f"DEBUG: Message content: {choice.message.content}")
+                    print(f"DEBUG: Finish reason: {choice.finish_reason}")
+                    content = choice.message.content
+                else:
+                    print("DEBUG: No choices in response!")
+                    content = None
+                
                 print(f"DEBUG: 提取的内容长度: {len(content) if content else 0}")
             
             print("AI摘要生成完成")
