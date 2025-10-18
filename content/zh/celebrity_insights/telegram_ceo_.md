@@ -2,7 +2,7 @@
 title: "Pavel Durov 的成功密码：深度解析自由、自律与商业哲学的融合"
 date: "2025-10-15T16:10:00+08:00"
 draft: false
-tags: ["AI","Telegram","CEO","Pavel Durov"]
+tags: ["Lex Fridman","Telegram","CEO","Pavel Durov"]
 categories: ["celebrity_insights"]
 description: "Pavel Durov 的成功密码：深度解析自由、自律与商业哲学的融合"
 ---
