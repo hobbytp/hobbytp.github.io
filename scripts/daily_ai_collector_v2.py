@@ -229,12 +229,13 @@ class DailyAICollectorV2:
         try:
             yesterday, today = self.get_date_range(hours_back=24)
             date_str = yesterday.strftime('%Y-%m-%d')
+            today_str = today.strftime('%Y-%m-%d')
             
-            # 多查询搜索：AI新闻、模型发布、工具发布
+            # 多查询搜索：最近24小时的 AI 新闻（使用更精确的日期过滤）
             queries = [
-                f"latest AI news and breakthroughs since {date_str}",
-                f"new AI models released since {date_str}",
-                f"new AI tools and frameworks since {date_str}"
+                f"AI news breakthroughs after {date_str} before {today_str}",
+                f"new AI model releases after {date_str}",
+                f"AI tools frameworks launched after {date_str}"
             ]
             
             print(f"使用 Perplexity 搜索: {queries}")
@@ -552,45 +553,75 @@ class DailyAICollectorV2:
         print("使用 fallback 摘要生成器（新格式）...")
         summary = ""
         
-        # 今日焦点
+        # 今日焦点 - 从所有数据源中选取高质量项目
         summary += "## 📰 今日焦点\n\n"
         focus_items = []
         
-        # 从 Perplexity 结果中选择焦点
+        # 1. 优先从 Perplexity 新闻中选择焦点
         perplexity_news = collected_data.get('perplexity_news', [])
-        if perplexity_news:
+        if perplexity_news and len(perplexity_news) > 0:
+            print(f"DEBUG: 从 Perplexity 新闻中选择焦点 ({len(perplexity_news)} 条)")
             for item in perplexity_news[:2]:
                 title = item.get('title', '未知标题')
                 url = item.get('url', '')
                 snippet = item.get('snippet', '')[:150]
-                summary += f"### 🔥🔥 [{title}]({url})\n"
-                summary += f"- **简介**: {snippet}...\n"
-                summary += f"- **来源**: Perplexity AI 新闻搜索\n\n"
-                focus_items.append(title)
+                if title and url:
+                    summary += f"### 🔥🔥 [{title}]({url})\n"
+                    summary += f"- **简介**: {snippet}...\n"
+                    summary += f"- **来源**: Perplexity AI 实时新闻\n\n"
+                    focus_items.append(title)
         
-        # 从 GitHub 高质量项目中选择
+        # 2. 如果 Perplexity 新闻不足，从 GitHub 高质量项目补充
         github_projects = sorted(
             collected_data.get('github_projects', []),
             key=lambda x: x.get('quality_score', 0),
             reverse=True
         )
-        if github_projects and len(focus_items) < 3:
-            item = github_projects[0]
-            name = item.get('name', '未知项目')
-            desc = item.get('description', '无描述')
-            url = item.get('html_url', '')
-            stars = item.get('stargazers_count', 0)
-            summary += f"### 🔥 [{name}]({url})\n"
-            summary += f"- **描述**: {desc}\n"
-            summary += f"- **热度**: ⭐ {stars} stars\n"
-            summary += f"- **推荐理由**: 高质量开源项目，值得关注\n\n"
         
-        if not focus_items and not github_projects:
-            summary += "暂无特别突出的焦点新闻。\n\n"
+        if github_projects and len(focus_items) < 3:
+            print(f"DEBUG: 从 GitHub 项目中补充焦点 ({len(github_projects)} 个项目)")
+            for project in github_projects[:3 - len(focus_items)]:
+                name = project.get('name', '未知项目')
+                desc = project.get('description', '无描述')
+                url = project.get('html_url', '')
+                stars = project.get('stargazers_count', 0)
+                score = project.get('quality_score', 0)
+                
+                if score >= 7.0 and name and url:  # 只选择高质量项目
+                    heat_icon = "🔥🔥🔥" if score >= 8.0 else "🔥🔥" if score >= 7.0 else "🔥"
+                    summary += f"### {heat_icon} [{name}]({url})\n"
+                    summary += f"- **描述**: {desc}\n"
+                    summary += f"- **热度**: ⭐ {stars:,} stars\n"
+                    summary += f"- **质量评分**: {score:.1f}/10\n"
+                    summary += f"- **推荐理由**: 高质量开源项目，值得关注\n\n"
+                    focus_items.append(name)
+        
+        # 3. 如果仍然不足，从 HF 模型补充
+        hf_models = sorted(
+            collected_data.get('hf_models', []),
+            key=lambda x: x.get('quality_score', 0),
+            reverse=True
+        )
+        
+        if hf_models and len(focus_items) < 3:
+            print(f"DEBUG: 从 HF 模型中补充焦点 ({len(hf_models)} 个模型)")
+            for model in hf_models[:3 - len(focus_items)]:
+                model_id = model.get('modelId', '')
+                score = model.get('quality_score', 0)
+                downloads = model.get('downloads', 0)
+                
+                if score >= 6.0 and model_id:
+                    summary += f"### 🔥 [{model_id}](https://huggingface.co/{model_id})\n"
+                    summary += f"- **下载量**: {downloads:,}\n"
+                    summary += f"- **质量评分**: {score:.1f}/10\n"
+                    summary += f"- **推荐理由**: 新发布的高质量模型\n\n"
+                    focus_items.append(model_id)
+        
+        if not focus_items:
+            summary += "⚠️ 今日数据收集中未发现突出的焦点项目，建议查看后续详细内容。\n\n"
         
         # 模型与算法
         summary += "## 🧠 模型与算法\n\n"
-        hf_models = collected_data.get('hf_models', [])
         if hf_models:
             for model in hf_models[:3]:
                 model_id = model.get('modelId', '未知模型')
