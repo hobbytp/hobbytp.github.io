@@ -74,3 +74,4 @@ State-Tool：捕获完整的桌面状态，包括所有交互元素、信息元�
 
 ## 参考
 - [Windows-MCP](https://github.com/CursorTouch/Windows-MCP)
+- [Windows-Use](https://github.com/CursorTouch/Windows-Use)
