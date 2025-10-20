@@ -45,6 +45,29 @@ except ImportError as e:
     print(f"⚠️ perplexity 库导入失败: {e}")
     print("   安装: pip install perplexityai")
 
+# 尝试导入 ai_news_collector_lib
+try:
+    from ai_news_collector_lib import (
+        AdvancedAINewsCollector,
+        AdvancedSearchConfig,
+        ReportGenerator,
+    )
+    USE_AI_NEWS_LIB = True
+    print("✅ ai_news_collector_lib 库导入成功")
+except ImportError as e:
+    try:
+        from ai_news_collector import (
+            AdvancedAINewsCollector, 
+            AdvancedSearchConfig,
+            ReportGenerator,
+        )
+        USE_AI_NEWS_LIB = True
+        print("✅ ai_news_collector 库导入成功（回退模式）")
+    except ImportError as e2:
+        USE_AI_NEWS_LIB = False
+        print(f"⚠️ ai_news_collector_lib 库导入失败: {e}")
+        print("   安装: pip install ai-news-collector-lib[advanced]")
+
 class DailyAICollectorV2:
     def __init__(self):
         # 初始化 Gemini API
@@ -168,14 +191,14 @@ class DailyAICollectorV2:
         
         if source == 'github':
             stars = item.get('stargazers_count', 0)
-            score += min(stars / 200, 3.0)  # stars 权重（最多加3分）
+            score += min(stars / 150, 4.0)  # 提高 stars 权重（最多加4分）
             
             # 是否有详细描述
             desc_len = len(item.get('description', ''))
             if desc_len > 100:
-                score += 1.0
+                score += 1.5  # 提高描述权重
             elif desc_len > 50:
-                score += 0.5
+                score += 1.0
             
             # 最近更新时间
             updated_at = item.get('updated_at', '')
@@ -184,31 +207,31 @@ class DailyAICollectorV2:
                     update_time = datetime.datetime.strptime(updated_at, '%Y-%m-%dT%H:%M:%SZ')
                     days_ago = (datetime.datetime.now() - update_time).days
                     if days_ago <= 1:
-                        score += 1.0
+                        score += 1.5  # 提高时效性权重
                     elif days_ago <= 7:
-                        score += 0.5
+                        score += 1.0
                 except:
                     pass
         
         elif source == 'huggingface':
             downloads = item.get('downloads', 0)
-            score += min(downloads / 1000, 2.0)  # downloads 权重
+            score += min(downloads / 500, 3.0)  # 提高 downloads 权重（最多加3分）
             
             # 是否有 pipeline_tag
             if item.get('pipeline_tag'):
-                score += 0.5
+                score += 1.0  # 提高标签权重
         
         elif source == 'arxiv':
             # 作者数量
             authors = len(item.get('authors', []))
-            score += min(authors / 5, 1.0)
+            score += min(authors / 3, 1.5)  # 提高作者权重
             
             # 摘要长度
             summary_len = len(item.get('summary', ''))
             if 200 < summary_len < 2000:
-                score += 1.0
+                score += 1.5  # 提高摘要质量权重
             elif 100 < summary_len < 3000:
-                score += 0.5
+                score += 1.0
         
         elif source == 'perplexity':
             # Perplexity 结果通常质量较高
@@ -216,6 +239,21 @@ class DailyAICollectorV2:
             
             # 检查是否有发布日期
             if item.get('date'):
+                score += 0.5
+        
+        elif source == 'ai_news_lib':
+            # ai_news_collector_lib 结果质量较高（多源聚合）
+            score += 2.5
+            
+            # 检查关键词数量
+            keywords = item.get('keywords', [])
+            if len(keywords) > 3:
+                score += 1.0
+            elif len(keywords) > 0:
+                score += 0.5
+                
+            # 检查发布日期
+            if item.get('published_date'):
                 score += 0.5
         
         return min(score, 10.0)  # 最高10分
@@ -287,6 +325,103 @@ class DailyAICollectorV2:
             print("完整错误堆栈:")
             traceback.print_exc()
             print("提示: Perplexity API 调用失败，将跳过新闻搜索")
+            return []
+
+    def search_ai_news_lib(self) -> List[Dict]:
+        """使用 ai_news_collector_lib 搜索多源 AI 新闻"""
+        if not USE_AI_NEWS_LIB:
+            print("WARNING: ai_news_collector_lib 未导入，跳过搜索")
+            return []
+        
+        try:
+            yesterday, today = self.get_date_range(hours_back=24)
+            
+            # 构建搜索配置 - 启用您配置的所有API源
+            search_config = AdvancedSearchConfig(
+                # 基础源
+                enable_hackernews=True,
+                enable_arxiv=True,
+                enable_duckduckgo=True,
+                enable_rss_feeds=True,
+                
+                # 您配置的API源
+                enable_newsapi=True,        # NEWS_API_KEY
+                enable_tavily=True,         # TAVILY_API_KEY  
+                enable_google_search=True,  # GOOGLE_SEARCH_API_KEY
+                enable_serper=True,         # SERPER_API_KEY
+                enable_brave_search=True,   # BRAVE_SEARCH_API_KEY
+                enable_metasota_search=True, # METASOSEARCH_API_KEY
+                
+                # 搜索参数
+                max_articles_per_source=3,
+                days_back=1,
+                similarity_threshold=0.85,
+                
+                # 高级功能
+                enable_content_extraction=False,  # 减少处理时间
+                enable_keyword_extraction=True,
+                cache_results=True,
+            )
+            
+            # 创建收集器
+            collector = AdvancedAINewsCollector(search_config)
+            
+            # 定义搜索主题（聚焦24小时内的AI动态）
+            topics = [
+                "latest AI model releases today",
+                "new AI tools and frameworks launched",
+                "AI research breakthroughs and papers",
+                "AI company news and product updates"
+            ]
+            
+            print(f"使用 ai_news_collector_lib 搜索 AI 新闻...")
+            
+            # 异步收集（如果支持批量主题）
+            import asyncio
+            
+            async def collect_async():
+                if hasattr(collector, 'collect_multiple_topics'):
+                    return await collector.collect_multiple_topics(topics)
+                else:
+                    # 兼容回退：逐主题收集
+                    results = []
+                    for topic in topics:
+                        if hasattr(collector, 'collect_news_advanced'):
+                            result = await collector.collect_news_advanced(topic)
+                            results.append(result)
+                    
+                    # 合并结果
+                    all_articles = []
+                    for r in results:
+                        all_articles.extend(r.get('articles', []))
+                    return {"articles": all_articles, "unique_articles": len(all_articles)}
+            
+            # 运行异步收集
+            result = asyncio.run(collect_async())
+            articles = result.get('articles', [])
+            
+            print(f"ai_news_collector_lib 找到 {len(articles)} 条结果")
+            
+            # 转换为统一格式
+            formatted_results = []
+            for article in articles:
+                item = {
+                    'title': article.get('title', ''),
+                    'url': article.get('url', ''),
+                    'snippet': article.get('description', '')[:300],
+                    'source': article.get('source', 'ai_news_lib'),
+                    'published_date': article.get('published_date', ''),
+                    'keywords': article.get('keywords', [])
+                }
+                formatted_results.append(item)
+            
+            return formatted_results
+            
+        except Exception as e:
+            print(f"ai_news_collector_lib 搜索错误: {e}")
+            import traceback
+            traceback.print_exc()
+            print("提示: ai_news_collector_lib 调用失败，将跳过此数据源")
             return []
     
     def search_github_trending(self) -> List[Dict]:
@@ -446,14 +581,16 @@ class DailyAICollectorV2:
         hf_count = len(collected_data.get('hf_models', []))
         arxiv_count = len(collected_data.get('arxiv_papers', []))
         perplexity_count = len(collected_data.get('perplexity_news', []))
+        ai_news_lib_count = len(collected_data.get('ai_news_lib', []))
         
         print(f"数据收集统计:")
+        print(f"   AI新闻库: {ai_news_lib_count}")
         print(f"   Perplexity新闻: {perplexity_count}")
         print(f"   GitHub项目: {github_count}")
         print(f"   HF模型: {hf_count}")
         print(f"   ArXiv论文: {arxiv_count}")
         
-        total_items = github_count + hf_count + arxiv_count + perplexity_count
+        total_items = github_count + hf_count + arxiv_count + perplexity_count + ai_news_lib_count
         
         if total_items == 0:
             print("WARNING: 没有收集到任何数据")
@@ -557,7 +694,7 @@ class DailyAICollectorV2:
         summary += "## 📰 今日焦点\n\n"
         focus_items = []
         
-        # 1. 优先从 Perplexity 新闻中选择焦点
+        # 1. Perplexity 已暂时关闭，直接跳过
         perplexity_news = collected_data.get('perplexity_news', [])
         if perplexity_news and len(perplexity_news) > 0:
             print(f"DEBUG: 从 Perplexity 新闻中选择焦点 ({len(perplexity_news)} 条)")
@@ -569,6 +706,30 @@ class DailyAICollectorV2:
                     summary += f"### 🔥🔥 [{title}]({url})\n"
                     summary += f"- **简介**: {snippet}...\n"
                     summary += f"- **来源**: Perplexity AI 实时新闻\n\n"
+                    focus_items.append(title)
+        else:
+            print("DEBUG: Perplexity API 已暂时关闭，将从 ai_news_lib 和其他数据源生成焦点内容")
+            
+        # 1.5. 从 ai_news_lib 数据中选择焦点（新增）
+        ai_news_items = collected_data.get('ai_news_lib', [])
+        if ai_news_items and len(focus_items) < 3:
+            print(f"DEBUG: 从 ai_news_lib 中选择焦点 ({len(ai_news_items)} 条)")
+            # 按质量评分排序
+            sorted_news = sorted(ai_news_items, key=lambda x: self.calculate_quality_score(x, 'ai_news_lib'), reverse=True)
+            
+            for item in sorted_news[:3 - len(focus_items)]:
+                title = item.get('title', '未知标题')
+                url = item.get('url', '')
+                snippet = item.get('snippet', '')[:150] 
+                source = item.get('source', 'AI新闻')
+                score = self.calculate_quality_score(item, 'ai_news_lib')
+                
+                if title and url and score >= 7.0:  # 高质量新闻
+                    heat_icon = "🔥🔥🔥" if score >= 8.5 else "🔥🔥" if score >= 7.5 else "🔥"
+                    summary += f"### {heat_icon} [{title}]({url})\n"
+                    summary += f"- **简介**: {snippet}...\n"
+                    summary += f"- **来源**: {source} (多源聚合)\n"
+                    summary += f"- **质量评分**: {score:.1f}/10\n\n"
                     focus_items.append(title)
         
         # 2. 如果 Perplexity 新闻不足，从 GitHub 高质量项目补充
@@ -675,11 +836,13 @@ class DailyAICollectorV2:
         
         # 编辑点评
         summary += "## 💡 编辑点评\n\n"
-        total_items = len(github_projects) + len(hf_models) + len(arxiv_papers) + len(perplexity_news)
+        total_items = len(github_projects) + len(hf_models) + len(arxiv_papers) + len(perplexity_news) + len(ai_news_items)
         if total_items > 0:
             summary += f"今日共收集到 {total_items} 条AI动态，其中：\n"
+            if ai_news_items:
+                summary += f"- 🌐 多源AI新闻: {len(ai_news_items)} 条\n"
             if perplexity_news:
-                summary += f"- 📰 AI新闻: {len(perplexity_news)} 条\n"
+                summary += f"- 📰 Perplexity新闻: {len(perplexity_news)} 条\n"
             if github_projects:
                 summary += f"- 🛠️ GitHub项目: {len(github_projects)} 个\n"
             if hf_models:
@@ -711,7 +874,8 @@ class DailyAICollectorV2:
         print("=" * 60)
         
         collected_data = {
-            'perplexity_news': self.search_perplexity_ai_news(),
+            'perplexity_news': [],  # 暂时关闭 self.search_perplexity_ai_news(),
+            'ai_news_lib': self.search_ai_news_lib(),  # 新增：多源AI新闻
             'github_projects': self.search_github_trending(),
             'hf_models': self.search_huggingface_models(),
             'arxiv_papers': self.search_arxiv_papers()
@@ -754,7 +918,8 @@ totalItems: {total_items}
 ## 📊 数据来源
 
 本报告数据来源于：
-- 🔍 **Perplexity AI**: 实时AI新闻搜索
+- 🌐 **多源AI新闻**: NewsAPI, Tavily, Google, Serper, Brave, Metasota等
+- 🔍 **Perplexity AI**: 实时AI新闻搜索（暂时关闭）
 - 💻 **GitHub**: AI相关开源项目
 - 🤗 **Hugging Face**: 新模型发布
 - 📄 **arXiv**: 最新学术论文
