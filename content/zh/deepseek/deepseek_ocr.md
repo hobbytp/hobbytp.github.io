@@ -73,3 +73,11 @@ DeepSeek-OCR其代码和模型权重均已在GitHub上开源，并采用宽松�
 这种将文本转化为图像进行压缩的范式，不仅关乎计算效率的飞跃，更深层次地，它可能正在重塑AI理解世界的基本方式。
 
 我们是否正处在AI从“阅读”文字转向“感知”信息的革命前夜？
+
+## 参考文献
+- [Paper in Github](https://github.com/deepseek-ai/DeepSeek-OCR/blob/main/DeepSeek_OCR_paper.pdf)
+- [Huggingface: DeepSeek-OCR](https://huggingface.co/deepseek-ai/DeepSeek-OCR)]
+- [Blog: DeepSeek OCR Context Compression](https://deepseek.ai/blog/deepseek-ocr-context-compression)
+- [My NotebookLM for DeepSeek-OCR](https://notebooklm.google.com/notebook/f4cb6882-3bb5-4e85-bf7a-05e6e41c1749)
+- [Karpathy x.com上的评价](https://x.com/karpathy/status/1980397031542989305)
+- [vLLM x.com上的评价](https://x.com/vllm_project/status/1980235518706401405)
