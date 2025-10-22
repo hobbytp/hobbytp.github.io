@@ -125,8 +125,24 @@ class DailyAICollectorV2:
         self.github_token = os.getenv('GITHUB_TOKEN')
         self.hf_token = os.getenv('HUGGINGFACE_API_KEY')
         
+        # 检查 ai_news_collector_lib 需要的环境变量
+        self.news_api_key = os.getenv('NEWS_API_KEY')
+        self.tavily_api_key = os.getenv('TAVILY_API_KEY')
+        self.google_search_api_key = os.getenv('GOOGLE_SEARCH_API_KEY')
+        self.google_search_engine_id = os.getenv('GOOGLE_SEARCH_ENGINE_ID')
+        self.serper_api_key = os.getenv('SERPER_API_KEY')
+        self.brave_search_api_key = os.getenv('BRAVE_SEARCH_API_KEY')
+        self.metasosearch_api_key = os.getenv('METASOSEARCH_API_KEY')
+        
         print(f"GitHub Token: {'已设置' if self.github_token else '未设置'}")
         print(f"HuggingFace Token: {'已设置' if self.hf_token else '未设置'}")
+        print(f"News API Key: {'已设置' if self.news_api_key else '未设置'}")
+        print(f"Tavily API Key: {'已设置' if self.tavily_api_key else '未设置'}")
+        print(f"Google Search API Key: {'已设置' if self.google_search_api_key else '未设置'}")
+        print(f"Google Search Engine ID: {'已设置' if self.google_search_engine_id else '未设置'}")
+        print(f"Serper API Key: {'已设置' if self.serper_api_key else '未设置'}")
+        print(f"Brave Search API Key: {'已设置' if self.brave_search_api_key else '未设置'}")
+        print(f"Metasosearch API Key: {'已设置' if self.metasosearch_api_key else '未设置'}")
         
         self.content_dir = Path("content/zh/daily_ai")
         self.content_dir.mkdir(exist_ok=True)
