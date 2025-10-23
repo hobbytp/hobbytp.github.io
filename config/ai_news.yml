@@ -3,28 +3,27 @@ sources:
   enable_hackernews: true
   enable_arxiv: true
   enable_duckduckgo: true
-  enable_newsapi: true     # 启用 NEWS_API_KEY
+  enable_newsapi: true # 启用 NEWS_API_KEY
   enable_rss_feeds: true
-  enable_tavily: true      # 启用 TAVILY_API_KEY
-  enable_google_search: true  # 启用 GOOGLE_SEARCH_API_KEY
-  enable_bing_search: false   # 保持关闭，没有配置BING key
-  enable_serper: true      # 启用 SERPER_API_KEY
-  enable_brave_search: true   # 启用 BRAVE_SEARCH_API_KEY
+  enable_tavily: true # 启用 TAVILY_API_KEY
+  enable_google_search: true # 启用 GOOGLE_SEARCH_API_KEY
+  enable_bing_search: false # 保持关闭，没有配置BING key
+  enable_serper: true # 启用 SERPER_API_KEY
+  enable_brave_search: true # 启用 BRAVE_SEARCH_API_KEY
   enable_metasota_search: true # 启用 METASOSEARCH_API_KEY
 
 search:
-  max_articles_per_source: 3
-  days_back: 1
+  max_articles_per_source: 5
+  days_back: 0  # 改为0，只搜索今天的内容
   similarity_threshold: 0.85
 
 advanced:
-  enable_content_extraction: false
+  enable_content_extraction: true
   enable_keyword_extraction: true
   cache_results: true
-
+  enable_sentiment_analysis: true
 topics:
-  - important updates in the AI field today, including large models, agents, papers, tools, open-source projects, celebrity interviews, code assistants, AI applications, and trending news.
-
+  - important updates in the AI field today, including large models, ai agents, papers, tools, open-source projects, celebrity interviews, ai code assistants, AI applications, and ai trending news.
 
 scheduler:
   schedule_time: "08:00"
