@@ -24,13 +24,13 @@ import re
 try:
     import google.generativeai as genai
     USE_GOOGLE_SDK = True
-    print("✅ google.generativeai 库导入成功")
+    print("[OK] google.generativeai 库导入成功")
 except ImportError as e:
     USE_GOOGLE_SDK = False
-    print(f"⚠️ google.generativeai 库导入失败: {e}")
+    print(f"[WARNING] google.generativeai 库导入失败: {e}")
     try:
         import openai
-        print("✅ openai 库导入成功（回退模式）")
+        print("[OK] openai 库导入成功（回退模式）")
     except ImportError:
         print("ERROR: 既没有 google-generativeai 也没有 openai 库")
         openai = None
@@ -39,10 +39,10 @@ except ImportError as e:
 try:
     from perplexity import Perplexity
     USE_PERPLEXITY = True
-    print("✅ perplexity 库导入成功")
+    print("[OK] perplexity 库导入成功")
 except ImportError as e:
     USE_PERPLEXITY = False
-    print(f"⚠️ perplexity 库导入失败: {e}")
+    print(f"[WARNING] perplexity 库导入失败: {e}")
     print("   安装: pip install perplexityai")
 
 # 尝试导入 ai_news_collector_lib
@@ -53,7 +53,7 @@ try:
         ReportGenerator,
     )
     USE_AI_NEWS_LIB = True
-    print("✅ ai_news_collector_lib 库导入成功")
+    print("[OK] ai_news_collector_lib 库导入成功")
 except ImportError as e:
     try:
         from ai_news_collector import (
@@ -62,10 +62,10 @@ except ImportError as e:
             ReportGenerator,
         )
         USE_AI_NEWS_LIB = True
-        print("✅ ai_news_collector 库导入成功（回退模式）")
+        print("[OK] ai_news_collector 库导入成功（回退模式）")
     except ImportError as e2:
         USE_AI_NEWS_LIB = False
-        print(f"⚠️ ai_news_collector_lib 库导入失败: {e}")
+        print(f"[WARNING] ai_news_collector_lib 库导入失败: {e}")
         print("   安装: pip install ai-news-collector-lib[advanced]")
 
 class DailyAICollectorV2:
@@ -84,7 +84,7 @@ class DailyAICollectorV2:
                     genai.configure(api_key=gemini_key)
                     self.ai_client = genai.GenerativeModel('gemini-2.5-flash')
                     self.use_google_sdk = True
-                    print("✅ Google Gemini SDK 初始化成功 (模型: gemini-2.5-flash)")
+                    print("[OK] Google Gemini SDK 初始化成功 (模型: gemini-2.5-flash)")
                 except Exception as e:
                     print(f"ERROR: Google SDK 初始化失败: {e}")
                     self.ai_client = None
@@ -96,7 +96,7 @@ class DailyAICollectorV2:
                         base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
                     )
                     self.use_google_sdk = False
-                    print("✅ OpenAI兼容客户端初始化成功")
+                    print("[OK] OpenAI兼容客户端初始化成功")
                 except Exception as e:
                     print(f"ERROR: OpenAI客户端初始化失败: {e}")
                     self.ai_client = None
@@ -111,16 +111,16 @@ class DailyAICollectorV2:
         if USE_PERPLEXITY and self.perplexity_key:
             try:
                 self.perplexity_client = Perplexity(api_key=self.perplexity_key)
-                print(f"✅ Perplexity API 初始化成功 (key长度: {len(self.perplexity_key)})")
+                print(f"[OK] Perplexity API 初始化成功 (key长度: {len(self.perplexity_key)})")
             except Exception as e:
                 print(f"ERROR: Perplexity 初始化失败: {e}")
                 self.perplexity_client = None
         else:
             self.perplexity_client = None
             if not USE_PERPLEXITY:
-                print("⚠️ Perplexity SDK 未安装")
+                print("[WARNING] Perplexity SDK 未安装")
             elif not self.perplexity_key:
-                print("⚠️ PERPLEXITY_API_KEY 未设置")
+                print("[WARNING] PERPLEXITY_API_KEY 未设置")
 
         self.github_token = os.getenv('GITHUB_TOKEN')
         self.hf_token = os.getenv('HUGGINGFACE_API_KEY')
@@ -200,6 +200,46 @@ class DailyAICollectorV2:
             self.seen_titles.add(title)
         
         return False
+    
+    def is_within_time_range(self, item: Dict, source: str) -> bool:
+        """检查项目是否在时间范围内"""
+        yesterday, today = self.get_date_range(hours_back=24)
+        
+        if source == 'github':
+            created_at = item.get('created_at', '')
+            if created_at:
+                try:
+                    create_time = datetime.datetime.strptime(created_at, '%Y-%m-%dT%H:%M:%SZ')
+                    return create_time >= yesterday
+                except:
+                    return False
+        
+        elif source == 'huggingface':
+            created_at = item.get('createdAt', '')
+            if created_at:
+                try:
+                    create_time = datetime.datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+                    return create_time >= yesterday
+                except:
+                    return False
+        
+        elif source == 'arxiv':
+            # ArXiv 的时间检查在搜索参数中已经处理
+            return True
+        
+        elif source == 'ai_news_lib':
+            published_date = item.get('published_date', '')
+            if published_date:
+                try:
+                    if 'T' in published_date:
+                        pub_time = datetime.datetime.fromisoformat(published_date.replace('Z', '+00:00'))
+                    else:
+                        pub_time = datetime.datetime.strptime(published_date, '%Y-%m-%d')
+                    return pub_time >= yesterday
+                except:
+                    return False
+        
+        return True  # 如果无法确定时间，默认通过
     
     def calculate_quality_score(self, item: Dict, source: str) -> float:
         """计算内容质量分数（0-10分）"""
@@ -368,9 +408,9 @@ class DailyAICollectorV2:
                 enable_brave_search=True,   # BRAVE_SEARCH_API_KEY
                 enable_metasota_search=True, # METASOSEARCH_API_KEY
                 
-                # 搜索参数
+                # 搜索参数 - 严格限制时间范围
                 max_articles_per_source=3,
-                days_back=1,
+                days_back=0,  # 改为0，只搜索今天的内容
                 similarity_threshold=0.85,
                 
                 # 高级功能
@@ -418,19 +458,39 @@ class DailyAICollectorV2:
             
             print(f"ai_news_collector_lib 找到 {len(articles)} 条结果")
             
-            # 转换为统一格式
+            # 转换为统一格式并严格过滤时间
             formatted_results = []
             for article in articles:
+                # 严格检查发布时间
+                published_date = article.get('published_date', '')
+                if published_date:
+                    try:
+                        # 解析发布时间
+                        if 'T' in published_date:
+                            pub_time = datetime.datetime.fromisoformat(published_date.replace('Z', '+00:00'))
+                        else:
+                            pub_time = datetime.datetime.strptime(published_date, '%Y-%m-%d')
+                        
+                        # 检查是否在24小时内
+                        if pub_time < yesterday:
+                            print(f"过滤掉过期文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
+                            continue
+                    except Exception as e:
+                        print(f"时间解析错误: {published_date}, 错误: {e}")
+                        # 如果时间解析失败，跳过该文章
+                        continue
+                
                 item = {
                     'title': article.get('title', ''),
                     'url': article.get('url', ''),
                     'snippet': article.get('description', '')[:300],
                     'source': article.get('source', 'ai_news_lib'),
-                    'published_date': article.get('published_date', ''),
+                    'published_date': published_date,
                     'keywords': article.get('keywords', [])
                 }
                 formatted_results.append(item)
             
+            print(f"ai_news_collector_lib 时间过滤后剩余 {len(formatted_results)} 条结果")
             return formatted_results
             
         except Exception as e:
@@ -453,8 +513,11 @@ class DailyAICollectorV2:
         yesterday, today = self.get_date_range(hours_back=24)
         date_str = yesterday.strftime('%Y-%m-%d')
         
+        # 使用更严格的时间范围，只搜索今天创建的项目
+        today_str = today.strftime('%Y-%m-%d')
+        
         params = {
-            'q': f'AI machine-learning deep-learning created:>{date_str} language:python',
+            'q': f'AI machine-learning deep-learning created:{date_str}..{today_str} language:python',
             'sort': 'stars',
             'order': 'desc',
             'per_page': 30  # 增加获取数量，后续会过滤
@@ -469,12 +532,14 @@ class DailyAICollectorV2:
                 data = response.json()
                 items = data.get('items', [])
                 
-                # 去重和质量评分
+                # 去重、时间过滤和质量评分
                 filtered_items = []
                 for item in items:
-                    if not self.is_duplicate(item):
+                    if not self.is_duplicate(item) and self.is_within_time_range(item, 'github'):
                         item['quality_score'] = self.calculate_quality_score(item, 'github')
                         filtered_items.append(item)
+                    elif not self.is_within_time_range(item, 'github'):
+                        print(f"过滤掉过期GitHub项目: {item.get('name', '')[:50]}... (创建时间: {item.get('created_at', '')})")
                 
                 # 按质量分数排序
                 filtered_items.sort(key=lambda x: x['quality_score'], reverse=True)
@@ -499,12 +564,14 @@ class DailyAICollectorV2:
         
         yesterday, today = self.get_date_range(hours_back=24)
         date_str = yesterday.strftime('%Y-%m-%d')
+        today_str = today.strftime('%Y-%m-%d')
         
         params = {
             'filter': 'pytorch',
             'sort': 'createdAt',
             'direction': -1,
-            'limit': 50
+            'limit': 50,
+            'createdAt': f'{date_str}T00:00:00.000Z..{today_str}T23:59:59.999Z'  # 严格限制时间范围
         }
         
         try:
@@ -518,11 +585,11 @@ class DailyAICollectorV2:
                 # 过滤最近24小时的模型
                 filtered_models = []
                 for model in models:
-                    created_at = model.get('createdAt', '')
-                    if created_at and created_at >= date_str:
-                        if not self.is_duplicate(model):
-                            model['quality_score'] = self.calculate_quality_score(model, 'huggingface')
-                            filtered_models.append(model)
+                    if not self.is_duplicate(model) and self.is_within_time_range(model, 'huggingface'):
+                        model['quality_score'] = self.calculate_quality_score(model, 'huggingface')
+                        filtered_models.append(model)
+                    elif not self.is_within_time_range(model, 'huggingface'):
+                        print(f"过滤掉过期HF模型: {model.get('modelId', '')[:50]}... (创建时间: {model.get('createdAt', '')})")
                 
                 filtered_models.sort(key=lambda x: x['quality_score'], reverse=True)
                 
@@ -543,6 +610,7 @@ class DailyAICollectorV2:
         start_date = yesterday.strftime('%Y%m%d')
         end_date = today.strftime('%Y%m%d')
         
+        # 使用更严格的时间范围，只搜索今天提交的论文
         params = {
             'search_query': f'cat:cs.AI OR cat:cs.LG OR cat:cs.CL AND submittedDate:[{start_date}0000 TO {end_date}2359]',
             'start': 0,
@@ -576,7 +644,7 @@ class DailyAICollectorV2:
                             'link': link_elem.text.strip() if link_elem.text else ''
                         }
                         
-                        if not self.is_duplicate(paper):
+                        if not self.is_duplicate(paper) and self.is_within_time_range(paper, 'arxiv'):
                             paper['quality_score'] = self.calculate_quality_score(paper, 'arxiv')
                             papers.append(paper)
                 
@@ -960,7 +1028,7 @@ totalItems: {total_items}
             f.write(content)
         
         print("=" * 60)
-        print(f"✅ 每日AI动态已保存到: {file_path}")
+        print(f"[OK] 每日AI动态已保存到: {file_path}")
         print("=" * 60)
         return file_path
 
@@ -973,14 +1041,14 @@ def main():
     collector = DailyAICollectorV2()
     file_path = collector.save_daily_content()
     
-    print(f"\n✅ 收集完成: {file_path}")
+    print(f"\n[OK] 收集完成: {file_path}")
     print("\n新功能：")
-    print("  ✅ Perplexity AI 新闻搜索")
-    print("  ✅ 24小时时间窗口（真正的每日动态）")
-    print("  ✅ 智能去重")
-    print("  ✅ 内容质量评分")
-    print("  ✅ 新的分类体系")
-    print("  ✅ 改进的展现格式")
+    print("  [OK] Perplexity AI 新闻搜索")
+    print("  [OK] 24小时时间窗口（真正的每日动态）")
+    print("  [OK] 智能去重")
+    print("  [OK] 内容质量评分")
+    print("  [OK] 新的分类体系")
+    print("  [OK] 改进的展现格式")
 
 if __name__ == "__main__":
     main()
