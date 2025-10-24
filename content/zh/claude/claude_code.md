@@ -484,6 +484,10 @@ Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 - 今天我看到克劳德给一个二级代理打电话，那个二级代理又给另一个二级代理打了电话，我想知道这是不是新功能？还有其他人注意到吗？
 - 我在 claude-code 项目中发现了很多关于子代理无法生成其他代理的问题，存在一些技巧，比如生成无头的 Claude 实例，或者使用像 claude-flow 这样复杂的工具。对于简单的流程，尽量使用命令作为主要的“代理”来生成子代理。
 
+
+### Plugin
+TBD
+
 ### 节约成本的最佳实践
 
 /clear
@@ -769,30 +773,71 @@ Claude Code Router [github](https://github.com/musistudio/claude-code-router)是
 
 ### 集成GLM4.6
 
+#### 集成GLM4.6到Claude Code CLI
+
 GLM4.6采取KIMI类似的方案，既可以直接兼容Claude API，也可以通过使用claude-code-router进行路由。下面是直接配置claude code配置文件或环境变量的方式来直接在Claude Code中使用GLM4.6。
 
+##### Step 1: 配置URL和Key
 ```bash
 #国内使用
 ANTHROPIC_BASE_URL=https://open.bigmodel.cn/anthropic/ 
+
 #国外使用
-ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic
-ANTHROPIC_AUTH_TOKEN=xxx claude code
+# ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic
+
+# API Key
+ANTHROPIC_AUTH_TOKEN=<xxx>
 
 ```
 
-3. 配置大模型
+##### Step 2：配置模型名
 手动修改配置文件  ~/.claude/settings.json：
 
 ```json
 {
+  "alwaysThinkingEnabled": true
   "env": {
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.5-air",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.6",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-4.6",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-4.6"
   }
 }
 ```
 
+#### 集成GLM4.6到VS Code插件Claude Code
+1. 安装Claude Code插件
+2. 进入VS Code设置，找到**Claude Code”
+3. 找到“在settings.json中编辑”，贴入下面配置信息
+
+```json
+    "claudeCode.environmentVariables": [
+        {
+            "name": "ANTHROPIC_BASE_URL",
+            "value": "https://open.bigmodel.cn/api/anthropic"
+        },
+        {
+            "name": "ANTHROPIC_AUTH_TOKEN",
+            "value": "e9c03a80013a40fb85b5fd0d01bcbe81.v7Ef9K2bPdPFmjzj"
+        },
+        {
+            "name": "ANTHROPIC_MODEL",
+            "value": "glm-4.6"
+        },
+        {
+            "name": "API_TIMEOUT_MS",
+            "value": "3000000"
+        },
+        {
+            "name": "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC",
+            "value": "1"
+        }
+    ],
+    "claudeCode.selectedModel": "default"
+```
+在VS Code界面的中上部分偏右找到Claude的图标，点击打开即可。
+打开Claude Code界面后，输入“/select mode”选择“Default”即可。
+
+#### 更多GLM4.6套餐信息
 使用GLM4.6套餐的方式大约是直接使用API的10%。
 具体套餐用量额度如下：
 
