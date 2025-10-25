@@ -786,7 +786,7 @@ ANTHROPIC_BASE_URL=https://open.bigmodel.cn/anthropic/
 # ANTHROPIC_BASE_URL=https://api.z.ai/api/anthropic
 
 # API Key
-ANTHROPIC_AUTH_TOKEN=<xxx>
+ANTHROPIC_AUTH_TOKEN=<you glm api key>
 
 ```
 
@@ -817,7 +817,7 @@ ANTHROPIC_AUTH_TOKEN=<xxx>
         },
         {
             "name": "ANTHROPIC_AUTH_TOKEN",
-            "value": "e9c03a80013a40fb85b5fd0d01bcbe81.v7Ef9K2bPdPFmjzj"
+            "value": "you glm api key"
         },
         {
             "name": "ANTHROPIC_MODEL",
