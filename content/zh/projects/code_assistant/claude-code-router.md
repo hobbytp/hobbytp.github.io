@@ -102,7 +102,78 @@ Claude-Code-Router (CCR) 的动态路由规则与调度算法是其智能决策�
 
 5. **默认路由 (Default Routing)**：如果以上所有特定规则都不满足，即请求不属于用户强制指定、超长上下文、后台任务或推理任务中的任何一种，那么 CCR 会采用默认的路由策略，将请求发送到预设的默认模型进行处理 。
 
-这种基于优先级和条件判断的调度算法，虽然可能不像一些复杂的机器学习驱动的调度器那样具备自学习和自适应能力，但它提供了一种清晰、可控且易于配置的路由机制。它允许用户和管理员通过配置文件（如 `~/.claude-code-router/config.json` ）来定义不同路由策略（如 `background`, `think`, `longContext`, `default` ）所对应的具体模型和提供商。例如，在配置文件中，可以为 `longContext` 策略指定 `openrouter,google/gemini-2.5-pro-preview`，为 `think` 策略指定 `deepseek,deepseek-reasoner` 。这种配置化的方式使得路由策略可以根据实际需求灵活调整，平衡性能、成本和任务特性。
+这种基于优先级和条件判断的调度算法，虽然可能不像一些复杂的机器学习驱动的调度器那样具备自学习和自适应能力，但它提供了一种清晰、可控且易于配置的路由机制。它允许用户和管理员通过配置文件（如 `~/.claude-code-router/config.json` ）来定义不同路由策略（如 `background`, `think`, `longContext`, `image`，`default` ）所对应的具体模型和提供商。例如，在配置文件中，可以为 `longContext` 策略指定 `openrouter,google/gemini-2.5-pro-preview`，为 `think` 策略指定 `deepseek,deepseek-reasoner` 。这种配置化的方式使得路由策略可以根据实际需求灵活调整，平衡性能、成本和任务特性。
+
+**Router 配置项及调用逻辑**
+📋 所有支持的 Router 配置选项
+根据源码 (types.ts) 和 router.ts 的分析，Router 支持以下配置：
+
+| 配置项 | 类型 | 说明 | 触发条件 |
+|--------|------|------|--------|
+| default | string | 默认模型 | 其他规则都不匹配时 |
+| think | string | 思考/推理模型 | thinking: true 参数 |
+| background | string | 后台任务模型 | Claude Haiku 变种 |
+| webSearch | string | 网页搜索模型 | 包含 web_search 工具时 |
+| longContext | string | 长文本模型 | Token 超过阈值 |
+| longContextThreshold | number | 长文本阈值（默认60000） | 用于判断是否启用 longContext |
+| image | string | ✨ 图像处理模型 | 包含图像内容时 |
+| custom | any | 自定义扩展 | 用户自定义 |
+
+🔄 完整的路由决策流程图
+
+```mermaid
+flowchart TD
+    Start["📥 请求到达"] --> CheckCustom{是否配置了<br/>CUSTOM_ROUTER_PATH?}
+    
+    CheckCustom -->|是| ExecuteCustom["🚀 执行 Custom Router<br/>处理请求"]
+    ExecuteCustom --> CustomResult{Custom Router<br/>返回结果?}
+    
+    CustomResult -->|返回 model 字符串| UseCustom["✅ 使用 Custom<br/>返回的 model"]
+    CustomResult -->|返回 null| FallbackBuiltin["↩️ 降级到<br/>内置路由逻辑"]
+    
+    CheckCustom -->|否| FallbackBuiltin
+    
+    FallbackBuiltin --> CheckExplicit{显式指定<br/>model参数?}
+    CheckExplicit -->|是| C["✓ 使用指定的 model"]
+    CheckExplicit -->|否| D{检查 Subagent<br/>标签?}
+    
+    D -->|有| E["✓ 使用 Subagent<br/>指定的 model"]
+    D -->|无| F{Token 数量<br/>超过 threshold?}
+    
+    F -->|是| G["✓ 使用 longContext"]
+    F -->|否| H{是 Claude<br/>Haiku?}
+    
+    H -->|是| I["✓ 使用 background"]
+    H -->|否| J{包含<br/>web_search?}
+    
+    J -->|是| K["✓ 使用 webSearch"]
+    J -->|否| L{thinking=true?}
+    
+    L -->|是| M["✓ 使用 think"]
+    L -->|否| N{包含<br/>图像?}
+    
+    N -->|是| O["✓ 使用 image"]
+    N -->|否| P["✓ 使用 default"]
+    
+    UseCustom --> Q["🎯 更新 req.body.model"]
+    C --> Q
+    E --> Q
+    G --> Q
+    I --> Q
+    K --> Q
+    M --> Q
+    O --> Q
+    P --> Q
+    
+    Q --> R["📤 发送到 Provider"]
+    
+    style Start fill:#e1f5ff
+    style ExecuteCustom fill:#ffccbc
+    style UseCustom fill:#c8e6c9
+    style FallbackBuiltin fill:#fff9c4
+    style CheckCustom fill:#ffe0b2
+    style CustomResult fill:#ffe0b2
+```
 
 此外，一些社区贡献的增强版本，如 `@jasonzhangf/claude-code-router-enhanced`，还增加了重试机制 ，这可以视为对调度算法在容错性和鲁棒性方面的补充。未来，CCR 的调度算法可能会朝着更智能化的方向发展，例如引入基于模型实时负载、响应速度、Token 余额等因素的动态分流策略 。
 
@@ -353,7 +424,8 @@ cat ~/.claude-code-router/config.json
     "think": "volcengine,deepseek-r1-250528",
     "background": "modelscope,Qwen/Qwen3-Coder-480B-A35B-Instruct",
     "longContext": "openrouter,google/gemini-2.5-pro",
-    "webSearch": "gemini,gemini-2.5-flash"
+    "webSearch": "gemini,gemini-2.5-flash",
+    "image": "gemini,gemini-2.5-flash-image"
   }
 }
 
@@ -361,10 +433,38 @@ cat ~/.claude-code-router/config.json
 
 ```
 
+### 实际应用场景
+
+场景1: 编写代码（普通请求）
+  → 检查 token → 未超 longContextThreshold
+  → 不是 Haiku → 无 web_search 工具 → 无 thinking
+  → 无图像 → ✓ 使用 default 模型
+
+场景2: 使用 Claude Thinking Mode
+  → 显式设置 thinking: true
+  → ✓ 路由到 think 模型（deepseek-reasoner）
+
+场景3: 处理大型项目文件（超过60000 token）
+  → Token 计数 > 60000
+  → ✓ 路由到 longContext 模型（gemini-2.5-pro）
+
+场景4: 网页搜索任务
+  → 请求包含 web_search 工具
+  → ✓ 路由到 webSearch 模型（优先于 thinking）
+
+场景5: 处理本地小任务
+  → 请求 claude-3.5-haiku
+  → ✓ 路由到 background 模型（节省成本）
+
 ### 启动Claude-Code-Router
 
 ```bash
 ccr start
+```
+
+当~/.claude-code-router/config.json变化时，需要重启,如果config.json格式不对，restart会失败，但是不会在界面上显示。
+```bash
+ccr restart
 ```
 
 ### 启动Claude-Code
@@ -373,4 +473,278 @@ ccr start
 ccr code
 ```
 
-### 配置
+
+## 高级特性：如何加入自己的路由
+
+### Custom Router 工作原理  
+
+源码中的核心逻辑（router.ts 第 204-211 行）：
+```ts
+let model;
+if (config.CUSTOM_ROUTER_PATH) {
+  try {
+    const customRouter = require(config.CUSTOM_ROUTER_PATH);
+    req.tokenCount = tokenCount; // 传递 token 计数
+    model = await customRouter(req, config, {
+      event,
+    });
+  } catch (e: any) {
+    req.log.error(`failed to load custom router: ${e.message}`);
+  }
+}
+if (!model) {
+  // 如果 custom router 返回 null，使用默认路由
+  model = await getUseModel(req, tokenCount, config, lastMessageUsage);
+}
+```
+
+关键点：
+
+✅ Custom router 可以完全接管路由逻辑
+✅ 返回 null 可以降级到内置路由
+✅ 可以访问 token 计数 (req.tokenCount)
+✅ 有 错误处理机制，异常会被捕获并记录
+
+🛠️ 如何编写 Custom Router
+基础模板
+```js
+// ~/.claude-code-router/custom-router.js
+
+/**
+ * Custom Router 函数
+ * @param {Object} req - 请求对象，包含：
+ *   - req.body.messages: 消息列表
+ *   - req.body.model: 显式指定的 model（可能）
+ *   - req.body.thinking: 是否启用 thinking 模式
+ *   - req.body.tools: 工具列表
+ *   - req.body.system: 系统提示
+ *   - req.tokenCount: 计算出的 token 数
+ *   - req.sessionId: 会话 ID
+ *
+ * @param {Object} config - 配置对象，包含：
+ *   - config.Router: 路由配置
+ *   - config.Providers: 提供商列表
+ *   - config 的所有其他配置
+ *
+ * @returns {Promise<string|null>} 
+ *   - 返回 "provider,model" 格式的字符串来使用指定模型
+ *   - 返回 null 来降级到内置路由
+ */
+module.exports = async function router(req, config) {
+  // 您的自定义逻辑
+  return null; // 使用内置路由
+};
+```
+
+实用示例
+
+```js
+// ~/.claude-code-router/custom-router.js
+
+module.exports = async function router(req, config) {
+  const userMessage = req.body.messages
+    .find(m => m.role === 'user')
+    ?.content;
+
+  // 示例 1: 根据关键字路由
+  if (typeof userMessage === 'string') {
+    if (userMessage.includes('分析代码')) {
+      // 代码分析用强大模型
+      return 'deepseek,deepseek-reasoner';
+    }
+    
+    if (userMessage.includes('写个脚本')) {
+      // 脚本生成用 Claude
+      return 'openrouter,anthropic/claude-3.5-sonnet';
+    }
+
+    if (userMessage.includes('本地')) {
+      // 本地任务用本地模型
+      return 'ollama,qwen2.5-coder:latest';
+    }
+  }
+
+  // 示例 2: 根据 token 数量路由
+  if (req.tokenCount > 100000) {
+    // 超大 token 用 Gemini
+    return 'openrouter,google/gemini-2.5-pro-preview';
+  }
+
+  // 示例 3: 根据时间路由（工作时间用本地，非工作时间用云端）
+  const hour = new Date().getHours();
+  if (hour >= 9 && hour <= 17) {
+    // 工作时间用本地模型节省成本
+    return 'ollama,qwen2.5-coder:latest';
+  } else {
+    // 非工作时间用云端强力模型
+    return 'deepseek,deepseek-chat';
+  }
+
+  // 示例 4: 根据工具检测路由
+  if (req.body.tools?.some(t => t.name === 'image_analysis')) {
+    // 图像分析用支持视觉的模型
+    return 'openrouter,google/gemini-2.5-pro-preview';
+  }
+
+  // 示例 5: 根据 thinking 模式路由
+  if (req.body.thinking) {
+    // 思考模式用推理模型
+    return 'deepseek,deepseek-reasoner';
+  }
+
+  // 都不匹配就降级到内置路由
+  return null;
+};
+```
+
+高级示例 - 配合项目特定配置
+
+```js
+// ~/.claude-code-router/custom-router.js
+
+const fs = require('fs').promises;
+const path = require('path');
+
+module.exports = async function router(req, config) {
+  // 尝试读取项目特定的路由规则
+  if (req.sessionId) {
+    try {
+      const projectConfigPath = path.join(
+        process.env.HOME || process.env.USERPROFILE,
+        '.claude',
+        'projects',
+        req.sessionId.split('/')[0],
+        'routing-rules.json'
+      );
+      
+      const rulesContent = await fs.readFile(projectConfigPath, 'utf-8');
+      const rules = JSON.parse(rulesContent);
+      
+      // 应用项目特定的规则
+      for (const rule of rules) {
+        if (matchesCondition(req.body.messages, rule.condition)) {
+          return rule.model;
+        }
+      }
+    } catch (e) {
+      // 文件不存在或解析失败，继续
+    }
+  }
+
+  // 基础路由逻辑
+  const userMessage = req.body.messages
+    .find(m => m.role === 'user')
+    ?.content;
+
+  if (typeof userMessage === 'string') {
+    // Token 消耗计算
+    if (req.tokenCount > 80000) {
+      return 'openrouter,google/gemini-2.5-pro-preview';
+    }
+
+    // 基于内容的路由
+    if (userMessage.match(/debug|fix|error|bug/i)) {
+      return 'deepseek,deepseek-reasoner';
+    }
+  }
+
+  return null; // 降级到内置路由
+};
+
+function matchesCondition(messages, condition) {
+  const userMessage = messages
+    .find(m => m.role === 'user')
+    ?.content;
+  
+  if (typeof userMessage === 'string') {
+    return userMessage.includes(condition);
+  }
+  return false;
+}
+```
+
+⚙️ 如何配置 Custom Router  
+
+方式 1: 在 ~/.claude-code-router/config.json 中配置
+
+关键在**CUSTOM_ROUTER_PATH**，其他不变。
+```json
+{
+  "CUSTOM_ROUTER_PATH": "/Users/username/.claude-code-router/custom-router.js",
+  "Providers": [
+    {
+      "name": "deepseek",
+      "api_base_url": "https://api.deepseek.com/chat/completions",
+      "api_key": "$DEEPSEEK_API_KEY",
+      "models": ["deepseek-chat", "deepseek-reasoner"]
+    },
+    {
+      "name": "openrouter",
+      "api_base_url": "https://openrouter.ai/api/v1/chat/completions",
+      "api_key": "$OPENROUTER_API_KEY",
+      "models": ["anthropic/claude-3.5-sonnet", "google/gemini-2.5-pro-preview"]
+    }
+  ],
+  "Router": {
+    "default": "deepseek,deepseek-chat"
+  }
+}
+```
+
+方式 2: 使用 UI 配置
+
+# 启动 UI
+ccr ui
+
+# 在 Web 界面中找到 "Advanced Settings" 或配置字段
+# 填入 CUSTOM_ROUTER_PATH 的完整路径
+
+方式 3: 环境变量
+
+```bash
+export CUSTOM_ROUTER_PATH="/Users/username/.claude-code-router/custom-router.js"
+ccr restart
+```
+
+🚀 最佳实践
+始终考虑降级 - 在不确定时返回 null 让系统使用内置路由
+记录日志 - 使用 req.log.info() 或 console.log() 来调试
+错误处理 - 使用 try-catch 捕获异常
+性能考虑 - 避免复杂的异步操作，因为每次请求都会执行
+路径一致性 - 使用绝对路径，支持环境变量扩展
+
+```ts
+module.exports = async function router(req, config) {
+  try {
+    console.log('Custom router: 处理请求', {
+      model: req.body.model,
+      tokenCount: req.tokenCount,
+      hasThinking: req.body.thinking
+    });
+
+    // 您的逻辑...
+
+    return null; // 或返回 "provider,model"
+  } catch (error) {
+    console.error('Custom router 出错:', error);
+    return null; // 异常时降级
+  }
+};
+```
+
+module.exports = async function router(req, config) {
+  try {
+    console.log('Custom router: 处理请求', {
+      model: req.body.model,
+      tokenCount: req.tokenCount,
+      hasThinking: req.body.thinking
+    });
+
+    // 你的逻辑...
+
+    return null; // 或返回 "provider,model"
+  } catch (error) {
+    console.error('Custom router 出错:', error);
+    return null; // 异常时降级
+  }
+};
