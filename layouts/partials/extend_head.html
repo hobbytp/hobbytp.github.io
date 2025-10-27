@@ -1,2 +1,10 @@
 {{- /* Custom CSS for blog styling */ -}}
 {{- partial "inline-css.html" . -}}
+
+{{- /* Mermaid Diagram Support */ -}}
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.contentLoaded();
+  });
+</script>
