@@ -47,6 +47,7 @@ SuperClaude 是一个增强 Claude Code 的配置框架，提供专业化命令�
    - 计划中的UltraCompression模式展现了对LLM推理成本的深度考量
 
 ### 二、关键技术路线图
+
 ```mermaid
 graph TD
     A[核心框架] --> B[任务系统]

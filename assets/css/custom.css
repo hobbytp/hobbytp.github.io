@@ -2239,3 +2239,60 @@ body .flex-1 h2:last-of-type::after {
     margin-top: 1.5rem !important;
   }
 }
+
+/* ===== 修复目录自动编号问题 ===== */
+/* 移除目录中的自动编号 */
+.toc ul,
+.toc ol,
+#TableOfContents ul,
+#TableOfContents ol {
+  counter-reset: none !important;
+  list-style: none !important;
+}
+
+.toc li,
+#TableOfContents li {
+  counter-increment: none !important;
+}
+
+.toc li::before,
+#TableOfContents li::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* ===== 修复文章内容区域列表编号问题 ===== */
+/* 移除文章主内容区域中无序列表的自动编号 */
+.post-content ul,
+.post-content ol,
+article ul,
+article ol,
+main ul,
+main ol {
+  counter-reset: none !important;
+}
+
+.post-content ul li,
+.post-content ol li,
+article ul li,
+article ol li,
+main ul li,
+main ol li {
+  counter-increment: none !important;
+}
+
+/* 移除列表项前面的自动添加内容 */
+.post-content ul li::before,
+article ul li::before,
+main ul li::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* 保留有序列表的正常编号（仅移除自定义的重复编号） */
+.post-content ol li::before,
+article ol li::before,
+main ol li::before {
+  content: none !important;
+  display: none !important;
+}

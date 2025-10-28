@@ -153,29 +153,24 @@ weight = 13
 
 
 [[menu.main]]
-name = "每日AI"
-url = "/zh/daily_ai"
-weight = 14
-
-[[menu.main]]
 name = "行业动态"
 url = "/categories/news"
-weight = 15
+weight = 14
 
 [[menu.main]]
 name = "课程"
 url = "/categories/courses"
-weight = 16
+weight = 15
 
 [[menu.main]]
 name = "关于作者"
 url = "/zh/about"
-weight = 17
+weight = 16
 
 [[menu.main]]
 name = "搜索"
 url = "/search"
-weight = 18
+weight = 17
 
 # 这会生成 /index.json，供前端搜索用。
 [outputs]
