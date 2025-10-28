@@ -2,7 +2,7 @@
 title: "Python 3.x 高级语法与语言特性深度剖析"
 date: "2025-04-22T10:34:00+08:00"
 description: "Python 3.x 高级语法与语言特性深度剖析"
-lastmod: "2025-06-28T11:40:00+08:00"
+lastmod: "2025-10-28T11:40:00+08:00"
 tags: ["Python 3.x", "高级语法", "语言特性"]
 categories: ["technologies"]
 ---
@@ -33,6 +33,8 @@ categories: ["technologies"]
 | [3.11](https://docs.python.org/3.11/whatsnew/3.11.html#)  | 整体性能提升显著（平均加速约25%，部分场景快60%），引入了异常组与 except* 语法（[PEP 654](https://peps.python.org/pep-0654/)）支持同时处理多个异常，异常对象可添加注释（[PEP 678](https://peps.python.org/pep-0678/)），traceback 错误追踪定位更细致（[PEP 657](https://peps.python.org/pep-0657/)），类型系统大幅增强（如变参泛型、Self 类型、TypedDict 字段可选、LiteralString 等），并新增 tomllib 标准库模块支持 TOML 解析，asyncio、enum、dataclasses 等标准库多处改进，同时弃用和移除了一批老旧模块与API。整体上，Python 3.11在性能、类型安全、异常处理和开发体验方面都有质的飞跃。                            |
 | [3.12](https://docs.python.org/3.12/whatsnew/3.12.html#)  | 引入了更简洁的类型参数和类型别名声明语法（[PEP 695](https://peps.python.org/pep-0695/)），f字符串表达能力大幅增强（[PEP 701](https://peps.python.org/pep-0701/)），支持每个解释器独立GIL以便更好地利用多核（[PEP 684](https://peps.python.org/pep-0684/)），推导式性能提升（[PEP 709](https://peps.python.org/pep-0709/)），错误提示和类型提示（如TypedDict和override装饰器）更加智能和精确，标准库如asyncio、os、pathlib等性能和可用性显著提升，同时移除了distutils、asyncore、asynchat等过时模块，整体上让Python在类型系统、性能、安全性和开发体验上都迈进了一大步。                            |
 | [3.13](https://docs.python.org/3.13/whatsnew/3.13.html#)  | 引入了全新交互式解释器（带多行编辑和彩色提示）、实验性支持**无GIL**的自由线程模式（[PEP 703](https://peps.python.org/pep-0703/)）、加入了基础版JIT即时编译器（[PEP 744](https://peps.python.org/pep-0744/)）、改进了错误提示的可读性和智能性、对iOS和Android的官方支持、标准库移除了19个历史遗留模块（如cgi、crypt等），并对API和C API进行了多项现代化和安全性调整。                            |
+| [3.14](https://docs.python.org/3.14/whatsnew/3.14.html#)  | 继续完善并“落地”3.13 的关键方向：模板字符串字面量 t"..."（[PEP 750](https://peps.python.org/pep-0750/)）；注解惰性求值与 annotationlib（[PEP 649](https://peps.python.org/pep-0649/)、[PEP 749](https://peps.python.org/pep-0749/)）；标准库提供多解释器并发（[PEP 734](https://peps.python.org/pep-0734/)），含 concurrent.interpreters 与 InterpreterPoolExecutor；自由线程（Free-threaded）构建正式受支持（[PEP 779](https://peps.python.org/pep-0779/)）；新增 Zstandard（[PEP 784](https://peps.python.org/pep-0784/)）；安全外部调试接口（[PEP 768](https://peps.python.org/pep-0768/)）带来 sys.remote_exec() 与 pdb -p；REPL/标准库 CLI 语法高亮与 asyncio 调用图等可观测性；语言层细化：except/except* 可省略括号（[PEP 758](https://peps.python.org/pep-0758/)）、map(strict=...)、NotImplemented 布尔上下文报错、memoryview 可作泛型；平台/构建：JIT 官方二进制、Android 发行、Emscripten Tier-3（[PEP 776](https://peps.python.org/pep-0776/)）；兼容性：Unix 默认 forkserver、垃圾回收器改为增量式等。                            |
+
 
 ## **第一章：注释、类型提示与函数签名增强**
 
@@ -92,6 +94,8 @@ Python 是动态类型语言，但随着项目规模和复杂度的增加，对�
   * **提高代码可维护性**：使代码意图更明确，便于理解和修改。
 
 这一演变过程——从外部工具依赖的注释形式到集成至语言核心语法——清晰地展示了 Python 如何逐步吸收社区的最佳实践，并在不破坏向后兼容性的前提下增强语言自身的功能。类型提示的引入，也为后续如 Pydantic 这样的数据验证库奠定了基础，体现了语言特性间的协同效应。
+
+  > 提示（3.14+）：注解默认采用“延迟求值”语义，前向引用通常无需再写成字符串；运行时获取注解推荐使用官方提供的读取接口（如 annotationlib/typing 家族）进行显式求值，跨版本项目可在 3.7–3.13 使用 `from __future__ import annotations` 过渡。
 
 ### **1.3 仅关键字参数 (PEP 3102)：强制明确性**
 
@@ -218,7 +222,7 @@ PEP 3102 引入了仅关键字参数（Keyword-Only Arguments），允许函数�
 
 Python 标准库提供了许多实用的装饰器，极大地简化了常见编程模式的实现。
 
-**常用标准库装饰器概览**
+### 常用标准库装饰器概览
 
 | 装饰器 | 模块 | Python 版本引入 | 目的 | 示例语法 |
 | :---- | :---- | :---- | :---- | :---- |
@@ -438,7 +442,30 @@ print(f"Poly area: {poly.area()}, perimeter: {poly.perimeter()}")
 
 推迟的类型标注是类型提示系统演进的重要一步，它解决了前向引用这一痛点，使得类型提示语法更加一致和便捷。
 
-### **4.2 Pydantic：基于类型提示的数据验证与解析**
+$1
+
+#### **4.1.x 运行时获取注解（跨版本）**
+
+最小示例（跨版本推荐方案：`typing.get_type_hints`）：
+
+```python
+from __future__ import annotations  # 对 3.7–3.13 友好；3.14+ 可省略
+from typing import Optional, get_type_hints
+
+class Node:
+    def __init__(self, next_node: Optional["Node"] = None) -> None:
+        self.next = next_node
+
+hints = get_type_hints(Node.__init__, include_extras=True)
+print(hints["next_node"])  # -> typing.Optional[__main__.Node]
+```
+
+要点：
+* 3.7–3.13 可使用 `from __future__ import annotations`；
+* 3.10+ 可选：`inspect.get_annotations(obj, eval_str=True)` 按需求值字符串注解；
+* 3.14+：常见前向引用无需再写成字符串，运行时读取建议使用官方提供的读取函数，避免直接依赖 `__annotations__` 细节。
+
+$2：基于类型提示的数据验证与解析**
 
 Pydantic 是一个非常流行的第三方 Python 库，它巧妙地利用了 Python 的类型提示（Type Hints）来实现强大的数据验证、解析/序列化以及配置管理功能。它完美地展示了核心语言特性（类型提示）如何催生出一个繁荣的生态系统。
 
@@ -602,7 +629,7 @@ Pydantic 的成功充分说明了 Python 类型提示的价值远超静态分析
 
 ---
 
-**Python 并发模型对比**
+### Python 并发模型对比
 
 | 特性 | asyncio (异步 I/O) | threading (多线程) | multiprocessing (多进程) |
 | :---- | :---- | :---- | :---- |
@@ -616,6 +643,150 @@ Pydantic 的成功充分说明了 Python 类型提示的价值远超静态分析
 ---
 
 选择哪种并发模型是一个关键的设计决策。对于需要高并发处理大量等待操作的应用，\`asyncio\` 通常是最高效的选择。对于需要利用多核 CPU 进行密集计算的任务，\`multiprocessing\` 仍然是 CPython 下的标准方案，但随着 **Python 3.13 无 GIL 构建** 的引入，多线程在未来处理 CPU 密集型任务方面也提供了新的可能性。\`threading\` 则在 I/O 密集型任务中仍有一席之地，尤其是在与释放 GIL 的 C 扩展库交互时，或者当 \`asyncio\` 的编程模型不适用时。理解 GIL 的存在及其影响，以及 **Python 3.13 中可选的无 GIL 构建**，是理解 Python (特别是 CPython) 并发行为的核心。
+
+### **5.3 子解释器与解释器池（Python 3.14+）**
+
+子解释器（Subinterpreters）在同一进程内提供更强的隔离边界（各有独立的模块与状态），在某些场景可作为多进程的轻量替代。3.14 将多解释器能力以标准库形式对外提供（参考 PEP 734），并面向“池化执行”的典型用法提供了执行器接口。
+
+* 定位与对比：
+  * 相对多线程：隔离更强、共享更少，降低跨任务相互影响的风险；
+  * 相对多进程：上下文切换与资源开销更低，但隔离程度也略逊于独立进程；
+  * 适合“安全并行 + 轻量隔离”的批处理/插件执行场景。
+* 执行器示例（概念化伪代码）：
+
+```python
+from concurrent.interpreters import InterpreterPoolExecutor
+
+def cpu_task(x: int) -> int:
+    return x * x
+
+with InterpreterPoolExecutor(max_workers=4) as ex:
+    futs = [ex.submit(cpu_task, i) for i in range(8)]
+    results = [f.result() for f in futs]
+print(results)
+```
+
+* 相关更新：
+  * 自由线程（无 GIL）构建在 3.14 获得官方支持状态（参考 PEP 779）；
+  * Unix 平台上 `forkserver` 成为默认启动方法，影响 `multiprocessing`/`ProcessPoolExecutor` 的进程派生行为（端口/句柄继承等需留意）。
+
+
+* 数据共享与通信：
+  * 避免跨解释器直接共享复杂可变对象；
+  * 通过序列化（如 JSON/pickle）或官方提供的通道/桥接机制在解释器间传递数据；
+  * 明确边界：每个子解释器拥有独立的模块导入与全局状态。
+* 错误与资源管理：
+  * 通过 Future 结果捕获子解释器中抛出的异常；
+  * 使用上下文管理器确保解释器池与线程资源按时回收；
+  * 在需要取消时调用 `future.cancel()` 并在任务内部定期检查取消信号。
+* 何时选用：
+  * 需要更强隔离但又不希望付出多进程的全部开销；
+  * CPU 密集型批量任务（可与自由线程构建结合考量）或插件/不可信代码的受限执行；
+  * 若需与现有进程间通信/监控生态无缝对接，仍优先多进程方案。
+#### **5.3.1 进阶示例：插件隔离与模块状态**
+
+以下示例模拟“插件”在子解释器中的隔离执行：每个子解释器拥有独立的模块与全局状态，不会与主解释器或其他子解释器互相污染。
+
+```python
+from concurrent.interpreters import InterpreterPoolExecutor
+
+PLUGIN_CODE = """
+# 该代码在子解释器内运行（每个子解释器都有独立的全局 STATE）
+STATE = []
+
+def process(item: int) -> int:
+    STATE.append(item)
+    return item * item
+"""
+
+def run_plugin(n: int):
+    # 在子解释器内“导入/加载”插件代码（示意：避免真实文件依赖）
+    import types
+    mod = types.ModuleType("plugin")
+    exec(PLUGIN_CODE, mod.__dict__)
+    results = [mod.process(i) for i in range(n)]
+    return {"results": results, "state_len": len(mod.STATE)}  # 返回可序列化结构
+
+with InterpreterPoolExecutor(max_workers=2) as ex:
+    fut = ex.submit(run_plugin, 3)
+    out = fut.result()
+print(out)
+# 可能输出：{'results': [0, 1, 4], 'state_len': 3}
+# 说明：STATE 只存在于该子解释器的插件模块中，主解释器无此状态
+```
+
+要点：
+* 每个子解释器拥有独立的模块系统与全局状态；
+* 使用 `exec` 装载“插件代码”仅为示意，生产中建议使用受控的导入/初始化流程；
+* 返回值需为可序列化的原生结构（dict/list/str/int/float/None 等）。
+
+#### **5.3.2 进阶示例：JSON 可序列化的数据交换**
+
+通过仅交换 JSON 可序列化的数据，简化跨解释器的数据传输与边界治理：
+
+```python
+from concurrent.interpreters import InterpreterPoolExecutor
+
+def summarize(nums: list[int]) -> dict:
+    total = sum(nums)
+    return {"count": len(nums), "sum": total, "mean": (total/len(nums) if nums else None)}
+
+batch = [list(range(10)), list(range(5))]
+with InterpreterPoolExecutor(max_workers=2) as ex:
+    futs = [ex.submit(summarize, nums) for nums in batch]
+    reports = [f.result() for f in futs]
+
+print(reports)
+# [{'count': 10, 'sum': 45, 'mean': 4.5}, {'count': 5, 'sum': 10, 'mean': 2.0}]
+```
+
+实践建议：
+* 任务函数定义在模块顶层，确保可被提交与序列化；
+* 仅传入/返回原生内置类型（或可 JSON 化的类型），必要时在边界层进行转换；
+* 使用上下文管理器/超时/取消来保障资源回收与可控退出。
+
+
+#### **5.3.3 通道/桥接机制：实践路线与注意事项**
+
+- 优先使用官方提供的 channel/bridge API（若可用），获得更好的兼容性与安全边界；
+- 其次可采用 JSON/pickle over socket/管道 的通用路线；仅批处理时可落地临时文件（tempfile）作为简单桥接；
+- 明确生命周期与背压策略：限定消息大小、采用长度前缀或“JSON 行”协议，避免消息粘连或分包问题；
+- 安全基线：输入校验/超时/隔离策略，不在边界上传递可执行对象；
+- 监控与审计：关键通道事件写入结构化日志，便于复现问题。
+
+可选（简化示意，非官方 API）：主解释器作为“Broker”，提供本地回环 socket 服务，子解释器连接发送 JSON：
+
+```python
+# 主解释器（Broker）简化示意
+import json, socket, threading
+
+def broker(host='127.0.0.1', port=5050):
+    srv = socket.socket(); srv.bind((host, port)); srv.listen()
+    def handle(conn):
+        data = conn.recv(8192)
+        msg = json.loads(data)
+        # 处理消息...
+        conn.send(json.dumps({"ok": True}).encode())
+        conn.close()
+    while True:
+        c,_ = srv.accept()
+        threading.Thread(target=handle, args=(c,), daemon=True).start()
+```
+
+```python
+# 子解释器任务函数（概念；在子解释器内运行）
+import json, socket
+
+def send_report(payload: dict, host='127.0.0.1', port=5050) -> dict:
+    s = socket.socket(); s.connect((host, port))
+    s.send(json.dumps(payload).encode())
+    data = s.recv(8192)
+    s.close()
+    return json.loads(data)
+```
+
+> 注：以上为“通道模式”的工程示意，实际项目应优先选用官方通道 API（如提供），并在协议、安全与资源治理方面做充分约束。
+
 
 ## **第六章：高级表达式特性：提升代码简洁性与表达力**
 
@@ -760,16 +931,14 @@ Python 一直支持使用 \* 来解包可迭代对象（如列表、元组）以
     ```
 
 ## **6.4 扩展解包（Packing/Unpacking）**
-
-5. **星号解包可迭代对象：**
+1. **星号解包可迭代对象：**
 
     ```python
     first, *middle, last = [1, 2, 3, 4, 5]  # first=1, middle=[2, 3, 4], last=5
     combined = [*list1, *list2]  # 合并列表
     merged_dict = {**dict1, **dict2}  # 合并字典（Python 3.5+）
     ```
-
-6. **双星号解包字典：**
+1. **双星号解包字典：**
 
     ```python
     def func(a, b, c):
@@ -781,8 +950,7 @@ Python 一直支持使用 \* 来解包可迭代对象（如列表、元组）以
 高级解包特性是 Python 语言表达力增强的又一体现，它建立在已有的解包机制之上，通过扩展其应用场景，为处理和组合集合数据提供了更优雅、更 Pythonic 的方式。
 
 ## **6.5 赋值表达式（海象运算符 `:=` ，Python 3.8+）**
-
-7. **在表达式内部赋值：**
+1. **在表达式内部赋值：**
 
     ```python
     # 传统方式
@@ -802,8 +970,7 @@ Python 一直支持使用 \* 来解包可迭代对象（如列表、元组）以
     ```
 
 ## **6.6 高级字符串格式化（f-Strings, Python 3.6+）**
-
-8. **格式化字符串字面值：**
+1. **格式化字符串字面值：**
 
     ```python
     name = "Alice"
@@ -814,33 +981,63 @@ Python 一直支持使用 \* 来解包可迭代对象（如列表、元组）以
     message = f"Total: ${price * 1.08:.2f}"  # Total: $21.59
     ```
 
-## **6.7 字典操作符（Python 3.9+）**
+$1
+**对比示例：f-strings 与 t-strings（示意）**
 
-9. **字典合并 (`|`)：**
+```python
+# f-strings：立即求值并嵌入结果（表达式会执行）
+user = {"name": "Alice", "age": 30}
+msg = f"Hello, {user['name']}! In five years: {user['age'] + 5}."
+print(msg)  # Hello, Alice! In five years: 35.
+```
+
+```python
+# t-strings：模板化占位（不执行表达式，显式提供数据以渲染）
+# 说明：以下为“示意 API”，以官方实现为准，核心在于：不执行 { ... } 内的表达式，仅做键替换。
+# 假设 t-strings 生成模板对象 tmpl，并通过 render(mapping) 渲染：
+# tmpl = t"Hello, {name}! In five years: {age_plus}."
+# print(tmpl.render({"name": "Alice", "age_plus": 35}))
+# → Hello, Alice! In five years: 35
+```
+
+**当前可选的过渡方案（标准库安全模板）**
+
+```python
+from string import Template
+
+# 使用 $name 风格占位；safe_substitute 可在缺失键时避免异常
+user = {"name": "Alice", "age_plus": 35}
+tmpl = Template("Hello, $name! In five years: $age_plus.")
+print(tmpl.safe_substitute(user))
+```
+
+安全要点：
+* 不在模板内执行任意表达式；
+* 仅以受控映射（dict）进行替换；
+* 对用户输入做边界/字符白名单校验，避免“键注入”。
+## **6.7 字典操作符（Python 3.9+）**
+1. **字典合并 (`|`)：**
 
     ```python
     d1 = {'a': 1, 'b': 2}
     d2 = {'b': 3, 'c': 4}
     d3 = d1 | d2  # {'a': 1, 'b': 3, 'c': 4} (d2 覆盖 d1 的键)
     ```
-
-10. **字典合并赋值 (`|=`)：**
+1. **字典合并赋值 (`|=`)：**
 
     ```python
     d1 |= d2  # 等效于 d1.update(d2)
     ```
 
 ## **6.8 高级函数相关**
-
-11. **Lambda 表达式：**
+1. **Lambda 表达式：**
 
     ```python
     # 匿名函数
     adder = lambda x, y: x + y
     sorted_points = sorted(points, key=lambda p: p[0]**2 + p[1]**2)  # 按点到原点距离平方排序
     ```
-
-12. **`yield from` 表达式：**
+1. **`yield from` 表达式：**
 
     ```python
     def flatten(nested_list):
@@ -849,29 +1046,25 @@ Python 一直支持使用 \* 来解包可迭代对象（如列表、元组）以
     ```
 
 ## **6.9 高级迭代与控制**
-
-13. **三元条件表达式：**
+1. **三元条件表达式：**
 
     ```python
     value = true_value if condition else false_value
     ```
-
-14. **`any()` 和 `all()` 函数：**
+1. **`any()` 和 `all()` 函数：**
 
     ```python
     has_even = any(x % 2 == 0 for x in numbers)  # 是否有偶数
     all_positive = all(x > 0 for x in numbers)   # 是否全为正数
     ```
-
-15. **条件生成器表达式：**
+1. **条件生成器表达式：**
 
     ```python
     positive_numbers = (x for x in numbers if x > 0)  # 生成器版本的条件过滤
     ```
 
 ## **6.10 模式匹配 (Structural Pattern Matching, Python 3.10+)**
-
-16. **match-case 语句：**
+1. **match-case 语句：**
 
     ```python
     def handle_command(command):
@@ -892,10 +1085,17 @@ Python 3 的表达式特性主要聚焦于：
 2. **解构与重组：** 扩展解包（`*`, `**`）。
 3. **流程内赋值：** 海象运算符 `:=`。
 4. **新操作符：** 字典合并 `|` 和 `|=`。
-5. **高级结构化逻辑：** 模式匹配 (`match-case`)。
-6. **函数式编程支持：** `lambda`, `any()`, `all()`, 条件生成器，`yield from`。
+1. **高级结构化逻辑：** 模式匹配 (`match-case`)。
+1. **函数式编程支持：** `lambda`, `any()`, `all()`, 条件生成器，`yield from`。
 
 这些特性共同提升了 Python 代码的编写效率、可读性以及对复杂逻辑的处理能力。理解并合理运用这些特性能显著提高代码质量。
+
+
+**（3.14+ 补充）** 内置与语法的若干微调：
+
+* `map(strict=...)` 提供更严格的参数长度校验；
+* `memoryview[T]` 在类型系统中具备更好的泛型表达；
+* 在布尔上下文中使用 `NotImplemented` 将抛出 `TypeError`（避免误用）。
 
 ## **第七章：链式异常处理 (PEP 3134)：改进错误追踪**
 
@@ -982,7 +1182,71 @@ Python 3 的表达式特性主要聚焦于：
 
 链式异常是 Python 3.x 在提升开发者生产力和改善调试体验方面做出的一项重要改进，它使得处理和理解运行时错误变得更加系统和透明。
 
-## **第八章：Python 3.x 性能提升关键特性总结**
+### **7.4 语法与诊断更新（3.14+）**
+
+* `except`/`except*` 分支在部分场景下可省略括号（参考 PEP 758），提升可读性；
+* 在包含 `finally` 的复杂控制流中，3.14 增加了潜在问题的告警与提示（参考 PEP 765），便于及早发现异常吞噬或控制流异常；
+* 结合本书新增的“第八章：调试与可观测性”，建议将诊断开关与结构化日志纳入默认工程基线。
+
+
+## **第八章：调试与可观测性**
+
+面向生产可观测性与本地/远程调试，Python 3.14 在“外部调试接口、安全性约束、可读性与异步栈自省”等方面进一步完善，建议将“诊断能力”作为工程实践的基础设施来建设。
+
+### **8.1 外部调试接口与安全（参考 PEP 768）**
+
+* 定位：为运行中进程提供更安全、受控的调试/诊断入口，强调权限与最小化入侵。
+* 能力要点：
+  * 更安全的“远程执行/附加”路径，用于采集状态、执行最小化诊断片段；
+  * 更清晰的安全边界与默认限制，减少线上误用风险；
+  * 建议与系统级审计/日志结合，做到“谁、何时、做了什么”可追溯。
+* 示例：`sys.remote_exec`、`pdb -p` 的受控使用（仅限受信环境），实现安全附加与远程执行
+* 参考：Python 3.14 What's New 与相关 PEP 文档。
+
+> 实务建议：生产环境首选“只读”诊断（如转储栈、导出快照），变更性操作需走变更流程并留痕。
+
+### **8.2 asyncio 调试与自省（任务栈与调试模式）**
+
+在异步系统中，定位“卡死/阻塞/悬挂任务”尤为关键。可结合以下手段：
+
+```python
+import asyncio
+
+async def main():
+    loop = asyncio.get_running_loop()
+    # 开启调试：更严格的检查与更详细的错误信息
+    loop.set_debug(True)
+
+    # 运行期收集所有任务并打印栈，定位卡住的协程
+    for task in asyncio.all_tasks():
+        if task is not asyncio.current_task():
+            print(f"Task: {task.get_name()}")
+            task.print_stack()
+
+asyncio.run(main())
+```
+
+* 结合环境变量 `PYTHONASYNCIODEBUG=1` 可在无需改动代码的情况下启用调试模式；
+* 建议配合结构化日志（JSON）与唯一请求 ID，关联跨协程/任务的诊断信息。
+
+### **8.3 REPL/CLI 可读性与工具链**
+
+* REPL/标准库 CLI 的彩色/高亮输出（随版本逐步完善）有利于快速阅读 Traceback 与交互式反馈；
+* `faulthandler`、`tracemalloc`、`logging` 与 `warnings` 共同构成“最小可用”的诊断工具箱：
+
+```python
+import faulthandler, tracemalloc
+
+tracemalloc.start()            # 跟踪内存分配
+faulthandler.enable()          # 在崩溃时自动打印 Python 栈
+# faulthandler.dump_traceback(file=...)  # 按需手动转储
+```
+
+### **8.4 小结**
+
+调试与可观测性是“质量与稳定性工程”的核心组成。3.14 的改进使外部调试接口更安全、异步自省更易用、交互式反馈更友好。建议将“诊断开关、最小可读栈、结构化日志、只读快照”纳入服务默认基线。
+
+## **第九章：Python 3.x 性能提升关键特性总结**
 
 Python 3.x 系列在性能方面取得了显著且持续的进展，尤其是在近期的版本中，通过对核心解释器、数据结构、并发机制和语言特性的多维度优化，显著提升了执行效率。
 
@@ -1037,6 +1301,18 @@ Python 3.x 系列在性能方面取得了显著且持续的进展，尤其是在
 
 ---
 
+### 平台与构建（3.14+）
+
+* 提供官方 JIT 二进制发布通道（实验/平台限定），适合性能敏感场景按需评估；
+* Android 平台提供官方发行包，便于移动端/嵌入式集成；
+* Emscripten（WebAssembly）提升至新的支持层级（参考相关 PEP），适合浏览器/沙箱环境的轻量运行；
+* 自由线程（无 GIL）构建与子解释器并行能力共同推进（与第5章关联），Unix 默认 `forkserver` 影响进程派生行为（与第5章 5.3 关联）。
+
+### 压缩与存储（3.14+）
+
+* 标准库新增 Zstandard 压缩能力（参考 PEP 784），适合高压缩比与高速解压的日志/模型/工件存储；
+* 增量 GC 与若干运行时默认值调整，改善长时运行服务的吞吐与尾延迟（按场景开启/调参）。
+
 ### 通用优化趋势
 
 Python 3.x 的性能提升是一个持续的工程，其核心驱动力包括：
@@ -1048,7 +1324,7 @@ Python 3.x 的性能提升是一个持续的工程，其核心驱动力包括：
 
 这些关键特性共同推动了 Python 3.x 成为一个性能更强、更适合现代计算需求的编程语言。
 
-## **第八章：总结**
+## **第十章：总结**
 
 本报告深入探讨了 Python 3.x 自 3.0 版本以来引入的一系列高级语法和语言特性，涵盖了从代码组织、类型系统增强、元编程工具，到并发模型、表达式优化以及错误处理机制等多个方面。具体包括：
 
