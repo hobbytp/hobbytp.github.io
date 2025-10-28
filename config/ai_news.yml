@@ -14,7 +14,7 @@ sources:
 
 search:
   max_articles_per_source: 5
-  days_back: 0  # 改为0，只搜索今天的内容
+  days_back: 1
   similarity_threshold: 0.85
 
 advanced:

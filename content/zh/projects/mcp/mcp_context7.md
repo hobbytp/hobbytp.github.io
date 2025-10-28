@@ -3,7 +3,7 @@ title: 每周一个MCP：Context7
 date: "2025-06-29T22:30:00+08:00"
 lastmod: "2025-06-29T22:30:00+08:00"
 draft: false
-tags: ["mcp", "context7", "python"]
+tags: ["mcp", "context7", "python","coding"]
 categories: ["projects"]
 description: Context7 是一个用于 LLM 和 AI 编码编辑器的 MCP 服务器，可以提供最新的代码文档和代码示例，使得生成的代码更准确、版本相关且避免过时或虚假信息。非常适合配合AI编码助手使用更新版本的API。
 

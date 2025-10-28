@@ -980,7 +980,7 @@ class DailyAICollectorV2:
 title: "每日AI动态 - {date_str}"
 date: {today.isoformat()}+08:00
 draft: false
-categories: ["daily_ai"]
+categories: ["news"]
 tags: ["AI动态", "技术更新", "行业趋势"]
 description: "{date_str}的AI技术动态汇总"
 readingTime: "{max(3, total_items // 3)} min"
