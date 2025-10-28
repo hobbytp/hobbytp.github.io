@@ -2,9 +2,38 @@
 {{- partial "inline-css.html" . -}}
 
 {{- /* Mermaid Diagram Support */ -}}
-<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    mermaid.contentLoaded();
-  });
+  // 等待 Mermaid 加载完成
+  function initMermaid() {
+    if (typeof mermaid === 'undefined') {
+      setTimeout(initMermaid, 100);
+      return;
+    }
+    
+    // 初始化 Mermaid
+    mermaid.initialize({ 
+      startOnLoad: false,
+      theme: 'default'
+    });
+    
+    // 将 Hugo 生成的代码块转换为 Mermaid 可识别的格式
+    document.querySelectorAll('pre code.language-mermaid').forEach(function(codeBlock) {
+      const pre = codeBlock.parentElement;
+      const mermaidDiv = document.createElement('div');
+      mermaidDiv.className = 'mermaid';
+      mermaidDiv.textContent = codeBlock.textContent;
+      pre.parentElement.replaceChild(mermaidDiv, pre);
+    });
+    
+    // 渲染所有 Mermaid 图表
+    mermaid.run();
+  }
+  
+  // DOMContentLoaded 时执行
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMermaid);
+  } else {
+    initMermaid();
+  }
 </script>
