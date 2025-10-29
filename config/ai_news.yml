@@ -13,14 +13,14 @@ sources:
   enable_metasota_search: true # 启用 METASOSEARCH_API_KEY
 
 search:
-  max_articles_per_source: 5
-  days_back: 1
+  max_articles_per_source: 3
+  days_back: 0  # 与代码保持一致，只搜索今天的内容
   similarity_threshold: 0.85
 
 advanced:
-  enable_content_extraction: true
+  enable_content_extraction: false  # 减少处理时间
   enable_keyword_extraction: true
-  cache_results: true
+  cache_results: false  # 禁用缓存，避免旧信息重复使用
   enable_sentiment_analysis: true
 topics:
   - important updates in the AI field today, including large models, ai agents, papers, tools, open-source projects, celebrity interviews, ai code assistants, AI applications, and ai trending news.
