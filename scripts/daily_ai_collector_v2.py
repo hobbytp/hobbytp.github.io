@@ -478,19 +478,19 @@ class DailyAICollectorV2:
                         pub_time = datetime.datetime.strptime(published_date, '%Y-%m-%d')
                     
                     # 检查发布时间是否在合理范围内（不能是未来时间）
-                    now = datetime.datetime.now()
+                    now = datetime.datetime.now(datetime.timezone.utc)
                     if pub_time > now:
                         print(f"跳过未来时间文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
+                        continue
+                    
+                    # 额外检查：如果发布时间超过7天，也跳过（防止极端情况）
+                    if pub_time < now - datetime.timedelta(days=7):
+                        print(f"过滤掉过旧文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
                         continue
                     
                     # 检查是否在24小时内
                     if pub_time < yesterday:
                         print(f"过滤掉过期文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
-                        continue
-                        
-                    # 额外检查：如果发布时间超过7天，也跳过（防止极端情况）
-                    if pub_time < now - datetime.timedelta(days=7):
-                        print(f"过滤掉过旧文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
                         continue
                         
                 except Exception as e:
