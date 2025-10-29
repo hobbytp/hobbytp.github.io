@@ -4,7 +4,6 @@
 验证时间过滤逻辑是否能正确过滤掉过时的新闻
 """
 
-import os
 import sys
 import datetime
 from pathlib import Path
@@ -12,16 +11,11 @@ from pathlib import Path
 # 添加scripts目录到Python路径
 sys.path.append(str(Path(__file__).parent))
 
-from daily_ai_collector_v2 import DailyAICollectorV2
-
 def test_time_filtering():
     """测试时间过滤功能"""
     print("=" * 60)
     print("测试旧信息修复效果")
     print("=" * 60)
-    
-    # 创建收集器实例
-    collector = DailyAICollectorV2()
     
     # 测试用例1：模拟Gemini 2.0的旧新闻（12月发布，现在是10月）
     old_gemini_news = {
@@ -110,14 +104,14 @@ def test_time_filtering():
                 if pub_time > now:
                     result = False
                     print("结果: 被过滤（未来时间）")
-                # 检查是否在24小时内
-                elif pub_time < yesterday:
-                    result = False
-                    print("结果: 被过滤（超过24小时）")
                 # 检查是否超过7天
                 elif pub_time < now - datetime.timedelta(days=7):
                     result = False
                     print("结果: 被过滤（超过7天）")
+                # 检查是否在24小时内
+                elif pub_time < yesterday:
+                    result = False
+                    print("结果: 被过滤（超过24小时）")
                 else:
                     result = True
                     print("结果: 通过过滤")
@@ -142,13 +136,12 @@ def test_config_consistency():
     """测试配置一致性"""
     print("\n检查配置一致性...")
     
-    # 检查代码中的配置
-    collector = DailyAICollectorV2()
-    
     # 模拟搜索配置
-    yesterday, today = collector.get_date_range(hours_back=24)
+    now = datetime.datetime.now()
+    today_8am = now.replace(hour=8, minute=0, second=0, microsecond=0)
+    yesterday_8am = today_8am - datetime.timedelta(hours=24)
     
-    print(f"代码中时间范围: {yesterday.strftime('%Y-%m-%d %H:%M')} 到 {today.strftime('%Y-%m-%d %H:%M')}")
+    print(f"代码中时间范围: {yesterday_8am.strftime('%Y-%m-%d %H:%M')} 到 {today_8am.strftime('%Y-%m-%d %H:%M')}")
     print("代码中 days_back: 0")
     print("代码中 cache_results: False")
     
