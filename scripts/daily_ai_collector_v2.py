@@ -416,7 +416,7 @@ class DailyAICollectorV2:
                 # 高级功能
                 enable_content_extraction=False,  # 减少处理时间
                 enable_keyword_extraction=True,
-                cache_results=True,
+                cache_results=False,  # 禁用缓存，避免旧信息重复使用
             )
             
             # 创建收集器
@@ -457,28 +457,46 @@ class DailyAICollectorV2:
             articles = result.get('articles', [])
             
             print(f"ai_news_collector_lib 找到 {len(articles)} 条结果")
+            print(f"开始时间过滤，目标时间范围: {yesterday.strftime('%Y-%m-%d %H:%M')} 到 {today.strftime('%Y-%m-%d %H:%M')}")
             
             # 转换为统一格式并严格过滤时间
             formatted_results = []
             for article in articles:
                 # 严格检查发布时间
                 published_date = article.get('published_date', '')
-                if published_date:
-                    try:
-                        # 解析发布时间
-                        if 'T' in published_date:
-                            pub_time = datetime.datetime.fromisoformat(published_date.replace('Z', '+00:00'))
-                        else:
-                            pub_time = datetime.datetime.strptime(published_date, '%Y-%m-%d')
-                        
-                        # 检查是否在24小时内
-                        if pub_time < yesterday:
-                            print(f"过滤掉过期文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
-                            continue
-                    except Exception as e:
-                        print(f"时间解析错误: {published_date}, 错误: {e}")
-                        # 如果时间解析失败，跳过该文章
+                
+                # 如果没有发布时间，直接跳过
+                if not published_date or published_date == '':
+                    print(f"跳过无发布时间文章: {article.get('title', '')[:50]}...")
+                    continue
+                
+                try:
+                    # 解析发布时间
+                    if 'T' in published_date:
+                        pub_time = datetime.datetime.fromisoformat(published_date.replace('Z', '+00:00'))
+                    else:
+                        pub_time = datetime.datetime.strptime(published_date, '%Y-%m-%d')
+                    
+                    # 检查发布时间是否在合理范围内（不能是未来时间）
+                    now = datetime.datetime.now()
+                    if pub_time > now:
+                        print(f"跳过未来时间文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
                         continue
+                    
+                    # 检查是否在24小时内
+                    if pub_time < yesterday:
+                        print(f"过滤掉过期文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
+                        continue
+                        
+                    # 额外检查：如果发布时间超过7天，也跳过（防止极端情况）
+                    if pub_time < now - datetime.timedelta(days=7):
+                        print(f"过滤掉过旧文章: {article.get('title', '')[:50]}... (发布时间: {published_date})")
+                        continue
+                        
+                except Exception as e:
+                    print(f"时间解析错误: {published_date}, 错误: {e}")
+                    # 如果时间解析失败，跳过该文章
+                    continue
                 
                 item = {
                     'title': article.get('title', ''),
