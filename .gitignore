@@ -91,3 +91,5 @@ firebase-debug.log
 *.bak
 *.backup
 _backup/ 
+
+__pycache__/
