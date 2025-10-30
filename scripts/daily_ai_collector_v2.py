@@ -163,7 +163,7 @@ class DailyAICollectorV2:
         history_urls = set()
         history_titles = set()
         
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(datetime.timezone.utc)
         for i in range(days_back):
             date = now - datetime.timedelta(days=i)
             file_path = self.content_dir / f"{date.strftime('%Y-%m-%d')}.md"
