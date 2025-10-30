@@ -5,9 +5,8 @@
 """
 
 import os
-import sys
 import subprocess
-import locale
+import sys
 
 # 设置编码环境变量
 os.environ['PYTHONIOENCODING'] = 'utf-8'
@@ -28,11 +27,11 @@ def safe_subprocess_run(*args, **kwargs):
         kwargs['errors'] = 'ignore'
         return subprocess.run(*args, **kwargs)
 
-# 替换subprocess.run
-subprocess.run = safe_subprocess_run
-
-# 导入并运行原始脚本
+# 运行目标脚本（默认运行 daily_ai_collector_v2.py，支持自定义目标脚本）
 if __name__ == "__main__":
-    # 运行daily_ai_collector_v2.py
-    import daily_ai_collector_v2
-    daily_ai_collector_v2.main()
+    # 如果提供了参数，则将参数当作目标脚本及其参数
+    if len(sys.argv) > 1:
+        safe_subprocess_run(["python", *sys.argv[1:]], check=False)
+    else:
+        # 默认脚本
+        safe_subprocess_run(["python", "scripts/daily_ai_collector_v2.py"], check=False)

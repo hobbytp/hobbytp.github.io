@@ -5,7 +5,6 @@
 """
 
 import os
-import sys
 import subprocess
 import locale
 
@@ -43,7 +42,7 @@ def fix_encoding_issues():
     
     return safe_subprocess_run
 
-def test_encoding_fix():
+def test_encoding_fix(run_func):
     """测试编码修复"""
     print("\n2. 测试编码修复...")
     
@@ -58,8 +57,8 @@ def test_encoding_fix():
     for test_str in test_strings:
         try:
             print(f"测试字符串: {test_str}")
-            # 模拟subprocess调用
-            result = subprocess.run(
+            # 使用安全的子进程运行函数
+            result = run_func(
                 ['python', '-c', f'print("{test_str}")'],
                 capture_output=True,
                 text=True,
@@ -83,7 +82,6 @@ def create_encoding_safe_script():
 import os
 import sys
 import subprocess
-import locale
 
 # 设置编码环境变量
 os.environ['PYTHONIOENCODING'] = 'utf-8'
@@ -104,14 +102,12 @@ def safe_subprocess_run(*args, **kwargs):
         kwargs['errors'] = 'ignore'
         return subprocess.run(*args, **kwargs)
 
-# 替换subprocess.run
-subprocess.run = safe_subprocess_run
-
-# 导入并运行原始脚本
+# 运行目标脚本（默认运行 daily_ai_collector_v2.py，支持自定义目标脚本）
 if __name__ == "__main__":
-    # 运行daily_ai_collector_v2.py
-    import daily_ai_collector_v2
-    daily_ai_collector_v2.main()
+    if len(sys.argv) > 1:
+        safe_subprocess_run(["python", *sys.argv[1:]], check=False)
+    else:
+        safe_subprocess_run(["python", "scripts/daily_ai_collector_v2.py"], check=False)
 '''
     
     with open('scripts/encoding_safe_runner.py', 'w', encoding='utf-8') as f:
@@ -127,7 +123,7 @@ def main():
     safe_run = fix_encoding_issues()
     
     # 2. 测试修复
-    test_encoding_fix()
+    test_encoding_fix(safe_run)
     
     # 3. 创建安全包装器
     create_encoding_safe_script()
