@@ -93,3 +93,9 @@ firebase-debug.log
 _backup/ 
 
 __pycache__/
+
+.github/
+.cursor/
+openspec/
+
+AGENTS.md
