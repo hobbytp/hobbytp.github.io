@@ -2,7 +2,7 @@
 google-generativeai>=0.3.0
 openai>=1.0.0
 perplexityai>=0.1.0
-ai-news-collector-lib[advanced]>=0.1.2
+ai-news-collector-lib[advanced]==0.1.4
 
 # 数据处理
 PyYAML>=6.0
