@@ -153,7 +153,7 @@ class DailyAICollectorV2:
         
     def get_date_range(self, hours_back: int = 24) -> tuple:
         """获取时间范围（默认过去24小时）"""
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(datetime.timezone.utc)
         today_8am = now.replace(hour=8, minute=0, second=0, microsecond=0)
         start_time = today_8am - datetime.timedelta(hours=hours_back)
         return start_time, today_8am
@@ -163,7 +163,7 @@ class DailyAICollectorV2:
         history_urls = set()
         history_titles = set()
         
-        now = datetime.datetime.now()
+        now = datetime.datetime.now(datetime.timezone.utc)
         for i in range(days_back):
             date = now - datetime.timedelta(days=i)
             file_path = self.content_dir / f"{date.strftime('%Y-%m-%d')}.md"
@@ -462,8 +462,8 @@ class DailyAICollectorV2:
             # 转换为统一格式并严格过滤时间
             formatted_results = []
             for article in articles:
-                # 严格检查发布时间
-                published_date = article.get('published_date', '')
+                # 检查发布时间 - ai_news_collector_lib使用'published'字段
+                published_date = article.get('published', '') or article.get('published_date', '')
                 
                 # 如果没有发布时间，直接跳过
                 if not published_date or published_date == '':
@@ -476,6 +476,10 @@ class DailyAICollectorV2:
                         pub_time = datetime.datetime.fromisoformat(published_date.replace('Z', '+00:00'))
                     else:
                         pub_time = datetime.datetime.strptime(published_date, '%Y-%m-%d')
+                    
+                    # 确保时区一致性 - 如果pub_time没有时区信息，假设为UTC
+                    if pub_time.tzinfo is None:
+                        pub_time = pub_time.replace(tzinfo=datetime.timezone.utc)
                     
                     # 检查发布时间是否在合理范围内（不能是未来时间）
                     now = datetime.datetime.now(datetime.timezone.utc)
