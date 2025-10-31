@@ -1,0 +1,78 @@
+{{/* latest-ai-programming shortcode - 显示AI编程分类的最新文章 */}}
+
+{{ $pages := where .Site.RegularPages ".Params.categories" "intersect" (slice "ai_programming") }}
+{{ $pages = $pages | union (where .Site.RegularPages ".Section" "ai_programming") }}
+{{ $pages = $pages | union (where .Site.RegularPages ".Params.categories" "intersect" (slice "ai-programming")) }}
+
+{{/* 按日期排序，取最新的5篇文章 */}}
+{{ $pages = $pages | first 5 }}
+
+{{ if $pages }}
+<div class="latest-posts">
+  {{ range $pages }}
+  <div class="post-item">
+    <h3 class="post-title">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h3>
+    <div class="post-meta">
+      <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+      {{ with .Params.description }}
+      <p class="post-description">{{ . | truncate 100 }}</p>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+<style>
+.latest-posts {
+  margin: 2rem 0;
+}
+
+.post-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.post-title a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+
+.post-date {
+  font-weight: 500;
+  margin-right: 1rem;
+}
+
+.post-description {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+</style>
+{{ else }}
+<div class="no-posts">
+  <p>暂无AI编程相关文章，敬请期待！</p>
+</div>
+{{ end }}
