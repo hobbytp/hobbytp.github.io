@@ -3,7 +3,7 @@ title: "Spec Kit：基于规范驱动开发的工具包"
 date: "2025-09-14T21:10:00+08:00"
 draft: false
 tags: ["code_assistant", "Spec Kit", "规范驱动开发"]
-categories: ["ai_tools"]
+categories: ["ai_programming"]
 description: "Spec Kit：基于规范驱动开发的工具包"
 ---
 

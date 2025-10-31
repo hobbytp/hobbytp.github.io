@@ -3,7 +3,7 @@ title: "Claude Code 介绍以及开源生态"
 date: "2025-07-20T23:10:00+08:00"
 draft: false
 tags: ["Agent", "Claude", "Code"]
-categories: ["ai_tools"]
+categories: ["ai_programming"]
 description: "Claude Code 是 Claude 的命令行工具，用于代理编码，提供灵活的、可定制的、可脚本化的和安全的编程方式。"
 ---
 

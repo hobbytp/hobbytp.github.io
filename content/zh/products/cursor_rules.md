@@ -1,3 +1,12 @@
+---
+title: "Cursor Rules 使用指南"
+date: "2025-01-01T00:00:00+08:00"
+draft: false
+tags: ["Cursor", "AI", "编程工具", "规则配置"]
+categories: ["ai_programming"]
+description: "Cursor 的 .cursor/rules 使用指南：单一规则文件 vs 目录结构的用法和最佳实践"
+---
+
 Cursor 的 `.cursor/rules` 既可以是**单一规则文件**，也可以是**目录结构**，支持更细粒度的规则管理。  
 但实际用法取决于你用的 Cursor 版本和你的项目需求：
 
@@ -57,10 +66,10 @@ Cursor 的 `.cursor/rules` 既可以是**单一规则文件**，也可以是**�
 ## 自动生成规则文件
 
 方法一：
-    让cursor生成一个规则文件。在cursor的对话框中，让cursor根据和cursor聊天的历史记录，生成一个规则文件。或者直接输入“/Generate Cursor Rules”，让cursor根据你的需求，生成一个规则文件。
+    让cursor生成一个规则文件。在cursor的对话框中，让cursor根据和cursor聊天的历史记录，生成一个规则文件。或者直接输入"/Generate Cursor Rules"，让cursor根据你的需求，生成一个规则文件。
 
 方法二：
-    使用在线工具“<https://cursorrules.agnt.one/chat>”，通过聊天的方式，提出需求，让网站根据你的需求，生成一个规则文件。
+    使用在线工具"<https://cursorrules.agnt.one/chat>"，通过聊天的方式，提出需求，让网站根据你的需求，生成一个规则文件。
 
 # 参考
 
