@@ -3,7 +3,7 @@ title: Specification-Driven Development (SDD) - 规范驱动开发
 date: "2025-09-13T23:03:00+08:00"
 draft: false
 tags: ["Specification-Driven Development (SDD)", "规范驱动开发"]
-categories: ["code_assistant"]
+categories: ["ai_programming"]
 description: "Specification-Driven Development (SDD) - 规范驱动开发"
 ---
 

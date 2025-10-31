@@ -53,6 +53,9 @@ other = "上下文工程"
 [mas]
 other = "多代理技术"
 
+[ai_programming]
+other = "AI编程"
+
 [ai_tools]
 other = "AI工具箱"
 

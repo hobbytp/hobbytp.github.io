@@ -3,7 +3,7 @@ title: "Claude Code Spec Workflow, 也支持MCP方式"
 date: "2025-09-14T22:30:00+08:00"
 draft: false
 tags: ["mcp", "spec", "workflow"]
-categories: ["projects","code_assistant"]
+categories: ["ai_programming"]
 description: "Claude Code Spec Workflow, 也支持MCP方式"
 ---
 
