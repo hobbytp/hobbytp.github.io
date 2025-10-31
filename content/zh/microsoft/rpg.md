@@ -3,7 +3,7 @@ title: "RPG：从“对话”到“蓝图”，用图谱指导AI思考"
 date: "2025-10-06T20:10:00+08:00"
 draft: false
 tags: ["AI", "RPG", "蓝图"]
-categories: ["ai_spec"]
+categories: ["ai_programming"]
 description: "RPG：从“对话”到“蓝图”，用图谱指导AI思考"
 ---
 
