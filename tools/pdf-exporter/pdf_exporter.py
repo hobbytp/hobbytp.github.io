@@ -398,9 +398,15 @@ class HugoPDFExporter:
 
         return result
 
-    async def export_all_articles(self, content_dir: Path, batch_size: int = 5) -> List[Dict[str, Any]]:
+    async def export_all_articles(self, content_dir: Path, batch_size: int = 5, limit: int = None) -> List[Dict[str, Any]]:
         """批量导出所有文章"""
-        # 查找所有Markdown文件
+        # 确保只处理content目录
+        if content_dir.name != 'content':
+            content_dir = content_dir / 'content'
+            if not content_dir.exists():
+                raise FileNotFoundError(f"Content目录不存在: {content_dir}")
+
+        # 查找content目录下的所有Markdown文件
         md_files = list(content_dir.rglob('*.md'))
 
         # 过滤掉_index.md等非文章文件
@@ -409,7 +415,11 @@ class HugoPDFExporter:
             if not f.name.startswith('_') and f.name != 'search.md'
         ]
 
-        print(f"📚 发现 {len(article_files)} 篇文章待导出")
+        # 应用限制
+        if limit:
+            article_files = article_files[:limit]
+
+        print(f"📚 发现 {len(article_files)} 篇文章待导出{' (限制: ' + str(limit) + ')' if limit else ''}")
 
         async with async_playwright() as playwright:
             browser = await self.init_browser(playwright)
@@ -533,6 +543,13 @@ async def main():
     )
 
     parser.add_argument(
+        '--limit',
+        type=int,
+        default=5,
+        help='限制导出数量 (默认: 5)'
+    )
+
+    parser.add_argument(
         '--serve-url',
         default='http://localhost:1313',
         help='Hugo服务器URL (默认: http://localhost:1313)'
@@ -607,7 +624,7 @@ async def main():
                 sys.exit(1)
 
             print("🚀 开始批量导出PDF...")
-            results = await exporter.export_all_articles(content_dir, args.batch_size)
+            results = await exporter.export_all_articles(content_dir, args.batch_size, args.limit)
 
             # 生成报告
             report = exporter.generate_export_report(results)

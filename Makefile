@@ -40,7 +40,12 @@ analyze-content:
 # 导出PDF
 export-pdf:
 	@echo "📄 导出PDF..."
-	@cd tools/pdf-exporter && $(PYTHON_CMD) pdf_exporter.py --all --serve-url http://localhost:1313
+	@cd tools/pdf-exporter && $(PYTHON_CMD) pdf_exporter.py --all --input-dir ../.. --serve-url http://localhost:1313
+
+# 快速测试PDF导出（仅导出1篇文章）
+test-pdf:
+	@echo "🧪 测试PDF导出..."
+	@cd tools/pdf-exporter && $(PYTHON_CMD) pdf_exporter.py --all --input-dir ../.. --limit 1 --serve-url http://localhost:1313
 
 # 完整构建流程（优化图片 + 内容分析 + 构建 + 性能分析）
 full-build: optimize-images analyze-content build analyze-performance

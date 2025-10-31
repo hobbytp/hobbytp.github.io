@@ -37,6 +37,16 @@ make dev  # 或者 hugo server -D
 python pdf_exporter.py --article content/zh/posts/my-article.md
 ```
 
+### 1.5 快速测试（仅导出1篇文章）
+
+```bash
+# 使用make命令（推荐）
+make test-pdf
+
+# 或直接使用Python
+python pdf_exporter.py --all --limit 1
+```
+
 ### 2. 批量导出所有文章
 
 ```bash
