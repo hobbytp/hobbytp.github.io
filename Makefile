@@ -3,16 +3,12 @@
 # 默认目标
 .DEFAULT_GOAL := help
 
-# Python命令配置（优先使用虚拟环境）
+# Python命令配置（优先使用conda news_collector环境）
 PYTHON_CMD := $(shell \
-	if [ -n "$$CONDA_DEFAULT_ENV" ]; then \
+	if [ -n "$$CONDA_DEFAULT_ENV" ] && [ "$$CONDA_DEFAULT_ENV" = "news_collector" ]; then \
 		echo "python"; \
-	elif [ -f ".venv/bin/python" ]; then \
-		echo ".venv/bin/python"; \
-	elif [ -f ".venv/Scripts/python.exe" ]; then \
-		echo ".venv/Scripts/python.exe"; \
 	else \
-		echo "python3"; \
+		echo "conda run -n news_collector python"; \
 	fi \
 )
 
@@ -36,8 +32,13 @@ analyze-performance:
 	@echo "📊 分析Hugo性能..."
 	@cd tools/performance-monitor && $(PYTHON_CMD) performance_analyzer.py --all
 
-# 完整构建流程（优化图片 + 构建 + 分析）
-full-build: optimize-images build analyze-performance
+# 分析内容质量
+analyze-content:
+	@echo "📝 分析内容质量..."
+	@cd tools/content-analysis && $(PYTHON_CMD) content_analyzer.py --input-dir ../.. --all
+
+# 完整构建流程（优化图片 + 内容分析 + 构建 + 性能分析）
+full-build: optimize-images analyze-content build analyze-performance
 
 # 清理生成的文件
 clean:
