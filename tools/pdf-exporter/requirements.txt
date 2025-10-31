@@ -1,0 +1,2 @@
+# PDF导出工具依赖
+playwright>=1.40.0

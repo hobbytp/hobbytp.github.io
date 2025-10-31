@@ -37,6 +37,11 @@ analyze-content:
 	@echo "📝 分析内容质量..."
 	@cd tools/content-analysis && $(PYTHON_CMD) content_analyzer.py --input-dir ../.. --all
 
+# 导出PDF
+export-pdf:
+	@echo "📄 导出PDF..."
+	@cd tools/pdf-exporter && $(PYTHON_CMD) pdf_exporter.py --all --serve-url http://localhost:1313
+
 # 完整构建流程（优化图片 + 内容分析 + 构建 + 性能分析）
 full-build: optimize-images analyze-content build analyze-performance
 
