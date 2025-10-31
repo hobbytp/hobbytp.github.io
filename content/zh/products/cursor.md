@@ -4,7 +4,7 @@ date = "2025-04-12T21:10:00+08:00"
 lastmod = "2025-05-16T22:10:00+08:00"
 draft = false
 tags = ["Cursor", "AI", "论文", "技术"]
-categories = ["ai_tools"]
+categories = ["ai_programming"]
 description = "Cursor AI 最佳实践：提升编码效率与代码质量的权威指南"
 +++
 
