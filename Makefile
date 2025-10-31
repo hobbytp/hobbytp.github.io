@@ -47,6 +47,23 @@ test-pdf:
 	@echo "🧪 测试PDF导出..."
 	@cd tools/pdf-exporter && $(PYTHON_CMD) pdf_exporter.py --all --input-dir ../.. --limit 1 --serve-url http://localhost:1313
 
+# RAG相关目标
+rag-build-index:
+	@echo "🧠 构建RAG索引..."
+	@cd tools/rag-chatbot && $(PYTHON_CMD) rag_engine.py --content-dir ../.. --rebuild-index --max-docs 30
+
+rag-update-index:
+	@echo "🔄 更新RAG索引..."
+	@cd tools/rag-chatbot && $(PYTHON_CMD) rag_engine.py --content-dir ../.. --update-index
+
+rag-query:
+	@echo "🤖 RAG查询测试..."
+	@cd tools/rag-chatbot && $(PYTHON_CMD) rag_engine.py --content-dir ../.. --query "$(QUERY)"
+
+rag-stats:
+	@echo "📊 RAG索引统计..."
+	@cd tools/rag-chatbot && $(PYTHON_CMD) rag_engine.py --content-dir ../.. --stats
+
 # 完整构建流程（优化图片 + 内容分析 + 构建 + 性能分析）
 full-build: optimize-images analyze-content build analyze-performance
 
