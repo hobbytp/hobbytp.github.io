@@ -36,8 +36,9 @@
                 {{ with .Params.tags }}
                 <div class="flex flex-wrap gap-2 mb-6">
                     {{ range . }}
-                    <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full hover:bg-blue-200 transition-colors cursor-pointer">
+                    <span class="btn-glass tooltip-glass" title="点击查看相关文章">
                         #{{ . }}
+                        <span class="tooltip-text">点击查看相关文章</span>
                     </span>
                     {{ end }}
                 </div>
@@ -45,8 +46,8 @@
 
                 <!-- 文章描述 -->
                 {{ with .Description }}
-                <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
-                    <p class="text-gray-700 italic">{{ . }}</p>
+                <div class="card-glass mb-8">
+                    <p class="text-gray-700 dark:text-gray-300 italic m-0">{{ . }}</p>
                 </div>
                 {{ end }}
             </header>

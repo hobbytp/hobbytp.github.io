@@ -12,7 +12,31 @@ categories: ["my_insights"]
 
 ### 2025 October
 
+### 2025-10-31
+
+GitHub Copilot、VS Code 团队以及微软开源项目办公室（OSPO）共同资助了这九个开源 MCP 项目，这些项目提供了新的框架、工具和助手，以开启原生人工智能工作流、智能代理工具和创新。[link](https://github.blog/open-source/accelerate-developer-productivity-with-these-9-open-source-ai-and-mcp-projects/)：
+
+[fastapi_mcp](https://github.com/tadata-org/fastapi_mcp): 通过最少的设置、身份验证和有限的配置，将安全的FastAPI端点作为MCP工具暴露出来，所有这些都借助统一的基础设施。
+nuxt-mcp: 用于路由检查和 SSR 调试的 Nuxt 开发者工具，能让你的团队更轻松地让模型更好地理解你的 Vite/Nuxt 应用。
+unity-mcp: Unity MCP 允许你对接游戏引擎的应用程序接口（API），以进行人工智能辅助的游戏开发，并为你的人工智能工具提供在 Unity 中管理资源、控制场景、编辑脚本和自动化任务的能力。
+
+[context7](https://github.com/upstash/context7): 直接从你的代码中提取最新的、特定版本的文档和代码示例，并将它们直接插入到你的人工智能和大型语言模型提示词以及大型语言模型的上下文中。
+
+[serena](https://github.com/oraios/serena): 用于代理驱动的编码代理工具包的语义代码编辑和检索，该工具包提供语义检索和编辑功能。
+
+[Peekaboo](https://github.com/steipete/Peekaboo): Swift代码分析能将你屏幕上的内容转化为可操作的人工智能上下文，以创建完整的图形用户界面自动化，并且可用于人工智能助手。
+[coderunner](https://github.com/instavm/coderunner): Coderunner将大型语言模型（LLMs）转变为即时的本地执行伙伴，它能在你的机器上一个预先配置好的沙箱中编写和运行代码，自动安装工具，直接读取文件，并返回输出结果和生成的工件。
+
+n8n-mcp: n8n-MCP 是一个经过超优化的平台，它通过简化工作流的创建和编排，增强了 n8n 的工作流自动化能力。它集成了 AI 模型，帮助用户更好地理解 n8n 节点并与之协同工作。
+[inspector](https://github.com/MCPJam/inspector): 一种用于测试和调试MCP服务器的工具，可检查协议握手、工具、资源、提示词和OAuth流程。它提供内置的LLM实验环境，并允许运行评估模拟以捕捉安全性或性能回归问题。
+
+### 2025-10-30
+
+今天读了[OpenAI的多智能体合作研究](https://cookbook.openai.com/examples/agents_sdk/multi-agent-portfolio-collaboration/multi_agent_portfolio_collaboration?utm_source=chatgpt.com)，这篇论文展示了如何使用OpenAI的多智能体SDK实现合作的智能体系统，这些智能体可以共同完成复杂任务，如股票交易、项目管理等。研究结果表明，通过有效的协作机制，智能体系统的整体表现显著优于独立智能体。这为构建更智能、更高效的AI系统提供了新的思路。
+
 ### 2025-10-27
+
+xAI 于 2025 年 10 月 27 日发布了 **[Grokipedia](https://grokipedia.com/)** 的测试版，该版本包含约 88.5 万篇由 Grok 模型生成的文章，并整合了来自 X 平台帖子等来源的实时数据。该平台具备用户标记纠错功能、事实核查时间戳以及开源访问权限，马斯克承诺在未来的更新中会大幅提升其准确性。
 
 今天读了[Verbalized Sampling: 言语采样提升模型多样性](https://hobbytp.github.io/zh/papers/verbalize_sampling/)，这篇论文提出了一种名为**口头化采样（Verbalized Sampling, VS）** 的推理时提示方法，该方法通过明确要求模型输出多个可能的响应及其对应的概率分布，有效地恢复了LLM在预训练阶段所学的内在多样性。实验证明，VS显著提升了模型在创意写作、对话模拟、开放式问答和合成数据生成等任务中的输出多样性，同时保持了事实准确性和安全性。这个方法非常简单，而且效果非常好，值得推广。
 

@@ -12,16 +12,78 @@ buildExpired = false
 [pagination]
 pageSize = 5
 
+# 图片优化配置
+[imaging]
+quality = 85
+resampleFilter = "Lanczos"
+
+# WebP格式支持
+[outputFormats.WebP]
+baseName = "image"
+mediaType = "image/webp"
+
+# 图片处理设置
+[params.imaging]
+# 响应式图片尺寸
+sizes = [320, 640, 960, 1280, 1920]
+# 图片质量
+quality = 85
+
+# 构建优化配置
+[build]
+useResourceCacheWhen = "fallback"
+writeStats = false
+noJSConfigInAssets = false
+
+# 开发环境特殊配置
+[build.buildDrafts]
+enable = true
+
+[build.buildFuture]
+enable = true
+
+# 资源处理优化
+[assets]
+disableFingerprinting = false
+
+[assets.css]
+minify = true
+
+[assets.js]
+minify = true
+
+# 性能优化参数
+[params.performance]
+cacheBusting = true
+preloadFonts = true
+enableGzip = true
+enableBrotli = true
+
+# HTTP缓存策略
+[caches]
+[caches.getresource]
+dir = ":cacheDir/:project"
+maxAge = "10m"
+
+[caches.getjson]
+dir = ":cacheDir/json"
+maxAge = "10m"
+
+# CDN和缓存优化
+[params.cdn]
+enable = false
+url = ""
+
+[params.cache]
+enable = true
+maxAge = "1h"
+
 [markup]
 [markup.goldmark]
 [markup.goldmark.renderer]
 unsafe = true
 hardwraps = false
 xhtml = false
-
-[assets]
-[assets.css]
-[assets.css.minify]
 [markup.goldmark.parser]
 autoHeadingID = true
 autoHeadingIDType = "github"
@@ -57,10 +119,6 @@ ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
 ShowToc = true
 enableSchemaOrg = true
-
-[params.assets]
-customCSS = ["css/custom.css"]
-disableFingerprinting = false
 
 [params.profileMode]
 enabled = true
