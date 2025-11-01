@@ -793,7 +793,7 @@ graph TD
 #### 部署
 
 - 支持 Docker 部署，需 Redis 和 Postgres 支持。
-- 使用 `docker-compose up` 启动生产环境服务，访问地址为 <http://localhost:8123。>
+- 使用 `docker-compose up` 启动生产环境服务，访问地址为 <http://localhost:8123>
 
 #### 核心技术
 
