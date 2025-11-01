@@ -1,0 +1,498 @@
+/* ============================================
+   液态玻璃风格 (Glassmorphism)
+   现代化的毛玻璃效果设计
+   ============================================ */
+
+/* ============================================
+   基础玻璃效果
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%);
+  pointer-events: none;
+}
+
+/* ============================================
+   暗色模式玻璃效果
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass::before {
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      rgba(255, 255, 255, 0.05) 100%);
+  }
+}
+
+/* ============================================
+   导航栏玻璃效果
+   ============================================ */
+
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.navbar-glass.scrolled {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-glass .nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar-glass .nav-link {
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar-glass .nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent);
+  transition: left 0.5s ease;
+}
+
+.navbar-glass .nav-link:hover::before {
+  left: 100%;
+}
+
+.navbar-glass .nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(0, 0, 0, 0.9);
+  transform: translateY(-1px);
+}
+
+/* 暗色模式导航栏 */
+@media (prefers-color-scheme: dark) {
+  .navbar-glass {
+    background: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar-glass.scrolled {
+    background: rgba(0, 0, 0, 0.15);
+  }
+
+  .navbar-glass .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .navbar-glass .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* ============================================
+   卡片玻璃效果
+   ============================================ */
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 1rem 0;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card-glass:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.card-glass::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-glass:hover::after {
+  opacity: 1;
+}
+
+/* 暗色模式卡片 */
+@media (prefers-color-scheme: dark) {
+  .card-glass {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-glass:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ============================================
+   按钮玻璃效果
+   ============================================ */
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-glass::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-glass:hover::before {
+  left: 100%;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* 暗色模式按钮 */
+@media (prefers-color-scheme: dark) {
+  .btn-glass {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .btn-glass:hover {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* ============================================
+   输入框玻璃效果
+   ============================================ */
+
+.input-glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.input-glass:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.input-glass::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* 暗色模式输入框 */
+@media (prefers-color-scheme: dark) {
+  .input-glass {
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .input-glass:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .input-glass::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* ============================================
+   模态框玻璃效果
+   ============================================ */
+
+.modal-glass {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-glass.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-glass .modal-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.modal-glass.show .modal-content {
+  transform: scale(1);
+}
+
+/* 暗色模式模态框 */
+@media (prefers-color-scheme: dark) {
+  .modal-glass .modal-content {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* ============================================
+   工具提示玻璃效果
+   ============================================ */
+
+.tooltip-glass {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-glass .tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  z-index: 100;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip-glass .tooltip-text::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+.tooltip-glass:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ============================================
+   响应式玻璃效果
+   ============================================ */
+
+@media (max-width: 768px) {
+  .glass,
+  .card-glass,
+  .modal-glass .modal-content {
+    border-radius: 12px;
+  }
+
+  .navbar-glass .nav-links {
+    gap: 1rem;
+  }
+
+  .navbar-glass .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .card-glass {
+    padding: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .btn-glass {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   动画增强
+   ============================================ */
+
+@keyframes glass-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.glass-animated::before {
+  animation: glass-shimmer 3s infinite;
+}
+
+/* ============================================
+   性能优化
+   ============================================ */
+
+/* 减少不必要的重绘 */
+.glass,
+.navbar-glass,
+.card-glass,
+.btn-glass,
+.input-glass {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* 强制硬件加速 */
+}
+
+/* ============================================
+   浏览器兼容性
+   ============================================ */
+
+/* Safari 特殊处理 */
+@supports (-webkit-backdrop-filter: blur(20px)) {
+  .glass,
+  .navbar-glass,
+  .card-glass,
+  .modal-glass .modal-content {
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
+
+/* Firefox 回退 */
+@supports not (backdrop-filter: blur(20px)) {
+  .glass,
+  .navbar-glass,
+  .card-glass,
+  .modal-glass .modal-content {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .glass,
+    .navbar-glass,
+    .card-glass,
+    .modal-glass .modal-content {
+      background: rgba(0, 0, 0, 0.9);
+    }
+  }
+}

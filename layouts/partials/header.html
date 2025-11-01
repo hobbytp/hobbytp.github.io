@@ -1,24 +1,24 @@
-<header>
-    <div class="header-container">
+<header class="navbar-glass">
+    <div class="header-container glass">
         <div class="site-title">
-            <h1>{{ .Site.Title }}</h1>
+            <h1 class="site-title-text">{{ .Site.Title }}</h1>
         </div>
         <div class="header-search-container">
-            <input type="search" id="headerSearch" placeholder="{{ i18n " search" }}" aria-label="search">
-            <div id="headerSearchResults" class="search-results"></div>
+            <input type="search" id="headerSearch" class="input-glass" placeholder="{{ i18n " search" }}" aria-label="search">
+            <div id="headerSearchResults" class="search-results glass"></div>
         </div>
     </div>
     <nav>
-        <ul>
-            <li><a href="{{ " /" | relLangURL }}">{{ i18n "home" }}</a></li>
+        <ul class="nav-links">
+            <li><a href="{{ " /" | relLangURL }}" class="nav-link btn-glass">{{ i18n "home" }}</a></li>
             {{ range .Site.Menus.main }}
-            <li><a href="{{ .URL | relLangURL }}">{{ i18n .Identifier }}</a></li>
+            <li><a href="{{ .URL | relLangURL }}" class="nav-link btn-glass">{{ i18n .Identifier }}</a></li>
             {{ end }}
-            <li><a href="/search">{{ i18n "search" }}</a></li>
+            <li><a href="/search" class="nav-link btn-glass">{{ i18n "search" }}</a></li>
             <li class="language-switch">
                 {{ range .Site.Languages }}
                 {{ if ne .Lang $.Site.Language.Lang }}
-                <a href="{{ .Lang | relLangURL }}" class="lang-item">{{ .LanguageName }}</a>
+                <a href="{{ .Lang | relLangURL }}" class="lang-item btn-glass">{{ .LanguageName }}</a>
                 {{ end }}
                 {{ end }}
             </li>
@@ -82,89 +82,141 @@
 </script>
 
 <style>
-    .header-container {
+    /* 导航栏滚动效果 */
+    .navbar-glass {
+        transition: all 0.3s ease;
+    }
+
+    /* 标题样式 */
+    .site-title-text {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 导航链接样式增强 */
+    .nav-links {
         display: flex;
-        justify-content: space-between;
+        gap: 1rem;
         align-items: center;
-        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 1rem 0;
     }
 
-    .site-title {
-        flex: 1;
-    }
-
-    .header-search-container {
+    .nav-link, .lang-item {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-        width: 250px;
-        margin-left: 1rem;
+        overflow: hidden;
     }
 
-    #headerSearch {
-        width: 100%;
-        padding: 0.5rem;
-        font-size: 1rem;
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        background: var(--entry);
-        color: var(--text);
-    }
-
-    #headerSearch:focus {
-        outline: none;
-        border-color: var(--primary);
-    }
-
-    .search-results {
+    .nav-link::after, .lang-item::after {
+        content: '';
         position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--entry);
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        max-height: 300px;
-        overflow-y: auto;
-        display: none;
-        z-index: 1000;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after, .lang-item:hover::after {
+        width: 100%;
+    }
+
+    /* 搜索结果样式优化 */
+    .search-results {
+        margin-top: 0.5rem;
+        max-height: 400px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        border-radius: 16px;
+        overflow: hidden;
     }
 
     .search-result-item {
-        padding: 0.5rem;
-        border-bottom: 1px solid var(--border);
+        padding: 1rem;
+        transition: all 0.2s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .search-result-item:last-child {
         border-bottom: none;
     }
 
-    .search-result-item a {
-        text-decoration: none;
-        color: var(--text);
+    .search-result-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(4px);
     }
 
     .search-result-item h3 {
-        margin: 0;
-        font-size: 0.9rem;
+        margin: 0 0 0.25rem 0;
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.9);
     }
 
-    .search-result-item:hover {
-        background: var(--primary);
+    /* 暗色模式搜索结果 */
+    @media (prefers-color-scheme: dark) {
+        .search-result-item h3 {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
     }
 
-    .search-result-item:hover a {
-        color: white;
-    }
-
+    /* 响应式设计 */
     @media (max-width: 768px) {
         .header-container {
             flex-direction: column;
             align-items: stretch;
+            gap: 1rem;
+        }
+
+        .site-title {
+            text-align: center;
         }
 
         .header-search-container {
             width: 100%;
-            margin-left: 0;
-            margin-top: 1rem;
+            margin: 0;
+        }
+
+        .nav-links {
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .nav-link, .lang-item {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.9rem;
         }
     }
+
+    /* 滚动检测脚本 */
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.querySelector('.navbar-glass');
+
+            function updateNavbar() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+
+            window.addEventListener('scroll', updateNavbar);
+            updateNavbar(); // 初始化检查
+        });
+    </script>
+</style>
 </style>

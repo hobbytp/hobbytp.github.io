@@ -1,0 +1,6 @@
+# 内容分析工具依赖
+openai>=1.0.0
+python-dotenv>=1.0.0
+rich>=13.0.0
+
+

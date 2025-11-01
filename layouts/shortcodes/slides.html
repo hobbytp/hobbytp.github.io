@@ -1,0 +1,497 @@
+{{/*
+幻灯片Shortcode
+
+支持Reveal.js格式的幻灯片展示
+
+使用方法:
+{{< slides >}}
+# 第一张幻灯片
+
+这是内容
+
+---
+
+# 第二张幻灯片
+
+- 项目1
+- 项目2
+
+---
+
+# 第三张幻灯片
+
+```javascript
+console.log('Hello World');
+```
+{{< /slides >}}
+*/}}
+
+<div class="slides-container" id="slides-{{ .Ordinal }}" style="margin: 2rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12);">
+  <div class="slides-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem; text-align: center;">
+    <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600;">📊 幻灯片演示</h3>
+    <div class="slides-controls" style="margin-top: 0.5rem; font-size: 0.9rem;">
+      <button onclick="prevSlide({{ .Ordinal }})" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; margin: 0 0.25rem; cursor: pointer;">⬅️ 上一张</button>
+      <span id="slide-counter-{{ .Ordinal }}">1 / X</span>
+      <button onclick="nextSlide({{ .Ordinal }})" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; margin: 0 0.25rem; cursor: pointer;">下一张 ➡️</button>
+      <button onclick="toggleFullscreen({{ .Ordinal }})" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.25rem 0.5rem; border-radius: 4px; margin: 0 0.25rem; cursor: pointer;">⛶ 全屏</button>
+    </div>
+  </div>
+
+  <div class="slides-content" style="background: #f8f9fa; min-height: 400px; position: relative; overflow: hidden;">
+    <div class="slides-wrapper" id="slides-wrapper-{{ .Ordinal }}" style="display: flex; transition: transform 0.3s ease; height: 100%;">
+      <!-- 幻灯片内容将在这里动态生成 -->
+    </div>
+
+    <div class="slides-loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 1.1rem; text-align: center;">
+      🎬 正在加载幻灯片...
+    </div>
+  </div>
+</div>
+
+{{/* 存储幻灯片数据 */}}
+<script>
+window.slidesData = window.slidesData || {};
+window.slidesData[{{ .Ordinal }}] = {
+  content: {{ .Inner | jsonify }},
+  currentSlide: 0,
+  slides: []
+};
+</script>
+
+<style>
+/* 幻灯片样式 */
+.slides-container {
+  transition: all 0.3s ease;
+}
+
+.slides-container.fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999 !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+}
+
+.slides-container.fullscreen .slides-content {
+  min-height: calc(100vh - 80px);
+}
+
+.slides-wrapper {
+  width: 100%;
+}
+
+.slide-item {
+  flex: 0 0 100%;
+  padding: 2rem;
+  background: white;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.slide-item h1 {
+  color: #2d3748;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.slide-item h2 {
+  color: #4a5568;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.slide-item h3 {
+  color: #718096;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.slide-item p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #2d3748;
+}
+
+.slide-item ul, .slide-item ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.slide-item li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.slide-item code {
+  background: #f7fafc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Menlo', monospace;
+  font-size: 0.9rem;
+}
+
+.slide-item pre {
+  background: #2d3748;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.slide-item pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+.slide-item blockquote {
+  border-left: 4px solid #667eea;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #4a5568;
+}
+
+/* 幻灯片导航指示器 */
+.slides-indicators {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.slides-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  border: 2px solid rgba(255,255,255,0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slides-indicator.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* 暗色模式 */
+@media (prefers-color-scheme: dark) {
+  .slides-content {
+    background: #1a202c;
+  }
+
+  .slide-item {
+    background: #2d3748;
+    color: #e2e8f0;
+  }
+
+  .slide-item h1, .slide-item h2, .slide-item h3 {
+    color: #e2e8f0;
+  }
+
+  .slide-item p, .slide-item li {
+    color: #e2e8f0;
+  }
+
+  .slide-item code {
+    background: #4a5568;
+    color: #e2e8f0;
+  }
+
+  .slide-item pre {
+    background: #1a202c;
+    border: 1px solid #4a5568;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .slides-container {
+    margin: 1rem 0;
+  }
+
+  .slides-header {
+    padding: 0.75rem;
+  }
+
+  .slides-controls {
+    font-size: 0.8rem;
+  }
+
+  .slides-controls button {
+    padding: 0.2rem 0.4rem;
+  }
+
+  .slide-item {
+    padding: 1rem;
+    min-height: 300px;
+  }
+
+  .slide-item h1 {
+    font-size: 1.5rem;
+  }
+
+  .slide-item h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* 打印样式 */
+@media print {
+  .slides-container {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+
+  .slides-header {
+    background: #f0f0f0 !important;
+    -webkit-print-color-adjust: exact;
+    color: black !important;
+  }
+
+  .slides-wrapper {
+    display: block !important;
+    transform: none !important;
+  }
+
+  .slide-item {
+    page-break-before: always;
+    margin-bottom: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .slide-item:first-child {
+    page-break-before: avoid;
+  }
+}
+</style>
+
+<script>
+// 幻灯片系统
+document.addEventListener('DOMContentLoaded', function() {
+  initializeSlides({{ .Ordinal }});
+});
+
+function initializeSlides(slidesId) {
+  const data = window.slidesData[slidesId];
+  if (!data) return;
+
+  // 解析幻灯片内容
+  const slides = parseSlidesContent(data.content);
+  data.slides = slides;
+  data.currentSlide = 0;
+
+  // 渲染幻灯片
+  renderSlides(slidesId);
+
+  // 更新计数器
+  updateSlideCounter(slidesId);
+
+  // 隐藏加载指示器
+  const loading = document.querySelector(`#slides-${slidesId} .slides-loading`);
+  if (loading) {
+    loading.style.display = 'none';
+  }
+}
+
+function parseSlidesContent(content) {
+  // 按 --- 分割幻灯片
+  const slides = content.split(/^---$/gm).map(slide => slide.trim()).filter(slide => slide);
+
+  // 如果没有分隔符，整个内容作为一张幻灯片
+  if (slides.length === 1 && !content.includes('---')) {
+    return [content];
+  }
+
+  return slides;
+}
+
+function renderSlides(slidesId) {
+  const data = window.slidesData[slidesId];
+  const wrapper = document.getElementById(`slides-wrapper-${slidesId}`);
+
+  if (!wrapper || !data.slides) return;
+
+  // 清空现有内容
+  wrapper.innerHTML = '';
+
+  // 创建幻灯片
+  data.slides.forEach(function(slideContent, index) {
+    const slideDiv = document.createElement('div');
+    slideDiv.className = 'slide-item';
+    slideDiv.innerHTML = markdownToHtml(slideContent);
+    wrapper.appendChild(slideDiv);
+  });
+
+  // 添加指示器
+  addSlideIndicators(slidesId);
+}
+
+function markdownToHtml(markdown) {
+  // 简单的Markdown到HTML转换
+  let html = markdown;
+
+  // 标题
+  html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+  html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+  html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+  // 粗体和斜体
+  html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+  // 列表
+  html = html.replace(/^\* (.*$)/gim, '<li>$1</li>');
+  html = html.replace(/^\d+\. (.*$)/gim, '<li>$1</li>');
+  html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+
+  // 代码块
+  html = html.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+
+  // 内联代码
+  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+  // 链接
+  html = html.replace(/\[([^\]]+)\]\(([^\)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+  // 引用
+  html = html.replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>');
+
+  // 段落
+  html = html.replace(/\n\n/g, '</p><p>');
+  html = '<p>' + html + '</p>';
+
+  // 清理空段落
+  html = html.replace(/<p><\/p>/g, '');
+  html = html.replace(/<p>\s*<p>/g, '<p>');
+  html = html.replace(/<\/p>\s*<\/p>/g, '</p>');
+
+  return html;
+}
+
+function addSlideIndicators(slidesId) {
+  const data = window.slidesData[slidesId];
+  const container = document.getElementById(`slides-${slidesId}`);
+  const content = container.querySelector('.slides-content');
+
+  if (!content || !data.slides) return;
+
+  const indicators = document.createElement('div');
+  indicators.className = 'slides-indicators';
+
+  data.slides.forEach(function(_, index) {
+    const indicator = document.createElement('div');
+    indicator.className = 'slides-indicator';
+    if (index === 0) indicator.classList.add('active');
+
+    indicator.addEventListener('click', function() {
+      goToSlide(slidesId, index);
+    });
+
+    indicators.appendChild(indicator);
+  });
+
+  content.appendChild(indicators);
+}
+
+function updateSlideCounter(slidesId) {
+  const data = window.slidesData[slidesId];
+  const counter = document.getElementById(`slide-counter-${slidesId}`);
+
+  if (counter && data.slides) {
+    counter.textContent = `${data.currentSlide + 1} / ${data.slides.length}`;
+  }
+
+  // 更新指示器
+  updateIndicators(slidesId);
+}
+
+function updateIndicators(slidesId) {
+  const data = window.slidesData[slidesId];
+  const indicators = document.querySelectorAll(`#slides-${slidesId} .slides-indicator`);
+
+  indicators.forEach(function(indicator, index) {
+    if (index === data.currentSlide) {
+      indicator.classList.add('active');
+    } else {
+      indicator.classList.remove('active');
+    }
+  });
+}
+
+function goToSlide(slidesId, slideIndex) {
+  const data = window.slidesData[slidesId];
+  const wrapper = document.getElementById(`slides-wrapper-${slidesId}`);
+
+  if (!data.slides || !wrapper) return;
+
+  // 限制范围
+  slideIndex = Math.max(0, Math.min(slideIndex, data.slides.length - 1));
+
+  // 更新当前幻灯片
+  data.currentSlide = slideIndex;
+
+  // 移动幻灯片
+  wrapper.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+  // 更新计数器
+  updateSlideCounter(slidesId);
+}
+
+function nextSlide(slidesId) {
+  const data = window.slidesData[slidesId];
+  goToSlide(slidesId, data.currentSlide + 1);
+}
+
+function prevSlide(slidesId) {
+  const data = window.slidesData[slidesId];
+  goToSlide(slidesId, data.currentSlide - 1);
+}
+
+function toggleFullscreen(slidesId) {
+  const container = document.getElementById(`slides-${slidesId}`);
+  container.classList.toggle('fullscreen');
+}
+
+// 键盘导航
+document.addEventListener('keydown', function(event) {
+  // 只在有幻灯片容器时响应
+  const activeSlides = document.querySelector('.slides-container.fullscreen');
+  if (!activeSlides) return;
+
+  const slidesId = activeSlides.id.replace('slides-', '');
+
+  switch(event.key) {
+    case 'ArrowLeft':
+    case 'ArrowUp':
+      event.preventDefault();
+      prevSlide(slidesId);
+      break;
+    case 'ArrowRight':
+    case 'ArrowDown':
+    case ' ': // 空格键
+      event.preventDefault();
+      nextSlide(slidesId);
+      break;
+    case 'Escape':
+      event.preventDefault();
+      toggleFullscreen(slidesId);
+      break;
+  }
+});
+</script>
