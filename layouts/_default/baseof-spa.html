@@ -4,11 +4,12 @@
 <head>
     {{ partial "seo.html" . }}
     <title>{{ .Title }} - {{ .Site.Title }}</title>
-    {{/* Build a unified CSS bundle: main.css + extended/*.css + custom.css */}}
+    {{/* Build a unified CSS bundle: main.css + extended/*.css + glassmorphism.css + custom.css */}}
     {{- $styles := slice (resources.Get "css/main.css") -}}
     {{- range resources.Match "css/extended/*.css" -}}
       {{- $styles = $styles | append . -}}
     {{- end -}}
+    {{- $styles = $styles | append (resources.Get "css/glassmorphism.css") -}}
     {{- $styles = $styles | append (resources.Get "css/custom.css") -}}
     {{- $bundle := $styles | resources.Concat "css/site.bundle.css" | resources.Minify -}}
     {{- if not site.Params.assets.disableFingerprinting -}}
@@ -46,12 +47,77 @@
             }
         }
     </script>
+
+    <style>
+        /* 玻璃拟态效果 */
+        .navbar-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.1) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* 导航链接玻璃效果 */
+        .nav-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-item:hover::before {
+            width: 100%;
+        }
+
+        /* 暗色模式支持 */
+        @media (prefers-color-scheme: dark) {
+            .navbar-glass {
+                background: rgba(0, 0, 0, 0.1);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            }
+
+            .navbar-glass::before {
+                background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.05) 0%,
+                    rgba(255, 255, 255, 0.02) 50%,
+                    rgba(255, 255, 255, 0.05) 100%);
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50">
     <div class="flex h-screen">
         <!-- 固定左侧导航栏 -->
-        <nav class="w-64 bg-white shadow-lg fixed left-0 top-0 h-full z-50 overflow-y-auto">
+        <nav class="navbar-glass w-64 bg-white shadow-lg fixed left-0 top-0 h-full z-50 overflow-y-auto" id="main-nav">
             <div class="p-6">
                 <div class="mb-8">
                     <h1 class="text-2xl font-bold text-gray-800">{{ .Site.Title }}</h1>
@@ -210,8 +276,17 @@
             }
 
             init() {
+                this.ensureGlassEffect();
                 this.bindEvents();
                 this.loadInitialContent();
+            }
+
+            ensureGlassEffect() {
+                // 确保导航栏有玻璃效果类
+                const nav = document.getElementById('main-nav');
+                if (nav && !nav.classList.contains('navbar-glass')) {
+                    nav.classList.add('navbar-glass');
+                }
             }
 
             bindEvents() {

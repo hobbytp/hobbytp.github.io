@@ -1,1 +1,66 @@
-{{- $index := slice -}}{{- range .Site.RegularPages -}}{{- $page := dict "title" .Title -}}{{- $page = merge $page (dict "permalink" .Permalink) -}}{{- $page = merge $page (dict "date" (.Date.Format "2006-01-02")) -}}{{- with .Description -}}{{- $page = merge $page (dict "description" .) -}}{{- end -}}{{- with .Params.tags -}}{{- $page = merge $page (dict "tags" .) -}}{{- end -}}{{- with .Params.categories -}}{{- $page = merge $page (dict "categories" .) -}}{{- end -}}{{- $page = merge $page (dict "content" (.Plain | htmlUnescape)) -}}{{- $index = $index | append $page -}}{{- end -}}{{- $index | jsonify -}}
+{{- $index := slice -}}
+{{- range .Site.RegularPages -}}
+  {{- $page := dict "title" .Title -}}
+  {{- $page = merge $page (dict "permalink" .Permalink) -}}
+  {{- $page = merge $page (dict "date" (.Date.Format "2006-01-02")) -}}
+  {{- $page = merge $page (dict "lastModified" (.Lastmod.Format "2006-01-02")) -}}
+
+  {{- /* 描述信息 */ -}}
+  {{- with .Description -}}
+    {{- $page = merge $page (dict "description" .) -}}
+  {{- else -}}
+    {{- $summary := .Summary | plainify | truncate 200 -}}
+    {{- $page = merge $page (dict "description" $summary) -}}
+  {{- end -}}
+
+  {{- /* 标签和分类 */ -}}
+  {{- with .Params.tags -}}
+    {{- $page = merge $page (dict "tags" .) -}}
+  {{- end -}}
+  {{- with .Params.categories -}}
+    {{- $page = merge $page (dict "categories" .) -}}
+  {{- end -}}
+
+  {{- /* 内容统计 */ -}}
+  {{- $page = merge $page (dict "wordCount" .WordCount) -}}
+  {{- $page = merge $page (dict "readingTime" .ReadingTime) -}}
+
+  {{- /* 内容类型 */ -}}
+  {{- $page = merge $page (dict "type" .Type) -}}
+  {{- $page = merge $page (dict "section" .Section) -}}
+
+  {{- /* 权重计算（用于排序） */ -}}
+  {{- $weight := 1 -}}
+  {{- if .IsHome -}}
+    {{- $weight = 10 -}}
+  {{- else if (strings.Contains .Type "post") -}}
+    {{- $weight = 8 -}}
+  {{- else if (strings.Contains .Section "docs") -}}
+    {{- $weight = 7 -}}
+  {{- else if .Params.featured -}}
+    {{- $weight = 6 -}}
+  {{- end -}}
+  {{- $page = merge $page (dict "weight" $weight) -}}
+
+  {{- /* 主要内容用于搜索 */ -}}
+  {{- $searchContent := printf "%s %s" .Title (.Plain | htmlUnescape) -}}
+  {{- with .Description -}}
+    {{- $searchContent = printf "%s %s" $searchContent . -}}
+  {{- end -}}
+  {{- $page = merge $page (dict "content" $searchContent) -}}
+
+  {{- /* 关键词提取（从标题、描述、标签中提取） */ -}}
+  {{- $keywords := slice .Title -}}
+  {{- with .Description -}}
+    {{- $keywords = $keywords | append . -}}
+  {{- end -}}
+  {{- with .Params.tags -}}
+    {{- range . -}}
+      {{- $keywords = $keywords | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $page = merge $page (dict "keywords" ($keywords | uniq)) -}}
+
+  {{- $index = $index | append $page -}}
+{{- end -}}
+{{- $index | jsonify -}}

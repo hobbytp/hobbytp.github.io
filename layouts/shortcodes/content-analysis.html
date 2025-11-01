@@ -1,0 +1,194 @@
+{{- $type := .Get "type" | default "overview" -}}
+{{- $dataFile := .Get "data" | default "content-analysis-data.json" -}}
+{{- $limit := .Get "limit" | default 5 -}}
+
+<!-- 内容分析短代码 -->
+<div class="content-analysis-widget" data-type="{{ $type }}" data-data-file="{{ $dataFile }}" data-limit="{{ $limit }}">
+  <div class="analysis-loading">
+    <div class="animate-pulse flex space-x-4">
+      <div class="rounded-full bg-gray-300 h-10 w-10"></div>
+      <div class="flex-1 space-y-2 py-1">
+        <div class="h-4 bg-gray-300 rounded w-3/4"></div>
+        <div class="h-4 bg-gray-300 rounded w-1/2"></div>
+      </div>
+    </div>
+    <p class="text-sm text-gray-500 mt-2">正在加载分析数据...</p>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const widgets = document.querySelectorAll('.content-analysis-widget');
+
+  widgets.forEach(async function(widget) {
+    const type = widget.dataset.type;
+    const dataFile = widget.dataset.dataFile;
+    const limit = parseInt(widget.dataset.limit);
+
+    try {
+      // 加载分析数据
+      const response = await fetch('/' + dataFile);
+      if (!response.ok) {
+        throw new Error('无法加载分析数据');
+      }
+
+      const data = await response.json();
+
+      // 根据类型渲染不同内容
+      let content = '';
+
+      switch(type) {
+        case 'overview':
+          content = renderOverview(data);
+          break;
+        case 'stats':
+          content = renderStats(data);
+          break;
+        case 'trends':
+          content = renderTrends(data);
+          break;
+        case 'keywords':
+          content = renderKeywords(data, limit);
+          break;
+        case 'categories':
+          content = renderCategories(data, limit);
+          break;
+        default:
+          content = '<p>未知的分析类型: ' + type + '</p>';
+      }
+
+      widget.innerHTML = content;
+
+    } catch (error) {
+      widget.innerHTML = '<div class="text-red-500"><p>加载分析数据失败: ' + error.message + '</p><p class="text-sm">请确保已运行 <code>make generate-json-data</code></p></div>';
+    }
+  });
+
+  function renderOverview(data) {
+    const summary = data.summary;
+    return `
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold mb-4">📊 内容概览</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-blue-600">${summary.total_files}</div>
+            <div class="text-sm text-gray-600">总文章数</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-green-600">${summary.total_words.toLocaleString()}</div>
+            <div class="text-sm text-gray-600">总字数</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-purple-600">${summary.avg_quality_score}/100</div>
+            <div class="text-sm text-gray-600">平均质量</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-orange-600">${summary.health_score || 'N/A'}</div>
+            <div class="text-sm text-gray-600">健康度</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderStats(data) {
+    const summary = data.summary;
+    return `
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold mb-4">📈 详细统计</h3>
+        <div class="space-y-2">
+          <div class="flex justify-between">
+            <span>成功分析文件:</span>
+            <span class="font-semibold">${summary.analyzed_files}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>平均可读性:</span>
+            <span class="font-semibold">${summary.avg_readability}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>AI增强:</span>
+            <span class="font-semibold">${data.ai_enhanced ? '✅' : '❌'}</span>
+          </div>
+          <div class="flex justify-between">
+            <span>生成时间:</span>
+            <span class="font-semibold text-sm">${new Date(data.generated_at).toLocaleString()}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderTrends(data) {
+    if (!data.trends || !data.trends.monthly_creation) {
+      return '<div class="bg-white rounded-lg shadow-md p-6"><p class="text-gray-500">暂无趋势数据</p></div>';
+    }
+
+    const trends = data.trends;
+    const recentMonths = Object.entries(trends.monthly_creation).slice(-3);
+
+    return `
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold mb-4">📈 创作趋势</h3>
+        <div class="space-y-2">
+          ${recentMonths.map(([month, count]) => `
+            <div class="flex justify-between items-center">
+              <span>${month}:</span>
+              <div class="flex items-center space-x-2">
+                <div class="w-16 bg-gray-200 rounded-full h-2">
+                  <div class="bg-blue-600 h-2 rounded-full" style="width: ${Math.min(count * 10, 100)}%"></div>
+                </div>
+                <span class="font-semibold w-8 text-right">${count}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderKeywords(data, limit) {
+    if (!data.top_keywords || data.top_keywords.length === 0) {
+      return '<div class="bg-white rounded-lg shadow-md p-6"><p class="text-gray-500">暂无关键词数据</p></div>';
+    }
+
+    const keywords = data.top_keywords.slice(0, limit);
+
+    return `
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold mb-4">🔥 热门关键词</h3>
+        <div class="flex flex-wrap gap-2">
+          ${keywords.map(([keyword, count]) => `
+            <span class="inline-block bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm">
+              ${keyword} (${count})
+            </span>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderCategories(data, limit) {
+    if (!data.distribution || !data.distribution.by_category) {
+      return '<div class="bg-white rounded-lg shadow-md p-6"><p class="text-gray-500">暂无分类数据</p></div>';
+    }
+
+    const categories = Object.entries(data.distribution.by_category)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, limit);
+
+    return `
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h3 class="text-lg font-semibold mb-4">📂 内容分类</h3>
+        <div class="space-y-2">
+          ${categories.map(([category, count]) => `
+            <div class="flex justify-between items-center">
+              <span>${category}:</span>
+              <span class="font-semibold">${count} 篇</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+});
+</script>
