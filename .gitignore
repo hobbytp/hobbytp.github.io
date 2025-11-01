@@ -96,6 +96,9 @@ __pycache__/
 
 .github/
 .cursor/
-openspec/
 
 AGENTS.md
+
+.serena/
+.trae/
+
