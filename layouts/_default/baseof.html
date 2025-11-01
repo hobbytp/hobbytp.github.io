@@ -4,11 +4,12 @@
 <head>
     {{ partial "seo.html" . }}
     <title>{{ .Title }} - {{ .Site.Title }}</title>
-    {{/* Build a unified CSS bundle: main.css + extended/*.css + custom.css */}}
+    {{/* Build a unified CSS bundle: main.css + extended/*.css + glassmorphism.css + custom.css */}}
     {{- $styles := slice (resources.Get "css/main.css") -}}
     {{- range resources.Match "css/extended/*.css" -}}
       {{- $styles = $styles | append . -}}
     {{- end -}}
+    {{- $styles = $styles | append (resources.Get "css/glassmorphism.css") -}}
     {{- $styles = $styles | append (resources.Get "css/custom.css") -}}
     {{- $bundle := $styles | resources.Concat "css/site.bundle.css" | resources.Minify -}}
     {{- if not site.Params.assets.disableFingerprinting -}}
