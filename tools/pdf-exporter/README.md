@@ -37,16 +37,6 @@ make dev  # 或者 hugo server -D
 python pdf_exporter.py --article content/zh/posts/my-article.md
 ```
 
-### 1.5 快速测试（仅导出1篇文章）
-
-```bash
-# 使用make命令（推荐）
-make test-pdf
-
-# 或直接使用Python
-python pdf_exporter.py --all --limit 1
-```
-
 ### 2. 批量导出所有文章
 
 ```bash
@@ -60,6 +50,26 @@ python pdf_exporter.py --all \
   --output-dir ./pdf-exports \
   --format A4 \
   --quality 95
+```
+
+## Make命令使用
+
+### 导出所有文章
+
+```bash
+make export-pdf
+```
+
+### 导出单个文件
+
+```bash
+make export-pdf FILE=./content/zh/google/a2a.md
+```
+
+### 批量导出（限制数量）
+
+```bash
+python pdf_exporter.py --all --limit 3
 ```
 
 ## 命令行选项
@@ -205,29 +215,34 @@ find content/zh/posts -name "*.md" | head -20 | \
 ### 常见问题
 
 1. **"连接被拒绝"**
+
    ```bash
    # 确保Hugo服务器正在运行
    curl http://localhost:1313
    ```
 
 2. **"页面加载失败"**
+
    ```bash
    # 检查文章URL是否正确
    python pdf_exporter.py --article content/zh/posts/test.md
    ```
 
 3. **"Playwright未安装"**
+
    ```bash
    playwright install chromium
    ```
 
 4. **内存不足**
+
    ```bash
    # 减少批量大小
    python pdf_exporter.py --all --batch-size 3
    ```
 
 5. **PDF质量问题**
+
    ```bash
    # 提高图片质量
    python pdf_exporter.py --all --quality 95
@@ -243,16 +258,19 @@ find content/zh/posts -name "*.md" | head -20 | \
 ## 使用场景
 
 ### 离线阅读
+
 - 生成PDF版本供离线阅读
 - 适合移动设备和Kindle等设备
 - 保留文章的完整格式和链接
 
 ### 内容分享
+
 - 分享文章的PDF版本
 - 适合打印和存档
 - 保持专业的出版质量
 
 ### 内容备份
+
 - 创建博客内容的PDF备份
 - 确保内容的可访问性
 - 支持长期保存

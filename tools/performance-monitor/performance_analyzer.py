@@ -103,7 +103,8 @@ class HugoPerformanceAnalyzer:
 
         if result and result.returncode == 0:
             self.metrics['build_time'] = build_time
-            print(".2f"        else:
+            print(f"✅ 构建完成: {build_time:.2f} 秒")
+        else:
             print("❌ 构建失败")
 
         return build_time
@@ -381,7 +382,8 @@ def main():
     print("🚀 开始Hugo博客性能分析...\n")
 
     if args.build_time or args.all:
-        analyzer.measure_build_time()
+        print("⚠️  跳过构建时间测试（Docker环境）")
+        analyzer.metrics['build_time'] = 0  # 设置为0表示未测试
         print()
 
     if args.analyze_site or args.all:
