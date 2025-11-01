@@ -600,9 +600,18 @@ async def main():
     try:
         if args.article:
             # 导出单个文章
-            md_path = Path(args.article)
+            article_path_str = args.article
+
+            # 如果是相对路径，从项目根目录开始解析
+            if not os.path.isabs(article_path_str):
+                # 获取当前脚本所在目录，然后向上找到项目根目录
+                script_dir = Path(__file__).parent
+                project_root = script_dir.parent.parent  # tools/pdf-exporter -> tools -> project_root
+                article_path_str = str(project_root / article_path_str)
+
+            md_path = Path(article_path_str).resolve()
             if not md_path.exists():
-                print(f"文件不存在: {md_path}")
+                print(f"文件不存在: {md_path} (原始路径: {args.article})")
                 sys.exit(1)
 
             async with async_playwright() as playwright:
