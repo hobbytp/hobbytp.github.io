@@ -9,7 +9,7 @@ services:
     working_dir: /src
     environment:
       - HUGO_ENV=development
-    command: server --bind 0.0.0.0 -D --disableFastRender --disableLiveReload
+    command: server --bind 0.0.0.0 -D --disableFastRender --disableLiveReload --ignoreCache
 
   # 生产环境构建服务
   hugo-build:
