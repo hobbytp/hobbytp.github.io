@@ -6,6 +6,8 @@ categories: ["papers"]
 draft: false
 toc: true
 description: AI for Research Survey. 这篇综述文章概述了人工智能在科学研究（AI4Research）中的应用，强调了大型语言模型（LLMs）在促进科学发现各个阶段的潜力。它建立了一个系统的分类体系，将AI4Research分解为五个主要任务：科学理解、学术调查、科学发现、学术写作和学术同行评审。文章详细介绍了AI在这些领域中的具体应用，例如辅助思想挖掘、实验设计、数据分析、论文撰写和同行评审。此外，该综述还识别了未来的研究方向，包括跨学科AI模型、伦理考量以及多模态和多语言集成，旨在为研究界提供资源并激发AI驱动的科学创新。
+wordCount: 2847
+readingTime: 12
 ---
 
 

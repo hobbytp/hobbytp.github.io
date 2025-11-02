@@ -5,6 +5,8 @@ draft: false
 tags: ["Claude Code", "startup", "workflow", "entrepreneur"]
 categories: ["celebrity_insights","interview"]
 description: "Every联合创始人兼CEO Dan Shipper分享AI-first工作流程，解析为什么每家公司都需要AI运营主管"
+wordCount: 3644
+readingTime: 15
 ---
 
 这段视频介绍了Dan Shipper如何领导AI驱动的创业公司Every，通过15人团队开发5款产品实现七位数收入，展示了AI在代码生成、工作流程优化和企业创新中的巨大潜力。

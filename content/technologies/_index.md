@@ -1,6 +1,8 @@
 ---
 title: "技术解析"
 description: "详细讲解AI技术原理，从基础到前沿"
+wordCount: 57
+readingTime: 1
 ---
 
 这里收录了AI技术原理解析文章，包括但不限于：

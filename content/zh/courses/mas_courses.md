@@ -10,6 +10,8 @@ cover:
     alt: "Agent 相关课程收集"
     relative: false
     hidden: false
+wordCount: 29
+readingTime: 1
 ---
 
 ## AI Agents for Beginners - From MS

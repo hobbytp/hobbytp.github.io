@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "google", "google_io_2025", "技术"]
 categories: ["big_companies"]
 description: "本文介绍了Google I/O 2025 大会亮点。"
+wordCount: 2315
+readingTime: 10
 ---
 
 ## Google I/O 2025 大会亮点

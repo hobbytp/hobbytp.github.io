@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Geoffrey Hinton","WAIC","数字智能","生物智能"]
 categories: ["celebrity_insights"]
 description: "Geoffrey Hinton在2025年世界人工智能大会上关于数字智能与生物智能对比的核心观点梳理"
+wordCount: 977
+readingTime: 4
 ---
 
 2025 WAIC 主题演讲《数字智能是否会取代生物智能》核心内容梳理

@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Ilya Sutskever"]
 categories: ["celebrity_insights"]
 description: "Ilya Sutskever在各个场合的观点"
+wordCount: 2732
+readingTime: 11
 ---
 
 这个博客会持续更新Ilya Sutskever在各个场合的观点。

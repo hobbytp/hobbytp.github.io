@@ -5,6 +5,8 @@ draft: false
 description: "Agent经济：红杉资本2025 AI峰会释放的超级信号"
 tags: ["AI", "Ascent", "Agent", "红杉资本"]
 categories: ["celebrity_insights"]
+wordCount: 1980
+readingTime: 8
 ---
 
 ## 引言

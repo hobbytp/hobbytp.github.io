@@ -5,6 +5,8 @@ draft: false
 tags: ["code_assistant", "Spec Kit", "规范驱动开发"]
 categories: ["ai_programming"]
 description: "Spec Kit：基于规范驱动开发的工具包"
+wordCount: 1358
+readingTime: 6
 ---
 
 规范驱动开发颠覆了传统软件开发模式。几十年来，代码始终占据统治地位——规范文档不过是搭建后即弃的脚手架，一旦开始"真正"的编码工作就会被抛弃。规范驱动开发改变了这一局面：规范本身变得可执行，能直接生成可运行实现，而不仅仅是指导实现。

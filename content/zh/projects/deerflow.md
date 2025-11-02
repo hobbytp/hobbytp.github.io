@@ -6,6 +6,8 @@ draft: false
 tags:  ["Deerflow","Deep Research","LangGraph","MCP"]
 categories: ["projects"]
 description: "DeerFlow - 字节跳动开源的Deep Research"
+wordCount: 1416
+readingTime: 6
 ---
 
 更新历史:

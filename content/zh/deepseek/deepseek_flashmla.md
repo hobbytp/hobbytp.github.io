@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "deepseek", "FlashMLA", "代码", "技术"]
 categories: ["large_models"]
 description: "本文介绍了深度求索（DeepSeek）公司FlashMLA代码详细解读。"
+wordCount: 3881
+readingTime: 16
 ---
 
 ## 项目用途和核心功能

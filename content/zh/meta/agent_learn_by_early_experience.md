@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "Meta", "Agent","RL","早期经验"]
 categories: ["papers"]
 description: "传统AI训练像是把人类所有的知识都强行灌输AI，而Meta的最新论文《Agent Learning via Early Experience》为我们展示了一条训练AI智能体的新路径: 可扩展、无需奖励的实用范式，通过将智能体自身的行为和结果转化为强大的监督信号，显著提升了AI的性能、数据效率和泛化能力。"
+wordCount: 2852
+readingTime: 12
 ---
 
 ## TLDR

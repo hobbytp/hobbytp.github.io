@@ -5,6 +5,8 @@ tags: ["mcp", "serena", "coding"]
 categories: ["projects"]
 draft: false
 description: Serena MCP 是一个功能强大且开源的编码代理工具包，旨在将大型语言模型（LLMs）转化为具备完整功能的智能代码助手，专注于语义代码检索和编辑，模拟集成开发环境（IDE）的能力。
+wordCount: 5991
+readingTime: 24
 ---
 
 ## 背景

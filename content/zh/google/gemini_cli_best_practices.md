@@ -5,6 +5,8 @@ draft: false
 tags: ["Gemini CLI", "AI编程", "命令行工具", "最佳实践"]
 categories: ["ai_programming"]
 description: "Gemini CLI 使用示例和最佳实践：项目配置、上下文管理、工具偏好设置等"
+wordCount: 83
+readingTime: 1
 ---
 
 项目: Youtube Analysis Platform

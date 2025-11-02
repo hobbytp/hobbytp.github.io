@@ -5,6 +5,8 @@ draft: false
 tags: ["Agentic Context Engineering", "ACE", "AI"]
 categories: ["papers","context_engineering"]
 description: "该论文介绍了一个名为 ACE(Agentic Context Engineering，代理上下文工程) 的框架，该框架旨在通过演化上下文而非微调模型权重的方式，实现大型语言模型（LLMs）的自我改进。ACE将上下文视为不断累积、提炼和组织策略的 “演化剧本”，从而克服了现有上下文适应方法中存在的简洁性偏差和上下文崩溃等主要限制。通过使用 生成器、反射器和策展器 这三个代理组件，ACE实现了增量更新和“增长与提炼”机制，以保持详细的领域知识并提高可扩展性。实验结果表明，ACE在代理基准测试和金融等领域特定任务中显著优于现有基线方法，同时还能大幅降低适应的延迟和成本。"
+wordCount: 3430
+readingTime: 14
 ---
 
 

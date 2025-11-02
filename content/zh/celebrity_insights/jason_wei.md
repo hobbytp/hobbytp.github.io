@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Jason wei"]
 categories: ["celebrity_insights"]
 description: "Jason wei在各个场合的观点"
+wordCount: 1080
+readingTime: 5
 ---
 
 ## Jason Wei在斯坦福 AI 俱乐部发表的演讲 （2025-10）

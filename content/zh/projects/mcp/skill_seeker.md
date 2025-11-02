@@ -5,6 +5,8 @@ draft: false
 tags: ["mcp", "skills_seeker", "coding_assistant"]
 categories: ["ai_programming","projects"]
 description: Skill Seekers 是一个自动化工具，可以将文档网站、GitHub 仓库和 PDF 文件快速转换为 Claude Skills，通过自动化冲突检测和AI增强技术，大幅减少手工整理和理解文档所需的时间（20-40 分钟内生成生产就绪的Claude技能）。
+wordCount: 6867
+readingTime: 28
 ---
 
 ## TL;DR

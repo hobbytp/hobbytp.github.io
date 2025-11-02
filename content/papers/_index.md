@@ -1,6 +1,8 @@
 ---
 title: "论文解读"
 description: "深入解析AI领域的重要论文，帮助读者理解最新研究进展"
+wordCount: 87
+readingTime: 1
 ---
 
 这里收录了对AI领域重要论文的解读文章，包括但不限于：

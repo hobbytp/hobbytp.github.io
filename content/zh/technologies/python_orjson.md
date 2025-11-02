@@ -4,6 +4,8 @@ date: "2025-04-22T10:34:00+08:00"
 description: "Python 的 orjson 库"
 tags: ["Python", "orjson"]
 categories: ["technologies"]
+wordCount: 1170
+readingTime: 5
 ---
 
 我们来详细探讨一下 `orjson` 库以及为什么它通常比 Python 标准库中的 `json` 模块性能更好。

@@ -5,6 +5,8 @@ draft: false
 tags: ["engineer", "career"]
 categories: ["celebrity_insights","interview"]
 description: "微软/Meta/OpenAI Distinguished Engineer- Philip Su访谈"
+wordCount: 6600
+readingTime: 27
 ---
 
 

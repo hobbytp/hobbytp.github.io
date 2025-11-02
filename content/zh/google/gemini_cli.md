@@ -5,6 +5,8 @@ tags: ["gemini_cli", "architecture", "code_assistant"]
 categories: ["ai_programming"]
 draft: false
 description: Gemini CLI 开源项目分析
+wordCount: 3105
+readingTime: 13
 ---
 
 ## 项目简介

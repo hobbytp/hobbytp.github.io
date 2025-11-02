@@ -6,6 +6,8 @@ draft: false
 tags:  ["Reflect, Retry, Reward","LLM","training"]
 categories: ["papers","training"]
 description: "Reflect, Retry, Reward: 大型语言模型的自我进化新范式"
+wordCount: 2385
+readingTime: 10
 --- 
 
 该论文提出一种新的微调方式，利用自我反思和强化学习的方法来提高了大型语言模型的性能。

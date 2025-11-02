@@ -6,6 +6,8 @@ tags: ["demo", "styling", "links"]
 categories: ["技术演示"]
 author: "Peng Tan"
 description: "展示博客中各种链接样式的效果，包括内部链接、外部链接、特殊网站链接等"
+wordCount: 576
+readingTime: 3
 ---
 
 # 链接样式演示

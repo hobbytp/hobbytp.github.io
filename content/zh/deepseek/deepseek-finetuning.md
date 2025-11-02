@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "DeepSeek", "论文", "技术"]
 categories: ["papers", "large_models", "training"]
 description: "本文介绍了如何使用合成推理数据集微调DeepSeek-R1模型."
+wordCount: 345
+readingTime: 2
 ---
 ### 摘要  
 

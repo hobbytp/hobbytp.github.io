@@ -5,7 +5,9 @@ lastmod: "2025-07-02T14:20:00+08:00"
 draft: false
 description: "MiniMax"
 tags: ["AI", "MiniMax"]
-categories: ["big_companies"]  
+categories: ["big_companies"]
+wordCount: 1184
+readingTime: 5
 ---
 
 ## MiniMax 公司介绍

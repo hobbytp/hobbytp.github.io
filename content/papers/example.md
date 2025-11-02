@@ -3,6 +3,8 @@ title: "示例论文解读：GPT-4 技术报告解析"
 date: 2024-01-20
 description: "深入解读 GPT-4 技术报告的关键创新点和技术突破"
 tags: ["GPT-4", "大语言模型", "人工智能"]
+wordCount: 130
+readingTime: 1
 ---
 
 # GPT-4 技术报告解析

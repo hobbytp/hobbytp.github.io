@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "智谱AI","GLM"]
 categories: ["big_companies"]
 description: "智谱AI(GLM)产品线收集整理分析"
+wordCount: 3152
+readingTime: 13
 ---
 
 智谱AI（北京智谱华章科技有限公司）是一家源自清华大学知识工程实验室（KEG）的领先人工智能公司，专注于研发大规模预训练模型，致力于实现“让机器像人一样思考”的愿景。

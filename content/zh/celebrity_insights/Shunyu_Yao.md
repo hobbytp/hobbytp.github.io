@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Shunyu Yao"]
 categories: ["celebrity_insights"]
 description: "AI的下半场"
+wordCount: 7590
+readingTime: 31
 ---
 
 

@@ -5,7 +5,9 @@ lastmod: "2025-09-12T22:30:00+08:00"
 draft: false
 description: "日常想法随手记"
 tags: ["AI", "Thinking", "Daily","2025"]
-categories: ["my_insights"]  
+categories: ["my_insights"]
+wordCount: 5168
+readingTime: 21
 ---
 
 这里随手记下当天对看到的新闻、文章、视频等的想法。

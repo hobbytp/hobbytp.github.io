@@ -5,6 +5,8 @@ draft: false
 description: "马斯克的“加速”与“刹车”悖论：我们到底在把世界引向何处？"
 tags: ["AI", "马斯克", "未来", "思考"]
 categories: ["my_insights"]
+wordCount: 1926
+readingTime: 8
 ---
 
 在All-In Postcast上，埃隆·马斯克讨论了人类未来发展，包括通过AI和机器人技术推动创新，Starlink手机连接全球，以及西方社会面临的挑战和对火星基地的乐观展望。

@@ -6,6 +6,8 @@ tags: ["AI", "代码", "世界模型"]
 categories: ["large_models"]
 description: "Meta发布的一项名为“代码世界模型”（Code World Model, CWM）的全新研究，正试图从根本上解决当前代码AI面临的一大痛点。"
 featured_image: "/images/articles/cwm_code_world_model.webp"
+wordCount: 2221
+readingTime: 9
 ---
 
 Meta AI发布了 **Code World Model (CWM)**，这是一个具有 320 亿参数的 **开放权重大型语言模型 (LLM)**，旨在推进带有世界模型的代码生成研究。为了增强模型对代码的理解，CWM 在训练过程中引入了大量的 **Python 解释器和代理式 Docker 环境**中的观察-行动轨迹数据。该模型采用了密集的 **解码器架构**，最大上下文长度可达 131k tokens，并在代码生成、数学和软件工程等任务上通过 **监督微调 (SFT) 和强化学习 (RL)** 进行了进一步优化。研究结果展示了 CWM 在 SWE-bench Verified 和 LiveCodeBench 等基准测试上的 **强大性能**，并详细讨论了其训练阶段、架构选择，以及通过 **执行轨迹预测** 来实现代码推理和调试的能力。

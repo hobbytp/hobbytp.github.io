@@ -6,6 +6,8 @@ tags: ["字节跳动", "桌面应用", "UI", "开源"]
 categories: ["开源项目"]
 author: "Peng Tan"
 description: "字节跳动UI-TARS桌面应用项目"
+wordCount: 18
+readingTime: 1
 ---
 
 # UI-TARS Desktop

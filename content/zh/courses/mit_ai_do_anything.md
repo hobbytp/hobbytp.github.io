@@ -10,6 +10,8 @@ cover:
     alt: "MIT AI Do Anything"
     relative: false
     hidden: false
+wordCount: 1034
+readingTime: 5
 ---
 
 这门课程得到吴恩达的推荐，以下是关于MIT课程《如何用AI（几乎）做任何事》（*How to AI (Almost) Anything*）的详细信息整理，结合课程官网内容和公开资料，帮助你快速掌握核心内容与资源获取方式：

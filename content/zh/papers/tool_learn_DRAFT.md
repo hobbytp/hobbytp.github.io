@@ -5,6 +5,8 @@ draft: false
 tags: ["tool_learning", "tool_document"]
 categories: ["papers"]
 description: "本文介绍了从人工标注到自我迭代：大模型工具学习的动态文档优化新范式。"
+wordCount: 913
+readingTime: 4
 ---
 
 ## **核心研究内容**

@@ -5,6 +5,8 @@ draft: false
 tags: ["world_model"]
 categories: ["papers"]
 description: "本文探讨了通用智能体是否需要世界模型才能实现灵活的、面向目标的行为"
+wordCount: 3645
+readingTime: 15
 ---
 
 ## 我为什么要阅读这篇文章？

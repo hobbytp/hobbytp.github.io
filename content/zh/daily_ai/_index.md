@@ -3,6 +3,8 @@ title: "每日AI动态"
 date: 2025-01-01
 draft: false
 description: "每日AI技术动态汇总，包括新模型、新框架、新应用、新标准、新开源项目、新论文、科技访谈、技术报告、论坛会议和行业趋势"
+wordCount: 182
+readingTime: 1
 ---
 
 # 每日AI动态

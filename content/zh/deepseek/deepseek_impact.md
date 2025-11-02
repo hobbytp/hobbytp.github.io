@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "DeepSeek", "开源", "闭源", "LLM"]
 categories: ["technologies"]
 description: "本文介绍了DeepSeek开源LLM对闭源LLM的影响，包括性能基准测试和竞争、成本效益、开源可用性和定制、市场动态和战略转变、创新与社区发展、环境影响以及AI研究和应用的转变。"
+wordCount: 2118
+readingTime: 9
 ---
 
 ## 对闭源 LLM 的影响

@@ -6,6 +6,8 @@ draft: false
 description: "xiaohongshu-mcp 是一个开源项目，用于实现对小红书 (xiaohongshu.com) 的 Model Context Protocol (MCP) 支持，基于自动化运营小红书账号。"
 tags: ["MCP", "小红书", "自动化运营"]
 categories: ["projects"]
+wordCount: 909
+readingTime: 4
 ---
 
 

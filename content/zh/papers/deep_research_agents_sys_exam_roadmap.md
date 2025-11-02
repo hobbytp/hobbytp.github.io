@@ -5,6 +5,8 @@ draft: false
 tags: ["deep_research_agents", "systematic_examination", "roadmap"]
 categories: ["papers"]
 description: "本文介绍了深度研究智能体：系统性审查与路线图。"
+wordCount: 3930
+readingTime: 16
 ---
 
 DEEP RESEARCH AGENTS: A SYSTEMATIC EXAMINATION AND ROADMAP

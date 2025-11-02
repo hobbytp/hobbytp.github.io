@@ -8,6 +8,8 @@ weight: 1
 cover:
     image: "images/cover/wan.png"
     alt: "阿里Wan开源大模型"
+wordCount: 280
+readingTime: 2
 ---
 
 Qwen Wan大模型是阿里云推出的一个通用大模型，旨在提供强大的语言理解和生成能力。

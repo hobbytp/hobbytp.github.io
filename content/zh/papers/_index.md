@@ -2,6 +2,8 @@
 title: "论文解读"
 date: 2025-01-01
 draft: false
+wordCount: 102
+readingTime: 1
 ---
 
 这里收录了 AI 领域最新、最重要的学术论文解读，包括但不限于：

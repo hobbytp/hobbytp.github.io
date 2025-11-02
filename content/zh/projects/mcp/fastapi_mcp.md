@@ -5,6 +5,8 @@ tags: ["mcp", "fastapi", "python"]
 categories: ["projects"]
 draft: false
 description: FastAPI-MCP 是一个扩展 FastAPI 的工具，用于将 FastAPI 的端点暴露为具有认证功能的 Model Context Protocol (MCP) 工具。
+wordCount: 423
+readingTime: 2
 ---
 
 ## 背景

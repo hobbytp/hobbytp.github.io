@@ -6,6 +6,8 @@ tags: ["资源", "链接"]
 categories: ["资源收集"]
 author: "Peng Tan"
 description: "claude mcp server相关资源链接"
+wordCount: 12
+readingTime: 1
 ---
 
 # claude mcp server
