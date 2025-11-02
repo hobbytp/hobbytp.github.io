@@ -65,7 +65,9 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
     frontmatter_str, body = extract_frontmatter(content)
     
     if frontmatter_str is None:
-        print(f"⚠️  跳过（无front matter）: {file_path}")
+        # 使用字符串格式化而不是relative_to避免路径问题
+        rel_path = str(file_path).replace(str(Path.cwd()), '').lstrip('\\/').replace('\\', '/')
+        print(f"⚠️  跳过（无front matter）: {rel_path}")
         return 0, 0, False
     
     # 统计正文中的中文字符数
@@ -85,7 +87,9 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
     if not update:
         # 仅显示统计信息
         status = "✅" if current_word_count == word_count and current_reading_time == reading_time else "⚠️ "
-        print(f"{status} {file_path.relative_to(Path.cwd())}")
+        # 使用字符串格式化而不是relative_to避免路径问题
+        rel_path = str(file_path).replace(str(Path.cwd()), '').lstrip('\\/').replace('\\', '/')
+        print(f"{status} {rel_path}")
         print(f"   当前: {current_word_count} 字, {current_reading_time} 分钟")
         print(f"   实际: {word_count} 字, {reading_time} 分钟")
         return word_count, reading_time, False
@@ -101,13 +105,17 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
         # 写回文件
         try:
             file_path.write_text(new_content, encoding='utf-8')
-            print(f"✅ 已更新: {file_path.relative_to(Path.cwd())} ({word_count} 字, {reading_time} 分钟)")
+            # 使用字符串格式化而不是relative_to避免路径问题
+            rel_path = str(file_path).replace(str(Path.cwd()), '').lstrip('\\/').replace('\\', '/')
+            print(f"✅ 已更新: {rel_path} ({word_count} 字, {reading_time} 分钟)")
             return word_count, reading_time, True
         except Exception as e:
             print(f"❌ 写入文件失败 {file_path}: {e}")
             return word_count, reading_time, False
     else:
-        print(f"✓ 无需更新: {file_path.relative_to(Path.cwd())}")
+        # 使用字符串格式化而不是relative_to避免路径问题
+        rel_path = str(file_path).replace(str(Path.cwd()), '').lstrip('\\/').replace('\\', '/')
+        print(f"✓ 无需更新: {rel_path}")
         return word_count, reading_time, False
 
 def main():
