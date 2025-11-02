@@ -281,3 +281,8 @@ Skill Seeker不仅是一个工具，更是对AI时代知识工程的一次重新
 [2]: https://upstash.com/blog/context7-llmtxt-cursor "介绍Context7：面向LLM和AI代码编辑器的最新文档"
 [3]: https://blog.csdn.net/qq_44810930/article/details/147976546 "CSDN 博客：Context7 + MCP：让 AI 编程助手实时获取最新文档的利器"
 [4]: https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents "Anthropic: 面向人工智能代理的高效上下文工程"
+
+- [Skill_Seekers 项目 GitHub](https://github.com/yusufkaraaslan/Skill_Seekers)
+- [介绍Context7：面向LLM和AI代码编辑器的最新文档](https://upstash.com/blog/context7-llmtxt-cursor)
+- [CSDN 博客：Context7 + MCP：让 AI 编程助手实时获取最新文档的利器](https://blog.csdn.net/qq_44810930/article/details/147976546)
+- [Anthropic: 面向人工智能代理的高效上下文工程](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents)
