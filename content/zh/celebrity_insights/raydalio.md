@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Ray Dalio"]
 categories: ["celebrity_insights"]
 description: "Ray Dalio:在各个场合的观点"
+wordCount: 2079
+readingTime: 9
 ---
 
 该文文章用于收集瑞·达利欧在各个场合的主要观点，便于我个人收集学习。

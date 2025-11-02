@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Qwen3","大模型","Qwen","Paper"]
 categories: ["large_models"]
 description: "全方位解读Qwen3的论文技术报告"
+wordCount: 4406
+readingTime: 18
 ---
 
 ## 模型介绍

@@ -1,6 +1,8 @@
 ---
 title: "开源项目"
 description: "分享AI开源项目的使用经验和最佳实践"
+wordCount: 49
+readingTime: 1
 ---
 
 这里收录了AI开源项目相关文章，包括但不限于：

@@ -3,6 +3,8 @@ title: "AI编程"
 date: 2025-01-01
 draft: false
 description: "AI辅助编程实践、工具、技巧和最佳实践，包括AI编程助手、代码生成、调试优化、开发工作流等内容"
+wordCount: 143
+readingTime: 1
 ---
 
 # AI编程

@@ -5,6 +5,8 @@ draft: false
 tags: ["LLM", "Prompt", "Mode Collapse", "Verbalized Sampling", "Diversity"]
 categories: ["papers"]
 description: "Verbalized Sampling: 言语采样提升模型多样性"
+wordCount: 2038
+readingTime: 9
 ---
 
 ## TL;DR

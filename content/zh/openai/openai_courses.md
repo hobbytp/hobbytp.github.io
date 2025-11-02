@@ -5,6 +5,8 @@ draft: false
 tags: ["openai", "课程", "官方课程"]
 categories: ["course"]
 description: "OpenAI 官方课程，覆盖从基础到高级的AI技术与应用"
+wordCount: 632
+readingTime: 3
 ---
 
 ## OpenAI Academy课程体系综述

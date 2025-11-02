@@ -5,6 +5,8 @@ draft: true
 tags: ["OpenAI", "Model Spec", "AI"]
 categories: ["ai_spec", "openai"]
 description: "OpenAI Model Spec 解读"
+wordCount: 794
+readingTime: 4
 ---
 
 ## OpenAI Model Spec 解读

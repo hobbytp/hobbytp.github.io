@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Richard Sutton","LLM","RL","Goal-Driven","Continual Learning"]
 categories: ["celebrity_insights"]
 description: "强化学习的奠基人惊人警告：为什么说LLM可能是一条死胡同？"
+wordCount: 4043
+readingTime: 17
 ---
 
 在最近的一次Dwarkesh Patel访谈中（2025-09），强化学习（RL）的奠基人之一理查德·萨顿（Richard Sutton）对大型语言模型（LLM）提出了尖锐的批评，认为它们是AI研究的“死胡同”。萨顿认为，智能的核心在于实现目标和从经验中学习的主动过程，而LLMs缺乏目标和地面实况（ground truth），仅是模仿人类行为，这与RL范式形成了鲜明对比。他阐述了RL中值函数、策略和世界模型的组成部分，并强调了持续学习和从经验中学习的必要性，认为这才是通往通用人工智能的可扩展方法。此外，萨顿还讨论了他著名的“痛苦的教训”（The Bitter Lesson）理论，以及他对AI继承和人类社会向设计智能过渡的宇宙视角的看法。

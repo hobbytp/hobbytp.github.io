@@ -6,6 +6,8 @@ categories: ["projects"]
 draft: false
 toc: true
 description: douyin-mcp-server 开源项目分析
+wordCount: 919
+readingTime: 4
 ---
 
 ## 背景

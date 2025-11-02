@@ -13,6 +13,8 @@ draft: false
 description: "Deep Research 深度研究"
 tags: ["AI", "Ascent", "Agent", "红杉资本"]
 categories: ["mas"]
+wordCount: 12970
+readingTime: 52
 ---
 ## 1. 什么是DeepResearch
 

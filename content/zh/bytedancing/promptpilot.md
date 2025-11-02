@@ -5,6 +5,8 @@ description: PromptPilot 核心工作原理与方法论详解
 tags: ["Prompt", "PromptPilot", "字节跳动"]
 categories: ["ai_tools"]
 draft: false
+wordCount: 1129
+readingTime: 5
 ---
 
 

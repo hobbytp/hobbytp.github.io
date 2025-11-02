@@ -6,6 +6,8 @@ tags: ["资源", "链接"]
 categories: ["资源收集"]
 author: "Peng Tan"
 description: "Karpathy DeepDive LLM视频课程"
+wordCount: 4566
+readingTime: 19
 ---
 
 ## Deep Dive into Large Language Models

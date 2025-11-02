@@ -1,6 +1,8 @@
 ---
 title: "我的思考"
 description: "记录我的思考"
+wordCount: 54
+readingTime: 1
 ---
 
 这里记录我的思考，包括但不限于：

@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "OpenAI", "推理模型", "最佳实践"]
 categories: ["technologies", "openai"]
 description: "本文总结了OpenAI推理模型最佳实践。"
+wordCount: 682
+readingTime: 3
 ---
 
 

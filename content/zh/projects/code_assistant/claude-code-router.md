@@ -4,6 +4,8 @@ date: "2025-08-12T22:10:00+08:00"
 draft: false
 tags: ["Claude-Code-Router", "LLM", "AI"]
 categories: ["code_assistant"]
+wordCount: 13929
+readingTime: 56
 ---
 
 目录

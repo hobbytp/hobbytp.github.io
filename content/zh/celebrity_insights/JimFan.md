@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Jim Fan"]
 categories: ["celebrity_insights"]
 description: "Jim Fan在各个场合的观点"
+wordCount: 2001
+readingTime: 9
 ---
 
 ## 红杉资本2025年AI峰会上的演进 - 物理图灵测试

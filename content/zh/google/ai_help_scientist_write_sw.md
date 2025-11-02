@@ -5,6 +5,8 @@ draft: false
 tags: ["google", "可评分任务", "实证软件", "AI-assisted“，”科学探索"]
 categories: ["paper"]
 description: "借助AI，现代计算科学正把“宏大科学问题”变成一场可打分的游戏"
+wordCount: 2603
+readingTime: 11
 ---
 
 ## TLDR  

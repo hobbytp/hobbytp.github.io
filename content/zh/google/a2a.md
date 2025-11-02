@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "google", "A2A", "技术"]
 categories: ["ai_spec"]
 description: "本文介绍了Google公司A2A协议详细解读。"
+wordCount: 8137
+readingTime: 33
 ---
 
 ## A2A：Google如何用"Kubernetes式思维"重新定义多智能体系统？

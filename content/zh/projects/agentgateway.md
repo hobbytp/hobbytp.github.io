@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Agent Gateway","MCP","A2A"]
 categories: ["projects"]
 description: "AI Agent Gateway"
+wordCount: 645
+readingTime: 3
 ---
 
 ## Agent Gateway

@@ -1,6 +1,8 @@
 ---
 title: "人物访谈"
 description: "与AI领域的专家学者和从业者的深度对话"
+wordCount: 48
+readingTime: 1
 ---
 
 这里收录了AI领域人物访谈文章，包括但不限于：

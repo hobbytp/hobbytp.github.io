@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "腾讯","产品线"]
 categories: ["big_companies"]
 description: "腾讯AI产品线收集整理分析"
+wordCount: 1283
+readingTime: 6
 ---
 
 

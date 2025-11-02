@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Andrej Karpathy"]
 categories: ["celebrity_insights"]
 description: "Andrej Karpathy在各个场合的观点"
+wordCount: 2296
+readingTime: 10
 ---
 
 ## Andrej Karpathy: 软件正在改变 (Again)

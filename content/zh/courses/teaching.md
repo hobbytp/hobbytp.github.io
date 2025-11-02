@@ -6,6 +6,8 @@ tags: ["数学", "可视化", "教育", "神经网络"]
 categories: ["课程资源"]
 author: "Peng Tan"
 description: "顶尖的数学可视化教育网站，包含Neural Networks系列视频"
+wordCount: 63
+readingTime: 1
 ---
 
 # 3Blue1Brown - 数学可视化教育

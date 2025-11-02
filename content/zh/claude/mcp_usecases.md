@@ -6,6 +6,8 @@ tags: ["AI", "Agent", "MCP", "Protocol"]
 categories: ["ai_tools"]
 description: "本文介绍了模型上下文协议（MCP），并对其技术原理、主要贡献、当前优劣、生态系统现状，并与Google A2A等相关技术进行比较，展望其未来发展趋势。"
 featured_image: "/images/articles/mcp_usecases.webp"
+wordCount: 1789
+readingTime: 8
 ---
 
 ## MCP Hub 列表

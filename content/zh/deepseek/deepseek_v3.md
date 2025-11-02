@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "DeepSeek-V3", "论文", "技术"]
 categories: ["papers", "large_models", "training"]
 description: "本文介绍了深度求索（DeepSeek）公司推出的新一代推理模型DeepSeek-V3，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+wordCount: 1169
+readingTime: 5
 ---
 
 ## 概要

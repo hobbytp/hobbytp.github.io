@@ -5,6 +5,8 @@ draft: false
 tags: ["machine_writing"]
 categories: ["papers"]
 description: "本文介绍了OmniThink: Expanding Knowledge Boundaries in Machine Writing through Thinking。"
+wordCount: 5625
+readingTime: 23
 ---
 
 ## 我为什么要阅读这篇文章？

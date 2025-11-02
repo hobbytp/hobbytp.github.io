@@ -4,6 +4,8 @@ date: 2024-04-06
 description: "这是一个专注于AI领域的技术博客，包含论文解读、技术分析、项目介绍等内容"
 categories: ["公告"]
 tags: ["AI", "博客", "学习"]
+wordCount: 265
+readingTime: 2
 ---
 
 ## 欢迎

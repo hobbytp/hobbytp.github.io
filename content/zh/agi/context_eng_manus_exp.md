@@ -5,6 +5,8 @@ draft: false
 tags: ["Context Engineer", "Manus", "项目经验"]
 categories: ["mas"]
 description: "本文介绍了Manus项目经验的上下文工程精华内容,总结为6个问题和解决方案。"
+wordCount: 1337
+readingTime: 6
 ---
 
 以下是基于Manus项目经验的上下文工程精华内容,总结为6个问题和解决方案。

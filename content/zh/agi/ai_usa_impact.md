@@ -6,6 +6,8 @@ tags: ["资源", "链接"]
 categories: ["资源收集"]
 author: "Peng Tan"
 description: "ai usa impact相关资源链接"
+wordCount: 8
+readingTime: 1
 ---
 
 # ai usa impact

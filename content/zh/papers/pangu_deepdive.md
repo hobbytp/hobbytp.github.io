@@ -6,6 +6,8 @@ tags: ["论文", "Pangu", "深度学习", "AI"]
 categories: ["论文解读"]
 author: "Peng Tan"
 description: "Pangu相关论文的深度解析和资源链接"
+wordCount: 8
+readingTime: 1
 ---
 
 # Pangu Deep Dive

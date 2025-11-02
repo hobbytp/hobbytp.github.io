@@ -5,6 +5,8 @@ draft: false
 tags: ["Context Engineering","Agent", "AI"]
 categories: ["papers","context_engineering"]
 description: "这里将收集Context Engineering相关的重要文献，具体解读将在其他博客展开。"
+wordCount: 1188
+readingTime: 5
 ---
 
 这里将收集Context Engineering相关的重要文献，具体解读将在其他博客展开，这里也会提供链接方便跳转。

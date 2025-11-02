@@ -5,6 +5,8 @@ draft: false
 tags: ["claude", "课程", "官方课程"]
 categories: ["course"]
 description: "Anthropic 官方课程，覆盖从基础到高级的AI技术与应用"
+wordCount: 248
+readingTime: 1
 ---
 
 Anthropic [Academy](https://www.anthropic.com/learn)

@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","DeepResearchAgent","SkyworkAI"]
 categories: ["projects"]
 description: "SkyworkAI DeepResearchAgent"
+wordCount: 1006
+readingTime: 5
 ---
 ## 概述
 

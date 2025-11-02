@@ -5,6 +5,8 @@ draft: false
 tags: ["BMAD-METHOD", "Spec Kit", "AI编程", "开发框架", "对比分析"]
 categories: ["ai_programming"]
 description: "BMAD-METHOD 和 GitHub Spec Kit 两种 AI 驱动软件开发框架的全面对比分析"
+wordCount: 705
+readingTime: 3
 ---
 
 BMAD-METHOD 和 GitHub Spec Kit 是两种用于 AI 驱动软件开发的新兴框架，但它们在理念、结构和适用场景上有明显差异：

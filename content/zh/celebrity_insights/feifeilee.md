@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","李飞飞"]
 categories: ["celebrity_insights"]
 description: "李飞飞博士的生平与洞见"
+wordCount: 4027
+readingTime: 17
 ---
 
 ## 李飞飞博士的生平

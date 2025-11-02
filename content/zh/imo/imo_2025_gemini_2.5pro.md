@@ -5,6 +5,8 @@ draft: false
 tags: ["IMO", "LLM", "数学推理", "Gemini 2.5 Pro"]
 categories: ["LLM"]
 description: "Gemini 2.5 Pro 在 IMO 2025 数学奥林匹克竞赛中的高级数学推理能力评估"
+wordCount: 2442
+readingTime: 10
 ---
 
 

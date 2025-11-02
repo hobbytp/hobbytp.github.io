@@ -5,6 +5,8 @@ draft: false
 tags: ["Opensource", "FastVLM-WebGPU", "apple", "VLM"]
 categories: ["large_models"]
 description: "本文介绍了苹果公司开源的FastVLM-WebGPU模型，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+wordCount: 2488
+readingTime: 10
 ---
 
 苹果公司开源的 **FastVLM-WebGPU** 是一个可以在浏览器中实时运行的视觉语言模型（VLM）。下面为你详细介绍它的核心特性、技术原理、应用场景以及如何体验。你可以直接访问 <https://huggingface.co/spaces/apple/fastvlm-webgpu> 亲身体验其效果。

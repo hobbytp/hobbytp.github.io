@@ -5,6 +5,8 @@ description: AI编程工具正经历从图形化IDE向命令行界面(CLI)的重
 tags: [AI, CLI, Coding, Assistant, Tools]
 categories: ["my_insights"]
 draft: false
+wordCount: 1669
+readingTime: 7
 ---
 
 

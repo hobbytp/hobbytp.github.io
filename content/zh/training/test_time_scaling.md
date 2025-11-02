@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "Test-Time Scaling", "论文", "技术"]
 categories: ["papers", "training"]
 description: "本文介绍了Test-Time Scaling（测试时扩展）的概念，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+wordCount: 5666
+readingTime: 23
 ---
 
 ## Test-Time Scaling介绍

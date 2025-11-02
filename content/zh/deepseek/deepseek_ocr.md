@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "DeepSeek", "OCR", "论文"]
 categories: ["papers","large_models"]
 description: "本文介绍了DeepSeek-OCR，一种革命性的AI模型，能够将长文本处理效率提升数十倍，从而实现对超长文档的快速处理。"
+wordCount: 4014
+readingTime: 17
 ---
 
 ## TL;DR

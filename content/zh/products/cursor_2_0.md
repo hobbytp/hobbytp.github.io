@@ -6,6 +6,8 @@ draft: false
 tags: ["Cursor", "AI", "coding_assistant", "2.0", "update"]
 categories: ["ai_programming"]
 description: "深入解析 Cursor 2.0 的重大更新，包括 Composer 模型、多代理并行、多模型同时处理同一任务、全新界面设计等革命性功能"
+wordCount: 4851
+readingTime: 20
 ---
 
 ## **引言**

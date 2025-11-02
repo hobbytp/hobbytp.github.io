@@ -5,6 +5,8 @@ draft: false
 tags: ["microsoft", "ms_build_2025"]
 categories: ["big_companies"]
 description: "本文介绍了Microsoft Build 2025 趋势洞察。"
+wordCount: 0
+readingTime: 1
 ---
 
 {{< msbuild2025 >}}

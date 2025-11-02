@@ -6,6 +6,8 @@ draft: false
 description: "昇腾AI芯片与英伟达GPU的技术对比"
 tags: ["GPU", "昇腾", "Huawei"]
 categories: ["big_companies"]
+wordCount: 1107
+readingTime: 5
 ---
 
 以下是华为昇腾AI芯片与英伟达GPU的技术对比：
