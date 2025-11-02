@@ -1,23 +1,7 @@
 {{ define "main" }}
-
-{{- if (and site.Params.profileMode.enabled .IsHome) }}
-{{- partial "index_profile.html" . }}
-{{- else }}
-
 <div class="container mx-auto px-8 py-8">
     <header class="mb-8">
-        <h1 class="text-4xl font-bold mb-4 text-gray-800">
-            {{- if eq .Kind "term" -}}
-                {{- $translatedTitle := i18n (lower .Title) -}}
-                {{- if ne $translatedTitle (lower .Title) -}}
-                    {{- $translatedTitle -}}
-                {{- else -}}
-                    {{- .Title -}}
-                {{- end -}}
-            {{- else -}}
-                {{- .Title -}}
-            {{- end -}}
-        </h1>
+        <h1 class="text-4xl font-bold mb-4 text-gray-800">{{ .Title }}</h1>
         {{ with .Content }}
         <div class="prose prose-lg max-w-none mb-8 text-gray-600">
             {{ . }}
@@ -52,14 +36,14 @@
                  data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}">
             <!-- 文章封面图片 -->
             {{ if .Params.featured_image }}
-            <div class="h-48 bg-gradient-to-br from-blue-700 to-blue-900 relative overflow-hidden">
+            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 relative overflow-hidden">
                 <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" 
                      class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
                 <div class="absolute inset-0 bg-black bg-opacity-20"></div>
             </div>
             {{ else }}
-            <div class="h-48 bg-gradient-to-br from-blue-700 to-blue-900 flex items-center justify-center">
-                <svg class="w-16 h-16 text-white opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
             </div>
@@ -114,13 +98,28 @@
 
                 <!-- 阅读按钮 -->
                 <div class="flex items-center justify-between">
-                    <span class="text-sm text-gray-500">
-                        {{ if .ReadingTime }}
-                        {{ .ReadingTime }} 分钟阅读
-                        {{ else }}
-                        快速阅读
+                    <div class="flex items-center gap-3 text-sm text-gray-500">
+                        {{ if .Params.wordCount }}
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            {{ .Params.wordCount }} 字
+                        </span>
                         {{ end }}
-                    </span>
+                        <span class="flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            {{ if .Params.readingTime }}
+                                {{ .Params.readingTime }} 分钟
+                            {{ else if .ReadingTime }}
+                                {{ .ReadingTime }} 分钟
+                            {{ else }}
+                                快速阅读
+                            {{ end }}
+                        </span>
+                    </div>
                     <div class="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
                         <span class="text-sm font-medium mr-1">阅读全文</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -378,7 +377,4 @@ document.addEventListener('DOMContentLoaded', function() {
     overflow: hidden;
 }
 </style>
-
-{{- end }}{{/* end profileMode */}}
-
 {{ end }}

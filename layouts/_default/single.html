@@ -18,7 +18,13 @@
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <span id="reading-time-header">计算中...</span>
+                        <span id="reading-time-header">
+                            {{- if .Params.readingTime -}}
+                                {{ .Params.readingTime }} 分钟阅读
+                            {{- else -}}
+                                计算中...
+                            {{- end -}}
+                        </span>
                     </div>
                     {{ if .Params.author }}
                     <div class="flex items-center">
@@ -114,11 +120,23 @@
                     <div class="space-y-3 text-sm">
                         <div class="flex justify-between">
                             <span class="text-gray-600">字数</span>
-                            <span class="text-gray-800" id="word-count">计算中...</span>
+                            <span class="text-gray-800" id="word-count">
+                                {{- if .Params.wordCount -}}
+                                    {{ .Params.wordCount }} 字
+                                {{- else -}}
+                                    计算中...
+                                {{- end -}}
+                            </span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">阅读时间</span>
-                            <span class="text-gray-800" id="reading-time">计算中...</span>
+                            <span class="text-gray-800" id="reading-time">
+                                {{- if .Params.readingTime -}}
+                                    {{ .Params.readingTime }} 分钟
+                                {{- else -}}
+                                    计算中...
+                                {{- end -}}
+                            </span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">发布时间</span>
@@ -193,8 +211,18 @@ function countChineseChars(text) {
     return matches ? matches.length : 0;
 }
 
-// 统计文章字数和阅读时间
+// 统计文章字数和阅读时间（仅当front matter中没有数据时）
 document.addEventListener('DOMContentLoaded', function() {
+    const wordCountEl = document.getElementById('word-count');
+    const readingTimeEl = document.getElementById('reading-time');
+    const readingTimeHeaderEl = document.getElementById('reading-time-header');
+    
+    // 如果已经显示了字数（front matter中有数据），则跳过计算
+    if (wordCountEl && !wordCountEl.textContent.includes('计算中')) {
+        return;
+    }
+    
+    // 仅在需要时计算
     const articleContent = document.querySelector('.prose');
     if (articleContent) {
         const text = articleContent.innerText || articleContent.textContent || '';
@@ -205,19 +233,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const readingTime = Math.max(1, Math.ceil(chineseCharCount / readingSpeed));
         
         // 更新字数显示
-        const wordCountEl = document.getElementById('word-count');
-        if (wordCountEl) {
+        if (wordCountEl && wordCountEl.textContent.includes('计算中')) {
             wordCountEl.textContent = chineseCharCount + ' 字';
         }
         
         // 更新阅读时间显示（两处）
-        const readingTimeEl = document.getElementById('reading-time');
-        if (readingTimeEl) {
+        if (readingTimeEl && readingTimeEl.textContent.includes('计算中')) {
             readingTimeEl.textContent = readingTime + ' 分钟';
         }
         
-        const readingTimeHeaderEl = document.getElementById('reading-time-header');
-        if (readingTimeHeaderEl) {
+        if (readingTimeHeaderEl && readingTimeHeaderEl.textContent.includes('计算中')) {
             readingTimeHeaderEl.textContent = readingTime + ' 分钟阅读';
         }
     }
