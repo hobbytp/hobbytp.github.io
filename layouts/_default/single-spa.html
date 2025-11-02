@@ -116,7 +116,7 @@
                     <div class="space-y-3 text-sm">
                         <div class="flex justify-between">
                             <span class="text-gray-600">字数</span>
-                            <span class="text-gray-800">{{ .WordCount }} 字</span>
+                            <span class="text-gray-800" id="word-count">计算中...</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">阅读时间</span>
@@ -183,6 +183,31 @@ function copyLink() {
         }, 2000);
     });
 }
+
+// 计算中文字数
+function countChineseChars(text) {
+    // 匹配中文字符（包括中文标点符号）
+    // \u4e00-\u9fa5: 中文汉字
+    // \u3000-\u303f: CJK符号和标点
+    // \uff00-\uffef: 全角符号
+    const chineseRegex = /[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]/g;
+    const matches = text.match(chineseRegex);
+    return matches ? matches.length : 0;
+}
+
+// 统计文章字数
+document.addEventListener('DOMContentLoaded', function() {
+    const articleContent = document.querySelector('.prose');
+    if (articleContent) {
+        const text = articleContent.innerText || articleContent.textContent || '';
+        const chineseCharCount = countChineseChars(text);
+        
+        const wordCountEl = document.getElementById('word-count');
+        if (wordCountEl) {
+            wordCountEl.textContent = chineseCharCount + ' 字';
+        }
+    }
+});
 
 // 目录高亮
 document.addEventListener('DOMContentLoaded', function() {

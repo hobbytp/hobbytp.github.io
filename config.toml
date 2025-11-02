@@ -113,6 +113,7 @@ description = "一个关注 AI 各领域的专题博客"
 author = "Peng Tan"
 mainSections = ["zh"]
 ShowReadingTime = true
+ShowWordCount = true
 ShowShareButtons = true
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
