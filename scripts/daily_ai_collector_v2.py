@@ -1000,7 +1000,7 @@ class DailyAICollectorV2:
         # 创建Markdown内容
         content = f"""---
 title: "每日AI动态 - {date_str}"
-date: {today.isoformat()}+08:00
+date: {today.strftime('%Y-%m-%dT%H:%M:%S+08:00')}
 draft: false
 categories: ["news"]
 tags: ["AI动态", "技术更新", "行业趋势"]
