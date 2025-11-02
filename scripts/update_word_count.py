@@ -44,12 +44,47 @@ def parse_frontmatter(frontmatter: str) -> dict:
         print(f"警告: 解析front matter失败: {e}")
         return {}
 
-def update_frontmatter(data: dict, word_count: int, reading_time: int) -> str:
-    """更新front matter数据并返回YAML字符串"""
-    import yaml
-    data['wordCount'] = word_count
-    data['readingTime'] = reading_time
-    return yaml.dump(data, allow_unicode=True, default_flow_style=False, sort_keys=False)
+def update_frontmatter(frontmatter_str: str, word_count: int, reading_time: int) -> str:
+    """更新front matter字符串，只添加或更新wordCount和readingTime字段，保留其他格式"""
+    lines = frontmatter_str.split('\n')
+    result_lines = []
+    word_count_updated = False
+    reading_time_updated = False
+    
+    # 遍历每一行，更新或跳过 wordCount 和 readingTime
+    for line in lines:
+        # 检查是否是 wordCount 行
+        if re.match(r'^wordCount\s*:', line, re.IGNORECASE):
+            result_lines.append(f'wordCount: {word_count}')
+            word_count_updated = True
+        # 检查是否是 readingTime 行
+        elif re.match(r'^readingTime\s*:', line, re.IGNORECASE):
+            result_lines.append(f'readingTime: {reading_time}')
+            reading_time_updated = True
+        else:
+            # 保留其他所有行（包括多行字段的续行）
+            result_lines.append(line)
+    
+    # 如果没有找到这两个字段，在末尾添加（保留最后一个空行）
+    if not word_count_updated:
+        # 找到最后一个非空行
+        last_content_idx = len(result_lines) - 1
+        while last_content_idx >= 0 and not result_lines[last_content_idx].strip():
+            last_content_idx -= 1
+        
+        # 在最后一个内容行后插入
+        result_lines.insert(last_content_idx + 1, f'wordCount: {word_count}')
+    
+    if not reading_time_updated:
+        # 找到最后一个非空行（可能已经是 wordCount）
+        last_content_idx = len(result_lines) - 1
+        while last_content_idx >= 0 and not result_lines[last_content_idx].strip():
+            last_content_idx -= 1
+        
+        # 在最后一个内容行后插入
+        result_lines.insert(last_content_idx + 1, f'readingTime: {reading_time}')
+    
+    return '\n'.join(result_lines)
 
 def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, int, bool]:
     """
@@ -96,11 +131,11 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
     
     # 需要更新
     if current_word_count != word_count or current_reading_time != reading_time:
-        # 更新front matter
-        new_frontmatter = update_frontmatter(fm_data, word_count, reading_time)
+        # 更新front matter（保留原始格式）
+        new_frontmatter = update_frontmatter(frontmatter_str, word_count, reading_time)
         
         # 重新组装文件内容
-        new_content = f"---\n{new_frontmatter}---{body}"
+        new_content = f"---\n{new_frontmatter}\n---{body}"
         
         # 写回文件
         try:
