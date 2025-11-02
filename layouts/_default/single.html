@@ -14,14 +14,12 @@
                         </svg>
                         <time>{{ .Date.Format "2006年1月2日" }}</time>
                     </div>
-                    {{ if .ReadingTime }}
                     <div class="flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <span>{{ .ReadingTime }} 分钟阅读</span>
+                        <span id="reading-time-header">计算中...</span>
                     </div>
-                    {{ end }}
                     {{ if .Params.author }}
                     <div class="flex items-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,7 +118,7 @@
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">阅读时间</span>
-                            <span class="text-gray-800">{{ .ReadingTime }} 分钟</span>
+                            <span class="text-gray-800" id="reading-time">计算中...</span>
                         </div>
                         <div class="flex justify-between">
                             <span class="text-gray-600">发布时间</span>
@@ -195,16 +193,32 @@ function countChineseChars(text) {
     return matches ? matches.length : 0;
 }
 
-// 统计文章字数
+// 统计文章字数和阅读时间
 document.addEventListener('DOMContentLoaded', function() {
     const articleContent = document.querySelector('.prose');
     if (articleContent) {
         const text = articleContent.innerText || articleContent.textContent || '';
         const chineseCharCount = countChineseChars(text);
         
+        // 计算阅读时间：中文阅读速度通常为250字/分钟
+        const readingSpeed = 250; // 字/分钟
+        const readingTime = Math.max(1, Math.ceil(chineseCharCount / readingSpeed));
+        
+        // 更新字数显示
         const wordCountEl = document.getElementById('word-count');
         if (wordCountEl) {
             wordCountEl.textContent = chineseCharCount + ' 字';
+        }
+        
+        // 更新阅读时间显示（两处）
+        const readingTimeEl = document.getElementById('reading-time');
+        if (readingTimeEl) {
+            readingTimeEl.textContent = readingTime + ' 分钟';
+        }
+        
+        const readingTimeHeaderEl = document.getElementById('reading-time-header');
+        if (readingTimeHeaderEl) {
+            readingTimeHeaderEl.textContent = readingTime + ' 分钟阅读';
         }
     }
 });
