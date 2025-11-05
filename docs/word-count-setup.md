@@ -19,6 +19,7 @@ bash scripts/setup_git_hooks.sh
 ```
 
 安装后，每次提交包含 `.md` 文件的 commit 时，会自动：
+
 - 检测变更的 Markdown 文件
 - 计算中文字数和阅读时间
 - 更新 front matter 中的 `wordCount` 和 `readingTime` 字段
@@ -63,6 +64,7 @@ readingTime: 5       # 阅读时间（分钟）
   - `\uff00-\uffef`: 全角符号
 
 - **阅读时间**: 基于中文阅读速度 **250字/分钟**
+
   ```javascript
   阅读时间 = Math.ceil(字数 / 250)
   ```
@@ -82,17 +84,20 @@ readingTime: 5       # 阅读时间（分钟）
 如果 pre-commit hook 没有自动运行：
 
 1. 检查 hook 文件是否存在且可执行：
+
    ```bash
    ls -l .git/hooks/pre-commit
    ```
 
 2. 检查 Python 环境：
+
    ```bash
    python --version
    python -c "import yaml; print('PyYAML OK')"
    ```
 
 3. 手动运行脚本测试：
+
    ```bash
    python scripts/update_word_count.py content/zh/test.md
    ```
@@ -116,4 +121,3 @@ bash scripts/setup_git_hooks.sh
 - 脚本位置: `scripts/update_word_count.py`
 - Hook 位置: `.git/hooks/pre-commit`
 - 相关模板: `layouts/_default/single.html`, `layouts/_default/single-spa.html`
-

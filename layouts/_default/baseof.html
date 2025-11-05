@@ -47,24 +47,82 @@
             }
         }
     </script>
-    {{ partial "extend_head.html" . }}
+
     <style>
-      /* Ensure heading hierarchy overrides apply after all styles */
-      main.flex-1 article h1 { font-size: 2.5rem !important; font-weight: 800 !important; line-height: 1.2 !important; color: #1f2937 !important; }
-      main.flex-1 article h2 { font-size: 2rem !important; font-weight: 700 !important; line-height: 1.3 !important; padding-bottom: 0.5rem !important; border-bottom: 2px solid #3b82f6 !important; color: #374151 !important; }
-      main.flex-1 article h3 { font-size: 1.5rem !important; font-weight: 600 !important; line-height: 1.4 !important; color: #4b5563 !important; }
-      @media (prefers-color-scheme: dark) {
-        main.flex-1 article h1 { color: #f9fafb !important; }
-        main.flex-1 article h2 { color: #e5e7eb !important; border-bottom-color: #60a5fa !important; }
-        main.flex-1 article h3 { color: #d1d5db !important; }
-      }
+        /* 确保卡片背景颜色正确 */
+        .blog-card .h-48 {
+            background: linear-gradient(to bottom right, #60a5fa, #8b5cf6) !important;
+        }
+
+        /* 玻璃拟态效果 - 只针对导航栏 */
+        .navbar-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.1) 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(255, 255, 255, 0.1) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* 导航链接玻璃效果 */
+        .nav-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-item:hover::before {
+            width: 100%;
+        }
+
+        /* 暗色模式支持 */
+        @media (prefers-color-scheme: dark) {
+            .navbar-glass {
+                background: rgba(0, 0, 0, 0.1);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            }
+
+            .navbar-glass::before {
+                background: linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.05) 0%,
+                    rgba(255, 255, 255, 0.02) 50%,
+                    rgba(255, 255, 255, 0.05) 100%);
+            }
+        }
     </style>
 </head>
 
 <body class="bg-gray-50">
     <div class="flex h-screen">
         <!-- 固定左侧导航栏 -->
-        <nav class="w-64 bg-white shadow-lg fixed left-0 top-0 h-full z-50 overflow-y-auto">
+        <nav class="navbar-glass w-64 bg-white shadow-lg fixed left-0 top-0 h-full z-50 overflow-y-auto" id="main-nav">
             <div class="p-6">
                 <div class="mb-8">
                     <h1 class="text-2xl font-bold text-gray-800">{{ .Site.Title }}</h1>
@@ -169,6 +227,14 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/categories/ai_programming" class="nav-item flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200" data-section="ai_programming">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4 4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                            AI编程
+                        </a>
+                    </li>
+                    <li>
                         <a href="/categories/ai_tools" class="nav-item flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200" data-section="ai_tools">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -223,8 +289,17 @@
             }
 
             init() {
+                this.ensureGlassEffect();
                 this.bindEvents();
                 this.loadInitialContent();
+            }
+
+            ensureGlassEffect() {
+                // 确保导航栏有玻璃效果类
+                const nav = document.getElementById('main-nav');
+                if (nav && !nav.classList.contains('navbar-glass')) {
+                    nav.classList.add('navbar-glass');
+                }
             }
 
             bindEvents() {
@@ -273,29 +348,6 @@
                 }
             }
 
-            // 保证 SPA 注入时也有与整页渲染一致的左右留白
-            ensureContainerPadding() {
-                const container = document.getElementById('content-container');
-                if (!container) return;
-                const hasInnerContainer = !!container.querySelector('.container.mx-auto.px-8.py-8');
-                if (hasInnerContainer) {
-                    container.classList.remove('container', 'mx-auto', 'px-8', 'py-8');
-                } else {
-                    container.classList.add('container', 'mx-auto', 'px-8', 'py-8');
-                }
-            }
-
-            // 禁用 Tailwind Typography 对正文的标题接管，确保自定义标题样式生效
-            disableProseTypography() {
-                const container = document.getElementById('content-container');
-                if (!container) return;
-                container.querySelectorAll('.prose').forEach(el => {
-                    if (!el.classList.contains('not-prose')) {
-                        el.classList.add('not-prose');
-                    }
-                });
-            }
-
             async loadSectionContent(section) {
                 const container = document.getElementById('content-container');
                 
@@ -317,14 +369,7 @@
                     }
                     
                     container.innerHTML = content;
-                    this.ensureContainerPadding();
-                    this.disableProseTypography();
                     this.animateContent();
-                    
-                    // 如果页面包含搜索框，重新初始化搜索功能
-                    if (section === 'search' || document.getElementById('search-input')) {
-                        this.initializeSearch();
-                    }
                 } catch (error) {
                     console.error('Failed to load content:', error);
                     container.innerHTML = `
@@ -349,6 +394,7 @@
                     'training': '/categories/training',
                     'context_engineering': '/categories/context_engineering',
                     'mas': '/categories/mas',
+                    'ai_programming': '/categories/ai_programming',
                     'ai_tools': '/categories/ai_tools',
                     'news': '/categories/news',
                     'courses': '/categories/courses',
@@ -389,9 +435,7 @@
                     const mainContainer = doc.querySelector('.container.mx-auto.px-8.py-8');
                     
                     if (mainContainer) {
-                        // 保留完整容器包装，避免丢失左右留白
-                        container.innerHTML = mainContainer.outerHTML;
-                        this.disableProseTypography();
+                        container.innerHTML = mainContainer.innerHTML;
                         this.animateContent();
                         
                         // 更新URL但不刷新页面
@@ -400,9 +444,7 @@
                         // 回退到只提取文章内容
                         const articleContent = doc.querySelector('article') || doc.querySelector('main');
                         if (articleContent) {
-                            container.innerHTML = articleContent.outerHTML;
-                            this.ensureContainerPadding();
-                            this.disableProseTypography();
+                            container.innerHTML = articleContent.innerHTML;
                             this.animateContent();
                             history.pushState({url: url}, '', url);
                         } else {
@@ -428,133 +470,6 @@
                     card.addEventListener('mouseleave', () => {
                         card.classList.remove('animate-float');
                     });
-                });
-            }
-
-            async initializeSearch() {
-                try {
-                    // 确保Fuse.js已加载
-                    if (typeof Fuse === 'undefined') {
-                        await this.loadFuseJS();
-                    }
-
-                    const res = await fetch('/index.json');
-                    if (!res.ok) throw new Error('Failed to fetch search index');
-                    const data = await res.json();
-
-                    // 尝试不同的搜索框ID
-                    let input = document.getElementById('searchInput') || document.getElementById('search-input');
-                    let results = document.getElementById('searchResults') || document.getElementById('articles-grid');
-
-                    if (!input || !results) {
-                        console.error('Search elements not found');
-                        return;
-                    }
-
-                    const fuse = new Fuse(data, {
-                        keys: ['title', 'content', 'description', 'tags', 'categories'],
-                        threshold: 0.3,
-                        minMatchCharLength: 2,
-                        useExtendedSearch: true
-                    });
-
-                    // 移除之前的事件监听器
-                    input.removeEventListener('input', this.searchHandler);
-                    
-                    // 创建新的搜索处理函数
-                    this.searchHandler = function () {
-                        const q = input.value.trim();
-                        
-                        // 检查是否是分类页面的搜索（有articles-grid）
-                        if (results.id === 'articles-grid') {
-                            // 分类页面搜索逻辑
-                            const articles = Array.from(document.querySelectorAll('.blog-card'));
-                            const noResults = document.getElementById('no-results');
-                            
-                            if (!q) {
-                                // 清空搜索，显示所有文章
-                                articles.forEach(article => {
-                                    article.style.display = '';
-                                });
-                                if (noResults) noResults.style.display = 'none';
-                                return;
-                            }
-                            
-                            let filtered = articles.filter(article => {
-                                const title = article.dataset.title;
-                                const tags = article.dataset.tags;
-                                return title && title.toLowerCase().includes(q.toLowerCase()) || 
-                                       tags && tags.toLowerCase().includes(q.toLowerCase());
-                            });
-                            
-                            // 隐藏所有文章
-                            articles.forEach(article => {
-                                article.style.display = 'none';
-                            });
-                            
-                            // 显示匹配的文章
-                            filtered.forEach(article => {
-                                article.style.display = '';
-                            });
-                            
-                            // 显示或隐藏"没有找到相关文章"
-                            if (noResults) {
-                                noResults.style.display = filtered.length === 0 ? 'block' : 'none';
-                            }
-                        } else {
-                            // 专用搜索页面逻辑
-                            results.innerHTML = '';
-                            if (!q) return;
-
-                            const found = fuse.search(q);
-                            found.slice(0, 20).forEach(({ item }) => {
-                                const li = document.createElement('li');
-                                li.className = 'search-result-item';
-                                li.innerHTML = `
-                                    <a href="${item.permalink}">
-                                        <h3>${item.title}</h3>
-                                        ${item.description ? `<p>${item.description}</p>` : ''}
-                                        <div class="result-meta">
-                                            ${item.date ? `<span class="result-date">${new Date(item.date).toLocaleDateString()}</span>` : ''}
-                                            ${item.categories ? `<span class="result-categories">${item.categories.join(', ')}</span>` : ''}
-                                        </div>
-                                    </a>
-                                `;
-                                results.appendChild(li);
-                            });
-
-                            if (found.length === 0) {
-                                const li = document.createElement('li');
-                                li.className = 'no-results';
-                                li.textContent = '没有找到相关文章';
-                                results.appendChild(li);
-                            }
-                        }
-                    };
-
-                    input.addEventListener('input', this.searchHandler);
-                    console.log('Search functionality initialized successfully');
-                } catch (error) {
-                    console.error('Search initialization failed:', error);
-                    const searchbox = document.getElementById('searchbox');
-                    if (searchbox) {
-                        searchbox.innerHTML = '<p class="search-error">搜索功能暂时不可用</p>';
-                    }
-                }
-            }
-
-            async loadFuseJS() {
-                return new Promise((resolve, reject) => {
-                    if (typeof Fuse !== 'undefined') {
-                        resolve();
-                        return;
-                    }
-                    
-                    const script = document.createElement('script');
-                    script.src = 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2';
-                    script.onload = resolve;
-                    script.onerror = reject;
-                    document.head.appendChild(script);
                 });
             }
 
@@ -584,6 +499,8 @@
                     this.navigateToSection('context_engineering');
                 } else if (path.includes('/categories/mas')) {
                     this.navigateToSection('mas');
+                } else if (path.includes('/categories/ai_programming')) {
+                    this.navigateToSection('ai_programming');
                 } else if (path.includes('/categories/ai_tools')) {
                     this.navigateToSection('ai_tools');
                 } else if (path.includes('/categories/news')) {

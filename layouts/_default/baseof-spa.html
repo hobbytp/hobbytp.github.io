@@ -222,6 +222,14 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/categories/ai_programming" class="nav-item flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200" data-section="ai_programming">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4 4 4-4 4M6 16l-4-4 4-4"></path>
+                            </svg>
+                            AI编程
+                        </a>
+                    </li>
+                    <li>
                         <a href="/categories/ai_tools" class="nav-item flex items-center px-4 py-3 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200" data-section="ai_tools">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
@@ -381,6 +389,7 @@
                     'training': '/categories/training',
                     'context_engineering': '/categories/context_engineering',
                     'mas': '/categories/mas',
+                    'ai_programming': '/categories/ai_programming',
                     'ai_tools': '/categories/ai_tools',
                     'news': '/categories/news',
                     'courses': '/categories/courses',
@@ -485,6 +494,8 @@
                     this.navigateToSection('context_engineering');
                 } else if (path.includes('/categories/mas')) {
                     this.navigateToSection('mas');
+                } else if (path.includes('/categories/ai_programming')) {
+                    this.navigateToSection('ai_programming');
                 } else if (path.includes('/categories/ai_tools')) {
                     this.navigateToSection('ai_tools');
                 } else if (path.includes('/categories/news')) {

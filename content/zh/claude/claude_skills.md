@@ -209,4 +209,14 @@ Claude Skills 是从Context Engineering中的工作角色的角度出发，提�
 ## 参考
 
 * [what are skills](https://support.claude.com/en/articles/12512176-what-are-skills)
+*[Agent Skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/)
+*[Equipping agents for the real world with Agent Skills](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
+
+
+https://docs.claude.com/en/docs/agents-and-tools/agent-skills/quickstart
+https://github.com/anthropics/claude-cookbooks/tree/main/skills
+
+https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices
+
+
 * [Claude Skills: The 3 Automation Secrets That Are Making Enterprise Teams Look Like Wizards](https://medium.com/dare-to-be-better/claude-skills-the-3-automation-secret-thats-making-enterprise-teams-look-like-wizards-65b991356c25)

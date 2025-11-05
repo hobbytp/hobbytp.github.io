@@ -232,8 +232,8 @@ url = "/zh/about"
 weight = 17
 
 [[menu.main]]
-name = "搜索"
-url = "/search"
+name = "本站搜索"
+url = "/zh/search"
 weight = 18
 
 # 这会生成 /index.json，供前端搜索用。
