@@ -312,6 +312,41 @@ class DailyAICollectorV2:
             if item.get('published_date'):
                 score += 0.5
         
+        elif source == 'google_focus':
+            # Google Search 今日焦点，质量通常较高
+            score += 2.5
+            
+            # 检查标题长度和内容丰富度
+            title_len = len(item.get('title', ''))
+            snippet_len = len(item.get('snippet', ''))
+            
+            if title_len > 20 and snippet_len > 100:
+                score += 1.5
+            elif title_len > 10 and snippet_len > 50:
+                score += 1.0
+            
+            # 检查是否有发布时间
+            if item.get('published_date'):
+                score += 1.0
+        
+        elif source == 'applications':
+            # 应用与产品，多源并行搜索
+            score += 2.0
+            
+            # 检查关键词
+            keywords = item.get('keywords', [])
+            if len(keywords) > 3:
+                score += 1.5
+            elif len(keywords) > 0:
+                score += 0.5
+            
+            # 检查内容丰富度
+            snippet_len = len(item.get('snippet', ''))
+            if snippet_len > 150:
+                score += 1.0
+            elif snippet_len > 80:
+                score += 0.5
+        
         return min(score, 10.0)  # 最高10分
     
     def search_perplexity_ai_news(self) -> List[Dict]:
@@ -522,8 +557,199 @@ class DailyAICollectorV2:
             print("提示: ai_news_collector_lib 调用失败，将跳过此数据源")
             return []
     
+    def search_focus_news(self) -> List[Dict]:
+        """使用 Google Search 搜索大模型厂商相关新闻（今日焦点）"""
+        if not self.google_search_api_key or not self.google_search_engine_id:
+            print("WARNING: Google Search API 未配置，跳过今日焦点搜索")
+            return []
+        
+        try:
+            yesterday, today = self.get_date_range(hours_back=24)
+            
+            # 定义大模型厂商关键词
+            companies = [
+                "OpenAI", "Google Gemini", "Anthropic Claude", 
+                "xAI Grok", "Meta Llama", "Mistral", "Microsoft","Apple","Amazon",
+                "Qwen", "通义千问","DeepSeek", "seedream","字节跳动","GLM", "智谱", "Kimi", "月之暗面"
+            ]
+            
+            # 构建搜索查询
+            query = f"({' OR '.join(companies)}) AND (AI OR 大模型 OR 发布 OR release OR announcement OR 更新) after:{yesterday.strftime('%Y-%m-%d')}"
+            
+            print(f"使用 Google Search 搜索今日焦点: {query[:100]}...")
+            
+            url = "https://www.googleapis.com/customsearch/v1"
+            params = {
+                'key': self.google_search_api_key,
+                'cx': self.google_search_engine_id,
+                'q': query,
+                'num': 10,  # 最多返回10条
+                'dateRestrict': 'd1',  # 过去1天
+                'sort': 'date'  # 按日期排序
+            }
+            
+            response = requests.get(url, params=params)
+            print(f"Google Search API响应状态: {response.status_code}")
+            
+            if response.status_code == 200:
+                data = response.json()
+                items = data.get('items', [])
+                
+                formatted_results = []
+                for item in items:
+                    news_item = {
+                        'title': item.get('title', ''),
+                        'url': item.get('link', ''),
+                        'snippet': item.get('snippet', '')[:300],
+                        'source': 'google_search',
+                        'published_date': item.get('pagemap', {}).get('metatags', [{}])[0].get('article:published_time', ''),
+                    }
+                    
+                    # 去重检查
+                    if not self.is_duplicate(news_item):
+                        news_item['quality_score'] = self.calculate_quality_score(news_item, 'google_focus')
+                        formatted_results.append(news_item)
+                
+                # 按质量评分排序
+                formatted_results.sort(key=lambda x: x.get('quality_score', 0), reverse=True)
+                
+                print(f"Google Search 今日焦点找到 {len(formatted_results)} 条结果")
+                return formatted_results[:5]  # 返回前5条高质量新闻
+            else:
+                print(f"Google Search API错误: {response.status_code}")
+                if response.status_code == 429:
+                    print("提示: API配额已用完，请稍后再试")
+                    
+        except Exception as e:
+            print(f"Google Search 搜索错误: {e}")
+            import traceback
+            traceback.print_exc()
+        
+        return []
+    
+    def search_applications(self) -> List[Dict]:
+        """使用多源并行搜索AI应用与产品（应用与产品章节）"""
+        if not USE_AI_NEWS_LIB:
+            print("WARNING: ai_news_collector_lib 未导入，跳过应用搜索")
+            return []
+        
+        try:
+            yesterday, today = self.get_date_range(hours_back=24)
+            
+            # 构建搜索配置 - 仅启用指定的API源（针对应用与产品）
+            search_config = AdvancedSearchConfig(
+                # 禁用基础源
+                enable_hackernews=False,
+                enable_arxiv=False,
+                enable_duckduckgo=False,
+                enable_rss_feeds=False,
+                
+                # 仅启用指定的API源
+                enable_newsapi=True,        # NEWS_API_KEY
+                enable_tavily=True,         # TAVILY_API_KEY  
+                enable_google_search=True,  # GOOGLE_SEARCH_API_KEY
+                enable_serper=True,         # SERPER_API_KEY
+                enable_brave_search=True,   # BRAVE_SEARCH_API_KEY
+                enable_metasota_search=False, # 不使用
+                
+                # 搜索参数
+                max_articles_per_source=5,
+                days_back=0,
+                similarity_threshold=0.85,
+                
+                # 高级功能
+                enable_content_extraction=False,
+                enable_keyword_extraction=True,
+                cache_results=False,
+            )
+            
+            # 创建收集器
+            collector = AdvancedAINewsCollector(search_config)
+            
+            # 定义应用与产品相关的搜索主题
+            topics = [
+                "new AI applications launched today",
+                "AI product releases and updates",
+                "AI tools for consumers and businesses",
+                "AI-powered apps and services"
+            ]
+            
+            print(f"使用多源并行搜索 AI 应用与产品...")
+            
+            # 异步收集
+            import asyncio
+            
+            async def collect_async():
+                if hasattr(collector, 'collect_multiple_topics'):
+                    return await collector.collect_multiple_topics(topics)
+                else:
+                    results = []
+                    for topic in topics:
+                        if hasattr(collector, 'collect_news_advanced'):
+                            result = await collector.collect_news_advanced(topic)
+                            results.append(result)
+                    
+                    all_articles = []
+                    for r in results:
+                        all_articles.extend(r.get('articles', []))
+                    return {"articles": all_articles, "unique_articles": len(all_articles)}
+            
+            result = asyncio.run(collect_async())
+            articles = result.get('articles', [])
+            
+            print(f"应用与产品搜索找到 {len(articles)} 条结果")
+            
+            # 转换格式并过滤
+            formatted_results = []
+            for article in articles:
+                published_date = article.get('published', '') or article.get('published_date', '')
+                
+                if not published_date:
+                    continue
+                
+                try:
+                    if 'T' in published_date:
+                        pub_time = datetime.datetime.fromisoformat(published_date.replace('Z', '+00:00'))
+                    else:
+                        pub_time = datetime.datetime.strptime(published_date, '%Y-%m-%d')
+                    
+                    if pub_time.tzinfo is None:
+                        pub_time = pub_time.replace(tzinfo=datetime.timezone.utc)
+                    
+                    now = datetime.datetime.now(datetime.timezone.utc)
+                    if pub_time > now or pub_time < yesterday:
+                        continue
+                        
+                except Exception:
+                    continue
+                
+                item = {
+                    'title': article.get('title', ''),
+                    'url': article.get('url', ''),
+                    'snippet': article.get('description', '')[:300],
+                    'source': article.get('source', 'multi_source'),
+                    'published_date': published_date,
+                    'keywords': article.get('keywords', [])
+                }
+                
+                if not self.is_duplicate(item):
+                    item['quality_score'] = self.calculate_quality_score(item, 'applications')
+                    formatted_results.append(item)
+            
+            # 按质量评分排序
+            formatted_results.sort(key=lambda x: x.get('quality_score', 0), reverse=True)
+            
+            print(f"应用与产品搜索过滤后剩余 {len(formatted_results)} 条结果")
+            return formatted_results[:10]  # 返回前10条
+            
+        except Exception as e:
+            print(f"应用与产品搜索错误: {e}")
+            import traceback
+            traceback.print_exc()
+            return []
+    
     def search_github_trending(self) -> List[Dict]:
-        """搜索GitHub热门AI项目（缩短时间窗口至24小时）"""
+        """搜索GitHub Star快速增长的AI项目（工具与框架）"""
         if not self.github_token:
             print("WARNING: GitHub token未设置，跳过GitHub搜索")
             return []
@@ -531,49 +757,90 @@ class DailyAICollectorV2:
         headers = {'Authorization': f'Bearer {self.github_token}'}
         url = 'https://api.github.com/search/repositories'
         
-        # 缩短为过去24小时
         yesterday, today = self.get_date_range(hours_back=24)
-        date_str = yesterday.strftime('%Y-%m-%d')
         
-        # 使用更严格的时间范围，只搜索今天创建的项目
+        # 策略：搜索最近7天创建的AI项目，按stars排序
+        # 新项目star增长快，能反映出快速获得关注的优质项目
+        week_ago = (yesterday - datetime.timedelta(days=6)).strftime('%Y-%m-%d')
         today_str = today.strftime('%Y-%m-%d')
         
-        params = {
-            'q': f'AI machine-learning deep-learning created:{date_str}..{today_str} language:python',
-            'sort': 'stars',
-            'order': 'desc',
-            'per_page': 30  # 增加获取数量，后续会过滤
-        }
+        # 扩展搜索关键词，覆盖更多AI相关项目
+        queries = [
+            f'AI agent created:{week_ago}..{today_str}',
+            f'AI coding created:{week_ago}..{today_str}',
+            f'AI Tool created:{week_ago}..{today_str}',
+            f'AI Algorithm created:{week_ago}..{today_str}',
+            f'AI MCP created:{week_ago}..{today_str}',
+            f'Claude Code related created:{week_ago}..{today_str}'
+        ]
         
-        try:
-            print(f"搜索GitHub项目: created:>{date_str}")
-            response = requests.get(url, headers=headers, params=params)
-            print(f"GitHub API响应状态: {response.status_code}")
+        all_projects = []
+        
+        for query in queries:
+            params = {
+                'q': query,
+                'sort': 'stars',
+                'order': 'desc',
+                'per_page': 20
+            }
             
-            if response.status_code == 200:
-                data = response.json()
-                items = data.get('items', [])
+            try:
+                print(f"搜索GitHub项目: {query[:60]}...")
+                response = requests.get(url, headers=headers, params=params)
+                print(f"GitHub API响应状态: {response.status_code}")
                 
-                # 去重、时间过滤和质量评分
-                filtered_items = []
-                for item in items:
-                    if not self.is_duplicate(item) and self.is_within_time_range(item, 'github'):
-                        item['quality_score'] = self.calculate_quality_score(item, 'github')
-                        filtered_items.append(item)
-                    elif not self.is_within_time_range(item, 'github'):
-                        print(f"过滤掉过期GitHub项目: {item.get('name', '')[:50]}... (创建时间: {item.get('created_at', '')})")
-                
-                # 按质量分数排序
-                filtered_items.sort(key=lambda x: x['quality_score'], reverse=True)
-                
-                print(f"GitHub: 原始 {len(items)} 个，去重后 {len(filtered_items)} 个")
-                return filtered_items[:10]  # 返回前10个高质量项目
-            else:
-                print(f"GitHub API错误: {response.status_code}")
-        except Exception as e:
-            print(f"GitHub搜索错误: {e}")
-            
-        return []
+                if response.status_code == 200:
+                    data = response.json()
+                    items = data.get('items', [])
+                    
+                    # 计算star增长率（stars/天数）
+                    for item in items:
+                        created_at = item.get('created_at', '')
+                        stars = item.get('stargazers_count', 0)
+                        
+                        if created_at:
+                            try:
+                                create_time = datetime.datetime.strptime(created_at, '%Y-%m-%dT%H:%M:%SZ')
+                                days_since_creation = max(1, (datetime.datetime.now() - create_time).days)
+                                item['stars_per_day'] = stars / days_since_creation
+                                item['days_old'] = days_since_creation
+                            except:
+                                item['stars_per_day'] = 0
+                                item['days_old'] = 999
+                        else:
+                            item['stars_per_day'] = 0
+                            item['days_old'] = 999
+                        
+                        # 去重检查
+                        if not self.is_duplicate(item):
+                            item['quality_score'] = self.calculate_quality_score(item, 'github')
+                            all_projects.append(item)
+                    
+                    print(f"找到 {len(items)} 个项目")
+                    
+                elif response.status_code == 403:
+                    print("GitHub API 限流，跳过后续查询")
+                    break
+                else:
+                    print(f"GitHub API错误: {response.status_code}")
+                    
+            except Exception as e:
+                print(f"GitHub搜索错误: {e}")
+        
+        if not all_projects:
+            return []
+        
+        # 按 star 增长率排序（优先）或按 quality_score 排序
+        all_projects.sort(key=lambda x: (x.get('stars_per_day', 0), x.get('quality_score', 0)), reverse=True)
+        
+        print(f"GitHub: 共找到 {len(all_projects)} 个项目，按star增长率排序")
+        
+        # 返回前10个快速增长的项目
+        top_projects = all_projects[:10]
+        for p in top_projects:
+            print(f"  - {p.get('name', '')}: {p.get('stargazers_count', 0)} stars ({p.get('stars_per_day', 0):.1f} stars/day)")
+        
+        return top_projects
     
     def search_huggingface_models(self) -> List[Dict]:
         """搜索Hugging Face新模型（缩短时间窗口至24小时）"""
@@ -682,21 +949,21 @@ class DailyAICollectorV2:
         return []
     
     def generate_ai_summary(self, collected_data: Dict) -> str:
-        """使用AI生成每日动态摘要（新分类体系）"""
-        github_count = len(collected_data.get('github_projects', []))
+        """使用AI生成每日动态摘要（新分章节专用数据源）"""
+        focus_count = len(collected_data.get('focus_news', []))
         hf_count = len(collected_data.get('hf_models', []))
         arxiv_count = len(collected_data.get('arxiv_papers', []))
-        perplexity_count = len(collected_data.get('perplexity_news', []))
-        ai_news_lib_count = len(collected_data.get('ai_news_lib', []))
+        github_count = len(collected_data.get('github_projects', []))
+        applications_count = len(collected_data.get('applications', []))
         
-        print(f"数据收集统计:")
-        print(f"   AI新闻库: {ai_news_lib_count}")
-        print(f"   Perplexity新闻: {perplexity_count}")
-        print(f"   GitHub项目: {github_count}")
-        print(f"   HF模型: {hf_count}")
-        print(f"   ArXiv论文: {arxiv_count}")
+        print(f"数据收集统计（按章节）:")
+        print(f"   今日焦点（Google）: {focus_count}")
+        print(f"   模型与算法（HuggingFace）: {hf_count}")
+        print(f"   学术前沿（arXiv）: {arxiv_count}")
+        print(f"   工具与框架（GitHub）: {github_count}")
+        print(f"   应用与产品（多源）: {applications_count}")
         
-        total_items = github_count + hf_count + arxiv_count + perplexity_count + ai_news_lib_count
+        total_items = focus_count + hf_count + arxiv_count + github_count + applications_count
         
         if total_items == 0:
             print("WARNING: 没有收集到任何数据")
@@ -708,41 +975,57 @@ class DailyAICollectorV2:
         
         prompt = f"""基于以下收集的AI技术动态数据，生成一份专业的每日AI动态报告。
 
+**数据来源说明**：
+- focus_news: Google Search（专注大模型厂商：OpenAI, Gemini, Anthropic, xAI, Meta, Qwen, DeepSeek, GLM, Kimi）
+- hf_models: HuggingFace（新开源模型）
+- arxiv_papers: arXiv（最新AI论文）
+- github_projects: GitHub（Star快速增长的AI项目）
+- applications: NewsAPI, Tavily, Google, Serper, Brave（多源并行搜索）
+
 收集到的数据：
 {json.dumps(collected_data, ensure_ascii=False, indent=2)}
 
-请按照以下**新的分类体系**生成内容：
+请按照以下**分章节体系**生成内容：
 
 ## 📰 今日焦点
-精选2-3条最重要的AI新闻/发布，每条包含：
+**数据来源：focus_news（Google Search - 大模型厂商）**
+
+从 focus_news 中精选2-3条最重要的AI新闻/发布，每条包含：
 - 🔥 热度标识（根据重要性：🔥🔥🔥 高 / 🔥🔥 中 / 🔥 普通）
 - 标题和一句话总结
 - 为什么重要
 - 链接
 
 ## 🧠 模型与算法
-包含新发布的模型（大语言模型、多模态模型、专业领域模型等），每项包含：
+**数据来源：hf_models（HuggingFace）**
+
+从 hf_models 中展示新发布的模型，每项包含：
 - 模型名称和链接
 - 核心特性
-- 性能数据（如有）
+- 下载量/热度
 - 适用场景
 
 ## 🛠️ 工具与框架
-包含开发框架、训练工具、部署方案，每项包含：
+**数据来源：github_projects（GitHub Star快速增长）**
+
+从 github_projects 中展示开发框架、训练工具，每项包含：
 - 工具名称和链接
 - 主要功能
-- Stars 数量（GitHub项目）
+- Stars 数量和增长率（stars/day）
 - 推荐指数（⭐⭐⭐⭐⭐）
 
 ## 📱 应用与产品
-包含商业产品、开源应用、Demo原型，每项包含：
+**数据来源：applications（多源并行搜索）**
+
+从 applications 中展示商业产品、开源应用，每项包含：
 - 应用名称和链接
 - 功能描述
-- 技术栈
 - 实用性评估
 
 ## 📚 学术前沿
-包含最新论文，每项包含：
+**数据来源：arxiv_papers（arXiv）**
+
+从 arxiv_papers 中展示最新论文，每项包含：
 - 论文标题和链接
 - 作者
 - 核心贡献
@@ -755,12 +1038,13 @@ class DailyAICollectorV2:
 - 行业影响分析
 
 **要求**：
-1. 内容要准确、专业、有价值
-2. 突出重点，避免信息堆砌
-3. 使用 Emoji 增加可读性
-4. 如果某个分类数据不足，可以合并到其他分类或简要说明
-5. 使用中文，语言简洁专业
-6. 为每个重要项目添加质量评价（基于 stars、下载量、作者等）
+1. 严格按照各章节的专用数据源生成内容
+2. focus_news 用于今日焦点，hf_models 用于模型与算法，arxiv_papers 用于学术前沿，github_projects 用于工具与框架，applications 用于应用与产品
+3. 内容要准确、专业、有价值，突出重点
+4. 使用 Emoji 增加可读性
+5. 如果某个分类数据不足，简要说明"今日该类别暂无重要更新"
+6. 使用中文，语言简洁专业
+7. 为重要项目添加质量评价（stars、下载量、作者等）
 """
         
         try:
@@ -792,105 +1076,39 @@ class DailyAICollectorV2:
             return self.generate_fallback_summary(collected_data)
     
     def generate_fallback_summary(self, collected_data: Dict) -> str:
-        """生成备用摘要（新格式）"""
-        print("使用 fallback 摘要生成器（新格式）...")
+        """生成备用摘要（新分章节专用数据源）"""
+        print("使用 fallback 摘要生成器（新策略：按章节分配数据源）...")
         summary = ""
         
-        # 今日焦点 - 从所有数据源中选取高质量项目
+        # 今日焦点 - 使用 focus_news (Google Search - 大模型厂商)
         summary += "## 📰 今日焦点\n\n"
-        focus_items = []
+        focus_news = collected_data.get('focus_news', [])
         
-        # 1. Perplexity 已暂时关闭，直接跳过
-        perplexity_news = collected_data.get('perplexity_news', [])
-        if perplexity_news and len(perplexity_news) > 0:
-            print(f"DEBUG: 从 Perplexity 新闻中选择焦点 ({len(perplexity_news)} 条)")
-            for item in perplexity_news[:2]:
-                title = item.get('title', '未知标题')
-                url = item.get('url', '')
-                snippet = item.get('snippet', '')[:150]
-                if title and url:
-                    summary += f"### 🔥🔥 [{title}]({url})\n"
-                    summary += f"- **简介**: {snippet}...\n"
-                    summary += f"- **来源**: Perplexity AI 实时新闻\n\n"
-                    focus_items.append(title)
-        else:
-            print("DEBUG: Perplexity API 已暂时关闭，将从 ai_news_lib 和其他数据源生成焦点内容")
-            
-        # 1.5. 从 ai_news_lib 数据中选择焦点（新增）
-        ai_news_items = collected_data.get('ai_news_lib', [])
-        if ai_news_items and len(focus_items) < 3:
-            print(f"DEBUG: 从 ai_news_lib 中选择焦点 ({len(ai_news_items)} 条)")
+        if focus_news:
+            print(f"DEBUG: 从 focus_news 中生成今日焦点 ({len(focus_news)} 条)")
             # 按质量评分排序
-            sorted_news = sorted(ai_news_items, key=lambda x: self.calculate_quality_score(x, 'ai_news_lib'), reverse=True)
+            sorted_news = sorted(focus_news, key=lambda x: x.get('quality_score', 0), reverse=True)
             
-            for item in sorted_news[:3 - len(focus_items)]:
+            for item in sorted_news[:3]:
                 title = item.get('title', '未知标题')
                 url = item.get('url', '')
                 snippet = item.get('snippet', '')[:150] 
-                source = item.get('source', 'AI新闻')
-                score = self.calculate_quality_score(item, 'ai_news_lib')
+                score = item.get('quality_score', 5.0)
                 
-                if title and url and score >= 7.0:  # 高质量新闻
-                    heat_icon = "🔥🔥🔥" if score >= 8.5 else "🔥🔥" if score >= 7.5 else "🔥"
+                if title and url:
+                    heat_icon = "🔥🔥🔥" if score >= 8.0 else "🔥🔥" if score >= 7.0 else "🔥"
                     summary += f"### {heat_icon} [{title}]({url})\n"
                     summary += f"- **简介**: {snippet}...\n"
-                    summary += f"- **来源**: {source} (多源聚合)\n"
+                    summary += f"- **来源**: Google Search（大模型厂商）\n"
                     summary += f"- **质量评分**: {score:.1f}/10\n\n"
-                    focus_items.append(title)
+        else:
+            summary += "⚠️ 今日暂无大模型厂商重要新闻发布。\n\n"
         
-        # 2. 如果 Perplexity 新闻不足，从 GitHub 高质量项目补充
-        github_projects = sorted(
-            collected_data.get('github_projects', []),
-            key=lambda x: x.get('quality_score', 0),
-            reverse=True
-        )
-        
-        if github_projects and len(focus_items) < 3:
-            print(f"DEBUG: 从 GitHub 项目中补充焦点 ({len(github_projects)} 个项目)")
-            for project in github_projects[:3 - len(focus_items)]:
-                name = project.get('name', '未知项目')
-                desc = project.get('description', '无描述')
-                url = project.get('html_url', '')
-                stars = project.get('stargazers_count', 0)
-                score = project.get('quality_score', 0)
-                
-                if score >= 7.0 and name and url:  # 只选择高质量项目
-                    heat_icon = "🔥🔥🔥" if score >= 8.0 else "🔥🔥" if score >= 7.0 else "🔥"
-                    summary += f"### {heat_icon} [{name}]({url})\n"
-                    summary += f"- **描述**: {desc}\n"
-                    summary += f"- **热度**: ⭐ {stars:,} stars\n"
-                    summary += f"- **质量评分**: {score:.1f}/10\n"
-                    summary += f"- **推荐理由**: 高质量开源项目，值得关注\n\n"
-                    focus_items.append(name)
-        
-        # 3. 如果仍然不足，从 HF 模型补充
-        hf_models = sorted(
-            collected_data.get('hf_models', []),
-            key=lambda x: x.get('quality_score', 0),
-            reverse=True
-        )
-        
-        if hf_models and len(focus_items) < 3:
-            print(f"DEBUG: 从 HF 模型中补充焦点 ({len(hf_models)} 个模型)")
-            for model in hf_models[:3 - len(focus_items)]:
-                model_id = model.get('modelId', '')
-                score = model.get('quality_score', 0)
-                downloads = model.get('downloads', 0)
-                
-                if score >= 6.0 and model_id:
-                    summary += f"### 🔥 [{model_id}](https://huggingface.co/{model_id})\n"
-                    summary += f"- **下载量**: {downloads:,}\n"
-                    summary += f"- **质量评分**: {score:.1f}/10\n"
-                    summary += f"- **推荐理由**: 新发布的高质量模型\n\n"
-                    focus_items.append(model_id)
-        
-        if not focus_items:
-            summary += "⚠️ 今日数据收集中未发现突出的焦点项目，建议查看后续详细内容。\n\n"
-        
-        # 模型与算法
+        # 模型与算法 - 使用 hf_models (HuggingFace)
         summary += "## 🧠 模型与算法\n\n"
+        hf_models = collected_data.get('hf_models', [])
         if hf_models:
-            for model in hf_models[:3]:
+            for model in hf_models[:5]:
                 model_id = model.get('modelId', '未知模型')
                 pipeline = model.get('pipeline_tag', '未知类型')
                 downloads = model.get('downloads', 0)
@@ -902,26 +1120,45 @@ class DailyAICollectorV2:
                 summary += f"- **评分**: {stars} ({score:.1f}/10)\n"
                 summary += f"- **链接**: https://huggingface.co/{model_id}\n\n"
         else:
-            summary += "今日暂无新模型发布。\n\n"
+            summary += "⚠️ 今日暂无新模型发布。\n\n"
         
-        # 工具与框架
+        # 工具与框架 - 使用 github_projects (GitHub Star快速增长)
         summary += "## 🛠️ 工具与框架\n\n"
+        github_projects = collected_data.get('github_projects', [])
         if github_projects:
             for project in github_projects[:5]:
                 name = project.get('name', '未知项目')
                 desc = project.get('description', '无描述')
                 url = project.get('html_url', '')
                 stars = project.get('stargazers_count', 0)
+                stars_per_day = project.get('stars_per_day', 0)
                 score = project.get('quality_score', 5.0)
                 rating = '⭐' * min(5, int(score / 2))
                 summary += f"### [{name}]({url})\n"
                 summary += f"- **功能**: {desc}\n"
-                summary += f"- **Stars**: {stars:,}\n"
+                summary += f"- **Stars**: {stars:,} ({stars_per_day:.1f} stars/day)\n"
                 summary += f"- **推荐指数**: {rating}\n\n"
         else:
-            summary += "今日暂无新工具框架发布。\n\n"
+            summary += "⚠️ 今日暂无新工具框架发布。\n\n"
         
-        # 学术前沿
+        # 应用与产品 - 使用 applications (多源并行搜索)
+        summary += "## 📱 应用与产品\n\n"
+        applications = collected_data.get('applications', [])
+        if applications:
+            for app in applications[:5]:
+                title = app.get('title', '未知应用')
+                url = app.get('url', '')
+                snippet = app.get('snippet', '无描述')[:150]
+                source = app.get('source', '未知来源')
+                score = app.get('quality_score', 5.0)
+                summary += f"### [{title}]({url})\n"
+                summary += f"- **简介**: {snippet}...\n"
+                summary += f"- **来源**: {source}\n"
+                summary += f"- **质量评分**: {score:.1f}/10\n\n"
+        else:
+            summary += "⚠️ 今日暂无新应用与产品发布。\n\n"
+        
+        # 学术前沿 - 使用 arxiv_papers (arXiv)
         summary += "## 📚 学术前沿\n\n"
         arxiv_papers = collected_data.get('arxiv_papers', [])
         if arxiv_papers:
@@ -938,24 +1175,25 @@ class DailyAICollectorV2:
                 summary += f"- **摘要**: {abstract}...\n"
                 summary += f"- **质量评分**: {score:.1f}/10\n\n"
         else:
-            summary += "今日暂无重要论文发布。\n\n"
+            summary += "⚠️ 今日暂无重要论文发布。\n\n"
         
         # 编辑点评
         summary += "## 💡 编辑点评\n\n"
-        total_items = len(github_projects) + len(hf_models) + len(arxiv_papers) + len(perplexity_news) + len(ai_news_items)
+        total_items = len(focus_news) + len(hf_models) + len(arxiv_papers) + len(github_projects) + len(applications)
         if total_items > 0:
-            summary += f"今日共收集到 {total_items} 条AI动态，其中：\n"
-            if ai_news_items:
-                summary += f"- 🌐 多源AI新闻: {len(ai_news_items)} 条\n"
-            if perplexity_news:
-                summary += f"- 📰 Perplexity新闻: {len(perplexity_news)} 条\n"
-            if github_projects:
-                summary += f"- 🛠️ GitHub项目: {len(github_projects)} 个\n"
+            summary += f"今日共收集到 {total_items} 条AI动态（按章节分配数据源），其中：\n"
+            if focus_news:
+                summary += f"- 📰 今日焦点（Google）: {len(focus_news)} 条\n"
             if hf_models:
-                summary += f"- 🧠 新模型: {len(hf_models)} 个\n"
+                summary += f"- 🧠 模型与算法（HuggingFace）: {len(hf_models)} 个\n"
             if arxiv_papers:
-                summary += f"- 📚 学术论文: {len(arxiv_papers)} 篇\n"
+                summary += f"- 📚 学术前沿（arXiv）: {len(arxiv_papers)} 篇\n"
+            if github_projects:
+                summary += f"- 🛠️ 工具与框架（GitHub）: {len(github_projects)} 个\n"
+            if applications:
+                summary += f"- 📱 应用与产品（多源）: {len(applications)} 条\n"
             summary += "\n内容质量均经过自动评分和排序，优先展示高质量项目。\n"
+            summary += "\n**新策略**：采用分章节专用数据源，确保内容更精准、更聚焦。\n"
         else:
             summary += "今日数据收集遇到问题，建议稍后重试或手动检查数据源。\n\n"
             summary += "可能原因：API限流、网络问题、或确实无新内容发布。\n"
@@ -974,17 +1212,26 @@ class DailyAICollectorV2:
         self.seen_urls = self.load_history_items(days_back=7)
         self.seen_titles = set()  # 重置标题集合
         
-        # 收集数据
+        # 收集数据（按新章节分配数据源）
         print("=" * 60)
-        print("开始收集数据...")
+        print("开始收集数据（新策略：按章节分配专用数据源）...")
         print("=" * 60)
         
         collected_data = {
-            'perplexity_news': [],  # 暂时关闭 self.search_perplexity_ai_news(),
-            'ai_news_lib': self.search_ai_news_lib(),  # 新增：多源AI新闻
-            'github_projects': self.search_github_trending(),
+            # 今日焦点 - 仅使用 Google Search 搜索大模型厂商
+            'focus_news': self.search_focus_news(),
+            
+            # 模型与算法 - 仅使用 HuggingFace
             'hf_models': self.search_huggingface_models(),
-            'arxiv_papers': self.search_arxiv_papers()
+            
+            # 学术前沿 - 仅使用 arXiv
+            'arxiv_papers': self.search_arxiv_papers(),
+            
+            # 工具与框架 - GitHub Star 快速增长
+            'github_projects': self.search_github_trending(),
+            
+            # 应用与产品 - NewsAPI, Tavily, Google, Serper, Brave 并行搜索
+            'applications': self.search_applications(),
         }
         
         print("=" * 60)
@@ -1023,12 +1270,13 @@ totalItems: {total_items}
 
 ## 📊 数据来源
 
-本报告数据来源于：
-- 🌐 **多源AI新闻**: NewsAPI, Tavily, Google, Serper, Brave, Metasota等
-- 🔍 **Perplexity AI**: 实时AI新闻搜索（暂时关闭）
-- 💻 **GitHub**: AI相关开源项目
-- 🤗 **Hugging Face**: 新模型发布
-- 📄 **arXiv**: 最新学术论文
+本报告采用**分章节专用数据源**策略：
+
+- 📰 **今日焦点**: Google Search（专注大模型厂商：OpenAI, Gemini, Anthropic, xAI, Meta, Qwen, DeepSeek, GLM, Kimi等）
+- 🧠 **模型与算法**: HuggingFace（新开源模型）
+- 📚 **学术前沿**: arXiv（最新AI论文）
+- 🛠️ **工具与框架**: GitHub（Star快速增长的AI项目）
+- 📱 **应用与产品**: NewsAPI, Tavily, Google, Serper, Brave（多源并行搜索）
 
 所有内容经过**质量评分**、**去重**和**智能排序**，确保信息的价值和时效性。
 
