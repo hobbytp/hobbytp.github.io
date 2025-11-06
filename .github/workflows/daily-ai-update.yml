@@ -75,9 +75,12 @@ jobs:
                   head -50 "$latest_file"
 
             - name: 提交更改
+              env:
+                  GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
               run: |
                   git config --local user.email "action@github.com"
                   git config --local user.name "GitHub Action"
+                  git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
                   git add content/zh/daily_ai/
                   git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 V2 - $(date '+%Y-%m-%d')"
                   git push origin main

@@ -67,12 +67,15 @@ jobs:
 
       - name: Commit generated images
         if: always() && steps.rate-check.outputs.can_process == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
           # 检查是否有新的图片文件
           if [ -d "static/images/articles" ] && [ "$(ls -A static/images/articles 2>/dev/null)" ]; then
             echo "Found new images to commit"
             git config --local user.email "action@github.com"
             git config --local user.name "GitHub Action"
+            git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
             git add static/images/articles/
             git commit -m "Auto-generate blog images (backfill) [skip ci]" || echo "No changes to commit"
             git push
