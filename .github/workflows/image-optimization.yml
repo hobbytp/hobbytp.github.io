@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths:
-      - 'static/images/**'
-      - '!static/images/optimized/**'
-      - '!static/images/backup/**'
+      - "static/images/**"
+      - "!static/images/optimized/**"
+      - "!static/images/backup/**"
   pull_request:
     paths:
-      - 'static/images/**'
-      - '!static/images/optimized/**'
-      - '!static/images/backup/**'
+      - "static/images/**"
+      - "!static/images/optimized/**"
+      - "!static/images/backup/**"
 
 permissions:
   contents: write
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Cache pip dependencies
         uses: actions/cache@v3
@@ -78,13 +78,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
           git add static/images/optimized/
-          git commit -m "🔧 优化图片: 自动生成WebP格式和响应式尺寸
-
-- 生成多尺寸图片 (320px, 640px, 960px, 1280px, 1920px)
-- 转换为WebP格式以减少文件大小
-- 应用智能压缩 (质量: 85%)
-
-此提交由GitHub Actions自动生成"
+          git commit -m "🔧 优化图片: 自动生成WebP格式和响应式尺寸" -m "生成多尺寸图片 (320px, 640px, 960px, 1280px, 1920px)" -m "转换为WebP格式以减少文件大小" -m "应用智能压缩 (质量: 85%)" -m "此提交由GitHub Actions自动生成"
 
           echo "图片优化完成并提交"
 

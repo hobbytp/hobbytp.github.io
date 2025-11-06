@@ -1,0 +1,97 @@
+name: Daily Content Analysis
+
+on:
+  schedule:
+    # 每天早上8点运行（UTC时间）
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    # 允许手动触发
+    inputs:
+      ai_enhance:
+        description: '启用AI增强分析'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        # 获取完整历史记录，用于分析趋势
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r tools/content-analysis/requirements.txt
+
+    - name: Create .env file
+      run: |
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+        echo "OPENAI_BASE_URL=${{ secrets.OPENAI_BASE_URL }}" >> .env
+        echo "OPENAI_MODEL=${{ secrets.OPENAI_MODEL }}" >> .env
+
+    - name: Run content analysis
+      run: |
+        if [ "${{ github.event.inputs.ai_enhance }}" = "true" ] || [ "${{ github.event.schedule }}" ]; then
+          echo "🤖 Running AI-enhanced content analysis..."
+          python tools/content-analysis/content_analyzer.py --input-dir ./content --json-data --ai-enhance
+        else
+          echo "📊 Running basic content analysis..."
+          python tools/content-analysis/content_analyzer.py --input-dir ./content --json-data
+        fi
+
+    - name: Upload analysis results
+      uses: actions/upload-artifact@v4
+      with:
+        name: content-analysis-results
+        path: |
+          tools/content-analysis/content-analysis-data.json
+          tools/content-analysis/content-analysis-report.md
+
+    - name: Commit analysis results
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add tools/content-analysis/content-analysis-data.json
+        git add tools/content-analysis/content-analysis-report.md
+        git commit -m "📊 Daily content analysis update [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
+
+    - name: Push changes
+      uses: actions/push@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create analysis summary
+      run: |
+        echo "## 📊 Content Analysis Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- **Analysis Date**: $(date +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+        echo "- **AI Enhanced**: ${{ github.event.inputs.ai_enhance == 'true' && 'Yes' || 'No' }}" >> $GITHUB_STEP_SUMMARY
+
+        if [ -f "tools/content-analysis/content-analysis-data.json" ]; then
+          TOTAL_FILES=$(jq '.summary.total_files' tools/content-analysis/content-analysis-data.json)
+          TOTAL_WORDS=$(jq '.summary.total_words' tools/content-analysis/content-analysis-data.json)
+          AVG_QUALITY=$(jq '.summary.avg_quality_score' tools/content-analysis/content-analysis-data.json)
+
+          echo "- **Total Files**: $TOTAL_FILES" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Words**: $TOTAL_WORDS" >> $GITHUB_STEP_SUMMARY
+          echo "- **Average Quality**: $AVG_QUALITY/100" >> $GITHUB_STEP_SUMMARY
+        fi
+
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📈 Key Metrics" >> $GITHUB_STEP_SUMMARY
+        echo "- Analysis completed successfully ✅" >> $GITHUB_STEP_SUMMARY
+        echo "- Results committed to repository 📝" >> $GITHUB_STEP_SUMMARY

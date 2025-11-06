@@ -94,9 +94,8 @@ _backup/
 
 __pycache__/
 
-.github/
 .cursor/
-
+.github/prompts
 AGENTS.md
 
 .serena/
