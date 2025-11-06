@@ -1,0 +1,98 @@
+name: Optimize Images
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'static/images/**'
+      - '!static/images/optimized/**'
+      - '!static/images/backup/**'
+  pull_request:
+    paths:
+      - 'static/images/**'
+      - '!static/images/optimized/**'
+      - '!static/images/backup/**'
+
+permissions:
+  contents: write
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  optimize-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MY_GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-image-optimization-${{ hashFiles('tools/image-optimization/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-image-optimization-
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r tools/image-optimization/requirements.txt
+
+      - name: Run image optimization
+        run: |
+          echo "开始图片优化..."
+          python tools/image-optimization/image_optimizer.py \
+            --input-dir static/images \
+            --output-dir static/images/optimized \
+            --quality 85 \
+            --sizes 320 640 960 1280 1920 \
+            --no-backup
+
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain static/images/optimized/)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "检测到图片优化变化"
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "没有图片需要优化"
+          fi
+
+      - name: Commit optimized images
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+          git add static/images/optimized/
+          git commit -m "🔧 优化图片: 自动生成WebP格式和响应式尺寸
+
+- 生成多尺寸图片 (320px, 640px, 960px, 1280px, 1920px)
+- 转换为WebP格式以减少文件大小
+- 应用智能压缩 (质量: 85%)
+
+此提交由GitHub Actions自动生成"
+
+          echo "图片优化完成并提交"
+
+      - name: Push changes
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git push origin main
+          echo "推送优化后的图片到仓库"
