@@ -1,5 +1,14 @@
+---
+title: "智能体设计模式介绍索引"
+date: 2025-11-08T17:00:00+08:00
+draft: true
+tags: ["智能体设计模式", "设计模式", "智能体", "Agentic Design Pattern"]
+categories: ["agent"]
+description: "智能体设计模式介绍"
+wordCount: 248
+readingTime: 1
+---
 
-# 智能体设计模式介绍
 
 这里使用卡片式展现智能体设计模式。
 
@@ -261,3 +270,7 @@ e.g., They should book the flights before the hotel, since flight prices increas
 1 LangGraph Multi Agent Systems, <https://langchain-ai.github.io/langgraph/concepts/multi_agent/>
 
 <https://hdst.medium.com/inside-the-minds-of-machines-agentic-design-patterns-every-ai-builder-should-know-78c10d9f5823>
+
+## 参考文献
+
+* [Anthropic: Building Effective Agents](https://www.anthropic.com/engineering/building-effective-agents)
