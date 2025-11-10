@@ -11,7 +11,7 @@ categories: ["big_companies", "context_engineering"]
 
 在用过Claude Skills后，我就想到了一个问题：既然Claude Skills使用文件系统和脚本的方式来按需加载skills相关的上下文，那么为什么不能使用相似的方法来动态加载MCP的工具呢？毕竟，当前大量地把MCP加载到LLM的上下文里，对于某些复杂任务来说仍然显得捉襟见肘。
 
-今天Claude工程文档就公布了这个“Code Mode”调用MCP的方式。这个方式与Claude Skills的加载方式有很高的相似度。
+今天Claude工程文档就公布了这个“Code Mode”调用MCP的方式。我认为这个方式**极大地解决**了MCP在Context Engineering中的痛点。
 
 ## 介绍
 
