@@ -26,8 +26,15 @@
     </nav>
 </header>
 
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 <script>
     (async function () {
+        // 确保Fuse.js已加载
+        if (typeof Fuse === 'undefined') {
+            console.error('Fuse.js library not loaded');
+            return;
+        }
+
         try {
             const res = await fetch('/index.json');
             if (!res.ok) throw new Error('Failed to fetch search index');
@@ -35,6 +42,11 @@
 
             const input = document.getElementById('headerSearch');
             const results = document.getElementById('headerSearchResults');
+
+            if (!input || !results) {
+                console.error('Search elements not found');
+                return;
+            }
 
             const fuse = new Fuse(data, {
                 keys: ['title', 'content', 'description', 'tags', 'categories'],
@@ -202,21 +214,20 @@
     }
 
     /* 滚动检测脚本 */
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const navbar = document.querySelector('.navbar-glass');
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbar = document.querySelector('.navbar-glass');
 
-            function updateNavbar() {
-                if (window.scrollY > 100) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
+        function updateNavbar() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
+        }
 
-            window.addEventListener('scroll', updateNavbar);
-            updateNavbar(); // 初始化检查
-        });
-    </script>
-</style>
-</style>
+        window.addEventListener('scroll', updateNavbar);
+        updateNavbar(); // 初始化检查
+    });
+</script>
