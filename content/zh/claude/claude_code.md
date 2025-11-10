@@ -486,8 +486,8 @@ Remember to use the GitHub CLI (`gh`) for all GitHub-related tasks.
 - 今天我看到克劳德给一个二级代理打电话，那个二级代理又给另一个二级代理打了电话，我想知道这是不是新功能？还有其他人注意到吗？
 - 我在 claude-code 项目中发现了很多关于子代理无法生成其他代理的问题，存在一些技巧，比如生成无头的 Claude 实例，或者使用像 claude-flow 这样复杂的工具。对于简单的流程，尽量使用命令作为主要的“代理”来生成子代理。
 
-
 ### Plugin
+
 TBD
 
 ### 节约成本的最佳实践
@@ -780,6 +780,7 @@ Claude Code Router [github](https://github.com/musistudio/claude-code-router)是
 GLM4.6采取KIMI类似的方案，既可以直接兼容Claude API，也可以通过使用claude-code-router进行路由。下面是直接配置claude code配置文件或环境变量的方式来直接在Claude Code中使用GLM4.6。
 
 ##### Step 1: 配置URL和Key
+
 ```bash
 #国内使用
 ANTHROPIC_BASE_URL=https://open.bigmodel.cn/anthropic/ 
@@ -793,6 +794,7 @@ ANTHROPIC_AUTH_TOKEN=<you glm api key>
 ```
 
 ##### Step 2：配置模型名
+
 手动修改配置文件  ~/.claude/settings.json：
 
 ```json
@@ -807,6 +809,7 @@ ANTHROPIC_AUTH_TOKEN=<you glm api key>
 ```
 
 #### 集成GLM4.6到VS Code插件Claude Code
+
 1. 安装Claude Code插件
 2. 进入VS Code设置，找到**Claude Code”
 3. 找到“在settings.json中编辑”，贴入下面配置信息
@@ -836,10 +839,12 @@ ANTHROPIC_AUTH_TOKEN=<you glm api key>
     ],
     "claudeCode.selectedModel": "default"
 ```
+
 在VS Code界面的中上部分偏右找到Claude的图标，点击打开即可。
 打开Claude Code界面后，输入“/select mode”选择“Default”即可。
 
 #### 更多GLM4.6套餐信息
+
 使用GLM4.6套餐的方式大约是直接使用API的10%。
 具体套餐用量额度如下：
 
@@ -881,7 +886,13 @@ claude mcp add magic npx @21st-dev/magic@latest --env API_KEY=<你的api key>
 [Claude Code 自己的主页](https://www.anthropic.com/claude-code)： 详尽的文档，涵盖了所有功能，并提供了更多示例、实现细节和高级技术。
 [Claude Code的Overview](https://docs.anthropic.com/en/docs/claude-code/overview)
 
-#### 还未翻译好的篇章
+### 第三方指南
+
+[Claude Code 指南](https://github.com/Cranot/claude-code-guide)
+
+### 还未翻译好的篇章
 
 (<https://docs.anthropic.com/en/docs/claude-code/changelog>)
 <https://www.anthropic.com/claude-code>
+
+<
