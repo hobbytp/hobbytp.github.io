@@ -1,0 +1,13 @@
+project_name: "AI Tech Blog"
+project_type: "web-app"
+project_level: 2
+output_folder: "docs"
+bmm:
+  workflow_status_file: "docs/bmm-workflow-status.yaml"
+  sprint_status_file: "docs/sprint-status.yaml"
+paths:
+  docs: "docs"
+  stories: "docs/stories"
+  tests: "tests"
+  content: "content"
+  static: "static"

@@ -1,0 +1,102 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
+<meta name="robots" content="index, follow">
+{{- else }}
+<meta name="robots" content="noindex, nofollow">
+{{- end }}
+
+{{- /* Title */}}
+<title>{{ if .IsHome }}{{ else }}{{ if .Title }}{{ .Title }} | {{ end }}{{ end }}{{ site.Title }}</title>
+
+{{- /* Meta */}}
+{{- if .IsHome }}
+{{ with site.Params.keywords -}}<meta name="keywords" content="{{- range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}">{{ end }}
+{{- else }}
+<meta name="keywords" content="{{ if .Params.keywords -}}
+    {{- range $i, $e := .Params.keywords }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- else }}
+    {{- range $i, $e := .Params.tags }}{{ if $i }}, {{ end }}{{ $e }}{{ end }} {{- end -}}">
+{{- end }}
+<meta name="description" content="{{- with .Description }}{{ . }}{{- else }}{{- if or .IsPage .IsSection}}
+    {{- .Summary | default (printf "%s - %s" .Title  site.Title) }}{{- else }}
+    {{- with site.Params.description }}{{ . }}{{- end }}{{- end }}{{- end -}}">
+<meta name="author" content="{{ (partial "author.html" . ) }}">
+<link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}">
+
+{{- /* Open Graph / Facebook */}}
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ .Description | default .Summary }}">
+<meta property="og:image" content="{{ .Params.cover.image | default site.Params.favicon | default site.Params.logo }}">
+
+{{- /* Twitter */}}
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ .Permalink }}">
+<meta property="twitter:title" content="{{ .Title }}">
+<meta property="twitter:description" content="{{ .Description | default .Summary }}">
+<meta property="twitter:image" content="{{ .Params.cover.image | default site.Params.favicon | default site.Params.logo }}">
+
+{{- /* Favicon */}}
+{{- with site.Params.favicon }}
+<link rel="icon" href="{{ . }}">
+{{- end }}
+
+{{- /* Theme color */}}
+<meta name="theme-color" content="#ffffff">
+
+{{- /* CSS Bundle - Load PaperMod base styles first, then custom overrides */}}
+{{- $cssBundle := slice -}}
+
+{{- /* Add PaperMod base CSS */}}
+{{- $cssBundle = $cssBundle | append (resources.Get "css/main.css") -}}
+
+{{- /* Add extended styles */}}
+{{- range resources.Match "css/extended/*.css" -}}
+  {{- $cssBundle = $cssBundle | append . -}}
+{{- end -}}
+
+{{- /* Note: custom.css is now placed under assets/css/extended/ and will be picked up by the Match above.
+      Only append css/custom.css if it exists to avoid nil in the slice which breaks resources.Concat. */}}
+{{- with (resources.Get "css/custom.css") -}}
+  {{- $cssBundle = $cssBundle | append . -}}
+{{- end -}}
+
+{{- /* Bundle and minify */}}
+{{- $style := $cssBundle | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint -}}
+
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+
+{{- /* Google Fonts */}}
+{{- if site.Params.fonts }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{{- range site.Params.fonts }}
+<link href="{{ .url }}" rel="stylesheet">
+{{- end }}
+{{- end }}
+
+{{- /* RSS */}}
+{{- with .OutputFormats.Get "rss" }}
+<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }}">
+{{- end }}
+
+{{- /* JSON Search */}}
+{{- if and (eq .Kind "page") (eq .Section "search") }}
+{{- $searchData := resources.Get "index.json" }}
+<script>
+  window.searchData = {{ $searchData.Content | safeJS }};
+</script>
+{{- end }}
+
+{{- /* Head custom */}}
+{{- if site.Params.customHead }}
+{{ site.Params.customHead | safeHTML }}
+{{- end }}
+
+{{- /* Analytics */}}
+{{- if hugo.IsProduction }}
+{{- template "_internal/google_analytics.html" . }}
+{{- end }}

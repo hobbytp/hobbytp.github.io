@@ -1,0 +1,1 @@
+ALLWEONE® Presentation AI 是一个开源、AI驱动的演示文稿生成工具，灵感来源于 Gamma.app，可快速生成美观且可定制的幻灯片。其主要功能包括：AI内容生成、多个内置主题、实时生成、实时编辑、自动保存、图像生成及演示模式等。支持使用本地模型（如 Ollama 和 LM Studio）进行生成。技术栈涵盖 Next.js、React、PostgreSQL 等。项目规划包括支持 PDF 导出、实时协作、多设备响应、插件系统等新功能。用户可通过贡献代码、报告问题或加入 Discord 社区提供支持。项目采用 MIT 许可证开源，主站为 [presentation.allweone.com](http://presentation.allweone.com)。

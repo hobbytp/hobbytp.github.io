@@ -1,4 +1,4 @@
-.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai help
+.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture help
 
 # 默认目标
 .DEFAULT_GOAL := help
@@ -76,10 +76,10 @@ export-pdf:
 
 
 # 完整构建流程（优化图片 + 内容分析 + 构建 + 性能分析）
-full-build: optimize-images analyze-content build analyze-performance
+full-build: validate-architecture optimize-images analyze-content build analyze-performance
 
 # 🤖 AI增强完整构建流程
-full-build-ai: optimize-images analyze-content-ai build analyze-performance
+full-build-ai: validate-architecture optimize-images analyze-content-ai build analyze-performance
 
 # 清理生成的文件
 clean:
@@ -91,6 +91,11 @@ clean:
 update-theme:
 	@echo "📦 更新Hugo主题..."
 	git submodule update --init --recursive
+
+# 验证架构完整性
+validate-architecture:
+	@echo "🔍 验证Hugo架构完整性..."
+	@./scripts/validate-architecture.sh
 
 # 启动新的开发会话（清理后启动）
 fresh: clean dev
@@ -127,6 +132,9 @@ install-tools:
 help:
 	@echo "Hugo博客管理工具"
 	@echo ""
+	@echo "🚨 架构验证:"
+	@echo "  make validate-architecture  验证架构完整性（提交前必运行）"
+	@echo ""
 	@echo "开发命令:"
 	@echo "  make dev              启动Hugo开发服务器"
 	@echo "  make fresh            清理后重新启动开发服务器"
@@ -134,7 +142,7 @@ help:
 	@echo ""
 	@echo "构建命令:"
 	@echo "  make build            执行生产环境构建"
-	@echo "  make full-build       完整构建流程（图片优化+构建+分析）"
+	@echo "  make full-build       完整构建流程（验证+优化+分析）"
 	@echo "  make full-build-ai    🤖 AI增强完整构建流程"
 	@echo "  make clean            清理构建文件"
 	@echo ""
