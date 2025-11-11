@@ -1,365 +1,217 @@
 {{ define "main" }}
-<div class="container mx-auto px-8 py-8">
-    <header class="mb-8">
-        <h1 class="text-4xl font-bold mb-4 text-gray-800">{{ .Title }}</h1>
-        {{ with .Content }}
-        <div class="prose prose-lg max-w-none mb-8 text-gray-600">
-            {{ . }}
-        </div>
-        {{ end }}
-    </header>
+<style>
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-in;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
 
-    <!-- 搜索和筛选栏 -->
-    <div class="mb-8 flex flex-col sm:flex-row gap-4">
-        <div class="flex-1">
-            <input type="text" id="search-input" placeholder="搜索文章..." 
-                   class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-        </div>
-        <div class="flex gap-2">
-            <select id="sort-select" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
-                <option value="date-desc">最新优先</option>
-                <option value="date-asc">最旧优先</option>
-                <option value="title-asc">标题A-Z</option>
-                <option value="title-desc">标题Z-A</option>
-            </select>
-        </div>
-    </div>
-
-    <!-- 文章卡片网格 -->
-    <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {{ $pages := cond .IsSection .RegularPagesRecursive .Pages }}
-        {{ range $pages.ByDate.Reverse }}
-        <article class="blog-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer" 
-                 data-url="{{ .RelPermalink }}"
-                 data-title="{{ .Title | lower }}"
-                 data-date="{{ .Date.Format "2006-01-02" }}"
-                 data-tags="{{ if .Params.tags }}{{ delimit .Params.tags " " | lower }}{{ end }}">
-            <!-- 文章封面图片 -->
-            {{ if .Params.featured_image }}
-            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 relative overflow-hidden">
-                <img src="{{ .Params.featured_image }}" alt="{{ .Title }}" 
-                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
-                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+<div class="container mx-auto px-4 py-8 max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <!-- 左侧导航栏 (隐藏在移动设备上) -->
+        <aside class="hidden lg:block">
+            <div class="sticky top-20">
+                <!-- 类别导航会通过 JavaScript 插入这里 -->
             </div>
-            {{ else }}
-            <div class="h-48 bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
-                <svg class="w-16 h-16 text-white opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
+        </aside>
+
+        <!-- 右侧主要内容 -->
+        <main class="lg:col-span-3">
+            <h1 class="text-4xl font-bold text-gray-900 mb-8 pb-4 border-b-4 border-blue-600">
+                {{ .Title }}
+            </h1>
+
+            <!-- 搜索和排序栏 -->
+            <div class="mb-8 bg-white p-6 rounded-lg shadow-md">
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <div class="flex-1 w-full">
+                        <input type="search" id="search-input"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                               placeholder="搜索文章..."
+                               aria-label="search">
+                    </div>
+                    <select id="sort-select"
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            aria-label="sort">
+                        <option value="最新优先">最新优先</option>
+                        <option value="最旧优先">最旧优先</option>
+                        <option value="标题A-Z">标题A-Z</option>
+                        <option value="标题Z-A">标题Z-A</option>
+                    </select>
+                </div>
             </div>
-            {{ end }}
 
-            <div class="p-6">
-                <!-- 文章标题 -->
-                <h2 class="text-xl font-semibold mb-3 text-gray-800 line-clamp-2">
-                    {{ .Title }}
-                </h2>
-
-                <!-- 文章描述 -->
-                {{ with .Description }}
-                <p class="text-gray-600 mb-4 line-clamp-3">{{ . }}</p>
-                {{ else }}
-                <p class="text-gray-600 mb-4 line-clamp-3">{{ .Summary | truncate 120 }}</p>
-                {{ end }}
-
-                <!-- 元信息 -->
-                <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <div class="flex items-center">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                        <time>{{ .Date.Format "2006-01-02" }}</time>
-                    </div>
-                    {{ if .Params.tags }}
-                    <div class="flex items-center">
-                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
-                        </svg>
-                        <span>{{ len .Params.tags }} 标签</span>
-                    </div>
+            <!-- 文章卡片网格 -->
+            <div id="articles-grid" class="grid gap-6 mb-8">
+                {{ range .Paginator.Pages }}
+                <article class="blog-card"
+                         data-title="{{ .Title }}"
+                         data-tags="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}{{ end }}"
+                         data-date="{{ .Date.Format "2006-01-02" }}">
+                    {{ if .Params.image }}
+                    <img src="{{ .Params.image }}" alt="{{ .Title }}"
+                         class="w-full h-40 object-cover rounded-t-lg">
                     {{ end }}
-                </div>
-
-                <!-- 标签 -->
-                {{ with .Params.tags }}
-                <div class="flex flex-wrap gap-2 mb-4">
-                    {{ range first 3 . }}
-                    <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
-                        #{{ . }}
-                    </span>
-                    {{ end }}
-                    {{ if gt (len .) 3 }}
-                    <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
-                        +{{ sub (len .) 3 }}
-                    </span>
-                    {{ end }}
-                </div>
-                {{ end }}
-
-                <!-- 阅读按钮 -->
-                <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3 text-sm text-gray-500">
-                        {{ if .Params.wordCount }}
-                        <span class="flex items-center">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            {{ .Params.wordCount }} 字
-                        </span>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </h2>
+                        {{ if .Params.description }}
+                        <p class="text-gray-600 mb-4 line-clamp-2">{{ .Params.description }}</p>
+                        {{ else }}
+                        <p class="text-gray-600 mb-4 line-clamp-2">{{ .Summary }}</p>
                         {{ end }}
-                        <span class="flex items-center">
-                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            {{ if .Params.readingTime }}
-                                {{ .Params.readingTime }} 分钟
-                            {{ else if .ReadingTime }}
-                                {{ .ReadingTime }} 分钟
-                            {{ else }}
-                                快速阅读
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <span>📅 {{ .Date.Format "2006-01-02" }}</span>
+                            <span>📊 {{ .WordCount }} 字</span>
+                            <span>⏱️ {{ .ReadingTime }} 分钟</span>
+                        </div>
+                        {{ if .Params.tags }}
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            {{ range .Params.tags }}
+                            <span class="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                                #{{ . }}
+                            </span>
                             {{ end }}
-                        </span>
+                        </div>
+                        {{ end }}
+                        <div class="mt-4">
+                            <a href="{{ .RelPermalink }}"
+                               class="inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                阅读全文 →
+                            </a>
+                        </div>
                     </div>
-                    <div class="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
-                        <span class="text-sm font-medium mr-1">阅读全文</span>
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </div>
-                </div>
+                </article>
+                {{ end }}
             </div>
-        </article>
-        {{ end }}
-    </div>
 
-    <!-- 无结果提示 -->
-    <div id="no-results" class="hidden text-center py-12">
-        <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-        </svg>
-        <h3 class="text-lg font-medium text-gray-600 mb-2">没有找到相关文章</h3>
-        <p class="text-gray-500">尝试调整搜索条件或浏览其他分类</p>
+            <!-- 没有结果提示 -->
+            <div id="no-results" class="hidden text-center py-12">
+                <h3 class="text-lg font-medium text-gray-600 mb-2">没有找到相关文章</h3>
+                <p class="text-gray-500">尝试调整搜索条件或浏览其他分类</p>
+            </div>
+
+            <!-- 分页 -->
+            {{ if .Paginator }}
+            <nav class="flex justify-center gap-2 mt-8">
+                {{ if .Paginator.HasPrev }}
+                <a href="{{ .Paginator.Prev.URL }}" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">← 上一页</a>
+                {{ end }}
+                
+                {{ range .Paginator.Pagers }}
+                {{ if eq .PageNumber $.Paginator.PageNumber }}
+                <span class="px-4 py-2 bg-blue-600 text-white rounded-lg">{{ .PageNumber }}</span>
+                {{ else }}
+                <a href="{{ .URL }}" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">{{ .PageNumber }}</a>
+                {{ end }}
+                {{ end }}
+                
+                {{ if .Paginator.HasNext }}
+                <a href="{{ .Paginator.Next.URL }}" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">下一页 →</a>
+                {{ end }}
+            </nav>
+            {{ end }}
+        </main>
     </div>
 </div>
 
 <script>
-// 智能搜索功能
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('search-input');
-    const sortSelect = document.getElementById('sort-select');
-    const articlesGrid = document.getElementById('articles-grid');
-    const noResults = document.getElementById('no-results');
-    const articles = Array.from(document.querySelectorAll('.blog-card'));
+// 智能搜索功能 - 简化版
+(function() {
+    let initialized = false;
     
-    let isGlobalSearch = false;
-    let globalSearchResults = [];
-    let fuse = null;
-
-    // 初始化全站搜索
-    async function initGlobalSearch() {
-        if (fuse) return;
+    function initSearch() {
+        if (initialized) return;
         
-        try {
-            // 动态加载Fuse.js
-            if (typeof Fuse === 'undefined') {
-                await loadFuseJS();
-            }
-            
-            const res = await fetch('/index.json');
-            if (!res.ok) throw new Error('Failed to fetch search index');
-            const data = await res.json();
-            
-            fuse = new Fuse(data, {
-                keys: ['title', 'content', 'description', 'tags', 'categories'],
-                threshold: 0.3,
-                minMatchCharLength: 2,
-                useExtendedSearch: true
-            });
-        } catch (error) {
-            console.error('Failed to initialize global search:', error);
-        }
-    }
-
-    // 加载Fuse.js
-    function loadFuseJS() {
-        return new Promise((resolve, reject) => {
-            if (typeof Fuse !== 'undefined') {
-                resolve();
-                return;
-            }
-            
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2';
-            script.onload = resolve;
-            script.onerror = reject;
-            document.head.appendChild(script);
-        });
-    }
-
-    // 本地搜索
-    function localSearch(searchTerm, sortBy) {
-        let filtered = articles.filter(article => {
-            const title = article.dataset.title;
-            const tags = article.dataset.tags;
-            return title.toLowerCase().includes(searchTerm) || tags.toLowerCase().includes(searchTerm);
-        });
-
-        // 排序
-        filtered.sort((a, b) => {
-            switch(sortBy) {
-                case 'date-desc':
-                    return new Date(b.dataset.date) - new Date(a.dataset.date);
-                case 'date-asc':
-                    return new Date(a.dataset.date) - new Date(b.dataset.date);
-                case 'title-asc':
-                    return a.dataset.title.localeCompare(b.dataset.title);
-                case 'title-desc':
-                    return b.dataset.title.localeCompare(a.dataset.title);
-                default:
-                    return 0;
-            }
-        });
-
-        return filtered;
-    }
-
-    // 全站搜索
-    function globalSearch(searchTerm) {
-        if (!fuse) return [];
+        const searchInput = document.getElementById('search-input');
+        const sortSelect = document.getElementById('sort-select');
+        const articlesGrid = document.getElementById('articles-grid');
+        const noResults = document.getElementById('no-results');
         
-        const results = fuse.search(searchTerm);
-        return results.map(({ item }) => ({
-            title: item.title,
-            permalink: item.permalink,
-            description: item.description,
-            date: item.date,
-            categories: item.categories
-        }));
-    }
-
-    // 创建搜索结果卡片
-    function createSearchResultCard(item, isGlobal = false) {
-        const card = document.createElement('div');
-        card.className = 'blog-card bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-6';
-        card.dataset.url = item.permalink;
-        
-        const date = item.date ? new Date(item.date).toLocaleDateString() : '';
-        const categories = item.categories ? item.categories.join(', ') : '';
-        
-        card.innerHTML = `
-            <div class="flex items-start space-x-4">
-                <div class="flex-1">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">
-                        <a href="${item.permalink}" class="hover:text-blue-600 transition-colors">
-                            ${item.title}
-                        </a>
-                    </h3>
-                    ${item.description ? `<p class="text-gray-600 text-sm mb-3">${item.description}</p>` : ''}
-                    <div class="flex items-center text-xs text-gray-500 space-x-4">
-                        ${date ? `<span>📅 ${date}</span>` : ''}
-                        ${categories ? `<span>🏷️ ${categories}</span>` : ''}
-                        ${isGlobal ? '<span class="text-blue-600">🌐 全站搜索</span>' : ''}
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        return card;
-    }
-
-    // 显示搜索结果
-    function displayResults(results, searchTerm, sortBy) {
-        articlesGrid.innerHTML = '';
-        
-        if (results.length === 0) {
-            noResults.classList.remove('hidden');
-            noResults.innerHTML = `
-                <svg class="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                <h3 class="text-lg font-medium text-gray-600 mb-2">没有找到相关文章</h3>
-                <p class="text-gray-500 mb-4">尝试调整搜索条件或浏览其他分类</p>
-                ${!isGlobalSearch ? `
-                    <button id="expand-search-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                        🔍 搜索全站内容
-                    </button>
-                ` : `
-                    <button id="back-to-local-btn" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
-                        ← 返回当前分类
-                    </button>
-                `}
-            `;
-        } else {
-            noResults.classList.add('hidden');
-            
-            // 显示结果
-            results.forEach(item => {
-                const card = createSearchResultCard(item, isGlobalSearch);
-                articlesGrid.appendChild(card);
-            });
-            
-            // 如果本地搜索结果少于3个且不是全站搜索，显示扩展按钮
-            if (!isGlobalSearch && results.length < 3 && searchTerm.length > 1) {
-                const expandBtn = document.createElement('div');
-                expandBtn.className = 'text-center mt-6';
-                expandBtn.innerHTML = `
-                    <button id="expand-search-btn" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-md">
-                        🔍 查看更多结果 (${globalSearchResults.length} 个)
-                    </button>
-                `;
-                articlesGrid.appendChild(expandBtn);
-            }
-        }
-    }
-
-    // 执行搜索
-    async function performSearch() {
-        const searchTerm = searchInput.value.toLowerCase().trim();
-        const sortBy = sortSelect.value;
-        
-        if (!searchTerm) {
-            // 清空搜索，显示所有文章
-            isGlobalSearch = false;
-            articlesGrid.innerHTML = '';
-            articles.forEach(article => {
-                articlesGrid.appendChild(article);
-            });
-            noResults.classList.add('hidden');
+        if (!searchInput || !sortSelect || !articlesGrid || !noResults) {
+            console.warn('Search elements not found');
+            setTimeout(initSearch, 100);
             return;
         }
+        
+        const allArticles = Array.from(document.querySelectorAll('.blog-card'));
+        if (allArticles.length === 0) {
+            console.warn('No articles found');
+            return;
+        }
+        
+        initialized = true;
+        console.log('Search initialized with', allArticles.length, 'articles');
+        
+        // 执行搜索
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const sortBy = sortSelect.value;
+            console.log('Searching for:', searchTerm);
+            
+            if (!searchTerm) {
+                // 显示全部
+                articlesGrid.innerHTML = '';
+                allArticles.forEach(article => {
+                    articlesGrid.appendChild(article.cloneNode(true));
+                });
+                noResults.classList.add('hidden');
+                return;
+            }
 
-        if (isGlobalSearch) {
-            // 全站搜索
-            await initGlobalSearch();
-            const results = globalSearch(searchTerm);
-            displayResults(results, searchTerm, sortBy);
-        } else {
             // 本地搜索
-            const localResults = localSearch(searchTerm, sortBy);
-            
-            // 同时准备全站搜索结果
-            await initGlobalSearch();
-            globalSearchResults = globalSearch(searchTerm);
-            
-            displayResults(localResults, searchTerm, sortBy);
-        }
-    }
+            const filtered = allArticles.filter(article => {
+                const title = (article.dataset.title || '').toLowerCase();
+                const tags = (article.dataset.tags || '').toLowerCase();
+                return title.includes(searchTerm) || tags.includes(searchTerm);
+            });
 
-    // 事件监听
-    searchInput.addEventListener('input', performSearch);
-    sortSelect.addEventListener('change', performSearch);
-    
-    // 扩展搜索按钮事件
-    document.addEventListener('click', async function(e) {
-        if (e.target.id === 'expand-search-btn') {
-            isGlobalSearch = true;
-            await performSearch();
-        } else if (e.target.id === 'back-to-local-btn') {
-            isGlobalSearch = false;
-            await performSearch();
+            // 排序
+            if (sortBy === '最旧优先') {
+                filtered.sort((a, b) => new Date(a.dataset.date) - new Date(b.dataset.date));
+            } else if (sortBy === '标题A-Z') {
+                filtered.sort((a, b) => a.dataset.title.localeCompare(b.dataset.title));
+            } else if (sortBy === '标题Z-A') {
+                filtered.sort((a, b) => b.dataset.title.localeCompare(a.dataset.title));
+            }
+
+            console.log('Found', filtered.length, 'results');
+            
+            articlesGrid.innerHTML = '';
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                filtered.forEach(article => {
+                    articlesGrid.appendChild(article.cloneNode(true));
+                });
+            }
         }
-    });
-});
+        
+        // 事件监听
+        searchInput.addEventListener('input', performSearch);
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+        sortSelect.addEventListener('change', performSearch);
+        
+        console.log('Search event listeners attached');
+    }
+    
+    // 立即执行初始化
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSearch);
+    } else {
+        initSearch();
+    }
+})();
 </script>
 
 <style>

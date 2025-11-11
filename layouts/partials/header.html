@@ -26,69 +26,103 @@
     </nav>
 </header>
 
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
 <script>
-    (async function () {
-        // 确保Fuse.js已加载
-        if (typeof Fuse === 'undefined') {
-            console.error('Fuse.js library not loaded');
-            return;
+    // 等待DOM和Fuse.js都加载完成
+    (function() {
+        // 加载Fuse.js库
+        function loadFuseJS() {
+            return new Promise((resolve, reject) => {
+                if (typeof Fuse !== 'undefined') {
+                    resolve();
+                    return;
+                }
+                
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2';
+                script.onload = () => resolve();
+                script.onerror = () => reject(new Error('Failed to load Fuse.js'));
+                document.head.appendChild(script);
+            });
         }
 
-        try {
-            const res = await fetch('/index.json');
-            if (!res.ok) throw new Error('Failed to fetch search index');
-            const data = await res.json();
-
-            const input = document.getElementById('headerSearch');
-            const results = document.getElementById('headerSearchResults');
-
-            if (!input || !results) {
-                console.error('Search elements not found');
-                return;
-            }
-
-            const fuse = new Fuse(data, {
-                keys: ['title', 'content', 'description', 'tags', 'categories'],
-                threshold: 0.3,
-                minMatchCharLength: 2,
-                useExtendedSearch: true
-            });
-
-            input.addEventListener('input', function () {
-                const q = input.value.trim();
-                results.innerHTML = '';
-                if (!q) {
-                    results.style.display = 'none';
+        // 初始化搜索功能
+        async function initSearch() {
+            try {
+                // 等待Fuse.js加载
+                await loadFuseJS();
+                
+                if (typeof Fuse === 'undefined') {
+                    console.error('Fuse.js library not loaded');
                     return;
                 }
 
-                const found = fuse.search(q);
-                if (found.length > 0) {
-                    results.style.display = 'block';
-                    found.slice(0, 5).forEach(({ item }) => {
-                        const div = document.createElement('div');
-                        div.className = 'search-result-item';
-                        div.innerHTML = `
-                            <a href="${item.permalink}">
-                                <h3>${item.title}</h3>
-                            </a>
-                        `;
-                        results.appendChild(div);
-                    });
-                } else {
-                    results.style.display = 'none';
-                }
-            });
+                // 获取搜索元素
+                const input = document.getElementById('headerSearch');
+                const results = document.getElementById('headerSearchResults');
 
-            // Hide results when clicking outside
-            document.addEventListener('click', function (e) {
-                if (!input.contains(e.target) && !results.contains(e.target)) {
-                    results.style.display = 'none';
+                if (!input || !results) {
+                    console.error('Search elements not found');
+                    return;
                 }
-            });
-        } catch (error) {
-            console.error('Header search initialization failed:', error);
+
+                // 加载搜索索引
+                const res = await fetch('/index.json');
+                if (!res.ok) throw new Error('Failed to fetch search index');
+                const data = await res.json();
+
+                // 初始化Fuse搜索
+                const fuse = new Fuse(data, {
+                    keys: ['title', 'content', 'description', 'tags', 'categories'],
+                    threshold: 0.3,
+                    minMatchCharLength: 2,
+                    useExtendedSearch: true
+                });
+
+                // 绑定输入事件
+                input.addEventListener('input', function () {
+                    const q = input.value.trim();
+                    results.innerHTML = '';
+                    if (!q) {
+                        results.style.display = 'none';
+                        return;
+                    }
+
+                    const found = fuse.search(q);
+                    if (found.length > 0) {
+                        results.style.display = 'block';
+                        found.slice(0, 5).forEach(({ item }) => {
+                            const div = document.createElement('div');
+                            div.className = 'search-result-item';
+                            div.innerHTML = `
+                                <a href="${item.permalink}">
+                                    <h3>${item.title}</h3>
+                                </a>
+                            `;
+                            results.appendChild(div);
+                        });
+                    } else {
+                        results.style.display = 'none';
+                    }
+                });
+
+                // 点击外部隐藏结果
+                document.addEventListener('click', function (e) {
+                    if (!input.contains(e.target) && !results.contains(e.target)) {
+                        results.style.display = 'none';
+                    }
+                });
+
+                console.log('Header search initialized successfully');
+            } catch (error) {
+                console.error('Header search initialization failed:', error);
+            }
+        }
+
+        // DOM加载完成后初始化
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSearch);
+        } else {
+            initSearch();
         }
     })();
 </script>
