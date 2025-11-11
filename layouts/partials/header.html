@@ -1,267 +1,152 @@
-<header class="navbar-glass">
-    <div class="header-container glass">
-        <div class="site-title">
-            <h1 class="site-title-text">{{ .Site.Title }}</h1>
+{{- if (or (eq .Kind "page") (eq .Kind "section")) }}
+{{- if not .Params.cover }}
+{{- if (or .Params.headers.image .Params.cover.image) }}
+{{- $image := .Params.headers.image | default .Params.cover.image }}
+{{- $alt := .Params.headers.caption | default .Params.cover.caption | default "" }}
+<style>
+    .post-header-cover {
+        background-image: url({{ $image }});
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 30vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .post-header-cover-text {
+        color: #fff;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+</style>
+<div class="post-header-cover">
+    <div class="post-header-cover-text">{{- $alt | default .Title -}}</div>
+</div>
+{{- end }}
+{{- end }}
+{{- end }}
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            {{- $label_text := (site.Params.label.text | default site.Title) }}
+            {{- if site.Title }}
+            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
+                {{- if site.Params.label.icon }}
+                {{- $img := resources.Get site.Params.label.icon }}
+                {{- if $img }}
+                    {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+                    {{- if hugo.IsExtended -}}
+                        {{- $processableFormats = $processableFormats | append "webp" -}}
+                    {{- end -}}
+                    {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+                    {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
+                        {{- if site.Params.label.iconHeight }}
+                            {{- $img = $img.Resize (printf "x%d" site.Params.label.iconHeight) }}
+                        {{- else }}
+                            {{- $img = $img.Resize "x30" }}
+                        {{- end }}
+                    {{- end }}
+                    <img src="{{ $img.Permalink }}" alt="" aria-label="logo"
+                        height="{{- site.Params.label.iconHeight | default "30" -}}">
+                {{- else }}
+                <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
+                    height="{{- site.Params.label.iconHeight | default "30" -}}">
+                {{- end -}}
+                {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
+                    {{ site.Params.label.iconSVG | safeHTML }}
+                {{- end -}}
+                {{- $label_text -}}
+            </a>
+            {{- end }}
         </div>
-        <div class="header-search-container">
-            <input type="search" id="headerSearch" class="input-glass" placeholder="{{ i18n " search" }}" aria-label="search">
-            <div id="headerSearchResults" class="search-results glass"></div>
-        </div>
-    </div>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="{{ " /" | relLangURL }}" class="nav-link btn-glass">{{ i18n "home" }}</a></li>
-            {{ range .Site.Menus.main }}
-            <li><a href="{{ .URL | relLangURL }}" class="nav-link btn-glass">{{ i18n .Identifier }}</a></li>
-            {{ end }}
-            <li><a href="/search" class="nav-link btn-glass">{{ i18n "search" }}</a></li>
-            <li class="language-switch">
-                {{ range .Site.Languages }}
-                {{ if ne .Lang $.Site.Language.Lang }}
-                <a href="{{ .Lang | relLangURL }}" class="lang-item btn-glass">{{ .LanguageName }}</a>
-                {{ end }}
-                {{ end }}
+
+        <ul id="menu">
+            {{- $url := .RelPermalink -}}
+            {{- range site.Menus.main }}
+            {{- $menuURL := .URL | relLangURL -}}
+            <li>
+                <a href="{{ $menuURL }}" title="{{ .Name }}">
+                    {{- if eq $url $menuURL }}
+                    <span class="active">{{ .Name }}</span>
+                    {{- else }}
+                    {{ .Name }}
+                    {{- end }}
+                </a>
             </li>
+            {{- end }}
+            {{- if (and site.Params.search.enable (ne .Kind "section")) }}
+            <li>
+                <a href="/search/" title="{{ T "search" | default "搜索" }}">
+                    {{- T "search" | default "搜索" }}
+                </a>
+            </li>
+            {{- end }}
         </ul>
+
+        {{- if (not site.Params.disableThemeToggle) }}
+        <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+            <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </button>
+        {{- end }}
+
+        {{- if site.Params.ShowCodeCopyButtons }}
+        <button id="share-toggle" accesskey="s" title="(Alt + S)" aria-label="Share">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+        </button>
+        {{- end }}
     </nav>
 </header>
 
+{{- if site.Params.search.enable }}
 <script>
-    // 等待DOM和Fuse.js都加载完成
-    (function() {
-        // 加载Fuse.js库
-        function loadFuseJS() {
-            return new Promise((resolve, reject) => {
-                if (typeof Fuse !== 'undefined') {
-                    resolve();
-                    return;
-                }
-                
-                const script = document.createElement('script');
-                script.src = 'https://cdn.jsdelivr.net/npm/fuse.js@6.6.2';
-                script.onload = () => resolve();
-                script.onerror = () => reject(new Error('Failed to load Fuse.js'));
-                document.head.appendChild(script);
-            });
-        }
-
-        // 初始化搜索功能
-        async function initSearch() {
-            try {
-                // 等待Fuse.js加载
-                await loadFuseJS();
-                
-                if (typeof Fuse === 'undefined') {
-                    console.error('Fuse.js library not loaded');
-                    return;
-                }
-
-                // 获取搜索元素
-                const input = document.getElementById('headerSearch');
-                const results = document.getElementById('headerSearchResults');
-
-                if (!input || !results) {
-                    console.error('Search elements not found');
-                    return;
-                }
-
-                // 加载搜索索引
-                const res = await fetch('/index.json');
-                if (!res.ok) throw new Error('Failed to fetch search index');
-                const data = await res.json();
-
-                // 初始化Fuse搜索
-                const fuse = new Fuse(data, {
-                    keys: ['title', 'content', 'description', 'tags', 'categories'],
-                    threshold: 0.3,
-                    minMatchCharLength: 2,
-                    useExtendedSearch: true
-                });
-
-                // 绑定输入事件
-                input.addEventListener('input', function () {
-                    const q = input.value.trim();
-                    results.innerHTML = '';
-                    if (!q) {
-                        results.style.display = 'none';
-                        return;
-                    }
-
-                    const found = fuse.search(q);
-                    if (found.length > 0) {
-                        results.style.display = 'block';
-                        found.slice(0, 5).forEach(({ item }) => {
-                            const div = document.createElement('div');
-                            div.className = 'search-result-item';
-                            div.innerHTML = `
-                                <a href="${item.permalink}">
-                                    <h3>${item.title}</h3>
-                                </a>
-                            `;
-                            results.appendChild(div);
-                        });
-                    } else {
-                        results.style.display = 'none';
-                    }
-                });
-
-                // 点击外部隐藏结果
-                document.addEventListener('click', function (e) {
-                    if (!input.contains(e.target) && !results.contains(e.target)) {
-                        results.style.display = 'none';
-                    }
-                });
-
-                console.log('Header search initialized successfully');
-            } catch (error) {
-                console.error('Header search initialization failed:', error);
-            }
-        }
-
-        // DOM加载完成后初始化
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initSearch);
-        } else {
-            initSearch();
-        }
-    })();
-</script>
-
-<style>
-    /* 导航栏滚动效果 */
-    .navbar-glass {
-        transition: all 0.3s ease;
-    }
-
-    /* 标题样式 */
-    .site-title-text {
-        margin: 0;
-        font-size: 1.5rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    /* 导航链接样式增强 */
-    .nav-links {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin: 1rem 0;
-    }
-
-    .nav-link, .lang-item {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .nav-link::after, .lang-item::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #667eea, #764ba2);
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-    }
-
-    .nav-link:hover::after, .lang-item:hover::after {
-        width: 100%;
-    }
-
-    /* 搜索结果样式优化 */
-    .search-results {
-        margin-top: 0.5rem;
-        max-height: 400px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        border-radius: 16px;
-        overflow: hidden;
-    }
-
-    .search-result-item {
-        padding: 1rem;
-        transition: all 0.2s ease;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .search-result-item:last-child {
-        border-bottom: none;
-    }
-
-    .search-result-item:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: translateX(4px);
-    }
-
-    .search-result-item h3 {
-        margin: 0 0 0.25rem 0;
-        font-size: 1rem;
-        font-weight: 600;
-        color: rgba(0, 0, 0, 0.9);
-    }
-
-    /* 暗色模式搜索结果 */
-    @media (prefers-color-scheme: dark) {
-        .search-result-item h3 {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .search-result-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-    }
-
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-        .header-container {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 1rem;
-        }
-
-        .site-title {
-            text-align: center;
-        }
-
-        .header-search-container {
-            width: 100%;
-            margin: 0;
-        }
-
-        .nav-links {
-            gap: 0.5rem;
-            justify-content: center;
-        }
-
-        .nav-link, .lang-item {
-            padding: 0.5rem 0.75rem;
-            font-size: 0.9rem;
-        }
-    }
-
-    /* 滚动检测脚本 */
-</style>
-<script>
+    // 简化的搜索功能
     document.addEventListener('DOMContentLoaded', function() {
-        const navbar = document.querySelector('.navbar-glass');
+        const searchForm = document.createElement('form');
+        searchForm.action = '/search/';
+        searchForm.method = 'GET';
+        searchForm.className = 'search-form';
 
-        function updateNavbar() {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+        const searchInput = document.createElement('input');
+        searchInput.type = 'search';
+        searchInput.name = 'q';
+        searchInput.placeholder = '搜索...';
+        searchInput.className = 'search-input';
+
+        searchForm.appendChild(searchInput);
+
+        const menu = document.getElementById('menu');
+        if (menu) {
+            const searchLi = document.createElement('li');
+            searchLi.appendChild(searchForm);
+            menu.appendChild(searchLi);
         }
-
-        window.addEventListener('scroll', updateNavbar);
-        updateNavbar(); // 初始化检查
     });
 </script>
+{{- end }}

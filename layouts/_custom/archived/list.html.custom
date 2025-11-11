@@ -1,0 +1,235 @@
+{{ define "main" }}
+<style>
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-in;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+
+<div class="container mx-auto py-8 max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <!-- 左侧导航栏 (隐藏在移动设备上) -->
+        <aside class="hidden lg:block">
+            <div class="sticky top-20">
+                <!-- 类别导航会通过 JavaScript 插入这里 -->
+            </div>
+        </aside>
+
+        <!-- 右侧主要内容 -->
+        <main class="lg:col-span-3">
+            <h1 class="text-4xl font-bold text-gray-900 mb-8 pb-4 border-b-4 border-blue-600">
+                {{ .Title }}
+            </h1>
+
+            <!-- 搜索和排序栏 -->
+            <div class="mb-8 bg-white p-6 rounded-lg shadow-md">
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <div class="flex-1 w-full">
+                        <input type="search" id="search-input"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                               placeholder="搜索文章..."
+                               aria-label="search">
+                    </div>
+                    <select id="sort-select"
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            aria-label="sort">
+                        <option value="最新优先">最新优先</option>
+                        <option value="最旧优先">最旧优先</option>
+                        <option value="标题A-Z">标题A-Z</option>
+                        <option value="标题Z-A">标题Z-A</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 文章卡片网格 -->
+            <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                {{ range .Paginator.Pages }}
+                <a href="{{ .RelPermalink }}" class="blog-card group cursor-pointer"
+                   data-title="{{ .Title }}"
+                   data-tags="{{ if .Params.tags }}{{ delimit .Params.tags ", " }}{{ end }}"
+                   data-date="{{ .Date.Format "2006-01-02" }}">
+                    <div class="h-full bg-white rounded-lg shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden flex flex-col">
+                        {{ if .Params.image }}
+                        <img src="{{ .Params.image }}" alt="{{ .Title }}"
+                             class="w-full h-24 object-cover">
+                        {{ end }}
+                        <div class="p-4 flex flex-col flex-1">
+                            <h3 class="text-sm font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                                {{ .Title }}
+                            </h3>
+                            {{ if .Params.description }}
+                            <p class="text-xs text-gray-600 mb-3 line-clamp-2 flex-1">{{ .Params.description }}</p>
+                            {{ else }}
+                            <p class="text-xs text-gray-600 mb-3 line-clamp-2 flex-1">{{ .Summary }}</p>
+                            {{ end }}
+                            <div class="border-t pt-2 mt-auto">
+                                <div class="flex items-center justify-between text-xs text-gray-500 gap-1">
+                                    <span>📅 {{ .Date.Format "01-02" }}</span>
+                                    <span>📊 {{ .WordCount }}</span>
+                                    <span>⏱️ {{ .ReadingTime }}m</span>
+                                </div>
+                                {{ if .Params.tags }}
+                                <div class="mt-2 flex flex-wrap gap-1">
+                                    {{ range first 2 .Params.tags }}
+                                    <span class="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded">
+                                        #{{ . }}
+                                    </span>
+                                    {{ end }}
+                                    {{ if gt (len .Params.tags) 2 }}
+                                    <span class="inline-block px-2 py-0.5 text-xs text-gray-500">
+                                        +{{ sub (len .Params.tags) 2 }}
+                                    </span>
+                                    {{ end }}
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {{ end }}
+            </div>
+
+            <!-- 没有结果提示 -->
+            <div id="no-results" class="hidden text-center py-12">
+                <h3 class="text-lg font-medium text-gray-600 mb-2">没有找到相关文章</h3>
+                <p class="text-gray-500">尝试调整搜索条件或浏览其他分类</p>
+            </div>
+
+            <!-- 分页 -->
+            {{ if .Paginator }}
+            <nav class="flex justify-center gap-2 mt-8">
+                {{ if .Paginator.HasPrev }}
+                <a href="{{ .Paginator.Prev.URL }}" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">← 上一页</a>
+                {{ end }}
+                
+                {{ range .Paginator.Pagers }}
+                {{ if eq .PageNumber $.Paginator.PageNumber }}
+                <span class="px-4 py-2 bg-blue-600 text-white rounded-lg">{{ .PageNumber }}</span>
+                {{ else }}
+                <a href="{{ .URL }}" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">{{ .PageNumber }}</a>
+                {{ end }}
+                {{ end }}
+                
+                {{ if .Paginator.HasNext }}
+                <a href="{{ .Paginator.Next.URL }}" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">下一页 →</a>
+                {{ end }}
+            </nav>
+            {{ end }}
+        </main>
+    </div>
+</div>
+
+<script>
+// 智能搜索功能 - 简化版
+(function() {
+    let initialized = false;
+    
+    function initSearch() {
+        if (initialized) return;
+        
+        const searchInput = document.getElementById('search-input');
+        const sortSelect = document.getElementById('sort-select');
+        const articlesGrid = document.getElementById('articles-grid');
+        const noResults = document.getElementById('no-results');
+        
+        if (!searchInput || !sortSelect || !articlesGrid || !noResults) {
+            console.warn('Search elements not found');
+            setTimeout(initSearch, 100);
+            return;
+        }
+        
+        const allArticles = Array.from(document.querySelectorAll('.blog-card'));
+        if (allArticles.length === 0) {
+            console.warn('No articles found');
+            return;
+        }
+        
+        initialized = true;
+        console.log('Search initialized with', allArticles.length, 'articles');
+        
+        // 执行搜索
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const sortBy = sortSelect.value;
+            console.log('Searching for:', searchTerm);
+            
+            if (!searchTerm) {
+                // 显示全部
+                articlesGrid.innerHTML = '';
+                allArticles.forEach(article => {
+                    articlesGrid.appendChild(article.cloneNode(true));
+                });
+                noResults.classList.add('hidden');
+                return;
+            }
+
+            // 本地搜索
+            const filtered = allArticles.filter(article => {
+                const title = (article.dataset.title || '').toLowerCase();
+                const tags = (article.dataset.tags || '').toLowerCase();
+                return title.includes(searchTerm) || tags.includes(searchTerm);
+            });
+
+            // 排序
+            if (sortBy === '最旧优先') {
+                filtered.sort((a, b) => new Date(a.dataset.date) - new Date(b.dataset.date));
+            } else if (sortBy === '标题A-Z') {
+                filtered.sort((a, b) => a.dataset.title.localeCompare(b.dataset.title));
+            } else if (sortBy === '标题Z-A') {
+                filtered.sort((a, b) => b.dataset.title.localeCompare(a.dataset.title));
+            }
+
+            console.log('Found', filtered.length, 'results');
+            
+            articlesGrid.innerHTML = '';
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                filtered.forEach(article => {
+                    articlesGrid.appendChild(article.cloneNode(true));
+                });
+            }
+        }
+        
+        // 事件监听
+        searchInput.addEventListener('input', performSearch);
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+        sortSelect.addEventListener('change', performSearch);
+        
+        console.log('Search event listeners attached');
+    }
+    
+    // 立即执行初始化
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSearch);
+    } else {
+        initSearch();
+    }
+})();
+</script>
+
+<style>
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+</style>
+{{ end }}

@@ -1,0 +1,11 @@
+{{- if .Site.Params.Comments }}
+{{- if and (ne .Params.Comments false) }}
+<div id="comments" class="comments">
+    {{- /* Simple comments system - disabled by default */}}
+    <div class="comments-placeholder">
+        <p>{{ T "comments_disabled" | default "评论功能已禁用" }}</p>
+        <p><small>如需启用评论，请在配置中添加相应的评论系统设置</small></p>
+    </div>
+</div>
+{{- end }}
+{{- end }}

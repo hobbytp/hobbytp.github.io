@@ -9,12 +9,10 @@ This is a Hugo-based AI tech blog (个人AI技术博客) focused on AI content i
 ## Key Development Commands
 
 ### Local Development
-```bash
-# Start development server
-hugo server -D --bind 0.0.0.0
 
-# Using Docker Compose (recommended)
-docker-compose up hugo
+```bash
+# Start development server (recommended)
+make dev
 
 # Fresh start (clean + dev)
 make fresh
@@ -24,10 +22,9 @@ make stop
 ```
 
 ### Build & Deployment
+
 ```bash
 # Production build
-hugo --minify
-# or
 make build
 
 # Full build pipeline (image optimization + analysis + build + performance)
@@ -41,6 +38,7 @@ make clean
 ```
 
 ### Content Management
+
 ```bash
 # Create new content
 hugo new content/zh/technologies/new-article.md
@@ -55,6 +53,7 @@ python scripts/daily_ai_collector_v2.py
 ```
 
 ### Analysis & Optimization
+
 ```bash
 # Analyze content quality
 make analyze-content
@@ -81,6 +80,7 @@ make performance-report
 ## Architecture & Structure
 
 ### Content Organization
+
 ```
 content/
 ├── zh/                    # Chinese content (primary)
@@ -98,18 +98,21 @@ content/
 ```
 
 ### Key Configuration Files
+
 - `config.toml` - Main Hugo configuration with Chinese localization
 - `docker-compose.yml` - Development and build containers
 - `Makefile` - Comprehensive build automation and tools
 - `.github/workflows/` - CI/CD pipelines for automated deployment
 
 ### Automation & Scripts
+
 - `scripts/daily_ai_collector_v2.py` - Automated AI news collection using multiple APIs
 - `scripts/update_word_count.py` - Word count statistics for all articles
 - `scripts/blog_analyzer.py` - Content analysis and reporting
 - `tools/` - Image optimization, performance monitoring, and content analysis tools
 
 ### Theme & Customization
+
 - Uses PaperMod theme with extensive customization
 - Custom layouts in `layouts/` directory
 - Enhanced link styling with visual indicators
@@ -118,21 +121,50 @@ content/
 
 ## Development Workflow
 
+### 🚨 CRITICAL: Architecture Rules
+**THIS PROJECT USES PAPERMOD STANDARD ARCHITECTURE - DO NOT MODIFY!**
+
+#### ✅ MANDATORY Requirements:
+- **NEVER** run `scripts/toggle-spa-mode.sh` (DISABLED)
+- **NEVER** modify core Hugo templates (`layouts/_default/baseof.html`, `list.html`)
+- **NEVER** add Tailwind CDN alongside PaperMod CSS
+- **ALWAYS** test with `make build` before committing
+- **READ** `ARCHITECTURE.md` before any changes
+
+#### ✅ Approved Templates:
+- `layouts/_default/baseof.html` - PaperMod standard only
+- `layouts/_default/list.html` - PaperMod standard only
+- `layouts/_default/single.html` - PaperMod compatible
+- `layouts/partials/header.html` - Clean navigation
+- `layouts/partials/head.html` - Optimized CSS bundling
+
+#### ❌ FORBIDDEN:
+- SPA mode scripts and templates
+- Tailwind CDN integration
+- Complex JavaScript routing systems
+- Hugo core template modification
+- Large custom CSS files (>500 lines)
+
 ### Content Creation Process
+
 1. Create new article using `hugo new content/zh/category/article-name.md`
 2. Write content with proper front matter (title, date, tags, categories)
 3. Use `make analyze-content-ai` to get AI-powered content suggestions
-4. Test locally with `hugo server -D`
-5. Update word counts with `python scripts/update_word_count.py`
+4. **CRITICAL:** Test with `make build` to ensure architecture stability
+5. Test locally with `make dev`
+6. Update word counts with `python scripts/update_word_count.py`
 
 ### Daily Content Automation
+
 The blog features automated daily AI news collection:
+
 - Uses multiple APIs (Google Gemini, Perplexity, custom news sources)
 - Filters content from last 24 hours
 - Removes duplicates and ranks by quality
 - Auto-generates daily articles in `content/zh/daily_ai/`
 
 ### Deployment Pipeline
+
 - Automatic deployment to GitHub Pages on push to main branch
 - CI/CD includes submodules, dependencies, and optimization
 - Production build with minification and performance optimization
@@ -140,19 +172,20 @@ The blog features automated daily AI news collection:
 ## Content Guidelines
 
 ### Front Matter Structure
+
 ```yaml
 ---
 title: "文章标题"
 date: 2024-01-15T10:00:00+08:00
 draft: false
 tags: ["AI", "LLM", "技术"]
-categories: ["技术分析"]
-author: "Peng Tan"
+categories: ["ai_tools"]
 description: "文章简介"
 ---
 ```
 
 ### Content Categories
+
 - **papers**: Academic paper reviews and analysis
 - **technologies**: Technical tutorials and deep dives
 - **projects**: Open source project showcases
@@ -168,18 +201,22 @@ description: "文章简介"
 ## Special Features
 
 ### AI-Enhanced Content Analysis
+
 The blog includes sophisticated AI-powered content analysis tools that can:
+
 - Analyze content quality and readability
 - Suggest improvements for structure and clarity
 - Generate metadata and tags automatically
 - Create performance reports and analytics
 
 ### Multi-Language Support
+
 - Primary language: Chinese (Simplified)
 - Secondary language: English (for important content)
 - Configurable through Hugo's i18n system
 
 ### Performance Optimizations
+
 - Image optimization pipeline with multiple format support
 - CDN-ready asset management
 - Performance monitoring and reporting
@@ -188,12 +225,15 @@ The blog includes sophisticated AI-powered content analysis tools that can:
 ## Environment Setup
 
 ### Requirements
-- Hugo Extended v0.120.0+
+
+- Hugo Extended v0.140.0+
 - Docker & Docker Compose (for containerized development)
-- Python 3.8+ (for scripts and automation)
+- Python 3.11+ (for scripts and automation)
 - Node.js (optional, for theme development)
+- Hugo theme "PaperMod" (for theme customization)
 
 ### Initial Setup
+
 ```bash
 # Clone repository
 git clone https://github.com/hobbytp/hobbytp.github.io.git
@@ -210,11 +250,13 @@ make fresh
 ```
 
 ### Python Environment
+
 The project uses a conda environment called `news_collector` for automation scripts. The Makefile automatically detects and uses this environment when available.
 
 ## Deployment
 
 The blog is automatically deployed to GitHub Pages when pushing to the `main` branch. The deployment process includes:
+
 - Building the site with Hugo
 - Optimizing images and assets
 - Running performance analysis

@@ -121,8 +121,38 @@ ShowCodeCopyButtons = true
 ShowToc = true
 enableSchemaOrg = true
 
+# Sidebar configuration
+[params.sidebar]
+avatar = "/images/profile.jpg"
+email = "hobbytp@gmail.com"
+slogan = "Make yesterday better"
+showOnlineStatus = false
+
+# Projects in sidebar
+[[params.sidebar.projects]]
+name = "My Blogs"
+url = "https://github.com/hobbytp/hobbytp.github.io"
+description = "精选技术博客"
+
+[[params.sidebar.projects]]
+name = "MyDeeperResearch"
+url = "https://github.com/hobbytp/DeeperResearch"
+description = "AI深度调研助手"
+
+
+# Date format
+DateFormat = "2025-10-01"
+
+# Comments functionality (disabled)
+[params.comments]
+enable = false
+
+# Search functionality
+[params.search]
+enable = true
+
 [params.profileMode]
-enabled = true
+enabled = false
 title = "Peng Tan's AI Blog"
 subtitle = "关注 AI 领域的论文解读、最新技术、开源项目、知名人物访谈、动态和商业产品介绍"
 imageUrl = "/images/profile.jpg"
@@ -143,77 +173,93 @@ url = "/zh"
 
 
 [menu]
+
+# 主导航菜单
 [[menu.main]]
-name = "首页"
+name = "🏠 首页"
 url = "/"
 weight = 1
 
 [[menu.main]]
-name = "个人洞察"
-url = "/categories/my_insights"
+name = "📝 文章"
+url = "/posts/"
 weight = 2
 
 [[menu.main]]
-name = "名人洞察"
-url = "/categories/celebrity_insights"
+name = "🏷️ 分类"
+url = "/categories/"
 weight = 3
 
 [[menu.main]]
-name = "AI标准规范"
-url = "/categories/ai_spec"
+name = "🤖 多智能体"
+url = "/categories/mas/"
 weight = 4
 
-
 [[menu.main]]
-name = "开源项目"
-url = "/categories/projects"
+name = "📚 技术栈"
+url = "/categories/technologies/"
 weight = 5
 
 [[menu.main]]
-name = "大厂产品线"
-url = "/categories/big_companies"
+name = "🔍 搜索"
+url = "/search/"
 weight = 6
 
+# 详细分类菜单（可选，不在顶部显示）
+# [[menu.main]]
+# name = "个人洞察"
+# url = "/categories/my_insights"
+# weight = 10
 
-[[menu.main]]
-name = "论文解读"
-url = "/categories/papers"
-weight = 7
+# [[menu.main]]
+# name = "名人洞察"
+# url = "/categories/celebrity_insights"
+# weight = 11
 
-[[menu.main]]
-name = "技术解析"
-url = "/categories/technologies"
-weight = 8
+# [[menu.main]]
+# name = "AI标准规范"
+# url = "/categories/ai_spec"
+# weight = 12
 
-[[menu.main]]
-name = "大模型"
-url = "/categories/large_models/"
-weight = 9
+# [[menu.main]]
+# name = "开源项目"
+# url = "/categories/projects"
+# weight = 13
 
-[[menu.main]]
-name = "训练微调技术"
-url = "/categories/training"
-weight = 10
+# [[menu.main]]
+# name = "大厂产品线"
+# url = "/categories/big_companies"
+# weight = 14
 
-[[menu.main]]
-name = "上下文工程"
-url = "/categories/context_engineering"
-weight = 11
+# [[menu.main]]
+# name = "论文解读"
+# url = "/categories/papers"
+# weight = 15
 
-[[menu.main]]
-name = "多代理技术"
-url = "/categories/mas"
-weight = 12
+# [[menu.main]]
+# name = "大模型"
+# url = "/categories/large_models/"
+# weight = 16
 
-[[menu.main]]
-name = "AI编程"
-url = "/categories/ai_programming"
-weight = 13
+# [[menu.main]]
+# name = "训练微调技术"
+# url = "/categories/training"
+# weight = 17
 
-[[menu.main]]
-name = "AI工具箱"
-url = "/categories/ai_tools"
-weight = 14
+# [[menu.main]]
+# name = "上下文工程"
+# url = "/categories/context_engineering"
+# weight = 18
+
+# [[menu.main]]
+# name = "AI编程"
+# url = "/categories/ai_programming"
+# weight = 19
+
+# [[menu.main]]
+# name = "AI工具箱"
+# url = "/categories/ai_tools"
+# weight = 20
 
 
 [[menu.main]]

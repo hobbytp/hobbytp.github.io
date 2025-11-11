@@ -101,3 +101,32 @@ AGENTS.md
 .serena/
 .trae/
 
+# Architecture Protection - Prevent SPA interference
+scripts/toggle-spa-mode.sh
+scripts/enable-spa-mode.sh
+scripts/activate-spa.sh
+# Keep disabled version tracked
+!scripts/disable-spa-mode.sh.backup
+
+# CSS Architecture Protection
+assets/css/custom.css.backup
+assets/css/glassmorphism.css
+!assets/css/custom.css
+
+# Template Architecture Protection
+layouts/_default/baseof-spa.html
+layouts/_default/list-spa.html
+layouts/_default/single-spa.html
+# Keep standard templates
+!layouts/_default/baseof.html
+!layouts/_default/list.html
+!layouts/_default/single.html
+
+
+CLAUDE.md
+.claude/
+.cursor/
+.gemini/
+.playwright-mcp/
+.serena/
+.trae/
