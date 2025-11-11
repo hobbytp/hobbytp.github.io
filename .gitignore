@@ -122,3 +122,11 @@ layouts/_default/single-spa.html
 !layouts/_default/list.html
 !layouts/_default/single.html
 
+
+CLAUDE.md
+.claude/
+.cursor/
+.gemini/
+.playwright-mcp/
+.serena/
+.trae/
