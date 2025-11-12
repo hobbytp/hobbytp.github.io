@@ -1,10 +1,12 @@
-# AI Tech Blog - Architecture Document
+# AI Tech Blog - Unified Architecture Document
 
-**Document Version:** 1.0
-**Date:** 2025-11-11
+**Document Version:** 2.0 (Merged)
+**Date:** 2025-11-12
 **Project:** AI Tech Blog (Peng Tan's AI Blog)
 **BMAD Phase:** 3 - Architecture
-**PRD Reference:** docs/prd.md
+**PRD Reference:** `docs/prd.md`
+
+> This file merges previous `architecture.md` and `architecture-fixes.md` into one authoritative source. All prior fix summaries are integrated; the separate fixes file is removed for simplicity.
 
 ---
 
@@ -14,34 +16,47 @@ This document defines the corrected and optimized architecture for the AI Tech B
 
 ## 2. Current Architecture Analysis & Issues
 
-### 2.1 🔴 Critical Issues Identified
+### 2.1 🔴 Historical Critical Issues (Resolved)
 
 #### 2.1.1 Missing Core Hugo Templates
+
 **Issue:** Essential Hugo templates were deleted, breaking the template inheritance chain
+
 - `layouts/_default/baseof.html` - Missing (CRITICAL)
 - `layouts/_default/list.html` - Missing (CRITICAL)
 - Impact: Site build failures, broken layout inheritance
 
+**Status:** ✅ Restored
+
 #### 2.1.2 Template Hierarchy Conflicts
+
 **Issue:** Custom SPA templates conflict with PaperMod theme templates
+
 - Custom `baseof-spa.html` vs. missing `baseof.html`
 - Custom `list-spa.html` vs. missing `list.html`
 - Impact: Inconsistent rendering, theme features breaking
 
+**Status:** ✅ Standard PaperMod templates reinstated; SPA templates archived only
+
 #### 2.1.3 CSS and Asset Management Issues
+
 **Issue:** Multiple CSS bundling approaches causing conflicts
+
 - Tailwind CSS loaded via CDN in custom templates
 - PaperMod's SCSS-based styling system
 - Custom glassmorphism CSS conflicts
 
+**Status:** ✅ Unified Hugo pipeline; Tailwind CDN removed; excessive overrides reduced
+
 ### 2.2 Current Working Components
-✅ **Working:**
-- Hugo static site generator (v0.146.0+)
-- PaperMod theme (submodule)
-- Multi-language support (zh/en)
-- Content organization structure
-- Automated news collection scripts
-- CI/CD pipeline via GitHub Actions
+
+✅ Hugo (v0.149.x)  
+✅ PaperMod theme  
+✅ Multi-language (zh/en)  
+✅ Automated content & news scripts  
+✅ CI/CD via GitHub Actions  
+✅ Left sidebar + right sticky TOC + ScrollSpy  
+✅ Architecture validation script (pre-commit)
 
 ## 3. Corrected Architecture Design
 
@@ -54,8 +69,8 @@ layouts/
 │   ├── list.html                # ✅ RESTORED - List page template
 │   ├── single.html              # Custom article layout
 │   ├── search.html              # Custom search functionality
-│   ├── baseof-spa.html          # SPA-specific base template
-│   └── list-spa.html            # SPA-specific list template
+│   ├── baseof-spa.html          # (Archived) SPA base – DO NOT ACTIVATE
+│   └── list-spa.html            # (Archived) SPA list – DO NOT ACTIVATE
 ├── partials/
 │   ├── head.html                # HTML head section
 │   ├── header.html              # ✅ Custom glassmorphism header
@@ -69,16 +84,16 @@ layouts/
 ### 3.2 CSS and Asset Architecture
 
 #### 3.2.1 Stacked CSS Strategy
-```
+```text
 assets/css/
 ├── main.css                     # PaperMod core styles (inherited)
 ├── extended/                    # Custom style extensions
 │   ├── typography.css          # Typography enhancements
 │   ├── components.css          # Component-specific styles
 │   └── responsive.css          # Responsive design rules
-├── glassmorphism.css           # Glassmorphism UI components
+├── glassmorphism.css           # (Optional) Glassmorphism UI components
 ├── custom.css                   # Site-specific customizations
-└── spa.css                      # SPA-specific styles
+└── spa.css                      # (Archived) SPA-specific styles (unused)
 ```
 
 #### 3.2.2 CSS Bundling Pipeline
@@ -92,6 +107,17 @@ assets/css/
 {{- $styles = $styles | append (resources.Get "css/custom.css") -}}
 {{- $bundle := $styles | resources.Concat "css/site.bundle.css" | resources.Minify -}}
 ```
+
+#### 3.2.3 Current Constraints & Guidelines
+
+| Rule | Status |
+|------|--------|
+| `custom.css` ≤ 1000 lines | ✅ (~745 lines) |
+| No Tailwind CDN | ✅ Removed |
+| No unsupported selectors like `:contains()` | ✅ Compliant |
+| Prefer modular split (layout/components/utilities) | 🚧 Planned |
+
+> Tailwind can be reconsidered only via local build tooling; CDN injection remains prohibited.
 
 ### 3.3 Content Management Architecture
 
@@ -291,15 +317,18 @@ Security Implementation:
 ```
 
 ### 6.2 Content Security Policy (CSP)
+
 ```
 Content-Security-Policy:
 default-src 'self';
-script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com;
+script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
 font-src 'self' https://fonts.gstatic.com;
 img-src 'self' data: https:;
 connect-src 'self' https://www.google-analytics.com;
 ```
+
+> Tailwind CDN removed; CSP tightened accordingly.
 
 ## 7. Deployment Architecture
 
@@ -398,6 +427,35 @@ Key Metrics:
   - Page Load Time: <2 seconds
   - Core Web Vitals: All "Good"
   - Mobile Performance: 90+ PageSpeed
+
+---
+
+## 11. Layout Enhancements Summary (Merged from Fixes)
+
+| Feature | Previous State | Current State | Status |
+|---------|----------------|---------------|--------|
+| Sidebar | None / fragile | Fixed left sidebar | ✅ |
+| TOC | Absent | Sticky + ScrollSpy | ✅ |
+| Template Mode | SPA overwrite risk | Stable multi-page | ✅ |
+| CSS Size | 2000+ lines (legacy) | ~745 lines focused | ✅ |
+| External CSS | Tailwind CDN injected | Removed / pipeline only | ✅ |
+| Navigation | Hard-coded SPA map | Hugo menu taxonomy | ✅ |
+| Validation | Manual checking | Automated pre-commit script | ✅ |
+
+### 11.1 ScrollSpy Overview
+
+Lightweight native JS observes heading intersection; updates TOC link `.active` and sets `aria-current="true"` for accessibility.
+
+### 11.2 Future Enhancements
+
+- Mobile sidebar collapse / drawer
+- TOC collapsible on narrow screens
+- Modular CSS refactor
+- Automated accessibility audit
+
+---
+
+Unified architecture file – supersedes the previous separate fixes document.
   - Site Uptime: 99.5%+
 
 Monitoring Tools:

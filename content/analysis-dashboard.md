@@ -4,7 +4,7 @@ date: 2025-11-01T09:30:00+08:00
 draft: false
 description: "Hugo博客内容分析仪表板，展示详细的内容质量统计和趋势分析"
 tags: ["分析", "仪表板", "统计", "SEO"]
-categories: ["工具"]
+categories: ["ai_tools"]
 wordCount: 354
 readingTime: 2
 ---

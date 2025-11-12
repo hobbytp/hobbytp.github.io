@@ -173,6 +173,15 @@ description: "文章简介"
 - CSS 文件：`assets/css/main.css`
 - 布局文件：`layouts/` 目录
 
+> 样式统一通过 Hugo 资源管线打包（指纹化输出），不使用外部 CSS CDN（如 Tailwind CDN）。
+
+### 🧩 布局特性
+
+- 左侧固定侧栏：提供分类与导航，桌面端始终可见
+- 中间主内容区：文章卡片网格与正文阅读自适应宽度
+- 右侧粘性目录（文章页）：自动生成目录，支持滚动联动高亮（ScrollSpy）
+- 指纹化 CSS 构建：Hugo 管线统一打包，无外部样式依赖
+
 ### 搜索功能
 
 集成了全文搜索，支持中英文内容检索。
@@ -182,6 +191,7 @@ description: "文章简介"
 - **自动部署**：推送到 main 分支自动触发 GitHub Pages 部署
 - **构建状态**：可在 Actions 页面查看构建状态
 - **CDN 加速**：静态资源通过 CDN 加速访问
+- **架构校验**：提交前自动运行验证脚本（检测外部 CSS CDN、模板结构、CSS 体积等），保障稳定性
 
 ## 🤝 贡献指南
 
@@ -261,6 +271,13 @@ This blog covers the following main areas:
 - **Language Support**: Chinese/English bilingual
 - **Search**: Integrated full-text search
 - **Comments**: Support for multiple comment plugins
+
+### 🧩 Layout Features
+
+- Fixed left sidebar with taxonomy/navigation
+- Adaptive central content area (cards + articles)
+- Sticky right-hand Table of Contents (posts) with scroll-driven highlighting
+- Fingerprinted CSS bundle via Hugo pipeline (no external CSS CDN)
 
 ## 🚀 Quick Start
 

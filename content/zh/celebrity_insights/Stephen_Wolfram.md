@@ -3,7 +3,7 @@ title: "Stephen Wolfram：计算宇宙的拓荒者"
 date: 2024-01-01T00:00:00+08:00
 draft: false
 tags: ["Stephen Wolfram", "科学家", "企业家", "计算", "AI"]
-categories: ["名人洞察"]
+categories: ["celebrity_insights"]
 author: "Peng Tan"
 description: "Stephen Wolfram的生平、贡献和思想，包括计算不可约性理论和Mathematica等工具"
 wordCount: 4141

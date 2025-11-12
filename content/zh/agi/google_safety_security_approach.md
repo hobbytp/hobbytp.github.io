@@ -1,11 +1,12 @@
-+++
-title = "Google: 一种通往技术通用人工智能安全的方法"
-date = "2025-04-17T20:20:00+08:00"
-draft = false
-tags = ["AGI", "安全", "技术", "Google", "技术风险"]
-categories = ["Safety", "Security", "AGI"]
-description = "本文介绍了Google关于AGI安全的技术报告，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
-+++
+---
+title: "Google: 一种通往技术通用人工智能安全的方法"
+date: "2025-04-17T20:20:00+08:00"
+draft: false
+tags: ["AGI", "安全", "技术", "Google", "技术风险"]
+categories: ["Safety", "Security", "AGI"]
+description: "本文介绍了Google关于AGI安全的技术报告，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+---
+
 ## 引言
 
 谷歌DeepMind实验室发布了一份145页的AI安全报告《An Approach to Technical AGI Safety and Security》
