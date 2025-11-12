@@ -62,7 +62,7 @@ This document defines the corrected and optimized architecture for the AI Tech B
 
 ### 3.1 Template Hierarchy Architecture
 
-```
+```text
 layouts/
 ├── _default/
 │   ├── baseof.html              # ✅ RESTORED - Hugo base template
@@ -122,7 +122,7 @@ assets/css/
 ### 3.3 Content Management Architecture
 
 #### 3.3.1 Content Structure
-```
+```text
 content/
 ├── zh/                          # Chinese content (primary)
 │   ├── papers/                 # Academic paper reviews
@@ -137,7 +137,7 @@ content/
 ```
 
 #### 3.3.2 Content Processing Pipeline
-```
+```text
 Content Creation → Quality Analysis → SEO Optimization → Build → Deploy
      ↓                ↓                   ↓           ↓        ↓
 Hugo Front Matter   AI Analysis        Auto Tags   Hugo     GitHub
@@ -148,7 +148,7 @@ Markdown Files   Content Score     Meta Tags    Minify   CDN
 ### 3.4 Automation Architecture
 
 #### 3.4.1 Content Collection System
-```
+```text
 Daily AI News Pipeline:
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │  Data Sources   │───▶│  Collection API  │───▶│  Quality Filter │
@@ -167,7 +167,7 @@ Daily AI News Pipeline:
 ```
 
 #### 3.4.2 Content Analysis System
-```
+```text
 Content Analysis Pipeline:
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │  Input Content  │───▶│  Analysis Engine │───▶│  Output Reports │
@@ -180,7 +180,7 @@ Content Analysis Pipeline:
 ### 3.5 Performance Architecture
 
 #### 3.5.1 Optimization Layers
-```
+```text
 Performance Optimization Stack:
 ┌─────────────────────────────────────────────────────────────┐
 │                     CDN Layer                               │
@@ -203,7 +203,7 @@ Performance Optimization Stack:
 ```
 
 #### 3.5.2 Image Processing Architecture
-```
+```text
 Image Processing Pipeline:
 Original Images → Hugo Processing → Multiple Formats → CDN Delivery
        │               │                │                │
@@ -217,7 +217,7 @@ Original Images → Hugo Processing → Multiple Formats → CDN Delivery
 ### 3.6 Multi-language Architecture
 
 #### 3.6.1 Language Management
-```
+```text
 Multi-language Structure:
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │  Chinese (zh)   │    │  English (en)    │    │  Language Data  │
@@ -254,7 +254,7 @@ Multi-language Structure:
 ## 5. Data Architecture
 
 ### 5.1 Content Data Flow
-```
+```text
 Content Creation → Hugo Processing → Static Files → CDN → Users
       │                │                │           │        │
   Markdown          Build           Optimized     Cache    Browser
@@ -281,7 +281,7 @@ weight: 100
 ```
 
 ### 5.3 Analytics Data
-```
+```text
 Analytics Collection:
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │  User Actions   │───▶│  GA4 Tracking    │───▶│  Analytics UI   │
@@ -318,7 +318,7 @@ Security Implementation:
 
 ### 6.2 Content Security Policy (CSP)
 
-```
+```text
 Content-Security-Policy:
 default-src 'self';
 script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
@@ -333,7 +333,7 @@ connect-src 'self' https://www.google-analytics.com;
 ## 7. Deployment Architecture
 
 ### 7.1 Build Process
-```
+```text
 Build Pipeline:
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │  Source Code    │───▶│  Hugo Build      │───▶│  GitHub Pages   │
@@ -422,48 +422,20 @@ Based on PRD requirements, implement features in priority order:
 ## 10. Monitoring & Maintenance
 
 ### 10.1 Performance Monitoring
-```yaml
+
 Key Metrics:
-  - Page Load Time: <2 seconds
-  - Core Web Vitals: All "Good"
-  - Mobile Performance: 90+ PageSpeed
 
----
-
-## 11. Layout Enhancements Summary (Merged from Fixes)
-
-| Feature | Previous State | Current State | Status |
-|---------|----------------|---------------|--------|
-| Sidebar | None / fragile | Fixed left sidebar | ✅ |
-| TOC | Absent | Sticky + ScrollSpy | ✅ |
-| Template Mode | SPA overwrite risk | Stable multi-page | ✅ |
-| CSS Size | 2000+ lines (legacy) | ~745 lines focused | ✅ |
-| External CSS | Tailwind CDN injected | Removed / pipeline only | ✅ |
-| Navigation | Hard-coded SPA map | Hugo menu taxonomy | ✅ |
-| Validation | Manual checking | Automated pre-commit script | ✅ |
-
-### 11.1 ScrollSpy Overview
-
-Lightweight native JS observes heading intersection; updates TOC link `.active` and sets `aria-current="true"` for accessibility.
-
-### 11.2 Future Enhancements
-
-- Mobile sidebar collapse / drawer
-- TOC collapsible on narrow screens
-- Modular CSS refactor
-- Automated accessibility audit
-
----
-
-Unified architecture file – supersedes the previous separate fixes document.
-  - Site Uptime: 99.5%+
+- Page Load Time: < 2 seconds
+- Core Web Vitals: All "Good"
+- Mobile Performance: 90+ PageSpeed
+- Site Uptime: 99.5%+
 
 Monitoring Tools:
-  - Google PageSpeed Insights
-  - Google Search Console
-  - Google Analytics
-  - Custom performance scripts
-```
+
+- Google PageSpeed Insights
+- Google Search Console
+- Google Analytics
+- Custom performance scripts
 
 ### 10.2 Architecture Health Checks
 ```yaml
@@ -494,6 +466,29 @@ Regular Checks:
 **Architecture Fixes:** Critical issues resolved
 **Next Phase:** Sprint Planning and Implementation
 **Estimated Implementation:** 12 weeks across 3 phases
+
+## Appendix: Layout Enhancements Summary (Merged from Fixes)
+
+| Feature | Previous State | Current State | Status |
+|---------|----------------|---------------|--------|
+| Sidebar | None / fragile | Fixed left sidebar | ✅ |
+| TOC | Absent | Sticky + ScrollSpy | ✅ |
+| Template Mode | SPA overwrite risk | Stable multi-page | ✅ |
+| CSS Size | 2000+ lines (legacy) | ~745 lines focused | ✅ |
+| External CSS | Tailwind CDN injected | Removed / pipeline only | ✅ |
+| Navigation | Hard-coded SPA map | Hugo menu taxonomy | ✅ |
+| Validation | Manual checking | Automated pre-commit script | ✅ |
+
+### A.1 ScrollSpy Overview
+
+Lightweight native JS observes heading intersection; updates TOC link `.active` and sets `aria-current="true"` for accessibility.
+
+### A.2 Future Enhancements
+
+- Mobile sidebar collapse / drawer
+- TOC collapsible on narrow screens
+- Modular CSS refactor
+- Automated accessibility audit
 
 ## 12. Critical Architecture Fixes Completed
 
