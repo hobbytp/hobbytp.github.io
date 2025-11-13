@@ -9,6 +9,8 @@ on:
       - "!static/images/optimized/**"
       - "!static/images/backup/**"
   pull_request:
+    branches:
+      - main
     paths:
       - "static/images/**"
       - "!static/images/optimized/**"
@@ -88,5 +90,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git push origin ${{ github.ref_name }}
+
+          # 智能推送逻辑
+          if [[ "${{ github.ref_name }}" == "main" ]]; then
+            echo "Pushing to main branch"
+            git push origin main
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "Pull request detected, pushing to current branch"
+            git push origin HEAD:${{ github.ref }}
+          else
+            echo "Pushing to current branch"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
           echo "推送优化后的图片到仓库"
