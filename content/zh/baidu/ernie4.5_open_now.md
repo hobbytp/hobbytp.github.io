@@ -8,9 +8,9 @@ description: "本文介绍了百度开源的ERNIE 4.5模型，并对其技术原
 wordCount: 8051
 readingTime: 33
 
-ai_cover: "static\images\generated-covers\16d7468d046dab9d04831d6934b4fe05.webp"
+ai_cover: "static/images/generated-covers/16d7468d046dab9d04831d6934b4fe05.webp"
 cover:
-  image: "static\images\generated-covers\16d7468d046dab9d04831d6934b4fe05.webp"
+  image: "static/images/generated-covers/16d7468d046dab9d04831d6934b4fe05.webp"
   alt: "ERNIE 4.5 技术报告解读"
   ai_generated: true
 ---

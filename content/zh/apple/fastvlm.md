@@ -8,9 +8,9 @@ description: "本文介绍了苹果公司开源的FastVLM-WebGPU模型，并对�
 wordCount: 2488
 readingTime: 10
 
-ai_cover: "static\images\generated-covers\f790eb466d80c333d1754d1a363a3c83.webp"
+ai_cover: "static/images/generated-covers/f790eb466d80c333d1754d1a363a3c83.webp"
 cover:
-  image: "static\images\generated-covers\f790eb466d80c333d1754d1a363a3c83.webp"
+  image: "static/images/generated-covers/f790eb466d80c333d1754d1a363a3c83.webp"
   alt: "FastVLM-WebGPU 技术报告解读"
   ai_generated: true
 ---

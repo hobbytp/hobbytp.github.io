@@ -31,9 +31,8 @@ AI Cover Image Generator - Hugo原生实现
   {{- if eq .Params.ai_generated true -}}
   <img src="{{ $webPath | absURL }}" alt="{{ .Params.cover.alt | default $title }}" loading="lazy" class="ai-generated">
     <div class="ai-generated-badge">🤖 AI生成</div>
-  {{- else }}
+{{- else }}
   <img src="{{ $webPath | absURL }}" alt="{{ .Params.cover.alt | default $title }}" loading="lazy">
-  {{- end }}
 {{- end }}
 {{- else -}}
   {{- /* 生成CSS艺术封面 */ -}}

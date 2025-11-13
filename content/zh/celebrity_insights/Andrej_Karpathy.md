@@ -8,9 +8,9 @@ description: "Andrej Karpathy在各个场合的观点"
 wordCount: 2296
 readingTime: 10
 
-ai_cover: "static\images\generated-covers\4d52d3101f70579984479c4d367251c4.webp"
+ai_cover: "static/images/generated-covers/4d52d3101f70579984479c4d367251c4.webp"
 cover:
-  image: "static\images\generated-covers\4d52d3101f70579984479c4d367251c4.webp"
+  image: "static/images/generated-covers/4d52d3101f70579984479c4d367251c4.webp"
   alt: "Andrej Karpathy在各个场合的观点"
   ai_generated: true
 ---

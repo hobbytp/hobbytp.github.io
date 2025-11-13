@@ -1,4 +1,4 @@
-.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture help
+.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers help
 
 # 默认目标
 .DEFAULT_GOAL := help
@@ -128,6 +128,70 @@ install-tools:
 	fi
 	@echo "✅ 工具依赖安装完成"
 
+# 生成AI封面图片（使用Hugo原生CSS方式，无需API）
+generate-covers:
+	@echo "🎨 为文章生成AI封面..."
+	@echo "使用Hugo原生CSS生成，无需外部API"
+	@echo ""
+	@echo "✅ AI封面系统已集成到文章卡片模板中"
+	@echo "📝 系统会根据文章的title和description自动生成"
+	@echo "🎭 支持分类特定配色和动画效果"
+	@echo ""
+	@echo "🔧 配置说明:"
+	@echo "  - 自动检测文章的title和description字段"
+	@echo "  - 基于内容哈希生成唯一封面样式"
+	@echo "  - 支持深色/浅色主题自适应"
+	@echo "  - 响应式设计，适配移动端"
+	@echo ""
+	@echo "💡 如需手动添加封面图片，在文章front matter中添加:"
+	@echo "cover:"
+	@echo "  image: \"/path/to/image.jpg\""
+	@echo "  alt: \"文章标题\""
+
+# 使用AI API生成真实封面图片
+generate-ai-covers:
+	@echo "🤖 Using AI API to generate real cover images..."
+	@echo ""
+	@echo "📋 Supported AI services:"
+	@echo "  - ModelScope Qwen-image (default, recommended in China)"
+	@echo "  - OpenAI DALL-E (requires VPN)"
+	@echo ""
+	@echo "🔑 Environment variables:"
+	@echo "  export MODELSCOPE_API_KEY=\"your-modelscope-key\""
+	@echo "  export TEXT2IMAGE_PROVIDER=\"modelscope\"  # or \"openai\""
+	@echo ""
+	@echo "🚀 Execute generation:"
+	@if [ -f .env ]; then \
+		eval $$(cat .env | grep -v '^#' | grep '=' | sed 's/^/export /'); \
+		echo "Environment variables loaded from .env"; \
+	fi; \
+	if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
+		echo "Starting AI cover generation..."; \
+		$(PYTHON_CMD) scripts/ai_cover_generator.py; \
+		echo "✅ AI cover generation completed!"; \
+	else \
+		echo "❌ Please configure API keys in .env file!"; \
+		echo "Add: MODELSCOPE_API_KEY=\"your-key\""; \
+	fi
+
+# 测试封面生成效果
+test-covers:
+	@echo "🧪 测试封面生成效果..."
+	@echo ""
+	@echo "启动开发服务器查看效果:"
+	@echo "  make dev"
+	@echo ""
+	@echo "🎯 测试要点:"
+	@echo "  1. 查看没有手动封面的文章是否显示AI生成的封面"
+	@echo "  2. 测试不同分类文章的配色差异"
+	@echo "  3. 验证深色/浅色主题切换效果"
+	@echo "  4. 检查鼠标悬停动画是否正常"
+	@echo "  5. 确认文字可读性（对比度、阴影）"
+	@echo ""
+	@echo "🔧 如果需要优化封面样式，编辑以下文件:"
+	@echo "  - layouts/_default/cover-image.html (封面模板)"
+	@echo "  - assets/css/custom.css (样式调整)"
+
 # 帮助信息
 help:
 	@echo "Hugo博客管理工具"
@@ -159,6 +223,11 @@ help:
 	@echo "  make analyze-content-ai FILE=path/to/file.md  🤖 AI增强分析单个文件"
 	@echo "  make export-pdf          导出PDF"
 	@echo "  make export-pdf FILE=path/to/file.md         导出单个文件PDF"
+	@echo ""
+	@echo "封面图片:"
+	@echo "  make generate-covers    生成CSS艺术封面（无需API）"
+	@echo "  make generate-ai-covers 使用AI API生成真实图片"
+	@echo "  make test-covers        测试封面生成效果"
 	@echo ""
 	@echo "维护命令:"
 	@echo "  make update-theme     更新Hugo主题"
