@@ -9,6 +9,8 @@ on:
       - "!static/images/optimized/**"
       - "!static/images/backup/**"
   pull_request:
+    branches:
+      - main
     paths:
       - "static/images/**"
       - "!static/images/optimized/**"
@@ -45,8 +47,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-image-optimization-
 
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
+          # Install jq for JSON parsing
+          sudo apt-get update && sudo apt-get install -y jq
+
+          # Install Python dependencies
           python -m pip install --upgrade pip
           pip install -r tools/image-optimization/requirements.txt
 
@@ -88,5 +94,26 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git push origin main
+
+          # 智能推送逻辑
+          if [[ "${{ github.ref_name }}" == "main" ]]; then
+            echo "Pushing to main branch"
+            git push origin main
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "Pull request detected, pushing to source branch instead"
+            # 获取PR的源分支名
+            SOURCE_BRANCH=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }} | \
+              jq -r '.head.ref')
+            echo "Source branch: $SOURCE_BRANCH"
+            if [[ "$SOURCE_BRANCH" != "null" && "$SOURCE_BRANCH" != "" ]]; then
+              git push origin HEAD:$SOURCE_BRANCH
+            else
+              echo "Could not determine source branch, skipping push"
+            fi
+          else
+            echo "Pushing to current branch"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
           echo "推送优化后的图片到仓库"

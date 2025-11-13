@@ -1,10 +1,16 @@
----
+------
 title: "Google: 一种通往技术通用人工智能安全的方法"
 date: "2025-04-17T20:20:00+08:00"
 draft: false
 tags: ["AGI", "安全", "技术", "Google", "技术风险"]
 categories: ["Safety", "Security", "AGI"]
 description: "本文介绍了Google关于AGI安全的技术报告，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+
+ai_cover: "static\images\generated-covers\10680f254d70d3c7d431b9b4cf80e493.webp"
+cover:
+  image: "static\images\generated-covers\10680f254d70d3c7d431b9b4cf80e493.webp"
+  alt: "Google: 一种通往技术通用人工智能安全的方法"
+  ai_generated: true
 ---
 
 ## 引言
