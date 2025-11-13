@@ -8,13 +8,14 @@ on:
       - "static/images/**"
       - "!static/images/optimized/**"
       - "!static/images/backup/**"
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "static/images/**"
-      - "!static/images/optimized/**"
-      - "!static/images/backup/**"
+  workflow_dispatch:
+    inputs:
+      force_optimize:
+        description: 'Force optimize all images'
+        required: false
+        default: false
+        type: boolean
+  # Only run on main branch, not on feature branches or PRs
 
 permissions:
   contents: write
@@ -84,7 +85,7 @@ jobs:
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
           git add static/images/optimized/
-          git commit -m "🔧 优化图片: 自动生成WebP格式和响应式尺寸" -m "生成多尺寸图片 (320px, 640px, 960px, 1280px, 1920px)" -m "转换为WebP格式以减少文件大小" -m "应用智能压缩 (质量: 85%)" -m "此提交由GitHub Actions自动生成"
+          git commit -m "🔧 优化图片: 自动生成WebP格式和响应式尺寸" -m "生成多尺寸图片 (320px, 640px, 960px, 1280px, 1920px)" -m "转换为WebP格式以减少文件大小" -m "应用智能压缩 (质量: 85%)" -m "此提交由GitHub Actions自动生成 [skip ci]"
 
           echo "图片优化完成并提交"
 
@@ -95,25 +96,6 @@ jobs:
         run: |
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
 
-          # 智能推送逻辑
-          if [[ "${{ github.ref_name }}" == "main" ]]; then
-            echo "Pushing to main branch"
-            git push origin main
-          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "Pull request detected, pushing to source branch instead"
-            # 获取PR的源分支名
-            SOURCE_BRANCH=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
-              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.number }} | \
-              jq -r '.head.ref')
-            echo "Source branch: $SOURCE_BRANCH"
-            if [[ "$SOURCE_BRANCH" != "null" && "$SOURCE_BRANCH" != "" ]]; then
-              git push origin HEAD:$SOURCE_BRANCH
-            else
-              echo "Could not determine source branch, skipping push"
-            fi
-          else
-            echo "Pushing to current branch"
-            git push origin HEAD:${{ github.ref_name }}
-          fi
-
-          echo "推送优化后的图片到仓库"
+          echo "Pushing optimized images to main branch"
+          git push origin main
+          echo "✅ 图片优化完成并推送到main分支"
