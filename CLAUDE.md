@@ -33,9 +33,41 @@ make full-build
 # AI-enhanced build pipeline
 make full-build-ai
 
+# Generate AI covers for articles
+make generate-ai-covers
+
 # Clean build artifacts
 make clean
 ```
+
+### AI Cover Generation
+
+The blog features automated AI cover generation using ModelScope Qwen-image:
+
+**🆕 Automatic Generation (Recommended):**
+```bash
+# Simply commit new articles, AI covers are generated automatically
+git add content/zh/category/new-article.md
+git commit -m "Add new article"
+git push origin main
+```
+
+**Manual Generation:**
+```bash
+# Generate AI covers for articles without covers
+make generate-ai-covers
+
+# Limited batch generation (recommended for API limits)
+conda run -n news_collector python scripts/ai_cover_generator.py --workflow-mode --limit=10
+
+# Force regenerate existing covers
+conda run -n news_collector python scripts/ai_cover_generator.py --workflow-mode --force
+```
+
+**GitHub Actions:**
+- Automatic: Triggered on push to main branch
+- Manual: Use "Generate Blog Images" workflow in Actions tab
+- Supports: ModelScope (default), Gemini, or both services
 
 ### Content Management
 
