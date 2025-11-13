@@ -1,7 +1,41 @@
 name: Generate Blog Images
 
 on:
-  workflow_dispatch: # 只支持手动触发
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/**/*.md'
+  workflow_dispatch:
+    inputs:
+      image_service:
+        description: 'AI service to use'
+        required: false
+        default: 'modelscope'
+        type: choice
+        options:
+        - modelscope
+        - gemini
+        - both
+      target_type:
+        description: 'Generation target'
+        required: false
+        default: 'both'
+        type: choice
+        options:
+        - covers
+        - articles
+        - both
+      force_regenerate:
+        description: 'Force regenerate existing images'
+        required: false
+        default: false
+        type: boolean
+      auto_generate:
+        description: 'Auto-generate for new/updated articles only'
+        required: false
+        default: true
+        type: boolean
 
 permissions:
   contents: write
@@ -26,6 +60,7 @@ jobs:
         run: |
           cd scripts
           pip install -r requirements.txt
+          pip install requests pillow python-dotenv
 
       - name: Detect changed blog files
         id: detect-changes
@@ -33,18 +68,47 @@ jobs:
           # 获取本次提交修改的.md文件
           if [ "${{ github.event_name }}" = "push" ]; then
             if [ -z "${{ github.event.before }}" ]; then
-              # No previous commit to diff against (e.g., first commit), so no changed files
-              CHANGED_FILES=""
+              # First commit, process all content files
+              CHANGED_FILES=$(find content -name "*.md" -not -path "*/daily_ai/*" | tr '\n' ' ')
+              echo "First commit detected, processing all files"
             else
-              CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' | grep '^content/' || true)
+              # Get changed .md files, excluding daily_ai
+              CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' | grep '^content/' | grep -v 'daily_ai' || true)
+              echo "Push detected, analyzing changed files"
             fi
           else
             # 手动触发时处理所有没有图片的博客
             CHANGED_FILES=""
+            echo "Manual workflow triggered"
+          fi
+
+          # Filter for files that need AI covers (have description but no ai_cover)
+          NEED_AI_COVER=""
+          if [ -n "$CHANGED_FILES" ]; then
+            for file in $CHANGED_FILES; do
+              if [ -f "$file" ]; then
+                # Check if file has description
+                if grep -q "^description:" "$file"; then
+                  # Check if file doesn't have ai_cover or ai_generated: true
+                  if ! grep -q "ai_cover:" "$file" || ! grep -q "ai_generated: true" "$file"; then
+                    NEED_AI_COVER="$NEED_AI_COVER $file"
+                    echo "Need AI cover: $file"
+                  else
+                    echo "Already has AI cover: $file"
+                  fi
+                else
+                  echo "No description, skipping: $file"
+                fi
+              fi
+            done
           fi
 
           echo "changed_files<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGED_FILES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          echo "need_ai_cover<<EOF" >> $GITHUB_OUTPUT
+          echo "$NEED_AI_COVER" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Generate images for new blogs
@@ -72,27 +136,94 @@ jobs:
           cd scripts
           python generate_image.py --backfill
 
+      - name: Auto-generate ModelScope AI Covers for new blogs
+        if: github.event_name == 'push' && steps.detect-changes.outputs.need_ai_cover != ''
+        env:
+          MODELSCOPE_API_KEY: ${{ secrets.MODELSCOPE_API_KEY }}
+          TEXT2IMAGE_PROVIDER: modelscope
+          WORKFLOW_MODE: true
+          FORCE_REGENERATE: false
+        run: |
+          cd scripts
+          echo "🤖 Auto-generating ModelScope AI covers for new blogs..."
+          echo "Files needing AI covers: ${{ steps.detect-changes.outputs.need_ai_cover }}"
+
+          # Process files that need AI covers (limit to avoid API overload)
+          NEED_COVER_FILES="${{ steps.detect-changes.outputs.need_ai_cover }}"
+          file_count=0
+          max_files=5  # Limit per push to avoid API overload
+
+          for file in $NEED_COVER_FILES; do
+            if [ -f "$file" ] && [ $file_count -lt $max_files ]; then
+              echo "Processing: $file"
+              python ai_cover_generator.py --workflow-mode --target=covers --specific-file="$file"
+              file_count=$((file_count + 1))
+            elif [ $file_count -ge $max_files ]; then
+              echo "Reached limit of $max_files files, skipping remaining files"
+              break
+            fi
+          done
+
+          echo "✅ Auto-generation completed: processed $file_count files"
+
+      - name: Generate ModelScope AI Covers (manual trigger)
+        if: github.event_name == 'workflow_dispatch' && (contains(github.event.inputs.image_service, 'modelscope') || github.event.inputs.image_service == 'both')
+        env:
+          MODELSCOPE_API_KEY: ${{ secrets.MODELSCOPE_API_KEY }}
+          TEXT2IMAGE_PROVIDER: modelscope
+          WORKFLOW_MODE: true
+          FORCE_REGENERATE: ${{ github.event.inputs.force_regenerate }}
+        run: |
+          cd scripts
+          echo "🤖 Generating ModelScope AI covers..."
+          echo "Target: ${{ github.event.inputs.target_type }}"
+          echo "Force regenerate: $FORCE_REGENERATE"
+
+          # Generate covers if target includes covers
+          if [[ "${{ github.event.inputs.target_type }}" == "covers" || "${{ github.event.inputs.target_type }}" == "both" ]]; then
+            python ai_cover_generator.py --workflow-mode --target=covers --force=${FORCE_REGENERATE}
+          else
+            echo "Skipping cover generation (target: articles only)"
+          fi
+
       - name: Create images directory
         run: |
           mkdir -p static/images/articles
-          echo "Created static/images/articles directory"
+          mkdir -p static/images/generated-covers
+          echo "Created image directories"
 
       - name: Commit generated images
         if: always()
         env:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
-          # 检查是否有新的图片文件
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+
+          has_changes=false
+
+          # Check for article images
           if [ -d "static/images/articles" ] && [ "$(ls -A static/images/articles 2>/dev/null)" ]; then
-            echo "Found new images to commit"
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+            echo "Found new article images to commit"
             git add static/images/articles/
-            git commit -m "Auto-generate blog images [skip ci]" || echo "No changes to commit"
+            has_changes=true
+          fi
+
+          # Check for generated covers
+          if [ -d "static/images/generated-covers" ] && [ "$(ls -A static/images/generated-covers 2>/dev/null)" ]; then
+            echo "Found new AI-generated covers to commit"
+            git add static/images/generated-covers/
+            has_changes=true
+          fi
+
+          # Commit if there are changes
+          if [ "$has_changes" = true ]; then
+            git commit -m "🤖 Auto-generate blog images and AI covers [skip ci]" || echo "No new changes to commit"
             git push
+            echo "✅ Images committed successfully"
           else
-            echo "No new images to commit"
+            echo "ℹ️ No new images to commit"
           fi
 
       - name: Create summary
@@ -100,14 +231,57 @@ jobs:
         run: |
           echo "## Blog Image Generation Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Configuration" >> $GITHUB_STEP_SUMMARY
           echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Image Service:** ${{ github.event.inputs.image_service || 'N/A' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Target Type:** ${{ github.event.inputs.target_type || 'N/A' }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Force Regenerate:** ${{ github.event.inputs.force_regenerate || 'false' }}" >> $GITHUB_STEP_SUMMARY
           echo "**Changed files:** ${{ steps.detect-changes.outputs.changed_files }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Generated Images:" >> $GITHUB_STEP_SUMMARY
-          if [ -d "static/images/articles" ]; then
-            ls -la static/images/articles/ | tail -n +2 | while read line; do
-              echo "- $line" >> $GITHUB_STEP_SUMMARY
+
+          echo "### 🖼️ Generated Article Images" >> $GITHUB_STEP_SUMMARY
+          if [ -d "static/images/articles" ] && [ "$(ls -A static/images/articles 2>/dev/null)" ]; then
+            echo "| Filename | Size | Type |" >> $GITHUB_STEP_SUMMARY
+            echo "|----------|------|------|" >> $GITHUB_STEP_SUMMARY
+            cd static/images/articles
+            ls -lh *.jpg *.png *.webp 2>/dev/null | while read -r line; do
+              filename=$(echo $line | awk '{print $9}')
+              size=$(echo $line | awk '{print $5}')
+              echo "| $filename | $size | Image |" >> $GITHUB_STEP_SUMMARY
             done
           else
-            echo "No images directory found" >> $GITHUB_STEP_SUMMARY
+            echo "No article images generated" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "### 🤖 Generated AI Covers" >> $GITHUB_STEP_SUMMARY
+          if [ -d "static/images/generated-covers" ] && [ "$(ls -A static/images/generated-covers 2>/dev/null)" ]; then
+            echo "| Filename | Size | AI Service |" >> $GITHUB_STEP_SUMMARY
+            echo "|----------|------|-----------|" >> $GITHUB_STEP_SUMMARY
+            cd static/images/generated-covers
+            ls -lh *.jpg *.png *.webp 2>/dev/null | while read -r line; do
+              filename=$(echo $line | awk '{print $9}')
+              size=$(echo $line | awk '{print $5}')
+              echo "| $filename | $size | ModelScope |" >> $GITHUB_STEP_SUMMARY
+            done
+          else
+            echo "No AI covers generated" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Add generation statistics
+          article_count=$(find static/images/articles -name "*.jpg" -o -name "*.png" -o -name "*.webp" 2>/dev/null | wc -l)
+          cover_count=$(find static/images/generated-covers -name "*.jpg" -o -name "*.png" -o -name "*.webp" 2>/dev/null | wc -l)
+
+          echo "### 📊 Statistics" >> $GITHUB_STEP_SUMMARY
+          echo "**Article Images:** $article_count files" >> $GITHUB_STEP_SUMMARY
+          echo "**AI Covers:** $cover_count files" >> $GITHUB_STEP_SUMMARY
+          echo "**Total Images:** $((article_count + cover_count)) files" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "### ✅ Status" >> $GITHUB_STEP_SUMMARY
+          if [ $((article_count + cover_count)) -gt 0 ]; then
+            echo "🎉 **Generation Successful**: Images were generated and committed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **No Generation**: No new images were generated" >> $GITHUB_STEP_SUMMARY
           fi

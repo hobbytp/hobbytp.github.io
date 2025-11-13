@@ -1,10 +1,16 @@
----
+------
 title: "字节跳动OmniHuman-1 开源项目解读"
 date: "2025-02-11T20:22:48+08:00"
 description: "字节跳动开源的OmniHuman-1项目，并对其技术原理、功能特点、应用前景和伦理风险进行了详细解读。"
 tags: ["人像视频生成", "字节跳动", "OmniHuman-1", "开源", "AI"]
 wordCount: 865
 readingTime: 4
+
+ai_cover: "static\images\generated-covers\faaa9f6d630b574c8c7dfef4dc5d1b8a.webp"
+cover:
+  image: "static\images\generated-covers\faaa9f6d630b574c8c7dfef4dc5d1b8a.webp"
+  alt: "字节跳动OmniHuman-1 开源项目解读"
+  ai_generated: true
 ---
 
 OmniHuman-1是字节跳动于2025年2月5日正式发布的端到端多模态人类视频生成框架。以下是关于它的相关信息：
