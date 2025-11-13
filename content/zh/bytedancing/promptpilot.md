@@ -1,4 +1,4 @@
----
+------
 title: PromptPilot 核心工作原理与方法论详解
 date: "2025-09-06T22:10:00+08:00"
 description: PromptPilot 核心工作原理与方法论详解
@@ -7,6 +7,12 @@ categories: ["ai_tools"]
 draft: false
 wordCount: 1129
 readingTime: 5
+
+ai_cover: "static\images\generated-covers\945ad309197e08a5190000dbaa599707.webp"
+cover:
+  image: "static\images\generated-covers\945ad309197e08a5190000dbaa599707.webp"
+  alt: "PromptPilot 核心工作原理与方法论详解"
+  ai_generated: true
 ---
 
 
