@@ -1,4 +1,4 @@
----
+------
 title: "Chain of Draft 论文解读"
 date: "2025-03-01T20:00:00+08:00"
 draft: false
@@ -7,6 +7,12 @@ categories: ["papers"]
 description: "本文介绍了Chain of Draft（CoD）论文，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
 wordCount: 3349
 readingTime: 14
+
+ai_cover: "static\images\generated-covers\5533bda3d0246b6b6f6843d566ca0004.webp"
+cover:
+  image: "static\images\generated-covers\5533bda3d0246b6b6f6843d566ca0004.webp"
+  alt: "Chain of Draft 论文解读"
+  ai_generated: true
 ---
 
 <https://arxiv.org/abs/2502.18600>

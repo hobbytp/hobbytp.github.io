@@ -1,4 +1,4 @@
----
+------
 title: "Manus项目经验：上下文工程精华内容"
 date: "2025-07-21T20:10:00+08:00"
 draft: false
@@ -7,6 +7,12 @@ categories: ["mas"]
 description: "本文介绍了Manus项目经验的上下文工程精华内容,总结为6个问题和解决方案。"
 wordCount: 1337
 readingTime: 6
+
+ai_cover: "static\images\generated-covers\c293c75b21a1ff247f55ff93c09b3874.webp"
+cover:
+  image: "static\images\generated-covers\c293c75b21a1ff247f55ff93c09b3874.webp"
+  alt: "Manus项目经验：上下文工程精华内容"
+  ai_generated: true
 ---
 
 以下是基于Manus项目经验的上下文工程精华内容,总结为6个问题和解决方案。

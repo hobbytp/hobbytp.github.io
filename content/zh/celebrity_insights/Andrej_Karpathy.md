@@ -1,4 +1,4 @@
----
+------
 title: "Andrej Karpathy在各个场合的观点"
 date: "2025-06-19T22:30:00+08:00"
 draft: false
@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "Andrej Karpathy在各个场合的观点"
 wordCount: 2296
 readingTime: 10
+
+ai_cover: "static\images\generated-covers\4d52d3101f70579984479c4d367251c4.webp"
+cover:
+  image: "static\images\generated-covers\4d52d3101f70579984479c4d367251c4.webp"
+  alt: "Andrej Karpathy在各个场合的观点"
+  ai_generated: true
 ---
 
 ## Andrej Karpathy: 软件正在改变 (Again)
