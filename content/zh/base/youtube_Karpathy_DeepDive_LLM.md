@@ -1,4 +1,4 @@
----
+------
 title: "Karpathy DeepDive LLM"
 date: 2024-01-01T00:00:00+08:00
 draft: false
@@ -8,6 +8,12 @@ author: "Peng Tan"
 description: "Karpathy DeepDive LLM视频课程"
 wordCount: 4566
 readingTime: 19
+
+ai_cover: "static\images\generated-covers\cc489bbf0224ec838923162c0aecd6f2.webp"
+cover:
+  image: "static\images\generated-covers\cc489bbf0224ec838923162c0aecd6f2.webp"
+  alt: "Karpathy DeepDive LLM"
+  ai_generated: true
 ---
 
 ## Deep Dive into Large Language Models
