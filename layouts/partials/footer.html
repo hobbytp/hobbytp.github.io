@@ -30,5 +30,29 @@
             // 手动初始化所有mermaid图表
             mermaid.init(undefined, document.querySelectorAll('.mermaid'));
         }
+
+        // Sidebar Theme Toggle - Extended functionality
+        // This extends PaperMod's theme toggle to support multiple buttons
+        function toggleTheme() {
+            const html = document.querySelector("html");
+            const currentTheme = html.dataset.theme;
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            
+            html.dataset.theme = newTheme;
+            localStorage.setItem("pref-theme", newTheme);
+        }
+
+        // Add event listener to sidebar theme toggle button
+        const sidebarThemeToggle = document.getElementById("sidebar-theme-toggle");
+        if (sidebarThemeToggle) {
+            sidebarThemeToggle.addEventListener("click", toggleTheme);
+        }
+
+        // Ensure header theme toggle also works (if PaperMod's script hasn't loaded yet)
+        const headerThemeToggle = document.getElementById("theme-toggle");
+        if (headerThemeToggle && !headerThemeToggle.hasAttribute("data-listener-added")) {
+            headerThemeToggle.addEventListener("click", toggleTheme);
+            headerThemeToggle.setAttribute("data-listener-added", "true");
+        }
     });
 </script>

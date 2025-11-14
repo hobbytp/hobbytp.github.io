@@ -381,6 +381,83 @@ body {
   color: var(--color-primary);
 }
 
+/* Sidebar Theme Toggle */
+.sidebar-theme-toggle {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.sidebar-theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-primary-100);
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.sidebar-theme-toggle-btn:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+.sidebar-theme-toggle-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary-50);
+  border-color: var(--color-primary);
+}
+
+.sidebar-theme-toggle-btn .theme-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-theme-toggle-btn .theme-toggle-label {
+  flex: 1;
+}
+
+/* Theme icon visibility - dark mode shows sun, light mode shows moon */
+[data-theme="dark"] #sidebar-moon {
+  display: none;
+}
+
+[data-theme="dark"] #sidebar-sun {
+  display: block;
+}
+
+[data-theme="light"] #sidebar-sun,
+[data-theme="auto"] #sidebar-sun {
+  display: none;
+}
+
+[data-theme="light"] #sidebar-moon,
+[data-theme="auto"] #sidebar-moon {
+  display: block;
+}
+
+/* Dark theme adjustments */
+[data-theme="dark"] .sidebar-theme-toggle-btn {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-primary-100);
+}
+
+[data-theme="dark"] .sidebar-theme-toggle-btn:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: var(--color-primary);
+}
+
 /* Projects in sidebar */
 .sidebar-projects .project-name {
   display: block;
