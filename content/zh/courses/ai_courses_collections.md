@@ -1,3 +1,11 @@
+---
+title: "AI课程集合（持续更新中...）"
+date: "2025-11-15T16:10:00+08:00"
+draft: false
+tags: ["AI", "教育", "社区"]
+categories: ["courses"]
+---
+
 ## Coding Interview - 关于成为一名软件工程师的完整计算机科学学习计划
 
 <https://github.com/jwasham/coding-interview-university>
@@ -6,12 +14,8 @@
 
 有很多针对这些职业道路的优秀路线图和课程（更多信息请访问<https://roadmap.sh/> ）。
 
-<https://roadmap.sh/>
 
-OpenAI学院
-<https://academy.openai.com/home>
-
-## 10 Best Generative AI Courses [2025 October] [UPDATED]
+## Best Generative AI Courses [2025 October] [UPDATED]
 来自https://digitaldefynd.com/best-generative-ai-courses/，并不是权威机构，但是我个人认为可以仅供参考。
 
 1. [AI for Senior Executives (MIT xPRO)](https://digitaldefynd.com/best-generative-ai-courses/#AI_for_Senior_Executives_MIT_xPRO)
