@@ -52,9 +52,9 @@ class ImageGenConfig:
     # OpenAI配置
     openai_base_url: str = "https://api.openai.com/v1/images/generations"
 
-    # 图片配置
-    width: int = 1024
-    height: int = 1024
+    # 图片配置 - 横屏尺寸适配博客卡片头部
+    width: int = 1200  # 横屏宽度
+    height: int = 630   # 横屏高度 (16:9比例)
     quality: str = "standard"  # standard, hd
     style: str = "vivid"  # vivid, natural
 
@@ -64,7 +64,7 @@ class ImageGenConfig:
 
     # 生成配置
     max_description_length: int = 1000
-    style_suffix: str = ", blog cover, professional, clean design, minimal, technology theme"
+    style_suffix: str = ", abstract geometric pattern, professional blog cover, clean design, minimal, technology theme, no text, no letters, no words, no people, no faces, no portraits, landscape orientation, widescreen format"
 
 class CoverImageGenerator:
     """封面图片生成器"""
@@ -100,20 +100,56 @@ class CoverImageGenerator:
 
     def _optimize_description(self, description: str, title: str, category: str = "") -> str:
         """优化描述为适合图片生成的prompt"""
-        # 截断描述
+        # 截断描述并提取关键概念
         if len(description) > self.config.max_description_length:
             description = description[:self.config.max_description_length] + "..."
 
-        # 构建prompt
+        # 提取文章主题的关键词，避免直接包含标题文字
+        keywords = self._extract_keywords(description, title)
+
+        # 构建prompt - 专注于抽象概念，不包含具体文字
         prompt_parts = [
-            f"Professional blog cover image about: {title}",
-            description[:500],  # 保留核心描述
-            f"Category: {category}" if category else "",
+            f"Abstract geometric blog cover representing concepts from: {keywords}",
+            f"Technology and innovation theme inspired by {category}" if category else "Technology and innovation theme",
+            "Clean professional design suitable for blog header",
+            "Minimalist modern aesthetic",
+            "Digital art style with smooth gradients",
+            "Subtle tech-inspired patterns",
             self.config.style_suffix
         ]
 
         prompt = " ".join(filter(None, prompt_parts))
         return prompt.strip()
+
+    def _extract_keywords(self, description: str, title: str) -> str:
+        """从描述和标题中提取关键词，移除常见的停用词"""
+        import re
+
+        # 合并标题和描述
+        text = f"{title} {description}".lower()
+
+        # 常见的停用词和不需要视觉化的词
+        stop_words = {
+            '的', '了', '是', '在', '有', '和', '与', '或', '但', '如果', '因为', '所以', '这', '那', '这些', '那些',
+            'the', 'a', 'an', 'and', 'or', 'but', 'if', 'because', 'so', 'this', 'that', 'these', 'those',
+            'blog', 'article', 'post', 'news', 'report', 'analysis', 'review', 'guide', 'tutorial'
+        }
+
+        # 提取技术相关关键词
+        tech_keywords = re.findall(r'\b(ai|artificial intelligence|machine learning|deep learning|neural network|algorithm|data|code|software|app|api|cloud|digital|technology|computer|programming|development|framework|model|system|platform|service|tool|automation|robot|chatbot|language model|llm|gpt|claude|openai|google|microsoft|apple|meta|tesla|bitcoin|blockchain|web3|metaverse|vr|ar|iot|edge|security|privacy|encryption|hack|cyber|quantum|5g|mobile|android|ios)\b', text)
+
+        # 去重并移除停用词
+        unique_keywords = []
+        for word in tech_keywords:
+            if word not in stop_words and word not in unique_keywords:
+                unique_keywords.append(word)
+
+        # 如果没有找到技术关键词，使用通用的科技词汇
+        if not unique_keywords:
+            unique_keywords = ['technology', 'digital', 'innovation', 'data', 'software']
+
+        # 限制关键词数量
+        return ' '.join(unique_keywords[:5])
 
     def _generate_with_modelscope(self, prompt: str) -> Optional[str]:
         """使用ModelScope Qwen-Image生成图片"""
@@ -211,18 +247,33 @@ class CoverImageGenerator:
             return None
 
     def _download_image(self, url: str, filepath: str) -> bool:
-        """下载生成的图片"""
+        """下载生成的图片并转换为webp格式"""
         try:
             response = requests.get(url, timeout=30)
             if response.status_code == 200:
-                with open(filepath, 'wb') as f:
-                    f.write(response.content)
+                # 使用PIL打开图片（支持各种格式）
+                image = Image.open(BytesIO(response.content))
+                
+                # 如果图片有透明通道（RGBA），转换为RGB以支持webp
+                if image.mode in ('RGBA', 'LA', 'P'):
+                    # 创建白色背景
+                    background = Image.new('RGB', image.size, (255, 255, 255))
+                    if image.mode == 'P':
+                        image = image.convert('RGBA')
+                    background.paste(image, mask=image.split()[-1] if image.mode == 'RGBA' else None)
+                    image = background
+                elif image.mode != 'RGB':
+                    image = image.convert('RGB')
+                
+                # 保存为webp格式，优化质量
+                image.save(filepath, 'WEBP', quality=85, method=6)
+                logger.info(f"Image converted to webp: {filepath}")
                 return True
             else:
                 logger.error(f"Image download error: {response.status_code}")
                 return False
         except Exception as e:
-            logger.error(f"Image download error: {e}")
+            logger.error(f"Image download/convert error: {e}")
             return False
 
     def generate_cover(self, title: str, description: str, category: str = "", force: bool = False) -> Optional[str]:
@@ -250,7 +301,7 @@ class CoverImageGenerator:
 
         # 生成prompt
         prompt = self._optimize_description(description, title, category)
-        logger.info(f"Generating image with prompt: {prompt[:100]}...")
+        logger.info(f"Generating image with prompt: {prompt[:1000]}...")
 
         # 调用AI生成图片
         image_url = None
@@ -266,16 +317,17 @@ class CoverImageGenerator:
             logger.error("Failed to generate image")
             return None
 
-        # 生成文件名
-        filename = f"{content_hash}.webp"
-        filepath = Path(self.config.output_dir) / filename
+    # 生成文件名
+    filename = f"{content_hash}.webp"
+    filepath = Path(self.config.output_dir) / filename
 
         # 下载图片
         if not self._download_image(image_url, str(filepath)):
             return None
 
-        # 生成相对路径
-        relative_path = str(filepath).replace("static/", "/", 1)
+    # 生成相对路径（统一为web路径）
+    web_friendly_path = str(filepath).replace("\\", "/")
+    relative_path = web_friendly_path.replace("static/", "/", 1)
 
         # 更新缓存
         self.cache[content_hash] = {
@@ -350,17 +402,17 @@ class HugoArticleUpdater:
                 logger.warning(f"No front matter found in {article_path}")
                 return False
 
-            # Find the end of front matter (skip the opening '---\n')
-            first_line_end = content.find('\n')
-            if first_line_end == -1:
+            # Split content by the front matter delimiters
+            parts = content.split('---', 2)
+            if len(parts) < 3:
+                logger.warning(f"Invalid front matter format in {article_path}")
                 return False
 
-            front_matter_end = content.find('\n---', first_line_end + 1)
-            if front_matter_end == -1:
-                return False
-
-            front_matter = content[first_line_end + 1:front_matter_end]
-            article_content = content[front_matter_end + 4:]  # Skip '\n---'
+            # parts[0] is empty (before first ---)
+            # parts[1] is the front matter content
+            # parts[2] is the article content
+            front_matter = parts[1]
+            article_content = parts[2]
 
             # 解析必要信息
             title = ""
@@ -369,9 +421,9 @@ class HugoArticleUpdater:
 
             for line in front_matter.split('\n'):
                 if line.startswith('title:'):
-                    title = line.split(':', 1)[1].strip().strip('"\'').strip('""').strip('\'\'')
+                    title = line.split(':', 1)[1].strip().strip('"\'')
                 elif line.startswith('description:'):
-                    description = line.split(':', 1)[1].strip().strip('"\'').strip('""').strip('\'\'')
+                    description = line.split(':', 1)[1].strip().strip('"\'')
                 elif line.startswith('categories:'):
                     # 简单处理，取第一个分类
                     if '[' in line:
@@ -381,14 +433,21 @@ class HugoArticleUpdater:
                 logger.warning(f"Missing title or description in {article_path}")
                 return False
 
+            # 转换Windows路径为Web路径
+            web_image_path = image_path.replace('\\', '/')
+
             # 在front matter中添加AI生成图片信息
             cover_image_block = f"""
-ai_cover: "{image_path}"
+ai_cover: "{web_image_path}"
 cover:
-  image: "{image_path}"
+  image: "{web_image_path}"
   alt: "{title}"
   ai_generated: true
 """
+
+            # 确保front matter以换行符结束，然后添加cover信息
+            if not front_matter.endswith('\n'):
+                front_matter += '\n'
 
             updated_front_matter = front_matter + cover_image_block
             updated_content = f"---{updated_front_matter}---{article_content}"
@@ -397,7 +456,7 @@ cover:
             with open(article_path, 'w', encoding='utf-8') as f:
                 f.write(updated_content)
 
-            logger.info(f"Updated {article_path} with cover image: {image_path}")
+            logger.info(f"Updated {article_path} with cover image: {web_image_path}")
             return True
 
         except Exception as e:

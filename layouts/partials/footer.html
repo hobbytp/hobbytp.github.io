@@ -46,6 +46,12 @@
         const sidebarThemeToggle = document.getElementById("sidebar-theme-toggle");
         if (sidebarThemeToggle) {
             sidebarThemeToggle.addEventListener("click", toggleTheme);
+            sidebarThemeToggle.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    toggleTheme();
+                }
+            });
         }
 
         // Ensure header theme toggle also works (if PaperMod's script hasn't loaded yet)

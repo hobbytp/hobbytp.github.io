@@ -76,16 +76,6 @@ body {
   color: var(--color-text);
 }
 
-/* Ensure main layout surfaces follow the active theme */
-.main,
-.main-container,
-.main-content-with-sidebar,
-.post-layout,
-.post-single {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-}
-
 .post-single .post-header,
 .post-single .post-meta,
 .post-single .post-content {
@@ -891,9 +881,14 @@ body.has-sidebar > .header {
   flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@supports (line-clamp: 3) {
+  .article-card-description {
+    line-clamp: 3;
+  }
 }
 
 .article-card-meta {

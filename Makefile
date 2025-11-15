@@ -1,4 +1,4 @@
-.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers help
+.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers generate-covers-for-directory help
 
 # 默认目标
 .DEFAULT_GOAL := help
@@ -162,7 +162,9 @@ generate-ai-covers:
 	@echo ""
 	@echo "🚀 Execute generation:"
 	@if [ -f .env ]; then \
-		eval $$(cat .env | grep -v '^#' | grep '=' | sed 's/^/export /'); \
+		set -a; \
+		. .env; \
+		set +a; \
 		echo "Environment variables loaded from .env"; \
 	fi; \
 	if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
@@ -191,6 +193,43 @@ test-covers:
 	@echo "🔧 如果需要优化封面样式，编辑以下文件:"
 	@echo "  - layouts/_default/cover-image.html (封面模板)"
 	@echo "  - assets/css/custom.css (样式调整)"
+
+# 为指定目录生成AI封面
+generate-covers-for-directory:
+	@if [ -z "$(DIRECTORY)" ]; then \
+		echo "❌ 请指定目录名称: make generate-covers-for-directory DIRECTORY=papers"; \
+		echo ""; \
+		echo "📁 可用目录:"; \
+		$(PYTHON_CMD) scripts/generate_covers_for_directory.py --list-directories; \
+		exit 1; \
+	fi
+	@echo "🎯 为目录 '$(DIRECTORY)' 生成AI封面..."
+	@if [ -f .env ]; then \
+		set -a; \
+		. .env; \
+		set +a; \
+		echo "Environment variables loaded from .env"; \
+	fi; \
+		RECURSIVE_FLAG="--recursive"; \
+		if [ "$(NO_RECURSIVE)" = "true" ] || [ "$(NO_RECURSIVE)" = "1" ]; then \
+			RECURSIVE_FLAG="--no-recursive"; \
+		fi; \
+		FORCE_FLAG=""; \
+		if [ "$(FORCE)" = "true" ] || [ "$(FORCE)" = "1" ]; then \
+			FORCE_FLAG="--force"; \
+		fi; \
+		DRY_RUN_FLAG=""; \
+		if [ "$(DRY_RUN)" = "true" ] || [ "$(DRY_RUN)" = "1" ]; then \
+			DRY_RUN_FLAG="--dry-run"; \
+		fi; \
+		if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
+			echo "Starting AI cover generation for directory: $(DIRECTORY)..."; \
+			$(PYTHON_CMD) scripts/generate_covers_for_directory.py $(DIRECTORY) $$RECURSIVE_FLAG $$FORCE_FLAG $$DRY_RUN_FLAG; \
+		echo "✅ AI cover generation completed for directory: $(DIRECTORY)!"; \
+	else \
+		echo "❌ Please configure API keys in .env file!"; \
+		echo "Add: MODELSCOPE_API_KEY=\"your-key\""; \
+	fi
 
 # 帮助信息
 help:
@@ -228,6 +267,7 @@ help:
 	@echo "  make generate-covers    生成CSS艺术封面（无需API）"
 	@echo "  make generate-ai-covers 使用AI API生成真实图片"
 	@echo "  make test-covers        测试封面生成效果"
+	@echo "  make generate-covers-for-directory DIRECTORY=dir [FORCE=true DRY_RUN=true NO_RECURSIVE=true]  为指定目录生成AI封面"
 	@echo ""
 	@echo "维护命令:"
 	@echo "  make update-theme     更新Hugo主题"

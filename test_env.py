@@ -26,7 +26,11 @@ except ImportError:
 
 # 测试关键环境变量
 print(f"TEXT2IMAGE_PROVIDER: {os.getenv('TEXT2IMAGE_PROVIDER')}")
-print(f"MODELSCOPE_API_KEY: {os.getenv('MODELSCOPE_API_KEY')[:20]}...")
+api_key_preview = os.getenv('MODELSCOPE_API_KEY')
+if api_key_preview:
+    print(f"MODELSCOPE_API_KEY: {api_key_preview[:20]}...")
+else:
+    print("MODELSCOPE_API_KEY: Not set")
 
 # 测试ModelScope API调用
 import requests
