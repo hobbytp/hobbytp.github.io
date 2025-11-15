@@ -162,6 +162,7 @@
     - .references 相关样式与 a[href^="#ref"] 引用链接
     - .post-content a 文章链接增强样式
 */
+.post-content a {
   border-bottom: 2px solid #0066cc !important;
   padding-bottom: 1px !important;
   transition: all 0.2s ease !important;
@@ -980,7 +981,7 @@ html {
 .post-content h1 {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
-  color: #1f2937 !important;
+  color: var(--color-heading-strong) !important;
   margin: 2rem 0 1rem 0 !important;
   line-height: 1.2 !important;
   position: relative !important;
@@ -1021,6 +1022,7 @@ html {
   position: relative !important;
   padding-left: 1.5rem !important;
   margin: 2rem 0 1rem 0 !important;
+  color: var(--color-heading-strong) !important;
 }
 
 .post-content h2::before {
@@ -1046,7 +1048,7 @@ html {
 
 /* 三级标题样式 */
 .post-content h3 {
-  color: #374151 !important;
+  color: var(--color-heading) !important;
   font-weight: 600 !important;
   margin: 1.5rem 0 0.75rem 0 !important;
   position: relative !important;
@@ -1070,29 +1072,26 @@ html {
 }
 
 /* 暗色模式适配 */
-.dark .post-content {
-  background: #1f2937 !important;
-  color: #f9fafb !important;
+[data-theme="dark"] .post-content {
+  background: var(--article-surface) !important;
+  color: var(--color-text) !important;
 }
 
-.dark .post-content h1 {
-  color: #f9fafb !important;
+[data-theme="dark"] .post-content h1,
+[data-theme="dark"] .post-content h2 {
+  color: var(--color-heading-strong) !important;
 }
 
-.dark .post-content h2 {
-  color: #e5e7eb !important;
+[data-theme="dark"] .post-content h3 {
+  color: var(--color-heading) !important;
 }
 
-.dark .post-content h3 {
-  color: #d1d5db !important;
+[data-theme="dark"] .post-content a {
+  color: var(--color-primary) !important;
 }
 
-.dark .post-content a {
-  color: #60a5fa !important;
-}
-
-.dark .post-content a:hover {
-  color: #93c5fd !important;
+[data-theme="dark"] .post-content a:hover {
+  color: var(--color-primary-light) !important;
   background-color: rgba(96, 165, 250, 0.1) !important;
 }
 

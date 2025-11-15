@@ -2,6 +2,32 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+{{- if (not site.Params.disableThemeToggle) }}
+{{- $defaultTheme := site.Params.defaultTheme | default "auto" -}}
+<script>
+(function() {
+  try {
+    const html = document.documentElement;
+    const storedTheme = localStorage.getItem("pref-theme");
+    if (storedTheme === "dark" || storedTheme === "light") {
+      html.dataset.theme = storedTheme;
+      return;
+    }
+  } catch (err) {
+    /* localStorage 可能不可用（隐私模式等），继续使用默认主题 */
+  }
+
+  {{- if eq $defaultTheme "dark" }}
+  document.documentElement.dataset.theme = "dark";
+  {{- else if eq $defaultTheme "light" }}
+  document.documentElement.dataset.theme = "light";
+  {{- else }}
+  document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  {{- end }}
+})();
+</script>
+{{- end }}
+
 {{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
 <meta name="robots" content="index, follow">
 {{- else }}
@@ -88,6 +114,43 @@
 {{- $searchData := resources.Get "index.json" }}
 <script>
   window.searchData = {{ $searchData.Content | safeJS }};
+</script>
+{{- end }}
+
+{{- /* Initialize theme based on stored preference */}}
+{{- if (not site.Params.disableThemeToggle) }}
+<script>
+  (function () {
+    var html = document.documentElement;
+    var defaultTheme = '{{ site.Params.defaultTheme | default "auto" }}';
+    try {
+      var storedTheme = localStorage.getItem("pref-theme");
+      if (storedTheme === "dark" || storedTheme === "light") {
+        html.dataset.theme = storedTheme;
+        return;
+      }
+    } catch (error) {
+      // localStorage might be unavailable (e.g., private mode)
+    }
+
+    if (defaultTheme === "dark") {
+      html.dataset.theme = 'dark';
+    } else if (defaultTheme === "light") {
+      html.dataset.theme = 'light';
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      html.dataset.theme = 'dark';
+    } else {
+      html.dataset.theme = 'light';
+    }
+  })();
+</script>
+{{- else if (and (ne site.Params.defaultTheme "light") (ne site.Params.defaultTheme "dark")) }}
+<script>
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.dataset.theme = 'dark';
+  } else {
+    document.documentElement.dataset.theme = 'light';
+  }
 </script>
 {{- end }}
 
