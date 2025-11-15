@@ -1,0 +1,147 @@
+{{- /*
+AI Cover Image Generator - Hugo原生实现
+基于文章title和description自动生成CSS艺术封面
+*/ -}}
+{{- $title := .Title -}}
+{{- $description := .Description | default .Summary -}}
+{{- $category := "" -}}
+{{- with .Params.categories -}}
+  {{- $category = index . 0 -}}
+{{- end -}}
+
+{{- /* 生成唯一ID */ -}}
+{{- $contentHash := printf "%s|%s" $title $description | strings.Truncate 100 -}}
+{{- $imageId := printf "cover-%s" (replace $contentHash " " "-" | replace ":" "-" | replace "." "-" | replace "/" "-") -}}
+{{- $imageId = $imageId | lower | truncate 20 "" -}}
+
+{{- /* 如果已有封面图片，直接使用 */ -}}
+{{- $coverImage := "" }}
+{{- if .Params.cover.image }}
+  {{- $coverImage = .Params.cover.image }}
+{{- else if .Params.image }}
+  {{- $coverImage = .Params.image }}
+{{- else if .Params.ai_cover }}
+  {{- $coverImage = .Params.ai_cover }}
+{{- end }}
+
+{{- /* 转换Windows路径为web路径 */ -}}
+{{- $webPath := replace $coverImage "\\" "/" -}}
+
+{{- if $coverImage }}
+  {{- if eq .Params.ai_generated true -}}
+  <img src="{{ $webPath | absURL }}" alt="{{ .Params.cover.alt | default $title }}" loading="lazy" class="ai-generated">
+    <div class="ai-generated-badge">🤖 AI生成</div>
+{{- else }}
+  <img src="{{ $webPath | absURL }}" alt="{{ .Params.cover.alt | default $title }}" loading="lazy">
+{{- end }}
+{{- else -}}
+  {{- /* 生成CSS艺术封面 */ -}}
+  <div class="ai-generated-cover" id="{{ $imageId }}">
+    <div class="cover-content">
+      <div class="cover-category">{{ $category }}</div>
+      <h3 class="cover-title">{{ $title }}</h3>
+      <div class="cover-description">{{ $description | strings.Truncate 120 }}</div>
+    </div>
+  </div>
+
+  <style>
+  #{{ $imageId }} {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg,
+      {{- range $i := (seq 3) -}}
+        {{- $hue := (mod (add (len $title) $i) 360) -}}
+        {{- $lightness := (add 70 (mul $i 5)) -}}
+        hsl({{ $hue }}, 70%, {{ $lightness }}%){{- if lt $i 3 }}, {{ end -}}
+      {{- end -}}
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #{{ $imageId }}::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.03) 10px,
+      rgba(255, 255, 255, 0.03) 20px
+    );
+    animation: slide 20s linear infinite;
+  }
+
+  @keyframes slide {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(20px, 20px); }
+  }
+
+  #{{ $imageId }} .cover-content {
+    text-align: center;
+    color: white;
+    z-index: 1;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  #{{ $imageId }} .cover-category {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  #{{ $imageId }} .cover-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  #{{ $imageId }} .cover-description {
+    font-size: 0.875rem;
+    opacity: 0.9;
+    line-height: 1.4;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  /* 深色主题适配 */
+  [data-theme="dark"] #{{ $imageId }} {
+    background: linear-gradient(135deg,
+      {{- range $i := (seq 3) -}}
+        {{- $hue := (mod (add (len $title) $i) 360) -}}
+        {{- $lightness := (add 25 (mul $i 5)) -}}
+        hsl({{ $hue }}, 60%, {{ $lightness }}%){{- if lt $i 3 }}, {{ end -}}
+      {{- end -}}
+    );
+  }
+
+  /* 分类特定配色 */
+  {{- if eq $category "papers" -}}
+    #{{ $imageId }} { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  {{- else if eq $category "technologies" -}}
+    #{{ $imageId }} { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+  {{- else if eq $category "projects" -}}
+    #{{ $imageId }} { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+  {{- else if eq $category "ai_tools" -}}
+    #{{ $imageId }} { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+  {{- else if eq $category "mas" -}}
+    #{{ $imageId }} { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+  {{- else if eq $category "training" -}}
+    #{{ $imageId }} { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+  {{- end -}}
+  </style>
+{{- end -}}

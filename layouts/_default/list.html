@@ -13,13 +13,7 @@
       <article class="article-card">
         {{- /* Article image */ -}}
         <div class="article-card-image">
-          {{- if .Params.cover.image }}
-          <img src="{{ .Params.cover.image | absURL }}" alt="{{ .Params.cover.alt | default .Title }}">
-          {{- else if .Params.image }}
-          <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}">
-          {{- else }}
-          <img src="/images/default-cover.jpg" alt="{{ .Title }}">
-          {{- end }}
+          {{- partial "cover-image.html" . -}}
         </div>
 
         <div class="article-card-content">
@@ -120,13 +114,7 @@
         <article class="article-card">
           {{- /* Article image */ -}}
           <div class="article-card-image">
-            {{- if .Params.cover.image }}
-            <img src="{{ .Params.cover.image | absURL }}" alt="{{ .Params.cover.alt | default .Title }}">
-            {{- else if .Params.image }}
-            <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}">
-            {{- else }}
-            <img src="/images/default-cover.jpg" alt="{{ .Title }}">
-            {{- end }}
+            {{- partial "cover-image.html" . -}}
           </div>
 
           <div class="article-card-content">

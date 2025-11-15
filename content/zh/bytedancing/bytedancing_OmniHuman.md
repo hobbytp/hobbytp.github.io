@@ -6,9 +6,9 @@ tags: ["人像视频生成", "字节跳动", "OmniHuman-1", "开源", "AI"]
 wordCount: 865
 readingTime: 4
 
-ai_cover: "static\images\generated-covers\faaa9f6d630b574c8c7dfef4dc5d1b8a.webp"
+ai_cover: "static/images/generated-covers/faaa9f6d630b574c8c7dfef4dc5d1b8a.webp"
 cover:
-  image: "static\images\generated-covers\faaa9f6d630b574c8c7dfef4dc5d1b8a.webp"
+  image: "static/images/generated-covers/faaa9f6d630b574c8c7dfef4dc5d1b8a.webp"
   alt: "字节跳动OmniHuman-1 开源项目解读"
   ai_generated: true
 ---

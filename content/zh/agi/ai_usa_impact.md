@@ -9,9 +9,9 @@ description: "ai usa impact相关资源链接"
 wordCount: 8
 readingTime: 1
 
-ai_cover: "static\images\generated-covers\718dfae236180425f7944f6a880cfb0a.webp"
+ai_cover: "static/images/generated-covers/718dfae236180425f7944f6a880cfb0a.webp"
 cover:
-  image: "static\images\generated-covers\718dfae236180425f7944f6a880cfb0a.webp"
+  image: "static/images/generated-covers/718dfae236180425f7944f6a880cfb0a.webp"
   alt: "ai usa impact"
   ai_generated: true
 ---

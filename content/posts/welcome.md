@@ -6,6 +6,12 @@ categories: ["公告"]
 tags: ["AI", "博客", "学习"]
 wordCount: 265
 readingTime: 2
+
+ai_cover: "static/images/generated-covers/97db60b4a4648b6136a485c0bb1d2cdd.webp"
+cover:
+  image: "static/images/generated-covers/97db60b4a4648b6136a485c0bb1d2cdd.webp"
+  alt: "欢迎来到我的AI博客"
+  ai_generated: true
 ---
 
 ## 欢迎

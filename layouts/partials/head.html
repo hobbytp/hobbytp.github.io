@@ -2,6 +2,32 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+{{- if (not site.Params.disableThemeToggle) }}
+{{- $defaultTheme := site.Params.defaultTheme | default "auto" -}}
+<script>
+(function() {
+  try {
+    const html = document.documentElement;
+    const storedTheme = localStorage.getItem("pref-theme");
+    if (storedTheme === "dark" || storedTheme === "light") {
+      html.dataset.theme = storedTheme;
+      return;
+    }
+  } catch (err) {
+    /* localStorage may be unavailable (e.g., private mode); fall back to defaults */
+  }
+
+  {{- if eq $defaultTheme "dark" }}
+  document.documentElement.dataset.theme = "dark";
+  {{- else if eq $defaultTheme "light" }}
+  document.documentElement.dataset.theme = "light";
+  {{- else }}
+  document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  {{- end }}
+})();
+</script>
+{{- end }}
+
 {{- if hugo.IsProduction | or (eq site.Params.env "production") | and (ne .Params.robotsNoIndex true) }}
 <meta name="robots" content="index, follow">
 {{- else }}

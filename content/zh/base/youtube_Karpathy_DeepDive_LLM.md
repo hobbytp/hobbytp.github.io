@@ -9,9 +9,9 @@ description: "Karpathy DeepDive LLM视频课程"
 wordCount: 4566
 readingTime: 19
 
-ai_cover: "static\images\generated-covers\cc489bbf0224ec838923162c0aecd6f2.webp"
+ai_cover: "static/images/generated-covers/cc489bbf0224ec838923162c0aecd6f2.webp"
 cover:
-  image: "static\images\generated-covers\cc489bbf0224ec838923162c0aecd6f2.webp"
+  image: "static/images/generated-covers/cc489bbf0224ec838923162c0aecd6f2.webp"
   alt: "Karpathy DeepDive LLM"
   ai_generated: true
 ---

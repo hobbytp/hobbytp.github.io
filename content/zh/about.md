@@ -8,9 +8,9 @@ author: "Peng Tan"
 wordCount: 770
 readingTime: 4
 
-ai_cover: "static\images\generated-covers\e8287b7dd66ed751414167457b19e124.webp"
+ai_cover: "static/images/generated-covers/e8287b7dd66ed751414167457b19e124.webp"
 cover:
-  image: "static\images\generated-covers\e8287b7dd66ed751414167457b19e124.webp"
+  image: "static/images/generated-covers/e8287b7dd66ed751414167457b19e124.webp"
   alt: "关于作者"
   ai_generated: true
 ---

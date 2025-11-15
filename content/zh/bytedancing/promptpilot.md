@@ -8,9 +8,9 @@ draft: false
 wordCount: 1129
 readingTime: 5
 
-ai_cover: "static\images\generated-covers\945ad309197e08a5190000dbaa599707.webp"
+ai_cover: "static/images/generated-covers/945ad309197e08a5190000dbaa599707.webp"
 cover:
-  image: "static\images\generated-covers\945ad309197e08a5190000dbaa599707.webp"
+  image: "static/images/generated-covers/945ad309197e08a5190000dbaa599707.webp"
   alt: "PromptPilot 核心工作原理与方法论详解"
   ai_generated: true
 ---
