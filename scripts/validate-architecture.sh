@@ -95,12 +95,21 @@ fi
 # 4. Try to build the site
 echo ""
 echo "🔨 Testing Hugo build..."
-if make build > /dev/null 2>&1; then
-    echo -e "${GREEN}✅ Hugo build successful${NC}"
+
+# Check if Docker is available
+if ! command -v docker &> /dev/null || ! docker info &> /dev/null; then
+    echo -e "${YELLOW}⚠️  WARNING: Docker not available, skipping build test${NC}"
+    echo "   Build test requires Docker. Run 'make build' manually to verify."
+    echo "   Architecture checks passed, but build verification skipped."
 else
-    echo -e "${RED}❌ ERROR: Hugo build failed!${NC}"
-    echo "   Run 'make build' to see the errors."
-    ERRORS=$((ERRORS + 1))
+    # Docker is available, try to build
+    if make build > /dev/null 2>&1; then
+        echo -e "${GREEN}✅ Hugo build successful${NC}"
+    else
+        echo -e "${RED}❌ ERROR: Hugo build failed!${NC}"
+        echo "   Run 'make build' to see the errors."
+        ERRORS=$((ERRORS + 1))
+    fi
 fi
 
 # 5. Final result
