@@ -12,8 +12,7 @@ import json
 import tempfile
 from pathlib import Path
 from typing import Dict, Optional
-from google import genai
-from google.genai import types
+import google.generativeai as genai
 from PIL import Image
 from io import BytesIO
 from blog_analyzer import BlogAnalyzer
@@ -46,7 +45,8 @@ class ImageGenerator:
         if not api_key:
             raise ValueError("GEMINI_API_KEY environment variable not set")
         
-        self.client = genai.Client(api_key=api_key)
+        genai.configure(api_key=api_key)
+        self.model = genai.GenerativeModel('gemini-2.5-flash-image-preview')
         
     def load_config(self, config_path: str) -> Dict:
         """加载配置文件"""
@@ -103,10 +103,7 @@ class ImageGenerator:
                 print(f"Generating image with Gemini API (attempt {attempt + 1}/{max_retries})...")
                 
                 # 调用Gemini API生成图片
-                response = self.client.models.generate_content(
-                    model="gemini-2.5-flash-image-preview",
-                    contents=[prompt],
-                )
+                response = self.model.generate_content(prompt)
                 
                 # 检查响应并提取图片数据
                 if hasattr(response, 'candidates') and response.candidates:

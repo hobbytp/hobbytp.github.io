@@ -40,9 +40,19 @@ logger = logging.getLogger(__name__)
 class ImageGenConfig:
     """图片生成配置"""
     # API配置
-    api_provider: str = "modelscope"  # modelscope, openai
+    api_provider: str = "volcengine"  # volcengine(默认), modelscope, openai
     api_key: str = ""
-    model: str = "Qwen/Qwen-Image"  # Qwen/Qwen-Image, dall-e-3
+    model: str = "jimeng_t2i_v40"  # jimeng_t2i_v40, Qwen/Qwen-Image, dall-e-3
+
+    # 火山引擎配置（支持即梦等模型）
+    volcengine_base_url: str = "https://visual.volcengineapi.com"
+    volcengine_region: str = "cn-north-1"
+    volcengine_service: str = "cv"
+    volcengine_access_key: str = ""  # 火山引擎 Access Key
+    volcengine_secret_key: str = ""  # 火山引擎 Secret Key
+    volcengine_model: str = "jimeng_t2i_v40"  # 默认使用即梦4.0
+    volcengine_timeout: int = 300  # 5分钟超时
+    volcengine_retry_interval: int = 5  # 5秒重试间隔
 
     # ModelScope配置
     modelscope_base_url: str = "https://api-inference.modelscope.cn/"
@@ -210,6 +220,188 @@ class CoverImageGenerator:
             logger.error(f"ModelScope generation error: {e}")
             return None
 
+    def _generate_with_volcengine(self, prompt: str) -> Optional[str]:
+        """使用火山引擎视觉API生成图片（支持即梦4.0等模型）"""
+        try:
+            import hashlib
+            import hmac
+            from datetime import datetime
+            from urllib.parse import quote
+
+            # 构建请求参数
+            params = {
+                "Action": "CVSync2AsyncSubmitTask",
+                "Version": "2022-08-31"
+            }
+            
+            # 使用配置的模型（默认jimeng_t2i_v40）
+            req_key = self.config.volcengine_model or "jimeng_t2i_v40"
+            
+            body = {
+                "req_key": req_key,
+                "prompt": prompt,
+                "width": self.config.width,
+                "height": self.config.height,
+                "force_single": True  # 强制单图输出,控制延迟和成本
+            }
+
+            # 火山引擎签名V4（修正：按照官方HTTP文档实现）
+            def sign_request(method, url, query_params, headers, payload):
+                # 获取当前时间
+                now = datetime.utcnow()
+                date_stamp = now.strftime('%Y%m%d')
+                amz_date = now.strftime('%Y%m%dT%H%M%SZ')
+                
+                # 计算 payload hash
+                payload_hash = hashlib.sha256(payload.encode('utf-8')).hexdigest()
+                
+                # Canonical Request（修正：添加 x-content-sha256）
+                canonical_uri = '/'
+                # Query参数直接拼接，不进行URL编码（按照官方Python示例）
+                canonical_querystring = '&'.join([f"{k}={v}" for k, v in sorted(query_params.items())])
+                
+                signed_headers = 'content-type;host;x-content-sha256;x-date'
+                canonical_headers = f"content-type:{headers['Content-Type']}\nhost:{headers['Host']}\nx-content-sha256:{payload_hash}\nx-date:{amz_date}\n"
+                
+                canonical_request = f"{method}\n{canonical_uri}\n{canonical_querystring}\n{canonical_headers}\n{signed_headers}\n{payload_hash}"
+                
+                # String to Sign
+                algorithm = 'HMAC-SHA256'
+                credential_scope = f"{date_stamp}/{self.config.volcengine_region}/{self.config.volcengine_service}/request"
+                string_to_sign = f"{algorithm}\n{amz_date}\n{credential_scope}\n{hashlib.sha256(canonical_request.encode('utf-8')).hexdigest()}"
+                
+                # Signing Key（修正：移除VOLC前缀，与官方Python示例一致）
+                def get_signature_key(key, date_stamp, region_name, service_name):
+                    k_date = hmac.new(key.encode('utf-8'), date_stamp.encode('utf-8'), hashlib.sha256).digest()
+                    k_region = hmac.new(k_date, region_name.encode('utf-8'), hashlib.sha256).digest()
+                    k_service = hmac.new(k_region, service_name.encode('utf-8'), hashlib.sha256).digest()
+                    k_signing = hmac.new(k_service, b"request", hashlib.sha256).digest()
+                    return k_signing
+                
+                signing_key = get_signature_key(self.config.volcengine_secret_key, date_stamp, self.config.volcengine_region, self.config.volcengine_service)
+                signature = hmac.new(signing_key, string_to_sign.encode('utf-8'), hashlib.sha256).hexdigest()
+                
+                # Authorization Header
+                authorization_header = f"{algorithm} Credential={self.config.volcengine_access_key}/{credential_scope}, SignedHeaders={signed_headers}, Signature={signature}"
+                
+                return authorization_header, amz_date, payload_hash
+
+            # 构建URL和Headers
+            url = self.config.volcengine_base_url
+            host = url.replace('https://', '').replace('http://', '')
+            
+            headers = {
+                "Content-Type": "application/json",
+                "Host": host
+            }
+            
+            payload = json.dumps(body, ensure_ascii=False)
+            authorization, amz_date, payload_hash = sign_request('POST', url, params, headers, payload)
+            
+            headers['Authorization'] = authorization
+            headers['X-Date'] = amz_date
+            headers['X-Content-Sha256'] = payload_hash
+            
+            # 提交任务
+            query_string = '&'.join([f"{k}={v}" for k, v in params.items()])
+            submit_url = f"{url}?{query_string}"
+            
+            logger.info(f"Submitting Volcengine task (model: {req_key})...")
+            
+            response = requests.post(
+                submit_url,
+                headers=headers,
+                data=payload,
+                timeout=60
+            )
+            
+            response.raise_for_status()
+            result = response.json()
+            
+            if result.get("code") != 10000:
+                logger.error(f"Volcengine task submission failed: {result.get('message')}")
+                return None
+            
+            task_id = result["data"]["task_id"]
+            logger.info(f"Volcengine task submitted: {task_id}")
+            
+            # 轮询查询结果
+            query_params = {
+                "Action": "CVSync2AsyncGetResult",
+                "Version": "2022-08-31"
+            }
+            
+            query_body = {
+                "req_key": req_key,
+                "task_id": task_id,
+                "req_json": json.dumps({"return_url": True}, ensure_ascii=False)
+            }
+            
+            start_time = time.time()
+            while True:
+                if time.time() - start_time > self.config.volcengine_timeout:
+                    logger.error(f"Volcengine task timeout after {self.config.volcengine_timeout} seconds")
+                    return None
+                
+                # 重新签名查询请求
+                query_payload = json.dumps(query_body, ensure_ascii=False)
+                query_authorization, query_amz_date, query_payload_hash = sign_request('POST', url, query_params, headers, query_payload)
+                
+                query_headers = {
+                    "Content-Type": "application/json",
+                    "Host": host,
+                    "Authorization": query_authorization,
+                    "X-Date": query_amz_date,
+                    "X-Content-Sha256": query_payload_hash
+                }
+                
+                query_string = '&'.join([f"{k}={v}" for k, v in query_params.items()])
+                query_url = f"{url}?{query_string}"
+                
+                result_response = requests.post(
+                    query_url,
+                    headers=query_headers,
+                    data=query_payload,
+                    timeout=30
+                )
+                
+                result_response.raise_for_status()
+                query_result = result_response.json()
+                
+                if query_result.get("code") != 10000:
+                    logger.error(f"Volcengine query failed: {query_result.get('message')}")
+                    return None
+                
+                status = query_result["data"]["status"]
+                
+                if status == "done":
+                    image_urls = query_result["data"].get("image_urls", [])
+                    if image_urls:
+                        image_url = image_urls[0]
+                        logger.info(f"Volcengine image generated successfully: {image_url}")
+                        return image_url
+                    else:
+                        logger.error("Volcengine generation completed but no image URLs returned")
+                        return None
+                elif status == "not_found":
+                    logger.error("Volcengine task not found")
+                    return None
+                elif status == "expired":
+                    logger.error("Volcengine task expired")
+                    return None
+                elif status in ["in_queue", "generating"]:
+                    logger.info(f"Volcengine task {status}, elapsed: {int(time.time() - start_time)}s")
+                    time.sleep(self.config.volcengine_retry_interval)
+                else:
+                    logger.warning(f"Unknown Volcengine task status: {status}")
+                    time.sleep(self.config.volcengine_retry_interval)
+                    
+        except Exception as e:
+            logger.error(f"Volcengine generation error: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+            return None
+
     def _generate_with_openai(self, prompt: str) -> Optional[str]:
         """使用OpenAI DALL-E生成图片"""
         try:
@@ -305,7 +497,9 @@ class CoverImageGenerator:
 
         # 调用AI生成图片
         image_url = None
-        if self.config.api_provider == "modelscope":
+        if self.config.api_provider == "volcengine":
+            image_url = self._generate_with_volcengine(prompt)
+        elif self.config.api_provider == "modelscope":
             image_url = self._generate_with_modelscope(prompt)
         elif self.config.api_provider == "openai":
             image_url = self._generate_with_openai(prompt)
@@ -317,17 +511,17 @@ class CoverImageGenerator:
             logger.error("Failed to generate image")
             return None
 
-    # 生成文件名
-    filename = f"{content_hash}.webp"
-    filepath = Path(self.config.output_dir) / filename
+        # 生成文件名
+        filename = f"{content_hash}.webp"
+        filepath = Path(self.config.output_dir) / filename
 
         # 下载图片
         if not self._download_image(image_url, str(filepath)):
             return None
 
-    # 生成相对路径（统一为web路径）
-    web_friendly_path = str(filepath).replace("\\", "/")
-    relative_path = web_friendly_path.replace("static/", "/", 1)
+        # 生成相对路径（统一为web路径）
+        web_friendly_path = str(filepath).replace("\\", "/")
+        relative_path = web_friendly_path.replace("static/", "/", 1)
 
         # 更新缓存
         self.cache[content_hash] = {
@@ -533,11 +727,52 @@ def main():
     args = parser.parse_args()
 
     # 配置
-    api_provider = os.getenv("TEXT2IMAGE_PROVIDER", "modelscope")  # modelscope, openai
+    api_provider = os.getenv("TEXT2IMAGE_PROVIDER", "volcengine")  # volcengine(默认), modelscope, openai
     workflow_mode = args.workflow_mode or os.getenv("WORKFLOW_MODE", "").lower() == "true"
     force_regenerate = args.force or os.getenv("FORCE_REGENERATE", "").lower() == "true"
 
-    if api_provider == "modelscope":
+    if api_provider == "volcengine":
+        # 支持从环境变量配置模型（默认jimeng_t2i_v40）
+        volcengine_model = os.getenv("VOLCENGINE_MODEL", "jimeng_t2i_v40")
+        
+        # 获取Access Key和Secret Key
+        # 火山引擎API密钥格式说明：
+        # - Access Key: 明文字符串，以AKLT开头
+        # - Secret Key: 可能是Base64编码或明文，先尝试直接使用
+        import base64
+        
+        access_key_raw = os.getenv("VOLCENGINE_ACCESS_KEY", os.getenv("ARK_API_KEY", ""))
+        secret_key_raw = os.getenv("VOLCENGINE_SECRET_KEY", os.getenv("ARK_SECRET_KEY", ""))
+        
+        # Access Key 直接使用
+        access_key = access_key_raw
+        
+        # Secret Key 先尝试直接使用（不解码）
+        secret_key = secret_key_raw
+        logger.info(f"✓ Using Access Key (length: {len(access_key)})")
+        logger.info(f"✓ Using Secret Key (length: {len(secret_key)}, ends with: {'==' if secret_key.endswith('==') else 'other'})")
+        
+        config = ImageGenConfig(
+            api_provider="volcengine",
+            api_key="",  # 火山引擎使用Access Key/Secret Key而非单一API Key
+            volcengine_access_key=access_key,
+            volcengine_secret_key=secret_key,
+            volcengine_model=volcengine_model,
+            model=volcengine_model,
+            output_dir="static/images/generated-covers",
+            style_suffix=", professional blog cover, clean design, technology theme, minimal"
+        )
+
+        if not config.volcengine_access_key or not config.volcengine_secret_key:
+            logger.error("⚠️  警告: 未设置 VOLCENGINE_ACCESS_KEY 或 VOLCENGINE_SECRET_KEY 环境变量")
+            logger.error("请在 .env 文件中添加:")
+            logger.error("  VOLCENGINE_ACCESS_KEY=AKLT... (明文，AKLT开头)")
+            logger.error("  VOLCENGINE_SECRET_KEY=...== (Base64编码，从火山控制台获取)")
+            logger.error("  VOLCENGINE_MODEL=jimeng_t2i_v40  # 可选，默认即梦4.0")
+            logger.error("  VOLCENGINE_MODEL=jimeng_t2i_v40  # 可选，默认即梦4.0")
+            return
+
+    elif api_provider == "modelscope":
         config = ImageGenConfig(
             api_provider="modelscope",
             api_key=os.getenv("MODELSCOPE_API_KEY", ""),
@@ -563,7 +798,7 @@ def main():
             logger.error("Please set OPENAI_API_KEY environment variable")
             return
     else:
-        logger.error(f"Unsupported provider: {api_provider}. Use 'modelscope' or 'openai'")
+        logger.error(f"Unsupported provider: {api_provider}. Use 'volcengine', 'modelscope' or 'openai'")
         return
 
     # 初始化生成器
