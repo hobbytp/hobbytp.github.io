@@ -769,7 +769,6 @@ def main():
             logger.error("  VOLCENGINE_ACCESS_KEY=AKLT... (明文，AKLT开头)")
             logger.error("  VOLCENGINE_SECRET_KEY=...== (Base64编码，从火山控制台获取)")
             logger.error("  VOLCENGINE_MODEL=jimeng_t2i_v40  # 可选，默认即梦4.0")
-            logger.error("  VOLCENGINE_MODEL=jimeng_t2i_v40  # 可选，默认即梦4.0")
             return
 
     elif api_provider == "modelscope":
