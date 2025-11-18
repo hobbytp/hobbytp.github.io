@@ -1,5 +1,11 @@
 .PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers generate-covers-for-directory help
 
+# Shell 设置
+# 让每个配方(target)的所有命令在同一个 shell 中执行，确保 .env 中的导出变量可在后续命令中生效
+.ONESHELL:
+SHELL := /usr/bin/bash
+.SHELLFLAGS := -c
+
 # 默认目标
 .DEFAULT_GOAL := help
 
@@ -45,6 +51,10 @@ analyze-content:
 # 🤖 AI增强内容分析
 analyze-content-ai:
 	@echo "🤖 AI增强内容分析..."
+	# 加载 .env 以提供 AI 所需的密钥（如 GEMINI、OPENAI、MODELSCOPE 等）
+	set -a; \
+	if [ -f .env ]; then . .env; echo "Environment variables loaded from .env"; else echo "No .env file found, using environment variables"; fi; \
+	set +a; \
 	@if [ -n "$(FILE)" ]; then \
 		echo "🤖 AI增强分析单个文件: $(FILE)"; \
 		cd tools/content-analysis && $(PYTHON_CMD) content_analyzer.py --analyze-single "$(FILE)" --ai-enhance; \
@@ -61,6 +71,10 @@ generate-json-data:
 # 🤖 生成AI增强JSON数据
 generate-json-data-ai:
 	@echo "🤖 生成AI增强分析JSON数据..."
+	# 加载 .env 以提供 AI 所需的密钥
+	set -a; \
+	if [ -f .env ]; then . .env; echo "Environment variables loaded from .env"; else echo "No .env file found, using environment variables"; fi; \
+	set +a; \
 	@cd tools/content-analysis && $(PYTHON_CMD) content_analyzer.py --input-dir ../.. --json-data --ai-enhance
 	@cp tools/content-analysis/content-analysis-data.json static/
 
@@ -161,20 +175,18 @@ generate-ai-covers:
 	@echo "  export TEXT2IMAGE_PROVIDER=\"modelscope\"  # or \"openai\""
 	@echo ""
 	@echo "🚀 Execute generation:"
-	@if [ -f .env ]; then \
-		set -a; \
-		. .env; \
-		set +a; \
-		echo "Environment variables loaded from .env"; \
-	fi; \
-	if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
-		echo "Starting AI cover generation..."; \
-		$(PYTHON_CMD) scripts/ai_cover_generator.py; \
-		echo "✅ AI cover generation completed!"; \
-	else \
-		echo "❌ Please configure API keys in .env file!"; \
-		echo "Add: MODELSCOPE_API_KEY=\"your-key\""; \
-	fi
+	@bash -lc '\
+	  set -a; \
+	  if [ -f .env ]; then . .env; echo "Environment variables loaded from .env"; else echo "No .env file found, using environment variables"; fi; \
+	  set +a; \
+	  if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
+	    echo "Starting AI cover generation..."; \
+	    $(PYTHON_CMD) scripts/ai_cover_generator.py; \
+	    echo "✅ AI cover generation completed!"; \
+	  else \
+	    echo "⚠️  警告: 未设置 MODELSCOPE_API_KEY 环境变量"; \
+	    echo "请在 .env 文件中添加: MODELSCOPE_API_KEY=your-key"; \
+	  fi'
 
 # 测试封面生成效果
 test-covers:
@@ -196,40 +208,32 @@ test-covers:
 
 # 为指定目录生成AI封面
 generate-covers-for-directory:
-	@if [ -z "$(DIRECTORY)" ]; then \
-		echo "❌ 请指定目录名称: make generate-covers-for-directory DIRECTORY=papers"; \
-		echo ""; \
-		echo "📁 可用目录:"; \
-		$(PYTHON_CMD) scripts/generate_covers_for_directory.py --list-directories; \
-		exit 1; \
-	fi
-	@echo "🎯 为目录 '$(DIRECTORY)' 生成AI封面..."
-	@if [ -f .env ]; then \
-		set -a; \
-		. .env; \
-		set +a; \
-		echo "Environment variables loaded from .env"; \
-	fi; \
-		RECURSIVE_FLAG="--recursive"; \
-		if [ "$(NO_RECURSIVE)" = "true" ] || [ "$(NO_RECURSIVE)" = "1" ]; then \
-			RECURSIVE_FLAG="--no-recursive"; \
-		fi; \
-		FORCE_FLAG=""; \
-		if [ "$(FORCE)" = "true" ] || [ "$(FORCE)" = "1" ]; then \
-			FORCE_FLAG="--force"; \
-		fi; \
-		DRY_RUN_FLAG=""; \
-		if [ "$(DRY_RUN)" = "true" ] || [ "$(DRY_RUN)" = "1" ]; then \
-			DRY_RUN_FLAG="--dry-run"; \
-		fi; \
-		if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
-			echo "Starting AI cover generation for directory: $(DIRECTORY)..."; \
-			$(PYTHON_CMD) scripts/generate_covers_for_directory.py $(DIRECTORY) $$RECURSIVE_FLAG $$FORCE_FLAG $$DRY_RUN_FLAG; \
-		echo "✅ AI cover generation completed for directory: $(DIRECTORY)!"; \
-	else \
-		echo "❌ Please configure API keys in .env file!"; \
-		echo "Add: MODELSCOPE_API_KEY=\"your-key\""; \
-	fi
+	@bash -lc '\
+	  if [ -z "$(DIRECTORY)" ]; then \
+	    echo "❌ 请指定目录名称: make generate-covers-for-directory DIRECTORY=papers"; \
+	    echo ""; \
+	    echo "📁 可用目录:"; \
+	    $(PYTHON_CMD) scripts/generate_covers_for_directory.py --list-directories; \
+	    exit 1; \
+	  fi; \
+	  echo "🎯 为目录 '\''$(DIRECTORY)'\'' 生成AI封面..."; \
+	  set -a; \
+	  if [ -f .env ]; then . .env; echo "Environment variables loaded from .env"; else echo "No .env file found, using environment variables"; fi; \
+	  set +a; \
+	  RECURSIVE_FLAG="--recursive"; \
+	  if [ "$(NO_RECURSIVE)" = "true" ] || [ "$(NO_RECURSIVE)" = "1" ]; then RECURSIVE_FLAG="--no-recursive"; fi; \
+	  FORCE_FLAG=""; \
+	  if [ "$(FORCE)" = "true" ] || [ "$(FORCE)" = "1" ]; then FORCE_FLAG="--force"; fi; \
+	  DRY_RUN_FLAG=""; \
+	  if [ "$(DRY_RUN)" = "true" ] || [ "$(DRY_RUN)" = "1" ]; then DRY_RUN_FLAG="--dry-run"; fi; \
+	  if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
+	    echo "Starting AI cover generation for directory: $(DIRECTORY)..."; \
+	    $(PYTHON_CMD) scripts/generate_covers_for_directory.py $(DIRECTORY) $$RECURSIVE_FLAG $$FORCE_FLAG $$DRY_RUN_FLAG; \
+	    echo "✅ AI cover generation completed for directory: $(DIRECTORY)!"; \
+	  else \
+	    echo "⚠️  警告: 未设置 MODELSCOPE_API_KEY 环境变量"; \
+	    echo "请在 .env 文件中添加: MODELSCOPE_API_KEY=your-key"; \
+	  fi'
 
 # 帮助信息
 help:
