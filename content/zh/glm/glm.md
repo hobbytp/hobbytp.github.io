@@ -1,5 +1,4 @@
----
-title: "智谱AI(GLM)"
+---title: "智谱AI(GLM)"
 date: "2025-10-03T10:10:00+08:00"
 draft: false
 tags: ["AI", "智谱AI","GLM"]
