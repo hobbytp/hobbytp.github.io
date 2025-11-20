@@ -167,25 +167,48 @@ generate-ai-covers:
 	@echo "🤖 Using AI API to generate real cover images..."
 	@echo ""
 	@echo "📋 Supported AI services:"
-	@echo "  - ModelScope Qwen-image (default, recommended in China)"
+	@echo "  - Volcengine Jimeng (default, recommended in China)"
+	@echo "  - ModelScope Qwen-image"
 	@echo "  - OpenAI DALL-E (requires VPN)"
 	@echo ""
 	@echo "🔑 Environment variables:"
+	@echo "  # Volcengine (default):"
+	@echo "  export VOLCENGINE_ACCESS_KEY=\"your-access-key\""
+	@echo "  export VOLCENGINE_SECRET_KEY=\"your-secret-key\""
+	@echo "  export TEXT2IMAGE_PROVIDER=\"volcengine\"  # optional, volcengine is default"
+	@echo ""
+	@echo "  # ModelScope:"
 	@echo "  export MODELSCOPE_API_KEY=\"your-modelscope-key\""
-	@echo "  export TEXT2IMAGE_PROVIDER=\"modelscope\"  # or \"openai\""
+	@echo "  export TEXT2IMAGE_PROVIDER=\"modelscope\""
+	@echo ""
+	@echo "  # OpenAI:"
+	@echo "  export OPENAI_API_KEY=\"your-openai-key\""
+	@echo "  export TEXT2IMAGE_PROVIDER=\"openai\""
 	@echo ""
 	@echo "🚀 Execute generation:"
 	@bash -lc '\
 	  set -a; \
 	  if [ -f .env ]; then . .env; echo "Environment variables loaded from .env"; else echo "No .env file found, using environment variables"; fi; \
 	  set +a; \
-	  if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
+	  if ([ -n "$$VOLCENGINE_ACCESS_KEY" ] && [ -n "$$VOLCENGINE_SECRET_KEY" ]) || [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
 	    echo "Starting AI cover generation..."; \
 	    $(PYTHON_CMD) scripts/ai_cover_generator.py; \
 	    echo "✅ AI cover generation completed!"; \
 	  else \
-	    echo "⚠️  警告: 未设置 MODELSCOPE_API_KEY 环境变量"; \
-	    echo "请在 .env 文件中添加: MODELSCOPE_API_KEY=your-key"; \
+	    echo "⚠️  警告: 未设置必要的API密钥环境变量"; \
+	    echo "请在 .env 文件中添加以下任一配置:"; \
+	    echo ""; \
+	    echo "  # Volcengine (默认):"; \
+	    echo "  VOLCENGINE_ACCESS_KEY=your-access-key"; \
+	    echo "  VOLCENGINE_SECRET_KEY=your-secret-key"; \
+	    echo ""; \
+	    echo "  # 或 ModelScope:"; \
+	    echo "  MODELSCOPE_API_KEY=your-key"; \
+	    echo "  TEXT2IMAGE_PROVIDER=modelscope"; \
+	    echo ""; \
+	    echo "  # 或 OpenAI:"; \
+	    echo "  OPENAI_API_KEY=your-key"; \
+	    echo "  TEXT2IMAGE_PROVIDER=openai"; \
 	  fi'
 
 # 测试封面生成效果
@@ -226,13 +249,25 @@ generate-covers-for-directory:
 	  if [ "$(FORCE)" = "true" ] || [ "$(FORCE)" = "1" ]; then FORCE_FLAG="--force"; fi; \
 	  DRY_RUN_FLAG=""; \
 	  if [ "$(DRY_RUN)" = "true" ] || [ "$(DRY_RUN)" = "1" ]; then DRY_RUN_FLAG="--dry-run"; fi; \
-	  if [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
+	  if ([ -n "$$VOLCENGINE_ACCESS_KEY" ] && [ -n "$$VOLCENGINE_SECRET_KEY" ]) || [ -n "$$MODELSCOPE_API_KEY" ] || [ -n "$$OPENAI_API_KEY" ]; then \
 	    echo "Starting AI cover generation for directory: $(DIRECTORY)..."; \
 	    $(PYTHON_CMD) scripts/generate_covers_for_directory.py $(DIRECTORY) $$RECURSIVE_FLAG $$FORCE_FLAG $$DRY_RUN_FLAG; \
 	    echo "✅ AI cover generation completed for directory: $(DIRECTORY)!"; \
 	  else \
-	    echo "⚠️  警告: 未设置 MODELSCOPE_API_KEY 环境变量"; \
-	    echo "请在 .env 文件中添加: MODELSCOPE_API_KEY=your-key"; \
+	    echo "⚠️  警告: 未设置必要的API密钥环境变量"; \
+	    echo "请在 .env 文件中添加以下任一配置:"; \
+	    echo ""; \
+	    echo "  # Volcengine (默认):"; \
+	    echo "  VOLCENGINE_ACCESS_KEY=your-access-key"; \
+	    echo "  VOLCENGINE_SECRET_KEY=your-secret-key"; \
+	    echo ""; \
+	    echo "  # 或 ModelScope:"; \
+	    echo "  MODELSCOPE_API_KEY=your-key"; \
+	    echo "  TEXT2IMAGE_PROVIDER=modelscope"; \
+	    echo ""; \
+	    echo "  # 或 OpenAI:"; \
+	    echo "  OPENAI_API_KEY=your-key"; \
+	    echo "  TEXT2IMAGE_PROVIDER=openai"; \
 	  fi'
 
 # 帮助信息

@@ -9,6 +9,9 @@ buildDrafts = false
 buildFuture = false
 buildExpired = false
 
+# 忽略不必要的文件以提升性能
+ignoreFiles = ["\\.git", "\\.vscode", "\\.idea", "node_modules", "public", "resources/_gen", "\\.DS_Store"]
+
 [pagination]
 pageSize = 5
 

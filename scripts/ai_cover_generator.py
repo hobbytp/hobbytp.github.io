@@ -15,6 +15,7 @@ from typing import Optional, Dict
 from dataclasses import dataclass
 import logging
 import time
+from datetime import datetime
 from PIL import Image
 from io import BytesIO
 
@@ -63,8 +64,9 @@ class ImageGenConfig:
     openai_base_url: str = "https://api.openai.com/v1/images/generations"
 
     # 图片配置 - 横屏尺寸适配博客卡片头部
-    width: int = 1200  # 横屏宽度
-    height: int = 630   # 横屏高度 (16:9比例)
+    # 即梦API要求宽高乘积 >= 1024*1024，且推荐 2560x1440 (16:9)
+    width: int = 2560  # 横屏宽度
+    height: int = 1440   # 横屏高度 (16:9)。此值与 width=2560 一起满足即梦API要求的宽高乘积 >= 1024*1024，且为推荐的 16:9 比例
     quality: str = "standard"  # standard, hd
     style: str = "vivid"  # vivid, natural
 
@@ -110,26 +112,48 @@ class CoverImageGenerator:
 
     def _optimize_description(self, description: str, title: str, category: str = "") -> str:
         """优化描述为适合图片生成的prompt"""
-        # 截断描述并提取关键概念
-        if len(description) > self.config.max_description_length:
-            description = description[:self.config.max_description_length] + "..."
+        # 截断描述
+        if len(description) > 300:
+            description = description[:300]
 
-        # 提取文章主题的关键词，避免直接包含标题文字
-        keywords = self._extract_keywords(description, title)
+        # 提取关键词以决定风格倾向
+        text = f"{title} {description}".lower()
+        
+        # 默认风格元素
+        base_visuals = "未来科技感，抽象线条，光影交错，流体形态"
+        color_tone = "冷色调，高级感，渐变色"
+        
+        # 根据关键词调整视觉元素和配色
+        if any(k in text for k in ['math', 'imo', 'number', 'logic', 'reasoning', 'geometry', '数学', '推理', '逻辑', '几何', '证明']):
+            base_visuals = "黄金分割，分形几何，柏拉图立体，抽象数学符号，秩序感，理性结构，悬浮的几何体"
+            color_tone = "深邃蓝紫色，搭配金色线条点缀，神秘，严谨"
+        elif any(k in text for k in ['code', 'programming', 'software', 'github', 'linux', 'terminal', '代码', '编程', '开发', '源码']):
+            base_visuals = "数字矩阵，代码流，像素化构建块，终端界面元素，赛博空间，电路板纹理"
+            color_tone = "黑客绿，暗黑背景，霓虹光效，极客风"
+        elif any(k in text for k in ['brain', 'neural', 'cognitive', 'think', 'llm', 'gpt', '大脑', '神经网络', '认知', '思考', '模型']):
+            base_visuals = "发光的神经元网络，突触连接，思维火花，生物科技融合，能量脉冲，智能体"
+            color_tone = "电光蓝，洋红，粉紫渐变，梦幻，灵动"
+        elif any(k in text for k in ['cloud', 'server', 'data', 'network', 'api', '云', '服务器', '数据', '网络', '连接']):
+            base_visuals = "云端架构，高速数据流，互联节点，无限延伸的网格，玻璃质感，透明传输"
+            color_tone = "纯净白，天蓝，青色，通透感，轻盈"
+        elif any(k in text for k in ['security', 'hack', 'privacy', 'lock', '安全', '黑客', '隐私', '加密']):
+            base_visuals = "盾牌概念，锁链，防御网，扫描光束，金属质感"
+            color_tone = "深灰，银色，警示红光，坚硬"
 
-        # 构建prompt - 专注于抽象概念，不包含具体文字
-        prompt_parts = [
-            f"Abstract geometric blog cover representing concepts from: {keywords}",
-            f"Technology and innovation theme inspired by {category}" if category else "Technology and innovation theme",
-            "Clean professional design suitable for blog header",
-            "Minimalist modern aesthetic",
-            "Digital art style with smooth gradients",
-            "Subtle tech-inspired patterns",
-            self.config.style_suffix
-        ]
+        # 将描述作为视觉元素的一部分，增加画面的独特性
+        visual_elements = f"{base_visuals}。融合基于'{description}'的抽象概念可视化"
 
-        prompt = " ".join(filter(None, prompt_parts))
-        return prompt.strip()
+        # 构建中文Prompt (针对即梦/火山引擎优化)
+        prompt = (
+            f"一张极具设计感的博客封面图。主题：{title}。"
+            f"核心视觉元素：{visual_elements}。"
+            f"艺术风格：C4D 3D渲染，Octane Render，极简主义，虚幻引擎5画质，Tyndall effect，8k分辨率，超高清，细节丰富。"
+            f"色彩氛围：{color_tone}。"
+            f"构图：宽屏壁纸，大气磅礴，留白适中，中心构图或三分法。"
+            f"重要提示：纯图案背景，绝对不要包含任何文字、字母、数字、拼音、汉字、水印、LOGO。不要出现人脸。"
+        )
+        
+        return prompt
 
     def _extract_keywords(self, description: str, title: str) -> str:
         """从描述和标题中提取关键词，移除常见的停用词"""
@@ -248,7 +272,8 @@ class CoverImageGenerator:
             # 火山引擎签名V4（修正：按照官方HTTP文档实现）
             def sign_request(method, url, query_params, headers, payload):
                 # 获取当前时间
-                now = datetime.utcnow()
+                from datetime import timezone
+                now = datetime.now(timezone.utc)
                 date_stamp = now.strftime('%Y%m%d')
                 amz_date = now.strftime('%Y%m%dT%H%M%SZ')
                 
@@ -287,8 +312,10 @@ class CoverImageGenerator:
                 return authorization_header, amz_date, payload_hash
 
             # 构建URL和Headers
+            from urllib.parse import urlparse
+            parsed_url = urlparse(self.config.volcengine_base_url)
+            host = parsed_url.netloc
             url = self.config.volcengine_base_url
-            host = url.replace('https://', '').replace('http://', '')
             
             headers = {
                 "Content-Type": "application/json",
@@ -314,6 +341,18 @@ class CoverImageGenerator:
                 data=payload,
                 timeout=60
             )
+            
+            if response.status_code != 200:
+                logger.error(f"Volcengine API Error: {response.status_code}")
+                logger.error(f"Response Body: {response.text}")
+                
+                # Check for AccessDenied
+                try:
+                    err_data = response.json()
+                    if err_data.get("ResponseMetadata", {}).get("Error", {}).get("Code") == "AccessDenied":
+                        logger.error("❌ 权限不足 (AccessDenied): 请检查火山引擎IAM策略，确保拥有 'cv:CVSync2AsyncSubmitTask' 权限")
+                except (ValueError, json.JSONDecodeError):
+                    pass
             
             response.raise_for_status()
             result = response.json()
@@ -364,6 +403,10 @@ class CoverImageGenerator:
                     data=query_payload,
                     timeout=30
                 )
+                
+                if result_response.status_code != 200:
+                    logger.error(f"Volcengine Query Error: {result_response.status_code}")
+                    logger.error(f"Response Body: {result_response.text}")
                 
                 result_response.raise_for_status()
                 query_result = result_response.json()
@@ -528,10 +571,10 @@ class CoverImageGenerator:
             "title": title,
             "description": description[:200],
             "category": category,
-            "image_path": str(filepath),
+            "image_path": str(filepath).replace("\\", "/"),
             "relative_path": relative_path,
             "prompt": prompt,
-            "generated_at": str(Path().resolve())
+            "generated_at": datetime.now().isoformat()
         }
         self._save_cache()
 
@@ -630,20 +673,42 @@ class HugoArticleUpdater:
             # 转换Windows路径为Web路径
             web_image_path = image_path.replace('\\', '/')
 
+            # 移除旧的封面配置（如果存在）
+            lines = front_matter.split('\n')
+            new_lines = []
+            skip_mode = False
+            
+            for line in lines:
+                # 检查是否是封面相关的配置行
+                if line.strip().startswith('cover:') or line.strip().startswith('ai_cover:'):
+                    skip_mode = True
+                    continue
+
+                if skip_mode and (line.strip().startswith('image:') or line.strip().startswith('alt:') or line.strip().startswith('ai_generated:')):
+                    continue
+                
+                # 如果遇到非缩进的行，且不是封面配置，则退出跳过模式
+                if skip_mode and line.strip() and not line.startswith(' '):
+                    skip_mode = False
+                
+                # 如果是空行，也保留（除非在跳过模式中）
+                if skip_mode and not line.strip():
+                    continue
+                    
+                new_lines.append(line)
+
+            # 重建front matter
+            clean_front_matter = '\n'.join(new_lines).strip()
+
             # 在front matter中添加AI生成图片信息
             cover_image_block = f"""
 ai_cover: "{web_image_path}"
 cover:
   image: "{web_image_path}"
   alt: "{title}"
-  ai_generated: true
-"""
+  ai_generated: true"""
 
-            # 确保front matter以换行符结束，然后添加cover信息
-            if not front_matter.endswith('\n'):
-                front_matter += '\n'
-
-            updated_front_matter = front_matter + cover_image_block
+            updated_front_matter = f"{clean_front_matter}\n{cover_image_block}\n"
             updated_content = f"---{updated_front_matter}---{article_content}"
 
             # 写回文件
@@ -812,12 +877,17 @@ def main():
     updater = HugoArticleUpdater(generator=generator)
 
     if args.specific_file:
-        # 处理特定文件
-        if os.path.exists(args.specific_file):
-            articles = [args.specific_file]
-            logger.info(f"Processing specific file: {args.specific_file}")
+        # 处理特定文件或目录
+        path = Path(args.specific_file)
+        if path.exists():
+            if path.is_file():
+                articles = [str(path)]
+                logger.info(f"Processing specific file: {path}")
+            elif path.is_dir():
+                articles = [str(p) for p in path.rglob("*.md") if p.name != "_index.md"]
+                logger.info(f"Processing directory: {path}, found {len(articles)} articles")
         else:
-            logger.error(f"File not found: {args.specific_file}")
+            logger.error(f"File or directory not found: {args.specific_file}")
             return
     elif force_regenerate:
         # 强制模式：查找所有有description的文章
@@ -866,8 +936,8 @@ def main():
                     category = line.split('[', 1)[1].split(']', 1)[0].split(',')[0].strip().strip('"\'')
 
         if title and description:
-            # 检查是否已有AI封面（在force模式下）
-            if force_regenerate and updater.has_ai_cover(article_path):
+            # 检查是否已有AI封面
+            if updater.has_ai_cover(article_path) and not force_regenerate:
                 logger.info(f"Skipping {article_path} - already has AI cover (use --force to override)")
                 continue
 

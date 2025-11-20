@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini 3: Interactive Use Cases</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutral (BG: stone-50, Text: stone-800, Accent: indigo-600, Cards: white) -->
+    <!-- Application Structure Plan: A filterable dashboard structure. A top navigation bar with buttons ('All', 'Software', 'Media', 'Business & Finance', 'Creative') acts as a JS-powered filter. The main content area is a responsive Tailwind grid of 'Use Case Cards'. This structure is chosen for usability, allowing users to directly explore domains relevant to them, which is more effective than a linear report. A 'Key Capabilities' section uses simple stat cards for high-level context, and a Chart.js bar chart shows the relationship between capabilities and use cases. -->
+    <!-- Visualization & Content Choices: 
+        1. Info: Key Capabilities (e.g., "2M Token Context"). Goal: Inform. Viz: HTML/Tailwind "Stat Cards". Interaction: None. Justification: Clear, high-level summary of foundational tech. Method: HTML/Tailwind.
+        2. Info: List of Use Cases by domain. Goal: Organize/Explore. Viz: A grid of "Use Case Cards" (HTML/Tailwind). Each card has a title, domain tag, and description. Interaction: Filtering via top navigation buttons (JS toggles 'hidden' class based on 'data-domain'). Justification: Allows easy browsing and discovery. Method: HTML/Tailwind + Vanilla JS.
+        3. Info: Relationship between capabilities and applications. Goal: Relate. Viz: Horizontal Bar Chart (Chart.js). Shows count of use cases powered by each core capability. Interaction: Hover/Tooltip. Justification: Visually connects abstract capabilities to concrete applications. Library: Chart.js (Canvas).
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .filter-btn {
+            @apply px-4 py-2 text-sm font-medium text-stone-700 bg-white border border-stone-300 rounded-lg shadow-sm hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all;
+        }
+        .filter-btn.active {
+            @apply bg-indigo-600 text-white border-indigo-600 hover:bg-indigo-700;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased">
+
+    <div class="container mx-auto max-w-7xl px-4 py-12">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-indigo-900 mb-4">Gemini 3: Next-Generation AI Use Cases</h1>
+            <p class="text-lg text-stone-600 max-w-3xl mx-auto">
+                An interactive exploration of powerful, real-world applications enabled by the advanced capabilities of the Gemini 3 model family.
+            </p>
+        </header>
+
+        <section id="capabilities" class="mb-16">
+            <h2 class="text-3xl font-semibold text-center mb-8">Fueling the Future: Key Capabilities</h2>
+            <p class="text-center text-stone-600 mb-8 max-w-2xl mx-auto">
+                These foundational advancements are not just incremental; they unlock entirely new categories of tasks. The use cases below are built upon these core pillars.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200 text-center">
+                    <h3 class="text-2xl font-bold text-indigo-600 mb-2">2M+ Tokens</h3>
+                    <p class="text-stone-600">Unprecedented long-context window for processing entire codebases, multiple books, or hours of video.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200 text-center">
+                    <h3 class="text-2xl font-bold text-indigo-600 mb-2">Native Multimodality</h3>
+                    <p class="text-stone-600">Natively understands and reasons across interleaved text, audio, and video streams without separate models.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200 text-center">
+                    <h3 class="text-2xl font-bold text-indigo-600 mb-2">Advanced Reasoning</h3>
+                    <p class="text-stone-600">Complex, multi-step problem-solving for tasks in science, finance, and complex debugging.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200 text-center">
+                    <h3 class="text-2xl font-bold text-indigo-600 mb-2">On-Device Speed</h3>
+                    <p class="text-stone-600">Highly optimized models that can run sophisticated tasks directly on-device for speed and privacy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="chart-section" class="mb-16">
+            <h2 class="text-3xl font-semibold text-center mb-4">Connecting Capabilities to Use Cases</h2>
+            <p class="text-center text-stone-600 mb-8 max-w-2xl mx-auto">
+                This chart illustrates which core capabilities power the most explored use cases. "Long Context" is a dominant enabler, opening up analysis of previously impossible-to-process data sizes.
+            </p>
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-stone-200">
+                <div class="chart-container">
+                    <canvas id="capabilityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="use-cases">
+            <h2 class="text-3xl font-semibold text-center mb-4">Interactive Use Case Explorer</h2>
+            <p class="text-center text-stone-600 mb-8 max-w-2xl mx-auto">
+                Select a domain to explore how Gemini 3 is being applied. These examples demonstrate a significant leap in AI-powered analysis, creation, and interaction.
+            </p>
+
+            <nav class="flex flex-wrap justify-center gap-3 mb-10" id="filter-nav">
+                <button class="filter-btn active" data-filter="all">All Domains</button>
+                <button class="filter-btn" data-filter="software">Software & Dev</button>
+                <button class="filter-btn" data-filter="media">Media & Entertainment</button>
+                <button class="filter-btn" data-filter="business">Business & Finance</button>
+                <button class="filter-btn" data-filter="creative">Creative & Content</button>
+            </nav>
+
+            <div id="use-case-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="software">
+                    <span class="text-xs font-medium text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full self-start mb-3">Software & Dev</span>
+                    <h3 class="text-xl font-semibold mb-2">Full Codebase Analysis</h3>
+                    <p class="text-stone-600">Analyze an entire repository (1M+ tokens) to identify deep-seated bugs, explain complex architecture, or suggest performance optimizations across all files.</p>
+                </div>
+
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="media">
+                    <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full self-start mb-3">Long-Video Summarization</span>
+                    <p class="text-stone-600">Provide a 2-hour movie file and get a detailed, timestamped scene-by-scene summary, character-arc analysis, or find specific visual moments.</p>
+                </div>
+
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="business">
+                    <span class="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full self-start mb-3">Earnings Call Analysis</span>
+                    <p class="text-stone-600">Analyze a 1-hour audio earnings call and its transcript simultaneously. Extract key financial metrics, analyze executive sentiment, and cross-reference spoken nuance with slide data.</p>
+                </div>
+
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="software">
+                    <span class="text-xs font-medium text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full self-start mb-3">Legacy Codebase Migration</span>
+                    <p class="text-stone-600">Ingest an entire legacy COBOL or Java 1.4 codebase and generate a modern, idiomatic Python or Go equivalent, complete with test stubs.</p>
+                </div>
+
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="creative">
+                    <span class="text-xs font-medium text-rose-600 bg-rose-100 px-2 py-0.5 rounded-full self-start mb-3">Full-Novel Manuscript Review</span>
+                    <p class="text-stone-600">Submit a 400-page novel manuscript (150k+ words) and receive a comprehensive critique on plot holes, character consistency, and pacing.</p>
+                </div>
+                
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="business">
+                    <span class="text-xs font-medium text-amber-600 bg-amber-100 px-2 py-0.5 rounded-full self-start mb-3">Multi-Year Financial Report Synthesis</span>
+                    <p class="text-stone-600">Analyze 10 years of quarterly and annual reports (1M+ tokens) to identify long-term trends, extract normalized data, and summarize strategic shifts.</p>
+                </div>
+
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="media">
+                    <span class="text-xs font-medium text-green-600 bg-green-100 px-2 py-0.5 rounded-full self-start mb-3">Interactive "Talk to Your Video"</span>
+                    <p class="text-stone-600">Upload hours of raw footage. Ask "find all the clips where the dog catches the frisbee" and get an instant, editable timeline of just those moments.</p>
+                </div>
+
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="software">
+                    <span class="text-xs font-medium text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-full self-start mb-3">API & Documentation Expert</span>
+                    <p class="text-stone-600">Feed the model an entire (e.g., Stripe, AWS) API documentation. Get a conversational expert that can write complex integration code and answer obscure questions.</p>
+                </div>
+
+                <div class="use-case-card bg-white p-6 rounded-xl shadow-lg border border-stone-200 flex flex-col" data-domain="creative">
+                    <span class="text-xs font-medium text-rose-600 bg-rose-100 px-2 py-0.5 rounded-full self-start mb-3">Personalized Education Tutor</span>
+                    <p class="text-stone-600">Create a tutor fed with an entire curriculum (textbooks, lectures, problem sets) that can generate novel explanations and practice problems.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="text-center py-8 mt-12 border-t border-stone-200">
+        <p class="text-sm text-stone-500">Generated Interactive Report | Powered by Gemini & Tailwind CSS</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            function wrapText(context, text, x, y, maxWidth, lineHeight) {
+                const words = text.split(' ');
+                let line = '';
+                for(let n = 0; n < words.length; n++) {
+                    const testLine = line + words[n] + ' ';
+                    const metrics = context.measureText(testLine);
+                    const testWidth = metrics.width;
+                    if (testWidth > maxWidth && n > 0) {
+                        context.fillText(line, x, y);
+                        line = words[n] + ' ';
+                        y += lineHeight;
+                    } else {
+                        line = testLine;
+                    }
+                }
+                context.fillText(line, x, y);
+            }
+            
+            function createCapabilityChart() {
+                const ctx = document.getElementById('capabilityChart').getContext('2d');
+                if (!ctx) return;
+
+                const data = {
+                    labels: ['Long Context (2M+ Tokens)', 'Native Multimodality (Video)', 'Native Multimodality (Audio)', 'Advanced Reasoning', 'On-Device Optimization'],
+                    datasets: [{
+                        label: 'Number of Use Cases Enabled',
+                        data: [5, 2, 1, 3, 1],
+                        backgroundColor: [
+                            'rgba(79, 70, 229, 0.7)',
+                            'rgba(5, 150, 105, 0.7)',
+                            'rgba(2, 132, 199, 0.7)',
+                            'rgba(217, 119, 6, 0.7)',
+                            'rgba(153, 27, 27, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(79, 70, 229, 1)',
+                            'rgba(5, 150, 105, 1)',
+                            'rgba(2, 132, 199, 1)',
+                            'rgba(217, 119, 6, 1)',
+                            'rgba(153, 27, 27, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                };
+
+                const options = {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Use Cases'
+                            },
+                            ticks: {
+                                stepSize: 1
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                autoSkip: false,
+                                callback: function(value, index, values) {
+                                    const label = this.getLabelForValue(value);
+                                    return label.length > 25 ? label.substring(0, 25) + '...' : label;
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: true,
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    return tooltipItems[0].label;
+                                }
+                            }
+                        }
+                    }
+                };
+
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: options
+                });
+            }
+
+            function filterUseCases(domain) {
+                const grid = document.getElementById('use-case-grid');
+                const cards = grid.getElementsByClassName('use-case-card');
+                
+                for (let card of cards) {
+                    if (domain === 'all' || card.dataset.domain === domain) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+
+                const buttons = document.querySelectorAll('#filter-nav .filter-btn');
+                buttons.forEach(btn => {
+                    if (btn.dataset.filter === domain) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            const filterNav = document.getElementById('filter-nav');
+            if (filterNav) {
+                filterNav.addEventListener('click', (e) => {
+                    if (e.target.tagName === 'BUTTON') {
+                        const filter = e.target.dataset.filter;
+                        if (filter) {
+                            filterUseCases(filter);
+                        }
+                    }
+                });
+            }
+
+            createCapabilityChart();
+            filterUseCases('all');
+
+        });
+    </script>
+</body>
+</html>
