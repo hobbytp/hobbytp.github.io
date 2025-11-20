@@ -1013,3 +1013,98 @@ body.has-sidebar > .header {
     margin-top: 0.5rem;
   }
 }
+
+/* AI Generated Cover Styles */
+.ai-generated-cover {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  
+  /* Default Gradient using CSS Variables */
+  --hue-1: calc(var(--base-hue) + 1);
+  --hue-2: calc(var(--base-hue) + 2);
+  --hue-3: calc(var(--base-hue) + 3);
+  
+  background: linear-gradient(135deg,
+    hsl(var(--hue-1), 70%, 75%),
+    hsl(var(--hue-2), 70%, 80%),
+    hsl(var(--hue-3), 70%, 85%)
+  );
+}
+
+[data-theme="dark"] .ai-generated-cover {
+  background: linear-gradient(135deg,
+    hsl(var(--hue-1), 60%, 30%),
+    hsl(var(--hue-2), 60%, 35%),
+    hsl(var(--hue-3), 60%, 40%)
+  );
+}
+
+.ai-generated-cover::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.03) 10px,
+    rgba(255, 255, 255, 0.03) 20px
+  );
+  animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 20px); }
+}
+
+.ai-generated-cover .cover-content {
+  text-align: center;
+  color: white;
+  z-index: 1;
+  position: relative;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.ai-generated-cover .cover-category {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  margin-bottom: 0.75rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: inline-block;
+}
+
+.ai-generated-cover .cover-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.2;
+}
+
+.ai-generated-cover .cover-description {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  line-height: 1.4;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Category Specific Gradients */
+.ai-generated-cover.category-papers { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; }
+.ai-generated-cover.category-technologies { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important; }
+.ai-generated-cover.category-projects { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important; }
+.ai-generated-cover.category-ai_tools { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important; }
+.ai-generated-cover.category-mas { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important; }
+.ai-generated-cover.category-training { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%) !important; }
