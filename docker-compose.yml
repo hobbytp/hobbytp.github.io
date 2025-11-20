@@ -4,6 +4,8 @@ services:
     container_name: hugo-blog
     volumes:
       - .:/src
+      - /src/resources
+      - /src/public
     ports:
       - "1313:1313"
     working_dir: /src
