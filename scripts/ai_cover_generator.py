@@ -15,6 +15,7 @@ from typing import Optional, Dict
 from dataclasses import dataclass
 import logging
 import time
+from datetime import datetime
 from PIL import Image
 from io import BytesIO
 
@@ -570,10 +571,10 @@ class CoverImageGenerator:
             "title": title,
             "description": description[:200],
             "category": category,
-            "image_path": str(filepath),
+            "image_path": str(filepath).replace("\\", "/"),
             "relative_path": relative_path,
             "prompt": prompt,
-            "generated_at": str(Path().resolve())
+            "generated_at": datetime.now().isoformat()
         }
         self._save_cache()
 
