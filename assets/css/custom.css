@@ -836,7 +836,7 @@ body.has-sidebar > .header {
 }
 
 .article-card-content {
-  padding: 1.25rem;
+  padding: 1rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -850,16 +850,16 @@ body.has-sidebar > .header {
   font-weight: 600;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   text-decoration: none;
   width: fit-content;
 }
 
 .article-card-title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--color-text);
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.25rem;
   line-height: 1.3;
 }
 
