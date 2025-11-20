@@ -350,7 +350,7 @@ class CoverImageGenerator:
                     err_data = response.json()
                     if err_data.get("ResponseMetadata", {}).get("Error", {}).get("Code") == "AccessDenied":
                         logger.error("❌ 权限不足 (AccessDenied): 请检查火山引擎IAM策略，确保拥有 'cv:CVSync2AsyncSubmitTask' 权限")
-                except:
+                except (ValueError, json.JSONDecodeError):
                     pass
             
             response.raise_for_status()
