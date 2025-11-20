@@ -1,7 +1,17 @@
 
 import re
+import sys
+import os
 
-file_path = r"d:\Hobby\github\hobbytp.github.io\books\ai_native\0.1-什么是AI原生.md"
+if len(sys.argv) < 2:
+    print("Usage: python link_references.py <path_to_markdown_file>")
+    sys.exit(1)
+
+file_path = sys.argv[1]
+
+if not os.path.exists(file_path):
+    print(f"File not found: {file_path}")
+    sys.exit(1)
 
 with open(file_path, 'r', encoding='utf-8') as f:
     content = f.read()

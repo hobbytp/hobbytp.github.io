@@ -351,7 +351,7 @@ class CoverImageGenerator:
                     err_data = response.json()
                     if err_data.get("ResponseMetadata", {}).get("Error", {}).get("Code") == "AccessDenied":
                         logger.error("❌ 权限不足 (AccessDenied): 请检查火山引擎IAM策略，确保拥有 'cv:CVSync2AsyncSubmitTask' 权限")
-                except:
+                except (ValueError, json.JSONDecodeError):
                     pass
             
             response.raise_for_status()
@@ -571,7 +571,7 @@ class CoverImageGenerator:
             "title": title,
             "description": description[:200],
             "category": category,
-            "image_path": str(filepath),
+            "image_path": str(filepath).replace("\\", "/"),
             "relative_path": relative_path,
             "prompt": prompt,
             "generated_at": datetime.now().isoformat()
@@ -680,12 +680,11 @@ class HugoArticleUpdater:
             
             for line in lines:
                 # 检查是否是封面相关的配置行
-                if line.strip().startswith('ai_cover:') or \
-                   line.strip().startswith('cover:') or \
-                   (skip_mode and (line.strip().startswith('image:') or line.strip().startswith('alt:') or line.strip().startswith('ai_generated:'))):
-                    
-                    if line.strip().startswith('cover:'):
-                        skip_mode = True
+                if line.strip().startswith('cover:') or line.strip().startswith('ai_cover:'):
+                    skip_mode = True
+                    continue
+
+                if skip_mode and (line.strip().startswith('image:') or line.strip().startswith('alt:') or line.strip().startswith('ai_generated:')):
                     continue
                 
                 # 如果遇到非缩进的行，且不是封面配置，则退出跳过模式
