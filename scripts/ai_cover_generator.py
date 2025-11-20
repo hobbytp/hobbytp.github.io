@@ -65,7 +65,7 @@ class ImageGenConfig:
     # 图片配置 - 横屏尺寸适配博客卡片头部
     # 即梦API要求宽高乘积 >= 1024*1024，且推荐 2560x1440 (16:9)
     width: int = 2560  # 横屏宽度
-    height: int = 1440   # 横屏高度 (16:9)
+    height: int = 1440   # 横屏高度 (16:9)。此值与 width=2560 一起满足即梦API要求的宽高乘积 >= 1024*1024，且为推荐的 16:9 比例
     quality: str = "standard"  # standard, hd
     style: str = "vivid"  # vivid, natural
 
