@@ -679,12 +679,11 @@ class HugoArticleUpdater:
             
             for line in lines:
                 # 检查是否是封面相关的配置行
-                if line.strip().startswith('ai_cover:') or \
-                   line.strip().startswith('cover:') or \
-                   (skip_mode and (line.strip().startswith('image:') or line.strip().startswith('alt:') or line.strip().startswith('ai_generated:'))):
-                    
-                    if line.strip().startswith('cover:'):
-                        skip_mode = True
+                if line.strip().startswith('cover:') or line.strip().startswith('ai_cover:'):
+                    skip_mode = True
+                    continue
+
+                if skip_mode and (line.strip().startswith('image:') or line.strip().startswith('alt:') or line.strip().startswith('ai_generated:')):
                     continue
                 
                 # 如果遇到非缩进的行，且不是封面配置，则退出跳过模式

@@ -5,7 +5,7 @@ https://www.volcengine.com/docs/6444/1390583#0f05efc9
 **Step1(必需):** 通过火山访问控制获取AK/SK，需确保火山账号已开通对应权限和相关策略
 
 * 正确替换示例中的`AccessKeyID`和`SecretAccessKey`参数值
-* 无权限情况下会报错“”
+* 无权限情况下会报错“AccessDenied”或“无权限”
 
 **Step2(大多数情况下可跳过):** 查看接口文档`请求参数-Query参数`中的`Action`及对应`Version`
 

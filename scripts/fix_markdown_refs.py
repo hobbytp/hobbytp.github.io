@@ -1,7 +1,11 @@
 import re
 import os
+import argparse
 
-file_path = r"d:\Hobby\github\hobbytp.github.io\books\ai_native\0.1-什么是AI原生.md"
+parser = argparse.ArgumentParser(description="Fix markdown references in a file.")
+parser.add_argument("file_path", help="Path to the markdown file to process.")
+args = parser.parse_args()
+file_path = args.file_path
 
 if not os.path.exists(file_path):
     print(f"File not found: {file_path}")
@@ -16,19 +20,7 @@ if "## 参考文献" not in content:
     print("References section not found.")
     exit(1)
 
-parts = content.split("## 参考文献")
-body = parts[0]
-# The rest is references. If "## 参考文献" appears multiple times, this might be an issue, but unlikely.
-# We take the last part as references if we split by it? No, split returns list.
-# Usually references are at the end.
-# Let's assume the last section is references.
-# But wait, split will return 2 parts if it appears once.
-# If it appears multiple times, we might have issues.
-# Let's assume it appears once.
-
-ref_part = parts[-1]
-# If there were multiple splits, we should join the previous ones back to body?
-# Actually, let's find the index of the last "## 参考文献"
+# We find the index of the last "## 参考文献"
 last_ref_index = content.rfind("## 参考文献")
 body = content[:last_ref_index]
 ref_part = content[last_ref_index + len("## 参考文献"):]
