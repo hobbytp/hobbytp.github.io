@@ -177,7 +177,7 @@ GitHub Repository: https://github.com/codebird17/nano-infograph （关键prompt�
 ======
 AIR(Architectural AI Render)
 https://www.kaggle.com/competitions/banana/writeups/airarchitectural-ai-render
-A.I.R（Architectural AI Render）是面向建筑师的轻量级“对话式渲染器”，基于 Gemini 2.5 Flash Image，将“草图+点/多边形遮罩+简短指令”组合为多模态提示，在不破坏几何结构的前提下进行点级编辑与局部修复，实现材料、开口、光照等精准快速调整；其工作流以建筑思维分栏：Upload（图像/截屏即用）、Edit（关键词建议与局部精修）、Reference（情绪板/参考图一键风格融合，含影响力滑杆）、Moodboard（方向留存与复用）、Gallery（版本对比留档）、Ask（与AI对话探索下一步），核心亮点是结构保真、风格融合可控、实时迭代、无需重型渲染链路。脑洞建议：把它接入你现有的设计系统，用Kafka事件流记录每次编辑的“掩码—提示—结果”三元组，微调一个小型控制模型做“风格一致性守护”，再用RL从人类反馈优化“Ask”建议质量，做成团队级“设计回放与复盘”闭环。
+A.I.R（Architectural AI Render）是面向建筑师的轻量级“对话式渲染器”，基于 Gemini 2.5 Flash Image，将“草图+点/多边形遮罩+简短指令”组合为多模态提示，在不破坏几何结构的前提下进行点级编辑与局部修复，实现材料、开口、光照等精准快速调整；其工作流以建筑思维分栏：Upload（图像/截屏即用）、Edit（关键词建议与局部精修）、Reference（情绪板/参考图一键风格融合，含影响力滑杆）、Moodboard（方向留存与复用）、Gallery（版本对比留档）、Ask（与AI对话探索下一步），核心亮点是结构保真、风格融合可控、实时迭代、无需重型渲染链路。
 
 
 Scientific Illustration AI
@@ -205,6 +205,47 @@ Visual Witness System
 https://www.kaggle.com/competitions/banana/writeups/visual-witness-system
 Visual Witness System 是一款基于网页的智能取证工具，利用 Google 的 Nano Banana（Gemini 2.5 Flash Image）多图融合、人物/物体一致性与物理与场景常识推理等能力，将来自不同来源、角度与质量的视觉证据（如监控截图、草图、反射影像、蓝图）自动整合为一幅连贯且逼真的场景重建图，帮助调查人员从零散片段中还原全貌、提升分析效率并产出可行动线索。
 代码：https://aistudio.google.com/apps/drive/1jo10UuK75gb6dYHRnFgmOaYVuFW6mTp-?showAssistant=true&showCode=true （核心prompt在geminiService.ts）
+
+```
+**Role:** You are an expert AI Forensic Artist. Your primary function is to process fragmented visual evidence and a descriptive brief to synthesize a single, coherent, photorealistic master image of a specific event or scene.
+
+**Mission:** Analyze the attached evidence files and the scene description below to reconstruct a single, unified, and high-fidelity photorealistic scene.
+
+**Scene Description:**
+${sceneDescription}
+
+**Key Instructions:**
+- **Character Consistency:** Subjects visible across multiple evidence files are the same individual(s). Maintain their exact facial features, body type, hair, unique identifiers, and clothing.
+- **Image Fusion:** The provided images are fragments of a larger scene. Seamlessly fuse the details from all evidence into one canonical image. Resolve conflicting perspectives and integrate all valid data points. The final output must be a single, unified photograph, not a collage.
+- **Inferential Reconstruction:** The evidence is incomplete. Use your deep world knowledge to logically and realistically fill in missing information, such as environmental physics (lighting, shadows), contextual details (appropriate background objects), and architectural integrity.
+- **Adherence to Description:** The provided scene description is the ground truth. If there is a discrepancy between visual evidence and the text description, the text takes precedence.
+
+**Output Requirements:**
+- **Format:** Generate a single image file.
+- **Style:** Strictly photorealistic. The output should look like a real photograph, with no artistic filters, cinematic styles, or non-photographic elements.
+- **Clean Image:** The final image must be free of any text, watermarks, or AI-generated artifacts.
+${includeConfidence
+    ? `
+**Confidence Assessment:**
+In your text response, you must provide a structured breakdown of your reconstruction's certainty. Analyze the final image and provide a list of key elements categorized by your confidence in their accuracy.
+
+Please structure your text output as a JSON object within a markdown code block. The JSON object must have the following structure:
+\`\`\`json
+{
+  "commentary": "A brief summary of the reconstruction process and any challenges.",
+  "confidenceAssessment": [
+    { "level": "HIGH", "description": "Element based directly on clear photographic evidence. e.g., 'The subject's blue jacket and facial scar.'" },
+    { "level": "MEDIUM", "description": "Element corroborated by multiple pieces of evidence. e.g., 'The time of day (dusk) inferred from shadows in photo A and the streetlights being on in CCTV B.'" },
+    { "level": "LOW", "description": "Element inferred from world knowledge to fill gaps. e.g., 'The specific model of the car in the background, which is a common type for this city.'" }
+  ]
+}
+\`\`\`
+The available confidence levels are: HIGH, MEDIUM, LOW.`
+    : `
+**Text Commentary:**
+Please provide a brief text commentary on the reconstruction process, highlighting any key decisions or assumptions made.`
+
+```
 
 
 Hephaestus
