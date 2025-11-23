@@ -383,7 +383,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 260px;
+  width: 180px;
   height: 100vh;
   background-color: var(--color-bg);
   border-right: 1px solid var(--color-primary-100);
@@ -482,6 +482,22 @@ body {
 .sidebar-menu a:hover,
 .sidebar-menu a.active {
   background-color: var(--color-primary-50);
+  color: var(--color-primary);
+}
+
+/* Sidebar Icons */
+.sidebar-menu svg.feather {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  vertical-align: text-bottom;
+  stroke-width: 2px;
+  color: var(--color-secondary);
+  transition: color 0.2s ease;
+}
+
+.sidebar-menu a:hover svg.feather,
+.sidebar-menu a.active svg.feather {
   color: var(--color-primary);
 }
 
@@ -598,7 +614,7 @@ body {
 
 /* Main content area with sidebar */
 .main-content-with-sidebar {
-  padding-left: 260px;
+  padding-left: 180px;
   width: 100%;
 }
 

@@ -15,9 +15,9 @@
     <div class="sidebar-section">
         <h3 class="sidebar-heading">导航</h3>
         <ul class="sidebar-menu">
-            <li><a href="{{ "" | absLangURL }}" class="{{ if .IsHome }}active{{ end }}">🏠 首页</a></li>
-            <li><a href="/zh/about" class="{{ if eq .RelPermalink "/zh/about/" }}active{{ end }}">👤 关于我</a></li>
-            <li><a href="/zh/search" class="{{ if eq .RelPermalink "/zh/search/" }}active{{ end }}">🔍 搜索</a></li>
+            <li><a href="{{ "" | absLangURL }}" class="{{ if .IsHome }}active{{ end }}">{{ partial "icon.html" (dict "name" "home") }} 首页</a></li>
+            <li><a href="/zh/about" class="{{ if eq .RelPermalink "/zh/about/" }}active{{ end }}">{{ partial "icon.html" (dict "name" "user") }} 关于我</a></li>
+            <li><a href="/zh/search" class="{{ if eq .RelPermalink "/zh/search/" }}active{{ end }}">{{ partial "icon.html" (dict "name" "search") }} 搜索</a></li>
         </ul>
     </div>
 
@@ -26,14 +26,14 @@
         <h3 class="sidebar-heading">文章</h3>
         <ul class="sidebar-menu">
             {{- $mainCategories := slice "my_insights" "celebrity_insights" "ai_spec" "big_companies" "papers" "technologies" "large_models" "training" "context_engineering" "mas" "ai_programming" "ai_tools" "projects" "news" "courses" }}
-            {{- $categoryIcons := dict "my_insights" "💡" "celebrity_insights" "⭐" "ai_spec" "📋" "big_companies" "🏢" "papers" "📄" "technologies" "🔧" "large_models" "🤖" "training" "⚙️" "context_engineering" "📝" "mas" "👥" "ai_programming" "💻" "ai_tools" "🛠️" "projects" "🏗️" "news" "📰" "courses" "🎓" }}
+            {{- $categoryIcons := dict "my_insights" "lightbulb" "celebrity_insights" "star" "ai_spec" "file-text" "big_companies" "briefcase" "papers" "book-open" "technologies" "terminal" "large_models" "brain" "training" "settings" "context_engineering" "message-square" "mas" "users" "ai_programming" "code" "ai_tools" "tool" "projects" "rocket" "news" "globe" "courses" "graduation-cap" }}
             {{- $categoryNames := dict "my_insights" "个人洞察" "celebrity_insights" "名人洞察" "ai_spec" "AI标准规范" "big_companies" "大厂产品线" "papers" "论文解读" "technologies" "技术解析" "large_models" "大模型" "training" "训练微调技术" "context_engineering" "上下文工程" "mas" "多代理技术" "ai_programming" "AI编程" "ai_tools" "AI工具箱" "projects" "开源项目" "news" "行业动态" "courses" "课程" }}
             {{- range $mainCategories }}
             {{- $catKey := . }}
             {{- $catTaxonomy := index site.Taxonomies.categories $catKey }}
             {{- if $catTaxonomy }}
             {{- if gt $catTaxonomy.Count 0 }}
-            <li><a href="{{ $catTaxonomy.Page.Permalink }}">{{ index $categoryIcons $catKey }} {{ index $categoryNames $catKey }}</a></li>
+            <li><a href="{{ $catTaxonomy.Page.Permalink }}">{{ partial "icon.html" (dict "name" (index $categoryIcons $catKey)) }} {{ index $categoryNames $catKey }}</a></li>
             {{- end }}
             {{- end }}
             {{- end }}
