@@ -70,9 +70,10 @@ jobs:
         git commit -m "📊 Daily content analysis update [$(date +'%Y-%m-%d')]" || echo "No changes to commit"
 
     - name: Push changes
-      uses: actions/push@v4
+      uses: ad-m/github-push-action@master
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
 
     - name: Create analysis summary
       run: |
