@@ -37,6 +37,9 @@ for line in references_raw:
     if not line:
         continue
     
+    # Remove existing numbering if present
+    line = re.sub(r'^\d+[\.\、\s]\s*', '', line)
+    
     # Create anchor and formatted line
     anchor = f"ref-{current_index}"
     # Check if line already has a number (unlikely based on inspection but good to be safe)
@@ -53,20 +56,34 @@ super_map = {
     '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9'
 }
 
-def replace_superscript(match):
-    sup_str = match.group(0)
-    normal_str = "".join(super_map.get(c, c) for c in sup_str)
-    try:
-        ref_num = int(normal_str)
-        return f'[{sup_str}](#ref-{ref_num})'
-    except ValueError:
-        return sup_str
+def replace_citation(match):
+    text = match.group(0)
+    
+    # Check if it's a superscript match (group 1)
+    if match.group(1):
+        sup_str = match.group(1)
+        normal_str = "".join(super_map.get(c, c) for c in sup_str)
+        try:
+            ref_num = int(normal_str)
+            return f'[{sup_str}](#ref-{ref_num})'
+        except ValueError:
+            return sup_str
+    # Check if it's a bare number match (group 2)
+    elif match.group(2):
+        num_str = match.group(2)
+        try:
+            ref_num = int(num_str)
+            return f'[{num_str}](#ref-{ref_num})'
+        except ValueError:
+            return num_str
+    return text
 
-# Regex to find superscript numbers (one or more)
-# We need to be careful not to match other things, but the superscripts are distinct.
-sup_regex = re.compile(r'[⁰¹²³⁴⁵⁶⁷⁸⁹]+')
+# Regex to find superscript numbers (one or more) OR bare numbers in specific context
+# Group 1: Superscripts
+# Group 2: Bare numbers preceded by space/quote/paren and followed by punctuation/pipe
+citation_regex = re.compile(r'([⁰¹²³⁴⁵⁶⁷⁸⁹]+)|(?<=[ \u201d\uff09])(\d+)(?=[。，；：]|\s\|)')
 
-new_body = sup_regex.sub(replace_superscript, body)
+new_body = citation_regex.sub(replace_citation, body)
 
 # Reconstruct file
 new_content = new_body + "## 参考文献\n\n" + "\n".join(formatted_refs) + "\n"
