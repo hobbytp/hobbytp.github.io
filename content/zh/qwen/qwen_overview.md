@@ -7,6 +7,12 @@ categories: ["large_models"]
 description: "通义千问（Qwen）系列模型概览"
 wordCount: 280
 readingTime: 2
+
+ai_cover: "/images/generated-covers/6241ac2b46be8b6ff91b9be21e20d978.webp"
+cover:
+  image: "/images/generated-covers/6241ac2b46be8b6ff91b9be21e20d978.webp"
+  alt: "通义千问（Qwen）系列模型概览"
+  ai_generated: true
 ---
 
 通义千问（Qwen）系列模型展现出全球领先的性能和全面的开源能力，为开发者和企业提供一站式解决方案——从大型语言模型到多模态应用应有尽有。

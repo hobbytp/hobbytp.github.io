@@ -7,6 +7,12 @@ categories: ["papers"]
 description: "本文介绍了深度研究智能体：系统性审查与路线图。"
 wordCount: 3930
 readingTime: 16
+
+ai_cover: "/images/generated-covers/d053d88777077f5e36e81cd78d422490.webp"
+cover:
+  image: "/images/generated-covers/d053d88777077f5e36e81cd78d422490.webp"
+  alt: "深度研究智能体：系统性审查与路线图"
+  ai_generated: true
 ---
 
 DEEP RESEARCH AGENTS: A SYSTEMATIC EXAMINATION AND ROADMAP

@@ -7,6 +7,12 @@ categories: ["large_models"]
 description: "全方位解读Qwen3的论文技术报告"
 wordCount: 4406
 readingTime: 18
+
+ai_cover: "/images/generated-covers/48b94b44b0309f20c994509df88c4727.webp"
+cover:
+  image: "/images/generated-covers/48b94b44b0309f20c994509df88c4727.webp"
+  alt: "Qwen3 Tech Report解读"
+  ai_generated: true
 ---
 
 ## 模型介绍

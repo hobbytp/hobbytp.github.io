@@ -7,6 +7,12 @@ categories: ["papers"]
 description: "这篇由Meta和宾夕法尼亚州立大学的研究者发布的论文提出了一种创新的、无需人工标注数据的提示词优化方法。"
 wordCount: 1065
 readingTime: 5
+
+ai_cover: "/images/generated-covers/0d2612bdfb97d98ad974840d23a773d4.webp"
+cover:
+  image: "/images/generated-covers/0d2612bdfb97d98ad974840d23a773d4.webp"
+  alt: "Meta: 提示词对决优化器 (PDO)"
+  ai_generated: true
 ---
 
 ## TL;DR

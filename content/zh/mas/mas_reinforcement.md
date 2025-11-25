@@ -7,6 +7,12 @@ categories: ["reinforcement", "mas", "training"]
 description: "本文介绍了多智能体强化学习（MARL）在多智能体系统（MAS）中的应用：理论、算法、应用与展望。"
 wordCount: 16955
 readingTime: 68
+
+ai_cover: "/images/generated-covers/ef9dc53da11cff3af691848e17180cd2.webp"
+cover:
+  image: "/images/generated-covers/ef9dc53da11cff3af691848e17180cd2.webp"
+  alt: "多智能体强化学习（MARL）在多智能体系统（MAS）中的应用：理论、算法、应用与展望"
+  ai_generated: true
 ---
 
 

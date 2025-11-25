@@ -7,6 +7,12 @@ categories: ["my_insights"]
 draft: false
 wordCount: 1669
 readingTime: 7
+
+ai_cover: "/images/generated-covers/97a65a1641f1e0b51593e51d300c4e11.webp"
+cover:
+  image: "/images/generated-covers/97a65a1641f1e0b51593e51d300c4e11.webp"
+  alt: "AI Coding向CLI方向发展的深层次原因"
+  ai_generated: true
 ---
 
 

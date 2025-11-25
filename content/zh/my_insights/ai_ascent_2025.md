@@ -7,6 +7,12 @@ tags: ["AI", "Ascent", "Agent", "红杉资本"]
 categories: ["celebrity_insights"]
 wordCount: 1980
 readingTime: 8
+
+ai_cover: "/images/generated-covers/61947fa15c860805335c63b379363b18.webp"
+cover:
+  image: "/images/generated-covers/61947fa15c860805335c63b379363b18.webp"
+  alt: "Agent经济：红杉资本2025 AI峰会释放的超级信号"
+  ai_generated: true
 ---
 
 ## 引言

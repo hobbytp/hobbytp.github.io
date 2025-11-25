@@ -21,8 +21,21 @@
 1. 进入你的GitHub仓库
 2. 点击 `Settings` → `Secrets and variables` → `Actions`
 3. 点击 `New repository secret`
-4. 添加以下密钥：
+4. 添加以下密钥（根据选择的服务商）：
 
+**推荐：使用火山方舟 (Ark)**
+```
+Name: ARK_API_KEY
+Value: 你的Ark API密钥
+```
+
+**备选：使用 ModelScope**
+```
+Name: MODELSCOPE_API_KEY
+Value: 你的ModelScope Token
+```
+
+**备选：使用 Gemini**
 ```
 Name: GEMINI_API_KEY
 Value: 你的Gemini API密钥

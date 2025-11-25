@@ -1,0 +1,234 @@
+{{/*
+PDF Viewer Shortcode
+
+支持嵌入和预览 PDF 文件，带有美观的 UI 设计
+
+使用方法:
+1. 本地 PDF 文件:
+   {{< pdf src="/pdf/presentation.pdf" >}}
+
+2. 带标题:
+   {{< pdf src="/pdf/presentation.pdf" title="我的演示文稿" >}}
+
+3. 自定义高度:
+   {{< pdf src="/pdf/presentation.pdf" height="800px" >}}
+
+4. 外部 PDF URL:
+   {{< pdf src="https://example.com/document.pdf" >}}
+
+5. Google Docs/Drive 预览:
+   {{< pdf src="https://docs.google.com/..." type="google" >}}
+
+参数说明:
+- src: PDF 文件路径或 URL（必需）
+- title: 标题（可选）
+- height: 查看器高度，默认 600px（可选）
+- type: 类型，可选 "default" 或 "google"（可选）
+- download: 是否显示下载按钮，默认 true（可选）
+*/}}
+
+{{ $src := .Get "src" }}
+{{ $title := .Get "title" | default "" }}
+{{ $height := .Get "height" | default "600px" }}
+{{ $type := .Get "type" | default "default" }}
+{{ $download := .Get "download" | default "true" }}
+{{ $id := printf "pdf-%d" .Ordinal }}
+
+{{ if $src }}
+
+<div class="pdf-viewer-container" id="{{ $id }}" style="margin: 2rem 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.12); background: #f8f9fa;">
+  
+  {{/* 头部工具栏 */}}
+  <div class="pdf-header" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+    <div class="pdf-title-section" style="display: flex; align-items: center; gap: 0.75rem;">
+      <span style="font-size: 1.5rem;">📄</span>
+      <div>
+        <h3 style="margin: 0; font-size: 1.1rem; font-weight: 600;">
+          {{ if $title }}{{ $title }}{{ else }}PDF 文档查看器{{ end }}
+        </h3>
+        <span style="font-size: 0.8rem; opacity: 0.85;">点击下方查看完整文档</span>
+      </div>
+    </div>
+    
+    <div class="pdf-controls" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+      {{/* 全屏按钮 */}}
+      <button onclick="togglePdfFullscreen('{{ $id }}')" 
+              style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 0.35rem; transition: background 0.2s;"
+              onmouseover="this.style.background='rgba(255,255,255,0.3)'" 
+              onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+        <span>⛶</span> 全屏
+      </button>
+      
+      {{/* 新窗口打开 */}}
+      <a href="{{ $src }}" target="_blank" rel="noopener noreferrer"
+         style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 0.35rem; text-decoration: none; transition: background 0.2s;"
+         onmouseover="this.style.background='rgba(255,255,255,0.3)'" 
+         onmouseout="this.style.background='rgba(255,255,255,0.2)'">
+        <span>🔗</span> 新窗口
+      </a>
+      
+      {{/* 下载按钮 */}}
+      {{ if eq $download "true" }}
+      <a href="{{ $src }}" download 
+         style="background: rgba(255,255,255,0.9); border: none; color: #c0392b; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.9rem; display: flex; align-items: center; gap: 0.35rem; text-decoration: none; font-weight: 500; transition: background 0.2s;"
+         onmouseover="this.style.background='rgba(255,255,255,1)'" 
+         onmouseout="this.style.background='rgba(255,255,255,0.9)'">
+        <span>⬇️</span> 下载
+      </a>
+      {{ end }}
+    </div>
+  </div>
+
+  {{/* PDF 内容区域 */}}
+  <div class="pdf-content" style="position: relative; background: #525659;">
+    {{ if eq $type "google" }}
+      {{/* Google Docs/Drive 嵌入 */}}
+      <iframe 
+        src="{{ $src }}"
+        style="width: 100%; height: {{ $height }}; border: none;"
+        allowfullscreen="true"
+        loading="lazy">
+      </iframe>
+    {{ else }}
+      {{/* 标准 PDF 嵌入 - 使用 object 标签作为主要方式，iframe 作为备选 */}}
+      <object 
+        data="{{ $src }}" 
+        type="application/pdf" 
+        style="width: 100%; height: {{ $height }}; border: none;">
+        {{/* 如果浏览器不支持 object，显示 iframe */}}
+        <iframe 
+          src="{{ $src }}"
+          style="width: 100%; height: {{ $height }}; border: none;"
+          loading="lazy">
+        </iframe>
+        {{/* 如果 iframe 也不支持，显示提示信息 */}}
+        <div style="padding: 3rem; text-align: center; background: #f8f9fa;">
+          <p style="font-size: 1.1rem; color: #666; margin-bottom: 1rem;">
+            😅 您的浏览器不支持内嵌 PDF 预览
+          </p>
+          <a href="{{ $src }}" target="_blank" rel="noopener noreferrer"
+             style="display: inline-block; background: #e74c3c; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 500;">
+            📄 点击查看/下载 PDF
+          </a>
+        </div>
+      </object>
+    {{ end }}
+    
+    {{/* 加载提示 */}}
+    <div class="pdf-loading" id="{{ $id }}-loading" 
+         style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,255,255,0.95); padding: 1.5rem 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); text-align: center; z-index: 10; pointer-events: none; opacity: 0; transition: opacity 0.3s;">
+      <div style="font-size: 2rem; margin-bottom: 0.5rem;">📄</div>
+      <div style="color: #666;">正在加载 PDF...</div>
+    </div>
+  </div>
+
+  {{/* 底部信息栏 */}}
+  <div class="pdf-footer" style="background: #f1f3f4; padding: 0.75rem 1.5rem; font-size: 0.85rem; color: #666; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+    <span style="display: flex; align-items: center; gap: 0.5rem;">
+      <span>💡</span>
+      <span>提示：可使用鼠标滚轮缩放，或点击全屏查看</span>
+    </span>
+    <span style="opacity: 0.7;">
+      {{ if $title }}{{ $title }}{{ else }}PDF Document{{ end }}
+    </span>
+  </div>
+</div>
+
+{{ else }}
+  <div style="padding: 2rem; background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; color: #856404; text-align: center;">
+    ⚠️ PDF shortcode 错误：缺少 src 参数
+    <br>
+    <code style="font-size: 0.85rem; background: rgba(0,0,0,0.1); padding: 0.25rem 0.5rem; border-radius: 4px;">
+      {{&lt; pdf src="/path/to/file.pdf" &gt;}}
+    </code>
+  </div>
+{{ end }}
+
+<style>
+/* PDF Viewer 响应式样式 */
+@media (max-width: 768px) {
+  .pdf-viewer-container .pdf-header {
+    padding: 0.75rem 1rem !important;
+  }
+  
+  .pdf-viewer-container .pdf-title-section h3 {
+    font-size: 1rem !important;
+  }
+  
+  .pdf-viewer-container .pdf-controls button,
+  .pdf-viewer-container .pdf-controls a {
+    padding: 0.4rem 0.75rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .pdf-viewer-container .pdf-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* 全屏模式样式 */
+.pdf-viewer-container.pdf-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  z-index: 9999 !important;
+}
+
+.pdf-viewer-container.pdf-fullscreen .pdf-content object,
+.pdf-viewer-container.pdf-fullscreen .pdf-content iframe {
+  height: calc(100vh - 120px) !important;
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .pdf-viewer-container {
+    background: #2d2d2d !important;
+  }
+  
+  .pdf-viewer-container .pdf-footer {
+    background: #3d3d3d !important;
+    color: #ccc !important;
+  }
+}
+
+/* 打印时隐藏 */
+@media print {
+  .pdf-viewer-container {
+    display: none !important;
+  }
+}
+</style>
+
+<script>
+// PDF 全屏切换
+function togglePdfFullscreen(id) {
+  const container = document.getElementById(id);
+  if (!container) return;
+  
+  if (container.classList.contains('pdf-fullscreen')) {
+    container.classList.remove('pdf-fullscreen');
+    document.body.style.overflow = '';
+  } else {
+    container.classList.add('pdf-fullscreen');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+// ESC 键退出全屏
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    const fullscreenPdf = document.querySelector('.pdf-viewer-container.pdf-fullscreen');
+    if (fullscreenPdf) {
+      fullscreenPdf.classList.remove('pdf-fullscreen');
+      document.body.style.overflow = '';
+    }
+  }
+});
+</script>

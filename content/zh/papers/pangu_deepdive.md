@@ -8,6 +8,12 @@ author: "Peng Tan"
 description: "Pangu相关论文的深度解析和资源链接"
 wordCount: 8
 readingTime: 1
+
+ai_cover: "/images/generated-covers/db11176d57bc67ecb71bbba887f3f310.webp"
+cover:
+  image: "/images/generated-covers/db11176d57bc67ecb71bbba887f3f310.webp"
+  alt: "Pangu Deep Dive - 论文深度解析"
+  ai_generated: true
 ---
 
 # Pangu Deep Dive

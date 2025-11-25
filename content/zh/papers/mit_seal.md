@@ -7,6 +7,12 @@ categories: ["papers"]
 description: "麻省理工学院（MIT）的一项开创性研究，为我们揭示了这场进化的具体路径。他们推出了一个名为 **SEAL (Self-Adapting Large Language Models，自适应大语言模型)** 的框架。这套框架首次赋予了AI模型一种前所未有的能力：它们可以“自己教自己”，通过生成和应用自己的学习材料，来持续进化其内部的知识体系。"
 wordCount: 2606
 readingTime: 11
+
+ai_cover: "/images/generated-covers/173fb363b43e92d5d5227c4238983edc.webp"
+cover:
+  image: "/images/generated-covers/173fb363b43e92d5d5227c4238983edc.webp"
+  alt: "AI的“知识僵化症”有救了？揭秘MIT自适应大模型SEAL"
+  ai_generated: true
 ---
 
 

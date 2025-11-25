@@ -7,6 +7,12 @@ tags: ["分析", "仪表板", "统计", "SEO"]
 categories: ["ai_tools"]
 wordCount: 354
 readingTime: 2
+
+ai_cover: "/images/generated-covers/32500cf38346059b27b1e356631d36b1.webp"
+cover:
+  image: "/images/generated-covers/32500cf38346059b27b1e356631d36b1.webp"
+  alt: "内容分析仪表板"
+  ai_generated: true
 ---
 
 # 📊 内容分析仪表板

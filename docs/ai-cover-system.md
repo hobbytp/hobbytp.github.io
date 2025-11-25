@@ -39,7 +39,7 @@ assets/css/
 └── custom.css              # 封面样式支持
 
 scripts/
-└── ai_cover_generator.py   # 高级AI图片生成脚本(可选)
+└── ai_cover_generator.py   # 高级AI图片生成脚本 (支持 Ark/ModelScope/Volcengine)
 ```
 
 ### 核心组件
@@ -50,7 +50,15 @@ scripts/
 - 分类特定配色映射
 - 主题自适应CSS
 
-#### 2. 更新的CSS样式
+#### 2. 高级 AI 生成器 (`scripts/ai_cover_generator.py`)
+- **功能**: 调用大模型 API (Doubao/Qwen/Jimeng) 生成高质量封面图。
+- **文档**: 详见 [AI 封面图片生成指南](ai-cover-generation-guide.md)。
+- **支持服务**:
+    1. **Ark (Doubao)**: 推荐，配置简单，效果好。
+    2. **ModelScope (Qwen)**: 备选，开源生态。
+    3. **Volcengine (Jimeng)**: 传统方式。
+
+#### 3. 更新的CSS样式
 - 支持`.ai-generated-cover`类
 - 鼠标悬停动画效果
 - 响应式布局适配

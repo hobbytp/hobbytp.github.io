@@ -8,6 +8,12 @@ description: "Chrome DevTools MCP是谷歌基于模型上下文协议开发的�
 featured_image: "/images/articles/chrome_devtool_mcp.webp"
 wordCount: 3868
 readingTime: 16
+
+ai_cover: "/images/generated-covers/13940859ead781916b102e794c38e0d7.webp"
+cover:
+  image: "/images/generated-covers/13940859ead781916b102e794c38e0d7.webp"
+  alt: "Chrome DevTools MCP：让AI编程助手真正\"看见\"浏览器"
+  ai_generated: true
 ---
 
 > 前端调试的新纪元，AI不再“蒙眼编程”

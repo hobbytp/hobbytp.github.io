@@ -10,6 +10,7 @@ import hashlib
 import requests
 import json
 import argparse
+import traceback
 from pathlib import Path
 from typing import Optional, Dict
 from dataclasses import dataclass
@@ -41,9 +42,17 @@ logger = logging.getLogger(__name__)
 class ImageGenConfig:
     """图片生成配置"""
     # API配置
-    api_provider: str = "volcengine"  # volcengine(默认), modelscope, openai
+    api_provider: str = "volcengine"  # volcengine(默认), ark, modelscope, openai, openrouter, dashscope
     api_key: str = ""
-    model: str = "jimeng_t2i_v40"  # jimeng_t2i_v40, Qwen/Qwen-Image, dall-e-3
+    model: str = "jimeng_t2i_v40"  # jimeng_t2i_v40, doubao-seedream-4-0-250828, Qwen/Qwen-Image, dall-e-3, google/gemini-3-pro-image-preview, wan2.5-t2i-preview
+
+    # LLM 提示词生成配置 (Gemini/OpenAI)
+    use_llm_prompt: bool = False  # 是否使用LLM生成提示词
+    llm_provider: str = "gemini"  # gemini, openai
+    gemini_api_key: str = ""  # Gemini API Key
+    gemini_model: str = "gemini-2.0-flash"  # Gemini 模型
+    llm_openai_api_key: str = ""  # OpenAI API Key (用于生成prompt)
+    llm_openai_model: str = "gpt-4o-mini"  # OpenAI 模型
 
     # 火山引擎配置（支持即梦等模型）
     volcengine_base_url: str = "https://visual.volcengineapi.com"
@@ -55,6 +64,11 @@ class ImageGenConfig:
     volcengine_timeout: int = 300  # 5分钟超时
     volcengine_retry_interval: int = 5  # 5秒重试间隔
 
+    # ARK 配置（豆包文生图 Seedream）
+    ark_api_key: str = ""  # ARK API Key
+    ark_base_url: str = "https://ark.cn-beijing.volces.com/api/v3"
+    ark_model: str = "doubao-seedream-4-0-250828"  # 豆包 Seedream 4.0
+
     # ModelScope配置
     modelscope_base_url: str = "https://api-inference.modelscope.cn/"
     modelscope_timeout: int = 300  # 5分钟超时
@@ -62,6 +76,18 @@ class ImageGenConfig:
 
     # OpenAI配置
     openai_base_url: str = "https://api.openai.com/v1/images/generations"
+
+    # OpenRouter 配置
+    openrouter_api_key: str = ""  # OpenRouter API Key
+    openrouter_base_url: str = "https://openrouter.ai/api/v1"  # OpenRouter API Base URL
+    openrouter_model: str = "google/gemini-3-pro-image-preview"  # 默认模型
+
+    # DashScope 配置（通义万象）
+    dashscope_api_key: str = ""  # DashScope API Key
+    dashscope_base_url: str = "https://dashscope.aliyuncs.com/api/v1"  # DashScope API Base URL
+    dashscope_model: str = "wan2.5-t2i-preview"  # 通义万象 2.5 preview
+    dashscope_timeout: int = 300  # 5分钟超时
+    dashscope_poll_interval: int = 5  # 轮询间隔 5 秒
 
     # 图片配置 - 横屏尺寸适配博客卡片头部
     # 即梦API要求宽高乘积 >= 1024*1024，且推荐 2560x1440 (16:9)
@@ -110,49 +136,346 @@ class CoverImageGenerator:
         content = f"{title}|{description}"
         return hashlib.md5(content.encode('utf-8')).hexdigest()
 
+    def _generate_prompt_with_llm(self, title: str, article_content: str, category: str = "") -> Optional[str]:
+        """使用LLM(如Gemini)根据博客全文生成图片提示词"""
+        
+        # 截取文章内容（避免超过token限制）
+        max_content_length = 8000
+        if len(article_content) > max_content_length:
+            article_content = article_content[:max_content_length] + "...[truncated]"
+        
+        system_prompt = """You are an expert at creating image generation prompts for blog cover images.
+Your task is to analyze a blog article and generate a highly specific, creative prompt for an AI image generator.
+
+RULES:
+1. The prompt MUST be in Chinese
+2. ABSOLUTELY NO TEXT, letters, numbers, logos, watermarks in the image
+3. NO human faces or portraits
+4. Focus on ABSTRACT, ARTISTIC visual representations of the article's core concepts
+5. Be SPECIFIC and UNIQUE - avoid generic tech imagery
+6. Include: scene description, color scheme, art style, lighting, composition
+7. The image should be 16:9 widescreen format for a blog cover
+8. Make the visual metaphor creative and unexpected
+
+OUTPUT FORMAT:
+Return ONLY the Chinese prompt text, nothing else. No explanations, no markdown."""
+
+        user_prompt = f"""请根据以下博客文章内容，生成一个用于AI图片生成的中文提示词。
+
+文章标题: {title}
+文章分类: {category}
+
+文章内容:
+{article_content}
+
+请生成一个具体、有创意、能够代表文章核心主题的图片提示词。
+要求：
+- 纯中文输出
+- 禁止任何文字、字母、数字、Logo
+- 禁止人脸
+- 抽象艺术风格
+- 包含：场景描述、色彩方案、艺术风格、光影效果、构图要求
+- 16:9宽屏横版封面"""
+
+        try:
+            if self.config.llm_provider == "gemini":
+                return self._call_gemini(system_prompt, user_prompt)
+            elif self.config.llm_provider == "openai":
+                return self._call_openai_for_prompt(system_prompt, user_prompt)
+            else:
+                logger.warning(f"Unknown LLM provider: {self.config.llm_provider}")
+                return None
+        except Exception as e:
+            logger.error(f"LLM prompt generation failed: {e}")
+            return None
+
+    def _call_gemini(self, system_prompt: str, user_prompt: str) -> Optional[str]:
+        """调用 Gemini API 生成提示词"""
+        try:
+            api_key = self.config.gemini_api_key
+            if not api_key:
+                logger.error("GEMINI_API_KEY not set")
+                return None
+            
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.config.gemini_model}:generateContent?key={api_key}"
+            
+            headers = {
+                "Content-Type": "application/json"
+            }
+            
+            data = {
+                "contents": [
+                    {
+                        "parts": [
+                            {"text": f"{system_prompt}\n\n{user_prompt}"}
+                        ]
+                    }
+                ],
+                "generationConfig": {
+                    "temperature": 0.9,
+                    "maxOutputTokens": 1000,
+                }
+            }
+            
+            response = requests.post(url, headers=headers, json=data, timeout=60)
+            
+            if response.status_code == 200:
+                result = response.json()
+                if "candidates" in result and len(result["candidates"]) > 0:
+                    text = result["candidates"][0]["content"]["parts"][0]["text"]
+                    # 清理输出，去除可能的markdown标记
+                    text = text.strip().strip('`').strip()
+                    if text.startswith('```'):
+                        text = text.split('\n', 1)[-1]
+                    if text.endswith('```'):
+                        text = text.rsplit('```', 1)[0]
+                    logger.info(f"Gemini generated prompt: {text[:200]}...")
+                    return text.strip()
+            else:
+                logger.error(f"Gemini API error: {response.status_code} - {response.text}")
+                return None
+                
+        except Exception as e:
+            logger.error(f"Gemini API call failed: {e}")
+            return None
+
+    def _call_openai_for_prompt(self, system_prompt: str, user_prompt: str) -> Optional[str]:
+        """调用 OpenAI API 生成提示词"""
+        try:
+            api_key = self.config.llm_openai_api_key
+            if not api_key:
+                logger.error("LLM_OPENAI_API_KEY not set")
+                return None
+            
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            data = {
+                "model": self.config.llm_openai_model,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                "temperature": 0.9,
+                "max_tokens": 1000
+            }
+            
+            response = requests.post(
+                "https://api.openai.com/v1/chat/completions",
+                headers=headers,
+                json=data,
+                timeout=60
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                text = result["choices"][0]["message"]["content"].strip()
+                logger.info(f"OpenAI generated prompt: {text[:200]}...")
+                return text
+            else:
+                logger.error(f"OpenAI API error: {response.status_code} - {response.text}")
+                return None
+                
+        except Exception as e:
+            logger.error(f"OpenAI API call failed: {e}")
+            return None
+
     def _optimize_description(self, description: str, title: str, category: str = "") -> str:
-        """优化描述为适合图片生成的prompt"""
+        """优化描述为适合图片生成的prompt，增加多样性和内容相关性"""
+        import random
+
+        # 使用标题+描述的哈希值作为随机种子，确保同一篇文章生成稳定但不同文章有差异
+        seed_text = f"{title}|{description}"
+        seed = int(hashlib.md5(seed_text.encode()).hexdigest()[:8], 16)
+        random.seed(seed)
+
         # 截断描述
-        if len(description) > 300:
-            description = description[:300]
+        if len(description) > 200:
+            description = description[:200]
 
         # 提取关键词以决定风格倾向
-        text = f"{title} {description}".lower()
-        
-        # 默认风格元素
-        base_visuals = "未来科技感，抽象线条，光影交错，流体形态"
-        color_tone = "冷色调，高级感，渐变色"
-        
-        # 根据关键词调整视觉元素和配色
-        if any(k in text for k in ['math', 'imo', 'number', 'logic', 'reasoning', 'geometry', '数学', '推理', '逻辑', '几何', '证明']):
-            base_visuals = "黄金分割，分形几何，柏拉图立体，抽象数学符号，秩序感，理性结构，悬浮的几何体"
-            color_tone = "深邃蓝紫色，搭配金色线条点缀，神秘，严谨"
-        elif any(k in text for k in ['code', 'programming', 'software', 'github', 'linux', 'terminal', '代码', '编程', '开发', '源码']):
-            base_visuals = "数字矩阵，代码流，像素化构建块，终端界面元素，赛博空间，电路板纹理"
-            color_tone = "黑客绿，暗黑背景，霓虹光效，极客风"
-        elif any(k in text for k in ['brain', 'neural', 'cognitive', 'think', 'llm', 'gpt', '大脑', '神经网络', '认知', '思考', '模型']):
-            base_visuals = "发光的神经元网络，突触连接，思维火花，生物科技融合，能量脉冲，智能体"
-            color_tone = "电光蓝，洋红，粉紫渐变，梦幻，灵动"
-        elif any(k in text for k in ['cloud', 'server', 'data', 'network', 'api', '云', '服务器', '数据', '网络', '连接']):
-            base_visuals = "云端架构，高速数据流，互联节点，无限延伸的网格，玻璃质感，透明传输"
-            color_tone = "纯净白，天蓝，青色，通透感，轻盈"
-        elif any(k in text for k in ['security', 'hack', 'privacy', 'lock', '安全', '黑客', '隐私', '加密']):
-            base_visuals = "盾牌概念，锁链，防御网，扫描光束，金属质感"
-            color_tone = "深灰，银色，警示红光，坚硬"
+        text = f"{title} {description} {category}".lower()
 
-        # 将描述作为视觉元素的一部分，增加画面的独特性
-        visual_elements = f"{base_visuals}。融合基于'{description}'的抽象概念可视化"
+        # ===== 1. 主题场景库 (更具体、更有画面感) =====
+        theme_scenes = {
+            'math': {
+                'scenes': [
+                    "漂浮在虚空中的金色正十二面体，表面刻满神秘符文",
+                    "无限延伸的分形隧道，螺旋下降的黄金分割线",
+                    "悬浮的水晶棱镜折射出彩虹光谱，几何体环绕",
+                    "巨大的莫比乌斯环在星空中缓缓旋转",
+                ],
+                'colors': ["深邃宝蓝与金色", "紫水晶色与银白", "墨黑与琥珀金"],
+                'keywords': ['math', 'imo', 'number', 'logic', 'reasoning', 'geometry', '数学', '推理', '逻辑', '几何', '证明', 'theorem']
+            },
+            'code': {
+                'scenes': [
+                    "无数行代码如瀑布般倾泻而下，汇聚成发光的河流",
+                    "巨型CPU芯片的微观世界，晶体管如城市般排列",
+                    "悬浮的终端窗口矩阵，绿色光标闪烁",
+                    "由0和1组成的DNA双螺旋结构",
+                ],
+                'colors': ["黑客绿与深黑", "赛博朋克霓虹蓝粉", "矩阵绿与暗金"],
+                'keywords': ['code', 'programming', 'software', 'github', 'linux', 'terminal', '代码', '编程', '开发', '源码', 'python', 'javascript', 'rust']
+            },
+            'ai_brain': {
+                'scenes': [
+                    "巨大的发光大脑悬浮在太空中，神经元连接闪烁如银河",
+                    "机械蜂鸟与有机花朵的融合，金属与生命的交界",
+                    "无数光点汇聚成人形轮廓，代表意识的诞生",
+                    "镜面球体反射出无限的自我，AI觉醒的隐喻",
+                ],
+                'colors': ["电光蓝与洋红渐变", "粉紫与青色", "暖橙与冷蓝对比"],
+                'keywords': ['brain', 'neural', 'cognitive', 'think', 'llm', 'gpt', 'claude', 'gemini', '大脑', '神经网络', '认知', '思考', '模型', 'transformer', 'agent']
+            },
+            'cloud_data': {
+                'scenes': [
+                    "云端之上的水晶数据中心，光纤如藤蔓缠绕",
+                    "数据流如极光般在夜空中流动",
+                    "无限延伸的服务器机房，蓝光LED阵列",
+                    "透明的云朵中藏着微型城市，代表云计算",
+                ],
+                'colors': ["天空蓝与纯净白", "极光绿与深空蓝", "科技青与浅灰"],
+                'keywords': ['cloud', 'server', 'data', 'network', 'api', '云', '服务器', '数据', '网络', '连接', 'kubernetes', 'docker', 'aws']
+            },
+            'security': {
+                'scenes': [
+                    "数字堡垒在虚空中矗立，盾牌反射着攻击",
+                    "锁链与密钥在黑暗中发光",
+                    "病毒代码如红色闪电被防火墙阻挡",
+                    "指纹扫描光束穿透黑暗",
+                ],
+                'colors': ["深灰与警示红", "银色与电光蓝", "暗黑与金色防护罩"],
+                'keywords': ['security', 'hack', 'privacy', 'lock', '安全', '黑客', '隐私', '加密', 'encryption', 'firewall']
+            },
+            'robot': {
+                'scenes': [
+                    "优雅的机器人手指轻触蝴蝶翅膀",
+                    "机械臂在星空下组装微型宇宙",
+                    "人形机器人静坐冥想，周围环绕数据光环",
+                    "齿轮与电路交织的机械心脏",
+                ],
+                'colors': ["钛金属银与暖光", "工业橙与深蓝", "白色机甲与霓虹点缀"],
+                'keywords': ['robot', 'automation', 'mechanical', '机器人', '自动化', 'humanoid', 'android']
+            },
+            'vision': {
+                'scenes': [
+                    "巨大的机械眼睛扫描城市天际线",
+                    "像素化的世界逐渐变得清晰",
+                    "无数摄像头编织成监控网络",
+                    "眼睛中反射出数字世界的倒影",
+                ],
+                'colors': ["视网膜红与瞳孔黑", "扫描绿与数据蓝", "光学棱镜彩虹色"],
+                'keywords': ['vision', 'image', 'recognition', 'camera', '视觉', '图像', '识别', 'cv', 'detection']
+            },
+            'nlp': {
+                'scenes': [
+                    "文字如星辰般漂浮在宇宙中，形成星座",
+                    "巨大的书籍打开，文字飞出形成光带",
+                    "对话气泡交织成复杂的网络",
+                    "古老卷轴与现代全息投影的融合",
+                ],
+                'colors': ["墨水蓝与羊皮纸黄", "荧光绿与深紫", "渐变彩虹与纯白"],
+                'keywords': ['nlp', 'language', 'text', 'chat', 'conversation', '语言', '文本', '对话', 'gpt', 'bert', 'embedding']
+            },
+            'product': {
+                'scenes': [
+                    "产品蓝图如全息图般展开",
+                    "用户旅程化作发光的路径",
+                    "交互界面元素在空中优雅排列",
+                    "设计稿逐渐具象化的过程",
+                ],
+                'colors': ["产品白与交互蓝", "极简黑与点缀橙", "渐变紫与科技银"],
+                'keywords': ['product', 'design', 'ux', 'ui', '产品', '设计', '交互', 'interface', 'user']
+            },
+            'research': {
+                'scenes': [
+                    "论文页面化作飞翔的纸鹤群",
+                    "实验室中悬浮的分子结构模型",
+                    "知识图谱如神经网络般延展",
+                    "放大镜下的微观世界与宏观宇宙对照",
+                ],
+                'colors': ["学术蓝与论文白", "实验绿与试管透明", "知识金与智慧紫"],
+                'keywords': ['research', 'paper', 'study', 'experiment', '研究', '论文', '实验', 'academic', 'science']
+            },
+            'protocol': {
+                'scenes': [
+                    "多个发光节点通过光束相互连接形成网络",
+                    "不同颜色的数据包在管道中高速传输",
+                    "握手协议可视化为两只光之手相握",
+                    "层层叠加的协议栈如透明的摩天大楼",
+                ],
+                'colors': ["协议蓝与连接绿", "数据橙与节点白", "网络紫与通信青"],
+                'keywords': ['protocol', 'a2a', 'mcp', 'api', 'http', 'grpc', '协议', '通信', 'agent', 'communication', 'interop']
+            },
+        }
 
-        # 构建中文Prompt (针对即梦/火山引擎优化)
+        # ===== 2. 匹配主题 =====
+        matched_theme = None
+        for theme_name, theme_data in theme_scenes.items():
+            if any(k in text for k in theme_data['keywords']):
+                matched_theme = theme_data
+                break
+
+        # 默认主题
+        if not matched_theme:
+            matched_theme = {
+                'scenes': [
+                    "抽象的能量波在空间中扩散",
+                    "几何形状在虚空中缓缓旋转",
+                    "光与影交织的未来空间",
+                    "数字粒子汇聚成神秘图案",
+                ],
+                'colors': ["科技蓝与未来银", "渐变紫与星空黑", "极光色与深空蓝"],
+            }
+
+        # ===== 3. 随机选择场景和配色 =====
+        scene = random.choice(matched_theme['scenes'])
+        color = random.choice(matched_theme['colors'])
+
+        # ===== 4. 随机艺术风格组合 =====
+        art_styles = [
+            "C4D 3D渲染，Octane Render，体积光",
+            "虚幻引擎5画质，光线追踪，超写实",
+            "赛博朋克风格，霓虹灯光，未来都市",
+            "极简主义，留白艺术，干净利落",
+            "抽象表现主义，流体动态，能量感",
+        ]
+        
+        lighting_effects = [
+            "Tyndall effect丁达尔效应",
+            "逆光剪影效果",
+            "柔和的漫射光",
+            "戏剧性的明暗对比",
+            "梦幻般的光晕效果",
+        ]
+        
+        perspectives = [
+            "俯瞰视角，宏大场景",
+            "微距特写，细节丰富",
+            "正面对称构图",
+            "动态斜角构图",
+            "深远透视，空间感强",
+        ]
+
+        art_style = random.choice(art_styles)
+        lighting = random.choice(lighting_effects)
+        perspective = random.choice(perspectives)
+
+        # ===== 5. 构建最终Prompt =====
         prompt = (
-            f"一张极具设计感的博客封面图。主题：{title}。"
-            f"核心视觉元素：{visual_elements}。"
-            f"艺术风格：C4D 3D渲染，Octane Render，极简主义，虚幻引擎5画质，Tyndall effect，8k分辨率，超高清，细节丰富。"
-            f"色彩氛围：{color_tone}。"
-            f"构图：宽屏壁纸，大气磅礴，留白适中，中心构图或三分法。"
-            f"重要提示：纯图案背景，绝对不要包含任何文字、字母、数字、拼音、汉字、水印、LOGO。不要出现人脸。"
+            f"【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。"
+            f"画面主体：{scene}。"
+            f"融入'{title}'的概念进行抽象艺术表达。"
+            f"色彩方案：{color}。"
+            f"艺术风格：{art_style}，{lighting}，{perspective}。"
+            f"画质要求：8K超高清，细节精致，专业级博客封面。"
+            f"构图：16:9宽屏横版，大气磅礴。"
+            f"再次强调：纯图案背景，绝对不要包含任何文字元素。"
         )
-        
+
         return prompt
 
     def _extract_keywords(self, description: str, title: str) -> str:
@@ -445,6 +768,63 @@ class CoverImageGenerator:
             logger.error(traceback.format_exc())
             return None
 
+    def _generate_with_ark(self, prompt: str) -> Optional[str]:
+        """使用 ARK API（豆包 Seedream）生成图片
+        ARK 使用 OpenAI 兼容的 API 格式
+        文档: https://www.volcengine.com/docs/82379/1298454
+        """
+        try:
+            headers = {
+                "Authorization": f"Bearer {self.config.ark_api_key}",
+                "Content-Type": "application/json"
+            }
+
+            # ARK API 使用 OpenAI 兼容格式
+            data = {
+                "model": self.config.ark_model,
+                "prompt": prompt,
+                "n": 1,
+                "size": "1024x1024",  # ARK 支持的尺寸
+            }
+
+            # 完整的 API 端点
+            url = f"{self.config.ark_base_url}/images/generations"
+            
+            logger.info(f"Calling ARK API: {url}")
+            logger.info(f"Model: {self.config.ark_model}")
+
+            response = requests.post(
+                url,
+                headers=headers,
+                json=data,
+                timeout=120
+            )
+
+            if response.status_code == 200:
+                result = response.json()
+                logger.info(f"ARK API response: {result}")
+                
+                # ARK 返回格式与 OpenAI 兼容
+                if "data" in result and len(result["data"]) > 0:
+                    image_url = result["data"][0].get("url") or result["data"][0].get("b64_json")
+                    if image_url:
+                        logger.info(f"✓ Image generated successfully")
+                        return image_url
+                    else:
+                        logger.error("No image URL in response")
+                        return None
+                else:
+                    logger.error(f"Unexpected response format: {result}")
+                    return None
+            else:
+                logger.error(f"ARK API error: {response.status_code} - {response.text}")
+                return None
+
+        except Exception as e:
+            logger.error(f"ARK generation error: {e}")
+            logger.error(traceback.format_exc())
+            return None
+
     def _generate_with_openai(self, prompt: str) -> Optional[str]:
         """使用OpenAI DALL-E生成图片"""
         try:
@@ -481,37 +861,271 @@ class CoverImageGenerator:
             logger.error(f"OpenAI generation error: {e}")
             return None
 
-    def _download_image(self, url: str, filepath: str) -> bool:
-        """下载生成的图片并转换为webp格式"""
+    def _generate_with_openrouter(self, prompt: str) -> Optional[str]:
+        """使用 OpenRouter API 生成图片
+        支持 google/gemini-2.5-flash-image-preview, nanobanana 等模型
+        文档: https://openrouter.ai/docs/guides/overview/multimodal/image-generation
+        """
         try:
-            response = requests.get(url, timeout=30)
+            headers = {
+                "Authorization": f"Bearer {self.config.openrouter_api_key}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://hobbytp.github.io",  # 可选，用于统计
+                "X-Title": "AI Cover Generator"  # 可选，用于统计
+            }
+
+            # OpenRouter 图像生成需要设置 modalities 参数
+            # 参考: https://openrouter.ai/docs/guides/overview/multimodal/image-generation
+            data = {
+                "model": self.config.openrouter_model,
+                "messages": [
+                    {
+                        "role": "user",
+                        "content": f"Generate an image: {prompt}"
+                    }
+                ],
+                "modalities": ["image", "text"],  # 必须包含 image 和 text
+                "image_config": {
+                    "aspect_ratio": "16:9"  # 博客封面使用 16:9 比例 (1344×768)
+                }
+            }
+
+            url = f"{self.config.openrouter_base_url}/chat/completions"
+            
+            logger.info(f"Calling OpenRouter API: {url}")
+            logger.info(f"Model: {self.config.openrouter_model}")
+
+            response = requests.post(
+                url,
+                headers=headers,
+                json=data,
+                timeout=180  # 图像生成可能需要更长时间
+            )
+
             if response.status_code == 200:
-                # 使用PIL打开图片（支持各种格式）
-                image = Image.open(BytesIO(response.content))
+                result = response.json()
+                logger.info(f"OpenRouter API response keys: {list(result.keys())}")
                 
-                # 如果图片有透明通道（RGBA），转换为RGB以支持webp
-                if image.mode in ('RGBA', 'LA', 'P'):
-                    # 创建白色背景
-                    background = Image.new('RGB', image.size, (255, 255, 255))
-                    if image.mode == 'P':
-                        image = image.convert('RGBA')
-                    background.paste(image, mask=image.split()[-1] if image.mode == 'RGBA' else None)
-                    image = background
-                elif image.mode != 'RGB':
-                    image = image.convert('RGB')
-                
-                # 保存为webp格式，优化质量
-                image.save(filepath, 'WEBP', quality=85, method=6)
-                logger.info(f"Image converted to webp: {filepath}")
-                return True
+                # OpenRouter 图像生成返回格式:
+                # {
+                #   "choices": [{
+                #     "message": {
+                #       "role": "assistant",
+                #       "content": "描述文本",
+                #       "images": [{
+                #         "type": "image_url",
+                #         "image_url": { "url": "data:image/png;base64,..." }
+                #       }]
+                #     }
+                #   }]
+                # }
+                if "choices" in result and len(result["choices"]) > 0:
+                    message = result["choices"][0].get("message", {})
+                    
+                    # 检查 images 字段（OpenRouter 标准返回格式）
+                    images = message.get("images", [])
+                    if images:
+                        for img in images:
+                            if img.get("type") == "image_url":
+                                image_url = img.get("image_url", {}).get("url", "")
+                                if image_url:
+                                    logger.info(f"✓ Found image in response (length: {len(image_url)})")
+                                    return image_url
+                    
+                    # 备用：检查 content 中是否有 base64 图片
+                    content = message.get("content", "")
+                    if content and "data:image" in content:
+                        import re
+                        base64_pattern = r'data:image/[^;]+;base64,[A-Za-z0-9+/=]+'
+                        match = re.search(base64_pattern, content)
+                        if match:
+                            logger.info("✓ Found base64 image in content")
+                            return match.group(0)
+                    
+                    logger.error(f"No images found in response. Message keys: {list(message.keys())}")
+                    logger.error(f"Content preview: {content[:200] if content else 'empty'}")
+                    return None
+                else:
+                    logger.error(f"Unexpected response format: {result}")
+                    return None
             else:
-                logger.error(f"Image download error: {response.status_code}")
-                return False
+                logger.error(f"OpenRouter API error: {response.status_code} - {response.text}")
+                return None
+
+        except Exception as e:
+            logger.error(f"OpenRouter generation error: {e}")
+            logger.error(traceback.format_exc())
+            return None
+
+    def _generate_with_dashscope(self, prompt: str) -> Optional[str]:
+        """使用 DashScope（通义万象）生成图片
+        采用异步调用方式：创建任务 -> 轮询获取结果
+        文档: https://help.aliyun.com/zh/model-studio/text-to-image
+        """
+        try:
+            # 步骤1：创建任务
+            create_url = f"{self.config.dashscope_base_url}/services/aigc/text2image/image-synthesis"
+            
+            headers = {
+                "Authorization": f"Bearer {self.config.dashscope_api_key}",
+                "Content-Type": "application/json",
+                "X-DashScope-Async": "enable"  # 必须设置为异步模式
+            }
+
+            # 通义万象支持的尺寸：总像素在[768*768, 1440*1440]之间，宽高比[1:4, 4:1]
+            # 16:9 比例推荐 1280*720 或 1344*768
+            data = {
+                "model": self.config.dashscope_model,
+                "input": {
+                    "prompt": prompt
+                },
+                "parameters": {
+                    "size": "1280*720",  # 16:9 横屏比例
+                    "n": 1,
+                    "prompt_extend": False,  # 不使用智能改写，保持LLM生成的prompt
+                    "watermark": False
+                }
+            }
+
+            logger.info(f"Creating DashScope task: {create_url}")
+            logger.info(f"Model: {self.config.dashscope_model}")
+
+            response = requests.post(
+                create_url,
+                headers=headers,
+                json=data,
+                timeout=60
+            )
+
+            if response.status_code != 200:
+                logger.error(f"DashScope create task error: {response.status_code} - {response.text}")
+                return None
+
+            result = response.json()
+            
+            # 检查是否有错误
+            if "code" in result:
+                logger.error(f"DashScope API error: {result.get('code')} - {result.get('message')}")
+                return None
+
+            task_id = result.get("output", {}).get("task_id")
+            if not task_id:
+                logger.error(f"No task_id in response: {result}")
+                return None
+
+            logger.info(f"DashScope task created: {task_id}")
+
+            # 步骤2：轮询获取结果
+            query_url = f"{self.config.dashscope_base_url}/tasks/{task_id}"
+            query_headers = {
+                "Authorization": f"Bearer {self.config.dashscope_api_key}"
+            }
+
+            start_time = time.time()
+            while True:
+                # 检查超时
+                elapsed = time.time() - start_time
+                if elapsed > self.config.dashscope_timeout:
+                    logger.error(f"DashScope task timeout after {elapsed:.0f}s")
+                    return None
+
+                # 等待后查询
+                time.sleep(self.config.dashscope_poll_interval)
+
+                query_response = requests.get(
+                    query_url,
+                    headers=query_headers,
+                    timeout=30
+                )
+
+                if query_response.status_code != 200:
+                    logger.error(f"DashScope query error: {query_response.status_code} - {query_response.text}")
+                    return None
+
+                query_result = query_response.json()
+                task_status = query_result.get("output", {}).get("task_status")
+
+                logger.info(f"DashScope task status: {task_status} (elapsed: {elapsed:.0f}s)")
+
+                if task_status == "SUCCEEDED":
+                    # 获取图片URL
+                    results = query_result.get("output", {}).get("results", [])
+                    if results and len(results) > 0:
+                        image_url = results[0].get("url")
+                        if image_url:
+                            logger.info(f"✓ DashScope image generated: {image_url[:80]}...")
+                            return image_url
+                    logger.error(f"No image URL in results: {results}")
+                    return None
+
+                elif task_status == "FAILED":
+                    error_code = query_result.get("output", {}).get("code", "Unknown")
+                    error_msg = query_result.get("output", {}).get("message", "Unknown error")
+                    logger.error(f"DashScope task failed: {error_code} - {error_msg}")
+                    return None
+
+                elif task_status in ["PENDING", "RUNNING"]:
+                    # 继续等待
+                    continue
+
+                else:
+                    logger.error(f"Unknown task status: {task_status}")
+                    return None
+
+        except Exception as e:
+            logger.error(f"DashScope generation error: {e}")
+            logger.error(traceback.format_exc())
+            return None
+
+    def _download_image(self, url: str, filepath: str) -> bool:
+        """下载生成的图片并转换为webp格式
+        支持 HTTP URL 和 base64 data URL
+        """
+        try:
+            import base64
+            
+            # 检查是否是 base64 data URL
+            if url.startswith("data:image"):
+                # 解析 data URL: data:image/png;base64,iVBORw0KGgo...
+                try:
+                    # 分离 header 和 data
+                    header, encoded = url.split(",", 1)
+                    image_data = base64.b64decode(encoded)
+                    image = Image.open(BytesIO(image_data))
+                    logger.info(f"Decoded base64 image: {image.size}")
+                except Exception as e:
+                    logger.error(f"Failed to decode base64 image: {e}")
+                    return False
+            else:
+                # HTTP URL - 下载图片
+                response = requests.get(url, timeout=30)
+                if response.status_code == 200:
+                    image = Image.open(BytesIO(response.content))
+                else:
+                    logger.error(f"Image download error: {response.status_code}")
+                    return False
+            
+            # 如果图片有透明通道（RGBA），转换为RGB以支持webp
+            if image.mode in ('RGBA', 'LA', 'P'):
+                # 创建白色背景
+                background = Image.new('RGB', image.size, (255, 255, 255))
+                if image.mode == 'P':
+                    image = image.convert('RGBA')
+                background.paste(image, mask=image.split()[-1] if image.mode == 'RGBA' else None)
+                image = background
+            elif image.mode != 'RGB':
+                image = image.convert('RGB')
+            
+            # 保存为webp格式，优化质量
+            image.save(filepath, 'WEBP', quality=85, method=6)
+            logger.info(f"Image converted to webp: {filepath}")
+            return True
+            
         except Exception as e:
             logger.error(f"Image download/convert error: {e}")
             return False
 
-    def generate_cover(self, title: str, description: str, category: str = "", force: bool = False) -> Optional[str]:
+    def generate_cover(self, title: str, description: str, category: str = "", force: bool = False, article_content: str = "") -> Optional[str]:
         """
         生成封面图片
 
@@ -520,6 +1134,7 @@ class CoverImageGenerator:
             description: 文章描述
             category: 文章分类
             force: 是否强制重新生成
+            article_content: 文章全文（用于LLM生成提示词）
 
         Returns:
             图片URL路径（相对于static目录）
@@ -534,18 +1149,35 @@ class CoverImageGenerator:
                 logger.info(f"Using cached image: {cached_path}")
                 return cached_path.replace("static/", "/", 1)
 
-        # 生成prompt
-        prompt = self._optimize_description(description, title, category)
-        logger.info(f"Generating image with prompt: {prompt[:1000]}...")
+        # 生成prompt - 优先使用LLM，失败则回退到规则生成
+        prompt = None
+        if self.config.use_llm_prompt and article_content:
+            logger.info("🤖 Using LLM to generate image prompt...")
+            prompt = self._generate_prompt_with_llm(title, article_content, category)
+            if prompt:
+                logger.info(f"✅ LLM generated prompt successfully")
+            else:
+                logger.warning("⚠️ LLM prompt generation failed, falling back to rule-based prompt")
+        
+        if not prompt:
+            prompt = self._optimize_description(description, title, category)
+        
+        logger.info(f"Generating image with prompt: {prompt[:500]}...")
 
         # 调用AI生成图片
         image_url = None
         if self.config.api_provider == "volcengine":
             image_url = self._generate_with_volcengine(prompt)
+        elif self.config.api_provider == "ark":
+            image_url = self._generate_with_ark(prompt)
         elif self.config.api_provider == "modelscope":
             image_url = self._generate_with_modelscope(prompt)
         elif self.config.api_provider == "openai":
             image_url = self._generate_with_openai(prompt)
+        elif self.config.api_provider == "openrouter":
+            image_url = self._generate_with_openrouter(prompt)
+        elif self.config.api_provider == "dashscope":
+            image_url = self._generate_with_dashscope(prompt)
         else:
             logger.error(f"Unsupported API provider: {self.config.api_provider}")
             return None
@@ -580,6 +1212,79 @@ class CoverImageGenerator:
 
         logger.info(f"Generated cover image: {relative_path}")
         return relative_path
+
+    def delete_cover(self, article_path: Path) -> bool:
+        """删除文章的AI封面图片和缓存"""
+        try:
+            with open(article_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+
+            if not content.startswith('---'):
+                return False
+
+            parts = content.split('---', 2)
+            if len(parts) < 3:
+                return False
+
+            front_matter = parts[1]
+            article_content = parts[2]
+
+            # 解析title和description获取hash
+            title = description = ''
+            for line in front_matter.split('\n'):
+                if line.strip().startswith('title:'):
+                    title = line.split(':', 1)[1].strip().strip('"\'')
+                elif line.strip().startswith('description:'):
+                    description = line.split(':', 1)[1].strip().strip('"\'')
+
+            if not title or not description:
+                logger.info(f"No title/description in {article_path.name}, skipping")
+                return False
+
+            content_hash = hashlib.md5(f"{title}|{description}".encode()).hexdigest()
+            deleted_anything = False
+
+            # 删除缓存
+            if content_hash in self.cache:
+                del self.cache[content_hash]
+                self._save_cache()
+                logger.info(f"✅ Deleted cache: {content_hash}")
+                deleted_anything = True
+
+            # 删除图片
+            img_path = Path(self.config.output_dir) / f"{content_hash}.webp"
+            if img_path.exists():
+                img_path.unlink()
+                logger.info(f"✅ Deleted image: {img_path.name}")
+                deleted_anything = True
+
+            # 移除front matter中的AI封面信息
+            new_lines = []
+            skip = False
+            for line in front_matter.split('\n'):
+                if line.strip().startswith('ai_cover:') or line.strip().startswith('cover:'):
+                    skip = True
+                    continue
+                if skip and (line.startswith('  ') or line.startswith('\t')):
+                    continue
+                if skip and line.strip():
+                    skip = False
+                if not skip or not line.strip():
+                    new_lines.append(line)
+
+            updated_fm = '\n'.join(new_lines).strip()
+            updated_content = f"---\n{updated_fm}\n---{article_content}"
+
+            with open(article_path, 'w', encoding='utf-8') as f:
+                f.write(updated_content)
+            logger.info(f"✅ Cleaned front matter: {article_path.name}")
+            deleted_anything = True
+
+            return deleted_anything
+
+        except Exception as e:
+            logger.error(f"Error deleting cover: {e}")
+            return False
 
 class HugoArticleUpdater:
     """Hugo文章更新器"""
@@ -709,7 +1414,7 @@ cover:
   ai_generated: true"""
 
             updated_front_matter = f"{clean_front_matter}\n{cover_image_block}\n"
-            updated_content = f"---{updated_front_matter}---{article_content}"
+            updated_content = f"---\n{updated_front_matter}---{article_content}"
 
             # 写回文件
             with open(article_path, 'w', encoding='utf-8') as f:
@@ -789,12 +1494,64 @@ def main():
     parser.add_argument('--force', action='store_true', help='Force regenerate existing images')
     parser.add_argument('--limit', type=int, default=10, help='Limit number of articles to process')
     parser.add_argument('--specific-file', type=str, help='Process a specific file only')
+    parser.add_argument('--delete', action='store_true', help='Delete cover images and cache')
+    parser.add_argument('--category', type=str, help='Filter by category (use with --delete)')
+    parser.add_argument('--use-llm-prompt', action='store_true', help='Use LLM (Gemini/OpenAI) to generate image prompts from full article content')
+    parser.add_argument('--llm-provider', choices=['gemini', 'openai'], default='gemini', help='LLM provider for prompt generation')
     args = parser.parse_args()
 
+    # 处理删除模式
+    if args.delete:
+        content_dir = Path('content')
+        temp_config = ImageGenConfig(output_dir="static/images/generated-covers")
+        gen = CoverImageGenerator(temp_config)
+
+        articles = []
+        if args.specific_file:
+            p = Path(args.specific_file)
+            if p.exists():
+                articles.append(p)
+            else:
+                logger.error(f"File not found: {args.specific_file}")
+                return
+        else:
+            for md in content_dir.rglob("*.md"):
+                if md.name == "_index.md":
+                    continue
+                if args.category:
+                    try:
+                        with open(md, 'r') as f:
+                            c = f.read()
+                        if args.category in c:
+                            articles.append(md)
+                    except:
+                        pass
+                else:
+                    articles.append(md)
+
+        if not articles:
+            logger.info("No articles found")
+            return
+
+        logger.info(f"Found {len(articles)} article(s)")
+        count = 0
+        for a in articles:
+            logger.info(f"\n🗑️  {a.name}")
+            if gen.delete_cover(a):
+                count += 1
+        logger.info(f"\n✅ Deleted {count}/{len(articles)} covers")
+        return
+
     # 配置
-    api_provider = os.getenv("TEXT2IMAGE_PROVIDER", "volcengine")  # volcengine(默认), modelscope, openai
+    api_provider = os.getenv("TEXT2IMAGE_PROVIDER", "volcengine")  # volcengine(默认), ark, modelscope, openai, openrouter, dashscope
     workflow_mode = args.workflow_mode or os.getenv("WORKFLOW_MODE", "").lower() == "true"
     force_regenerate = args.force or os.getenv("FORCE_REGENERATE", "").lower() == "true"
+    
+    # LLM 配置
+    use_llm_prompt = args.use_llm_prompt or os.getenv("USE_LLM_PROMPT", "").lower() == "true"
+    llm_provider = args.llm_provider or os.getenv("LLM_PROVIDER", "gemini")
+    gemini_api_key = os.getenv("GEMINI_API_KEY", "")
+    llm_openai_api_key = os.getenv("LLM_OPENAI_API_KEY", os.getenv("OPENAI_API_KEY", ""))
 
     if api_provider == "volcengine":
         # 支持从环境变量配置模型（默认jimeng_t2i_v40）
@@ -825,7 +1582,12 @@ def main():
             volcengine_model=volcengine_model,
             model=volcengine_model,
             output_dir="static/images/generated-covers",
-            style_suffix=", professional blog cover, clean design, technology theme, minimal"
+            style_suffix=", professional blog cover, clean design, technology theme, minimal",
+            # LLM 配置
+            use_llm_prompt=use_llm_prompt,
+            llm_provider=llm_provider,
+            gemini_api_key=gemini_api_key,
+            llm_openai_api_key=llm_openai_api_key,
         )
 
         if not config.volcengine_access_key or not config.volcengine_secret_key:
@@ -843,7 +1605,11 @@ def main():
             api_key=os.getenv("MODELSCOPE_API_KEY", ""),
             model="Qwen/Qwen-Image",
             output_dir="static/images/generated-covers",
-            style_suffix=", professional blog cover, clean design, technology theme, minimal"
+            style_suffix=", professional blog cover, clean design, technology theme, minimal",
+            use_llm_prompt=use_llm_prompt,
+            llm_provider=llm_provider,
+            gemini_api_key=gemini_api_key,
+            llm_openai_api_key=llm_openai_api_key,
         )
 
         if not config.api_key:
@@ -856,14 +1622,97 @@ def main():
             api_key=os.getenv("OPENAI_API_KEY", ""),
             model="dall-e-3",
             output_dir="static/images/generated-covers",
-            style_suffix=", professional blog cover, clean design, technology theme, minimal"
+            style_suffix=", professional blog cover, clean design, technology theme, minimal",
+            use_llm_prompt=use_llm_prompt,
+            llm_provider=llm_provider,
+            gemini_api_key=gemini_api_key,
+            llm_openai_api_key=llm_openai_api_key,
         )
 
         if not config.api_key:
             logger.error("Please set OPENAI_API_KEY environment variable")
             return
+
+    elif api_provider == "ark":
+        ark_api_key = os.getenv("ARK_API_KEY", "")
+        ark_base_url = os.getenv("ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3")
+        ark_model = os.getenv("ARK_MODEL", "doubao-seedream-4-0-250828")
+
+        config = ImageGenConfig(
+            api_provider="ark",
+            api_key=ark_api_key,
+            model=ark_model,
+            ark_api_key=ark_api_key,
+            ark_base_url=ark_base_url,
+            ark_model=ark_model,
+            output_dir="static/images/generated-covers",
+            style_suffix=", professional blog cover, clean design, technology theme, minimal",
+            use_llm_prompt=use_llm_prompt,
+            llm_provider=llm_provider,
+            gemini_api_key=gemini_api_key,
+            llm_openai_api_key=llm_openai_api_key,
+        )
+
+        if not config.ark_api_key:
+            logger.error("Please set ARK_API_KEY environment variable")
+            logger.error("You can get it from: https://console.volcengine.com/ark")
+            return
+
+    elif api_provider == "openrouter":
+        openrouter_api_key = os.getenv("OPENROUTER_API_KEY", "")
+        openrouter_base_url = os.getenv("OPENROUTER_BASE_URL", "https://openrouter.ai/api/v1")
+        openrouter_model = os.getenv("OPENROUTER_MODEL", "google/gemini-3-pro-image-preview")
+
+        config = ImageGenConfig(
+            api_provider="openrouter",
+            api_key=openrouter_api_key,
+            model=openrouter_model,
+            openrouter_api_key=openrouter_api_key,
+            openrouter_base_url=openrouter_base_url,
+            openrouter_model=openrouter_model,
+            output_dir="static/images/generated-covers",
+            style_suffix=", professional blog cover, clean design, technology theme, minimal",
+            use_llm_prompt=use_llm_prompt,
+            llm_provider=llm_provider,
+            gemini_api_key=gemini_api_key,
+            llm_openai_api_key=llm_openai_api_key,
+        )
+
+        if not config.openrouter_api_key:
+            logger.error("Please set OPENROUTER_API_KEY environment variable")
+            logger.error("You can get it from: https://openrouter.ai/keys")
+            return
+
+    elif api_provider == "dashscope":
+        dashscope_api_key = os.getenv("DASHSCOPE_API_KEY", "")
+        dashscope_base_url = os.getenv("DASHSCOPE_BASE_URL", "https://dashscope.aliyuncs.com/api/v1")
+        # 移除 compatible-mode 路径，使用标准 API 路径
+        if "compatible-mode" in dashscope_base_url:
+            dashscope_base_url = "https://dashscope.aliyuncs.com/api/v1"
+        dashscope_model = os.getenv("DASHSCOPE_MODEL", "wan2.5-t2i-preview")
+
+        config = ImageGenConfig(
+            api_provider="dashscope",
+            api_key=dashscope_api_key,
+            model=dashscope_model,
+            dashscope_api_key=dashscope_api_key,
+            dashscope_base_url=dashscope_base_url,
+            dashscope_model=dashscope_model,
+            output_dir="static/images/generated-covers",
+            style_suffix=", professional blog cover, clean design, technology theme, minimal",
+            use_llm_prompt=use_llm_prompt,
+            llm_provider=llm_provider,
+            gemini_api_key=gemini_api_key,
+            llm_openai_api_key=llm_openai_api_key,
+        )
+
+        if not config.dashscope_api_key:
+            logger.error("Please set DASHSCOPE_API_KEY environment variable")
+            logger.error("You can get it from: https://bailian.console.aliyun.com/")
+            return
+
     else:
-        logger.error(f"Unsupported provider: {api_provider}. Use 'volcengine', 'modelscope' or 'openai'")
+        logger.error(f"Unsupported provider: {api_provider}. Use 'volcengine', 'ark', 'modelscope', 'openai', 'openrouter' or 'dashscope'")
         return
 
     # 初始化生成器
@@ -872,6 +1721,9 @@ def main():
     if workflow_mode:
         logger.info("🤖 Running in GitHub Actions workflow mode")
         logger.info(f"Target: {args.target}, Force: {force_regenerate}, Limit: {args.limit}")
+    
+    if use_llm_prompt:
+        logger.info("🧠 LLM prompt generation enabled - using Gemini to analyze article content")
 
     # 查找需要封面的文章
     updater = HugoArticleUpdater(generator=generator)
@@ -916,11 +1768,14 @@ def main():
             first_line_end = content.find('\n')
             if first_line_end == -1:
                 front_matter = ""
+                article_body = ""
             else:
                 front_matter_end = content.find('\n---', first_line_end + 1)
                 front_matter = content[first_line_end + 1:front_matter_end] if front_matter_end > 0 else ""
+                article_body = content[front_matter_end + 4:] if front_matter_end > 0 else ""
         else:
             front_matter = ""
+            article_body = content
 
         title = ""
         description = ""
@@ -941,8 +1796,12 @@ def main():
                 logger.info(f"Skipping {article_path} - already has AI cover (use --force to override)")
                 continue
 
-            # 生成封面
-            image_path = generator.generate_cover(title, description, category)
+            # 生成封面 (传递文章全文用于LLM生成提示词)
+            image_path = generator.generate_cover(
+                title, description, category, 
+                force=force_regenerate,
+                article_content=article_body
+            )
 
             if image_path:
                 # 更新文章

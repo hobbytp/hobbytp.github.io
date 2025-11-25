@@ -7,6 +7,12 @@ categories: ["large_models"]
 description: "本文介绍了Llama 4 模型系列详细解读。"
 wordCount: 7603
 readingTime: 31
+
+ai_cover: "/images/generated-covers/2693fee9b77b4792520aa68b30f4cddd.webp"
+cover:
+  image: "/images/generated-covers/2693fee9b77b4792520aa68b30f4cddd.webp"
+  alt: "Llama 4 模型系列"
+  ai_generated: true
 ---
 
 到目前为止还没有明确的证据表明有单独的技术报告或论文。可能的细节将在2025年4月29日的LlamaCon上分享。

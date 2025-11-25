@@ -7,6 +7,12 @@ categories: ["papers"]
 description: "Verbalized Sampling: 言语采样提升模型多样性"
 wordCount: 2038
 readingTime: 9
+
+ai_cover: "/images/generated-covers/0da3eabc5be9e6935ceac7da884a697d.webp"
+cover:
+  image: "/images/generated-covers/0da3eabc5be9e6935ceac7da884a697d.webp"
+  alt: "Verbalized Sampling: 言语采样提升模型多样性"
+  ai_generated: true
 ---
 
 ## TL;DR

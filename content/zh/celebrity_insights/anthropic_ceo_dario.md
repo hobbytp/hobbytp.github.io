@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "Dario Amodei访谈,AI从业者必读"
 wordCount: 863
 readingTime: 4
+
+ai_cover: "/images/generated-covers/add1b03aec75a152c1f948a70cdea69e.webp"
+cover:
+  image: "/images/generated-covers/add1b03aec75a152c1f948a70cdea69e.webp"
+  alt: "Anthropic CEO Dario Amodei访谈"
+  ai_generated: true
 ---
 
 Anthropic 首席执行官为Dario Amodei（达里奥·阿莫代伊）。他做客 Big Technology 播客，进行了一场坦诚无滤镜的对话，探讨人工智能的潜力、重大利害关系以及他敢于直言的原因。此次访谈是 Big Technology 针对阿莫代伊的大型专题报道的一部分，该报道采访了二十多位他的同事、朋友和批评者。

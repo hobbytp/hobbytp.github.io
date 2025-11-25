@@ -7,6 +7,12 @@ categories: ["papers","context_engineering"]
 description: "这里将收集Context Engineering相关的重要文献，具体解读将在其他博客展开。"
 wordCount: 1188
 readingTime: 5
+
+ai_cover: "/images/generated-covers/5b909ae4f4c2790091b22e001bfda6c7.webp"
+cover:
+  image: "/images/generated-covers/5b909ae4f4c2790091b22e001bfda6c7.webp"
+  alt: "AI Context Engineering领域若干重要论文"
+  ai_generated: true
 ---
 
 这里将收集Context Engineering相关的重要文献，具体解读将在其他博客展开，这里也会提供链接方便跳转。

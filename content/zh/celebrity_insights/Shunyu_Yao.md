@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "AI的下半场"
 wordCount: 7590
 readingTime: 31
+
+ai_cover: "/images/generated-covers/f1e5395e8b2957e431b0032213eab5a7.webp"
+cover:
+  image: "/images/generated-covers/f1e5395e8b2957e431b0032213eab5a7.webp"
+  alt: "Shunyu Yao: The Second Half (下半场)"
+  ai_generated: true
 ---
 
 

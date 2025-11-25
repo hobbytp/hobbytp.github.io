@@ -5,6 +5,12 @@ draft: false
 tags: ["image", "Gemini", "Nano Banana Pro"]
 categories: ["large_models"]
 description: "Google Gemini Nano Banana Pro（Gemini 3 Pro Image）把图像生成从“凭感觉出图”提升为“有推理、有规划的工业级生产工具”：它基于 Gemini 3 的多模态推理和实时搜索能力，在生成前先理解语义与布局、保证细节一致性，同时支持 4K 画质、强文本渲染和多图参考控制，重点服务品牌物料、信息图表、教育与游戏等专业生产场景，并通过云端算力、Workspace/Vertex AI/Adobe 等生态整合与合规水印，把 AI 出图真正变成企业级内容生产基础设施。"
+
+ai_cover: "/images/generated-covers/930c2f415ceee8f5b59df11412c62404.webp"
+cover:
+  image: "/images/generated-covers/930c2f415ceee8f5b59df11412c62404.webp"
+  alt: "Gemini Nano Banana Pro：技术奇点、生态重构与行业影响全景解析"
+  ai_generated: true
 ---
 
 ## TL;DR
