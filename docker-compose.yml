@@ -1,6 +1,6 @@
 services:
   hugo:
-    image: hugomods/hugo:exts-0.149.0
+    image: hugomods/hugo:exts-0.152.2
     container_name: hugo-blog
     volumes:
       - .:/src
@@ -16,7 +16,7 @@ services:
 
   # 生产环境构建服务
   hugo-build:
-    image: hugomods/hugo:exts-0.149.0
+    image: hugomods/hugo:exts-0.152.2
     volumes:
       - .:/src
     working_dir: /src
