@@ -5,7 +5,7 @@
 {{- $alt := .Params.headers.caption | default .Params.cover.caption | default "" }}
 <style>
     .post-header-cover {
-        background-image: url({{ $image }});
+        /* background-image is set inline to avoid linter errors with Hugo template syntax */
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -22,7 +22,7 @@
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
 </style>
-<div class="post-header-cover">
+<div class="post-header-cover" style="background-image: url('{{ $image }}');">
     <div class="post-header-cover-text">{{- $alt | default .Title -}}</div>
 </div>
 {{- end }}
@@ -108,6 +108,18 @@
                 <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
         </button>
+        {{- end }}
+
+        {{- if (not site.Params.disableLangToggle) }}
+        <ul class="lang-switch">
+            {{- range site.Home.Translations }}
+            <li>
+                <a href="{{ .Permalink }}" title="{{ .Language.LanguageName }}" aria-label="{{ .Language.LanguageName }}">
+                    {{ .Language.LanguageName }}
+                </a>
+            </li>
+            {{- end }}
+        </ul>
         {{- end }}
 
         {{- if site.Params.ShowCodeCopyButtons }}

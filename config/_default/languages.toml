@@ -1,0 +1,13 @@
+[zh]
+languageName = "中文"
+weight = 1
+contentDir = "content/zh"
+title = "Peng Tan's AI Blog"
+description = "一个关注 AI 各领域的专题博客"
+
+[en]
+languageName = "English"
+weight = 2
+contentDir = "content/en"
+title = "Peng Tan's AI Blog (EN)"
+description = "AI Blog by Peng Tan"

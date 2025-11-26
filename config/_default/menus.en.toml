@@ -1,0 +1,24 @@
+[[main]]
+name = "🏠 Home"
+url = "/"
+weight = 1
+
+[[main]]
+name = "📝 Posts"
+url = "/posts/"
+weight = 2
+
+[[main]]
+name = "🏷️ Categories"
+url = "/categories/"
+weight = 3
+
+[[main]]
+name = "🔍 Search"
+url = "/search/"
+weight = 6
+
+[[main]]
+name = "About"
+url = "/about"
+weight = 17

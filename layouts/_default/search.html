@@ -1,5 +1,8 @@
 {{ define "main" }}
-<div class="search-container">
+<div class="main-container">
+    {{- partial "sidebar.html" . }}
+    <div class="main-content-with-sidebar">
+        <div class="search-container">
     <header class="search-header">
         <h1>{{ .Title }}</h1>
         <div class="search-description">{{ .Summary }}</div>
@@ -1065,4 +1068,6 @@
         animation: searchPulse 1.5s ease-in-out infinite;
     }
 </style>
+    </div>
+</div>
 {{ end }}

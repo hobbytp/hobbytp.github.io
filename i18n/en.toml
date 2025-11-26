@@ -58,3 +58,57 @@ other = "AI Tools"
 
 [courses]
 other = "Courses"
+
+[navigation]
+other = "Navigation"
+
+[articles]
+other = "Articles"
+
+[about]
+other = "About"
+
+[cat_my_insights]
+other = "My Insights"
+
+[cat_celebrity_insights]
+other = "Celebrity Insights"
+
+[cat_ai_spec]
+other = "AI Specs"
+
+[cat_big_companies]
+other = "Big Companies"
+
+[cat_papers]
+other = "Papers"
+
+[cat_technologies]
+other = "Technologies"
+
+[cat_large_models]
+other = "Large Models"
+
+[cat_training]
+other = "Training"
+
+[cat_context_engineering]
+other = "Context Engineering"
+
+[cat_mas]
+other = "Multi-Agent Systems"
+
+[cat_ai_programming]
+other = "AI Programming"
+
+[cat_ai_tools]
+other = "AI Tools"
+
+[cat_projects]
+other = "Open Source Projects"
+
+[cat_news]
+other = "Industry News"
+
+[cat_courses]
+other = "Courses"

@@ -8,40 +8,71 @@
         <p class="profile-email">
             <a href="mailto:{{ site.Params.sidebar.email }}">{{ site.Params.sidebar.email }}</a>
         </p>
-        <p class="profile-slogan">{{ site.Params.sidebar.slogan | default "Just be funny." }}</p>
+        <p class="profile-slogan">{{ site.Params.sidebar.slogan | default "Make yesterday better." }}</p>
+    </div>
+
+    <!-- Section 1.5: Top Links (Home, About, Search) -->
+    <div class="sidebar-section">
+        <ul class="sidebar-menu">
+            {{- $currentPage := . -}}
+            {{- $topMenuURLs := slice "/" "/about" "/search" "/search/" -}}
+            {{- range site.Menus.main }}
+            {{- if in $topMenuURLs .URL }}
+            {{- $menuURL := .URL | relLangURL -}}
+            <li>
+                <a href="{{ $menuURL }}" class="{{ if or (eq $currentPage.RelPermalink $menuURL) (and (ne $menuURL "/") (hasPrefix $currentPage.RelPermalink $menuURL)) }}active{{ end }}">
+                    {{- if .Params.icon }}{{ partial "icon.html" (dict "name" .Params.icon) }} {{ end -}}
+                    {{ .Name }}
+                </a>
+            </li>
+            {{- end }}
+            {{- end }}
+        </ul>
     </div>
 
     <!-- Section 2: Main Navigation -->
     <div class="sidebar-section">
-        <h3 class="sidebar-heading">导航</h3>
+        <h3 class="sidebar-heading">{{ i18n "navigation" | default "导航" }}</h3>
         <ul class="sidebar-menu">
-            <li><a href="{{ "" | absLangURL }}" class="{{ if .IsHome }}active{{ end }}">{{ partial "icon.html" (dict "name" "home") }} 首页</a></li>
-            <li><a href="/zh/about" class="{{ if eq .RelPermalink "/zh/about/" }}active{{ end }}">{{ partial "icon.html" (dict "name" "user") }} 关于我</a></li>
-            <li><a href="/zh/search" class="{{ if eq .RelPermalink "/zh/search/" }}active{{ end }}">{{ partial "icon.html" (dict "name" "search") }} 搜索</a></li>
+            {{- $currentPage := . -}}
+            {{- $topMenuURLs := slice "/" "/about" "/search" "/search/" -}}
+            {{- range site.Menus.main }}
+            {{- if not (in $topMenuURLs .URL) }}
+            {{- $menuURL := .URL | relLangURL -}}
+            <li>
+                <a href="{{ $menuURL }}" class="{{ if or (eq $currentPage.RelPermalink $menuURL) (and (ne $menuURL "/") (hasPrefix $currentPage.RelPermalink $menuURL)) }}active{{ end }}">
+                    {{- if .Params.icon }}{{ partial "icon.html" (dict "name" .Params.icon) }} {{ end -}}
+                    {{ .Name }}
+                </a>
+            </li>
+            {{- end }}
+            {{- end }}
         </ul>
     </div>
 
-    <!-- Section 3: Articles (Posts) -->
+    <!-- Section 3: Articles (Posts) - Removed to keep consistent with top menu -->
+    <!-- 
     <div class="sidebar-section">
-        <h3 class="sidebar-heading">文章</h3>
+        <h3 class="sidebar-heading">{{ i18n "articles" | default "文章" }}</h3>
         <ul class="sidebar-menu">
             {{- $mainCategories := slice "my_insights" "celebrity_insights" "ai_spec" "big_companies" "papers" "technologies" "large_models" "training" "context_engineering" "mas" "ai_programming" "ai_tools" "projects" "news" "courses" }}
             {{- $categoryIcons := dict "my_insights" "lightbulb" "celebrity_insights" "star" "ai_spec" "file-text" "big_companies" "briefcase" "papers" "book-open" "technologies" "terminal" "large_models" "brain" "training" "settings" "context_engineering" "message-square" "mas" "users" "ai_programming" "code" "ai_tools" "tool" "projects" "rocket" "news" "globe" "courses" "graduation-cap" }}
-            {{- $categoryNames := dict "my_insights" "个人洞察" "celebrity_insights" "名人洞察" "ai_spec" "AI标准规范" "big_companies" "大厂产品线" "papers" "论文解读" "technologies" "技术解析" "large_models" "大模型" "training" "训练微调技术" "context_engineering" "上下文工程" "mas" "多代理技术" "ai_programming" "AI编程" "ai_tools" "AI工具箱" "projects" "开源项目" "news" "行业动态" "courses" "课程" }}
             {{- range $catName := $mainCategories }}
             {{- $taxonomy := index site.Taxonomies.categories $catName }}
             {{- if $taxonomy }}
             {{- if gt (len $taxonomy) 0 }}
-            <li><a href="/categories/{{ $catName }}/">{{ partial "icon.html" (dict "name" (index $categoryIcons $catName)) }} {{ index $categoryNames $catName | default $catName }}</a></li>
+            {{- $displayName := i18n (printf "cat_%s" $catName) | default (humanize $catName) }}
+            <li><a href="{{ printf "categories/%s" $catName | relLangURL }}/">{{ partial "icon.html" (dict "name" (index $categoryIcons $catName)) }} {{ $displayName }}</a></li>
             {{- end }}
             {{- end }}
             {{- end }}
         </ul>
     </div>
+    -->
 
     <!-- Section 4: Projects -->
     <div class="sidebar-section">
-        <h3 class="sidebar-heading">项目</h3>
+        <h3 class="sidebar-heading">{{ i18n "projects" | default "项目" }}</h3>
         <ul class="sidebar-menu sidebar-projects">
             {{- if site.Params.sidebar.projects }}
             {{- range site.Params.sidebar.projects }}
