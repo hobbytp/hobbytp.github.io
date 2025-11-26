@@ -49,6 +49,12 @@ enable = true
 [assets]
 disableFingerprinting = false
 
+[taxonomies]
+category = "categories"
+tag = "tags"
+series = "series"
+
+
 [assets.css]
 minify = true
 
