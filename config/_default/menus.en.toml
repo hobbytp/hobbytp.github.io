@@ -1,24 +1,29 @@
 [[main]]
-name = "🏠 Home"
+name = "Home"
 url = "/"
+icon = "home"
 weight = 1
 
 [[main]]
-name = "📝 Posts"
+name = "Posts"
 url = "/posts/"
+icon = "posts"
 weight = 2
 
 [[main]]
-name = "🏷️ Categories"
+name = "Categories"
 url = "/categories/"
+icon = "categories"
 weight = 3
 
 [[main]]
-name = "🔍 Search"
+name = "Search"
 url = "/search/"
+icon = "search"
 weight = 6
 
 [[main]]
 name = "About"
 url = "/about"
+icon = "about"
 weight = 17
