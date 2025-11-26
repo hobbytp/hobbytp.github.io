@@ -35,24 +35,6 @@
     "prompt": "一张极具设计感的博客封面图。主题：Anthropic CEO Dario Amodei访谈。核心视觉元素：未来科技感，抽象线条，光影交错，流体形态。融合基于'Dario Amodei访谈,AI从业者必读'的抽象概念可视化。艺术风格：C4D 3D渲染，Octane Render，极简主义，虚幻引擎5画质，Tyndall effect，8k分辨率，超高清，细节丰富。色彩氛围：冷色调，高级感，渐变色。构图：宽屏壁纸，大气磅礴，留白适中，中心构图或三分法。重要提示：纯图案背景，绝对不要包含任何文字、字母、数字、拼音、汉字、水印、LOGO。不要出现人脸。",
     "generated_at": "2025-11-23T11:20:10.733209"
   },
-  "c0485c8bc0072c3698171534df330e0b": {
-    "title": "AI的最终审判：为什么资本主义、GDP和人类智力都将在1000天内失效？",
-    "description": "AI的最终审判：为什么资本主义、GDP和人类智力都将在1000天内失效？Emad Mostaque在“Tom Bilyeu”YouTube频道上的访谈，主要探讨了人工智能（AI）将如何从根本上颠覆全球经济。Mostaque认为，在不久的将来，AI不仅会取代大量人类工作，还会使资本主义和国内生产总值（GDP）等传统经济结构变得过时。他提出了一种新的**“心智”（M.I.N.D.）框架来衡量经济健康度",
-    "category": "celebrity_insights",
-    "image_path": "static/images/generated-covers/c0485c8bc0072c3698171534df330e0b.webp",
-    "relative_path": "/images/generated-covers/c0485c8bc0072c3698171534df330e0b.webp",
-    "prompt": "一张极具设计感的博客封面图。主题：AI的最终审判：为什么资本主义、GDP和人类智力都将在1000天内失效？。核心视觉元素：发光的神经元网络，突触连接，思维火花，生物科技融合，能量脉冲，智能体。融合基于'AI的最终审判：为什么资本主义、GDP和人类智力都将在1000天内失效？Emad Mostaque在“Tom Bilyeu”YouTube频道上的访谈，主要探讨了人工智能（AI）将如何从根本上颠覆全球经济。Mostaque认为，在不久的将来，AI不仅会取代大量人类工作，还会使资本主义和国内生产总值（GDP）等传统经济结构变得过时。他提出了一种新的**“心智”（M.I.N.D.）框架来衡量经济健康度，该框架关注物质资本、智能、网络效应和多样性，而不仅仅是GDP。他警告称，人类认知劳动的价值将变为负数，并提出需要重新定义货币和财富的流动方式**，例如通过新型数字资产，以应对AI驱动的生产力爆炸所带'的抽象概念可视化。艺术风格：C4D 3D渲染，Octane Render，极简主义，虚幻引擎5画质，Tyndall effect，8k分辨率，超高清，细节丰富。色彩氛围：电光蓝，洋红，粉紫渐变，梦幻，灵动。构图：宽屏壁纸，大气磅礴，留白适中，中心构图或三分法。重要提示：纯图案背景，绝对不要包含任何文字、字母、数字、拼音、汉字、水印、LOGO。不要出现人脸。",
-    "generated_at": "2025-11-23T11:20:25.822055"
-  },
-  "c661137710f36f28666902ac3de2a426": {
-    "title": "李飞飞博士的生平与洞见",
-    "description": "李飞飞博士的生平与洞见",
-    "category": "celebrity_insights",
-    "image_path": "static/images/generated-covers/c661137710f36f28666902ac3de2a426.webp",
-    "relative_path": "/images/generated-covers/c661137710f36f28666902ac3de2a426.webp",
-    "prompt": "一张极具设计感的博客封面图。主题：李飞飞博士的生平与洞见。核心视觉元素：未来科技感，抽象线条，光影交错，流体形态。融合基于'李飞飞博士的生平与洞见'的抽象概念可视化。艺术风格：C4D 3D渲染，Octane Render，极简主义，虚幻引擎5画质，Tyndall effect，8k分辨率，超高清，细节丰富。色彩氛围：冷色调，高级感，渐变色。构图：宽屏壁纸，大气磅礴，留白适中，中心构图或三分法。重要提示：纯图案背景，绝对不要包含任何文字、字母、数字、拼音、汉字、水印、LOGO。不要出现人脸。",
-    "generated_at": "2025-11-23T20:58:06.284761"
-  },
   "6f5c784ed22551b6b3a13c9a42e8fe89": {
     "title": "Reinforced Self-play Reasoning with Zero Data 论文解读",
     "description": "论文介绍了强化自博弈推理的零数据范式，通过自博弈生成任务和验证，实现无需依赖人工标注数据或预设任务的自主学习推理。",
@@ -97,5 +79,275 @@
     "relative_path": "/images/generated-covers/13940859ead781916b102e794c38e0d7.webp",
     "prompt": "浏览器深处涌现的神经网络，如万花筒般层叠展开，线条是代码的抽象，色彩是调试信息的流动，深蓝与翠绿交织，象征着智能与工具的融合。光线透过层层网络，形成明暗对比强烈的焦散效果，构图采用对称与放射的结合，中央的核心区域象征着DevTools，向四周发散，寓意着AI助手能力的扩展。艺术风格为数字流体艺术，整体呈现一种未来感和科技感，象征着AI编程调试的新纪元。",
     "generated_at": "2025-11-25T19:37:34.836096"
+  },
+  "930c2f415ceee8f5b59df11412c62404": {
+    "title": "Gemini Nano Banana Pro：技术奇点、生态重构与行业影响全景解析",
+    "description": "Google Gemini Nano Banana Pro（Gemini 3 Pro Image）把图像生成从“凭感觉出图”提升为“有推理、有规划的工业级生产工具”：它基于 Gemini 3 的多模态推理和实时搜索能力，在生成前先理解语义与布局、保证细节一致性，同时支持 4K 画质、强文本渲染和多图参考控制，重点服务品牌物料、信息图表、教育与游戏等专业生产场景，并通过云端算力、Workspace/",
+    "category": "large_models",
+    "image_path": "static/images/generated-covers/930c2f415ceee8f5b59df11412c62404.webp",
+    "relative_path": "/images/generated-covers/930c2f415ceee8f5b59df11412c62404.webp",
+    "prompt": "层叠错落的芯片电路板，其上生长出扭曲的香蕉树，树叶脉络交织成复杂的神经网络，香蕉果实闪烁着微弱的蓝光，象征着数据流，整体色彩以深蓝色、墨绿色和金色为主，营造出一种科技与自然融合的超现实主义氛围，光线从电路板的缝隙中透出，形成富有层次感的光影，采用故障艺术（Glitch Art）风格，画面略带失真和像素化，构图上采用中心对称，强调科技与生态的平衡与冲突。",
+    "generated_at": "2025-11-25T20:57:25.928794"
+  },
+  "ceed78e124163200e65d9a9ca79ac121": {
+    "title": "Google I/O 2025 大会亮点",
+    "description": "本文介绍了Google I/O 2025 大会亮点。",
+    "category": "big_companies",
+    "image_path": "static/images/generated-covers/ceed78e124163200e65d9a9ca79ac121.webp",
+    "relative_path": "/images/generated-covers/ceed78e124163200e65d9a9ca79ac121.webp",
+    "prompt": "迷雾笼罩的赛博都市景观，无数光纤如同神经脉络般交织，连接着漂浮的像素云，云层中隐约可见几何化的芯片轮廓。整体色调为冷峻的蓝紫色，间以跳跃的橙色和翠绿色，营造出一种既未来又略带不安的氛围。采用故障艺术风格，局部扭曲变形，光线从云层后方倾泻而出，形成强烈的光影对比，构图呈现出一种爆炸式的扩张感，象征着AI技术的无限可能性与潜在的颠覆性力量。",
+    "generated_at": "2025-11-25T22:26:13.883962"
+  },
+  "03838089a98c27c11001a5c228be7f4e": {
+    "title": "AudioLLM - 李沐亲自解说语音大模型训练的底层思路",
+    "description": "李沐亲自解说语音大模型AudioLLM训练的底层思路",
+    "category": "models",
+    "image_path": "static/images/generated-covers/03838089a98c27c11001a5c228be7f4e.webp",
+    "relative_path": "/images/generated-covers/03838089a98c27c11001a5c228be7f4e.webp",
+    "prompt": "万籁俱寂的星空下，无数细小光点如音频波形般跃动，汇聚成一个巨大的、半透明的环形星云，象征着语音数据的海洋。星云中心，一束金色光芒穿透黑暗，连接着两个遥远星系，一个代表文本，一个代表语音，光芒交织处，数据流动，相互学习，相互促进。整体色调为深邃的午夜蓝和金色，营造出一种神秘而深邃的科技感。采用抽象表现主义风格，强调流动性和能量感，光线从中心向外扩散，形成一种向心力和张力，构图采用黄金分割比例，突出中心区域的星云和光束。",
+    "generated_at": "2025-11-25T22:30:19.755206"
+  },
+  "2693fee9b77b4792520aa68b30f4cddd": {
+    "title": "Llama 4 模型系列",
+    "description": "本文介绍了Llama 4 模型系列详细解读。",
+    "category": "large_models",
+    "image_path": "static/images/generated-covers/2693fee9b77b4792520aa68b30f4cddd.webp",
+    "relative_path": "/images/generated-covers/2693fee9b77b4792520aa68b30f4cddd.webp",
+    "prompt": "广袤星空中，无数星云交织，色彩斑斓，从深邃的紫色、蓝色渐变到炽热的橙色、红色。星云之间，隐藏着多个大小不一的立方体，代表不同的模型参数规模。光线从立方体内部散射出来，照亮周围的星云，形成一种知识传递的视觉隐喻。采用未来主义风格，整体画面充满科技感和神秘感，构图大气磅礴，具有空间感和层次感。",
+    "generated_at": "2025-11-25T22:31:15.408210"
+  },
+  "ef9dc53da11cff3af691848e17180cd2": {
+    "title": "多智能体强化学习（MARL）在多智能体系统（MAS）中的应用：理论、算法、应用与展望",
+    "description": "本文介绍了多智能体强化学习（MARL）在多智能体系统（MAS）中的应用：理论、算法、应用与展望。",
+    "category": "reinforcement",
+    "image_path": "static/images/generated-covers/ef9dc53da11cff3af691848e17180cd2.webp",
+    "relative_path": "/images/generated-covers/ef9dc53da11cff3af691848e17180cd2.webp",
+    "prompt": "万花筒般的多智能体迷宫，无数色彩斑斓的几何切片相互交错，象征着复杂环境与多变策略。中心区域光芒四射，代表着全局信息的集中训练，光线向外扩散，逐渐模糊，体现去中心化执行的局部观测。整体色调为冷静的科技蓝与活跃的策略橙，采用低多边形（Low Poly）风格，营造出抽象、未来感，强调多智能体在探索中协同进化，共同塑造智能涌现的奇妙景象。构图：中心对称，向四周无限延伸，象征MARL的无限可能性。",
+    "generated_at": "2025-11-25T22:32:12.061450"
+  },
+  "ad1bb311dcafbefcb79d69517d4c95c5": {
+    "title": "Agent训练新范式：Agent Learning via Early Experience",
+    "description": "传统AI训练像是把人类所有的知识都强行灌输AI，而Meta的最新论文《Agent Learning via Early Experience》为我们展示了一条训练AI智能体的新路径: 可扩展、无需奖励的实用范式，通过将智能体自身的行为和结果转化为强大的监督信号，显著提升了AI的性能、数据效率和泛化能力。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/ad1bb311dcafbefcb79d69517d4c95c5.webp",
+    "relative_path": "/images/generated-covers/ad1bb311dcafbefcb79d69517d4c95c5.webp",
+    "prompt": "混沌星云中，无数细小的金色丝线交织成复杂的神经网络结构，这些丝线忽明忽暗，象征着智能体在早期经验中的探索。中心区域，一个巨大的蓝色水晶体逐渐成型，代表着隐式世界建模的过程，水晶内部折射出奇异的光芒，象征着对环境的理解不断加深。周围环绕着紫色和绿色的烟雾，代表着自我反思，烟雾如同大脑中的神经突触，连接着各个金色丝线。整体采用低多边形艺术风格，光线从水晶体内部散射出来，照亮周围的星云，营造出一种既神秘又充满希望的氛围。构图上，水晶体位于黄金分割点，引导视线，强调智能体自我学习和进化的主题。",
+    "generated_at": "2025-11-25T22:33:37.122172"
+  },
+  "1f1083db2d4840443f5a9eb42c66806a": {
+    "title": "Meta颠覆代码AI：新模型CWM不只“读”代码，更能“执行”它",
+    "description": "Meta发布的一项名为“代码世界模型”（Code World Model, CWM）的全新研究，正试图从根本上解决当前代码AI面临的一大痛点。",
+    "category": "large_models",
+    "image_path": "static/images/generated-covers/1f1083db2d4840443f5a9eb42c66806a.webp",
+    "relative_path": "/images/generated-covers/1f1083db2d4840443f5a9eb42c66806a.webp",
+    "prompt": "代码宇宙：无数微型齿轮和复杂电路交织成星云状，中心是一颗闪耀的代码核心，光芒四射，象征着代码执行的动态过程。背景是深邃的蓝色和紫色，代表着无限的计算空间。齿轮由金色和银色金属质感渲染，电路则用霓虹灯般的色彩勾勒，形成强烈的对比。整体风格为赛博朋克与抽象艺术的融合，光线从核心向外扩散，形成一种动态的能量流，构图采用中心放射式，强调代码执行的强大力量和复杂性。",
+    "generated_at": "2025-11-25T22:33:56.311838"
+  },
+  "fa2f791427034b734ca39af3401c179f": {
+    "title": "RPG：从“对话”到“蓝图”，用图谱指导AI思考",
+    "description": "RPG：从“对话”到“蓝图”，用图谱指导AI思考",
+    "category": "ai_programming",
+    "image_path": "static/images/generated-covers/fa2f791427034b734ca39af3401c179f.webp",
+    "relative_path": "/images/generated-covers/fa2f791427034b734ca39af3401c179f.webp",
+    "prompt": "代码仓库的抽象城市景观，由无数细微的发光线路连接而成，象征模块间的依赖关系。城市中心矗立着一座水晶结构的蓝图大厦，光芒四射，寓意RPG图谱的核心作用。整体色调为深邃的午夜蓝，辅以跳跃的橙色和绿色光点，营造一种未来科技感和无限延伸的视觉效果。采用低角度仰视构图，强调蓝图大厦的宏伟与代码城市的全貌。镜头略带模糊效果，增加抽象感和艺术性。",
+    "generated_at": "2025-11-25T22:46:10.072499"
+  },
+  "61947fa15c860805335c63b379363b18": {
+    "title": "Agent经济：红杉资本2025 AI峰会释放的超级信号",
+    "description": "Agent经济：红杉资本2025 AI峰会释放的超级信号",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/61947fa15c860805335c63b379363b18.webp",
+    "relative_path": "/images/generated-covers/61947fa15c860805335c63b379363b18.webp",
+    "prompt": "一片浩瀚星云，无数微型机械臂从中伸出，灵巧地组装着闪耀的能量晶体。星云中心，一个巨大的、未完成的球体若隐若现，象征着AI Agent经济的无限潜力。整体色调为深邃的蓝紫色，点缀着金色和翠绿色的光芒，营造出一种科技感与未来感。采用赛博朋克风格与星云融合，光影效果强烈，突出机械臂的细节与晶体的光泽。构图采用对称式结构，球体位于中心略偏上的位置，形成视觉焦点。",
+    "generated_at": "2025-11-25T22:47:03.678032"
+  },
+  "97a65a1641f1e0b51593e51d300c4e11": {
+    "title": "AI Coding向CLI方向发展的深层次原因",
+    "description": "AI编程工具正经历从图形化IDE向命令行界面(CLI)的重要转向。这一趋势在2025年尤其明显，各大科技巨头纷纷推出基于终端的AI编程助手。",
+    "category": "my_insights",
+    "image_path": "static/images/generated-covers/97a65a1641f1e0b51593e51d300c4e11.webp",
+    "relative_path": "/images/generated-covers/97a65a1641f1e0b51593e51d300c4e11.webp",
+    "prompt": "微光中，无数细小的彩色丝线从一个黑暗的命令行窗口中涌出，汇聚成一棵充满科技感的抽象树，树的根部深深扎入由电路板纹理构成的土壤之中。树冠闪烁着代码片段的光芒，象征着AI自主编程的无限可能。采用赛博朋克风格，整体色调以深蓝色、墨绿色和少量鲜艳的霓虹色为主，营造一种未来感和神秘感。光线柔和，着重表现丝线和电路板纹理的细节。构图中心略微偏离中心，使画面更具动态感。",
+    "generated_at": "2025-11-25T22:47:55.055289"
+  },
+  "a3c9d5ea50344024101c8080389a6947": {
+    "title": "马斯克的“加速”与“刹车”悖论：我们到底在把世界引向何处？",
+    "description": "马斯克的“加速”与“刹车”悖论：我们到底在把世界引向何处？",
+    "category": "my_insights",
+    "image_path": "static/images/generated-covers/a3c9d5ea50344024101c8080389a6947.webp",
+    "relative_path": "/images/generated-covers/a3c9d5ea50344024101c8080389a6947.webp",
+    "prompt": "星云漩涡中，无数细小齿轮以不同速度旋转，象征AI技术的加速发展。齿轮间隙闪烁着红色警示光芒，仿佛制动器。整体色彩冷暖交织，蓝色代表科技理性，橙色代表潜在风险。采用蒸汽朋克风格，机械感十足，同时融入赛博朋克的霓虹光晕，营造既未来又带有工业时代的反思感。构图上，漩涡中心模糊，边缘清晰，突出“失控”与“控制”的边缘试探。光线从齿轮缝隙中透出，明暗对比强烈，强调技术奇点带来的不确定性。",
+    "generated_at": "2025-11-25T22:48:25.744923"
+  },
+  "3cfb15f2afd67bcaf28a1a100de3eed7": {
+    "title": "一个世界，两种未来：2025世界人工智能大会上的地缘政治、全球治理与技术前沿",
+    "description": "一个世界，两种未来：2025世界人工智能大会上的地缘政治、全球治理与技术前沿",
+    "category": "my_insights",
+    "image_path": "static/images/generated-covers/3cfb15f2afd67bcaf28a1a100de3eed7.webp",
+    "relative_path": "/images/generated-covers/3cfb15f2afd67bcaf28a1a100de3eed7.webp",
+    "prompt": "万花筒般破碎的世界地图，由无数流动的彩色光点构成，光点颜色从深蓝色、墨绿色渐变至金色、橙色，象征着科技的融合与分裂。地图中心向上生长出一株抽象的、由光纤组成的“智慧树”，树冠一半枝繁叶茂，充满生机，另一半则逐渐枯萎，化为像素化的碎片。背景是深邃的星空，隐约可见二进制代码的星云。整体风格为赛博朋克与水墨画的结合，光线富有层次感，既有科技的冷峻，又有东方哲学的内敛。构图采用黄金分割，强调平衡与冲突，营造一种紧张而充满希望的氛围。",
+    "generated_at": "2025-11-25T22:49:07.438688"
+  },
+  "c1659a0bdb3a9be4b8720040beed1bd5": {
+    "title": "小模型逆袭：秘密武器竟是给AI一本不断变厚的“攻略”",
+    "description": "该论文介绍了一个名为 ACE(Agentic Context Engineering，代理上下文工程) 的框架，该框架旨在通过演化上下文而非微调模型权重的方式，实现大型语言模型（LLMs）的自我改进。ACE将上下文视为不断累积、提炼和组织策略的 “演化剧本”，从而克服了现有上下文适应方法中存在的简洁性偏差和上下文崩溃等主要限制。通过使用 生成器、反射器和策展器 这三个代理组件，ACE实现了增量更新",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/c1659a0bdb3a9be4b8720040beed1bd5.webp",
+    "relative_path": "/images/generated-covers/c1659a0bdb3a9be4b8720040beed1bd5.webp",
+    "prompt": "星云背景，无数细小的光点如同知识碎片，汇聚成一个不断膨胀、形态各异的复杂星系。中心区域明亮而充满活力，色彩斑斓，象征着AI的“行动剧本”在不断演化和完善。边缘则逐渐模糊，融入深邃的宇宙之中，代表着知识的无限可能性。整体采用抽象水墨风格，光影柔和，营造出一种既神秘又充满生机的氛围。构图采用黄金分割比例，强调中心区域的动态感和知识的爆炸式增长。",
+    "generated_at": "2025-11-25T22:50:24.230950"
+  },
+  "1b9a7ea1b136c82f4f5f37fbf49d2fc9": {
+    "title": "Gemini - 通用智能体是否需要世界模型",
+    "description": "本文探讨了通用智能体是否需要世界模型才能实现灵活的、面向目标的行为",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/1b9a7ea1b136c82f4f5f37fbf49d2fc9.webp",
+    "relative_path": "/images/generated-covers/1b9a7ea1b136c82f4f5f37fbf49d2fc9.webp",
+    "prompt": "无垠星空中，无数神经元般的星云交织成复杂的网络，光线在其间折射，形成不断演化的抽象世界模型。深蓝色和紫色渐变作为主色调，辅以金色和银色光芒点缀，象征着智能体对环境的理解和预测。采用半透明材质和流体动态效果，营造一种不断学习和演变的动态感。构图上，中心区域的光芒最为耀眼，向四周逐渐扩散，形成无限延伸的视觉效果。",
+    "generated_at": "2025-11-25T22:50:42.023469"
+  },
+  "52bc161093bddb18d9b3eb80a860cd6c": {
+    "title": "AI for Research Survey",
+    "description": "AI for Research Survey. 这篇综述文章概述了人工智能在科学研究（AI4Research）中的应用，强调了大型语言模型（LLMs）在促进科学发现各个阶段的潜力。它建立了一个系统的分类体系，将AI4Research分解为五个主要任务：科学理解、学术调查、科学发现、学术写作和学术同行评审。文章详细介绍了AI在这些领域中的具体应用，例如辅助思想挖掘、实验设计、数据分析、论文撰写和同行",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/52bc161093bddb18d9b3eb80a860cd6c.webp",
+    "relative_path": "/images/generated-covers/52bc161093bddb18d9b3eb80a860cd6c.webp",
+    "prompt": "浩瀚星云，无数色彩斑斓的数据星尘汇聚成一个巨大的、抽象的神经元网络，中心闪耀着金色光芒，象征着科学发现的灵感火花。星云边缘呈现深蓝色和紫色渐变，代表着未知的研究领域。光线从中心向外扩散，形成一种探索与启迪的氛围。采用数字艺术风格，具有强烈的科技感和未来感。构图上，神经元网络占据画面中心，四周环绕着星云，形成一个平衡而富有动态的视觉效果。",
+    "generated_at": "2025-11-25T22:51:00.472790"
+  },
+  "5b909ae4f4c2790091b22e001bfda6c7": {
+    "title": "AI Context Engineering领域若干重要论文",
+    "description": "这里将收集Context Engineering相关的重要文献，具体解读将在其他博客展开。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/5b909ae4f4c2790091b22e001bfda6c7.webp",
+    "relative_path": "/images/generated-covers/5b909ae4f4c2790091b22e001bfda6c7.webp",
+    "prompt": "迷雾笼罩的知识之树，树根深深扎入抽象数据流中，枝干呈现算法的几何形态，叶片是漂浮的代码片段，整体色彩以深邃的午夜蓝和象征智慧的金色为主，光线从树冠中心向四周扩散，呈现一种启迪的光芒，艺术风格为数字抽象主义，构图采用黄金分割比例，营造出神秘而富有科技感的氛围。",
+    "generated_at": "2025-11-25T22:51:17.544828"
+  },
+  "d053d88777077f5e36e81cd78d422490": {
+    "title": "深度研究智能体：系统性审查与路线图",
+    "description": "本文介绍了深度研究智能体：系统性审查与路线图。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/d053d88777077f5e36e81cd78d422490.webp",
+    "relative_path": "/images/generated-covers/d053d88777077f5e36e81cd78d422490.webp",
+    "prompt": "层叠交错的半透明玻璃碎片，象征信息检索的复杂性，碎片内部流动着数据流，色彩以深蓝色、翠绿色和金色为主，营造科技感和深度感，光线从碎片间隙穿透，形成明暗对比，整体构图呈现爆炸后重组的混沌秩序感，抽象表现智能体对信息的解构与重塑。",
+    "generated_at": "2025-11-25T22:51:34.059026"
+  },
+  "173fb363b43e92d5d5227c4238983edc": {
+    "title": "AI的“知识僵化症”有救了？揭秘MIT自适应大模型SEAL",
+    "description": "麻省理工学院（MIT）的一项开创性研究，为我们揭示了这场进化的具体路径。他们推出了一个名为 **SEAL (Self-Adapting Large Language Models，自适应大语言模型)** 的框架。这套框架首次赋予了AI模型一种前所未有的能力：它们可以“自己教自己”，通过生成和应用自己的学习材料，来持续进化其内部的知识体系。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/173fb363b43e92d5d5227c4238983edc.webp",
+    "relative_path": "/images/generated-covers/173fb363b43e92d5d5227c4238983edc.webp",
+    "prompt": "一个巨大的、半透明的玻璃大脑，内部闪烁着无数微小的金色神经元光点，它们如同星云般缓慢旋转、重组。大脑表面浮现出水墨画般的山水纹理，象征着知识的积累与沉淀。颜色以深邃的午夜蓝和充满活力的金色为主，光线从内部向外柔和散射，营造出一种智慧、进化的神秘氛围。构图上，大脑占据画面中心，略微倾斜，背景是模糊的星空，整体呈现出一种抽象、未来主义的科技感。",
+    "generated_at": "2025-11-25T22:52:04.340036"
+  },
+  "6ea0c6bec0950fb0cd6ef9cf9ed5fb1e": {
+    "title": "OmniThink: Expanding Knowledge Boundaries in Machine Writing through Thinking",
+    "description": "本文介绍了OmniThink: Expanding Knowledge Boundaries in Machine Writing through Thinking。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/6ea0c6bec0950fb0cd6ef9cf9ed5fb1e.webp",
+    "relative_path": "/images/generated-covers/6ea0c6bec0950fb0cd6ef9cf9ed5fb1e.webp",
+    "prompt": "层层叠叠的透明玻璃迷宫，象征着知识的边界，内部光线朦胧，折射出斑斓的色彩，从深蓝到亮橙渐变，代表着思考的深度和广度。迷宫中心悬浮着一棵抽象的信息之树，枝繁叶茂，闪耀着金色光芒。树的根系扎入一个由无数微小光点组成的“概念池”，光点如同星辰般闪烁。整体风格为未来主义的玻璃雕塑，光线透过迷宫和树叶，在地面上投下复杂的光影。构图采用中心对称，强调知识探索的无限可能性。",
+    "generated_at": "2025-11-25T22:52:21.917836"
+  },
+  "db11176d57bc67ecb71bbba887f3f310": {
+    "title": "Pangu Deep Dive - 论文深度解析",
+    "description": "Pangu相关论文的深度解析和资源链接",
+    "category": "论文解读",
+    "image_path": "static/images/generated-covers/db11176d57bc67ecb71bbba887f3f310.webp",
+    "relative_path": "/images/generated-covers/db11176d57bc67ecb71bbba887f3f310.webp",
+    "prompt": "水墨风格，远古混沌初开，线条如盘古开天辟地般延展，象征知识的诞生与构建。背景是深邃的蓝色和紫色渲染的星空，象征着深度的探索和无限的可能性。一束金色光芒穿透混沌，照亮核心区域，形成对比。构图大气磅礴，具有哲学意味，体现“深度解析”的概念。16:9宽屏。",
+    "generated_at": "2025-11-25T22:52:38.285061"
+  },
+  "0d2612bdfb97d98ad974840d23a773d4": {
+    "title": "Meta: 提示词对决优化器 (PDO)",
+    "description": "这篇由Meta和宾夕法尼亚州立大学的研究者发布的论文提出了一种创新的、无需人工标注数据的提示词优化方法。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/0d2612bdfb97d98ad974840d23a773d4.webp",
+    "relative_path": "/images/generated-covers/0d2612bdfb97d98ad974840d23a773d4.webp",
+    "prompt": "抽象水墨风格，两个毛笔笔触在宣纸上激烈碰撞，墨迹飞溅，象征提示词之间的对决。其中一方墨色浓重，另一方墨色稍淡，但边缘锐利，预示着微妙的优势。背景是泛黄的古旧宣纸纹理，光线从左上方倾斜，强调墨迹的动态感。整体构图充满张力，表现“提示词对决优化器”的核心概念。色彩以黑白灰为主，局部可点缀少量金色，象征最终的优化结果。",
+    "generated_at": "2025-11-25T22:52:58.502142"
+  },
+  "aa25065444e4f9e15f2a23fd50697ae0": {
+    "title": "Reflect, Retry, Reward: 大型语言模型的自我进化新范式",
+    "description": "Reflect, Retry, Reward: 大型语言模型的自我进化新范式",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/aa25065444e4f9e15f2a23fd50697ae0.webp",
+    "relative_path": "/images/generated-covers/aa25065444e4f9e15f2a23fd50697ae0.webp",
+    "prompt": "一个巨大的、抽象的齿轮装置，由无数小齿轮相互连接而成，象征着大型语言模型的内部运作。齿轮表面呈现出深邃的蓝色和紫色，代表着思考和反思。在齿轮核心处，一束金色光芒穿透而出，象征着顿悟和奖励。装置周围环绕着流动、透明的丝带，颜色从暗淡的灰色渐变为鲜艳的橙色，代表着模型不断尝试和进化。整体风格为赛博朋克与水彩的融合，光影对比强烈，营造出一种既科幻又梦幻的氛围。构图中心为齿轮核心的金光，引导视线，暗示着自我进化带来的突破。",
+    "generated_at": "2025-11-25T22:53:16.159144"
+  },
+  "0028857998f037beeae1184d5565a2d8": {
+    "title": "从人工标注到自我迭代：大模型工具学习的动态文档优化新范式",
+    "description": "本文介绍了从人工标注到自我迭代：大模型工具学习的动态文档优化新范式。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/0028857998f037beeae1184d5565a2d8.webp",
+    "relative_path": "/images/generated-covers/0028857998f037beeae1184d5565a2d8.webp",
+    "prompt": "抽象螺旋星云，中心闪耀着智慧之光，代表大模型自我迭代学习的能力。星云由无数细小的彩色线条构成，象征文档信息，线条在动态演化中逐渐变得清晰有序。色彩方案采用渐变蓝、紫、金，营造科技感和未来感。光线从中心向外扩散，模拟知识传播的过程。构图采用中心对称，突出螺旋结构的动态美感。艺术风格为赛博朋克与水墨画的融合，既有科技的冰冷感，又不失东方的意境。",
+    "generated_at": "2025-11-25T22:53:33.882983"
+  },
+  "0da3eabc5be9e6935ceac7da884a697d": {
+    "title": "Verbalized Sampling: 言语采样提升模型多样性",
+    "description": "Verbalized Sampling: 言语采样提升模型多样性",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/0da3eabc5be9e6935ceac7da884a697d.webp",
+    "relative_path": "/images/generated-covers/0da3eabc5be9e6935ceac7da884a697d.webp",
+    "prompt": "星云般多彩的语言碎片漂浮在深邃的宇宙背景中，碎片之间由细微的光丝连接，象征着语言模型的多样化表达。中心区域的光芒更加强烈，逐渐向外扩散，但边缘逐渐暗淡，体现模式坍塌现象。使用迷幻现实主义风格，色彩丰富且对比强烈，如紫、蓝、红、黄等，光线从中心向外散射，营造一种既混乱又和谐的动态感。构图采用黄金分割比例，强调中心区域，体现语言多样性的核心地位。",
+    "generated_at": "2025-11-25T22:53:53.233187"
+  },
+  "48b94b44b0309f20c994509df88c4727": {
+    "title": "Qwen3 Tech Report解读",
+    "description": "全方位解读Qwen3的论文技术报告",
+    "category": "large_models",
+    "image_path": "static/images/generated-covers/48b94b44b0309f20c994509df88c4727.webp",
+    "relative_path": "/images/generated-covers/48b94b44b0309f20c994509df88c4727.webp",
+    "prompt": "一片由无数细小彩色丝线交织而成的大脑形态，丝线颜色从深邃的午夜蓝渐变到活力的柠檬黄，象征着模型的思考与非思考模式的融合。大脑内部结构呈现出复杂的电路板纹理，用金色光芒勾勒关键节点，象征模型架构的改进。背景是深邃的星空，用银色星点代表36万亿的训练token，体现海量数据。整体采用赛博朋克艺术风格，光线从内部向外辐射，营造出既神秘又充满活力的氛围。构图采用黄金分割，大脑形态位于视觉中心，星空背景向两侧延伸，形成16:9的宽屏画面。",
+    "generated_at": "2025-11-25T23:12:17.886406"
+  },
+  "6241ac2b46be8b6ff91b9be21e20d978": {
+    "title": "通义千问（Qwen）系列模型概览",
+    "description": "通义千问（Qwen）系列模型概览",
+    "category": "large_models",
+    "image_path": "static/images/generated-covers/6241ac2b46be8b6ff91b9be21e20d978.webp",
+    "relative_path": "/images/generated-covers/6241ac2b46be8b6ff91b9be21e20d978.webp",
+    "prompt": "星云深处，无数彩色丝线交织成复杂网络，象征着模型的参数与连接。丝线在中心汇聚成一个耀眼的金色奇点，代表通义千问的核心算力。周围环绕着由流动的光粒子构成的球体，分别呈现出文本、图像、语音和视频的抽象形态，暗示其全模态融合的特性。整体采用赛博朋克风格，冷暖色调对比强烈，光线从中心奇点向外扩散，营造出一种科技感与未来感。构图采用黄金分割比例，强调中心奇点的视觉焦点。",
+    "generated_at": "2025-11-25T23:12:34.591167"
+  },
+  "fba58d3184e7818ddf6e21b3014dd636": {
+    "title": "QwQ-32B Qwen推理大模型解读",
+    "description": "本文介绍了深度求索（DeepSeek）公司推出的新一代推理模型QwQ-32B，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。",
+    "category": "large_models",
+    "image_path": "static/images/generated-covers/fba58d3184e7818ddf6e21b3014dd636.webp",
+    "relative_path": "/images/generated-covers/fba58d3184e7818ddf6e21b3014dd636.webp",
+    "prompt": "层层叠叠的彩色玻璃碎片，象征着320亿参数的复杂模型，碎片之间涌动着金色光芒，代表推理能力和强化学习，背景是深邃的星空，象征无限的智能探索，整体风格为抽象表现主义，采用高光和阴影突出层次感，16:9宽屏构图。",
+    "generated_at": "2025-11-25T23:12:53.151585"
+  },
+  "28e80c71453b499a74e37141d8bb2797": {
+    "title": "深入理解AI Agent：芮勇博士的九个核心问题解析",
+    "description": "联想芮勇博士对AI Agent的未来提出了九个深刻而关键的问题",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/28e80c71453b499a74e37141d8bb2797.webp",
+    "relative_path": "/images/generated-covers/28e80c71453b499a74e37141d8bb2797.webp",
+    "prompt": "无垠星空中，无数光点如神经元般闪烁连接，构成一个巨大而复杂的网络结构，象征着AI Agent生态的互联互通。色彩以深邃的午夜蓝和神秘的紫罗兰为主，间或穿插着象征智慧的金黄色光束。光线从网络中心向外扩散，形成一种向外探索的动态感。整体风格为抽象表现主义，强调科技的未知性和无限可能性，构图采用黄金分割，将视觉中心聚焦于网络结构的交汇点，营造一种既深邃又充满希望的未来感。",
+    "generated_at": "2025-11-25T23:26:51.216384"
+  },
+  "f1e5395e8b2957e431b0032213eab5a7": {
+    "title": "Shunyu Yao: The Second Half (下半场)",
+    "description": "AI的下半场",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/f1e5395e8b2957e431b0032213eab5a7.webp",
+    "relative_path": "/images/generated-covers/f1e5395e8b2957e431b0032213eab5a7.webp",
+    "prompt": "万花筒般的人工智能神经网络，一半是精密复杂的齿轮机械结构，象征着算法和模型，使用冷色调的钢铁蓝和银色；另一半是流动的彩色墨水，代表着对价值的重新定义，使用温暖的金色、橙色和紫色。两种结构在中心交汇融合，形成一个光芒四射的奇点，光线从奇点向四周扩散，照亮黑暗的背景。整体采用故障艺术风格，体现AI发展过程中的不确定性和突破。构图为黄金分割比例，强调平衡与和谐。",
+    "generated_at": "2025-11-25T23:27:23.807667"
+  },
+  "30e9d465cf410f4e1633ac055427ab05": {
+    "title": "强化学习的奠基人的惊人警告：为什么说LLM可能是一条死胡同？",
+    "description": "强化学习的奠基人惊人警告：为什么说LLM可能是一条死胡同？",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/30e9d465cf410f4e1633ac055427ab05.webp",
+    "relative_path": "/images/generated-covers/30e9d465cf410f4e1633ac055427ab05.webp",
+    "prompt": "破碎镜面反射迷宫，深蓝色调，代表LLM的死胡同，一条金色光线穿透迷宫，象征强化学习的希望，极简主义，未来主义风格，光线追踪渲染，营造幽深、神秘的氛围，16:9宽屏构图。",
+    "generated_at": "2025-11-25T23:28:00.515285"
   }
 }
