@@ -77,7 +77,7 @@ icon = "users"
 
 [[main]]
 name = "AI标准规范"
-url = "/categories/spec"
+url = "/categories/ai_spec"
 weight = 12
 [main.params]
 icon = "file-text"
