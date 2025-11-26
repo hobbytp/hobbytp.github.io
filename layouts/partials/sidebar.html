@@ -30,11 +30,9 @@
             {{- $categoryNames := dict "my_insights" "个人洞察" "celebrity_insights" "名人洞察" "ai_spec" "AI标准规范" "big_companies" "大厂产品线" "papers" "论文解读" "technologies" "技术解析" "large_models" "大模型" "training" "训练微调技术" "context_engineering" "上下文工程" "mas" "多代理技术" "ai_programming" "AI编程" "ai_tools" "AI工具箱" "projects" "开源项目" "news" "行业动态" "courses" "课程" }}
             {{- range $mainCategories }}
             {{- $catKey := . }}
-            {{- $catTaxonomy := index site.Taxonomies.categories $catKey }}
-            {{- if $catTaxonomy }}
-            {{- if gt $catTaxonomy.Count 0 }}
-            <li><a href="{{ $catTaxonomy.Page.Permalink }}">{{ partial "icon.html" (dict "name" (index $categoryIcons $catKey)) }} {{ index $categoryNames $catKey }}</a></li>
-            {{- end }}
+            {{- $catPage := site.GetPage (printf "/categories/%s" $catKey) }}
+            {{- if $catPage }}
+            <li><a href="{{ $catPage.Permalink }}">{{ partial "icon.html" (dict "name" (index $categoryIcons $catKey)) }} {{ index $categoryNames $catKey }}</a></li>
             {{- end }}
             {{- end }}
         </ul>
