@@ -58,6 +58,10 @@ jobs:
           git config --global url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
           hugo mod get -u
           hugo --minify
+          echo "=== Build Output Stats ==="
+          ls -la public/zh/categories/ | head -20
+          echo "=== Checking context_engineering ==="
+          ls -la public/zh/categories/context_engineering/ || echo "context_engineering directory not found!"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
