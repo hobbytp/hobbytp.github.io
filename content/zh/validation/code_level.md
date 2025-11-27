@@ -3,7 +3,7 @@ title: "编程能力对比分析一撇"
 date: "2025-04-20T20:10:00+08:00"
 description: "关于编程能力对比分析一撇"
 tags: ["coding", "validation", "gemini", "openai", "claude", "deepseek", "grok"]
-categories: ["validation", "coding"]
+categories: ["validation", "ai_programming"]
 wordCount: 575
 readingTime: 3
 ---

@@ -1,0 +1,39 @@
+[[main]]
+name = "Home"
+url = "/"
+icon = "home"
+weight = 1
+
+[[main]]
+name = "Posts"
+weight = 1
+[main.params]
+icon = "home"
+
+[[main]]
+name = "📝 Posts"
+url = "/posts/"
+weight = 2
+[main.params]
+icon = "edit"
+
+[[main]]
+name = "🏷️ Categories"
+url = "/categories/"
+weight = 3
+[main.params]
+icon = "category"
+
+[[main]]
+name = "🔍 Search"
+url = "/search/"
+weight = 6
+[main.params]
+icon = "search"
+
+[[main]]
+name = "About"
+url = "/about"
+weight = 17
+[main.params]
+icon = "info"

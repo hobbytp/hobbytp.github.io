@@ -1,0 +1,73 @@
+env = "production"
+title = "Peng Tan's AI Blog"
+description = "一个关注 AI 各领域的专题博客"
+author = "Peng Tan"
+ShowReadingTime = true
+ShowWordCount = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowToc = true
+enableSchemaOrg = true
+ShowLanguageSwitch = true
+DateFormat = "2025-10-01"
+
+[imaging]
+sizes = [320, 640, 960, 1280, 1920]
+quality = 85
+
+[performance]
+cacheBusting = true
+preloadFonts = true
+enableGzip = true
+enableBrotli = true
+
+[cdn]
+enable = false
+url = ""
+
+[cache]
+enable = true
+maxAge = "1h"
+
+[sidebar]
+avatar = "/images/profile.jpg"
+email = "hobbytp@gmail.com"
+slogan = "Make yesterday better"
+showOnlineStatus = false
+
+[[sidebar.projects]]
+name = "My Blogs"
+url = "https://github.com/hobbytp/hobbytp.github.io"
+description = "精选技术博客"
+
+[[sidebar.projects]]
+name = "MyDeeperResearch"
+url = "https://github.com/hobbytp/DeeperResearch"
+description = "AI深度调研助手"
+
+[comments]
+enable = false
+
+[search]
+enable = true
+
+[profileMode]
+enabled = false
+title = "Peng Tan's AI Blog"
+subtitle = "关注 AI 领域的论文解读、最新技术、开源项目、知名人物访谈、动态和商业产品介绍"
+imageUrl = "/images/profile.jpg"
+imageTitle = "Peng Tan"
+
+[[profileMode.buttons]]
+name = "关于作者"
+url = "/about"
+
+[[profileMode.buttons]]
+name = "GitHub"
+url = "https://github.com/hobbytp"
+
+[[profileMode.buttons]]
+name = "最新文章"
+url = "/"

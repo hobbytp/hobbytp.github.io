@@ -19,11 +19,17 @@ other = "人物访谈"
 [news]
 other = "行业动态"
 
-[products]
-other = "产品介绍"
+[navigation]
+other = "导航"
+
+[articles]
+other = "文章"
 
 [home]
 other = "首页"
+
+[about]
+other = "关于我"
 
 [search]
 other = "搜索"
@@ -60,4 +66,49 @@ other = "AI编程"
 other = "AI工具箱"
 
 [courses]
+other = "课程"
+
+[cat_my_insights]
+other = "个人洞察"
+
+[cat_celebrity_insights]
+other = "名人洞察"
+
+[cat_ai_spec]
+other = "AI标准规范"
+
+[cat_big_companies]
+other = "大厂产品线"
+
+[cat_papers]
+other = "论文解读"
+
+[cat_technologies]
+other = "技术解析"
+
+[cat_large_models]
+other = "大模型"
+
+[cat_training]
+other = "训练微调技术"
+
+[cat_context_engineering]
+other = "上下文工程"
+
+[cat_mas]
+other = "多代理技术"
+
+[cat_ai_programming]
+other = "AI编程"
+
+[cat_ai_tools]
+other = "AI工具箱"
+
+[cat_projects]
+other = "开源项目"
+
+[cat_news]
+other = "行业动态"
+
+[cat_courses]
 other = "课程"

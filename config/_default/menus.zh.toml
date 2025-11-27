@@ -1,0 +1,125 @@
+[[main]]
+name = "首页"
+url = "/"
+weight = 1
+[main.params]
+icon = "home"
+
+[[main]]
+name = "关于我"
+url = "/about"
+weight = 2
+[main.params]
+icon = "user"
+
+[[main]]
+name = "本站搜索"
+url = "/search"
+weight = 3
+[main.params]
+icon = "search"
+
+[[main]]
+name = "个人洞察"
+url = "/categories/my_insights"
+weight = 4
+[main.params]
+icon = "lightbulb"
+
+[[main]]
+name = "名人洞察"
+url = "/categories/celebrity_insights"
+weight = 5
+[main.params]
+icon = "star"
+
+[[main]]
+name = "大厂产品线"
+url = "/categories/big_companies"
+weight = 6
+[main.params]
+icon = "briefcase"
+
+[[main]]
+name = "论文解读"
+url = "/categories/papers"
+weight = 7
+[main.params]
+icon = "book-open"
+
+[[main]]
+name = "基础模型"
+url = "/categories/large_models"
+weight = 8
+[main.params]
+icon = "brain"
+
+[[main]]
+name = "训练微调技术"
+url = "/categories/training"
+weight = 9
+[main.params]
+icon = "settings"
+
+[[main]]
+name = "上下文工程"
+url = "/categories/context_engineering"
+weight = 10
+[main.params]
+icon = "message-square"
+
+[[main]]
+name = "多智能体"
+url = "/categories/mas/"
+weight = 11
+[main.params]
+icon = "users"
+
+[[main]]
+name = "AI标准规范"
+url = "/categories/ai_spec"
+weight = 12
+[main.params]
+icon = "file-text"
+
+[[main]]
+name = "AI编程"
+url = "/categories/ai_programming"
+weight = 13
+[main.params]
+icon = "code"
+
+[[main]]
+name = "开源项目"
+url = "/categories/projects"
+weight = 14
+[main.params]
+icon = "rocket"
+
+[[main]]
+name = "AI工具箱"
+url = "/categories/ai_tools"
+weight = 15
+[main.params]
+icon = "tool"
+
+[[main]]
+name = "技术栈"
+url = "/categories/technologies/"
+weight = 16
+[main.params]
+icon = "terminal"
+
+[[main]]
+name = "行业动态"
+url = "/categories/news"
+weight = 17
+[main.params]
+icon = "globe"
+
+[[main]]
+name = "课程"
+url = "/categories/courses"
+weight = 18
+[main.params]
+icon = "graduation-cap"

@@ -2,6 +2,7 @@ baseURL = "https://hobbytp.github.io/"
 title = "Peng Tan's AI Blog"
 theme = "PaperMod"
 defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = true
 
 enableGitInfo = false
 enableRobotsTXT = true
@@ -53,7 +54,6 @@ disableFingerprinting = false
 category = "categories"
 tag = "tags"
 series = "series"
-
 
 [assets.css]
 minify = true
@@ -120,7 +120,7 @@ env = "production"
 title = "Peng Tan's AI Blog"
 description = "一个关注 AI 各领域的专题博客"
 author = "Peng Tan"
-mainSections = ["zh"]
+# mainSections = ["zh"] # Removed in favor of languages
 ShowReadingTime = true
 ShowWordCount = true
 ShowShareButtons = true
@@ -129,6 +129,7 @@ ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
 ShowToc = true
 enableSchemaOrg = true
+ShowLanguageSwitch = true
 
 # Sidebar configuration
 [params.sidebar]
@@ -147,7 +148,6 @@ description = "精选技术博客"
 name = "MyDeeperResearch"
 url = "https://github.com/hobbytp/DeeperResearch"
 description = "AI深度调研助手"
-
 
 # Date format
 DateFormat = "2025-10-01"
@@ -170,7 +170,7 @@ imageTitle = "Peng Tan"
 # 添加按钮链接到关于作者页面
 [[params.profileMode.buttons]]
 name = "关于作者"
-url = "/zh/about"
+url = "/about"
 
 [[params.profileMode.buttons]]
 name = "GitHub"
@@ -178,119 +178,100 @@ url = "https://github.com/hobbytp"
 
 [[params.profileMode.buttons]]
 name = "最新文章"
-url = "/zh"
-
-
-[menu]
-
-# 主导航菜单
-[[menu.main]]
-name = "🏠 首页"
 url = "/"
-weight = 1
-
-[[menu.main]]
-name = "📝 文章"
-url = "/posts/"
-weight = 2
-
-[[menu.main]]
-name = "🏷️ 分类"
-url = "/categories/"
-weight = 3
-
-[[menu.main]]
-name = "🤖 多智能体"
-url = "/categories/mas/"
-weight = 4
-
-[[menu.main]]
-name = "📚 技术栈"
-url = "/categories/technologies/"
-weight = 5
-
-[[menu.main]]
-name = "🔍 搜索"
-url = "/search/"
-weight = 6
-
-# 详细分类菜单（可选，不在顶部显示）
-# [[menu.main]]
-# name = "个人洞察"
-# url = "/categories/my_insights"
-# weight = 10
-
-# [[menu.main]]
-# name = "名人洞察"
-# url = "/categories/celebrity_insights"
-# weight = 11
-
-# [[menu.main]]
-# name = "AI标准规范"
-# url = "/categories/ai_spec"
-# weight = 12
-
-# [[menu.main]]
-# name = "开源项目"
-# url = "/categories/projects"
-# weight = 13
-
-# [[menu.main]]
-# name = "大厂产品线"
-# url = "/categories/big_companies"
-# weight = 14
-
-# [[menu.main]]
-# name = "论文解读"
-# url = "/categories/papers"
-# weight = 15
-
-# [[menu.main]]
-# name = "大模型"
-# url = "/categories/large_models/"
-# weight = 16
-
-# [[menu.main]]
-# name = "训练微调技术"
-# url = "/categories/training"
-# weight = 17
-
-# [[menu.main]]
-# name = "上下文工程"
-# url = "/categories/context_engineering"
-# weight = 18
-
-# [[menu.main]]
-# name = "AI编程"
-# url = "/categories/ai_programming"
-# weight = 19
-
-# [[menu.main]]
-# name = "AI工具箱"
-# url = "/categories/ai_tools"
-# weight = 20
-
-
-[[menu.main]]
-name = "行业动态"
-url = "/categories/news"
-weight = 15
-
-[[menu.main]]
-name = "课程"
-url = "/categories/courses"
-weight = 16
-
-[[menu.main]]
-name = "关于作者"
-url = "/zh/about"
-weight = 17
-
-[[menu.main]]
-name = "本站搜索"
-url = "/zh/search"
-weight = 18
 
 # 这会生成 /index.json，供前端搜索用。
 [outputs]
 home = ["HTML", "RSS", "JSON"]
+
+[languages]
+  [languages.zh]
+    languageName = "中文"
+    weight = 1
+    contentDir = "content/zh"
+    title = "Peng Tan's AI Blog"
+    description = "一个关注 AI 各领域的专题博客"
+    
+    [languages.zh.menu]
+      [[languages.zh.menu.main]]
+      name = "🏠 首页"
+      url = "/"
+      weight = 1
+
+      [[languages.zh.menu.main]]
+      name = "📝 文章"
+      url = "/posts/"
+      weight = 2
+
+      [[languages.zh.menu.main]]
+      name = "🏷️ 分类"
+      url = "/categories/"
+      weight = 3
+
+      [[languages.zh.menu.main]]
+      name = "🤖 多智能体"
+      url = "/categories/mas/"
+      weight = 4
+
+      [[languages.zh.menu.main]]
+      name = "📚 技术栈"
+      url = "/categories/technologies/"
+      weight = 5
+
+      [[languages.zh.menu.main]]
+      name = "🔍 搜索"
+      url = "/search/"
+      weight = 6
+
+      [[languages.zh.menu.main]]
+      name = "行业动态"
+      url = "/categories/news"
+      weight = 15
+
+      [[languages.zh.menu.main]]
+      name = "课程"
+      url = "/categories/courses"
+      weight = 16
+
+      [[languages.zh.menu.main]]
+      name = "关于作者"
+      url = "/about"
+      weight = 17
+
+      [[languages.zh.menu.main]]
+      name = "本站搜索"
+      url = "/search"
+      weight = 18
+
+  [languages.en]
+    languageName = "English"
+    weight = 2
+    contentDir = "content/en"
+    title = "Peng Tan's AI Blog (EN)"
+    description = "AI Blog by Peng Tan"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+      name = "🏠 Home"
+      url = "/"
+      weight = 1
+
+      [[languages.en.menu.main]]
+      name = "📝 Posts"
+      url = "/posts/"
+      weight = 2
+
+      [[languages.en.menu.main]]
+      name = "🏷️ Categories"
+      url = "/categories/"
+      weight = 3
+
+      [[languages.en.menu.main]]
+      name = "🔍 Search"
+      url = "/search/"
+      weight = 6
+
+      [[languages.en.menu.main]]
+      name = "About"
+      url = "/about"
+      weight = 17
