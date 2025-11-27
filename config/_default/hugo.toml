@@ -1,6 +1,7 @@
 baseURL = "https://hobbytp.github.io/"
 title = "Peng Tan's AI Blog"
 theme = "PaperMod"
+themesDir = "themes"
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = true
 
