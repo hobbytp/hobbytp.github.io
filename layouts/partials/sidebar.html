@@ -17,7 +17,7 @@
             {{- $currentPage := . -}}
             {{- $topMenuURLs := slice "/" "/about" "/search" "/search/" -}}
             {{- range site.Menus.main }}
-            {{- if in $topMenuURLs .URL }}
+            {{- if in $topMenuURLs (.URL | relLangURL) }}
             {{- $menuURL := .URL | relLangURL -}}
             <li>
                 <a href="{{ $menuURL }}" class="{{ if or (eq $currentPage.RelPermalink $menuURL) (and (ne $menuURL "/") (hasPrefix $currentPage.RelPermalink $menuURL)) }}active{{ end }}">
@@ -37,7 +37,7 @@
             {{- $currentPage := . -}}
             {{- $topMenuURLs := slice "/" "/about" "/search" "/search/" -}}
             {{- range site.Menus.main }}
-            {{- if not (in $topMenuURLs .URL) }}
+            {{- if not (in $topMenuURLs (.URL | relLangURL)) }}
             {{- $menuURL := .URL | relLangURL -}}
             <li>
                 <a href="{{ $menuURL }}" class="{{ if or (eq $currentPage.RelPermalink $menuURL) (and (ne $menuURL "/") (hasPrefix $currentPage.RelPermalink $menuURL)) }}active{{ end }}">

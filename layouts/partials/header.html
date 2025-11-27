@@ -112,7 +112,7 @@
 
         {{- if (not site.Params.disableLangToggle) }}
         <ul class="lang-switch">
-            {{- range site.Home.Translations }}
+            {{- range .Translations }}
             <li>
                 <a href="{{ .Permalink }}" title="{{ .Language.LanguageName }}" aria-label="{{ .Language.LanguageName }}">
                     {{ .Language.LanguageName }}
