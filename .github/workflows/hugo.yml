@@ -61,14 +61,19 @@ jobs:
           ls content/zh/ | head -20
           echo "=== Debug: Count content files ==="
           find content/zh -name "*.md" | wc -l
+          echo "=== Debug: Check themes ==="
+          ls -la themes/
+          ls -la themes/PaperMod/ | head -10
           
-          git config --global url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-          hugo mod get -u
+          # Skip hugo mod get -u as we use git submodules for theme
+          # git config --global url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+          # hugo mod get -u
           
           echo "=== Hugo Config Check ==="
-          hugo config | grep -E "(contentDir|configDir|themesDir)" || true
+          hugo config | grep -E "(contentDir|themesDir|theme)" || true
           
-          hugo --minify -v 2>&1 | tail -100
+          echo "=== Building Hugo ==="
+          hugo --minify
           
           echo "=== Build Output Stats ==="
           ls -la public/zh/categories/ | head -20
