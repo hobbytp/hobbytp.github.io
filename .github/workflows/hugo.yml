@@ -55,13 +55,27 @@ jobs:
           HUGO_ENV: production
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
+          echo "=== Debug: Check config directory ==="
+          ls -la config/_default/
+          echo "=== Debug: Check content/zh directory ==="
+          ls content/zh/ | head -20
+          echo "=== Debug: Count content files ==="
+          find content/zh -name "*.md" | wc -l
+          
           git config --global url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
           hugo mod get -u
-          hugo --minify
+          
+          echo "=== Hugo Config Check ==="
+          hugo config | grep -E "(contentDir|configDir|themesDir)" || true
+          
+          hugo --minify -v 2>&1 | tail -100
+          
           echo "=== Build Output Stats ==="
           ls -la public/zh/categories/ | head -20
           echo "=== Checking context_engineering ==="
           ls -la public/zh/categories/context_engineering/ || echo "context_engineering directory not found!"
+          echo "=== List all zh categories ==="
+          find public/zh/categories -type d | head -30
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
