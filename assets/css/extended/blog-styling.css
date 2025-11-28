@@ -342,10 +342,10 @@ article h1,
   line-height: 1.2 !important;
 }
 
-/* 二级标题样式 */
-article h2,
-.max-w-4xl h2,
-.flex-1 h2 {
+/* 二级标题样式 - 排除文章卡片标题 */
+article h2:not(.article-card-title),
+.max-w-4xl h2:not(.article-card-title),
+.flex-1 h2:not(.article-card-title) {
   font-size: 2rem !important;
   font-weight: 600 !important;
   color: #1e40af !important;
