@@ -168,7 +168,7 @@
 
             this.elements.input.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
-                    this.performSearch();
+                    this.performSearch(true);
                 }
             });
 
@@ -228,13 +228,13 @@
 
             if (this.currentQuery.length >= 2) {
                 this.showSuggestions();
-                this.performSearch();
+                this.performSearch(false);
             } else {
                 this.hideSuggestions();
             }
         }
 
-        performSearch() {
+        performSearch(saveHistory = false) {
             if (!this.currentQuery && !this.filters.category && !this.filters.tag) {
                 this.clearResults();
                 return;
@@ -245,7 +245,9 @@
             if (this.currentQuery) {
                 const searchResults = this.fuse.search(this.currentQuery);
                 results = searchResults.map(result => result.item);
-                this.addToSearchHistory(this.currentQuery);
+                if (saveHistory) {
+                    this.addToSearchHistory(this.currentQuery);
+                }
             } else {
                 results = [...this.data];
             }
@@ -362,7 +364,7 @@
                     this.elements.input.value = term;
                     this.handleInput(term);
                     this.hideSuggestions();
-                    this.performSearch();
+                    this.performSearch(true);
                 });
                 this.elements.suggestions.appendChild(div);
             });
