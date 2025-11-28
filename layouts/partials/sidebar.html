@@ -19,8 +19,16 @@
             {{- range site.Menus.main }}
             {{- if in $topMenuURLs (.URL | relLangURL) }}
             {{- $menuURL := .URL | relLangURL -}}
+            {{- $isActive := false -}}
+            {{- if eq $menuURL "/" -}}
+              {{- /* 首页：只有当前页面正好是首页时才高亮 */ -}}
+              {{- $isActive = $currentPage.IsHome -}}
+            {{- else -}}
+              {{- /* 其他页面：精确匹配或前缀匹配 */ -}}
+              {{- $isActive = or (eq $currentPage.RelPermalink $menuURL) (hasPrefix $currentPage.RelPermalink $menuURL) -}}
+            {{- end -}}
             <li>
-                <a href="{{ $menuURL }}" class="{{ if or (eq $currentPage.RelPermalink $menuURL) (and (ne $menuURL "/") (hasPrefix $currentPage.RelPermalink $menuURL)) }}active{{ end }}">
+                <a href="{{ $menuURL }}" class="{{ if $isActive }}active{{ end }}">
                     {{- if .Params.icon }}{{ partial "icon.html" (dict "name" .Params.icon) }} {{ end -}}
                     {{ .Name }}
                 </a>
