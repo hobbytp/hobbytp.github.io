@@ -65,12 +65,13 @@ jobs:
           ls -la themes/
           ls -la themes/PaperMod/ | head -10
           
-          # CRITICAL FIX: Remove go.mod to prevent Hugo module mode
+          # CRITICAL FIX: Remove go.mod to disable Hugo module mode
           echo "=== Removing go.mod to disable Hugo module mode ==="
           rm -f go.mod go.sum
+          rm -f themes/PaperMod/go.mod themes/PaperMod/go.sum
           
           echo "=== Hugo Config Check ==="
-          hugo config | grep -E "(contentDir|themesDir|theme)" || true
+          hugo config | grep -E "(contentDir|themesDir|theme|mounts)" | head -30
           
           echo "=== Hugo list all pages ==="
           hugo list all 2>/dev/null | wc -l || echo "0 pages found"
