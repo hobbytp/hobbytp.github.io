@@ -794,7 +794,7 @@ body.has-sidebar > .header {
   flex-direction: column;
   width: 100%;  /* 确保卡片占满grid单元格 */
   height: 100%;  /* 确保所有卡片高度一致 */
-  position: relative; /* 为全卡片点击做准备 */
+  cursor: pointer; /* 整个卡片显示手型光标 */
 }
 
 .article-card:hover {
@@ -870,8 +870,6 @@ body.has-sidebar > .header {
   margin-bottom: 0.25rem;
   text-decoration: none;
   width: fit-content;
-  position: relative; /* 确保在全卡片链接之上 */
-  z-index: 2;
 }
 
 .article-card-title {
@@ -886,17 +884,6 @@ body.has-sidebar > .header {
   color: inherit;
   text-decoration: none;
   transition: color 0.2s ease;
-}
-
-/* 全卡片点击区域 */
-.article-card-title a::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
 }
 
 .article-card-title a:hover {
