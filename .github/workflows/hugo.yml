@@ -58,6 +58,11 @@ jobs:
           echo "=== Debug: Current directory ==="
           pwd
 
+          echo "=== Debug: Git status ==="
+          git status -sb
+          echo "=== Debug: Submodule status ==="
+          git submodule status
+
           echo "=== Debug: Check config directory ==="
           ls -la config/_default/
           echo "=== Debug: Check content/zh directory ==="
