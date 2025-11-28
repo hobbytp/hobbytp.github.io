@@ -109,7 +109,7 @@
 
       <div class="article-grid">
         {{- range $paginator.Pages }}
-        <article class="article-card">
+        <article class="article-card" onclick="window.location.href='{{ .RelPermalink }}'">
           {{- /* Article image */ -}}
           <div class="article-card-image">
             {{- partial "cover-image.html" . -}}
@@ -119,7 +119,7 @@
             {{- /* Category */ -}}
             {{- with .Params.categories }}
             {{- $category := index . 0 }}
-            <a href="{{ "/categories/" | absLangURL }}{{ $category | urlize }}" class="article-card-category">
+            <a href="{{ "/categories/" | absLangURL }}{{ $category | urlize }}" class="article-card-category" onclick="event.stopPropagation()">
               {{ $category }}
             </a>
             {{- end }}
@@ -161,7 +161,7 @@
             {{- with .Params.tags }}
             <div class="article-card-tags">
               {{- range first 3 . }}
-              <a href="{{ "/tags/" | absLangURL }}{{ . | urlize }}" class="article-card-tag">
+              <a href="{{ "/tags/" | absLangURL }}{{ . | urlize }}" class="article-card-tag" onclick="event.stopPropagation()">
                 #{{ . }}
               </a>
               {{- end }}
