@@ -73,7 +73,19 @@ jobs:
           echo "=== Hugo Config Check ==="
           hugo config | grep -E "(contentDir|themesDir|theme|mounts)" | head -30
           
-          echo "=== Hugo list all pages ==="
+          echo "=== Check Hugo environment ==="
+          hugo env
+          
+          echo "=== List content directly ==="
+          ls -la content/
+          ls -la content/zh/ | head -10
+          
+          echo "=== Test hugo with explicit config ==="
+          hugo list all --configDir=config 2>&1 | head -20
+          
+          echo "=== Hugo list all pages (raw) ==="
+          hugo list all 2>&1 | head -50
+          echo "=== Hugo list all count ==="
           hugo list all 2>/dev/null | wc -l || echo "0 pages found"
           
           echo "=== Building Hugo ==="
