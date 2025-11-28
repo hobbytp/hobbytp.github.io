@@ -55,9 +55,13 @@ jobs:
           HUGO_ENV: production
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
+          echo "=== Debug: Current directory ==="
+          pwd
+
           echo "=== Debug: Check config directory ==="
           ls -la config/_default/
           echo "=== Debug: Check content/zh directory ==="
+          ls content/
           ls content/zh/ | head -20
           echo "=== Debug: Count content files ==="
           find content/zh -name "*.md" | wc -l
