@@ -96,8 +96,8 @@ jobs:
           hugo list all 2>&1 | head -200
           echo "=== Hugo list all count ==="
           hugo list all 2>/dev/null | wc -l || echo "0 pages found"
-          echo "=== Hugo list all --debug ==="
-          hugo list all --debug 2>&1 | head -200
+          echo "=== Hugo list all (logLevel=debug) ==="
+          hugo list all --logLevel debug 2>&1 | head -200
           
           echo "=== Building Hugo (debug) ==="
           hugo --debug --minify 2>&1 | head -200
