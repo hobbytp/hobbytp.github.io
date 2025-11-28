@@ -65,15 +65,18 @@ jobs:
           ls -la themes/
           ls -la themes/PaperMod/ | head -10
           
-          # Skip hugo mod get -u as we use git submodules for theme
-          # git config --global url."https://${GITHUB_TOKEN}:x-oauth-basic@github.com/".insteadOf "https://github.com/"
-          # hugo mod get -u
+          # CRITICAL FIX: Remove go.mod to prevent Hugo module mode
+          echo "=== Removing go.mod to disable Hugo module mode ==="
+          rm -f go.mod go.sum
           
           echo "=== Hugo Config Check ==="
           hugo config | grep -E "(contentDir|themesDir|theme)" || true
           
+          echo "=== Hugo list all pages ==="
+          hugo list all 2>/dev/null | wc -l || echo "0 pages found"
+          
           echo "=== Building Hugo ==="
-          hugo --minify --debug 2>&1 | head -200
+          hugo --minify
           
           echo "=== Check for draft/future content ==="
           grep -r "^draft: true" content/zh/ --include="*.md" | wc -l || echo "0 drafts"
