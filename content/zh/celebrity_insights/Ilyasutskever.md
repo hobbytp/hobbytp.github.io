@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "Ilya Sutskever在各个场合的观点"
 wordCount: 2732
 readingTime: 11
+
+ai_cover: "/images/generated-covers/7667e514eb0042e927794ee19c26ce90.webp"
+cover:
+  image: "/images/generated-covers/7667e514eb0042e927794ee19c26ce90.webp"
+  alt: "Ilya Sutskever在各个场合的观点"
+  ai_generated: true
 ---
 
 这个博客会持续更新Ilya Sutskever在各个场合的观点。

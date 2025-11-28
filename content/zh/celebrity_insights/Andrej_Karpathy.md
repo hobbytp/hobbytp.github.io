@@ -1,19 +1,20 @@
-------
+---
 title: "Andrej Karpathy在各个场合的观点"
 date: "2025-06-19T22:30:00+08:00"
 draft: false
 tags:  ["AI","Andrej Karpathy"]
 categories: ["celebrity_insights"]
-description: "Andrej Karpathy在各个场合的观点"
+description: "Andrej Karpathy深入解析了软件从1.0到3.0的范式演进，将LLMs类比为公用事业、晶圆厂和操作系统，并探讨了在当前局限下构建'钢铁侠战衣'式部分自主AI应用的策略"
 wordCount: 2296
 readingTime: 10
 
-ai_cover: "static/images/generated-covers/4d52d3101f70579984479c4d367251c4.webp"
+ai_cover: "/images/generated-covers/3757906a07362fdacd3519c2f8461315.webp"
 cover:
-  image: "static/images/generated-covers/4d52d3101f70579984479c4d367251c4.webp"
+  image: "/images/generated-covers/3757906a07362fdacd3519c2f8461315.webp"
   alt: "Andrej Karpathy在各个场合的观点"
   ai_generated: true
 ---
+
 
 ## Andrej Karpathy: 软件正在改变 (Again)
 

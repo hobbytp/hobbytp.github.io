@@ -8,6 +8,12 @@ author: "Peng Tan"
 description: "samaltman相关资源链接"
 wordCount: 8
 readingTime: 1
+
+ai_cover: "/images/generated-covers/3420b5763697a4adc61e9e2fa92ac6d4.webp"
+cover:
+  image: "/images/generated-covers/3420b5763697a4adc61e9e2fa92ac6d4.webp"
+  alt: "samaltman"
+  ai_generated: true
 ---
 
 # samaltman

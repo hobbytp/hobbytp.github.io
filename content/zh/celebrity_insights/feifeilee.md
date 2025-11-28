@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "李飞飞博士的生平与洞见"
 wordCount: 4027
 readingTime: 17
+
+ai_cover: "/images/generated-covers/c661137710f36f28666902ac3de2a426.webp"
+cover:
+  image: "/images/generated-covers/c661137710f36f28666902ac3de2a426.webp"
+  alt: "李飞飞博士的生平与洞见"
+  ai_generated: true
 ---
 
 ## 李飞飞博士的生平

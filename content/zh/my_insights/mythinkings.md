@@ -9,6 +9,12 @@ lastmod: "2025-05-29T22:10:00+08:00"
 # layout: mythinkings
 wordCount: 12226
 readingTime: 49
+
+ai_cover: "/images/generated-covers/b926199dd64e970e0391e1a7811fa355.webp"
+cover:
+  image: "/images/generated-covers/b926199dd64e970e0391e1a7811fa355.webp"
+  alt: "我在AI领域的一些思考"
+  ai_generated: true
 ---
 这里会持续更新我在AI领域的一些思考。这是一个动态更新的过程，但是我会保留最开始的粗略想法和其演进过程，尽可能保留所有的痕迹。
 

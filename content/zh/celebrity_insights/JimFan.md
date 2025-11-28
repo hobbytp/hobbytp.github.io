@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "Jim Fan在各个场合的观点"
 wordCount: 2001
 readingTime: 9
+
+ai_cover: "/images/generated-covers/e331213ef3a05a5357f759980d2d43f1.webp"
+cover:
+  image: "/images/generated-covers/e331213ef3a05a5357f759980d2d43f1.webp"
+  alt: "Jim Fan在各个场合的观点"
+  ai_generated: true
 ---
 
 ## 红杉资本2025年AI峰会上的演进 - 物理图灵测试

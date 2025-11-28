@@ -5,6 +5,12 @@ draft: false
 tags: ["YongRui","Agent","Lenovo"]
 categories: ["celebrity_insights"]
 description: "芮勇博士介绍"
+
+ai_cover: "/images/generated-covers/bb687e9be57eab0fcb7eb5b1f288b205.webp"
+cover:
+  image: "/images/generated-covers/bb687e9be57eab0fcb7eb5b1f288b205.webp"
+  alt: "芮勇博士介绍"
+  ai_generated: true
 ---
 
 ## 芮勇博士介绍

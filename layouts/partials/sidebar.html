@@ -17,10 +17,11 @@
             {{- $currentPage := . -}}
             {{- $topMenuURLs := slice "/" "/about" "/search" "/search/" -}}
             {{- range site.Menus.main }}
-            {{- if in $topMenuURLs (.URL | relLangURL) }}
+            {{- if in $topMenuURLs .URL }}
             {{- $menuURL := .URL | relLangURL -}}
             {{- $isActive := false -}}
-            {{- if eq $menuURL "/" -}}
+            {{- /* 判断是否是首页链接 */ -}}
+            {{- if eq .URL "/" -}}
               {{- /* 首页：只有当前页面正好是首页时才高亮 */ -}}
               {{- $isActive = $currentPage.IsHome -}}
             {{- else -}}
@@ -45,7 +46,7 @@
             {{- $currentPage := . -}}
             {{- $topMenuURLs := slice "/" "/about" "/search" "/search/" -}}
             {{- range site.Menus.main }}
-            {{- if not (in $topMenuURLs (.URL | relLangURL)) }}
+            {{- if not (in $topMenuURLs .URL) }}
             {{- $menuURL := .URL | relLangURL -}}
             <li>
                 <a href="{{ $menuURL }}" class="{{ if or (eq $currentPage.RelPermalink $menuURL) (and (ne $menuURL "/") (hasPrefix $currentPage.RelPermalink $menuURL)) }}active{{ end }}">

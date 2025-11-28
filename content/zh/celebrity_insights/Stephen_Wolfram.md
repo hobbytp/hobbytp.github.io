@@ -8,6 +8,12 @@ author: "Peng Tan"
 description: "Stephen Wolfram的生平、贡献和思想，包括计算不可约性理论和Mathematica等工具"
 wordCount: 4141
 readingTime: 17
+
+ai_cover: "/images/generated-covers/d2c58eb76217df723c3d1bdf8a1fd8e3.webp"
+cover:
+  image: "/images/generated-covers/d2c58eb76217df723c3d1bdf8a1fd8e3.webp"
+  alt: "Stephen Wolfram：计算宇宙的拓荒者"
+  ai_generated: true
 ---
 
 ## Stephen Wolfram：计算宇宙的拓荒者

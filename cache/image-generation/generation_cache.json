@@ -32,8 +32,8 @@
     "category": "celebrity_insights",
     "image_path": "static/images/generated-covers/add1b03aec75a152c1f948a70cdea69e.webp",
     "relative_path": "/images/generated-covers/add1b03aec75a152c1f948a70cdea69e.webp",
-    "prompt": "一张极具设计感的博客封面图。主题：Anthropic CEO Dario Amodei访谈。核心视觉元素：未来科技感，抽象线条，光影交错，流体形态。融合基于'Dario Amodei访谈,AI从业者必读'的抽象概念可视化。艺术风格：C4D 3D渲染，Octane Render，极简主义，虚幻引擎5画质，Tyndall effect，8k分辨率，超高清，细节丰富。色彩氛围：冷色调，高级感，渐变色。构图：宽屏壁纸，大气磅礴，留白适中，中心构图或三分法。重要提示：纯图案背景，绝对不要包含任何文字、字母、数字、拼音、汉字、水印、LOGO。不要出现人脸。",
-    "generated_at": "2025-11-23T11:20:10.733209"
+    "prompt": "浮世绘风格，午夜霓虹 + 从高处俯瞰一座巨大的圆形竞技场(Isometric/Orthographic)，竞技场中心是由无数块午夜蓝和紫色的半透明冰块堆砌而成的复杂迷宫，迷宫的墙壁上流动着霓虹色的光芒，勾勒出精细的日式传统纹样。迷宫上方漂浮着几盏造型奇特的纸灯笼，灯笼投下朦胧的光晕。竞技场边缘环绕着一圈由黑色金属打造的观众席，观众席上空无一人，只有微弱的霓虹灯光闪烁。整体材质为冰块的半透明质感与金属的冷硬质感，营造出一种科技感与传统美学交织的氛围。体积光，丁达尔效应，午夜蓝、霓虹紫、金属黑配色，高品质，8k分辨率，电影级构图，无文字",
+    "generated_at": "2025-11-28T22:33:23.900243"
   },
   "6f5c784ed22551b6b3a13c9a42e8fe89": {
     "title": "Reinforced Self-play Reasoning with Zero Data 论文解读",
@@ -349,5 +349,194 @@
     "relative_path": "/images/generated-covers/30e9d465cf410f4e1633ac055427ab05.webp",
     "prompt": "破碎镜面反射迷宫，深蓝色调，代表LLM的死胡同，一条金色光线穿透迷宫，象征强化学习的希望，极简主义，未来主义风格，光线追踪渲染，营造幽深、神秘的氛围，16:9宽屏构图。",
     "generated_at": "2025-11-25T23:28:00.515285"
+  },
+  "5ee41264804697b06057e3b9b61b994d": {
+    "title": "日常想法随手记-2025",
+    "description": "日常想法随手记",
+    "category": "my_insights",
+    "image_path": "static/images/generated-covers/5ee41264804697b06057e3b9b61b994d.webp",
+    "relative_path": "/images/generated-covers/5ee41264804697b06057e3b9b61b994d.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：光与影交织的未来空间。融入'日常想法随手记-2025'的概念进行抽象艺术表达。色彩方案：极光色与深空蓝。艺术风格：极简主义，留白艺术，干净利落，柔和的漫射光，动态斜角构图。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T14:56:20.952472"
+  },
+  "b926199dd64e970e0391e1a7811fa355": {
+    "title": "我在AI领域的一些思考",
+    "description": "我在AI领域的一些思考",
+    "category": "my_insights",
+    "image_path": "static/images/generated-covers/b926199dd64e970e0391e1a7811fa355.webp",
+    "relative_path": "/images/generated-covers/b926199dd64e970e0391e1a7811fa355.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：巨大的发光大脑悬浮在太空中，神经元连接闪烁如银河。融入'我在AI领域的一些思考'的概念进行抽象艺术表达。色彩方案：暖橙与冷蓝对比。艺术风格：抽象表现主义，流体动态，能量感，逆光剪影效果，微距特写，细节丰富。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T14:56:34.715085"
+  },
+  "c0485c8bc0072c3698171534df330e0b": {
+    "title": "AI的最终审判：为什么资本主义、GDP和人类智力都将在1000天内失效？",
+    "description": "AI的最终审判：为什么资本主义、GDP和人类智力都将在1000天内失效？Emad Mostaque在“Tom Bilyeu”YouTube频道上的访谈，主要探讨了人工智能（AI）将如何从根本上颠覆全球经济。Mostaque认为，在不久的将来，AI不仅会取代大量人类工作，还会使资本主义和国内生产总值（GDP）等传统经济结构变得过时。他提出了一种新的**“心智”（M.I.N.D.）框架来衡量经济健康度",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/c0485c8bc0072c3698171534df330e0b.webp",
+    "relative_path": "/images/generated-covers/c0485c8bc0072c3698171534df330e0b.webp",
+    "prompt": "包豪斯风格，从高处俯视一个巨大的沙漏，沙漏的上半部分装满了由无数精密的齿轮和微型机械零件组成的集合体，这些零件象征着资本、劳动力和人类智力。这些零件正逐渐下落，但不是落入沙漏的下半部分，而是落入一个由扭曲的莫比乌斯环组成的深渊，莫比乌斯环由暗哑的金属和锈迹斑斑的钢铁构成，代表着失效的经济系统。沙漏的背景是深邃的黑色，只有边缘被微弱的体积光照亮。镜头着重表现齿轮的精细结构和金属表面的粗糙质感。暖色调的黄铜色和冰冷的铁锈色，高品质，8k分辨率，电影级构图，无文字",
+    "generated_at": "2025-11-28T22:24:02.531726"
+  },
+  "c661137710f36f28666902ac3de2a426": {
+    "title": "李飞飞博士的生平与洞见",
+    "description": "李飞飞博士的生平与洞见",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/c661137710f36f28666902ac3de2a426.webp",
+    "relative_path": "/images/generated-covers/c661137710f36f28666902ac3de2a426.webp",
+    "prompt": "无垠星空下，无数神经元如同闪烁的星辰，构成一棵巨大的、抽象的智慧之树。树根深深扎入由像素构成的二维平面，而树冠则向上伸展，逐渐演化成逼真的三维几何结构，最终与星空融为一体。色彩以深邃的蓝紫色为主，点缀以象征数据流动的金色光带。整体采用超现实主义风格，光线柔和且富有层次感，强调从二维到三维的跃迁，暗示空间智能的进化与无限可能。构图采用黄金分割比例，将智慧之树置于画面中心偏右，营造一种既稳定又充满活力的视觉效果。",
+    "generated_at": "2025-11-28T20:55:58.745196"
+  },
+  "3852fde81282e0aa890136a0972d1a88": {
+    "title": "Geoffrey Hinton：2025 WAIC主题演讲《数字智能是否会取代生物智能》",
+    "description": "Geoffrey Hinton在2025年世界人工智能大会上关于数字智能与生物智能对比的核心观点梳理",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/3852fde81282e0aa890136a0972d1a88.webp",
+    "relative_path": "/images/generated-covers/3852fde81282e0aa890136a0972d1a88.webp",
+    "prompt": "超现实主义，低角度构图，一个巨大的大脑被无数电子元件缠绕，其中的神经突触被熔化的时钟所取代，周围环绕着漂浮的二进制代码，诡异的光线，深蓝色和橙色的对比色调，高品质，8k分辨率，无文字",
+    "generated_at": "2025-11-28T23:00:09.651709"
+  },
+  "64e923fccf2059a0a44aba5ef3c12033": {
+    "title": "Groq创始人Jonathan Ross访谈核心洞察：计算力、能源与AI的未来",
+    "description": "Groq创始人Jonathan Ross访谈核心洞察：计算力、能源与AI的未来",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/64e923fccf2059a0a44aba5ef3c12033.webp",
+    "relative_path": "/images/generated-covers/64e923fccf2059a0a44aba5ef3c12033.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：抽象的能量波在空间中扩散。融入'Groq创始人Jonathan Ross访谈核心洞察：计算力、能源与AI的未来'的概念进行抽象艺术表达。色彩方案：科技蓝与未来银。艺术风格：赛博朋克风格，霓虹灯光，未来都市，戏剧性的明暗对比，微距特写，细节丰富。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T14:58:41.176589"
+  },
+  "7667e514eb0042e927794ee19c26ce90": {
+    "title": "Ilya Sutskever在各个场合的观点",
+    "description": "Ilya Sutskever在各个场合的观点",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/7667e514eb0042e927794ee19c26ce90.webp",
+    "relative_path": "/images/generated-covers/7667e514eb0042e927794ee19c26ce90.webp",
+    "prompt": "包豪斯风格，对角线构图：从左下角到右上角，一个巨大的、由无数精密的齿轮和发条组成的机械钟表，象征着AI的运行机制。齿轮由抛光黄铜和暗哑的青铜制成，错综复杂地相互啮合。钟表悬浮在一个深邃的、无垠的黑色空间中，背景中有淡淡的星云状光芒。体积光从钟表内部射出，照亮周围的齿轮和空间，营造出一种未来主义的神秘感。温暖的琥珀色和冰冷的青色，高品质，8k分辨率，电影级构图，无文字",
+    "generated_at": "2025-11-28T22:20:14.721811"
+  },
+  "e331213ef3a05a5357f759980d2d43f1": {
+    "title": "Jim Fan在各个场合的观点",
+    "description": "Jim Fan在各个场合的观点",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/e331213ef3a05a5357f759980d2d43f1.webp",
+    "relative_path": "/images/generated-covers/e331213ef3a05a5357f759980d2d43f1.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：数字粒子汇聚成神秘图案。融入'Jim Fan在各个场合的观点'的概念进行抽象艺术表达。色彩方案：极光色与深空蓝。艺术风格：抽象表现主义，流体动态，能量感，柔和的漫射光，俯瞰视角，宏大场景。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T14:59:27.876305"
+  },
+  "3f8e493924fca974d7a082a51bd1eae5": {
+    "title": "Łukasz Kaiser（卢卡什·凯泽）",
+    "description": "Łukasz Kaiser（卢卡什·凯泽）是一位著名的计算机科学家和人工智能研究者，以在深度学习和神经网络领域的贡献闻名，特别是作为Transformer模型的共同发明者之一。他出生于波兰，其职业生涯从逻辑和自动机理论起步，逐步转向机器学习领域。目前，他在OpenAI担任研究员。",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/3f8e493924fca974d7a082a51bd1eae5.webp",
+    "relative_path": "/images/generated-covers/3f8e493924fca974d7a082a51bd1eae5.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：漂浮在虚空中的金色正十二面体，表面刻满神秘符文。融入'Łukasz Kaiser（卢卡什·凯泽）'的概念进行抽象艺术表达。色彩方案：深邃宝蓝与金色。艺术风格：极简主义，留白艺术，干净利落，柔和的漫射光，俯瞰视角，宏大场景。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T14:59:43.859509"
+  },
+  "7929c59d48ab1d0a08efa70832097164": {
+    "title": "Ray Dalio在各个场合的观点",
+    "description": "Ray Dalio:在各个场合的观点",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/7929c59d48ab1d0a08efa70832097164.webp",
+    "relative_path": "/images/generated-covers/7929c59d48ab1d0a08efa70832097164.webp",
+    "prompt": "超现实主义 + 从低角度仰视一座由无数古老的齿轮和钟表零件组成的巨大机械城市，齿轮表面覆盖着一层薄薄的金色粉末，在城市的中心，一颗巨大的水晶心脏闪耀着光芒，仿佛永动机一般驱动着整个城市运转。城市周围环绕着浓厚的蒸汽朋克风格的雾气，在阳光的照射下形成丁达尔效应。+ 材质：黄铜、青铜、水晶、蒸汽 + 光源：金色逆光，体积光 + 色彩：暖金色、深棕色、青铜色 + \"高品质，8k分辨率，电影级构图，无文字，哈苏X2D，80mm f/1.9镜头拍摄，景深效果\"",
+    "generated_at": "2025-11-28T22:25:49.867357"
+  },
+  "3420b5763697a4adc61e9e2fa92ac6d4": {
+    "title": "samaltman",
+    "description": "samaltman相关资源链接",
+    "category": "资源收集",
+    "image_path": "static/images/generated-covers/3420b5763697a4adc61e9e2fa92ac6d4.webp",
+    "relative_path": "/images/generated-covers/3420b5763697a4adc61e9e2fa92ac6d4.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：数字粒子汇聚成神秘图案。融入'samaltman'的概念进行抽象艺术表达。色彩方案：极光色与深空蓝。艺术风格：虚幻引擎5画质，光线追踪，超写实，Tyndall effect丁达尔效应，俯瞰视角，宏大场景。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T15:00:20.318799"
+  },
+  "d2c58eb76217df723c3d1bdf8a1fd8e3": {
+    "title": "Stephen Wolfram：计算宇宙的拓荒者",
+    "description": "Stephen Wolfram的生平、贡献和思想，包括计算不可约性理论和Mathematica等工具",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/d2c58eb76217df723c3d1bdf8a1fd8e3.webp",
+    "relative_path": "/images/generated-covers/d2c58eb76217df723c3d1bdf8a1fd8e3.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：巨大的莫比乌斯环在星空中缓缓旋转。融入'Stephen Wolfram：计算宇宙的拓荒者'的概念进行抽象艺术表达。色彩方案：墨黑与琥珀金。艺术风格：C4D 3D渲染，Octane Render，体积光，戏剧性的明暗对比，正面对称构图。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T15:00:36.446719"
+  },
+  "f764f7e6322af41afcb789d77bea3ed5": {
+    "title": "Pavel Durov 的成功密码：深度解析自由、自律与商业哲学的融合",
+    "description": "Pavel Durov 的成功密码：深度解析自由、自律与商业哲学的融合",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/f764f7e6322af41afcb789d77bea3ed5.webp",
+    "relative_path": "/images/generated-covers/f764f7e6322af41afcb789d77bea3ed5.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：几何形状在虚空中缓缓旋转。融入'Pavel Durov 的成功密码：深度解析自由、自律与商业哲学的融合'的概念进行抽象艺术表达。色彩方案：科技蓝与未来银。艺术风格：虚幻引擎5画质，光线追踪，超写实，Tyndall effect丁达尔效应，动态斜角构图。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T15:00:51.299122"
+  },
+  "bb687e9be57eab0fcb7eb5b1f288b205": {
+    "title": "芮勇博士介绍",
+    "description": "芮勇博士介绍",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/bb687e9be57eab0fcb7eb5b1f288b205.webp",
+    "relative_path": "/images/generated-covers/bb687e9be57eab0fcb7eb5b1f288b205.webp",
+    "prompt": "包豪斯风格，三分法构图，一个巨大的、由无数精密的齿轮和轴承构成的机械大脑，放置在画面左侧三分之一处，右侧大面积留白，背景是深邃的星空，齿轮表面覆盖着一层流动的液态金属，发出微弱的光芒，液态金属材质，焦散，体积光，深蓝色和银色，高品质，8k分辨率，电影级构图，无文字",
+    "generated_at": "2025-11-28T22:22:30.268169"
+  },
+  "b10cd5e41b7f54b7f8c1dca1804f6d14": {
+    "title": "Jason Wei在各个场合的观点",
+    "description": "Jason wei在各个场合的观点",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/b10cd5e41b7f54b7f8c1dca1804f6d14.webp",
+    "relative_path": "/images/generated-covers/b10cd5e41b7f54b7f8c1dca1804f6d14.webp",
+    "prompt": "一片由无数微型芯片组成的巨大沙丘，在金色的沙漠中绵延起伏，暗示着智能的商品化。沙丘表面呈现出不同高度的尖锐锯齿状边缘，象征着人工智能在不同任务上的能力差异，一些地方光亮如镜，另一些地方则深陷阴影。一道强烈的、可穿透一切的蓝色激光束，如同验证者的目光，横扫整个沙丘，照亮了那些容易验证的区域，留下清晰的痕迹。整体采用高对比度的未来主义风格，暖色调的金色沙丘与冷色调的蓝色激光形成鲜明对比，营造出一种既神秘又充满科技感的氛围。构图采用黄金分割比例，强调画面的层次感和视觉冲击力。",
+    "generated_at": "2025-11-28T15:07:33.305215"
+  },
+  "4d52d3101f70579984479c4d367251c4": {
+    "title": "Andrej Karpathy在各个场合的观点",
+    "description": "Andrej Karpathy在各个场合的观点",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/4d52d3101f70579984479c4d367251c4.webp",
+    "relative_path": "/images/generated-covers/4d52d3101f70579984479c4d367251c4.webp",
+    "prompt": "一幅抽象的未来主义油画，描绘一个由无数电路板碎片组成的巨大齿轮，这些碎片互相啮合又不断崩解。齿轮中心是一个闪烁着微光的液态大脑，它连接着三条不同颜色的光带，分别代表软件1.0（深蓝色，逐渐黯淡）、软件2.0（翠绿色，稳定明亮）和软件3.0（金黄色，冉冉升起）。背景是深邃的星空，点缀着模糊的星云，象征着无限的可能性。采用高饱和度的色彩，对比鲜明，光线从液态大脑中心向四周扩散，营造出一种既神秘又充满活力的氛围。构图采用黄金分割比例，突出液态大脑在画面中的核心地位。",
+    "generated_at": "2025-11-28T21:15:57.246884"
+  },
+  "3757906a07362fdacd3519c2f8461315": {
+    "title": "Andrej Karpathy在各个场合的观点",
+    "description": "Andrej Karpathy深入解析了软件从1.0到3.0的范式演进，将LLMs类比为公用事业、晶圆厂和操作系统，并探讨了在当前局限下构建'钢铁侠战衣'式部分自主AI应用的策略",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/3757906a07362fdacd3519c2f8461315.webp",
+    "relative_path": "/images/generated-covers/3757906a07362fdacd3519c2f8461315.webp",
+    "prompt": "层叠的透明玻璃碎片，代表软件的不同时代（1.0, 2.0, 3.0），底部是规则的、硬编码的几何形状，颜色冷峻，逐渐向上演变为流动的、色彩斑斓的神经网络抽象结构，最顶端是模糊的、如同水彩晕染般的自然语言形态。整体采用低多边形艺术风格，光线从上方倾泻而下，照亮神经网络层，形成微妙的阴影，构图中心略微偏上，营造一种向上演进的动态感。",
+    "generated_at": "2025-11-28T21:19:57.602544"
+  },
+  "107f1d28a6e56d5fa1b16eb499c1cda0": {
+    "title": "Anthropic CEO Dario Amodei访谈",
+    "description": "Dario Amodei访谈,按“技术 → 市场 → 组织 → 风险 → 行动清单”的逻辑铺开。AI从业者必读",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/107f1d28a6e56d5fa1b16eb499c1cda0.webp",
+    "relative_path": "/images/generated-covers/107f1d28a6e56d5fa1b16eb499c1cda0.webp",
+    "prompt": "浮世绘风格，低角度构图，连绵起伏的巨浪涌向一座由代码和电路板构成的山峰，山顶之上霞光万丈，象征着AI技术的无限潜力与未知风险，深蓝色与橙色的日落渐变色，高品质，8k分辨率，无文字",
+    "generated_at": "2025-11-28T22:49:00.109434"
+  },
+  "8cf5c7c6a9d3aeb8196e2c91f68db1a3": {
+    "title": "微软/Meta/OpenAI工程师Philip Su访谈",
+    "description": "微软/Meta/OpenAI Distinguished Engineer- Philip Su访谈",
+    "category": "celebrity_insights",
+    "image_path": "static/images/generated-covers/8cf5c7c6a9d3aeb8196e2c91f68db1a3.webp",
+    "relative_path": "/images/generated-covers/8cf5c7c6a9d3aeb8196e2c91f68db1a3.webp",
+    "prompt": "超现实主义, 三分法构图, 一个巨大的、发光的机械大脑漂浮在云端之上，无数细小的齿轮和电路板在其中运转，周围环绕着古典书籍和现代服务器，象征着传统智慧与未来科技的融合, 强烈的光影对比，营造出一种神秘而富有哲理的氛围, 深蓝色和金色, 高品质，8k分辨率，无文字",
+    "generated_at": "2025-11-28T23:02:41.230472"
+  },
+  "d79652cce2fcab732aea27681b12ee27": {
+    "title": "DeepSeek-OCR：重塑AI长文本处理",
+    "description": "本文介绍了DeepSeek-OCR，一种革命性的AI模型，能够将长文本处理效率提升数十倍，从而实现对超长文档的快速处理。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/d79652cce2fcab732aea27681b12ee27.webp",
+    "relative_path": "/images/generated-covers/d79652cce2fcab732aea27681b12ee27.webp",
+    "prompt": "包豪斯风格，三分法构图，将书籍页面抽象成几何形状的模块化结构，模块之间相互连接代表信息流动，深蓝色背景，浅蓝色和橙色点缀，高品质，8k分辨率，无文字",
+    "generated_at": "2025-11-28T23:11:57.385231"
+  },
+  "5533bda3d0246b6b6f6843d566ca0004": {
+    "title": "Chain of Draft 论文解读",
+    "description": "本文介绍了Chain of Draft（CoD）论文，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。",
+    "category": "papers",
+    "image_path": "static/images/generated-covers/5533bda3d0246b6b6f6843d566ca0004.webp",
+    "relative_path": "/images/generated-covers/5533bda3d0246b6b6f6843d566ca0004.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：论文页面化作飞翔的纸鹤群。融入'Chain of Draft 论文解读'的概念进行抽象艺术表达。色彩方案：学术蓝与论文白。艺术风格：赛博朋克风格，霓虹灯光，未来都市，柔和的漫射光，微距特写，细节丰富。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-11-28T23:15:36.997956"
   }
 }

@@ -6,6 +6,11 @@ tags: ["AI", "Łukasz Kaiser", "Transformer", "OpenAI"]
 categories: ["celebrity_insights"]
 description: "Łukasz Kaiser（卢卡什·凯泽）是一位著名的计算机科学家和人工智能研究者，以在深度学习和神经网络领域的贡献闻名，特别是作为Transformer模型的共同发明者之一。他出生于波兰，其职业生涯从逻辑和自动机理论起步，逐步转向机器学习领域。目前，他在OpenAI担任研究员。"
 
+ai_cover: "/images/generated-covers/3f8e493924fca974d7a082a51bd1eae5.webp"
+cover:
+  image: "/images/generated-covers/3f8e493924fca974d7a082a51bd1eae5.webp"
+  alt: "Łukasz Kaiser（卢卡什·凯泽）"
+  ai_generated: true
 ---
 
 ## 科研背景和经历

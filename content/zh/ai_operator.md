@@ -1,12 +1,11 @@
-
-+++
-title = "计算机使用代理"
-date = "2025-02-11T20:22:48+08:00"
-draft = true
-tags = ["OpenAI", "Operator", "论文", "AI"]
-categories = ["Tools", "openai", "operator"]
-description = "计算机使用代理"
-+++
+---
+title: "计算机使用代理"
+date: "2025-02-11T20:22:48+08:00"
+draft: true
+tags: ["OpenAI", "Operator", "论文", "AI"]
+categories: ["ai_tools"]
+description: "计算机使用代理"
+---
 
 # 各种操作电脑的AI代理
 

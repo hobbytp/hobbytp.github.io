@@ -4,13 +4,13 @@ date: "2025-08-04T22:30:00+08:00"
 draft: false
 tags:  ["AI","Dario Amodei","Anthropic","Big Technology"]
 categories: ["celebrity_insights"]
-description: "Dario Amodei访谈,AI从业者必读"
+description: "Dario Amodei访谈,按“技术 → 市场 → 组织 → 风险 → 行动清单”的逻辑铺开。AI从业者必读"
 wordCount: 863
 readingTime: 4
 
-ai_cover: "/images/generated-covers/add1b03aec75a152c1f948a70cdea69e.webp"
+ai_cover: "/images/generated-covers/107f1d28a6e56d5fa1b16eb499c1cda0.webp"
 cover:
-  image: "/images/generated-covers/add1b03aec75a152c1f948a70cdea69e.webp"
+  image: "/images/generated-covers/107f1d28a6e56d5fa1b16eb499c1cda0.webp"
   alt: "Anthropic CEO Dario Amodei访谈"
   ai_generated: true
 ---

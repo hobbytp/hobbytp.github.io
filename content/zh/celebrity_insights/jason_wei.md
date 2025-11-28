@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "Jason wei在各个场合的观点"
 wordCount: 1080
 readingTime: 5
+
+ai_cover: "/images/generated-covers/b10cd5e41b7f54b7f8c1dca1804f6d14.webp"
+cover:
+  image: "/images/generated-covers/b10cd5e41b7f54b7f8c1dca1804f6d14.webp"
+  alt: "Jason Wei在各个场合的观点"
+  ai_generated: true
 ---
 
 ## Jason Wei在斯坦福 AI 俱乐部发表的演讲 （2025-10）

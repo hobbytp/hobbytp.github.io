@@ -8,6 +8,12 @@ tags: ["AI", "Thinking", "Daily","2025"]
 categories: ["my_insights"]
 wordCount: 5168
 readingTime: 21
+
+ai_cover: "/images/generated-covers/5ee41264804697b06057e3b9b61b994d.webp"
+cover:
+  image: "/images/generated-covers/5ee41264804697b06057e3b9b61b994d.webp"
+  alt: "日常想法随手记-2025"
+  ai_generated: true
 ---
 
 这里随手记下当天对看到的新闻、文章、视频等的想法。

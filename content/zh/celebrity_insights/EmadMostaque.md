@@ -7,6 +7,12 @@ tags: ["AI", "资本主义", "GDP", "人类智力"]
 categories: ["celebrity_insights"]
 wordCount: 4958
 readingTime: 20
+
+ai_cover: "/images/generated-covers/c0485c8bc0072c3698171534df330e0b.webp"
+cover:
+  image: "/images/generated-covers/c0485c8bc0072c3698171534df330e0b.webp"
+  alt: "AI的最终审判：为什么资本主义、GDP和人类智力都将在1000天内失效？"
+  ai_generated: true
 ---
 
 
