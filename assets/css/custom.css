@@ -1079,6 +1079,7 @@ body.has-sidebar > .header {
     rgba(255, 255, 255, 0.03) 20px
   );
   animation: slide 20s linear infinite;
+  pointer-events: none; /* 允许点击穿透 */
 }
 
 @keyframes slide {
@@ -1092,6 +1093,7 @@ body.has-sidebar > .header {
   z-index: 1;
   position: relative;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  pointer-events: none; /* 允许点击穿透到父元素 */
 }
 
 .ai-generated-cover .cover-category {
