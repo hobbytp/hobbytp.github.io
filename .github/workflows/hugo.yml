@@ -101,19 +101,19 @@ jobs:
           ls -la content/zh/ | head -40
           
           echo "=== Test hugo with explicit config ==="
-          hugo list all --configDir=config 2>&1 | head -20
+          hugo list all --configDir=config 2>&1 | head -20 || true
           
           echo "=== Hugo list all pages (raw) ==="
-          hugo list all 2>&1 | head -200
+          hugo list all 2>&1 | head -200 || true
           echo "=== Hugo list all count ==="
           hugo list all 2>/dev/null | wc -l || echo "0 pages found"
           echo "=== Hugo list all (logLevel=debug) ==="
-          hugo list all --logLevel debug 2>&1 | head -200
+          hugo list all --logLevel debug 2>&1 | head -200 || true
           
           echo "=== Building Hugo (debug log level) ==="
-          hugo --logLevel debug --minify 2>&1 | head -200
+          hugo --logLevel debug --minify --configDir=config 2>&1 | head -200 || true
           echo "=== Building Hugo (full) ==="
-          hugo --minify
+          hugo --minify --configDir=config
           
           echo "=== Check for draft/future content ==="
           grep -r "^draft: true" content/zh/ --include="*.md" | wc -l || echo "0 drafts"
