@@ -112,8 +112,8 @@ jobs:
           echo "=== Hugo list all (logLevel=debug) ==="
           hugo list all --logLevel debug 2>&1 | head -200
           
-          echo "=== Building Hugo (debug) ==="
-          hugo --debug --minify 2>&1 | head -200
+          echo "=== Building Hugo (debug log level) ==="
+          hugo --logLevel debug --minify 2>&1 | head -200
           echo "=== Building Hugo (full) ==="
           hugo --minify
           
