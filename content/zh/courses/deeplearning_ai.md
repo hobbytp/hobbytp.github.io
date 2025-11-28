@@ -4,6 +4,7 @@ date: "2024-06-05T14:10:00+08:00"
 draft: false
 tags: ["DeepLearning.ai", "AI", "教育", "社区"]
 categories: ["courses"]
+description: "DeepLearning.AI官网频繁更新来自不同大厂和开源社区领军人的课程。非常值得日常及时跟进学习。"
 ---
 
 

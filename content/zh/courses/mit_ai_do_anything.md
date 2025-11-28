@@ -4,7 +4,7 @@ date: "2025-08-18T20:10:00+08:00"
 draft: false
 tags: ["AI", "MIT", "多模态", "生成式AI"]
 categories: ["courses"]
-desxcription: "MIT课程《如何用AI（几乎）做任何事》（*How to AI (Almost) Anything*）"
+description: "MIT课程《如何用AI（几乎）做任何事》（*How to AI (Almost) Anything*）"
 wordCount: 1034
 readingTime: 5
 ---
