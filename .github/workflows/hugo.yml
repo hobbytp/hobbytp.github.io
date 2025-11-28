@@ -65,29 +65,42 @@ jobs:
 
           echo "=== Debug: Check config directory ==="
           ls -la config/_default/
+          echo "=== Dump hugo.toml (first 120 lines) ==="
+          sed -n '1,120p' config/_default/hugo.toml
+          echo "=== Dump params.toml (first 120 lines) ==="
+          sed -n '1,120p' config/_default/params.toml
           echo "=== Debug: Check content/zh directory ==="
           ls content/
           ls content/zh/ | head -20
+          echo "=== Content directory tree (depth 2) ==="
+          find content -maxdepth 2 -type d | sort | head -200
           echo "=== Debug: Count content files ==="
           find content/zh -name "*.md" | wc -l
           echo "=== Debug: Check themes ==="
           ls -la themes/
-          ls -la themes/PaperMod/ | head -10
+          ls -la themes/PaperMod/ | head -40
+          echo "=== PaperMod exampleSite content listing ==="
+          if [ -d themes/PaperMod/exampleSite/content ]; then find themes/PaperMod/exampleSite/content -maxdepth 2 -type d | head -80; else echo "exampleSite content not found"; fi
           
           # CRITICAL FIX: Remove go.mod to disable Hugo module mode
           echo "=== Removing go.mod to disable Hugo module mode ==="
           rm -f go.mod go.sum
           rm -f themes/PaperMod/go.mod themes/PaperMod/go.sum
           
-          echo "=== Hugo Config Check ==="
-          hugo config | grep -E "(contentDir|themesDir|theme|mounts)" | head -30
+          echo "=== Hugo Config Check (text) ==="
+          hugo config | head -80
+          echo "=== Hugo Config module section (JSON) ==="
+          hugo config --format json | python3 -c "import json,sys; data=json.load(sys.stdin); print(json.dumps(data.get('module', {}), indent=2))"
           
           echo "=== Check Hugo environment ==="
+          hugo version
           hugo env
+          echo "=== Go environment ==="
+          go env
           
           echo "=== List content directly ==="
           ls -la content/
-          ls -la content/zh/ | head -10
+          ls -la content/zh/ | head -40
           
           echo "=== Test hugo with explicit config ==="
           hugo list all --configDir=config 2>&1 | head -20
