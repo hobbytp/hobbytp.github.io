@@ -4,20 +4,13 @@ date: "2025-08-18T20:10:00+08:00"
 draft: false
 tags: ["AI", "MIT", "多模态", "生成式AI"]
 categories: ["courses"]
-weight: 1
-cover:
-    image: "images/cover/ai_do_anything.png"
-    alt: "MIT AI Do Anything"
-    relative: false
-    hidden: false
+desxcription: "MIT课程《如何用AI（几乎）做任何事》（*How to AI (Almost) Anything*）"
 wordCount: 1034
 readingTime: 5
 ---
 
-这门课程得到吴恩达的推荐，以下是关于MIT课程《如何用AI（几乎）做任何事》（*How to AI (Almost) Anything*）的详细信息整理，结合课程官网内容和公开资料，帮助你快速掌握核心内容与资源获取方式：
-[课程链接](https://mit-mi.github.io/how2ai-course/spring2025/)
-
----
+## **MIT AI Do Anything**
+这门课程是一次从 **“数字智能”向“物理具身感知”跨越的深度探索**，它突破了传统AI仅局限于文本（NLP）和视觉（CV）的范式，利用现代深度学习与基础模型（Foundation Models）架构，将AI的感知维度激进地扩展至嗅觉、味觉、体感、医疗数据及艺术等全谱系真实世界模态（Real-world Data Modalities）；其目标不仅仅是多模态融合（Multimodal Fusion），更是通过高强度的科研训练，培养工程师构建能够真正“落地（Grounding）”于复杂物理环境、具备跨模态通感与交互能力的下一代AI系统的直觉与技术底座。这门课程得到吴恩达的推荐。
 
 ### 📘 **课程基础信息**  
 1. **课程定位**  
@@ -80,3 +73,7 @@ readingTime: 5
   - 预见AI在感官扩展、科学自动化等领域的突破点。  
 
 > 💡 **行动建议**：若计划深入学习，可优先关注**多模态融合**（第5-7周）与**大模型优化**（第9-12周）模块，这两部分直接关联当前产业痛点（如自动驾驶多传感器融合、医疗影像-文本诊断系统）。
+
+## 参考链接
+
+1. [MIT课程《如何用AI（几乎）做任何事》（*How to AI (Almost) Anything*）](https://mit-mi.github.io/how2ai-course/spring2025/)

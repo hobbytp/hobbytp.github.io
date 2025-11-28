@@ -867,7 +867,7 @@ body.has-sidebar > .header {
   font-weight: 600;
   padding: 0.15rem 0.5rem;
   border-radius: 9999px;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.05rem;
   text-decoration: none;
   width: fit-content;
 }
@@ -878,6 +878,7 @@ body.has-sidebar > .header {
   color: var(--color-text);
   margin: 0 0 0.15rem;
   line-height: 1.2;
+  margin-top: 0.05rem; 
 }
 
 .article-card-title a {
