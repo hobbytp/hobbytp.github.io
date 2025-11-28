@@ -73,7 +73,13 @@ jobs:
           hugo config | grep -E "(contentDir|themesDir|theme)" || true
           
           echo "=== Building Hugo ==="
-          hugo --minify
+          hugo --minify --debug 2>&1 | head -200
+          
+          echo "=== Check for draft/future content ==="
+          grep -r "^draft: true" content/zh/ --include="*.md" | wc -l || echo "0 drafts"
+          
+          echo "=== Sample file front matter ==="
+          head -20 content/zh/context_engineering/context_eng.md || echo "file not found"
           
           echo "=== Build Output Stats ==="
           ls -la public/zh/categories/ | head -20
