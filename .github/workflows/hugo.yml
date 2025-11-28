@@ -82,16 +82,14 @@ jobs:
           echo "=== PaperMod exampleSite content listing ==="
           if [ -d themes/PaperMod/exampleSite/content ]; then find themes/PaperMod/exampleSite/content -maxdepth 2 -type d | head -80; else echo "exampleSite content not found"; fi
           
-          # CRITICAL FIX: Remove go.mod to disable Hugo module mode
-          echo "=== Removing go.mod to disable Hugo module mode ==="
-          rm -f go.mod go.sum
-          rm -f themes/PaperMod/go.mod themes/PaperMod/go.sum
-          
           echo "=== Hugo Config Check (text) ==="
           hugo config | head -80
           echo "=== Hugo Config module section (JSON) ==="
           hugo config --format json | python3 -c "import json,sys; data=json.load(sys.stdin); print(json.dumps(data.get('module', {}), indent=2))"
           
+          echo "=== Hugo Module Graph ==="
+          hugo mod graph || echo "hugo mod graph failed"
+
           echo "=== Check Hugo environment ==="
           hugo version
           hugo env
