@@ -115,7 +115,7 @@
         }
 
         async loadSearchData() {
-            const res = await fetch('/index.json');
+            const res = await fetch('{{ "index.json" | relLangURL }}');
             if (!res.ok) throw new Error('Failed to fetch search index');
             this.data = await res.json();
 

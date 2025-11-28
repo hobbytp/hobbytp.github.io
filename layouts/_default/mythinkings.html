@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 await loadFuseJS();
             }
             
-            const res = await fetch('/index.json');
+            const res = await fetch('{{ "index.json" | relLangURL }}');
             if (!res.ok) throw new Error('Failed to fetch search index');
             const data = await res.json();
             
