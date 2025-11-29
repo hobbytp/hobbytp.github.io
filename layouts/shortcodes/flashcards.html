@@ -1,0 +1,371 @@
+{{- /*
+  Flashcards Shortcode - 知识回顾闪卡组件
+  用法:
+  {{< flashcards >}}
+  {{< flashcard q="问题内容" >}}答案内容，支持 **Markdown** 和 $公式${{< /flashcard >}}
+  {{< flashcard q="另一个问题" >}}另一个答案{{< /flashcard >}}
+  {{< /flashcards >}}
+*/ -}}
+
+<div class="flashcards-container" aria-label="知识回顾闪卡">
+  <div class="flashcards-header" onclick="toggleFlashcardsPanel(this)">
+    <span class="flashcards-icon">📚</span>
+    <span class="flashcards-title">知识回顾</span>
+    <span class="flashcards-count">({{ len .Inner | findRE "flashcard" | len }} 张闪卡)</span>
+    <span class="flashcards-toggle">▼</span>
+  </div>
+  
+  <div class="flashcards-panel" style="display: none;">
+    <div class="flashcards-progress">
+      <span class="flashcards-current">1</span> / <span class="flashcards-total">0</span>
+      <button class="flashcards-shuffle" onclick="shuffleFlashcards(this)" title="随机顺序" aria-label="随机顺序">🔀</button>
+    </div>
+    
+    <div class="flashcards-deck">
+      {{ .Inner }}
+    </div>
+    
+    <div class="flashcards-nav">
+      <button class="flashcards-prev" onclick="prevFlashcard(this)" aria-label="上一张">← 上一张</button>
+      <button class="flashcards-flip" onclick="flipCurrentCard(this)" aria-label="翻转卡片">翻转</button>
+      <button class="flashcards-next" onclick="nextFlashcard(this)" aria-label="下一张">下一张 →</button>
+    </div>
+    
+    <div class="flashcards-hint">
+      💡 点击卡片或按 <kbd>Space</kbd> 翻转 | <kbd>←</kbd> <kbd>→</kbd> 切换
+    </div>
+  </div>
+</div>
+
+<style>
+.flashcards-container {
+  margin: 2rem 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--entry);
+}
+
+.flashcards-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--code-bg);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.flashcards-header:hover {
+  background: var(--border);
+}
+
+.flashcards-icon {
+  font-size: 1.25rem;
+}
+
+.flashcards-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.flashcards-count {
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+.flashcards-toggle {
+  margin-left: auto;
+  transition: transform 0.3s;
+}
+
+.flashcards-header.expanded .flashcards-toggle {
+  transform: rotate(180deg);
+}
+
+.flashcards-panel {
+  padding: 1.25rem;
+}
+
+.flashcards-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: var(--secondary);
+}
+
+.flashcards-shuffle {
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.flashcards-shuffle:hover {
+  background: var(--border);
+}
+
+.flashcards-deck {
+  position: relative;
+  min-height: 200px;
+  perspective: 1000px;
+}
+
+.flashcard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.5s, opacity 0.3s;
+  display: none;
+}
+
+.flashcard.active {
+  display: block;
+  position: relative;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  width: 100%;
+  min-height: 180px;
+  padding: 1.5rem;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.flashcard-front {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.flashcard-back {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flashcard-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  margin-bottom: 0.75rem;
+}
+
+.flashcard-content {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.flashcard-content code {
+  background: rgba(255,255,255,0.2);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+.flashcard-content strong {
+  font-weight: 700;
+}
+
+.flashcards-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.flashcards-nav button {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--theme);
+  color: var(--content);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.flashcards-nav button:hover {
+  background: var(--border);
+}
+
+.flashcards-nav button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.flashcards-flip {
+  background: var(--primary) !important;
+  color: white !important;
+  border-color: var(--primary) !important;
+}
+
+.flashcards-hint {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+.flashcards-hint kbd {
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  font-family: inherit;
+  font-size: 0.85em;
+}
+
+/* 移动端适配 */
+@media (max-width: 640px) {
+  .flashcard-face {
+    padding: 1rem;
+    min-height: 150px;
+  }
+  
+  .flashcard-content {
+    font-size: 0.95rem;
+  }
+  
+  .flashcards-nav {
+    flex-wrap: wrap;
+  }
+  
+  .flashcards-nav button {
+    flex: 1;
+    min-width: 80px;
+  }
+  
+  .flashcards-hint {
+    display: none;
+  }
+}
+
+/* 暗色模式适配 */
+.dark .flashcard-front {
+  background: linear-gradient(135deg, #4c5fd5 0%, #5e4b8b 100%);
+}
+
+.dark .flashcard-back {
+  background: linear-gradient(135deg, #0d8076 0%, #2cb868 100%);
+}
+</style>
+
+<script>
+(function() {
+  // 初始化
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.flashcards-container').forEach(initFlashcards);
+  });
+
+  function initFlashcards(container) {
+    const cards = container.querySelectorAll('.flashcard');
+    const total = container.querySelector('.flashcards-total');
+    const current = container.querySelector('.flashcards-current');
+    
+    if (cards.length === 0) return;
+    
+    total.textContent = cards.length;
+    cards[0].classList.add('active');
+    
+    // 更新计数显示
+    const countSpan = container.querySelector('.flashcards-count');
+    if (countSpan) {
+      countSpan.textContent = `(${cards.length} 张闪卡)`;
+    }
+    
+    // 点击卡片翻转
+    cards.forEach(card => {
+      card.addEventListener('click', () => card.classList.toggle('flipped'));
+    });
+    
+    // 键盘支持
+    container.addEventListener('keydown', function(e) {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        flipCurrentCard(container.querySelector('.flashcards-flip'));
+      } else if (e.key === 'ArrowLeft') {
+        prevFlashcard(container.querySelector('.flashcards-prev'));
+      } else if (e.key === 'ArrowRight') {
+        nextFlashcard(container.querySelector('.flashcards-next'));
+      }
+    });
+    
+    container.setAttribute('tabindex', '0');
+  }
+
+  window.toggleFlashcardsPanel = function(header) {
+    header.classList.toggle('expanded');
+    const panel = header.nextElementSibling;
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  };
+
+  window.flipCurrentCard = function(btn) {
+    const container = btn.closest('.flashcards-container');
+    const activeCard = container.querySelector('.flashcard.active');
+    if (activeCard) activeCard.classList.toggle('flipped');
+  };
+
+  window.prevFlashcard = function(btn) {
+    navigateCard(btn, -1);
+  };
+
+  window.nextFlashcard = function(btn) {
+    navigateCard(btn, 1);
+  };
+
+  function navigateCard(btn, direction) {
+    const container = btn.closest('.flashcards-container');
+    const cards = Array.from(container.querySelectorAll('.flashcard'));
+    const currentSpan = container.querySelector('.flashcards-current');
+    
+    let activeIndex = cards.findIndex(c => c.classList.contains('active'));
+    let newIndex = activeIndex + direction;
+    
+    if (newIndex < 0) newIndex = cards.length - 1;
+    if (newIndex >= cards.length) newIndex = 0;
+    
+    cards[activeIndex].classList.remove('active', 'flipped');
+    cards[newIndex].classList.add('active');
+    currentSpan.textContent = newIndex + 1;
+  }
+
+  window.shuffleFlashcards = function(btn) {
+    const container = btn.closest('.flashcards-container');
+    const deck = container.querySelector('.flashcards-deck');
+    const cards = Array.from(deck.querySelectorAll('.flashcard'));
+    const currentSpan = container.querySelector('.flashcards-current');
+    
+    // Fisher-Yates shuffle
+    for (let i = cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      deck.appendChild(cards[j]);
+      [cards[i], cards[j]] = [cards[j], cards[i]];
+    }
+    
+    // 重置到第一张
+    cards.forEach(c => c.classList.remove('active', 'flipped'));
+    deck.querySelector('.flashcard').classList.add('active');
+    currentSpan.textContent = 1;
+  };
+})();
+</script>

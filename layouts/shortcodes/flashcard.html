@@ -1,0 +1,15 @@
+{{- /*
+  单张闪卡 Shortcode
+  用法: {{< flashcard q="问题" >}}答案内容{{< /flashcard >}}
+*/ -}}
+
+<div class="flashcard">
+  <div class="flashcard-face flashcard-front">
+    <div class="flashcard-label">问题</div>
+    <div class="flashcard-content">{{ .Get "q" }}</div>
+  </div>
+  <div class="flashcard-face flashcard-back">
+    <div class="flashcard-label">答案</div>
+    <div class="flashcard-content">{{ .Inner | markdownify }}</div>
+  </div>
+</div>
