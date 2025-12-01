@@ -777,6 +777,7 @@ Claude Code Router [github](https://github.com/musistudio/claude-code-router)是
 
 #### 集成GLM4.6到Claude Code CLI
 
+具体可参考[GLM官网：集成Claude Code](https://docs.bigmodel.cn/cn/coding-plan/tool/claude)
 GLM4.6采取KIMI类似的方案，既可以直接兼容Claude API，也可以通过使用claude-code-router进行路由。下面是直接配置claude code配置文件或环境变量的方式来直接在Claude Code中使用GLM4.6。
 
 ##### Step 1: 配置URL和Key
