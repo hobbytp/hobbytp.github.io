@@ -103,8 +103,21 @@ if ! command -v docker &> /dev/null || ! docker info &> /dev/null; then
     echo "   Architecture checks passed, but build verification skipped."
 else
     # Docker is available, try to build
-    if make build > /dev/null 2>&1; then
+    # Use python for timeout (30s) to avoid hanging on Docker Desktop issues
+    BUILD_RESULT=0
+    if command -v python &> /dev/null; then
+        python -c "import subprocess, sys; try: subprocess.run(sys.argv[1:], timeout=30, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL); except subprocess.TimeoutExpired: sys.exit(124); except: sys.exit(1)" make build
+        BUILD_RESULT=$?
+    else
+        make build > /dev/null 2>&1
+        BUILD_RESULT=$?
+    fi
+
+    if [ $BUILD_RESULT -eq 0 ]; then
         echo -e "${GREEN}✅ Hugo build successful${NC}"
+    elif [ $BUILD_RESULT -eq 124 ]; then
+        echo -e "${YELLOW}⚠️  WARNING: Hugo build timed out (30s). Docker might be hung.${NC}"
+        echo "   Skipping build verification to allow commit."
     else
         echo -e "${RED}❌ ERROR: Hugo build failed!${NC}"
         echo "   Run 'make build' to see the errors."

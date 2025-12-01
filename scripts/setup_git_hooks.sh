@@ -2,6 +2,7 @@
 #
 # 安装 Git hooks
 # 这个脚本会创建 pre-commit hook 来自动更新博客字数统计
+# 以及 pre-push hook 来验证架构完整性
 #
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -75,4 +76,54 @@ echo "   - 自动将更新后的文件添加到暂存区"
 echo ""
 echo "💡 提示:"
 echo "   如果不想运行 hook，可以使用: git commit --no-verify"
+echo ""
 
+# 创建 pre-push hook
+PUSH_HOOK_FILE="$HOOKS_DIR/pre-push"
+cat > "$PUSH_HOOK_FILE" << 'PUSH_HOOK_EOF'
+#!/bin/bash
+#
+# Git pre-push hook: 验证 Hugo 架构完整性
+# 在推送前运行架构验证，确保代码符合规范
+#
+
+echo ""
+echo "🔍 开始 pre-push 架构验证..."
+echo ""
+
+# 运行架构验证脚本
+if [ -f "scripts/validate-architecture.sh" ]; then
+    ./scripts/validate-architecture.sh
+    VALIDATION_RESULT=$?
+    
+    if [ $VALIDATION_RESULT -ne 0 ]; then
+        echo ""
+        echo "❌ 架构验证失败，push 已中止"
+        echo "   请修复上述问题后再推送"
+        echo "   或使用 git push --no-verify 跳过验证"
+        exit 1
+    fi
+else
+    echo "⚠️  警告: 未找到 scripts/validate-architecture.sh"
+    echo "   跳过架构验证"
+fi
+
+echo ""
+echo "✅ 架构验证通过，继续推送..."
+echo ""
+
+exit 0
+PUSH_HOOK_EOF
+
+chmod +x "$PUSH_HOOK_FILE"
+
+echo "✅ Git pre-push hook 已安装"
+echo ""
+echo "📋 Pre-push Hook 功能："
+echo "   - 验证 CSS 文件行数限制"
+echo "   - 检查模板架构合规性"
+echo "   - 验证 Hugo 构建（带30秒超时）"
+echo "   - 防止不符合规范的代码被推送"
+echo ""
+echo "💡 提示:"
+echo "   如果不想运行验证，可以使用: git push --no-verify"
