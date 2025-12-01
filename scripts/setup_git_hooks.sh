@@ -87,6 +87,28 @@ cat > "$PUSH_HOOK_FILE" << 'PUSH_HOOK_EOF'
 # 在推送前运行架构验证，确保代码符合规范
 #
 
+# 检查是否有需要推送的提交
+# pre-push hook 接收参数: <remote> <url>
+# 通过 stdin 接收: <local ref> <local sha1> <remote ref> <remote sha1>
+
+remote="$1"
+url="$2"
+
+# 读取 stdin 检查是否有实际的推送内容
+has_commits=0
+while read local_ref local_sha remote_ref remote_sha
+do
+    if [ "$local_sha" != "0000000000000000000000000000000000000000" ]; then
+        has_commits=1
+        break
+    fi
+done
+
+# 如果没有新的提交要推送，直接退出
+if [ $has_commits -eq 0 ]; then
+    exit 0
+fi
+
 echo ""
 echo "🔍 开始 pre-push 架构验证..."
 echo ""

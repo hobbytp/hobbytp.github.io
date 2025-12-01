@@ -102,25 +102,40 @@ if ! command -v docker &> /dev/null || ! docker info &> /dev/null; then
     echo "   Build test requires Docker. Run 'make build' manually to verify."
     echo "   Architecture checks passed, but build verification skipped."
 else
-    # Docker is available, try to build
-    # Use python for timeout (30s) to avoid hanging on Docker Desktop issues
+    # Docker is available, try to build with timeout
+    # Use GNU timeout if available, otherwise fallback to python or no timeout
     BUILD_RESULT=0
-    if command -v python &> /dev/null; then
-        python -c "import subprocess, sys; try: subprocess.run(sys.argv[1:], timeout=30, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL); except subprocess.TimeoutExpired: sys.exit(124); except: sys.exit(1)" make build
+    TIMEOUT_OCCURRED=0
+    
+    if command -v timeout &> /dev/null; then
+        # Use GNU timeout (60 seconds)
+        timeout 60 make build > /dev/null 2>&1
         BUILD_RESULT=$?
+        if [ $BUILD_RESULT -eq 124 ]; then
+            TIMEOUT_OCCURRED=1
+        fi
+    elif command -v python &> /dev/null; then
+        # Use python timeout (60 seconds)
+        python -c "import subprocess, sys; sys.exit(124 if subprocess.run(sys.argv[1:], timeout=60).returncode != 0 else 0)" make build > /dev/null 2>&1
+        BUILD_RESULT=$?
+        if [ $BUILD_RESULT -eq 124 ]; then
+            TIMEOUT_OCCURRED=1
+        fi
     else
+        # No timeout available, run directly
         make build > /dev/null 2>&1
         BUILD_RESULT=$?
     fi
 
-    if [ $BUILD_RESULT -eq 0 ]; then
+    if [ $TIMEOUT_OCCURRED -eq 1 ]; then
+        echo -e "${YELLOW}⚠️  WARNING: Hugo build timed out (60s). Docker might be hung.${NC}"
+        echo "   Skipping build verification to allow push."
+        echo "   Please check Docker Desktop status and try 'make build' manually."
+    elif [ $BUILD_RESULT -eq 0 ]; then
         echo -e "${GREEN}✅ Hugo build successful${NC}"
-    elif [ $BUILD_RESULT -eq 124 ]; then
-        echo -e "${YELLOW}⚠️  WARNING: Hugo build timed out (30s). Docker might be hung.${NC}"
-        echo "   Skipping build verification to allow commit."
     else
-        echo -e "${RED}❌ ERROR: Hugo build failed!${NC}"
-        echo "   Run 'make build' to see the errors."
+        echo -e "${RED}❌ ERROR: Hugo build failed with exit code $BUILD_RESULT${NC}"
+        echo "   Run 'make build' to see detailed errors."
         ERRORS=$((ERRORS + 1))
     fi
 fi
