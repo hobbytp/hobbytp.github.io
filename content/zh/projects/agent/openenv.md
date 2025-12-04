@@ -78,3 +78,7 @@ OpenEnv 通过在 Meta-PyTorch 和 Hugging Face 的合作下，为智能体生�
 如果将智能体比作赛车，那么 OpenEnv 提供的环境（OpenEnv Hub）就像是赛道的设计蓝图和共享目录。设计师（开发者）不仅可以使用这些蓝图来训练赛车（RL 训练），确保赛车只在定义的赛道内（沙盒安全）使用正确的工具（APIs），而且一旦训练完成，赛车可以直接部署在完全相同的赛道环境（部署/推理）中，从而保证了从开发到实际运行的无缝衔接和高安全性。
 
 {{< pdf src="/pdf/OpenEnv.pdf" >}}
+
+## 参考文献
+
+* [我的OpenEnv NotebookLM笔记](https://notebooklm.google.com/notebook/8131828c-1788-47e3-aea5-251af828f9c7)
