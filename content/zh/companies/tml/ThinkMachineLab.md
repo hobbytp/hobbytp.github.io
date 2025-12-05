@@ -67,3 +67,8 @@ TML 的核心战略就是：**Commoditize the Base Model, Monetize the Customiza
 （**让基座模型商品化/基础设施化，通过定制化服务来变现。**）
 
 他们赌的是：未来不会只有一个超级模型统治世界，而是会有成千上万个针对特定场景优化的垂直模型。而他们，就是制造这些垂直模型的 “**精密机床厂**”。
+
+## 参考文献
+
+* [Thinking Machines Lab](https://thinkingmachines.ai/)
+*
