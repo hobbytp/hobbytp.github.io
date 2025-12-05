@@ -136,3 +136,5 @@ OpenEnv被明确地定位为Meta正在开发的“新一代训练后技术栈”
 ## 参考文献
 
 * [我的OpenEnv NotebookLM笔记](https://notebooklm.google.com/notebook/8131828c-1788-47e3-aea5-251af828f9c7)
+* [OpenEnv Github](https://github.com/meta-pytorch/OpenEnv/)
+*
