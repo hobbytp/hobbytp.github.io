@@ -73,7 +73,7 @@ jobs:
               echo "First commit detected, processing all files"
             else
               # Get changed .md files, excluding daily_ai
-              CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' | grep '^content/' | grep -v 'daily_ai' || true)
+              CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.md$' | grep '^content/' | grep -v 'daily_ai' | tr '\n' ' ' || true)
               echo "Push detected, analyzing changed files"
             fi
           else
@@ -285,3 +285,4 @@ jobs:
           else
             echo "ℹ️ **No Generation**: No new images were generated" >> $GITHUB_STEP_SUMMARY
           fi
+
