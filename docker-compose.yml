@@ -19,6 +19,8 @@ services:
     image: hugomods/hugo:exts-0.152.2
     volumes:
       - .:/src
+      - /src/resources
+      - /src/public
     working_dir: /src
     command: build --minify
     profiles:

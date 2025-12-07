@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "marked": "^17.0.1"
+  }
+}

@@ -5,14 +5,13 @@ draft: false
 tags: ["Opensource", "ERNIE-4.5", "论文", "技术"]
 categories: ["large_models"]
 description: "本文介绍了百度开源的ERNIE 4.5模型，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
-
+wordCount: 8051
+readingTime: 33
 ai_cover: "static/images/generated-covers/16d7468d046dab9d04831d6934b4fe05.webp"
 cover:
   image: "static/images/generated-covers/16d7468d046dab9d04831d6934b4fe05.webp"
   alt: "ERNIE 4.5 技术报告解读"
   ai_generated: true
-wordCount: 8051
-readingTime: 33
 ---
 
 

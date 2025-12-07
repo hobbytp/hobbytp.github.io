@@ -538,5 +538,23 @@
     "relative_path": "/images/generated-covers/5533bda3d0246b6b6f6843d566ca0004.webp",
     "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：论文页面化作飞翔的纸鹤群。融入'Chain of Draft 论文解读'的概念进行抽象艺术表达。色彩方案：学术蓝与论文白。艺术风格：赛博朋克风格，霓虹灯光，未来都市，柔和的漫射光，微距特写，细节丰富。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
     "generated_at": "2025-11-28T23:15:36.997956"
+  },
+  "9d02843782ad5d6b16ca86cff71927c7": {
+    "title": "Thinking Machine Lab的定位与商业模式",
+    "description": "前OpenAI首席技术官穆拉蒂创立的初创公司Thinking Machines Lab， 其核心战略就是：**Commoditize the Base Model, Monetize the Customization.**（让基座模型商品化/基础设施化，通过定制化服务来变现。）",
+    "category": "big_companies",
+    "image_path": "static/images/generated-covers/9d02843782ad5d6b16ca86cff71927c7.webp",
+    "relative_path": "/images/generated-covers/9d02843782ad5d6b16ca86cff71927c7.webp",
+    "prompt": "包豪斯风格，三分法构图，由无数精密的齿轮和结构复杂的管线组成的巨型企业级服务器，光线从服务器内部发出，照亮周围的环境，深蓝色和橙色的配色方案，高品质，8k分辨率，无文字",
+    "generated_at": "2025-12-05T10:31:39.149948"
+  },
+  "e4d9bfb7b2241da6ed6444aa1df2bdde": {
+    "title": "Google Nested Learning原理剖析与Hope架构：迈向持续学习的新范式",
+    "description": "Google Nested Learning原理剖析与Hope架构：迈向持续学习的新范式",
+    "category": "big_companies",
+    "image_path": "static/images/generated-covers/e4d9bfb7b2241da6ed6444aa1df2bdde.webp",
+    "relative_path": "/images/generated-covers/e4d9bfb7b2241da6ed6444aa1df2bdde.webp",
+    "prompt": "包豪斯风格，三分法构图，一个由不同大小、颜色和形状的齿轮相互嵌套组成的复杂机械装置，象征着多层次的优化过程，齿轮的颜色为鲜艳的红、黄、蓝三原色，背景为干净的白色，灯光柔和均匀，高品质，8k分辨率，无文字",
+    "generated_at": "2025-12-05T22:43:22.398137"
   }
 }

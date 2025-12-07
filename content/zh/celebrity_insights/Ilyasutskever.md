@@ -6,6 +6,8 @@ draft: false
 tags:  ["AI","Ilya Sutskever"]
 categories: ["celebrity_insights"]
 description: "Ilya Sutskever在各个场合的观点"
+wordCount: 5602
+readingTime: 23
 
 ai_cover: "/images/generated-covers/7667e514eb0042e927794ee19c26ce90.webp"
 cover:
