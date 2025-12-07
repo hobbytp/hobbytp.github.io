@@ -107,6 +107,24 @@ docker build -t ai-blog .
 docker run -p 1313:1313 ai-blog
 ```
 
+### 使用 Make 运行与构建（推荐）
+
+为确保一致的开发体验并触发必要的验证钩子，建议通过 `make` 管理 Hugo：
+
+```bash
+# 启动开发服务器（如已在运行，先执行 make stop）
+make dev
+
+# 停止已启动的 Hugo 服务
+make stop
+
+# 生产构建（用于部署，包含最完整输出）
+make build
+
+# 查看所有可用命令
+make help
+```
+
 ## 📁 项目结构
 
 ```text
@@ -335,3 +353,4 @@ This project is licensed under the [MIT License](LICENSE), free to use and distr
 **Content Categories**: Paper Reviews, Technical Analysis, Open Source Projects, Industry News, Product Reviews, Celebrity Interviews
 
 ⭐ If this project helps you, please give it a Star for support!
+

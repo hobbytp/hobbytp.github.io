@@ -1,4 +1,4 @@
-.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers generate-covers-for-directory ingest-data help
+.PHONY: dev build clean stop optimize-images analyze-performance build-measure analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers generate-covers-for-directory ingest-data help
 
 # Shell 设置
 # 让每个配方(target)的所有命令在同一个 shell 中执行，确保 .env 中的导出变量可在后续命令中生效
@@ -27,6 +27,15 @@ dev:
 build:
 	@echo "🔨 执行Hugo生产构建..."
 	docker-compose run --rm hugo-build
+
+# 测量构建时间
+build-measure:
+	@echo "⏱️  测量Hugo构建时间..."
+	@start_time=$$(date +%s); \
+	$(MAKE) build; \
+	end_time=$$(date +%s); \
+	duration=$$((end_time - start_time)); \
+	echo "✅ 构建完成，耗时: $${duration} 秒"
 
 # 优化图片
 optimize-images:
@@ -288,6 +297,7 @@ help:
 	@echo ""
 	@echo "Build Commands:"
 	@echo "  make build            Execute production build"
+	@echo "  make build-measure    Measure build time"
 	@echo "  make full-build       Full build process (validate + optimize + analyze)"
 	@echo "  make full-build-ai    🤖 AI-enhanced full build process"
 	@echo "  make clean            Clean build files"
@@ -348,3 +358,4 @@ CF_VECTOR_INDEX ?= blog-index
 vectorize-create-category-index:
 	@echo "Creating filterable metadata index 'category' on $(CF_VECTOR_INDEX)"
 	@npx wrangler vectorize create-metadata-index $(CF_VECTOR_INDEX) --property-name=category --type=string
+
