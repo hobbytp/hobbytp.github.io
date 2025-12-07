@@ -1,4 +1,10 @@
-<div id="chat-launcher" class="chat-launcher" onclick="toggleChat()">
+<div id="chat-launcher" 
+     class="chat-launcher" 
+     role="button" 
+     tabindex="0"
+     aria-label="打开聊天窗口"
+     onclick="toggleChat()"
+     onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleChat();}">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     </svg>
@@ -13,7 +19,7 @@
             <h3>数字分身</h3>
             <span class="status-dot"></span>
         </div>
-        <button class="close-btn" onclick="toggleChat()">&times;</button>
+        <button class="close-btn" onclick="toggleChat()" aria-label="关闭聊天窗口">&times;</button>
     </div>
     
     <div id="chat-messages" class="chat-messages">
@@ -26,7 +32,7 @@
     
     <div class="chat-input-area">
         <textarea id="chat-input" placeholder="输入问题..." rows="1" onkeydown="handleKeyPress(event)"></textarea>
-        <button id="send-btn" onclick="sendMessage()">
+        <button id="send-btn" onclick="sendMessage()" aria-label="发送消息">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -40,11 +46,11 @@
     const MAX_HISTORY = 6; // 保留最近6条消息（3轮）
 
     function toggleChat() {
-        const window = document.getElementById('chat-window');
+        const chatWindow = document.getElementById('chat-window');
         const launcher = document.getElementById('chat-launcher');
-        window.classList.toggle('hidden');
+        chatWindow.classList.toggle('hidden');
         
-        if (!window.classList.contains('hidden')) {
+        if (!chatWindow.classList.contains('hidden')) {
             document.getElementById('chat-input').focus();
             scrollToBottom();
         }
@@ -62,14 +68,24 @@
         messages.scrollTop = messages.scrollHeight;
     }
 
-    function appendMessage(role, content) {
+    async function appendMessage(role, content) {
         const messages = document.getElementById('chat-messages');
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${role}`;
         
         let htmlContent = content;
         if (role === 'assistant' && typeof marked !== 'undefined') {
-            htmlContent = marked.parse(content);
+            if (typeof marked.parseAsync === 'function') {
+                htmlContent = await marked.parseAsync(content);
+            } else if (typeof marked.parse === 'function') {
+                htmlContent = marked.parse(content);
+            } else if (typeof marked === 'function') {
+                htmlContent = marked(content);
+            }
+            
+            if (typeof DOMPurify !== 'undefined') {
+                htmlContent = DOMPurify.sanitize(htmlContent);
+            }
         } else if (role === 'user') {
             // 简单的转义防止XSS
             const div = document.createElement('div');
@@ -101,7 +117,7 @@
         sendBtn.disabled = true;
         
         // 显示用户消息
-        appendMessage('user', message);
+        await appendMessage('user', message);
         
         // 添加Loading状态
         const messages = document.getElementById('chat-messages');
@@ -130,14 +146,15 @@
             loadingDiv.remove();
             
             if (response.ok) {
-                appendMessage('assistant', data.response || "抱歉，我没有理解你的问题。");
+                await appendMessage('assistant', data.response || "抱歉，我没有理解你的问题。");
             } else {
-                appendMessage('assistant', `出错了: ${data.error || "服务器暂时无法响应"}`);
+                console.error('API error:', data.error);
+                await appendMessage('assistant', '抱歉，服务暂时无法响应。请稍后再试或联系管理员。');
             }
         } catch (error) {
             loadingDiv.remove();
             console.error('Chat error:', error);
-            appendMessage('assistant', "抱歉，网络连接出现问题，请稍后再试。");
+            await appendMessage('assistant', "抱歉，网络连接出现问题，请稍后再试。");
         } finally {
             input.disabled = false;
             sendBtn.disabled = false;
@@ -149,7 +166,8 @@
     const textarea = document.getElementById('chat-input');
     textarea.addEventListener('input', function() {
         this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
-        if(this.value === '') this.style.height = 'auto';
+        const minHeight = 40;
+        const newHeight = Math.max(this.scrollHeight, minHeight);
+        this.style.height = newHeight + 'px';
     });
 </script>
