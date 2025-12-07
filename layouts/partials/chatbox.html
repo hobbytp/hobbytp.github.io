@@ -1,0 +1,155 @@
+<div id="chat-launcher" class="chat-launcher" onclick="toggleChat()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+</div>
+
+<div id="chat-window" class="chat-window hidden">
+    <div class="chat-header">
+        <div class="chat-avatar">
+            <img src="/images/profile.jpg" alt="AI Assistant" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMjEgMTVhMiAyIDAgMCAxLTIgMkg3bC00IDRWNWEyIDIgMCAwIDEgMi0yaDE0YTIgMiAwIDAgMSAyIDJ6Ij48L3BhdGg+PC9zdmc+'">
+        </div>
+        <div class="chat-title">
+            <h3>数字分身</h3>
+            <span class="status-dot"></span>
+        </div>
+        <button class="close-btn" onclick="toggleChat()">&times;</button>
+    </div>
+    
+    <div id="chat-messages" class="chat-messages">
+        <div class="message assistant">
+            <div class="message-content">
+                你好！我是博主的 AI 数字分身。我阅读了所有博客文章，可以回答关于文章内容的问题。请问有什么可以帮你的吗？
+            </div>
+        </div>
+    </div>
+    
+    <div class="chat-input-area">
+        <textarea id="chat-input" placeholder="输入问题..." rows="1" onkeydown="handleKeyPress(event)"></textarea>
+        <button id="send-btn" onclick="sendMessage()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<script>
+    let chatHistory = [];
+    const MAX_HISTORY = 6; // 保留最近6条消息（3轮）
+
+    function toggleChat() {
+        const window = document.getElementById('chat-window');
+        const launcher = document.getElementById('chat-launcher');
+        window.classList.toggle('hidden');
+        
+        if (!window.classList.contains('hidden')) {
+            document.getElementById('chat-input').focus();
+            scrollToBottom();
+        }
+    }
+
+    function handleKeyPress(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    }
+
+    function scrollToBottom() {
+        const messages = document.getElementById('chat-messages');
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    function appendMessage(role, content) {
+        const messages = document.getElementById('chat-messages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${role}`;
+        
+        let htmlContent = content;
+        if (role === 'assistant' && typeof marked !== 'undefined') {
+            htmlContent = marked.parse(content);
+        } else if (role === 'user') {
+            // 简单的转义防止XSS
+            const div = document.createElement('div');
+            div.textContent = content;
+            htmlContent = div.innerHTML.replace(/\n/g, '<br>');
+        }
+        
+        messageDiv.innerHTML = `<div class="message-content">${htmlContent}</div>`;
+        messages.appendChild(messageDiv);
+        scrollToBottom();
+        
+        // 更新历史记录
+        chatHistory.push({ role, content });
+        if (chatHistory.length > MAX_HISTORY) {
+            chatHistory = chatHistory.slice(-MAX_HISTORY);
+        }
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+        const sendBtn = document.getElementById('send-btn');
+        
+        if (!message) return;
+        
+        // 禁用输入
+        input.value = '';
+        input.disabled = true;
+        sendBtn.disabled = true;
+        
+        // 显示用户消息
+        appendMessage('user', message);
+        
+        // 添加Loading状态
+        const messages = document.getElementById('chat-messages');
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = 'chat-loading';
+        loadingDiv.className = 'message assistant';
+        loadingDiv.innerHTML = '<div class="message-content"><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+        messages.appendChild(loadingDiv);
+        scrollToBottom();
+        
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: message,
+                    history: chatHistory.slice(0, -1) // 不包含刚才发送的最新消息
+                })
+            });
+            
+            const data = await response.json();
+            
+            // 移除Loading
+            loadingDiv.remove();
+            
+            if (response.ok) {
+                appendMessage('assistant', data.response || "抱歉，我没有理解你的问题。");
+            } else {
+                appendMessage('assistant', `出错了: ${data.error || "服务器暂时无法响应"}`);
+            }
+        } catch (error) {
+            loadingDiv.remove();
+            console.error('Chat error:', error);
+            appendMessage('assistant', "抱歉，网络连接出现问题，请稍后再试。");
+        } finally {
+            input.disabled = false;
+            sendBtn.disabled = false;
+            input.focus();
+        }
+    }
+    
+    // 自动调整输入框高度
+    const textarea = document.getElementById('chat-input');
+    textarea.addEventListener('input', function() {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+        if(this.value === '') this.style.height = 'auto';
+    });
+</script>
