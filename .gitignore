@@ -96,7 +96,7 @@ __pycache__/
 
 .cursor/
 .github/prompts
-AGENTS.md
+
 
 .serena/
 .trae/
@@ -131,3 +131,5 @@ CLAUDE.md
 .serena/
 .trae/
 .cursor/
+
+.wrangler
