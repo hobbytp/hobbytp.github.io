@@ -1,4 +1,4 @@
-.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers generate-covers-for-directory help
+.PHONY: dev build clean stop optimize-images analyze-performance analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers generate-covers-for-directory ingest-data help
 
 # Shell 设置
 # 让每个配方(target)的所有命令在同一个 shell 中执行，确保 .env 中的导出变量可在后续命令中生效
@@ -270,6 +270,10 @@ generate-covers-for-directory:
 	    echo "  TEXT2IMAGE_PROVIDER=openai"; \
 	  fi'
 
+# RAG数据摄取
+ingest-data:
+	@bash scripts/ingest.sh "$(FILE)" "$(FORCE)" "$(ENV_FILE)"
+
 # 帮助信息
 help:
 	@echo "Hugo Blog Management Tool"
@@ -308,6 +312,11 @@ help:
 	@echo "  make test-covers        Test cover generation"
 	@echo "  make generate-covers-for-directory DIRECTORY=dir [FORCE=true DRY_RUN=true NO_RECURSIVE=true]  Generate AI covers for directory"
 	@echo ""
+	@echo "RAG Data Ingestion:"
+	@echo "  make ingest-data       Ingest all blog content to Vectorize"
+	@echo "  make ingest-data FILE=path/to/file.md  Ingest single file"
+	@echo "  make test-ingest       Run ingest pipeline unit tests"
+	@echo ""
 	@echo "Maintenance Commands:"
 	@echo "  make update-theme     Update Hugo theme"
 	@echo "  make install-tools    Install tool dependencies"
@@ -322,3 +331,20 @@ help:
 	@echo "  make analyze-content FILE=./content/zh/google/a2a.md  # Analyze single file"
 	@echo "  make analyze-content-ai FILE=./content/zh/google/a2a.md # AI-enhanced analysis"
 	@echo "  make export-pdf FILE=./content/zh/google/a2a.md       # Export single file PDF"
+
+# Run ingest unit tests via uv + venv
+test-ingest:
+	@echo "Running ingest unit tests via uv + venv"
+	@if command -v uv >/dev/null 2>&1; then \
+		uv run python -m unittest scripts/test_ingest.py; \
+	else \
+		python -m unittest scripts/test_ingest.py; \
+	fi
+
+# Vectorize metadata index creation (category as filterable field)
+CF_VECTOR_INDEX ?= blog-index
+
+.PHONY: vectorize-create-category-index
+vectorize-create-category-index:
+	@echo "Creating filterable metadata index 'category' on $(CF_VECTOR_INDEX)"
+	@npx wrangler vectorize create-metadata-index $(CF_VECTOR_INDEX) --property-name=category --type=string
