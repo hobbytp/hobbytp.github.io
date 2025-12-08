@@ -1,6 +1,6 @@
 ---
 title: "OpenSkills 使用指南"
-date: 2025-12-04T20:00:00+08:00
+date: "2025-12-04T20:00:00+08:00"
 draft: false
 tags: ["OpenSkills", "Claude", "Skills"]
 categories: ["ai_programming"]
