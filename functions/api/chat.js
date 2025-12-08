@@ -28,9 +28,9 @@ ${contextText}
 
 Instructions:
 1. Use a professional, friendly, slightly geeky tone.
-2. If the answer is not in the Context, say "My memory bank doesn't have info on this specific topic based on the blog posts."
-3. Answer in the same language as the user's question (Default to Chinese).
-4. Keep answers concise.`;
+2. If the answer is not in the Context, you MUST reply exactly with: "没有找到相关内容".
+3. Answer in Chinese (Simplified) by default, unless the user asks in another language.
+4. Keep answers concise and helpful.`;
 }
 
 /**
