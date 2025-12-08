@@ -6,7 +6,7 @@ tags:  ["AI","Jason wei"]
 categories: ["celebrity_insights"]
 description: "Jason wei在各个场合的观点"
 wordCount: 1080
-readingTime: 5
+readingTime: 3
 
 ai_cover: "/images/generated-covers/b10cd5e41b7f54b7f8c1dca1804f6d14.webp"
 cover:

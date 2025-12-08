@@ -5,6 +5,8 @@ draft: true
 tags: ["OpenAI", "Operator", "论文", "AI"]
 categories: ["ai_tools"]
 description: "计算机使用代理"
+wordCount: 1872
+readingTime: 5
 ---
 
 # 各种操作电脑的AI代理

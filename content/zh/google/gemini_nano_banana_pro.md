@@ -11,6 +11,8 @@ cover:
   image: "/images/generated-covers/930c2f415ceee8f5b59df11412c62404.webp"
   alt: "Gemini Nano Banana Pro：技术奇点、生态重构与行业影响全景解析"
   ai_generated: true
+wordCount: 5181
+readingTime: 13
 ---
 
 ## TL;DR

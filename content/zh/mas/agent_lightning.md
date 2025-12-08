@@ -8,7 +8,7 @@ cover:
     image: "images/cover/agent_lightning.png"
     alt: "Agent Lightning"
 wordCount: 1051
-readingTime: 5
+readingTime: 3
 ---
 
 

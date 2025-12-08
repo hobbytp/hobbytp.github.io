@@ -6,7 +6,7 @@ tags: ["AI", "论文", "Reinforced"]
 categories: ["papers", "training"]
 description: "论文介绍了强化自博弈推理的零数据范式，通过自博弈生成任务和验证，实现无需依赖人工标注数据或预设任务的自主学习推理。"
 wordCount: 6183
-readingTime: 25
+readingTime: 16
 ---
 
 

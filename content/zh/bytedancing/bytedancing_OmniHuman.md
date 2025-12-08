@@ -1,4 +1,8 @@
-------
+---
+wordCount: 937
+readingTime: 3
+
+---
 title: "字节跳动OmniHuman-1 开源项目解读"
 date: "2025-02-11T20:22:48+08:00"
 description: "字节跳动开源的OmniHuman-1项目，并对其技术原理、功能特点、应用前景和伦理风险进行了详细解读。"

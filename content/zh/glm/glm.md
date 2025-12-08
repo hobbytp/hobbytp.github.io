@@ -6,7 +6,7 @@ tags: ["AI", "智谱AI","GLM"]
 categories: ["big_companies"]
 description: "智谱AI(GLM)产品线收集整理分析"
 wordCount: 3152
-readingTime: 13
+readingTime: 8
 
 ai_cover: "/images/generated-covers/894a53f2d86c724d33dad9c4ca0b6bef.webp"
 cover:

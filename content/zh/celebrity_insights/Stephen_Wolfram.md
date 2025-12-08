@@ -7,7 +7,7 @@ categories: ["celebrity_insights"]
 author: "Peng Tan"
 description: "Stephen Wolfram的生平、贡献和思想，包括计算不可约性理论和Mathematica等工具"
 wordCount: 4141
-readingTime: 17
+readingTime: 11
 
 ai_cover: "/images/generated-covers/d2c58eb76217df723c3d1bdf8a1fd8e3.webp"
 cover:

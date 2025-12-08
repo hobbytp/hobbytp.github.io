@@ -6,7 +6,7 @@ tags:  ["AI","Jim Fan"]
 categories: ["celebrity_insights"]
 description: "Jim Fan在各个场合的观点"
 wordCount: 2001
-readingTime: 9
+readingTime: 6
 
 ai_cover: "/images/generated-covers/e331213ef3a05a5357f759980d2d43f1.webp"
 cover:

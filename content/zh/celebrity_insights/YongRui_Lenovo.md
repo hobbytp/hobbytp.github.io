@@ -11,6 +11,8 @@ cover:
   image: "/images/generated-covers/bb687e9be57eab0fcb7eb5b1f288b205.webp"
   alt: "芮勇博士介绍"
   ai_generated: true
+wordCount: 2476
+readingTime: 7
 ---
 
 ## 芮勇博士介绍

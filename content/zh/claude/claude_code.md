@@ -5,8 +5,8 @@ draft: false
 tags: ["Agent", "Claude", "Code"]
 categories: ["ai_programming"]
 description: "Claude Code 是 Claude 的命令行工具，用于代理编码，提供灵活的、可定制的、可脚本化的和安全的编程方式。"
-wordCount: 9669
-readingTime: 39
+wordCount: 9686
+readingTime: 25
 ---
 
 ## 摘要

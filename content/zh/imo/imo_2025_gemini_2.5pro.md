@@ -6,7 +6,7 @@ tags: ["IMO", "LLM", "数学推理", "Gemini 2.5 Pro"]
 categories: ["large_models"]
 description: "Gemini 2.5 Pro 在 IMO 2025 数学奥林匹克竞赛中取得优异成绩，关键在于结合了强大的数学推理能力与自我验证迭代流程，有效避免逻辑错误和表面化思维，实现了接近人类专家的严谨解题表现。"
 wordCount: 2442
-readingTime: 10
+readingTime: 7
 
 
 ai_cover: "/images/generated-covers/2034a87ed9a7b3e2b558a30bfe177973.webp"

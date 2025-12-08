@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "ReAct", "设计模式", "design pattern", "agentic"]
 categories: ["mas"]
 description: "ReAct设计模式将智能体的行为结构化为**显式的推理循环**，将思维链（CoT）推理与智能体的工具交互结合起来，让智能体在思考和行动之间交替进行，从而实现复杂、自适应的问题求解。"
+wordCount: 2388
+readingTime: 6
 ---
 
 

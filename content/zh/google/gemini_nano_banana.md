@@ -5,8 +5,8 @@ draft: false
 tags: ["image", "Gemini", "Nano", "Banana"]
 categories: ["large_models"]
 description: "本文介绍Google Gemini Nano Banana模型的创意应用案例。"
-wordCount: 5363
-readingTime: 22
+wordCount: 5276
+readingTime: 14
 ---
 
 

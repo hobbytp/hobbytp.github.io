@@ -5,6 +5,8 @@ draft: true
 tags: ["AI", "多智能体", "设计模式", "design pattern", "agentic"]
 categories: ["mas"]
 description: "多智能体协作设计模式详解: 多智能体协作模式旨在设计一个由多个独立或半独立的智能体共同实现复杂目标的系统。这种模式通过将宏大的目标分解为子任务，并分配给具有特定专长的智能体团队来解决问题。当任务的复杂性、所需的专业技能或责任划分超出了单一智能体的能力范围时，多智能体协作模式是构建健壮、高效系统的关键选择。"
+wordCount: 3973
+readingTime: 10
 ---
 
 ## **多智能体协作 (Multi-Agent Collaboration)**

@@ -6,7 +6,7 @@ tags: ["AI", "Agent", "MCP", "Protocol"]
 categories: ["ai_spec"]
 description: "本文介绍了模型上下文协议（MCP），并对其技术原理、主要贡献、当前优劣、生态系统现状，并与Google A2A等相关技术进行比较，展望其未来发展趋势。"
 wordCount: 11550
-readingTime: 47
+readingTime: 29
 ---
 
 ## **I. 引言**

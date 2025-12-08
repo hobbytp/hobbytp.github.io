@@ -5,6 +5,8 @@ description: "OpenAI关于通过将复杂的编码智能体集成到软件开发
 tags: ["AI","Coding Agent","SDLC"]
 author: "OpenAI for Developers"
 categories: ["big_companies","ai_programming"]
+wordCount: 7539
+readingTime: 19
 ---
 
 ## TL;DR

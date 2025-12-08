@@ -8,7 +8,7 @@ categories: ["my_insights"]
 lastmod: "2025-05-29T22:10:00+08:00"
 # layout: mythinkings
 wordCount: 12226
-readingTime: 49
+readingTime: 31
 
 ai_cover: "/images/generated-covers/b926199dd64e970e0391e1a7811fa355.webp"
 cover:

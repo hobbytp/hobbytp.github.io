@@ -6,7 +6,7 @@ tags:  ["AI Agent","2025","report","G2"]
 categories: ["news"]
 description: "G2 Insight Report: AI Agents in 2025"
 wordCount: 4803
-readingTime: 20
+readingTime: 13
 ---
 
 ## G2公司简介

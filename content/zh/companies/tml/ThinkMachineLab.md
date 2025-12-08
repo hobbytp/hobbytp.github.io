@@ -11,8 +11,8 @@ cover:
   image: "/images/generated-covers/9d02843782ad5d6b16ca86cff71927c7.webp"
   alt: "Thinking Machine Lab的定位与商业模式"
   ai_generated: true
-wordCount: 1639
-readingTime: 7
+wordCount: 1643
+readingTime: 5
 ---
 
 

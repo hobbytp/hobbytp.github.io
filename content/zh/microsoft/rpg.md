@@ -6,7 +6,7 @@ tags: ["AI", "RPG", "蓝图"]
 categories: ["ai_programming"]
 description: "RPG：从“对话”到“蓝图”，用图谱指导AI思考"
 wordCount: 4043
-readingTime: 17
+readingTime: 11
 
 ai_cover: "/images/generated-covers/fa2f791427034b734ca39af3401c179f.webp"
 cover:

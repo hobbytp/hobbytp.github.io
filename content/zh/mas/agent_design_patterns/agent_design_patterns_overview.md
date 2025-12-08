@@ -5,8 +5,8 @@ draft: true
 tags: ["智能体设计模式", "设计模式", "智能体", "Agentic Design Pattern"]
 categories: ["agent"]
 description: "智能体设计模式介绍"
-wordCount: 248
-readingTime: 1
+wordCount: 3757
+readingTime: 10
 ---
 
 

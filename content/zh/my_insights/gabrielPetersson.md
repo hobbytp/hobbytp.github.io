@@ -4,6 +4,8 @@ date: "2025-12-02T20:10:00+08:00"
 tags: ["AI", "学习方法论", "职业发展策略", "Gabriel Petersson"]
 categories: ["my_insights"]
 description: "**Gabriel Petersson**（从高中辍学生到 OpenAI 研究员）分享的核心学习方法论和职业发展策略"
+wordCount: 1647
+readingTime: 5
 ---
 
 

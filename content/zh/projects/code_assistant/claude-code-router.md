@@ -5,7 +5,7 @@ draft: false
 tags: ["Claude-Code-Router", "LLM", "AI"]
 categories: ["code_assistant"]
 wordCount: 13929
-readingTime: 56
+readingTime: 35
 ---
 
 目录

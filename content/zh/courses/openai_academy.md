@@ -5,6 +5,8 @@ draft: false
 tags: ["OpenAI", "AI", "教育", "社区"]
 categories: ["courses"]
 description: "OpenAI Academy 是由 OpenAI 官方创建的一个综合性学习与社区平台。通过系统性的知识传授和技能培养，帮助个人和组织解锁人工智能时代的巨大潜力，有效利用 AI 技术应对现实世界的挑战。"
+wordCount: 753
+readingTime: 2
 ---
 
 ## OpenAI学院

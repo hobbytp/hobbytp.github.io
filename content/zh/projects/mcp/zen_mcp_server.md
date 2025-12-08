@@ -7,7 +7,7 @@ draft: false
 toc: true
 description: Zen MCP Server 开源项目分析
 wordCount: 1188
-readingTime: 5
+readingTime: 3
 ---
 
 ## 背景

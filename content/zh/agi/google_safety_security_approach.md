@@ -1,4 +1,8 @@
-------
+---
+wordCount: 9330
+readingTime: 24
+
+---
 title: "Google: 一种通往技术通用人工智能安全的方法"
 date: "2025-04-17T20:20:00+08:00"
 draft: false

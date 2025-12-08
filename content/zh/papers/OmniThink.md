@@ -6,7 +6,7 @@ tags: ["machine_writing"]
 categories: ["papers"]
 description: "本文介绍了OmniThink: Expanding Knowledge Boundaries in Machine Writing through Thinking。"
 wordCount: 5625
-readingTime: 23
+readingTime: 15
 
 ai_cover: "/images/generated-covers/6ea0c6bec0950fb0cd6ef9cf9ed5fb1e.webp"
 cover:

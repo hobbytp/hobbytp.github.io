@@ -6,7 +6,7 @@ tags: ["AI", "AudioLLM", "李沐", "语音大模型", "训练"]
 categories: ["models", "large_models", "audio_models"]
 description: "李沐亲自解说语音大模型AudioLLM训练的底层思路"
 wordCount: 3142
-readingTime: 13
+readingTime: 8
 
 ai_cover: "/images/generated-covers/03838089a98c27c11001a5c228be7f4e.webp"
 cover:

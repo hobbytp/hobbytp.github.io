@@ -4,7 +4,7 @@ date: "2025-08-27T16:20:00+08:00"
 tags: ["AI", "MIT", "report"]
 categories: ["news"]
 wordCount: 2325
-readingTime: 10
+readingTime: 6
 ---
 AI在商业中的现状2025：学习与转型的鸿沟
 [报告原文](https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf)

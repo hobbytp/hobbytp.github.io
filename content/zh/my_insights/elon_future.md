@@ -6,7 +6,7 @@ description: "马斯克的“加速”与“刹车”悖论：我们到底在把
 tags: ["AI", "马斯克", "未来", "思考"]
 categories: ["my_insights"]
 wordCount: 1926
-readingTime: 8
+readingTime: 5
 
 ai_cover: "/images/generated-covers/a3c9d5ea50344024101c8080389a6947.webp"
 cover:

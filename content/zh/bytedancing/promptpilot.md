@@ -1,4 +1,8 @@
-------
+---
+wordCount: 1169
+readingTime: 3
+
+---
 title: PromptPilot 核心工作原理与方法论详解
 date: "2025-09-06T22:10:00+08:00"
 description: PromptPilot 核心工作原理与方法论详解

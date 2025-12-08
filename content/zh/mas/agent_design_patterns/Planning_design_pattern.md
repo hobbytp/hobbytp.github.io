@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "Planning", "设计模式", "design pattern", "agentic"]
 categories: ["mas"]
 description: "Planning模式要求智能体在执行开始之前，先将一个复杂的目标分解为结构化的路线图或有序的步骤序列。它将智能体从简单的反应者升级为主动的战略执行者。"
+wordCount: 2445
+readingTime: 7
 ---
 
 ## Planning设计模式

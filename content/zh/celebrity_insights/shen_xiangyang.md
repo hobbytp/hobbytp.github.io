@@ -5,6 +5,8 @@ draft: false
 tags: ["沈向洋", "观点"]
 categories: ["celebrity_insights"]
 description: "沈向洋的观点搜集"
+wordCount: 2305
+readingTime: 6
 ---
 
 <details>

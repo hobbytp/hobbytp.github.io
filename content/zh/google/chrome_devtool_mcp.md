@@ -7,7 +7,7 @@ categories: ["ai_tools"]
 description: "Chrome DevTools MCP是谷歌基于模型上下文协议开发的服务器，它将Chrome浏览器的开发者工具能力开放给AI编码助手。"
 featured_image: "/images/articles/chrome_devtool_mcp.webp"
 wordCount: 3868
-readingTime: 16
+readingTime: 10
 
 ai_cover: "/images/generated-covers/13940859ead781916b102e794c38e0d7.webp"
 cover:

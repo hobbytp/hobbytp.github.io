@@ -6,7 +6,7 @@ tags: ["AI", "Llama", "LLM", "技术"]
 categories: ["large_models"]
 description: "本文介绍了Llama 4 模型系列详细解读。"
 wordCount: 7603
-readingTime: 31
+readingTime: 20
 
 ai_cover: "/images/generated-covers/2693fee9b77b4792520aa68b30f4cddd.webp"
 cover:

@@ -5,8 +5,8 @@ draft: false
 tags: ["TrendRadar", "热点聚合", "AI智能分析"]
 categories: ["projects"]
 description: "TrendRadar 是一个用于多平台热点聚合和AI智能分析的开源项目，主要功能包括热点新闻监控、智能筛选及推送，同时支持基于MCP协议的深度分析。"
-wordCount: 1000
-readingTime: 5
+wordCount: 460
+readingTime: 2
 ---
 
 

@@ -5,6 +5,8 @@ draft: false
 tags: ["DeepLearning.ai", "AI", "教育", "社区"]
 categories: ["courses"]
 description: "DeepLearning.AI官网频繁更新来自不同大厂和开源社区领军人的课程。非常值得日常及时跟进学习。"
+wordCount: 1016
+readingTime: 3
 ---
 
 

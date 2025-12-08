@@ -5,6 +5,8 @@ draft: true
 tags: ["AI", "多智能体", "设计模式", "design pattern", "agentic"]
 categories: ["mas"]
 description: "多智能体设计模式概述: 智能体设计模式（Agentic Design Patterns）为构建自主系统提供了结构化和可预测的蓝图。在多智能体系统（Multi-Agent System, MAS）领域，设计模式的核心在于定义**多个独立或半独立智能体**如何感知、推理、行动和交互，共同完成复杂目标。"
+wordCount: 2783
+readingTime: 7
 ---
 
 

@@ -6,7 +6,7 @@ tags: ["Nested Learning", "Hope架构", "持续学习"]
 categories: ["big_companies"]
 description: "Google Nested Learning原理剖析与Hope架构：迈向持续学习的新范式"
 wordCount: 4979
-readingTime: 20
+readingTime: 13
 ai_cover: "/images/generated-covers/e4d9bfb7b2241da6ed6444aa1df2bdde.webp"
 cover:
   image: "/images/generated-covers/e4d9bfb7b2241da6ed6444aa1df2bdde.webp"

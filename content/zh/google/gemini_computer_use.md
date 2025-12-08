@@ -7,7 +7,7 @@ tags: ["gemini", "Computer Use", "浏览器"]
 categories: ["large_models"]
 description: "Gemini 2.5 Computer Use Model 是基于视觉理解的AI代理，通过持续的感知-行动循环实现自动化任务处理。"
 wordCount: 2231
-readingTime: 9
+readingTime: 6
 ---
 
 ## Gemini 2.5 Computer Use Model （2025-10-07）

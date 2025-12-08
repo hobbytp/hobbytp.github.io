@@ -1,4 +1,8 @@
-------
+---
+wordCount: 1400
+readingTime: 4
+
+---
 title: "Manus项目经验：上下文工程精华内容"
 date: "2025-07-21T20:10:00+08:00"
 draft: false

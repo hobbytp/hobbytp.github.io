@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "教育", "社区"]
 categories: ["courses"]
 description: "搜集到的网络上的各种AI课程合集"
+wordCount: 90
+readingTime: 1
 ---
 
 ## Coding Interview - 关于成为一名软件工程师的完整计算机科学学习计划

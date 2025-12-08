@@ -6,7 +6,7 @@ categories: ["projects"]
 draft: false
 description: TradingAgents 开源项目分析
 wordCount: 841
-readingTime: 4
+readingTime: 3
 ---
 TradingAgents是一个多代理LLM金融交易框架，模拟真实交易公司的动态，通过部署各类专门的LLM驱动代理（如基本面分析师、情感分析师、新闻分析师、技术分析师、交易员及风险管理团队）协同分析市场并做出交易决策。这些代理通过动态协作讨论以定位最佳策略。框架适用于研究目的，并非提供金融建议。
 

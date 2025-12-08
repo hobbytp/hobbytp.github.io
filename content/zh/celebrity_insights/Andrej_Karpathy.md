@@ -6,7 +6,7 @@ tags:  ["AI","Andrej Karpathy"]
 categories: ["celebrity_insights"]
 description: "Andrej Karpathy深入解析了软件从1.0到3.0的范式演进，将LLMs类比为公用事业、晶圆厂和操作系统，并探讨了在当前局限下构建'钢铁侠战衣'式部分自主AI应用的策略"
 wordCount: 2296
-readingTime: 10
+readingTime: 6
 
 ai_cover: "/images/generated-covers/3757906a07362fdacd3519c2f8461315.webp"
 cover:

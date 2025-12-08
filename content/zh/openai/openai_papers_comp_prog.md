@@ -6,7 +6,7 @@ tags: ["Competitive Programming", "Large Reasoning Models", "AI"]
 categories: ["papers", "program", "training"]
 description: "Competitive Programming with Large Reasoning Models（大型推理模型在编程竞赛中的应用）"
 wordCount: 2436
-readingTime: 10
+readingTime: 7
 ---
 
 # Competitive Programming with Large Reasoning Models（大型推理模型在编程竞赛中的应用）
