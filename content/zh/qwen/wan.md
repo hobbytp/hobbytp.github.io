@@ -4,7 +4,6 @@ date: 2025-08-27
 draft: false
 tags: ["AI", "大模型", "阿里", "Wan"]
 categories: ["llm"]
-weight: 1
 cover:
     image: "images/cover/wan.png"
     alt: "阿里Wan开源大模型"
