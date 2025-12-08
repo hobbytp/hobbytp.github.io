@@ -8,8 +8,13 @@
     {{- if .IsHome }}
     {{- /* Homepage: two-column article cards */ -}}
     <div class="article-grid">
-      {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-      {{- range first 10 $pages.ByDate.Reverse }}
+      {{- $pages := site.RegularPages }}
+      {{- if site.Params.mainSections }}
+        {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+      {{- end }}
+      
+      {{- $paginator := .Paginate $pages }}
+      {{- range $paginator.Pages }}
       <article class="article-card" onclick="window.location.href='{{ .RelPermalink }}'">
         {{- /* Article image */ -}}
         <div class="article-card-image">
