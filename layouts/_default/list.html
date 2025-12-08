@@ -145,17 +145,21 @@
 
             {{- /* Meta information */ -}}
             <div class="article-card-meta">
+              {{- $displayDate := .Date -}}
+              {{- if .Params.date -}}
+                {{- $displayDate = .Params.date | time -}}
+              {{- end -}}
               <span class="article-card-meta-item">
-                📅 {{ .Date.Format "2006-01-02" }}
+                📅 {{ $displayDate.Format "2006-01-02" }}
               </span>
-              {{- if .ReadingTime }}
+              {{- if (or .Params.readingTime .ReadingTime) }}
               <span class="article-card-meta-item">
-                ⏱️ {{ .ReadingTime }} 分钟
+                ⏱️ {{ or .Params.readingTime .ReadingTime }} 分钟
               </span>
               {{- end }}
-              {{- if .WordCount }}
+              {{- if (or .Params.wordCount .WordCount) }}
               <span class="article-card-meta-item">
-                📝 {{ .WordCount }} 字
+                📝 {{ or .Params.wordCount .WordCount }} 字
               </span>
               {{- end }}
             </div>
