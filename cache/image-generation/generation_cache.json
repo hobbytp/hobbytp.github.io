@@ -556,5 +556,14 @@
     "relative_path": "/images/generated-covers/e4d9bfb7b2241da6ed6444aa1df2bdde.webp",
     "prompt": "包豪斯风格，三分法构图，一个由不同大小、颜色和形状的齿轮相互嵌套组成的复杂机械装置，象征着多层次的优化过程，齿轮的颜色为鲜艳的红、黄、蓝三原色，背景为干净的白色，灯光柔和均匀，高品质，8k分辨率，无文字",
     "generated_at": "2025-12-05T22:43:22.398137"
+  },
+  "3def253ff8e18e0b6490f7582e723e7c": {
+    "title": "OpenSkills 使用指南",
+    "description": "OpenSkills 是一个用于在 Cursor 和 Trae 中使用 Claude Skills 的开源工具，提供了详细的安装和使用指南。",
+    "category": "ai_programming",
+    "image_path": "static/images/generated-covers/3def253ff8e18e0b6490f7582e723e7c.webp",
+    "relative_path": "/images/generated-covers/3def253ff8e18e0b6490f7582e723e7c.webp",
+    "prompt": "【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。画面主体：无数行代码如瀑布般倾泻而下，汇聚成发光的河流。融入'OpenSkills 使用指南'的概念进行抽象艺术表达。色彩方案：黑客绿与深黑。艺术风格：赛博朋克风格，霓虹灯光，未来都市，逆光剪影效果，深远透视，空间感强。画质要求：8K超高清，细节精致，专业级博客封面。构图：16:9宽屏横版，大气磅礴。再次强调：纯图案背景，绝对不要包含任何文字元素。",
+    "generated_at": "2025-12-08T13:41:40.623898"
   }
 }
