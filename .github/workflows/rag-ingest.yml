@@ -1,0 +1,47 @@
+name: RAG Ingestion
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "content/**"
+  workflow_dispatch:
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r scripts/requirements.txt
+
+      - name: Run Ingestion Script
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_VECTORIZE_INDEX_NAME: "blog-index"
+        run: |
+          python scripts/ingest.py
+
+      - name: Commit State File
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .ingest_state.json
+          git diff --staged --quiet || git commit -m "🤖 Update RAG ingestion state"
+          git push
