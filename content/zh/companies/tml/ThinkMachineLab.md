@@ -1,6 +1,6 @@
 ---
 title: "Thinking Machine Lab的定位与商业模式"
-date: 2025-12-05
+date: 2025-12-05T20:10:00+08:00
 draft: false
 tags: ["TML", "定位", "商业模式"]
 categories: ["big_companies"]
