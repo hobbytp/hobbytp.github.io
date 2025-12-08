@@ -48,7 +48,10 @@
           <div class="article-card-meta">
             {{- $displayDate := .Date -}}
             {{- if .Params.date -}}
-              {{- $displayDate = .Params.date | time -}}
+              {{- $displayDate = .Params.date -}}
+            {{- end -}}
+            {{- if eq (printf "%T" $displayDate) "string" -}}
+              {{- $displayDate = $displayDate | time -}}
             {{- end -}}
             <span class="article-card-meta-item">
               📅 {{ $displayDate.Format "2006-01-02" }}
@@ -151,7 +154,10 @@
             <div class="article-card-meta">
               {{- $displayDate := .Date -}}
               {{- if .Params.date -}}
-                {{- $displayDate = .Params.date | time -}}
+                {{- $displayDate = .Params.date -}}
+              {{- end -}}
+              {{- if eq (printf "%T" $displayDate) "string" -}}
+                {{- $displayDate = $displayDate | time -}}
               {{- end -}}
               <span class="article-card-meta-item">
                 📅 {{ $displayDate.Format "2006-01-02" }}

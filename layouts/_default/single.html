@@ -18,7 +18,10 @@
           <div class="post-meta">
             {{- $displayDate := .Date -}}
             {{- if .Params.date -}}
-              {{- $displayDate = .Params.date | time -}}
+              {{- $displayDate = .Params.date -}}
+            {{- end -}}
+            {{- if eq (printf "%T" $displayDate) "string" -}}
+              {{- $displayDate = $displayDate | time -}}
             {{- end -}}
             <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format (or .Site.Params.DateFormat "2006-01-02") }}</time>
             {{- with .Params.author }}&nbsp;·&nbsp;{{ . }}{{ end -}}
