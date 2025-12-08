@@ -5,7 +5,7 @@ description: "关于编程能力对比分析一撇"
 tags: ["coding", "validation", "gemini", "openai", "claude", "deepseek", "grok"]
 categories: ["validation", "ai_programming"]
 wordCount: 575
-readingTime: 3
+readingTime: 2
 ---
 ## 编程能力对比分析一撇
 

@@ -6,7 +6,7 @@ tags: ["mcp", "Windows", "Computer Use"]
 categories: ["projects"]
 description: "Windows-MCP Server 开源项目分析"
 wordCount: 1019
-readingTime: 5
+readingTime: 3
 ---
 
 

@@ -6,7 +6,7 @@ categories: ["technologies"]
 draft: false
 description: Language Server Protocol (LSP) 是一种标准化协议，用于让编辑器和语言能力解耦。
 wordCount: 2821
-readingTime: 12
+readingTime: 8
 ---
 
 ## 背景

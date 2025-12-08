@@ -1,4 +1,8 @@
-------
+---
+wordCount: 2549
+readingTime: 7
+
+---
 title: "FastVLM-WebGPU 技术报告解读"
 date: "2025-09-02T20:10:00+08:00"
 draft: false

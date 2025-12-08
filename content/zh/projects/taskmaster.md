@@ -7,7 +7,7 @@ tags:  ["Taskmaster","MCP","AI Task Management"]
 categories: ["projects"]
 description: "Taskmaster AI - 通过AI任务管理来提升开发效率，支持多种开发工具，如Cursor、Windsurf、VS Code、Claude Code CLI等。"
 wordCount: 1108
-readingTime: 5
+readingTime: 3
 ---
 
 

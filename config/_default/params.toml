@@ -11,7 +11,7 @@ ShowCodeCopyButtons = true
 ShowToc = true
 enableSchemaOrg = true
 ShowLanguageSwitch = true
-DateFormat = "2025-10-01"
+DateFormat = "2006-01-02"
 
 [imaging]
 sizes = [320, 640, 960, 1280, 1920]

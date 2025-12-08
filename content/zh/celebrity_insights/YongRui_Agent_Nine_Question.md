@@ -11,6 +11,8 @@ cover:
   image: "/images/generated-covers/28e80c71453b499a74e37141d8bb2797.webp"
   alt: "深入理解AI Agent：芮勇博士的九个核心问题解析"
   ai_generated: true
+wordCount: 3380
+readingTime: 9
 ---
 
 ## 引言：跟随专家的思维，探索AI的未来

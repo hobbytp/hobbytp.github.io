@@ -6,7 +6,7 @@ description: "MiniMax-M1 模型技术报告"
 tags: ["AI", "MiniMax", "M1"]
 categories: ["big_companies"]
 wordCount: 1713
-readingTime: 7
+readingTime: 5
 ---
 
 ## M1 模型的Tech Report总结

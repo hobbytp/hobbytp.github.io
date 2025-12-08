@@ -86,6 +86,21 @@ def update_frontmatter(frontmatter_str: str, word_count: int, reading_time: int)
     
     return '\n'.join(result_lines)
 
+def calculate_reading_stats(text: str, reading_speed: int = 400) -> Tuple[int, int]:
+    """
+    计算文本的字数和阅读时间
+    
+    Args:
+        text: 文本内容
+        reading_speed: 阅读速度（字/分钟），默认400
+        
+    Returns:
+        (word_count, reading_time)
+    """
+    word_count = count_chinese_chars(text)
+    reading_time = max(1, (word_count + reading_speed - 1) // reading_speed)
+    return word_count, reading_time
+
 def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, int, bool]:
     """
     处理单个markdown文件
@@ -105,12 +120,8 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
         print(f"⚠️  跳过（无front matter）: {rel_path}")
         return 0, 0, False
     
-    # 统计正文中的中文字符数
-    word_count = count_chinese_chars(body)
-    
-    # 计算阅读时间：250字/分钟
-    reading_speed = 250
-    reading_time = max(1, (word_count + reading_speed - 1) // reading_speed)
+    # 统计字数和阅读时间
+    word_count, reading_time = calculate_reading_stats(body, reading_speed=400)
     
     # 解析front matter
     fm_data = parse_frontmatter(frontmatter_str)

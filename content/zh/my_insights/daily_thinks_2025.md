@@ -6,8 +6,8 @@ draft: false
 description: "日常想法随手记"
 tags: ["AI", "Thinking", "Daily","2025"]
 categories: ["my_insights"]
-wordCount: 5168
-readingTime: 21
+wordCount: 5621
+readingTime: 15
 
 ai_cover: "/images/generated-covers/5ee41264804697b06057e3b9b61b994d.webp"
 cover:

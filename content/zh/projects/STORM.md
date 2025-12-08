@@ -7,7 +7,7 @@ tags:  ["STORM","Co-STORM","LangGraph","Deep Research"]
 categories: ["projects"]
 description: "STORM - 通过检索和多视角提问来合成主题大纲和维基百科类文章"
 wordCount: 6586
-readingTime: 27
+readingTime: 17
 ---
 
 

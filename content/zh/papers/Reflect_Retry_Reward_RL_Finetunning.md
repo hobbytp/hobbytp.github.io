@@ -7,7 +7,7 @@ tags:  ["Reflect, Retry, Reward","LLM","training"]
 categories: ["papers","training"]
 description: "Reflect, Retry, Reward: 大型语言模型的自我进化新范式"
 wordCount: 2385
-readingTime: 10
+readingTime: 6
 
 ai_cover: "/images/generated-covers/aa25065444e4f9e15f2a23fd50697ae0.webp"
 cover:

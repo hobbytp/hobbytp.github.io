@@ -6,7 +6,7 @@ tags: ["Specification-Driven Development (SDD)", "规范驱动开发"]
 categories: ["ai_programming"]
 description: "Specification-Driven Development (SDD) - 规范驱动开发"
 wordCount: 6875
-readingTime: 28
+readingTime: 18
 ---
 
 这篇文章翻译自Github的开源项目[spec-kit](https://github.com/github/spec-kit) 下的[规范驱动开发- Specification-Driven Development (SDD)](https://github.com/github/spec-kit/blob/main/spec-driven.md)。它的核心哲学是一场权力的反转：将软件开发的“单一事实来源”从易变的代码彻底转移到人类意图的直接表达——即规范本身。它主张，通过利用AI将结构化、精确且可执行的规范直接生成为代码，可以从根本上消除意图与实现之间的鸿沟。这种方法将开发者的角色从繁琐的“代码翻译者”提升为高阶的“意图定义者”和“系统思想家”，使其专注于创造力、架构和批判性思维，而将机械的实现过程自动化。最终，软件的演进不再是修补代码，而是持续迭代和完善作为系统灵魂的规范，从而实现前所未有的开发速度、适应性和质量保证。

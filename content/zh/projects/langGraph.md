@@ -1,7 +1,7 @@
 ---
 title: LangGraph技术底座
 wordCount: 5316
-readingTime: 22
+readingTime: 14
 ---
 
 

@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "Google", "agent"]
 categories: ["product"]
 description: "本文介绍了Google开发的AI协同科学家系统（AI co-scientist），并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
+wordCount: 2303
+readingTime: 6
 ---
 
 ## 文章概述

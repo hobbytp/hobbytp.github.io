@@ -6,7 +6,7 @@ tags:  ["AI","DeepResearchAgent","SkyworkAI"]
 categories: ["projects"]
 description: "SkyworkAI DeepResearchAgent"
 wordCount: 1006
-readingTime: 5
+readingTime: 3
 ---
 ## 概述
 

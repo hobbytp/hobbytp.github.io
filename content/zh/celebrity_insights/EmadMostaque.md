@@ -6,7 +6,7 @@ description: "AI的最终审判：为什么资本主义、GDP和人类智力都�
 tags: ["AI", "资本主义", "GDP", "人类智力"]
 categories: ["celebrity_insights"]
 wordCount: 4958
-readingTime: 20
+readingTime: 13
 
 ai_cover: "/images/generated-covers/c0485c8bc0072c3698171534df330e0b.webp"
 cover:

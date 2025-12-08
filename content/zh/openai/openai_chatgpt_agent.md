@@ -6,7 +6,7 @@ tags: ["ChatGPT", "智能体", "OpenAI"]
 categories: ["mas"]
 description: "本文全面梳理了ChatGPT智能体的核心技术架构、功能特点及应用场景，综合自OpenAI官方发布及权威媒体报道。"
 wordCount: 1243
-readingTime: 5
+readingTime: 4
 ---
 
 以下是关于ChatGPT智能体的核心技术解析、功能特点及应用场景的全面梳理，综合自OpenAI官方发布及权威媒体报道：

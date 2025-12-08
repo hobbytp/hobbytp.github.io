@@ -6,7 +6,7 @@ tags: ["Lex Fridman","Telegram","CEO","Pavel Durov"]
 categories: ["celebrity_insights"]
 description: "Pavel Durov 的成功密码：深度解析自由、自律与商业哲学的融合"
 wordCount: 5832
-readingTime: 24
+readingTime: 15
 
 ai_cover: "/images/generated-covers/f764f7e6322af41afcb789d77bea3ed5.webp"
 cover:

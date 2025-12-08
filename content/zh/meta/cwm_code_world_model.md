@@ -7,7 +7,7 @@ categories: ["large_models"]
 description: "Meta发布的一项名为“代码世界模型”（Code World Model, CWM）的全新研究，正试图从根本上解决当前代码AI面临的一大痛点。"
 featured_image: "/images/articles/cwm_code_world_model.webp"
 wordCount: 2221
-readingTime: 9
+readingTime: 6
 
 ai_cover: "/images/generated-covers/1f1083db2d4840443f5a9eb42c66806a.webp"
 cover:

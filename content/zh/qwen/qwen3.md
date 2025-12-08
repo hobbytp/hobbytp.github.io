@@ -6,7 +6,7 @@ tags:  ["AI","Qwen3","大模型","Qwen","Paper"]
 categories: ["large_models"]
 description: "全方位解读Qwen3的论文技术报告"
 wordCount: 4406
-readingTime: 18
+readingTime: 12
 
 ai_cover: "/images/generated-covers/48b94b44b0309f20c994509df88c4727.webp"
 cover:

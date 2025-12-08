@@ -5,6 +5,8 @@ draft: false
 tags: ["NVIDIA", "AI", "教育", "社区"]
 categories: ["courses"]
 description: "NVIDIA深度学习学院提供免费和收费的课程，同时提供了证书。NVIDIA深度学习学院就像一所由世界领先的AI计算公司创办的“技术大学”。它专门为想要提升专业技能的人士提供高质量的实践培训。"
+wordCount: 527
+readingTime: 2
 ---
 
 ## NVIDIA深度学习学院

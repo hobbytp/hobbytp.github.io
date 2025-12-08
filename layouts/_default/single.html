@@ -16,11 +16,18 @@
           </h1>
           {{- if not .Params.hideMeta }}
           <div class="post-meta">
-            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ .Date.Format (or .Site.Params.DateFormat "2006-01-02") }}</time>
+            {{- $displayDate := .Date -}}
+            {{- if .Params.date -}}
+              {{- $displayDate = .Params.date -}}
+            {{- end -}}
+            {{- if eq (printf "%T" $displayDate) "string" -}}
+              {{- $displayDate = $displayDate | time -}}
+            {{- end -}}
+            <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format (or .Site.Params.DateFormat "2006-01-02") }}</time>
             {{- with .Params.author }}&nbsp;·&nbsp;{{ . }}{{ end -}}
             {{- if .Params.categories }}&nbsp;·&nbsp;{{ range .Params.categories }}<a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}{{ end -}}
-            {{- if .Site.Params.ShowReadingTime }}&nbsp;·&nbsp;{{ .ReadingTime }} 分钟{{ end -}}
-            {{- if .Site.Params.ShowWordCount }}&nbsp;·&nbsp;{{ .WordCount }} 字{{ end -}}
+            {{- if .Site.Params.ShowReadingTime }}&nbsp;·&nbsp;{{ or .Params.readingTime .ReadingTime }} 分钟{{ end -}}
+            {{- if .Site.Params.ShowWordCount }}&nbsp;·&nbsp;{{ or .Params.wordCount .WordCount }} 字{{ end -}}
           </div>
           {{- end }}
         </header>

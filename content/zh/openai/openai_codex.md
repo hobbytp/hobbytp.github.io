@@ -5,6 +5,8 @@ draft: false
 tags: ["OpenAI", "Codex", "Rust"]
 categories: ["ai_programming"]
 description: "Codex是OpenAI发布的一个轻量级编码代理工具，可以在终端本地运行，同时支持与ChatGPT账户或API密钥集成。项目主要由**Rust**开发,支持MCP服务器、非交互模式、沙盒及审批规则等功能，还支持TypeScript SDK和GitHub Action等扩展使用方式。"
+wordCount: 1528
+readingTime: 4
 ---
 
 ## TR;DR

@@ -6,7 +6,7 @@ tags: ["ccmanager", "code_assistant", "git"]
 categories: ["projects","code_assistant"]
 description: "CCManager：多AI编码助手会话管理工具，无需借助tmux，完全独立运行"
 wordCount: 398
-readingTime: 2
+readingTime: 1
 ---
 
 CCManager 是一个 CLI 应用程序，用于管理多个 AI 编码助手会话（Claude Code、Gemini CLI、Codex CLI 等）以及 Git 项目工作树。

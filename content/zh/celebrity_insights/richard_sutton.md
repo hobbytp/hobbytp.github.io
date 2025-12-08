@@ -6,7 +6,7 @@ tags:  ["AI","Richard Sutton","LLM","RL","Goal-Driven","Continual Learning"]
 categories: ["celebrity_insights"]
 description: "强化学习的奠基人惊人警告：为什么说LLM可能是一条死胡同？"
 wordCount: 4043
-readingTime: 17
+readingTime: 11
 
 ai_cover: "/images/generated-covers/30e9d465cf410f4e1633ac055427ab05.webp"
 cover:

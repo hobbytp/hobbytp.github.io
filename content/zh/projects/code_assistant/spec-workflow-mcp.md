@@ -6,7 +6,7 @@ tags: ["mcp", "spec", "workflow"]
 categories: ["ai_programming"]
 description: "Claude Code Spec Workflow, 也支持MCP方式"
 wordCount: 521
-readingTime: 3
+readingTime: 2
 ---
 
 该 GitHub 项目“[spec-workflow-mcp](https://github.com/Pimzino/spec-workflow-mcp)”是项目[Claude Code Spec Workflow](https://github.com/Pimzino/claude-code-spec-workflow)的延续，是为了支持所有能使用MCP的AI Coding Assistants,比如Cursor，Cline, Copilot等。这里的Spec和AWS的Kiro的Spec是同一个意思，和github spec-kit里的spec也是同一个意思。

@@ -6,7 +6,7 @@ categories: ["ai_programming"]
 draft: false
 description: Gemini CLI 开源项目分析
 wordCount: 3105
-readingTime: 13
+readingTime: 8
 ---
 
 ## 项目简介

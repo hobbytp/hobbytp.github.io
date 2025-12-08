@@ -5,6 +5,8 @@ draft: false
 description: 通过代码执行提高模型上下文协议（MCP）效率的机制，主要在于优化了上下文窗口的使用、降低了Token消耗、加速了复杂任务的执行，并提高了代理处理工具的能力。
 tags: [MCP, Code Mode, 模型上下文协议, 代码模式, 代码执行, 高效, 优化, 延迟, 节省, 节省时间和成本, 节省Token, 优化效率, 优化延迟, 优化Token消耗, 优化复杂任务执行, 代理处理工具能力]
 categories: ["big_companies", "context_engineering"]
+wordCount: 1913
+readingTime: 5
 ---
 
 ## 背景

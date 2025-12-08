@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "DeepSeek", "Math", "LLM"]
 categories: ["papers", "large_models", "training"]
 description: "本文介绍了DeepSeekMath-V2，旨在克服传统上依赖最终答案的数学推理奖励机制的局限性。其核心创新在于通过训练一个专门的证明验证器来评估推导的逻辑严谨性，从而实现自我可验证的数学推理能力。该系统引入了元验证过程，以确保验证器识别的错误是准确的，并利用此验证器作为奖励模型来训练生成器进行自我评估和迭代优化。这种生成与验证的协同作用创建了一个循环，通过扩展计算规模来自动标注难以验证的新证明，从而提高了系统的能力。"
+wordCount: 6424
+readingTime: 17
 ---
 
 

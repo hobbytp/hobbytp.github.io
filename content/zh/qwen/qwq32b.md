@@ -6,7 +6,7 @@ tags:  ["AI", "深度思考", "QwQ-32B", "大模型", "Qwen"]
 categories:  ["large_models"]
 description: "本文介绍了深度求索（DeepSeek）公司推出的新一代推理模型QwQ-32B，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
 wordCount: 761
-readingTime: 4
+readingTime: 2
 
 ai_cover: "/images/generated-covers/fba58d3184e7818ddf6e21b3014dd636.webp"
 cover:

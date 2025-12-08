@@ -5,7 +5,7 @@ draft: false
 tags: ["AI", "Agent", "多模态", "生成式AI"]
 categories: ["courses"]
 description: "搜集网络上来自各知名机构的Agent相关课程。"
-wordCount: 29
+wordCount: 185
 readingTime: 1
 ---
 

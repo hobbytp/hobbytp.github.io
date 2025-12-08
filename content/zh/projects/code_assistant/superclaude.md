@@ -6,7 +6,7 @@ tags: ["claude", "code", "superclaude"]
 categories: ["projects","code_assistant"]
 description: "SuperClaude: 打造Claude Code成一个全副武装的团队"
 wordCount: 3166
-readingTime: 13
+readingTime: 8
 ---
 
 ## TL;DR

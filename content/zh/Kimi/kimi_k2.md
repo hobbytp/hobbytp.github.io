@@ -6,7 +6,7 @@ tags: ["AI", "Kimi", "Kimi-K2", "代码", "技术", "MoonshotAI"]
 categories: ["large_models"]
 description: "本文介绍了MoonshotAI公司Kimi-K2模型简介和相关有意思的用法。"
 wordCount: 3086
-readingTime: 13
+readingTime: 8
 ---
 
 ## 目录

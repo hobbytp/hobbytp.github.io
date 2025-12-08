@@ -7,7 +7,7 @@ description: "xiaohongshu-mcp 是一个开源项目，用于实现对小红书 (
 tags: ["MCP", "小红书", "自动化运营"]
 categories: ["projects"]
 wordCount: 909
-readingTime: 4
+readingTime: 3
 ---
 
 

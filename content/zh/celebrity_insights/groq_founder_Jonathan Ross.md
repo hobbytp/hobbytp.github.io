@@ -6,7 +6,7 @@ categories: ["celebrity_insights"]
 draft: false
 description: Groq创始人Jonathan Ross访谈核心洞察：计算力、能源与AI的未来
 wordCount: 3989
-readingTime: 16
+readingTime: 10
 
 ai_cover: "/images/generated-covers/64e923fccf2059a0a44aba5ef3c12033.webp"
 cover:

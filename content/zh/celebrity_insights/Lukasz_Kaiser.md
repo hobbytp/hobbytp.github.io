@@ -11,6 +11,8 @@ cover:
   image: "/images/generated-covers/3f8e493924fca974d7a082a51bd1eae5.webp"
   alt: "Łukasz Kaiser（卢卡什·凯泽）"
   ai_generated: true
+wordCount: 740
+readingTime: 2
 ---
 
 ## 科研背景和经历

@@ -7,7 +7,7 @@ description: "MiniMax"
 tags: ["AI", "MiniMax"]
 categories: ["big_companies"]
 wordCount: 1184
-readingTime: 5
+readingTime: 3
 ---
 
 ## MiniMax 公司介绍

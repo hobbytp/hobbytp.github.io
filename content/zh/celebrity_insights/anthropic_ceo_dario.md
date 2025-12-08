@@ -6,7 +6,7 @@ tags:  ["AI","Dario Amodei","Anthropic","Big Technology"]
 categories: ["celebrity_insights"]
 description: "Dario Amodei访谈,按“技术 → 市场 → 组织 → 风险 → 行动清单”的逻辑铺开。AI从业者必读"
 wordCount: 863
-readingTime: 4
+readingTime: 3
 
 ai_cover: "/images/generated-covers/107f1d28a6e56d5fa1b16eb499c1cda0.webp"
 cover:

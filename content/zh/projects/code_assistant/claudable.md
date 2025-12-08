@@ -6,7 +6,7 @@ tags: ["claudable", "code_assistant", "git"]
 categories: ["projects","code_assistant"]
 description: "Claudable：基于Next.js的强大网页应用构建工具"
 wordCount: 311
-readingTime: 2
+readingTime: 1
 ---
 
 Claudable是一款基于Next.js的强大网页应用构建工具，它融合了Claude Code（也支持Cursor CLI！）先进的人工智能代理能力与Lovable简洁直观的应用构建体验。

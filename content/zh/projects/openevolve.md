@@ -7,7 +7,7 @@ categories: ["开源项目"]
 author: "Peng Tan"
 description: "OpenEvolve相关开源项目和资源链接"
 wordCount: 348
-readingTime: 2
+readingTime: 1
 ---
 
 # OpenEvolve - 开源进化算法项目

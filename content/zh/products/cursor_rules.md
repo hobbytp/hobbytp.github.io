@@ -6,7 +6,7 @@ tags: ["Cursor", "AI", "编程工具", "规则配置"]
 categories: ["ai_programming"]
 description: "Cursor 的 .cursor/rules 使用指南：单一规则文件 vs 目录结构的用法和最佳实践"
 wordCount: 576
-readingTime: 3
+readingTime: 2
 ---
 
 Cursor 的 `.cursor/rules` 既可以是**单一规则文件**，也可以是**目录结构**，支持更细粒度的规则管理。  

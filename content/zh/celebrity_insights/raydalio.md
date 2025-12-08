@@ -6,7 +6,7 @@ tags:  ["AI","Ray Dalio"]
 categories: ["celebrity_insights"]
 description: "Ray Dalio:在各个场合的观点"
 wordCount: 2079
-readingTime: 9
+readingTime: 6
 
 ai_cover: "/images/generated-covers/7929c59d48ab1d0a08efa70832097164.webp"
 cover:

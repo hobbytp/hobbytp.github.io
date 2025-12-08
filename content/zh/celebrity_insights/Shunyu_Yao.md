@@ -6,7 +6,7 @@ tags:  ["AI","Shunyu Yao"]
 categories: ["celebrity_insights"]
 description: "AI的下半场"
 wordCount: 7590
-readingTime: 31
+readingTime: 19
 
 ai_cover: "/images/generated-covers/f1e5395e8b2957e431b0032213eab5a7.webp"
 cover:

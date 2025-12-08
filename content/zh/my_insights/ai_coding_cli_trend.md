@@ -6,7 +6,7 @@ tags: [AI, CLI, Coding, Assistant, Tools]
 categories: ["my_insights"]
 draft: false
 wordCount: 1669
-readingTime: 7
+readingTime: 5
 
 ai_cover: "/images/generated-covers/97a65a1641f1e0b51593e51d300c4e11.webp"
 cover:

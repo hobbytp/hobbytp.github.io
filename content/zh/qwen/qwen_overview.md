@@ -5,7 +5,7 @@ draft: false
 tags: ["AI", "Qwen", "大模型", "Qwen", "Paper"]
 categories: ["large_models"]
 description: "通义千问（Qwen）系列模型概览"
-wordCount: 280
+wordCount: 431
 readingTime: 2
 
 ai_cover: "/images/generated-covers/6241ac2b46be8b6ff91b9be21e20d978.webp"

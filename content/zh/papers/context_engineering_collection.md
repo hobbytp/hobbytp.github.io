@@ -6,7 +6,7 @@ tags: ["Context Engineering","Agent", "AI"]
 categories: ["papers","context_engineering"]
 description: "这里将收集Context Engineering相关的重要文献，具体解读将在其他博客展开。"
 wordCount: 1188
-readingTime: 5
+readingTime: 3
 
 ai_cover: "/images/generated-covers/5b909ae4f4c2790091b22e001bfda6c7.webp"
 cover:

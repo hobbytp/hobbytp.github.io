@@ -6,7 +6,7 @@ categories: ["projects"]
 draft: false
 description: Magic UI MCP Server 开源项目分析
 wordCount: 350
-readingTime: 2
+readingTime: 1
 ---
 
 [Magic MCP Server github](https://github.com/21st-dev/magic-mcp)

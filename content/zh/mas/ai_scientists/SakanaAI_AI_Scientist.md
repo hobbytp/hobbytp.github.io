@@ -5,8 +5,8 @@ draft: true
 tags: ["AI", "SakanaAI", "AI Scientist"]
 categories: ["ai_scientists"]
 description: "AI Scientist-v2 是一个由 SakanaAI 开发的自动化科学研究系统，其核心目标是通过代理式树搜索实现开放式科学探索。"
-wordCount: 248
-readingTime: 1
+wordCount: 406
+readingTime: 2
 ---
 
 AI Scientist-v2 是一个由 SakanaAI 开发的自动化科学研究系统，其核心目标是通过代理式树搜索实现开放式科学探索。相比前代版本（AI Scientist-v1），AI Scientist-v2 不再依赖于人工模板，能够跨机器学习领域生成假设、运行实验、分析数据并撰写科学论文。它被用于生成并发表了首篇完全由 AI 撰写并通过同行评审的 workshop 论文。不过，AI Scientist-v2 更倾向探索性，成功率可能低于基于模板的 v1。
