@@ -5,6 +5,14 @@ draft: false
 tags: ["OpenSkills", "Claude", "Skills"]
 categories: ["ai_programming"]
 description: "OpenSkills 是一个用于在 Cursor 和 Trae 中使用 Claude Skills 的开源工具，提供了详细的安装和使用指南。"
+wordCount: 1625
+readingTime: 7
+
+ai_cover: "/images/generated-covers/3def253ff8e18e0b6490f7582e723e7c.webp"
+cover:
+  image: "/images/generated-covers/3def253ff8e18e0b6490f7582e723e7c.webp"
+  alt: "OpenSkills 使用指南"
+  ai_generated: true
 ---
 
 
