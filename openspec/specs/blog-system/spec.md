@@ -34,6 +34,16 @@ The blog system SHALL provide improved search with content relationships and sug
 - **AND** SHALL provide search suggestions
 - **AND** SHALL highlight content connections
 
+### Requirement: Homepage Content Aggregation
+
+The homepage SHALL display a reverse-chronological feed of all blog posts from all sections.
+
+#### Scenario: Unified Feed
+
+- **WHEN** user visits the homepage
+- **THEN** system SHALL list latest articles from all categories (e.g., daily_ai, companies, projects)
+- **AND** SHALL support pagination for the unified list
+
 ### Requirement: Responsive Design
 
 The blog system SHALL provide optimal viewing experience across devices.
