@@ -28,8 +28,16 @@ try:
 except ImportError:
     # Fallback implementation if import fails
     def calculate_reading_stats(text, reading_speed=400):
-        word_count = len(text)
-        reading_time = max(1, round(word_count / reading_speed))
+        # Fallback: count Chinese characters using regex (same as update_word_count.py)
+        # \u4e00-\u9fa5: Chinese chars
+        # \u3000-\u303f: CJK symbols and punctuation
+        # \uff00-\uffef: Fullwidth symbols
+        word_count = len(re.findall(r'[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]', text))
+        # If no Chinese chars found (e.g. English text), fall back to simple length or word count
+        if word_count == 0 and len(text) > 0:
+             word_count = len(text.split())
+             
+        reading_time = max(1, (word_count + reading_speed - 1) // reading_speed)
         return word_count, reading_time
 
 # 尝试导入 Google Gemini SDK
@@ -1272,34 +1280,8 @@ class DailyAICollectorV2:
         # 统计信息
         total_items = sum(len(v) for v in collected_data.values())
         
-        # 统计字数和阅读时间
-        word_count, reading_time = calculate_reading_stats(ai_summary, reading_speed=400)
-
-        # 创建Markdown内容
-        content = f"""---
-title: "每日AI动态 - {date_str}"
-date: {today.strftime('%Y-%m-%dT%H:%M:%S+08:00')}
-draft: false
-categories: ["news"]
-tags: ["AI动态", "技术更新", "行业趋势"]
-description: "{date_str}的AI技术动态汇总"
-readingTime: {reading_time}
-wordCount: {word_count}
-totalItems: {total_items}
----
-
-# 每日AI动态 - {date_str}
-
-> 📅 **时间范围**: {time_range} (北京时间)  
-> 📊 **内容统计**: 共 {total_items} 条动态  
-> ⏱️ **预计阅读**: {max(3, total_items // 3)} 分钟
-
----
-
-{ai_summary}
-
----
-
+        # 构建页脚（用于统计字数）
+        footer = """
 ## 📊 数据来源
 
 本报告采用**分章节专用数据源**策略：
@@ -1316,6 +1298,40 @@ totalItems: {total_items}
 
 > 💡 **提示**: 本内容由 AI 自动生成，每日北京时间 08:00 更新。  
 > 如有遗漏或错误，欢迎通过 [Issues](https://github.com/hobbytp/hobbytp.github.io/issues) 反馈。
+"""
+
+        # 预计算正文部分的字数和阅读时间（用于Header中的显示）
+        # 正文 = AI摘要 + 页脚
+        body_for_calc = ai_summary + "\n" + footer
+        _, estimated_reading_time = calculate_reading_stats(body_for_calc, reading_speed=400)
+        
+        # 构建Header
+        header = f"""# 每日AI动态 - {date_str}
+
+> 📅 **时间范围**: {time_range} (北京时间)  
+> 📊 **内容统计**: 共 {total_items} 条动态  
+> ⏱️ **预计阅读**: {estimated_reading_time} 分钟"""
+
+        # 组装完整正文
+        full_body = f"{header}\n\n---\n\n{ai_summary}\n\n---\n{footer}"
+        
+        # 最终统计字数和阅读时间（包括Header）
+        word_count, reading_time = calculate_reading_stats(full_body, reading_speed=400)
+
+        # 创建Markdown内容
+        content = f"""---
+title: "每日AI动态 - {date_str}"
+date: {today.strftime('%Y-%m-%dT%H:%M:%S+08:00')}
+draft: false
+categories: ["news"]
+tags: ["AI动态", "技术更新", "行业趋势"]
+description: "{date_str}的AI技术动态汇总"
+readingTime: {reading_time}
+wordCount: {word_count}
+totalItems: {total_items}
+---
+
+{full_body}
 """
         
         return content
