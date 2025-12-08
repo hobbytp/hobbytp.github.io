@@ -1260,6 +1260,10 @@ class DailyAICollectorV2:
         # 统计信息
         total_items = sum(len(v) for v in collected_data.values())
         
+        # 统计字数和阅读时间
+        word_count = len(ai_summary)
+        reading_time = max(1, round(word_count / 500))  # 假设阅读速度为500字/分钟 (新闻摘要扫读)
+
         # 创建Markdown内容
         content = f"""---
 title: "每日AI动态 - {date_str}"
@@ -1268,7 +1272,8 @@ draft: false
 categories: ["news"]
 tags: ["AI动态", "技术更新", "行业趋势"]
 description: "{date_str}的AI技术动态汇总"
-readingTime: "{max(3, total_items // 3)} min"
+readingTime: {reading_time}
+wordCount: {word_count}
 totalItems: {total_items}
 ---
 
