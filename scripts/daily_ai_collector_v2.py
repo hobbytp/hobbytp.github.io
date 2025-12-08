@@ -19,6 +19,18 @@ from pathlib import Path
 import yaml
 import hashlib
 import re
+import sys
+
+# 添加脚本目录到路径以便导入
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+try:
+    from update_word_count import calculate_reading_stats
+except ImportError:
+    # Fallback implementation if import fails
+    def calculate_reading_stats(text, reading_speed=400):
+        word_count = len(text)
+        reading_time = max(1, round(word_count / reading_speed))
+        return word_count, reading_time
 
 # 尝试导入 Google Gemini SDK
 try:
@@ -1261,8 +1273,7 @@ class DailyAICollectorV2:
         total_items = sum(len(v) for v in collected_data.values())
         
         # 统计字数和阅读时间
-        word_count = len(ai_summary)
-        reading_time = max(1, round(word_count / 500))  # 假设阅读速度为500字/分钟 (新闻摘要扫读)
+        word_count, reading_time = calculate_reading_stats(ai_summary, reading_speed=400)
 
         # 创建Markdown内容
         content = f"""---
