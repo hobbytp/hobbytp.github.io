@@ -9,9 +9,7 @@
     {{- /* Homepage: two-column article cards */ -}}
     <div class="article-grid">
       {{- $pages := site.RegularPages }}
-      {{- if site.Params.mainSections }}
-        {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-      {{- end }}
+      {{- /* Remove mainSections filtering to show all content on homepage */ -}}
       
       {{- $paginator := .Paginate $pages }}
       {{- range $paginator.Pages }}
