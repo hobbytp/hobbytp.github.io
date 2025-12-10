@@ -1,6 +1,7 @@
 ---
 title: "Claude Skills"
 date: "2025-10-18T20:10:00+08:00"
+lastmod: "2025-12-10T20:10:00+08:00"
 draft: false
 tags: ["Claude", "Claude Skills", "Context Engineering"]
 categories: ["big_companies", "context_engineering"]
@@ -10,7 +11,7 @@ readingTime: 12
 ---
 
 
-像function calling一样来动态调用不同职业技能
+像function calling一样来动态调用不同职业技能 - Claude Skills 是一种模块化的、可重复使用的能力包。你可以把它看作一个文件夹，里面封装了针对特定任务的指令、知识、甚至是可执行的代码脚本。它的核心价值在于，能将通用的 Claude 模型，转变为能够精准执行特定领域任务的“专家”。
 
 ## TLDR
 
@@ -187,7 +188,7 @@ Skills 的设计意图是实现 **“创建一次，在 Claude 生态中处处�
 * **Skills 的通用性**：Skills 可以在所有 Claude 界面上使用，包括 Claude Apps (Web/桌面)、Claude Code 命令行工具和 Claude API。Skills 具备**可组合性**，模型可以自动识别并组合多个 Skills 来处理复杂的复合任务（例如，结合 Excel 分析 Skill 和 PowerPoint 演示文稿 Skill）。
 * **MCP 的开放性**：MCP 作为一个**开放协议**，设计上具有最高的供应商中立性和可移植性。同一 MCP 服务器可以被多个客户端/主机复用。
 
-##### 4. 关系总结
+#### 4. 关系总结
 
 Skills 和 MCP 并非相互替代，而是可以协同工作的：
 
@@ -195,9 +196,55 @@ Skills 和 MCP 并非相互替代，而是可以协同工作的：
 * **MCP** 提供**工具访问权限**（将 Claude 连接到外部服务和数据源）。
 * 一个 Claude Skill 可以包含指令，指导 Claude 调用通过 MCP 暴露的工具。例如，Skill 可以包含一个 Bash 脚本，该脚本使用 MCP 工具来提取表格模式。
 
-一些专家认为，鉴于 Skills 在令牌效率、设置简易性和共享方面具有优势，它们在长期内**可能比 MCP 更重要**。
+一些专家认为，鉴于 Skills 在令牌效率、设置简易性和共享方面具有优势，它们在长期内**可能比 MCP 更重要**。下面是更多细节。
 
-##### 5. 局限性和安全考量
+##### 1. 时间线 (Timeline Correction)
+
+* **2024年 11月:** **MCP (Model Context Protocol)** 发布。它解决了“怎么连接”的问题（标准化接口，类似 USB）。
+* **2025年 10月:** **Claude Skills** 发布。它解决了“怎么使用”的问题（标准化流程，类似使用说明书）。
+
+##### 2. 真正的核心区别：能力 vs. 流程
+
+| 维度 | **MCP (Model Context Protocol)** | **Claude Skills (Agent Skills)** |
+| :--- | :--- | :--- |
+| **核心定义** | **“硬件接口” (Connectivity)** | **“SOP 标准作业程序” (Procedure)** |
+| **回答的问题** | “我能用什么工具？我能查什么数据？” | “我该按什么步骤去完成这个复杂任务？” |
+| **文件结构** | Server 进程 (Go/Python/TS) | `SKILL.md` (说明书) + 脚本 + 资源文件 |
+| **典型内容** | `query_db()`, `fetch_url()`, `read_file()` | “写季度报告的步骤：1.先调数据库MCP查数据 2.按此模版分析 3.生成PDF” |
+| **隐喻** | **工具箱** (锤子、扳手、锯子) | **老师傅的经验** (先锯后钉，钉子间距5cm) |
+
+##### 3. Skills 的真正形态 (The Anatomy of a Skill)
+
+一个 Skill 实际上是一个**文件夹**，通常包含三个核心部分：
+
+1.  **`SKILL.md` (指令):** 类似 `AGENTS.md`，但只针对特定任务（比如 "Onboard New Employee"）。它告诉 Claude 何时激活这个 Skill，以及一步步怎么做。
+2.  **Scripts (脚本):** 可执行的代码片段。Claude 可以直接运行这些脚本（这通常依赖 MCP 或内置的代码执行环境）。
+3.  **Resources (资源):** 模版文件、参考文档（比如公司品牌指南 PDF）。
+
+##### 4. 为什么 Skills 会在 MCP 之后出现
+
+这是一个非常精彩的演进逻辑，说明 Anthropic 发现光有 MCP 还不够：
+
+1.  **第一阶段 (仅有 MCP):** 你给了 AI 所有的工具（数据库、API）。
+    * *问题：* AI 有了锤子，但不知道怎么造房子，或者造出来的房子风格不统一。你需要每次都在 Prompt 里写一大堆步骤。
+2.  **第二阶段 (引入 Skills):** 你把“造房子的步骤”打包成一个 **Skill**。
+    * *现在：* 当你告诉 Claude “帮我造房子”，它会自动加载 `BuildHouse` Skill，读取里面的 `SKILL.md` 流程，然后利用 **MCP** 里的锤子去执行。
+
+##### 5. 架构图
+
+* **底层 (Infrastructure):** **MCP Servers** —— 提供数据和原子操作能力 (Raw Capabilities)。
+* **中间层 (Orchestration):** **Claude Skills** —— 编排如何使用上述工具的知识 (Procedural Knowledge)。
+* **顶层 (Interaction):** **User Prompt** —— 触发任务。
+
+**总结：**
+
+**MCP 是“通用的 USB-C 接口”，而 Claude Skills 是插在接口上并自带驱动程序的“专业设备包”。** 你不是用 Skills 替代 MCP，而是**用 Skills 来教 AI 如何更聪明、更规范地调用 MCP 工具。**
+
+这个区分对于设计高阶 Agent 架构至关重要：**MCP 负责“连接”，Skills 负责“固化经验”。** 你可以把 MCP 看作是 AI 的“工具箱”，而 Skills 则是“老师傅的经验”。
+
+
+
+#### 5. 局限性和安全考量
 
 * **Skills 的局限性**：Skills 是 Claude 独有的，不直接移植到其他模型宿主上。此外，如果 Skill 包含可执行代码（Python 或 Bash 脚本），它们依赖于**代码执行环境**，因此需要启用 Code Execution Tool，并且要求用户**只安装来自受信任来源的 Skills**，以防恶意代码导致数据泄露或系统损坏。
 * **MCP 的局限性**：需要开发人员的时间来编写和运行服务器，远程服务器会增加网络延迟。
