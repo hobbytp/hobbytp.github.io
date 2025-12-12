@@ -45,24 +45,9 @@ sequenceDiagram
 文件位置：/scripts/ingest.py
 
 * **环境依赖**：requests, python-frontmatter (需生成 requirements.txt)  
-* **鉴权配置**：脚本需读取环境变量 CLOUDFLARE\_ACCOUNT\_ID 和 CLOUDFLARE\_API\_TOKEN（注意：CF\_ 前缀已弃用，需使用 CLOUDFLARE\_ 前缀）。  
-* **处理逻辑**：  
-  1. **解析 Frontmatter**：遍历 content/posts/\*.md，提取 title, date, url (slug)。  
-  2. **文本切片 (Chunking)**：  
-     * 清洗 Markdown 符号 (去除图片、粗体标记等)。  
-     * 长度控制：约 500 字符/chunk，重叠 50 字符。  
-  3. **生成确定性 ID (关键)**：  
-     * **ID 生成规则**：md5(full\_url \+ chunk\_index)。  
-     * **目的**：实现幂等性。如果文章内容未变，重新运行脚本时，生成的向量 ID 不变，Cloudflare 会执行 Upsert (覆盖) 而不是 Insert (新增)，防止数据库产生重复脏数据。  
-  4. **向量化与存储**：  
-     * 调用 Cloudflare Workers AI REST API 生成向量。  
-     * 调用 Vectorize REST API 批量上传 (ndjson 格式)。  
-* **Metadata 设计**：  
-  {  
-    "url": "/posts/my-k8s-article/",  
-    "title": "K8s 学习笔记",  
-    "text": "Kubernetes 是一个容器编排平台..."  
-  }
+* **鉴权配置**：脚本需读取环境变量 CLOUDFLARE\_ACCOUNT\_ID 和 CLOUDFLARE\_API\_TOKEN。  
+* **状态管理**：使用 `.ingest_state.json` 记录文件哈希，实现增量更新。  
+* **自动化**：通过 GitHub Actions (`.github/workflows/rag-ingest.yml`) 自动触发，并自动提交状态文件。
 
 ### **模块 B: 后端 API (Pages Function)**
 
@@ -98,16 +83,10 @@ sequenceDiagram
 
 描述：嵌入博客的悬浮聊天窗。  
 文件位置：layouts/partials/chatbox.html
+样式文件：assets/css/extended/chat.css (移动到 extended 目录以被 Hugo 自动处理)
 
 * **技术栈**：Vanilla JS (无框架依赖，确保轻量)。  
-* **UI 构成**：  
-  * **Launcher**：右下角悬浮圆钮 (SVG Icon)。  
-  * **Chat Window**：包含 Header (博主头像), Message List (滚动区), Input Area。  
-* **交互逻辑**：  
-  * **状态管理**：维护一个简单的 chatHistory 数组在内存中。  
-  * **Markdown 渲染**：引入轻量级库 marked.js (通过 CDN 引入)，将 AI 返回的 markdown 文本转为 HTML 显示。  
-  * **Loading 态**：发送请求时，显示 "思考中..." 动画，且禁用输入框。  
-  * **引用展示**：解析后端返回的 metadata，在气泡下方用小字显示 "Ref: \[文章标题\]" 链接，增加可信度。
+* **依赖**：marked.js (用于渲染 Markdown 回复)。
 
 ## **5\. 提示词工程规范 (System Prompt Spec)**
 
@@ -150,4 +129,5 @@ Cursor 提示 (Cursor Prompts)：
 2. requirements.txt: Python 依赖列表。  
 3. functions/api/chat.js: 含历史记录处理的后端。  
 4. layouts/partials/chatbox.html: 含 marked.js 集成的前端。  
-5. assets/css/chat.css: 适配移动端的样式。
+5. assets/css/extended/chat.css: 适配移动端的样式。  
+6. .github/workflows/rag-ingest.yml: 自动化数据更新工作流。

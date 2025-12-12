@@ -130,7 +130,9 @@
         scrollToBottom();
         
         try {
-            const response = await fetch('/api/chat', {
+            const apiBase = "{{ with site.Params.chatApiBase }}{{ . }}{{ end }}";
+            const endpoint = (apiBase && apiBase !== "") ? `${apiBase}/api/chat` : "/api/chat";
+            const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -140,17 +142,22 @@
                     history: chatHistory.slice(0, -1) // 不包含刚才发送的最新消息
                 })
             });
-            
-            const data = await response.json();
+            const contentType = response.headers.get('content-type') || '';
+            let data = null;
+            if (contentType.includes('application/json')) {
+                data = await response.json();
+            } else {
+                const text = await response.text();
+                console.error('API returned non-JSON:', text.slice(0, 200));
+            }
             
             // 移除Loading
             loadingDiv.remove();
             
-            if (response.ok) {
+            if (response.ok && data && typeof data === 'object') {
                 await appendMessage('assistant', data.response || "抱歉，我没有理解你的问题。");
             } else {
-                console.error('API error:', data.error);
-                await appendMessage('assistant', '抱歉，服务暂时无法响应。请稍后再试或联系管理员。');
+                await appendMessage('assistant', '抱歉，服务暂不可用或未部署。');
             }
         } catch (error) {
             loadingDiv.remove();

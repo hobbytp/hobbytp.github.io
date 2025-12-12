@@ -479,8 +479,8 @@ class BlogIngester:
                     "title": title,
                     "text": chunk,
                     "chunk_index": i,
-                    # 可筛选字段：category（可通过 wrangler 创建metadata索引）
-                    "category": lc.get("category")
+                    "category": lc.get("category"),
+                    "lang": lc.get("lang")
                 }
             })
         

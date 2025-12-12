@@ -84,26 +84,21 @@ uv pip install -r requirements.txt
    - **Metric**: `cosine` (推荐) 或 `euclidean`
 6. 点击 "Create"
 
-### 步骤 2: 运行数据摄取脚本
+### 步骤 2: 数据摄取（自动化）
+
+推荐使用 GitHub Actions 自动处理。每次推送到 main 分支时，如果内容有更新，系统会自动更新向量数据库。
+
+您也可以手动运行脚本：
 
 ```bash
-# 处理所有 Markdown 文件
+# 处理所有 Markdown 文件（增量更新）
 python scripts/ingest.py
 
-# 处理单个文件（测试用）
-python scripts/ingest.py --file zh/posts/welcome.md
-
-# 自定义内容目录和基础URL
-python scripts/ingest.py --content-dir content --base-url https://hobbytp.github.io
+# 强制重新处理所有文件
+python scripts/ingest.py --force
 ```
 
-脚本会：
-- 扫描 `content/` 目录下的所有 `.md` 文件（排除 `_index.md`）
-- 解析 frontmatter，提取标题、日期等信息
-- 清洗 Markdown 符号，将文本切片（约500字符/chunk，重叠50字符）
-- 生成确定性ID（基于URL和chunk索引，实现幂等性）
-- 调用 Cloudflare Workers AI 生成向量
-- 批量上传到 Vectorize
+**注意**：脚本会在本地生成 `.ingest_state.json` 文件，用于记录已处理文件的状态。建议将此文件提交到 Git，以实现多人协作和 CI/CD 状态同步。
 
 ### 步骤 3: 配置 Cloudflare Pages
 
