@@ -13,6 +13,8 @@ enableSchemaOrg = true
 ShowLanguageSwitch = true
 DateFormat = "2006-01-02"
 
+chatApiBase = ""
+
 [imaging]
 sizes = [320, 640, 960, 1280, 1920]
 quality = 85

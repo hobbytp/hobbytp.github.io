@@ -107,8 +107,6 @@ else
     BUILD_RESULT=0
     TIMEOUT_OCCURRED=0
     
-    # Temporarily disable 'exit on error' to capture build exit codes safely
-    set +e
     if command -v timeout &> /dev/null; then
         # Use GNU timeout (60 seconds)
         timeout 60 make build > /dev/null 2>&1
@@ -128,8 +126,6 @@ else
         make build > /dev/null 2>&1
         BUILD_RESULT=$?
     fi
-    # Re-enable 'exit on error' for subsequent checks
-    set -e
 
     if [ $TIMEOUT_OCCURRED -eq 1 ]; then
         echo -e "${YELLOW}⚠️  WARNING: Hugo build timed out (60s). Docker might be hung.${NC}"
@@ -158,4 +154,3 @@ else
     echo "   Read ARCHITECTURE.md for guidelines."
     exit 1
 fi
-

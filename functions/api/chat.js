@@ -8,10 +8,11 @@ const EMBEDDING_MODEL = "@cf/baai/bge-base-en-v1.5";
 const LLM_MODEL = "@cf/meta/llama-3-8b-instruct";
 
 // 配置常量
-const MAX_MESSAGE_LENGTH = 1000;  // 最大消息长度
-const MAX_HISTORY_TURNS = 3;      // 最大历史对话轮数
-const TOP_K = 3;                  // 向量检索返回的topK结果
-const BLOG_AUTHOR_NAME = "Peng Tan";  // 博主名称（可根据实际情况修改）
+const MAX_MESSAGE_LENGTH = 1000;
+const MAX_HISTORY_TURNS = 3;
+const TOP_K = 4;
+const MIN_SCORE = 0.55;
+const BLOG_AUTHOR_NAME = "Peng Tan";
 
 /**
  * 组装System Prompt
@@ -20,17 +21,22 @@ function buildSystemPrompt(retrievedContexts) {
   const contextText = retrievedContexts
     .map((ctx, idx) => `${idx + 1}. ${ctx.text}`)
     .join("\n\n");
-  
-  return `You are the digital twin of ${BLOG_AUTHOR_NAME}. You answer questions based strictly on the provided Context.
+  const sources = retrievedContexts
+    .map((ctx, idx) => `${idx + 1}. ${ctx.title || ""} ${ctx.url || ""}`)
+    .join("\n");
+  return `You are the digital twin of ${BLOG_AUTHOR_NAME}. Only use the provided Context to answer.
 
 Context:
 ${contextText}
 
+Sources:
+${sources}
+
 Instructions:
-1. Use a professional, friendly, slightly geeky tone.
-2. If the answer is not in the Context, you MUST reply exactly with: "没有找到相关内容".
-3. Answer in Chinese (Simplified) by default, unless the user asks in another language.
-4. Keep answers concise and helpful.`;
+1. Answer strictly based on Context. Do not invent facts.
+2. If the answer is not in the Context, reply exactly: "没有找到相关内容".
+3. Answer in Chinese (Simplified) unless the user asks otherwise.
+4. Keep answers concise and include bracket citations like [1], [2] where appropriate.`;
 }
 
 /**
@@ -41,7 +47,6 @@ function truncateHistory(history, maxTurns = MAX_HISTORY_TURNS) {
     return [];
   }
   
-  // 保留最近的maxTurns轮对话（每轮包含user和assistant两条消息）
   const maxMessages = maxTurns * 2;
   if (history.length <= maxMessages) {
     return history;
@@ -132,27 +137,44 @@ export async function onRequestPost(context) {
       );
     }
     
-    // 4. 向量检索
     let retrievedContexts = [];
     try {
-      const vectorQuery = await env.VECTOR_INDEX.query(queryEmbedding, {
-        topK: TOP_K
-      });
-      
+      const category = inferCategory(message);
+      const queryOptions = { topK: TOP_K * 2 };
+      if (category) {
+        queryOptions.filter = { category: { $eq: category } };
+      }
+      const vectorQuery = await env.VECTOR_INDEX.query(queryEmbedding, queryOptions);
       if (vectorQuery.matches && vectorQuery.matches.length > 0) {
-        retrievedContexts = vectorQuery.matches.map(match => ({
-          text: match.metadata?.text || match.text || "",
-          url: match.metadata?.url || "",
-          title: match.metadata?.title || "",
-          score: match.score || 0
-        })).filter(ctx => ctx.text);  // 过滤掉空文本
+        const uniq = new Map();
+        vectorQuery.matches.forEach(match => {
+          const text = match.metadata?.text || match.text || "";
+          if (!text) return;
+          const url = match.metadata?.url || "";
+          const key = url || text.slice(0, 50);
+          const item = {
+            text,
+            url,
+            title: match.metadata?.title || "",
+            score: typeof match.score === "number" ? match.score : 0
+          };
+          if (!uniq.has(key) || (uniq.get(key).score < item.score)) {
+            uniq.set(key, item);
+          }
+        });
+        retrievedContexts = Array.from(uniq.values())
+          .sort((a, b) => b.score - a.score)
+          .slice(0, TOP_K);
       }
     } catch (error) {
       console.error("向量检索失败:", error);
-      // 检索失败不阻断流程，继续使用空context
     }
     
     // 5. 组装Prompt
+    if (!retrievedContexts.length || (retrievedContexts[0]?.score ?? 0) < MIN_SCORE) {
+      const response = { response: "没有找到相关内容", references: [] };
+      return new Response(JSON.stringify(response), { status: 200, headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods": "POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type" } });
+    }
     const systemPrompt = buildSystemPrompt(retrievedContexts);
     
     // 截断历史对话
@@ -249,3 +271,12 @@ export async function onRequestOptions() {
 }
 
 
+function inferCategory(message) {
+  const q = String(message || "");
+  if (/[每日AI|Daily AI]/i.test(q) || /每日|日报|daily/i.test(q)) return "daily_ai";
+  if (/论文|paper|arxiv|学术/i.test(q)) return "papers";
+  if (/产品|工具|cursor|产品评测/i.test(q)) return "products";
+  if (/项目|projects|项目描述/i.test(q)) return "projects";
+  if (/基础|rag|检索|向量|embedding/i.test(q)) return "rag";
+  return null;
+}
