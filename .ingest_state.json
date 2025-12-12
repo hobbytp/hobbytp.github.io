@@ -426,7 +426,7 @@
   "zh/daily_ai/2025-11-21.md": "260a40d361e56ae8f3f8f4d68f75e0e8",
   "zh/claude/BMAD_impl_in_claude_skills.md": "00052b75075cb27a05040c1c9dbc7b6b",
   "zh/claude/claude_mcp_server.md": "692c24e49fd89ce1367552ffd2c8955b",
-  "zh/claude/claude_skills.md": "3043f75192fc89f1b2b2b4a7303a2c41",
+  "zh/claude/claude_skills.md": "592fca7684aca8c154e0d195135bc3cf",
   "zh/claude/claude_code.md": "3f3139119b81e02b3c69d2ba2bc7d8cf",
   "zh/claude/mcp_analysis.md": "8ea27c3b8b0af7059c5bdd2152957527",
   "zh/claude/mcp_usecases.md": "357ad0ef3f41f70eba4a35fec9b60440",
@@ -601,5 +601,12 @@
   "zh/ai_programming/claude_skills_for_other_ai_coders.md": "3c3b449590bdc64791809c87b2ad7e63",
   "zh/ai_programming/github_copilot_smarter_with_fewertools.md": "fa71a2baca0ec7b1935060001cb1739e",
   "papers/voyager.md": "c6200204a1f33b42a43302ab933292c6",
-  "zh/daily_ai/2025-12-10.md": "87cf13960ebc6b99481dc1e1140c0f18"
+  "zh/daily_ai/2025-12-10.md": "87cf13960ebc6b99481dc1e1140c0f18",
+  "zh/projects/auto/open_autoglm.md": "2f5995630cfbcb477febeb091b0cd5fb",
+  "zh/projects/chatbot/llm_council.md": "b5939ad69a36daf9fc4b8fc1c6bb662a",
+  "zh/ai_spec/aaif.md": "696895c68fb9707f7c7e59701eceb4c1",
+  "zh/ai_spec/AGENTS.md": "626752e8423bb943c6c314330ff13c1b",
+  "zh/my_insights/open-autoglm-impact.md": "7b971fcd62b7db757d6ef315b809b634",
+  "zh/daily_ai/2025-12-11.md": "499ce068828c81d95fbee6ad4b9e46f3",
+  "zh/daily_ai/2025-12-12.md": "010685e546aea123774f5ba515aceb1e"
 }
