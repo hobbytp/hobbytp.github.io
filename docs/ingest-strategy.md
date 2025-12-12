@@ -71,20 +71,15 @@ make ingest-data
 make ingest-data FILE=content/posts/new-article.md
 ```
 
-### 方式 3: Git Hook（自动化）
+### 方式 3: GitHub Actions（CI/CD） - **推荐**
 
-可以添加到 Git pre-commit hook，自动处理修改的文件：
+已配置 `.github/workflows/rag-ingest.yml`。
+每次推送到 `main` 分支且包含 `content/` 目录变更时，会自动运行摄取脚本。
+脚本会自动提交更新后的 `.ingest_state.json` 文件，保持状态同步。
 
-```bash
-# 安装 Git hooks（如果还没有）
-bash scripts/setup_git_hooks.sh
-
-# 然后每次提交包含 .md 文件时，会自动运行摄取脚本
-```
-
-### 方式 4: GitHub Actions（CI/CD）
-
-可以添加到 GitHub Actions workflow，在推送时自动运行。
+需配置 Secrets：
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_API_TOKEN`
 
 ## 📝 自动化方案
 
@@ -123,28 +118,29 @@ make ingest-data FILE=content/posts/new-article.md  # 处理单个文件
 - 需要配置 Git hooks
 - 可能增加提交时间
 
-### 方案 C: GitHub Actions（CI/CD 集成）
+### 方案 C: GitHub Actions（CI/CD 集成） - **已采用**
 
-在 GitHub Actions workflow 中添加步骤：
+在 `.github/workflows/rag-ingest.yml` 中实现：
 
 ```yaml
-- name: Ingest blog content to Vectorize
-  env:
-    CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+- name: Run Ingestion Script
   run: |
-    pip install -r requirements.txt
     python scripts/ingest.py
+- name: Commit State File
+  run: |
+    git add .ingest_state.json
+    git commit -m "🤖 Update RAG ingestion state"
+    git push
 ```
 
 **优点**：
-- 完全自动化
-- 在云端运行，不占用本地资源
-- 可以设置定时任务
+- 完全自动化，无需本地操作
+- 自动处理新文章（包括自动生成的 Daily AI）
+- 状态文件自动同步，避免重复计算
 
-**缺点**：
-- 需要配置 GitHub Secrets
-- 每次推送都会运行（可能不必要）
+**注意**：
+- 确保 GitHub Secrets 配置正确
+- 赋予 Workflow `contents: write` 权限以提交状态文件
 
 ### 方案 D: 增量更新脚本（推荐用于频繁更新）
 
