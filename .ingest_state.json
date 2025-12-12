@@ -1,5 +1,5 @@
 {
-  "analysis-dashboard.md": "cfa8d627442b02b852f43cb61415ae54",
+  "analysis-dashboard.md": "cce17a3545fe8da5c14bbac0049631e7",
   "en\\deepseek_r1.md": "b270612c9924b79c4625c1badc914670",
   "papers\\voyager.md": "6277caac49c8663ad499dac58da06376",
   "posts\\welcome.md": "21b9bc7618a683a1c1cfd468cbcb6a72",
@@ -484,7 +484,7 @@
   "zh/base/NeuralNetworks.md": "53de0dc4faa9a209e712c01658ba9991",
   "zh/base/rag.md": "20a046518e89876ed1cfdabfa5d99806",
   "zh/base/yt_karpathy_Intro_LLM.md": "f8adcb62f628476a2623a6ed53e532f1",
-  "zh/mas/mas_reinforcement.md": "76c73cd916595017e6175eccab2e23e2",
+  "zh/mas/mas_reinforcement.md": "e9e20cb36338f37334aeb23c8f3e9051",
   "zh/mas/agent_lightning.md": "6be12ea4e4cdfbb725766cb6f35a6803",
   "zh/mas/multipleagents.md": "08b67f78b3964eb4ffbb87397c7cd526",
   "zh/mas/mas_reinforce.md": "cc130de37d011d0cd35f872b5fe603eb",
@@ -613,5 +613,16 @@
   "zh\\my_insights\\open-autoglm-impact.md": "9f97bd6675e798f16b9b0a8aafa3d41c",
   "zh\\papers\\ask_llm_verify_first.md": "a826eb1a3111cde103c11e77fcfd5e37",
   "zh\\projects\\auto\\open_autoglm.md": "d5b99c1afaca75653c1324c70b9f444a",
-  "zh\\projects\\chatbot\\llm_council.md": "8210c6a388e8e83e31ee10e6b8434103"
+  "zh\\projects\\chatbot\\llm_council.md": "8210c6a388e8e83e31ee10e6b8434103",
+  "zh/projects/auto/open_autoglm.md": "2f5995630cfbcb477febeb091b0cd5fb",
+  "zh/projects/chatbot/llm_council.md": "b5939ad69a36daf9fc4b8fc1c6bb662a",
+  "zh/daily_ai/2025-12-11.md": "499ce068828c81d95fbee6ad4b9e46f3",
+  "zh/daily_ai/2025-12-12.md": "010685e546aea123774f5ba515aceb1e",
+  "zh/ai_spec/aaif.md": "696895c68fb9707f7c7e59701eceb4c1",
+  "zh/ai_spec/AGENTS.md": "626752e8423bb943c6c314330ff13c1b",
+  "zh/mas/workflow_context_combined.md": "14cf607f52aa4c115bb825532784f632",
+  "zh/celebrity_insights/SamAltman/ten_years.md": "0186c832177b320e0979605026569abd",
+  "zh/my_insights/open-autoglm-impact.md": "7b971fcd62b7db757d6ef315b809b634",
+  "zh/ai_programming/yc_vibecoding_guide.md": "0e7abbe1a7212a026a94e7b065e35068",
+  "zh/ai_programming/vibe_coding.md": "993ea8de1193217d9f4af3e3d677e8f8"
 }
