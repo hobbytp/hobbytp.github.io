@@ -22,7 +22,7 @@ class BlogIngester:
     """博客内容摄取器"""
     
     # Cloudflare Workers AI Embedding 模型
-    EMBEDDING_MODEL = "@cf/baai/bge-base-en-v1.5"
+    EMBEDDING_MODEL = "@cf/baai/bge-m3"
     
     # 文本切片配置
     CHUNK_SIZE = 500  # 每个chunk约500字符
@@ -38,7 +38,7 @@ class BlogIngester:
         # 注意：CF_ 前缀已弃用，使用 CLOUDFLARE_ 前缀（Cloudflare官方要求）
         self.account_id = os.getenv('CLOUDFLARE_ACCOUNT_ID')
         self.api_token = os.getenv('CLOUDFLARE_API_TOKEN')
-        self.index_name = os.getenv('CLOUDFLARE_VECTORIZE_INDEX_NAME', 'blog-index')
+        self.index_name = os.getenv('CLOUDFLARE_VECTORIZE_INDEX_NAME', 'blog-index-m3')
         
         # 调试信息：显示环境变量是否加载（不显示完整token）
         print("\n🔧 Cloudflare 配置检查:")
@@ -395,7 +395,7 @@ class BlogIngester:
                 raise ValueError(
                     f"索引不存在 (404): {self.index_name}\n"
                     f"请先创建 Vectorize 索引：\n"
-                    f"npx wrangler vectorize create {self.index_name} --dimensions=768 --metric=cosine"
+                    f"npx wrangler vectorize create {self.index_name} --dimensions=1024 --metric=cosine"
                 )
             
             response.raise_for_status()
