@@ -387,6 +387,13 @@ export async function onRequestPost(context) {
           }
         } catch (e) {
           console.error("Stream processing error:", e);
+          // Send SSE error event to client before closing
+          const errorEvent = encoder.encode(`event: error\ndata: ${JSON.stringify({ message: "Stream processing error", detail: e && e.message ? e.message : String(e) })}\n\n`);
+          try {
+            await writer.write(errorEvent);
+          } catch (writeErr) {
+            // Ignore write errors
+          }
         } finally {
           await writer.close();
           
