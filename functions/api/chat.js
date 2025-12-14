@@ -76,7 +76,7 @@ function truncateHistory(history, maxTurns = MAX_HISTORY_TURNS) {
  */
 function inferCategory(message) {
   const q = String(message || "");
-  if (/[每日AI|Daily AI]/i.test(q) || /每日|日报|daily/i.test(q)) return "daily_ai";
+  if (/(每日AI|Daily AI)/i.test(q) || /每日|日报|daily/i.test(q)) return "daily_ai";
   if (/论文|paper|arxiv|学术/i.test(q)) return "papers";
   if (/产品|工具|cursor|产品评测/i.test(q)) return "products";
   if (/项目|projects|项目描述/i.test(q)) return "projects";
@@ -188,13 +188,18 @@ export async function onRequestPost(context) {
               .sort((a, b) => b.score - a.score) // 降序
               .slice(0, TOP_K_FINAL);
               
-            finalContexts = ranked.map(r => {
-              const candidate = uniqueCandidates[r.index];
-              return {
-                ...candidate,
-                score: r.score
-              };
-            });
+            if (ranked.length > 0) {
+              finalContexts = ranked.map(r => {
+                const candidate = uniqueCandidates[r.index];
+                return {
+                  ...candidate,
+                  score: r.score
+                };
+              });
+            } else {
+              // Fallback: if all reranked results are filtered out, use top vector search results
+              finalContexts = uniqueCandidates.slice(0, TOP_K_FINAL).map(c => ({...c, score: 0.5}));
+            }
           } else {
             // Fallback if reranker fails to return standard format
             finalContexts = uniqueCandidates.slice(0, TOP_K_FINAL).map(c => ({...c, score: 0.5}));
@@ -203,8 +208,11 @@ export async function onRequestPost(context) {
       } catch (error) {
         console.error("Reranking failed:", error);
         // Fallback: use vector search order
-        finalContexts = candidates.slice(0, TOP_K_FINAL).map(c => ({
-            text: c.metadata?.text,
+        finalContexts = candidates
+          .filter(c => c.metadata?.text)
+          .slice(0, TOP_K_FINAL)
+          .map(c => ({
+            text: c.metadata.text,
             title: c.metadata?.title,
             url: c.metadata?.url,
             score: c.score
