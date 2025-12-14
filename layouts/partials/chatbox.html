@@ -177,6 +177,9 @@
             document.getElementById('chat-messages').appendChild(aiMessageDiv);
             const contentDiv = aiMessageDiv.querySelector('.message-content');
 
+            let lastRenderTime = 0;
+            const RENDER_THROTTLE_MS = 50; // 50ms 节流
+
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
@@ -193,17 +196,27 @@
                             if (data.response) {
                                 fullText += data.response;
                                 // 实时渲染 Markdown (简单处理: 累积文本后渲染，或打字机效果)
-                                // 为性能考虑，可以每隔一定字符数渲染一次，这里简单全量渲染
-                                if (typeof marked !== 'undefined') {
-                                    contentDiv.innerHTML = marked.parse(fullText);
-                                } else {
-                                    contentDiv.textContent = fullText;
+                                // 为性能考虑，使用节流渲染
+                                const now = Date.now();
+                                if (now - lastRenderTime > RENDER_THROTTLE_MS) {
+                                    if (typeof marked !== 'undefined') {
+                                        contentDiv.innerHTML = marked.parse(fullText);
+                                    } else {
+                                        contentDiv.textContent = fullText;
+                                    }
+                                    scrollToBottom();
+                                    lastRenderTime = now;
                                 }
-                                scrollToBottom();
                             }
                         } catch (e) {
-                            // 忽略解析错误 (可能是分片截断)
+                            // 忽略解析错误 (可能是分片截断)，但记录错误以便调试
+                            console.error('JSON parse error in streaming chunk:', e, 'Line:', line);
                         }
+                    } else if (line.startsWith('event: error')) {
+                        // 处理后端发送的错误事件
+                        console.error('Stream error event received');
+                        // 后续data行会包含错误详情，将在上方逻辑中被解析或在循环外处理
+                        // 这里简单标记，如果需要更复杂的错误处理可以在此扩展
                     }
                 }
             }
@@ -228,7 +241,7 @@
                 // 注意：如果Header是text/event-stream，但Body是普通JSON，上面的流式读取可能已经消耗了Body
                 // 这里的逻辑主要处理异常情况。实际上如果chat.js返回了流，fullText应该有值。
                 if (fullText === "") {
-                     contentDiv.innerHTML = "没有找到相关内容";
+                     contentDiv.innerHTML = "未收到回复，请重试。";
                 }
             }
 
