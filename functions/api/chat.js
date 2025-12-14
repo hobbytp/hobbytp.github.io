@@ -97,11 +97,40 @@ export async function onRequestPost(context) {
     
     // 2. 输入校验
     if (!message || typeof message !== 'string') {
-      return new Response(JSON.stringify({ error: "message字段是必需的" }), { status: 400 });
+      return new Response(JSON.stringify({ error: "message字段是必需的" }), { 
+        status: 400,
+        headers: { 
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type"
+        }
+      });
     }
     
     if (message.length > MAX_MESSAGE_LENGTH) {
-      return new Response(JSON.stringify({ error: "消息过长" }), { status: 400 });
+      return new Response(JSON.stringify({ error: "消息过长" }), { 
+        status: 400,
+        headers: { 
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type"
+        }
+      });
+    }
+
+    // 验证history格式
+    if (history && !Array.isArray(history)) {
+      return new Response(JSON.stringify({ error: "history字段必须为数组" }), { 
+        status: 400,
+        headers: { 
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type"
+        }
+      });
     }
     
     // 3. 生成Query Embedding (Stage 1: Retrieval)
@@ -123,7 +152,15 @@ export async function onRequestPost(context) {
       }
     } catch (error) {
       console.error("Embedding generation failed:", error);
-      return new Response(JSON.stringify({ error: "检索服务繁忙" }), { status: 500 });
+      return new Response(JSON.stringify({ error: "检索服务繁忙" }), { 
+        status: 500,
+        headers: { 
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type"
+        }
+      });
     }
     
     // 4. 向量检索 (Vector Search)
@@ -189,13 +226,15 @@ export async function onRequestPost(context) {
               .slice(0, TOP_K_FINAL);
               
             if (ranked.length > 0) {
-              finalContexts = ranked.map(r => {
-                const candidate = uniqueCandidates[r.index];
-                return {
-                  ...candidate,
-                  score: r.score
-                };
-              });
+              finalContexts = ranked
+                .filter(r => Number.isInteger(r.index) && r.index >= 0 && r.index < uniqueCandidates.length)
+                .map(r => {
+                  const candidate = uniqueCandidates[r.index];
+                  return {
+                    ...candidate,
+                    score: r.score
+                  };
+                });
             } else {
               // Fallback: if all reranked results are filtered out, use top vector search results
               finalContexts = uniqueCandidates.slice(0, TOP_K_FINAL).map(c => ({...c, score: 0.5}));
@@ -248,7 +287,15 @@ export async function onRequestPost(context) {
       else throw new Error("LLM响应格式错误");
     } catch (llmError) {
       console.error("LLM Error:", llmError);
-      return new Response(JSON.stringify({ error: "LLM服务暂时不可用" }), { status: 502 });
+      return new Response(JSON.stringify({ error: "LLM服务暂时不可用" }), { 
+        status: 502,
+        headers: { 
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type"
+        }
+      });
     }
     
     // 8. 返回结果
@@ -267,7 +314,15 @@ export async function onRequestPost(context) {
     
   } catch (error) {
     console.error("Server Error:", error);
-    return new Response(JSON.stringify({ error: "服务暂时不可用" }), { status: 500 });
+    return new Response(JSON.stringify({ error: "服务暂时不可用" }), { 
+      status: 500,
+      headers: { 
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type"
+      }
+    });
   }
 }
 
