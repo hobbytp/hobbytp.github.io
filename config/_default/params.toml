@@ -13,7 +13,7 @@ enableSchemaOrg = true
 ShowLanguageSwitch = true
 DateFormat = "2006-01-02"
 
-chatApiBase = "hobbytp-github-io.pages.dev"
+chatApiBase = "https://hobbytp-github-io.pages.dev"
 
 [imaging]
 sizes = [320, 640, 960, 1280, 1920]

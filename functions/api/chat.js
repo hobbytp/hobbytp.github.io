@@ -239,11 +239,17 @@ export async function onRequestPost(context) {
       { role: "user", content: message }
     ];
     
-    const llmResponse = await env.AI.run(LLM_MODEL, { messages });
     let aiResponse = "";
-    if (typeof llmResponse === 'string') aiResponse = llmResponse;
-    else if (llmResponse.response) aiResponse = llmResponse.response;
-    else if (llmResponse.choices) aiResponse = llmResponse.choices[0].message?.content || "";
+    try {
+      const llmResponse = await env.AI.run(LLM_MODEL, { messages });
+      if (typeof llmResponse === 'string') aiResponse = llmResponse;
+      else if (llmResponse.response) aiResponse = llmResponse.response;
+      else if (llmResponse.choices) aiResponse = llmResponse.choices[0].message?.content || "";
+      else throw new Error("LLM响应格式错误");
+    } catch (llmError) {
+      console.error("LLM Error:", llmError);
+      return new Response(JSON.stringify({ error: "LLM服务暂时不可用" }), { status: 502 });
+    }
     
     // 8. 返回结果
     return new Response(JSON.stringify({
