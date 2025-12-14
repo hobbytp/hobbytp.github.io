@@ -352,7 +352,7 @@ test-ingest:
 	fi
 
 # Vectorize metadata index creation (category as filterable field)
-CF_VECTOR_INDEX ?= blog-index
+CF_VECTOR_INDEX ?= blog-index-m3
 
 .PHONY: vectorize-create-category-index
 vectorize-create-category-index:

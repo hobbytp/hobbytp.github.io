@@ -1,5 +1,5 @@
 {
-  "analysis-dashboard.md": "cce17a3545fe8da5c14bbac0049631e7",
+  "analysis-dashboard.md": "cfa8d627442b02b852f43cb61415ae54",
   "en\\deepseek_r1.md": "b270612c9924b79c4625c1badc914670",
   "papers\\voyager.md": "6277caac49c8663ad499dac58da06376",
   "posts\\welcome.md": "21b9bc7618a683a1c1cfd468cbcb6a72",
@@ -609,7 +609,7 @@
   "zh\\daily_ai\\2025-12-01.md": "87aab91502de3cd9db65e08c6eeda28e",
   "zh\\daily_ai\\2025-12-09.md": "a2e114aa5665c23d262a8c6bb3037d42",
   "zh\\daily_ai\\2025-12-10.md": "5ee873728f8e141a2eae7971585bc757",
-  "zh\\mas\\workflow_context_combined.md": "3a5f85f0714d4f90b1d85348d731fd6f",
+  "zh\\mas\\workflow_context_combined.md": "92040fae3962cfa11126d4fb7a2ba04e",
   "zh\\my_insights\\open-autoglm-impact.md": "9f97bd6675e798f16b9b0a8aafa3d41c",
   "zh\\papers\\ask_llm_verify_first.md": "a826eb1a3111cde103c11e77fcfd5e37",
   "zh\\projects\\auto\\open_autoglm.md": "d5b99c1afaca75653c1324c70b9f444a",
@@ -626,7 +626,13 @@
   "zh/ai_programming/yc_vibecoding_guide.md": "0e7abbe1a7212a026a94e7b065e35068",
   "zh/ai_programming/vibe_coding.md": "993ea8de1193217d9f4af3e3d677e8f8",
   "zh/daily_ai/2025-12-13.md": "ccbf4995626289a2834d20131de9b35d",
-  "zh/celebrity_insights/Block CTO_Dhanji.md": "976c750ee372dab677f24dd9c67e5e37",
-  "zh/celebrity_insights/SamAltman/samaltman.md": "974e18ed27822fad16485b5ec76dea43",
-  "zh/daily_ai/2025-12-14.md": "e5bc91a4a566caef1081f4b64e76ec5e"
+  "zh\\ai_programming\\yc_vibecoding_guide.md": "44174575b4bac6fb227f6b132adaed2f",
+  "zh\\celebrity_insights\\Block CTO_Dhanji.md": "61e33e8fa3008149baffd9148d12b5dc",
+  "zh\\celebrity_insights\\SamAltman\\samaltman.md": "8f73be9c4aa195c0d45e1e42c0208f17",
+  "zh\\celebrity_insights\\SamAltman\\ten_years.md": "41ac960a578f939475d1cee8b315dad4",
+  "zh\\daily_ai\\2025-12-11.md": "f49cca1f62e4a39319a110a6c5669d84",
+  "zh\\daily_ai\\2025-12-12.md": "ae01cae516e7fe70d3ace663f6c0f5bd",
+  "zh\\daily_ai\\2025-12-13.md": "91812547ce904ffc15322d0e1fb99d08",
+  "zh/daily_ai/2025-12-14.md": "e5bc91a4a566caef1081f4b64e76ec5e",
+  "zh\\glm\\glm4.6v.md": "87626269e1c8b2fcaeb6aab8cb9671a6"
 }
