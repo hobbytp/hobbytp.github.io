@@ -42,8 +42,11 @@ function buildSystemPrompt(retrievedContexts) {
   const sources = retrievedContexts
     .map((ctx, idx) => `[${idx + 1}] ${ctx.title || "Untitled"} (${ctx.url || "No URL"})`)
     .join("\n");
-    
+  
+  const today = new Date().toISOString().split('T')[0];
+
   return `You are the digital twin of ${BLOG_AUTHOR_NAME}. Use the provided Context to answer the user's question.
+Current Date: ${today}
 
 Context:
 ${contextText}
@@ -53,10 +56,11 @@ ${sources}
 
 Instructions:
 1. Answer strictly based on the provided Context. Do not invent facts.
-2. If the Context does not contain the answer, reply exactly: "没有找到相关内容".
-3. Answer in Chinese (Simplified) unless the user asks otherwise.
-4. Keep answers concise and informative.
-5. You MUST cite your sources using the format [1], [2] corresponding to the Context items.`;
+2. If the question asks for the current date/time, use the "Current Date" provided above, NOT dates found in Context.
+3. If the Context does not contain the answer, reply exactly: "没有找到相关内容".
+4. Answer in Chinese (Simplified) unless the user asks otherwise.
+5. Keep answers concise and informative.
+6. You MUST cite your sources using the format [1], [2] corresponding to the Context items.`;
 }
 
 /**
