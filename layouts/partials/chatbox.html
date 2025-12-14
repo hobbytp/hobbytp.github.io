@@ -132,6 +132,7 @@
         try {
             const apiBase = "{{ with site.Params.chatApiBase }}{{ . }}{{ end }}";
             const endpoint = (apiBase && apiBase !== "") ? `${apiBase}/api/chat` : "/api/chat";
+            
             const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: {
@@ -142,23 +143,108 @@
                     history: chatHistory.slice(0, -1) // 不包含刚才发送的最新消息
                 })
             });
-            const contentType = response.headers.get('content-type') || '';
-            let data = null;
-            if (contentType.includes('application/json')) {
-                data = await response.json();
-            } else {
-                const text = await response.text();
-                console.error('API returned non-JSON:', text.slice(0, 200));
-            }
-            
+
             // 移除Loading
             loadingDiv.remove();
-            
-            if (response.ok && data && typeof data === 'object') {
-                await appendMessage('assistant', data.response || "抱歉，我没有理解你的问题。");
-            } else {
-                await appendMessage('assistant', '抱歉，服务暂不可用或未部署。');
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                await appendMessage('assistant', errorData.error || '抱歉，服务暂不可用。');
+                return;
             }
+
+            // 处理流式响应
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let aiMessageDiv = null;
+            let fullText = "";
+
+            // 获取引用信息 (从Header中)
+            const referencesHeader = response.headers.get("X-RAG-References");
+            let references = [];
+            if (referencesHeader) {
+                try {
+                    references = JSON.parse(referencesHeader);
+                } catch (e) {
+                    console.error("Failed to parse references:", e);
+                }
+            }
+
+            // 创建消息容器
+            aiMessageDiv = document.createElement('div');
+            aiMessageDiv.className = 'message assistant';
+            aiMessageDiv.innerHTML = '<div class="message-content"></div>'; // 初始为空
+            document.getElementById('chat-messages').appendChild(aiMessageDiv);
+            const contentDiv = aiMessageDiv.querySelector('.message-content');
+
+            let lastRenderTime = 0;
+            const RENDER_THROTTLE_MS = 50; // 50ms 节流
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                
+                const chunk = decoder.decode(value, { stream: true });
+                // Cloudflare Workers AI 流式格式: "data: {"response":"..."}\n\n"
+                const lines = chunk.split('\n');
+                for (const line of lines) {
+                    if (line.startsWith('data: ')) {
+                        try {
+                            const jsonStr = line.slice(6);
+                            if (jsonStr.trim() === '[DONE]') continue;
+                            const data = JSON.parse(jsonStr);
+                            if (data.response) {
+                                fullText += data.response;
+                                // 实时渲染 Markdown (简单处理: 累积文本后渲染，或打字机效果)
+                                // 为性能考虑，使用节流渲染
+                                const now = Date.now();
+                                if (now - lastRenderTime > RENDER_THROTTLE_MS) {
+                                    if (typeof marked !== 'undefined') {
+                                        contentDiv.innerHTML = marked.parse(fullText);
+                                    } else {
+                                        contentDiv.textContent = fullText;
+                                    }
+                                    scrollToBottom();
+                                    lastRenderTime = now;
+                                }
+                            }
+                        } catch (e) {
+                            // 忽略解析错误 (可能是分片截断)，但记录错误以便调试
+                            console.error('JSON parse error in streaming chunk:', e, 'Line:', line);
+                        }
+                    } else if (line.startsWith('event: error')) {
+                        // 处理后端发送的错误事件
+                        console.error('Stream error event received');
+                        // 后续data行会包含错误详情，将在上方逻辑中被解析或在循环外处理
+                        // 这里简单标记，如果需要更复杂的错误处理可以在此扩展
+                    }
+                }
+            }
+            
+            // 最终渲染并附加引用
+            if (fullText) {
+                let finalHtml = typeof marked !== 'undefined' ? marked.parse(fullText) : fullText;
+                if (references.length > 0) {
+                    finalHtml += '<div class="chat-references"><h5>参考来源:</h5><ul>';
+                    references.forEach((ref, idx) => {
+                        finalHtml += `<li><a href="${ref.url}" target="_blank">[${idx + 1}] ${ref.title}</a></li>`;
+                    });
+                    finalHtml += '</ul></div>';
+                }
+                contentDiv.innerHTML = finalHtml;
+                
+                // 更新历史
+                chatHistory.push({ role: 'assistant', content: fullText });
+                if (chatHistory.length > MAX_HISTORY) chatHistory = chatHistory.slice(-MAX_HISTORY);
+            } else {
+                // 如果没有流式内容（例如 "没有找到相关内容" 的JSON响应），尝试按普通JSON解析
+                // 注意：如果Header是text/event-stream，但Body是普通JSON，上面的流式读取可能已经消耗了Body
+                // 这里的逻辑主要处理异常情况。实际上如果chat.js返回了流，fullText应该有值。
+                if (fullText === "") {
+                     contentDiv.innerHTML = "未收到回复，请重试。";
+                }
+            }
+
         } catch (error) {
             loadingDiv.remove();
             console.error('Chat error:', error);

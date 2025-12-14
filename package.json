@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "marked": "^17.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^11.7.5"
   }
 }

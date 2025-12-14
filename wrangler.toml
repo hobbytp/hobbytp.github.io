@@ -6,5 +6,10 @@ compatibility_date = "2024-04-01"
 binding = "VECTOR_INDEX"
 index_name = "blog-index-m3"
 
+[[d1_databases]]
+binding = "DB"
+database_name = "blog-db"
+database_id = "8dbeac75-8c8f-496d-bfdb-c1cdae6d554b" # For local dev, this ID is required. In production, consider using environment variables if supported.
+
 [ai]
 binding = "AI"
