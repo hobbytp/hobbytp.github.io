@@ -21,6 +21,10 @@ const TOP_K_FINAL = 5;      // 最终上下文数量
 const MIN_SCORE_RERANK = 0.25; // Reranker分数阈值 (Sigmoid后通常在0-1之间, 0.25相对宽松但能过滤无关内容)
 const BLOG_AUTHOR_NAME = "Peng Tan";
 
+// 限流配置
+const RATE_LIMIT_WINDOW = 60; // 窗口期 (秒)
+const RATE_LIMIT_MAX_REQUESTS = 10; // 窗口期内最大请求数
+
 /**
  * 获取Vectorize绑定 (兼容多种命名)
  */
@@ -73,6 +77,7 @@ function truncateHistory(history, maxTurns = MAX_HISTORY_TURNS) {
 
 /**
  * 推断问题分类 (用于Metadata过滤)
+ * Hobby: TBD:有待优化？
  */
 function inferCategory(message) {
   const q = String(message || "");
@@ -85,10 +90,73 @@ function inferCategory(message) {
 }
 
 /**
+ * 检查并执行限流
+ * @param {Object} env Cloudflare环境对象
+ * @param {string} ip 客户端IP
+ * @returns {Promise<boolean>} 是否允许请求
+ */
+async function checkRateLimit(env, ip) {
+  // 如果没有绑定DB，则跳过限流（开发环境或未配置）
+  if (!env.DB) return true;
+
+  try {
+    const now = Math.floor(Date.now() / 1000);
+    const windowStart = now - RATE_LIMIT_WINDOW;
+
+    // 1. 清理过期记录 (可选，或依赖定期清理任务)
+    // await env.DB.prepare("DELETE FROM rate_limits WHERE last_reset < ?").bind(windowStart).run();
+
+    // 2. 获取当前IP的记录
+    const record = await env.DB.prepare("SELECT count, last_reset FROM rate_limits WHERE ip = ?").bind(ip).first();
+
+    if (record) {
+      if (record.last_reset < windowStart) {
+        // 窗口已过，重置计数
+        await env.DB.prepare("UPDATE rate_limits SET count = 1, last_reset = ? WHERE ip = ?").bind(now, ip).run();
+        return true;
+      } else {
+        // 在窗口内
+        if (record.count >= RATE_LIMIT_MAX_REQUESTS) {
+          return false; // 超限
+        }
+        // 增加计数
+        await env.DB.prepare("UPDATE rate_limits SET count = count + 1 WHERE ip = ?").bind(ip).run();
+        return true;
+      }
+    } else {
+      // 新IP，插入记录
+      await env.DB.prepare("INSERT INTO rate_limits (ip, count, last_reset) VALUES (?, 1, ?)").bind(ip, now).run();
+      return true;
+    }
+  } catch (error) {
+    console.error("Rate limit check failed:", error);
+    // 故障开放：如果数据库出错，允许请求通过，避免阻断服务
+    return true;
+  }
+}
+
+/**
  * 处理POST /api/chat请求
  */
 export async function onRequestPost(context) {
   const { request, env } = context;
+  
+  // 0. 限流检查
+  const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
+  const allowed = await checkRateLimit(env, clientIP);
+  
+  if (!allowed) {
+    return new Response(JSON.stringify({ error: "请求过于频繁，请稍后再试" }), {
+      status: 429,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Retry-After": String(RATE_LIMIT_WINDOW)
+      }
+    });
+  }
   
   try {
     // 1. 解析请求体
@@ -270,7 +338,7 @@ export async function onRequestPost(context) {
       });
     }
     
-    // 7. LLM 生成
+    // 7. LLM 生成 (流式响应)
     const systemPrompt = buildSystemPrompt(finalContexts);
     const messages = [
       { role: "system", content: systemPrompt },
@@ -278,13 +346,79 @@ export async function onRequestPost(context) {
       { role: "user", content: message }
     ];
     
-    let aiResponse = "";
     try {
-      const llmResponse = await env.AI.run(LLM_MODEL, { messages });
-      if (typeof llmResponse === 'string') aiResponse = llmResponse;
-      else if (llmResponse.response) aiResponse = llmResponse.response;
-      else if (llmResponse.choices) aiResponse = llmResponse.choices[0].message?.content || "";
-      else throw new Error("LLM响应格式错误");
+      const stream = await env.AI.run(LLM_MODEL, { 
+        messages,
+        stream: true // 开启流式模式
+      });
+
+      // 使用 TransformStream 拦截流数据以记录日志
+      const { readable, writable } = new TransformStream();
+      const writer = writable.getWriter();
+      const encoder = new TextEncoder();
+      const decoder = new TextDecoder();
+      
+      let fullResponse = "";
+
+      // 异步处理流
+      (async () => {
+        const reader = stream.getReader();
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            
+            // 写入到响应流
+            await writer.write(value);
+
+            // 解析累积文本 (用于日志)
+            const chunk = decoder.decode(value, { stream: true });
+            const lines = chunk.split('\n');
+            for (const line of lines) {
+              if (line.startsWith('data: ')) {
+                const jsonStr = line.slice(6);
+                if (jsonStr.trim() === '[DONE]') continue;
+                try {
+                  const data = JSON.parse(jsonStr);
+                  if (data.response) fullResponse += data.response;
+                } catch (e) { /* ignore parse error */ }
+              }
+            }
+          }
+        } catch (e) {
+          console.error("Stream processing error:", e);
+        } finally {
+          await writer.close();
+          
+          // 异步写入日志到 D1 (如果有 DB 绑定)
+          if (env.DB && fullResponse) {
+             try {
+               // 使用 context.waitUntil 确保在响应结束后继续执行
+               context.waitUntil(
+                 env.DB.prepare("INSERT INTO chat_logs (ip, user_message, ai_response, created_at) VALUES (?, ?, ?, ?)")
+                   .bind(clientIP, message, fullResponse, Math.floor(Date.now() / 1000))
+                   .run()
+                   .catch(err => console.error("Failed to log chat:", err))
+               );
+             } catch (err) {
+               console.error("WaitUntil error:", err);
+             }
+          }
+        }
+      })();
+      
+      return new Response(readable, {
+        headers: {
+          "Content-Type": "text/event-stream",
+          "Cache-Control": "no-cache",
+          "Connection": "keep-alive",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+          // 自定义Header传递引用信息，因为SSE流主要传输文本
+          "X-RAG-References": JSON.stringify(finalContexts.map(c => ({ title: c.title, url: c.url })))
+        }
+      });
     } catch (llmError) {
       console.error("LLM Error:", llmError);
       return new Response(JSON.stringify({ error: "LLM服务暂时不可用" }), { 
@@ -297,20 +431,6 @@ export async function onRequestPost(context) {
         }
       });
     }
-    
-    // 8. 返回结果
-    return new Response(JSON.stringify({
-      response: aiResponse,
-      references: finalContexts.map(c => ({ title: c.title, url: c.url }))
-    }), {
-      status: 200,
-      headers: { 
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type"
-      }
-    });
     
   } catch (error) {
     console.error("Server Error:", error);
