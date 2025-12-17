@@ -1,13 +1,16 @@
+---
+title: "Google NotebookLM使用心得"
+date: "2025-10-21T23:10:00+08:00"
+lastmod: "2025-12-17T18:10:00+08:00"
+draft: false
+tags: ["AI", "Google", "NotebookLM"]
+categories: ["ai_tools","big_companies"]
+description: "Google NotebookLM 是Google开发的一种用于处理和生成笔记本内容的基于大型语言模型的笔记类（知识库类）网页应用。它能够理解和生成结构化的笔记本数据，支持代码、文本和图形元素的混合处理。本文主要分享我的个人使用心得。"
+---
 
-## Google NotebookLM 模型
+Google NotebookLM 是Google开发的一种用于处理和生成笔记本内容的基于大型语言模型的笔记类（知识库类）网页应用。它能够理解和生成结构化的笔记本数据，支持代码、文本和图形元素的混合处理。本文主要分享我的个人使用心得。
 
-
-
-Google NotebookLM 模型是Google开发的一种用于处理和生成笔记本内容的基于大型语言模型的笔记类（知识库类）网页应用。它能够理解和生成结构化的笔记本数据，支持代码、文本和图形元素的混合处理。
-
-
-
-## 我的使用流程
+## 我的使用方法
 
 ### 论文阅读
 
@@ -214,4 +217,36 @@ You are a highly capable research assistant and tutor. Create a detailed study g
 ```
 为了帮助新手理解自适应语言模型（SEAL）的训练过程，请用简洁明了的语言描述其核心的双循环机制。请说明外部的强化学习循环（RL外循环）和内部的更新循环（内循环）各自扮演的角色，以及它们如何协同工作，让模型学会生成有效的“自我编辑”指令来提升自身性能。
 ```
+
+
+## 生成PPT演示
+缺省生成的ppt已经足够专业了，但是如想要在ppt里面添加一下生动的导读，引导观众关注重点，该怎么办？
+
+### NotebookLM 实战技巧：让 AI 角色根据上下文“接管”你的 PPT
+
+**核心功能**：利用 NotebookLM 的多模态理解能力，在生成幻灯片时，不仅自动插入指定角色，还能根据每页幻灯片的内容（如数据分析、问题提出、解决方案）自动调整角色的姿态和表情。
+
+#### 🛠️ 复现步骤
+
+**Step 1：建立“角色池”**
+在 NotebookLM 笔记本中，上传一张包含角色形象的图片（PNG/JPG）。
+*   *建议：可以是公司吉祥物、个人头像或风格统一的 IP 插画。*
+*   *注意：记住上传时的文件名（例如 `avatar_v1.png`），后续 Prompt 需要引用。*
+
+**Step 2：注入 Prompt**
+在点击生成幻灯片（Slides）时，在自定义提示词（Custom Prompt）区域输入以下指令。为了获得最佳效果，建议使用英文 Prompt：
+
+```markdown
+Make the character from the uploaded image '[角色文件名.png]' appear in each slide. 
+Have them serve as the navigator (guide) for the presentation. 
+Be sure to accurately reflect the character's characteristics and adjust their pose/expression to match the context of each slide.
+```
+
+**Step 3：自动化生成**
+系统会自动执行以下逻辑：
+1.  **语义分析**：理解每一页 PPT 的核心意图（是展示数据、提出警告还是庆祝结果）。
+2.  **图像重绘/适配**：
+    *   *数据页* → 角色做出“指引图表”的手势。
+    *   *问题页* → 角色呈现“思考”或“严肃”表情。
+    *   *总结页* → 角色呈现“强调”或“欢呼”姿态。
 
