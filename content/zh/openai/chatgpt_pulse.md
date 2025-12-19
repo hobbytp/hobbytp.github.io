@@ -7,4 +7,4 @@ categories: ["products"]
 description: "从被冻问答到主动助理-聊天AI的范式转移-拆解ChatGPT Pulse"
 ---
 
-{{< pdf src="./pdf/ChatGPT_Pulse.pdf" >}}
+{{< pdf src="/pdf/ChatGPT_Pulse.pdf" >}}
