@@ -1129,3 +1129,161 @@ body.has-sidebar > .header {
 .ai-generated-cover.category-ai_tools { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important; }
 .ai-generated-cover.category-mas { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important; }
 .ai-generated-cover.category-training { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%) !important; }
+
+/* ===== Shortcode Styles ===== */
+
+/* Metric Card Styles */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: var(--color-bg);
+  border: 1px solid var(--article-border);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.metric-value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.025em;
+}
+
+.metric-sub {
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  line-height: 1.4;
+}
+
+/* Alert Box Styles */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  border-left: 3.556px solid transparent;
+}
+
+.alert-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.125rem;
+}
+
+.alert-content {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.alert-content strong {
+  font-weight: 600;
+}
+
+/* Alert type variants */
+.alert-info {
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.05), rgba(0, 0, 0, 0)) 0% 0%;
+  border-left-color: #0284c7;
+}
+
+.alert-info .alert-icon {
+  color: #0284c7;
+}
+
+.alert-success {
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.05), rgba(0, 0, 0, 0)) 0% 0%;
+  border-left-color: #16a34a;
+}
+
+.alert-success .alert-icon {
+  color: #16a34a;
+}
+
+.alert-warning {
+  background: linear-gradient(90deg, rgba(245, 158, 11, 0.05), rgba(0, 0, 0, 0)) 0% 0%;
+  border-left-color: #d97706;
+}
+
+.alert-warning .alert-icon {
+  color: #d97706;
+}
+
+.alert-danger {
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.05), rgba(0, 0, 0, 0)) 0% 0%;
+  border-left-color: #dc2626;
+}
+
+.alert-danger .alert-icon {
+  color: #dc2626;
+}
+
+/* PPT pages (image-based slides) */
+.ppt-pages {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ppt-page {
+  margin: 0;
+}
+
+.ppt-page-link {
+  display: block;
+}
+
+.ppt-page-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--article-surface);
+  border: 1px solid var(--article-border);
+  border-radius: var(--radius, 8px);
+}
+
+.ppt-page-caption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.ppt-pages-empty {
+  padding: 1rem;
+  border: 1px dashed var(--article-border);
+  border-radius: var(--radius, 8px);
+  color: var(--color-secondary);
+  background: var(--article-surface);
+}

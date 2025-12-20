@@ -34,13 +34,6 @@ weight = 5
 icon = "star"
 
 [[main]]
-name = "大厂产品线"
-url = "/categories/big_companies"
-weight = 6
-[main.params]
-icon = "briefcase"
-
-[[main]]
 name = "论文解读"
 url = "/categories/papers"
 weight = 7
@@ -102,6 +95,20 @@ url = "/categories/ai_tools"
 weight = 15
 [main.params]
 icon = "tool"
+
+[[main]]
+name = "AI产品"
+url = "/categories/products/"
+weight = 15.1
+[main.params]
+icon = "package"
+
+[[main]]
+name = "大厂产品线"
+url = "/categories/big_companies"
+weight = 15.2
+[main.params]
+icon = "briefcase"
 
 [[main]]
 name = "技术栈"

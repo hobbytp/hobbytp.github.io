@@ -25,6 +25,13 @@ weight = 3
 icon = "category"
 
 [[main]]
+name = "📦 Products"
+url = "/categories/products/"
+weight = 4
+[main.params]
+icon = "package"
+
+[[main]]
 name = "🔍 Search"
 url = "/search/"
 weight = 6
