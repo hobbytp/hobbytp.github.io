@@ -7,12 +7,12 @@ AI Cover Image Generator for Hugo Blog
 
 import os
 import hashlib
-import requests
+import requests  # type: ignore[import-untyped]
 import json
 import argparse
 import traceback
 from pathlib import Path
-from typing import Optional, Dict
+from typing import Optional, Dict, cast
 from dataclasses import dataclass
 import logging
 import time
@@ -339,6 +339,7 @@ First, identify which category the user's article belongs to, then select a styl
                         text = text.rsplit('```', 1)[0]
                     logger.info(f"Gemini generated prompt: {text[:200]}...")
                     return text.strip()
+                return None
             else:
                 logger.error(f"Gemini API error: {response.status_code} - {response.text}")
                 return None
@@ -1199,7 +1200,7 @@ First, identify which category the user's article belongs to, then select a styl
                     # 分离 header 和 data
                     header, encoded = url.split(",", 1)
                     image_data = base64.b64decode(encoded)
-                    image = Image.open(BytesIO(image_data))
+                    image = cast(Image.Image, Image.open(BytesIO(image_data)))
                     logger.info(f"Decoded base64 image: {image.size}")
                 except Exception as e:
                     logger.error(f"Failed to decode base64 image: {e}")
@@ -1208,7 +1209,7 @@ First, identify which category the user's article belongs to, then select a styl
                 # HTTP URL - 下载图片
                 response = requests.get(url, timeout=30)
                 if response.status_code == 200:
-                    image = Image.open(BytesIO(response.content))
+                    image = cast(Image.Image, Image.open(BytesIO(response.content)))
                 else:
                     logger.error(f"Image download error: {response.status_code}")
                     return False
@@ -1375,8 +1376,13 @@ First, identify which category the user's article belongs to, then select a styl
                     top = max(0, (src_h - new_h) // 2)
                     img = img.crop((0, top, src_w, top + new_h))
 
-                # 缩放（兼容 Pillow 新旧版本）
-                resample = getattr(Image, "Resampling", Image).LANCZOS
+                # 缩放（兼容 Pillow 新旧版本 & 类型桩差异）
+                resampling = getattr(Image, "Resampling", None)
+                resample = getattr(resampling, "LANCZOS", None) if resampling else None
+                if resample is None:
+                    resample = getattr(Image, "LANCZOS", None)
+                if resample is None:
+                    resample = getattr(Image, "BICUBIC")
                 img = img.resize((target_w, target_h), resample)
                 if img.mode == "RGBA":
                     # WebP 可存 RGBA，但为了兼容性/体积，这里统一转 RGB
@@ -1472,7 +1478,7 @@ First, identify which category the user's article belongs to, then select a styl
 class HugoArticleUpdater:
     """Hugo文章更新器"""
 
-    def __init__(self, content_dir: str = "content", generator: CoverImageGenerator = None):
+    def __init__(self, content_dir: str = "content", generator: Optional[CoverImageGenerator] = None):
         self.content_dir = Path(content_dir)
         self.generator = generator
 
@@ -1675,6 +1681,8 @@ class HugoArticleUpdater:
 
                 front_matter = content[first_line_end + 1:front_matter_end]
                 return 'ai_cover:' in front_matter
+
+            return False
 
         except Exception as e:
             logger.warning(f"Error checking AI cover for {article_path}: {e}")
