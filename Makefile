@@ -1,4 +1,4 @@
-.PHONY: dev build clean stop optimize-images analyze-performance build-measure analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers test-covers generate-covers-for-directory ingest-data help
+.PHONY: dev build clean stop optimize-images analyze-performance build-measure analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers generate-cover-from-photo test-covers generate-covers-for-directory ingest-data help
 
 # Shell 设置
 # 让每个配方(target)的所有命令在同一个 shell 中执行，确保 .env 中的导出变量可在后续命令中生效
@@ -220,6 +220,20 @@ generate-ai-covers:
 	    echo "  TEXT2IMAGE_PROVIDER=openai"; \
 	  fi'
 
+# 用现成照片生成封面（无需 AI API）
+generate-cover-from-photo:
+	@bash -lc '\
+	  if [ -z "$(FILE)" ] || [ -z "$(PHOTO)" ]; then \
+	    echo "❌ 用法: make generate-cover-from-photo FILE=content/zh/xxx.md PHOTO=path/to/photo.jpg [FORCE=true]"; \
+	    exit 1; \
+	  fi; \
+	  FORCE_FLAG=""; \
+	  if [ "$(FORCE)" = "true" ] || [ "$(FORCE)" = "1" ]; then FORCE_FLAG="--force"; fi; \
+	  echo "🖼️  Using existing photo to generate cover..."; \
+	  $(PYTHON_CMD) scripts/ai_cover_generator.py --specific-file "$(FILE)" --photo "$(PHOTO)" $$FORCE_FLAG; \
+	  echo "✅ Photo cover generation completed!"; \
+	'
+
 # 测试封面生成效果
 test-covers:
 	@echo "🧪 测试封面生成效果..."
@@ -319,6 +333,7 @@ help:
 	@echo "Cover Images:"
 	@echo "  make generate-covers    Generate CSS art covers (No API required)"
 	@echo "  make generate-ai-covers Generate real images using AI API"
+	@echo "  make generate-cover-from-photo FILE=path PHOTO=path [FORCE=true]  Use an existing photo as cover"
 	@echo "  make test-covers        Test cover generation"
 	@echo "  make generate-covers-for-directory DIRECTORY=dir [FORCE=true DRY_RUN=true NO_RECURSIVE=true]  Generate AI covers for directory"
 	@echo ""

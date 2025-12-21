@@ -18,6 +18,7 @@ import logging
 import time
 from datetime import datetime
 from PIL import Image
+from PIL import ImageOps
 from io import BytesIO
 
 # 加载.env文件中的环境变量
@@ -1320,6 +1321,81 @@ First, identify which category the user's article belongs to, then select a styl
         logger.info(f"Generated cover image: {relative_path}")
         return relative_path
 
+    def generate_cover_from_photo(self, photo_path: Path, output_filename: str, force: bool = False) -> Optional[str]:
+        """使用现成图片生成博客封面。
+
+        - 自动按 16:9 居中裁切
+        - 缩放到 config.width x config.height
+        - 输出为 WebP 到 config.output_dir
+
+        Returns:
+            图片URL路径（相对于static目录），例如 /images/generated-covers/xxx.webp
+        """
+        try:
+            photo_path = Path(photo_path)
+            if not photo_path.exists() or not photo_path.is_file():
+                logger.error(f"Photo not found: {photo_path}")
+                return None
+
+            output_filename = output_filename.strip()
+            if not output_filename:
+                logger.error("output_filename is empty")
+                return None
+            if not output_filename.lower().endswith(".webp"):
+                output_filename = f"{output_filename}.webp"
+
+            filepath = Path(self.config.output_dir) / output_filename
+            if filepath.exists() and not force:
+                web_friendly_path = str(filepath).replace("\\", "/")
+                return web_friendly_path.replace("static/", "/", 1)
+
+            with Image.open(photo_path) as img:
+                img = ImageOps.exif_transpose(img)
+                if img.mode not in ("RGB", "RGBA"):
+                    img = img.convert("RGB")
+
+                target_w = int(self.config.width)
+                target_h = int(self.config.height)
+                target_ratio = target_w / target_h
+
+                src_w, src_h = img.size
+                if src_h == 0:
+                    logger.error(f"Invalid image size: {img.size}")
+                    return None
+
+                src_ratio = src_w / src_h
+
+                # 居中裁切到目标比例
+                if src_ratio > target_ratio:
+                    new_w = int(src_h * target_ratio)
+                    left = max(0, (src_w - new_w) // 2)
+                    img = img.crop((left, 0, left + new_w, src_h))
+                else:
+                    new_h = int(src_w / target_ratio)
+                    top = max(0, (src_h - new_h) // 2)
+                    img = img.crop((0, top, src_w, top + new_h))
+
+                # 缩放（兼容 Pillow 新旧版本）
+                resample = getattr(Image, "Resampling", Image).LANCZOS
+                img = img.resize((target_w, target_h), resample)
+                if img.mode == "RGBA":
+                    # WebP 可存 RGBA，但为了兼容性/体积，这里统一转 RGB
+                    background = Image.new("RGB", img.size, (255, 255, 255))
+                    background.paste(img, mask=img.split()[-1])
+                    img = background
+
+                filepath.parent.mkdir(parents=True, exist_ok=True)
+                img.save(filepath, "WEBP", quality=85, method=6)
+
+            web_friendly_path = str(filepath).replace("\\", "/")
+            relative_path = web_friendly_path.replace("static/", "/", 1)
+            logger.info(f"Generated photo-based cover: {relative_path}")
+            return relative_path
+
+        except Exception as e:
+            logger.error(f"Photo cover generation error: {e}")
+            return None
+
     def delete_cover(self, article_path: Path) -> bool:
         """删除文章的AI封面图片和缓存"""
         try:
@@ -1441,7 +1517,7 @@ class HugoArticleUpdater:
 
         return articles
 
-    def update_article_with_cover(self, article_path: Path, image_path: str):
+    def update_article_with_cover(self, article_path: Path, image_path: str, *, ai_generated: bool = True, write_ai_cover: bool = True):
         """为文章添加封面图片"""
         try:
             with open(article_path, 'r', encoding='utf-8') as f:
@@ -1469,18 +1545,25 @@ class HugoArticleUpdater:
             category = ""
 
             for line in front_matter.split('\n'):
-                if line.startswith('title:'):
-                    title = line.split(':', 1)[1].strip().strip('"\'')
-                elif line.startswith('description:'):
-                    description = line.split(':', 1)[1].strip().strip('"\'')
-                elif line.startswith('categories:'):
+                stripped = line.strip()
+                if stripped.startswith('title:'):
+                    title = stripped.split(':', 1)[1].strip().strip('"\'')
+                elif stripped.startswith('description:'):
+                    description = stripped.split(':', 1)[1].strip().strip('"\'')
+                elif stripped.startswith('categories:'):
                     # 简单处理，取第一个分类
-                    if '[' in line:
-                        category = line.split('[', 1)[1].split(']', 1)[0].split(',')[0].strip().strip('"\'')
+                    if '[' in stripped:
+                        category = stripped.split('[', 1)[1].split(']', 1)[0].split(',')[0].strip().strip('"\'')
 
-            if not title or not description:
-                logger.warning(f"Missing title or description in {article_path}")
-                return False
+            # AI 生成模式保持原有严格要求（需要 title + description）
+            if ai_generated:
+                if not title or not description:
+                    logger.warning(f"Missing title or description in {article_path}")
+                    return False
+            else:
+                # 照片封面模式：允许没有 description；title 缺失则回退到文件名
+                if not title:
+                    title = article_path.stem
 
             # 转换Windows路径为Web路径
             web_image_path = image_path.replace('\\', '/')
@@ -1512,13 +1595,18 @@ class HugoArticleUpdater:
             # 重建front matter
             clean_front_matter = '\n'.join(new_lines).strip()
 
-            # 在front matter中添加AI生成图片信息
-            cover_image_block = f"""
-ai_cover: "{web_image_path}"
-cover:
-  image: "{web_image_path}"
-  alt: "{title}"
-  ai_generated: true"""
+            # 在front matter中添加封面图片信息
+            cover_image_block_lines = []
+            if write_ai_cover:
+                cover_image_block_lines.append(f'ai_cover: "{web_image_path}"')
+            cover_image_block_lines.append("cover:")
+            cover_image_block_lines.append(f'  image: "{web_image_path}"')
+            cover_image_block_lines.append(f'  alt: "{title}"')
+            if ai_generated:
+                # 保持原有行为：在 cover 下标记 AI 生成
+                cover_image_block_lines.append("  ai_generated: true")
+
+            cover_image_block = "\n" + "\n".join(cover_image_block_lines)
 
             updated_front_matter = f"{clean_front_matter}\n{cover_image_block}\n"
             updated_content = f"---\n{updated_front_matter}---{article_content}"
@@ -1605,7 +1693,41 @@ def main():
     parser.add_argument('--category', type=str, help='Filter by category (use with --delete)')
     parser.add_argument('--use-llm-prompt', action='store_true', help='Use LLM (Gemini/OpenAI) to generate image prompts from full article content')
     parser.add_argument('--llm-provider', choices=['gemini', 'openai'], default='gemini', help='LLM provider for prompt generation')
+    parser.add_argument('--photo', type=str, help='Use an existing photo to generate cover (requires --specific-file to be a single markdown file)')
     args = parser.parse_args()
+
+    # 现成照片生成封面模式（不依赖任何 AI API Key）
+    if args.photo:
+        if not args.specific_file:
+            logger.error("--photo requires --specific-file (a single markdown file)")
+            return
+
+        article_path = Path(args.specific_file)
+        if not article_path.exists() or not article_path.is_file() or article_path.suffix.lower() != ".md":
+            logger.error(f"--specific-file must be a markdown file: {article_path}")
+            return
+
+        photo_path = Path(args.photo)
+        if not photo_path.exists() or not photo_path.is_file():
+            logger.error(f"Photo not found: {photo_path}")
+            return
+
+        # 使用与 AI 封面一致的输出目录，确保站点可直接引用
+        config = ImageGenConfig(output_dir="static/images/generated-covers")
+        generator = CoverImageGenerator(config)
+        updater = HugoArticleUpdater(generator=generator)
+
+        output_filename = f"{article_path.stem}.webp"
+        image_path = generator.generate_cover_from_photo(photo_path, output_filename, force=args.force)
+        if not image_path:
+            logger.error("Failed to generate cover from photo")
+            return
+
+        if updater.update_article_with_cover(article_path, image_path, ai_generated=False, write_ai_cover=False):
+            logger.info(f"✅ Updated cover from photo for {article_path}")
+        else:
+            logger.error(f"❌ Failed to update article with photo cover: {article_path}")
+        return
 
     # 处理删除模式
     if args.delete:
