@@ -1,0 +1,24 @@
+{{- /*
+  警告/提示框 Shortcode
+  用法: {{< alert type="info" >}}内容{{< /alert >}}
+  支持类型: info, success, warning, danger
+*/ -}}
+
+{{- $type := .Get "type" | default "info" -}}
+{{- $icon := "fa-circle-info" -}}
+{{- if eq $type "success" -}}
+  {{- $icon = "fa-circle-check" -}}
+{{- else if eq $type "warning" -}}
+  {{- $icon = "fa-triangle-exclamation" -}}
+{{- else if eq $type "danger" -}}
+  {{- $icon = "fa-circle-xmark" -}}
+{{- end -}}
+
+<div class="alert alert-{{ $type }}">
+  <div class="alert-icon">
+    <i class="fa-solid {{ $icon }}"></i>
+  </div>
+  <div class="alert-content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

@@ -1,0 +1,12 @@
+{{- /*
+  网格布局 Shortcode - 用于展示卡片网格
+  用法: 
+  {{< metric-grid >}}
+    {{< metric-card label="标签" value="值" sub="子文本" >}}
+    ...
+  {{< /metric-grid >}}
+*/ -}}
+
+<div class="metric-grid">
+  {{ .Inner | markdownify }}
+</div>

@@ -1,0 +1,10 @@
+{{- /*
+  指标卡片 Shortcode - 用于展示模型参数等指标
+  用法: {{< metric-card label="MiMo-V2-Flash (Agent)" value="309B" sub="总参数量 / 激活15B" >}}
+*/ -}}
+
+<div class="metric-card">
+  <div class="metric-label">{{ .Get "label" }}</div>
+  <div class="metric-value">{{ .Get "value" }}</div>
+  <div class="metric-sub">{{ .Get "sub" }}</div>
+</div>
