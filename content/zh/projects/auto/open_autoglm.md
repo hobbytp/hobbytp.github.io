@@ -1,5 +1,7 @@
 ---
 title: Open-AutoGLM
+wordCount: 1457
+readingTime: 4
 ---
 
 

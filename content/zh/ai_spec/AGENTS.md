@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "AGENTS.md", "coding agent"]
 categories: ["ai_spec"]
 description: "**AGENTS.md** 是由 OpenAI 开发的一种简单、开放的格式，用于指导编码代理（AI Coding Agent（如 GitHub Copilot、Cursor、Windsurf 等））看的“操作手册”。它由 OpenAI 开发并贡献给 Agentic AI Foundation (AAIF)。"
+wordCount: 3017
+readingTime: 8
 ---
 
 **AGENTS.md** 是由 OpenAI 开发的一种简单、开放的格式，用于指导编码代理（AI Coding Agent（如 GitHub Copilot、Cursor、Windsurf 等））看的“操作手册”。已被超过[6万个开源项目采用](https://github.com/search?q=path%3AAGENTS.md+NOT+is%3Afork+NOT+is%3Aarchived&type=code)。将AGENTS.md视为代理的README：一个专门、可预测的位置，用于提供上下文和指令，帮助AI编码代理处理您的项目。

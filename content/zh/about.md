@@ -6,7 +6,7 @@ type: "about"
 description: "谭鹏(Peng Tan) - AI 领域独立研究者与技术博主，专注于大语言模型、多代理系统、上下文工程、Vibe Coding 及 AI 开源生态建设，致力于将前沿技术转化为可落地的工程实践"
 author: "Peng Tan"
 wordCount: 770
-readingTime: 4
+readingTime: 2
 
 ai_cover: "static/images/generated-covers/e8287b7dd66ed751414167457b19e124.webp"
 cover:

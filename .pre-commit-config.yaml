@@ -1,0 +1,11 @@
+repos:
+  - repo: local
+    hooks:
+      - id: update-word-count
+        name: Update wordCount/readingTime
+        entry: python scripts/update_word_count.py --update
+        language: python
+        additional_dependencies:
+          - PyYAML>=6.0
+        files: ^content/.*\.md$
+        pass_filenames: true

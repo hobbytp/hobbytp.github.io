@@ -2,7 +2,7 @@
 title: "产品介绍"
 description: "评测主流AI产品，分析其技术特点"
 wordCount: 287
-readingTime: 2
+readingTime: 1
 ---
 
 这里收录了国内外各大厂的AI产品线相关文章，目的在于洞察各大厂在AI领域的布局。

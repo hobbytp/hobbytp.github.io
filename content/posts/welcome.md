@@ -5,7 +5,7 @@ description: "这是一个专注于AI领域的技术博客，包含论文解读�
 categories: ["公告"]
 tags: ["AI", "博客", "学习"]
 wordCount: 265
-readingTime: 2
+readingTime: 1
 
 ai_cover: "/images/generated-covers/97db60b4a4648b6136a485c0bb1d2cdd.webp"
 cover:

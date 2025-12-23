@@ -17,6 +17,7 @@ python image_optimizer.py [选项]
 --quality QUALITY  图片质量（默认: 85）
 --max-width WIDTH  最大宽度（默认: 1920）
 --sizes SIZES      生成的尺寸（默认: 320,640,960,1280,1920）
+--file FILE        优化单个图片文件并输出Markdown
 --backup          保留原始文件备份
 --dry-run         仅显示将要执行的操作，不实际执行
 """
@@ -113,9 +114,10 @@ class ImageOptimizer:
 
         return output_path
 
-    def optimize_image(self, input_path: Path, dry_run: bool = False) -> List[Tuple[str, str, int]]:
+    def optimize_image(self, input_path: Path, dry_run: bool = False) -> List[Tuple[str, str, int, int]]:
         """优化单个图片"""
         results = []
+        original_file_size = input_path.stat().st_size
 
         try:
             # 打开图片
@@ -155,7 +157,7 @@ class ImageOptimizer:
 
                     if dry_run:
                         logger.info(f"将生成: {output_path_webp} ({target_width}x{target_height})")
-                        results.append((str(input_path), str(output_path_webp), 0))
+                        results.append((str(input_path), str(output_path_webp), 0, original_file_size))
                         continue
 
                     # 保存为WebP
@@ -168,7 +170,7 @@ class ImageOptimizer:
 
                     # 获取文件大小
                     file_size = output_path_webp.stat().st_size
-                    results.append((str(input_path), str(output_path_webp), file_size))
+                    results.append((str(input_path), str(output_path_webp), file_size, original_file_size))
 
                     logger.info(f"生成: {output_path_webp} ({target_width}x{target_height}, {file_size} bytes)")
 
@@ -181,11 +183,11 @@ class ImageOptimizer:
 
         except Exception as e:
             logger.error(f"处理图片失败 {input_path}: {e}")
-            results.append((str(input_path), f"ERROR: {e}", 0))
+            results.append((str(input_path), f"ERROR: {e}", 0, 0))
 
         return results
 
-    def scan_and_optimize(self, dry_run: bool = False) -> List[Tuple[str, str, int]]:
+    def scan_and_optimize(self, dry_run: bool = False) -> List[Tuple[str, str, int, int]]:
         """扫描并优化所有图片"""
         all_files = list(self.input_dir.rglob('*'))
         image_files = [f for f in all_files if self.should_process_file(f)]
@@ -208,7 +210,7 @@ class ImageOptimizer:
                     results.extend(file_results)
                 except Exception as e:
                     logger.error(f"处理失败 {img_file}: {e}")
-                    results.append((str(img_file), f"ERROR: {e}", 0))
+                    results.append((str(img_file), f"ERROR: {e}", 0, 0))
 
         return results
 
@@ -276,6 +278,11 @@ def main():
         default=[320, 640, 960, 1280, 1920],
         help='生成尺寸列表 (默认: 320 640 960 1280 1920)'
     )
+    
+    parser.add_argument(
+        '--file',
+        help='指定单个图片文件进行优化'
+    )
 
     parser.add_argument(
         '--no-backup',
@@ -315,16 +322,52 @@ def main():
         return
 
     # 执行优化
-    logger.info("开始图片优化...")
-    results = optimizer.scan_and_optimize(dry_run=args.dry_run)
+    if args.file:
+        file_path = Path(args.file)
+        if not file_path.exists():
+            logger.error(f"文件不存在: {file_path}")
+            sys.exit(1)
+        
+        logger.info(f"正在优化单个文件: {file_path}")
+        results = optimizer.optimize_image(file_path, dry_run=args.dry_run)
+        
+        # 如果优化成功，输出Markdown片段
+        for orig, optimized, opt_size, orig_size in results:
+            if not optimized.startswith("ERROR"):
+                rel_optimized = Path(optimized).relative_to(Path('../../static'))
+                # 转换路径分隔符为 forward slash 供 URL 使用
+                markdown_path = str(rel_optimized).replace('\\', '/')
+                if not markdown_path.startswith('/'):
+                    markdown_path = '/' + markdown_path
+                print("\n" + "="*40)
+                print("✨ 优化成功！请复制以下 Markdown 插入博客：")
+                print("="*40)
+                print(f"![{file_path.stem}]({markdown_path})")
+                print("="*40 + "\n")
+    else:
+        logger.info("开始批量图片优化...")
+        results = optimizer.scan_and_optimize(dry_run=args.dry_run)
 
     # 统计结果
     success_count = len([r for r in results if not r[1].startswith("ERROR")])
     error_count = len([r for r in results if r[1].startswith("ERROR")])
-    total_size_saved = sum(r[2] for r in results if not r[1].startswith("ERROR"))
+    # 计算节省的空间：原始大小之和（去重，因为一个文件可能生成多个尺寸）- 优化后大小之和
+    # 在 optimize-one 场景下，通常只有一个原始文件
+    processed_orig_files = {}
+    total_optimized_size = 0
+    for orig, optimized, opt_size, orig_size in results:
+        if not optimized.startswith("ERROR"):
+            processed_orig_files[orig] = orig_size
+            total_optimized_size += opt_size
+    
+    total_original_size = sum(processed_orig_files.values())
+    total_size_saved = total_original_size - total_optimized_size
 
     logger.info(f"优化完成: {success_count} 成功, {error_count} 失败")
-    logger.info(f"总计节省空间: {total_size_saved / 1024:.1f} KB")
+    if total_size_saved > 0:
+        logger.info(f"总计节省空间: {total_size_saved / 1024:.1f} KB")
+    else:
+        logger.info(f"总计生成大小: {total_optimized_size / 1024:.1f} KB (原始大小: {total_original_size / 1024:.1f} KB)")
 
     if error_count > 0:
         logger.warning("部分文件处理失败，请检查上述错误信息")

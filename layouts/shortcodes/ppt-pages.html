@@ -1,0 +1,67 @@
+{{- /*
+PPT Pages Shortcode
+
+按顺序展示某篇文章的 Page Bundle 中的 PPT 图片页（推荐 WebP/PNG）。
+
+用法（推荐把图片放在同目录的 ppt/ 下）：
+- {{< ppt-pages dir="ppt" >}}
+
+参数：
+- dir: 图片目录（相对当前 Page Bundle），默认 "ppt"
+- w1: 常规显示宽度（生成 webp），默认 1800
+- w2: 高清宽度（生成 webp），默认 3000
+- q: 质量（webp qXX），默认 95
+- caption: 是否显示“第 N 页”标题，默认 true
+*/ -}}
+
+{{- $dir := .Get "dir" | default "ppt" -}}
+{{- $w1 := .Get "w1" | default "1800" -}}
+{{- $w2 := .Get "w2" | default "3000" -}}
+{{- $q := .Get "q" | default "95" -}}
+{{- $caption := .Get "caption" | default "true" -}}
+
+{{- $matches := slice -}}
+{{- range (slice "webp" "png" "jpg" "jpeg") -}}
+  {{- $matches = $matches | append ($.Page.Resources.Match (printf "%s/*.%s" $dir .)) -}}
+{{- end -}}
+
+{{- $imgs := slice -}}
+{{- range $matches -}}
+  {{- range . -}}
+    {{- $imgs = $imgs | append . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $imgs = sort $imgs "Name" -}}
+
+{{- if not (gt (len $imgs) 0) -}}
+  <div class="ppt-pages ppt-pages-empty">
+    <p>未找到图片资源：请把 PPT 页图片放在当前文章的 Page Bundle 目录下的 <code>{{ $dir }}/</code> 中（例如 <code>content/.../index.md</code> 同级的 <code>{{ $dir }}/001.webp</code>）。</p>
+  </div>
+{{- else -}}
+  <div class="ppt-pages">
+    {{- range $i, $img := $imgs -}}
+      {{- $pageNo := add $i 1 -}}
+      {{- $spec1 := printf "%sx webp q%s" $w1 $q -}}
+      {{- $spec2 := printf "%sx webp q%s" $w2 $q -}}
+      {{- $img1 := $img.Resize $spec1 -}}
+      {{- $img2 := $img.Resize $spec2 -}}
+      <figure class="ppt-page" id="ppt-page-{{ $pageNo }}">
+        <a class="ppt-page-link" href="{{ $img2.RelPermalink }}" target="_blank" rel="noopener">
+          <img
+            class="ppt-page-img"
+            src="{{ $img1.RelPermalink }}"
+            srcset="{{ $img1.RelPermalink }} {{ $w1 }}w, {{ $img2.RelPermalink }} {{ $w2 }}w"
+            sizes="(max-width: 960px) 100vw, {{ $w1 }}px"
+            alt="PPT 第 {{ $pageNo }} 页"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+        {{- if eq $caption "true" -}}
+          <figcaption class="ppt-page-caption">第 {{ $pageNo }} 页</figcaption>
+        {{- end -}}
+      </figure>
+    {{- end -}}
+  </div>
+{{- end -}}

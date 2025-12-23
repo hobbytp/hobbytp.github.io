@@ -1,8 +1,4 @@
 ---
-wordCount: 1400
-readingTime: 4
-
----
 title: "Manus项目经验：上下文工程精华内容"
 date: "2025-07-21T20:10:00+08:00"
 draft: false
@@ -10,7 +6,7 @@ tags: ["Context Engineer", "Manus", "项目经验"]
 categories: ["mas"]
 description: "本文介绍了Manus项目经验的上下文工程精华内容,总结为6个问题和解决方案。"
 wordCount: 1337
-readingTime: 6
+readingTime: 4
 
 ai_cover: "static/images/generated-covers/c293c75b21a1ff247f55ff93c09b3874.webp"
 cover:
@@ -21,6 +17,9 @@ cover:
 
 以下是基于Manus项目经验的上下文工程精华内容,总结为6个问题和解决方案。
 参考来自Manus的blog (July 19, 2025)：[Context Engineering for AI Agents: Lessons from Building Manus](https://manus.im/blog/Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus)
+
+
+![Manus-Context-Engineering-Experience](/images/optimized/png/Manus-Context-Engineering-Experience_1024w.webp)
 
 ## 问题1：如何提升AI代理在生产环境下的KV缓存命中率？
 

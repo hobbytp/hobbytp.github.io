@@ -9,9 +9,11 @@ description: "Karpathy大神在2025年年底的时候多大模型这一年的发
 cover:
   image: "/images/generated-covers/Andrej_Karpathy_2025_Review.webp"
   alt: "Karpathy: 2025 年大语言模型年度回顾"
+wordCount: 3289
+readingTime: 9
 ---
 
-Karpathy大神在2025年年底的时候多大模型这一年的发展做了一个“年度总结”，我用Qwen3 Max做了翻译，供大家阅读。我在文后附上了我个人的看法。
+Andrej Karpathy大神在2025年年底的时候多大模型这一年的发展做了一个“年度总结”，我用Qwen3 Max做了翻译，供大家阅读。我在文后附上了我个人的看法。
 
 简单说，Karpathy 觉得这一年 AI 发生了几个显著的变化：
 
@@ -23,6 +25,7 @@ Karpathy大神在2025年年底的时候多大模型这一年的发展做了一�
 
 * **AI 住进了你的电脑**： 别再只盯着网页版 ChatGPT 了，像 Claude Code 这种直接跑在本地、操作你文件系统的 Agent 才是未来。它不再是一个搜索引擎，而是你电脑里的一个“数字灵魂”。
 
+![2025_LLM_Year_Review_Karpathy](/images/optimized/png/2025_LLM_Year_Review_Karpathy_1024w.webp)
 
 ## 2025 年大语言模型年度回顾
 

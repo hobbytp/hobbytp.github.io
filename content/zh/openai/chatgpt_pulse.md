@@ -5,6 +5,8 @@ draft: false
 tags: ["AI","ChatGPT","Pulse"]
 categories: ["products"]
 description: "从被冻问答到主动助理-聊天AI的范式转移-拆解ChatGPT Pulse"
+wordCount: 0
+readingTime: 1
 ---
 
 {{< pdf src="/pdf/ChatGPT_Pulse.pdf" >}}

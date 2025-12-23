@@ -21,7 +21,7 @@ readingTime: 9
 
 本文将逐一解读这九大提问，带领你深入探索AI Agent的三个核心层面：我们为何需要Agent、我们应如何设计Agent，以及它在未来将面临的根本性挑战。
 
-
+![Ruiyong_Nine_Questions](/images/optimized/png/Ruiyong_Nine_Questions_1024w.webp)
 --------------------------------------------------------------------------------
 
 

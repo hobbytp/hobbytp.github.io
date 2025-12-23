@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Block CTO", "Goose"]
 categories: ["celebrity_insights"]
 description: "Block CTO Dhanji R. R. Prasanna在各个场合的谈话整理。"
+wordCount: 2494
+readingTime: 7
 ---
 
 Dhanji R. Prasanna（丹吉・R・普拉桑纳）是 Block（前身为 Square）的首席技术官，在过去两年里，他管理着 4000 多名工程师。在他的领导下，Block 已成为全球最具人工智能原生特性的大公司之一。在担任首席技术官之前，丹吉向首席执行官杰克・多尔西撰写了一份 “人工智能宣言”，这引发了全公司范围的变革（也让他晋升为首席技术官）。

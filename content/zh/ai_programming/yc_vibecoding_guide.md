@@ -4,6 +4,8 @@ date: "2025-04-20T22:20:00+08:00"
 tags: ["Vibe Coding", "programming"]
 categories: ["ai_programming"]
 description: 来自YC的Vibe Coding 的最佳实践
+wordCount: 1652
+readingTime: 5
 ---
 
 

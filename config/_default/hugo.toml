@@ -5,6 +5,9 @@ themesDir = "themes"
 defaultContentLanguage = "zh"
 defaultContentLanguageInSubdir = true
 
+# 让 Hugo 对中文/日文/韩文的字数与阅读时间统计更准确
+hasCJKLanguage = true
+
 enableGitInfo = false
 enableRobotsTXT = true
 buildDrafts = false

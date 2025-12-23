@@ -105,9 +105,10 @@ body {
 
 /* Article styling */
 .post-single {
-  max-width: 800px;
+  /* More responsive width on large screens while keeping readability */
+  max-width: clamp(820px, 72vw, 1200px);
   margin: 0 auto;
-  padding: 2rem;
+  padding: clamp(1.25rem, 2vw, 2.5rem);
   background-color: var(--color-bg-secondary) !important;
   border: 1px solid rgba(148, 163, 184, 0.25);
   border-radius: 1.25rem;
@@ -123,8 +124,8 @@ body {
 
 /* Article page in sidebar layout */
 .has-sidebar .post-single {
-  max-width: 900px;
-  padding: 2rem 3rem;
+  max-width: clamp(860px, 64vw, 1200px);
+  padding: clamp(1.25rem, 2vw, 2.5rem) clamp(1.25rem, 2.5vw, 3rem);
 }
 
 .post-title {
@@ -623,7 +624,7 @@ body {
   grid-template-columns: minmax(0, 1fr) 280px;
   gap: 2rem;
   align-items: start;
-  width: min(1100px, 100%);
+  width: min(1400px, 100%);
   margin: 0 auto;
   padding: 3rem 2rem 4rem;
   box-sizing: border-box;
@@ -645,7 +646,8 @@ body {
 .post-layout .post-single {
   max-width: none;
   margin: 0;
-  padding: 0;
+  /* Ensure readable spacing between article border and content */
+  padding: clamp(1.25rem, 2vw, 2.5rem);
   background: var(--color-bg);
 }
 

@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "workflow", "context", "mas"]
 categories: ["mas"]
 description: "本文介绍了多智能体强化学习（MARL）在多智能体系统（MAS）中的应用：理论、算法、应用与展望。"
+wordCount: 2643
+readingTime: 7
 ---
 
 

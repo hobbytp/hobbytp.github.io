@@ -5,6 +5,8 @@ draft: false
 tags:  ["AI","Sam Altman", "OpenAI", "Ten Years"]
 categories: ["celebrity_insights"]
 description: "Sam Altman关于 OpenAI 十周年回顾的全文翻译。在这篇里程碑式的回顾中，Sam Altman 复盘了 OpenAI 从 15 人的“理想主义实验室”进化为全球 AGI 领航者的非线性历程，重点强调了 2017 年在 RLHF（基于人类反馈的强化学习）与无监督情感神经元上的技术奇点，以及“迭代式部署”策略对行业标准的重塑，并最终抛出了一个极具技术压迫感的预测：在未来十年内（2035 年前），人类几乎确定将构建出超级智能（Superintelligence）。"
+wordCount: 1996
+readingTime: 5
 ---
 
 这是对Sam Altman关于 OpenAI 十周年回顾的全文翻译。原文在[这里](https://openai.com/index/ten-years/)
@@ -12,9 +14,11 @@ description: "Sam Altman关于 OpenAI 十周年回顾的全文翻译。在这篇
 这篇文章不仅是对过去十年的总结，更是对未来十年“超级智能（Superintelligence）”时代的激进预测。
 他在文中特意提到了几个关键的技术转折点（如 Dota 1v1、情感神经元、RLHF,AGI），这些都是我们今天所熟知的 LLM 范式的基石。
 
-## 
+
 ## 十年
+
 **——回顾十年的突破、经验教训，以及通往造福全人类的 AGI 之路。**
+![OpenAI_10_Years](/images/optimized/png/OpenAI_10_Years_1024w.webp)
 
 OpenAI 取得的成就，已经远远超出了我当初最大胆的梦想。当年我们立下的目标，说白了是一件疯狂的事——看似不可能、且史无前例。起步时前途极度不确定、从任何理性角度看成功概率都微乎其微，但在持续不断的努力之下，现在看起来，我们确实有机会完成我们的使命。
 

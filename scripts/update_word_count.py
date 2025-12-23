@@ -10,6 +10,15 @@ import sys
 from pathlib import Path
 from typing import Optional, Tuple
 
+# 强制 stdout 使用 utf-8 编码，防止 Windows 下打印 emoji 报错
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except AttributeError:
+        # Python < 3.7
+        pass
+
 def count_chinese_chars(text: str) -> int:
     """统计中文字符数（包括中文标点符号）"""
     # 匹配中文字符
@@ -109,7 +118,7 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
     try:
         content = file_path.read_text(encoding='utf-8')
     except Exception as e:
-        print(f"❌ 读取文件失败 {file_path}: {e}")
+        print(f"[ERROR] 读取文件失败 {file_path}: {e}")
         return 0, 0, False
     
     frontmatter_str, body = extract_frontmatter(content)
@@ -117,7 +126,7 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
     if frontmatter_str is None:
         # 使用字符串格式化而不是relative_to避免路径问题
         rel_path = str(file_path).replace(str(Path.cwd()), '').lstrip('\\/').replace('\\', '/')
-        print(f"⚠️  跳过（无front matter）: {rel_path}")
+        print(f"[WARN] 跳过（无front matter）: {rel_path}")
         return 0, 0, False
     
     # 统计字数和阅读时间
@@ -132,7 +141,7 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
     
     if not update:
         # 仅显示统计信息
-        status = "✅" if current_word_count == word_count and current_reading_time == reading_time else "⚠️ "
+        status = "[OK]" if current_word_count == word_count and current_reading_time == reading_time else "[WARN]"
         # 使用字符串格式化而不是relative_to避免路径问题
         rel_path = str(file_path).replace(str(Path.cwd()), '').lstrip('\\/').replace('\\', '/')
         print(f"{status} {rel_path}")
@@ -153,15 +162,15 @@ def process_markdown_file(file_path: Path, update: bool = False) -> Tuple[int, i
             file_path.write_text(new_content, encoding='utf-8')
             # 使用字符串格式化而不是relative_to避免路径问题
             rel_path = str(file_path).replace(str(Path.cwd()), '').lstrip('\\/').replace('\\', '/')
-            print(f"✅ 已更新: {rel_path} ({word_count} 字, {reading_time} 分钟)")
+            print(f"[UPDATED] 已更新: {rel_path} ({word_count} 字, {reading_time} 分钟)")
             return word_count, reading_time, True
         except Exception as e:
-            print(f"❌ 写入文件失败 {file_path}: {e}")
+            print(f"[ERROR] 写入文件失败 {file_path}: {e}")
             return word_count, reading_time, False
     else:
         # 使用字符串格式化而不是relative_to避免路径问题
         rel_path = str(file_path).replace(str(Path.cwd()), '').lstrip('\\/').replace('\\', '/')
-        print(f"✓ 无需更新: {rel_path}")
+        print(f"[SKIP] 无需更新: {rel_path}")
         return word_count, reading_time, False
 
 def main():
@@ -216,25 +225,25 @@ def main():
     elif args.dir:
         dir_path = Path(args.dir)
         if not dir_path.exists():
-            print(f"❌ 目录不存在: {dir_path}")
+            print(f"[ERROR] 目录不存在: {dir_path}")
             sys.exit(1)
         files = list(dir_path.rglob('*.md'))
     else:
         content_dir = Path(args.content_dir)
         if not content_dir.exists():
-            print(f"❌ 内容目录不存在: {content_dir}")
+            print(f"[ERROR] 内容目录不存在: {content_dir}")
             sys.exit(1)
         files = list(content_dir.rglob('*.md'))
     
     if not files:
-        print("⚠️  未找到任何markdown文件")
+        print("[WARN] 未找到任何markdown文件")
         sys.exit(0)
     
     print(f"{'=' * 60}")
     if args.update:
-        print(f"🔄 更新模式: 将更新 {len(files)} 个文件")
+        print(f"[UPDATE] 更新模式: 将更新 {len(files)} 个文件")
     else:
-        print(f"📊 检查模式: 将检查 {len(files)} 个文件（使用 --update 实际更新）")
+        print(f"[CHECK] 检查模式: 将检查 {len(files)} 个文件（使用 --update 实际更新）")
     print(f"{'=' * 60}\n")
     
     total_word_count = 0
@@ -249,7 +258,7 @@ def main():
             updated_count += 1
     
     print(f"\n{'=' * 60}")
-    print(f"📈 统计汇总:")
+    print(f"统计汇总:")
     print(f"   总文件数: {len(files)}")
     if args.update:
         print(f"   已更新: {updated_count}")
@@ -262,7 +271,7 @@ if __name__ == '__main__':
     try:
         import yaml
     except ImportError:
-        print("❌ 错误: 需要安装 PyYAML")
+        print("[ERROR] 错误: 需要安装 PyYAML")
         print("   安装命令: pip install pyyaml")
         sys.exit(1)
     

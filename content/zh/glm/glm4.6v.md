@@ -5,6 +5,8 @@ draft: false
 tags: ["AI", "智谱AI","GLM"]
 categories: ["big_companies"]
 description: "GLM-4.6V 是智谱AI（Zhipu AI）于2025年12月8日发布的开源多模态大模型系列，属于GLM-V家族的最新迭代。该系列包括高性能版GLM-4.6V（总参数106B，激活参数约12B，采用MoE架构）和轻量版GLM-4.6V-Flash（9B参数，Dense架构）。从大模型技术角度来看，其核心创新在于**多模态感知与行动的深度融合**，显著提升了模型在真实场景中的实用性和效率。"
+wordCount: 1138
+readingTime: 3
 ---
 
 ## GLM-4.6V 的技术亮点分析

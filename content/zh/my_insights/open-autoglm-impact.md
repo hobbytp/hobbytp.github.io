@@ -4,6 +4,8 @@ date: "2025-12-09T20:10:00+08:00"
 tags: ["AutoGLM", "agent", "phone use"]
 categories: ["my_insights"]
 description: 这篇文章详细分析了智谱Open-AutoGLM开源项目对移动端自动化的影响，从“Chat”走向“Act”，作为“Phone Use” 的落地先锋，并探讨了其在行业中的价值和影响。
+wordCount: 1391
+readingTime: 4
 ---
 
 这篇文章详细分析了 Open-AutoGLM 对移动端自动化的影响，从“Chat”走向“Act”，作为“Phone Use” 的落地先锋，并探讨了其在行业中的价值和影响。

@@ -1,4 +1,4 @@
-.PHONY: dev build clean stop optimize-images analyze-performance build-measure analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers generate-cover-from-photo test-covers generate-covers-for-directory ingest-data help
+.PHONY: dev build clean stop optimize-images optimize-one analyze-performance build-measure analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers generate-cover-from-photo test-covers generate-covers-for-directory ingest-data help
 
 # Shell 设置
 # 让每个配方(target)的所有命令在同一个 shell 中执行，确保 .env 中的导出变量可在后续命令中生效
@@ -41,6 +41,15 @@ build-measure:
 optimize-images:
 	@echo "🖼️  优化图片资源..."
 	@cd tools/image-optimization && $(PYTHON_CMD) image_optimizer.py --input-dir ../../static/images --output-dir ../../static/images/optimized
+
+# 优化单个图片
+optimize-one:
+	@if [ -z "$(FILE)" ]; then \
+		echo "❌ 请指定图片文件: make optimize-one FILE=path/to/image.png"; \
+		exit 1; \
+	fi
+	@echo "🖼️  优化单个图片: $(FILE)..."
+	@cd tools/image-optimization && $(PYTHON_CMD) image_optimizer.py --file "../../$(FILE)" --input-dir ../../ --output-dir ../../static/images/optimized --sizes 1024
 
 # 分析性能
 analyze-performance:
@@ -318,6 +327,7 @@ help:
 	@echo ""
 	@echo "Optimization Tools:"
 	@echo "  make optimize-images  Optimize image resources"
+	@echo "  make optimize-one FILE=path/to/img  Optimize single image and get MD"
 	@echo "  make test-images      Test image optimization (preview mode)"
 	@echo "  make analyze-performance  Analyze Hugo performance"
 	@echo "  make performance-report   Generate performance report"

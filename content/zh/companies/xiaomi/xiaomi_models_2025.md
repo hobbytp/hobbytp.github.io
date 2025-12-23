@@ -2,10 +2,12 @@
 title: "小米大模型全景调研 2025"
 description: "基于最新的公开信息与技术披露，小米在大模型领域的端侧轻量化与云端推理优化双轮驱动的完整分析"
 author: "Peng Tan"
-date: 2025-12-19T23:10:00+08:00
+date: "2025-12-19T23:10:00+08:00"
 categories: ["large_models"]
 tags: ["xiaomi", "llm", "端侧AI", "MiMo"]
 draft: false
+wordCount: 1311
+readingTime: 4
 ---
 
 ## 背景

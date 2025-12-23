@@ -5,6 +5,8 @@ draft: false
 tags: ["llm_council", "chatbot"]
 categories: ["projects"]
 description: "LLM Council是一个由 Andreas Karpathy 创建的开源项目，用于将多个大语言模型（LLM）组成“理事会”，通过本地 Web 应用统一处理用户查询。"
+wordCount: 1064
+readingTime: 3
 ---
 ## 项目总结
 LLM Council 是一个由 Andreas Karpathy 创建的开源项目，用于将多个大语言模型（LLM）组成“理事会”，通过本地 Web 应用统一处理用户查询。主要特性及流程如下：
