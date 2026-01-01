@@ -1,0 +1,85 @@
+{{/*
+    Shortcode: pdf-slide
+    Description: Provides a "Theater Mode" PDF slide viewer using PDF.js
+    Usage: {{< pdf-slide src="/path/to/slides.pdf" cover="/path/to/cover.jpg" title="My Slides" >}}
+    Parameters:
+        - src (required): Path to the PDF file.
+        - cover (optional): Path to a cover image. If not provided, a default placeholder is used.
+        - title (optional): Title of the presentation.
+*/}}
+
+{{ $src := .Get "src" }}
+{{ $title := .Get "title" | default "PDF Presentation" }}
+{{ $cover := .Get "cover" }}
+{{ $id := printf "pdf-slide-%d" .Ordinal }}
+
+{{/* Load Assets only once per page */}}
+{{ if not (.Page.Scratch.Get "pdfSlideAssetsLoaded") }}
+    {{ .Page.Scratch.Set "pdfSlideAssetsLoaded" true }}
+    
+    {{/* Core PDF.js Library */}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+    {{/* Custom Styles */}}
+    {{ $css := resources.Get "css/pdf-slide.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+
+    {{/* Custom Script */}}
+    {{ $js := resources.Get "js/pdf-slide.js" | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}"></script>
+{{ end }}
+
+<!-- Preview Card -->
+<div class="pdf-slide-card" id="pdf-card-{{ $id }}" role="button" aria-label="Open PDF Slides: {{ $title }}">
+    <div class="pdf-slide-preview" style="{{ if $cover }}background-image: url('{{ $cover }}');{{ end }}">
+        <div class="pdf-slide-overlay">
+            <div class="pdf-play-btn">
+                <div class="pdf-play-icon"></div>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-slide-info">
+        <div class="pdf-slide-title">{{ $title }}</div>
+        <div class="pdf-slide-badge">Slides</div>
+    </div>
+</div>
+
+<!-- Fullscreen Modal -->
+<div class="pdf-modal-backdrop" id="pdf-modal-{{ $id }}">
+    <!-- Toolbar -->
+    <div class="pdf-modal-toolbar">
+        <div class="pdf-modal-title">{{ $title }}</div>
+        <button class="pdf-modal-close" aria-label="Close">×</button>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="pdf-canvas-container">
+        <!-- Navigation Buttons -->
+        <button class="pdf-nav-btn pdf-prev-btn" aria-label="Previous Page">❮</button>
+        
+        <div class="pdf-canvas-wrapper">
+             <canvas id="pdf-render-canvas"></canvas>
+             <!-- Loading Spinner -->
+            <div class="pdf-loading-spinner active"></div>
+        </div>
+        
+        <button class="pdf-nav-btn pdf-next-btn" aria-label="Next Page">❯</button>
+    </div>
+
+    <!-- Page Indicator -->
+    <div class="pdf-page-indicator">
+        <span class="current-page">1</span> / <span class="total-pages">--</span>
+    </div>
+</div>
+
+<!-- Initialize script for this instance -->
+<script>
+    // Ensure the init function exists before calling, or wait for it
+    (function wait() {
+        if (window.initPdfSlide) {
+            window.initPdfSlide('{{ $id }}', '{{ $src }}', '{{ $title }}');
+        } else {
+            setTimeout(wait, 50);
+        }
+    })();
+</script>
