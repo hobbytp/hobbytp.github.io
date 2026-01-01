@@ -12,7 +12,8 @@ services:
     environment:
       - HUGO_ENV=development
     # 移除 --disableFastRender --disableLiveReload --ignoreCache 以提升启动速度
-    command: server --bind 0.0.0.0 -D
+    # --poll: 启用轮询模式以解决 Windows/Docker 卷挂载下的文件变更检测失效问题
+    command: server --bind 0.0.0.0 -D --poll 700ms
 
   # 生产环境构建服务
   hugo-build:
