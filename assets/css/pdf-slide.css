@@ -1,0 +1,353 @@
+/* PDF Slide Start - Preview Card */
+.pdf-slide-card {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
+    background: #f8f9fa;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.pdf-slide-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.pdf-slide-preview {
+    position: relative;
+    width: 100%;
+    /* Keep aspect ratio but allow content to fill */
+    min-height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ensure canvas fills the preview area */
+.pdf-preview-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.pdf-slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 2;
+    /* Ensure above canvas */
+}
+
+/* If no canvas and using background image, we still want 16:9 ratio */
+.pdf-slide-preview:empty {
+    padding-top: 56.25%;
+}
+
+/* Logic: If canvas exists, we don't need padding-top hacks if canvas has height. 
+   But initially it might be empty. */
+
+.pdf-slide-card:hover .pdf-slide-overlay {
+    opacity: 1;
+}
+
+.pdf-play-btn {
+    width: 64px;
+    height: 64px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pdf-slide-card:hover .pdf-play-btn {
+    transform: scale(1);
+}
+
+.pdf-play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 0 12px 20px;
+    border-color: transparent transparent transparent #333;
+    margin-left: 4px;
+    /* Optical center adjustment */
+}
+
+.pdf-slide-info {
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+}
+
+.pdf-slide-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pdf-slide-badge {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.75rem;
+    background: #e7f5ff;
+    color: #0077d8;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* PDF Fullscreen Modal */
+.pdf-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.pdf-modal-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Toolbar */
+.pdf-modal-toolbar {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    color: white;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 10001;
+}
+
+.pdf-modal-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.pdf-modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    line-height: 1;
+    padding: 0 0.5rem;
+}
+
+.pdf-modal-close:hover {
+    opacity: 1;
+}
+
+/* Canvas Area */
+.pdf-canvas-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.pdf-canvas-wrapper {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+#pdf-render-canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 85vh;
+    /* Safe area for vertical screens */
+    object-fit: contain;
+}
+
+/* Navigation Controls */
+.pdf-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s, transform 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10002;
+    outline: none;
+}
+
+.pdf-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.pdf-nav-btn:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.pdf-prev-btn {
+    left: 2rem;
+}
+
+.pdf-next-btn {
+    right: 2rem;
+}
+
+/* Page Indicator */
+.pdf-page-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(4px);
+    z-index: 10002;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
+/* Loading Spinner */
+.pdf-loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    animation: pdf-spin 1s linear infinite;
+    z-index: 10000;
+    display: none;
+}
+
+.pdf-loading-spinner.active {
+    display: block;
+}
+
+@keyframes pdf-spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Animation for page transition */
+.fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Dark mode adjustments (basically redundant since modal is dark, but for card) */
+@media (prefers-color-scheme: dark) {
+    .pdf-slide-card {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    .pdf-slide-info {
+        background: #333;
+    }
+
+    .pdf-slide-title {
+        color: #ddd;
+    }
+
+    .pdf-slide-badge {
+        background: #1a3b5c;
+        color: #64b5f6;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .pdf-nav-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .pdf-prev-btn {
+        left: 1rem;
+    }
+
+    .pdf-next-btn {
+        right: 1rem;
+    }
+
+    .pdf-page-indicator {
+        bottom: 1.5rem;
+    }
+
+    .pdf-modal-toolbar {
+        padding: 0 1rem;
+    }
+}

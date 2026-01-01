@@ -5,7 +5,7 @@ draft: false
 tags: ["OpenEnv", "agentic environments", "agent"]
 categories: ["projects", "mas"]
 description: "Meta和Hugging Face正在合作推出**OpenEnv Hub**，这是一个共享和开放的社区中心，用于开发、分享和探索兼容OpenEnv的智能体环境，以支持下一波智能体开发浪潮。这些环境可以用于训练和部署，并作为可扩展智能体开发的基石。"
-wordCount: 4738
+wordCount: 4748
 readingTime: 12
 ---
 
@@ -133,7 +133,7 @@ OpenEnv被明确地定位为Meta正在开发的“新一代训练后技术栈”
 
 这最终引出了一个对行业至关重要的战略问题：随着像OpenEnv这样开放、标准化的基础设施日趋成熟，开源生态系统的协作速度能否超越大型专有、闭源系统的集成效率？OpenEnv是一个基础性的赌注，它押注于开放的力量终将胜出。
 
-{{< pdf src="/pdf/OpenEnv.pdf" >}}
+{{< pdf-slide src="/pdf/OpenEnv.pdf" title="OpenEnv: 智能体开发的基础设施" >}}
 
 ## 参考文献
 
