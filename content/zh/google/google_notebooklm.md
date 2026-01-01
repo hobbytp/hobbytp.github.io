@@ -239,7 +239,7 @@ You are a highly capable research assistant and tutor. Create a detailed study g
 在点击生成幻灯片（Slides）时，在自定义提示词（Custom Prompt）区域输入以下指令。为了获得最佳效果，建议使用英文 Prompt：
 
 ```markdown
-Make the character from the uploaded image '[角色文件名.png]' appear in each slide. 
+Make the character from the uploaded image '角色文件名.png' appear in each slide. 
 Have them serve as the navigator (guide) for the presentation. 
 Be sure to accurately reflect the character's characteristics and adjust their pose/expression to match the context of each slide.
 ```

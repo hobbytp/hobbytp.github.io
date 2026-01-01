@@ -5,7 +5,7 @@ draft: false
 tags: ["Nested Learning", "Hope架构", "持续学习"]
 categories: ["big_companies"]
 description: "Google Nested Learning原理剖析与Hope架构：迈向持续学习的新范式"
-wordCount: 4979
+wordCount: 4933
 readingTime: 13
 ai_cover: "/images/generated-covers/e4d9bfb7b2241da6ed6444aa1df2bdde.webp"
 cover:
@@ -109,7 +109,7 @@ y_t = MLP^(fk)(MLP^(fk-1)(...MLP^(f1)(x_t)...)
 
 Hope架构的另一个核心创新是**自修改机制**，使模型能够在推理过程中根据接受到的数据动态调整自身的参数甚至更新规则。这一机制基于Titans架构扩展，使Hope成为一个自引用模型，能够执行无限层级的上下文学习。
 
-自修改机制的关键在于将**优化器本身视为可学习的联想记忆模块**。传统优化器（如Adam、带动量的SGD）通常是外部设计的、固定的更新规则，而Hope将优化过程内部化，使模型能够“学习如何学习”（learn how to learn）。
+自修改机制的关键在于将**优化器本身视为可学习的联想记忆模块**。传统优化器（如Adam、带动量的SGD）通常是外部设计的、固定的更新规则，而Hope将优化过程内部化，使模型能够“学习如何学习”（**learn how to learn**）。
 
 具体而言，Hope中的**深度优化器**将优化器状态（如动量、二阶矩）显式建模为可微网络，并通过元学习或多任务训练对这些“优化器网络”进行端到端训练。这种设计使优化器能够适应数据分布的变化，对噪声和异常值更具鲁棒性。
 
@@ -175,7 +175,7 @@ Nested Learning范式及Hope架构的创新价值主要体现在以下几个方�
 
 **超参数调优挑战**：CMS系统中各MLP模块的更新频率、容量分配等超参数需要精心调试，系统复杂度较高，这可能增加模型部署的难度。
 
-**大规模扩展性**：当前实验主要针对中等规模模型（最多1.3B参数），对于超大规模模型（数十亿甚至数百亿参数）的扩展性和有效性仍有待验证。
+**大规模扩展性**：当前实验主要针对中等规模模型（最多1.3B参数），**对于超大规模模型（数十亿甚至数百亿参数）的扩展性和有效性仍有待验证**。
 
 **理论基础的完善**：Nested Learning作为一个新兴范式，其数学基础和理论体系仍需进一步完善，特别是关于收敛性、泛化能力等方面的理论分析。
 
@@ -199,4 +199,3 @@ Nested Learning范式代表了深度学习领域的一次重要范式转换，�
 8. [Nested Learning: The Illusion of Deep Learning Architectures](https://abehrouz.github.io/files/NL.pdf)
 9. [Introducing Nested Learning: A new ML paradigm for continual learning](https://research.google/blog/introducing-nested-learning-a-new-ml-paradigm-for-continual-learning/)
 
-*以上参考文献请根据实际发表的论文信息进行补充和调整，建议直接引用原始论文《Nested Learning: The Illusion of Deep Learning Architectures》以及NeurIPS 2025会议论文集。*
