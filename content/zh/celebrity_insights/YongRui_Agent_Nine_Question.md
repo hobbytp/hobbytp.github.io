@@ -21,8 +21,9 @@ readingTime: 9
 
 本文将逐一解读这九大提问，带领你深入探索AI Agent的三个核心层面：我们为何需要Agent、我们应如何设计Agent，以及它在未来将面临的根本性挑战。
 
+
 ![Ruiyong_Nine_Questions](/images/optimized/png/Ruiyong_Nine_Questions_1024w.webp)
---------------------------------------------------------------------------------
+
 
 
 ## 第一部分：奠定基础 —— 为何我们需要AI Agent？
@@ -164,4 +165,4 @@ readingTime: 9
 
 第一个层面（为何需要Agent）为我们奠定了行动的基石，第二个层面（如何设计Agent）为我们当下开发和设计AI Agent指明了清晰可行的道路；而第三个层面（未来挑战）则揭示了通往未来的巨大不确定性与深刻挑战。正是这些确定性与未知性的交织，共同构成了当下人工智能领域最迷人的时代命题，激励着我们每一个人去持续关注、学习与探索。
 
-{{< pdf src="/pdf/AI_Agent_Evolution_Nine_Questions.pdf" >}}
+{{< pdf-slide src="/pdf/AI_Agent_Evolution_Nine_Questions.pdf" title="AI Agent Evolution Nine Questions - YongRui" >}}

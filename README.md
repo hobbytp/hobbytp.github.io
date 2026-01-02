@@ -125,6 +125,21 @@ make build
 make help
 ```
 
+## ✅ 提交前自动更新字数/阅读时间（推荐）
+
+启用 `pre-commit` 后，在你执行 `git commit` 前会自动运行 [scripts/update_word_count.py](scripts/update_word_count.py)，为本次提交涉及的 `content/**.md` 更新 front matter 中的 `wordCount` 和 `readingTime`。
+
+```bash
+pip install pre-commit
+pre-commit install
+```
+
+可选：首次全量校准（会修改文件，之后需要 `git add`）：
+
+```bash
+pre-commit run --all-files
+```
+
 ## 📁 项目结构
 
 ```text
