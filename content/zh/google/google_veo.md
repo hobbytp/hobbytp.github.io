@@ -1,4 +1,13 @@
-
+---
+title: "Google Gemini Veo 3 动画案例"
+date: 2025-05-21T15:04:10+08:00
+draft: false
+tags: ["Veo 3", "case", "video model"]
+categories: ["large_models"]
+description: "简单介绍Google Gemini Veo 3和一些有趣的动画案例"
+wordCount: 2824
+readingTime: 8
+---
 
 ## 介绍
 
@@ -26,9 +35,6 @@ Gemini Veo 3 是谷歌在2025年5月推出的第三代AI视频生成模型，它
 ### 总结
 
 总而言之，Gemini Veo 3的核心突破在于将AI视频生成从单纯的“画面生成”提升到了“**完整的视听内容创作**”层面。它大幅降低了高质量视频内容的制作门槛，为从普通爱好者到专业创作者的广泛群体提供了强大的工具。
-
-希望这些信息能帮助你全面了解Gemini Veo 3。如果想了解更多关于具体提示词技巧或不同订阅方案的细节，我很乐意继续为你解答。
-
 
 
 ## veo 动画案例
