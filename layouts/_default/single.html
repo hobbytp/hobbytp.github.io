@@ -24,6 +24,11 @@
               {{- $displayDate = $displayDate | time -}}
             {{- end -}}
             <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format (or .Site.Params.DateFormat "2006-01-02") }}</time>
+            {{- if .Lastmod.After .Date }}
+            <span class="post-lastmod">
+              &nbsp;·&nbsp;{{ i18n "last_mod" | default "最后更新" }}: {{ .Lastmod.Format (or .Site.Params.DateFormat "2006-01-02") }}
+            </span>
+            {{- end }}
             {{- with .Params.author }}&nbsp;·&nbsp;{{ . }}{{ end -}}
             {{- if .Params.categories }}&nbsp;·&nbsp;{{ range .Params.categories }}<a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}{{ end -}}
             {{- if .Site.Params.ShowReadingTime }}&nbsp;·&nbsp;{{ or .Params.readingTime .ReadingTime }} 分钟{{ end -}}
