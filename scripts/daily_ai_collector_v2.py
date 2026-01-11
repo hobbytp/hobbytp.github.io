@@ -19,7 +19,25 @@ from pathlib import Path
 import yaml
 import hashlib
 import re
+import re
 import sys
+import warnings
+from dotenv import load_dotenv
+
+# 尝试导入 huggingface_hub
+USE_HF_HUB = False
+try:
+    from huggingface_hub import HfApi, list_models
+    USE_HF_HUB = True
+    print("[OK] huggingface_hub 库导入成功")
+except ImportError:
+    print("WARNING: huggingface_hub 库未安装，将使用 HTTP API")
+
+# 加载 .env 文件
+load_dotenv()
+
+# 忽略 FutureWarnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 # 添加脚本目录到路径以便导入
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -40,19 +58,19 @@ except ImportError:
         reading_time = max(1, (word_count + reading_speed - 1) // reading_speed)
         return word_count, reading_time
 
-# 尝试导入 Google Gemini SDK
+# 尝试导入 Google GenAI SDK (New)
 try:
-    import google.generativeai as genai
+    from google import genai
     USE_GOOGLE_SDK = True
-    print("[OK] google.generativeai 库导入成功")
+    print("[OK] google-genai 库导入成功")
 except ImportError as e:
     USE_GOOGLE_SDK = False
-    print(f"[WARNING] google.generativeai 库导入失败: {e}")
+    print(f"[WARNING] google-genai 库导入失败: {e}")
     try:
         import openai
         print("[OK] openai 库导入成功（回退模式）")
     except ImportError:
-        print("ERROR: 既没有 google-generativeai 也没有 openai 库")
+        print("ERROR: 既没有 google-genai 也没有 openai 库")
         openai = None
 
 # 尝试导入 Perplexity SDK
@@ -101,10 +119,10 @@ class DailyAICollectorV2:
             
             if USE_GOOGLE_SDK:
                 try:
-                    genai.configure(api_key=gemini_key)
-                    self.ai_client = genai.GenerativeModel('gemini-2.5-flash')
+                    # 新 SDK 初始化
+                    self.ai_client = genai.Client(api_key=gemini_key)
                     self.use_google_sdk = True
-                    print("[OK] Google Gemini SDK 初始化成功 (模型: gemini-2.5-flash)")
+                    print("[OK] Google GenAI SDK 初始化成功")
                 except Exception as e:
                     print(f"ERROR: Google SDK 初始化失败: {e}")
                     self.ai_client = None
@@ -130,7 +148,10 @@ class DailyAICollectorV2:
         self.perplexity_key = os.getenv('PERPLEXITY_API_KEY')
         if USE_PERPLEXITY and self.perplexity_key:
             try:
-                self.perplexity_client = Perplexity(api_key=self.perplexity_key)
+                self.perplexity_client = Perplexity(
+                    api_key=self.perplexity_key,
+                    timeout=60.0
+                )
                 print(f"[OK] Perplexity API 初始化成功 (key长度: {len(self.perplexity_key)})")
             except Exception as e:
                 print(f"ERROR: Perplexity 初始化失败: {e}")
@@ -247,14 +268,32 @@ class DailyAICollectorV2:
             # ArXiv 的时间检查在搜索参数中已经处理
             return True
         
-        elif source == 'ai_news_lib':
+        elif source == 'ai_news_lib' or source == 'google_search':
             published_date = item.get('published_date', '')
             if published_date:
                 try:
+                    # 处理可能的时间格式
                     if 'T' in published_date:
                         pub_time = datetime.datetime.fromisoformat(published_date.replace('Z', '+00:00'))
                     else:
-                        pub_time = datetime.datetime.strptime(published_date, '%Y-%m-%d')
+                        # 尝试多种日期格式
+                        for fmt in ['%Y-%m-%d', '%Y/%m/%d', '%Y.%m.%d', '%Y-%m-%d %H:%M:%S']:
+                            try:
+                                pub_time = datetime.datetime.strptime(published_date, fmt)
+                                break
+                            except:
+                                continue
+                        else:
+                            # 如果所有格式都失败
+                            return False
+                    
+                    # 确保时区一致性
+                    if pub_time.tzinfo is None:
+                        # 假设为本地时间或UTC，这里统一先不带时区比较或设为UTC? 
+                        # 简单起见，如果无时区，跟 removed tz 的 yesterday 比较
+                        # 或者给 pub_time 加上 utc
+                        pub_time = pub_time.replace(tzinfo=datetime.timezone.utc)
+                    
                     return pub_time >= yesterday
                 except:
                     return False
@@ -381,10 +420,13 @@ class DailyAICollectorV2:
             today_str = today.strftime('%Y-%m-%d')
             
             # 多查询搜索：最近24小时的 AI 新闻（使用更精确的日期过滤）
+            # 添加当前年份/日期到查询中，增强相关性，并明确时区
+            # 使用北京时间 (UTC+8) 来确保日期边界清晰
+            timezone_context = "Beijing time UTC+8"
             queries = [
-                f"AI news breakthroughs after {date_str} before {today_str}",
-                f"new AI model releases after {date_str}",
-                f"AI tools frameworks launched after {date_str}"
+                f"Most important AI news and events on {today_str} ({timezone_context})",
+                f"AI breakthroughs and product launches from {yesterday.strftime('%Y-%m-%d')} to {today_str} ({timezone_context})",
+                f"Major AI company announcements on {today_str} ({timezone_context})"
             ]
             
             print(f"使用 Perplexity 搜索: {queries}")
@@ -478,11 +520,13 @@ class DailyAICollectorV2:
             collector = AdvancedAINewsCollector(search_config)
             
             # 定义搜索主题（聚焦24小时内的AI动态）
+            # 在查询中加入明确的日期，帮助搜索引擎定位
+            date_query_suffix = f" {today.strftime('%Y-%m-%d')}"
             topics = [
-                "latest AI model releases today",
-                "new AI tools and frameworks launched",
-                "AI research breakthroughs and papers",
-                "AI company news and product updates"
+                f"latest AI model releases{date_query_suffix}",
+                f"new AI tools and frameworks launched{date_query_suffix}",
+                f"AI research breakthroughs and papers{date_query_suffix}",
+                f"AI company news and product updates{date_query_suffix}"
             ]
             
             print(f"使用 ai_news_collector_lib 搜索 AI 新闻...")
@@ -627,8 +671,12 @@ class DailyAICollectorV2:
                     
                     # 去重检查
                     if not self.is_duplicate(news_item):
-                        news_item['quality_score'] = self.calculate_quality_score(news_item, 'google_focus')
-                        formatted_results.append(news_item)
+                        # 严格的时间检查
+                        if self.is_within_time_range(news_item, 'google_search'):
+                            news_item['quality_score'] = self.calculate_quality_score(news_item, 'google_focus')
+                            formatted_results.append(news_item)
+                        else:
+                            print(f"过滤掉过旧的焦点新闻: {news_item.get('title', '')} ({news_item.get('published_date', '无日期')})")
                 
                 # 按质量评分排序
                 formatted_results.sort(key=lambda x: x.get('quality_score', 0), reverse=True)
@@ -687,11 +735,12 @@ class DailyAICollectorV2:
             collector = AdvancedAINewsCollector(search_config)
             
             # 定义应用与产品相关的搜索主题
+            date_query_suffix = f" {today.strftime('%Y-%m-%d')}"
             topics = [
-                "new AI applications launched today",
-                "AI product releases and updates",
-                "AI tools for consumers and businesses",
-                "AI-powered apps and services"
+                f"new AI applications launched{date_query_suffix}",
+                f"AI product releases and updates{date_query_suffix}",
+                f"AI tools for consumers and businesses{date_query_suffix}",
+                f"AI-powered apps and services{date_query_suffix}"
             ]
             
             print(f"使用多源并行搜索 AI 应用与产品...")
@@ -863,51 +912,106 @@ class DailyAICollectorV2:
         return top_projects
     
     def search_huggingface_models(self) -> List[Dict]:
-        """搜索Hugging Face新模型（缩短时间窗口至24小时）"""
+        """搜索 Hugging Face 热门模型（基于 likes/trending）
+        
+        策略优先级:
+        1. 使用 huggingface_hub 库的 list_models(sort='trending') - 官方推荐
+        2. 使用 huggingface_hub 库的 list_models(sort='likes') - Fallback
+        3. 使用 HTTP API - 最终 Fallback
+        """
         if not self.hf_token:
-            print("WARNING: Hugging Face token未设置，跳过HF搜索")
+            print("WARNING: Hugging Face token 未设置，跳过 HF 搜索")
             return []
-            
+        
+        # 策略1: 使用 huggingface_hub 官方库 (推荐)
+        if USE_HF_HUB:
+            try:
+                print("搜索 Hugging Face 热门模型 (huggingface_hub 库)...")
+                api = HfApi(token=self.hf_token)
+                
+                # 尝试 sort='trending' (按过去7天 likes 增长排序)
+                # 如果不支持 trending，回退到 likes
+                sort_options = ['trending', 'likes', 'downloads']
+                
+                for sort_by in sort_options:
+                    try:
+                        models = list(api.list_models(
+                            sort=sort_by,
+                            direction=-1,
+                            limit=20
+                        ))
+                        
+                        if models:
+                            print(f"HF API (sort={sort_by}): 找到 {len(models)} 个模型")
+                            
+                            filtered_models = []
+                            for m in models[:15]:
+                                model = {
+                                    'modelId': m.id if hasattr(m, 'id') else str(m),
+                                    'pipeline_tag': m.pipeline_tag if hasattr(m, 'pipeline_tag') else '未知',
+                                    'downloads': m.downloads if hasattr(m, 'downloads') else 0,
+                                    'likes': m.likes if hasattr(m, 'likes') else 0,
+                                    'lastModified': str(m.last_modified) if hasattr(m, 'last_modified') else '',
+                                    'author': m.author if hasattr(m, 'author') else '',
+                                    'source_type': f'hf_hub_{sort_by}'
+                                }
+                                
+                                if not self.is_duplicate(model) and model['modelId']:
+                                    model['quality_score'] = self.calculate_quality_score(model, 'huggingface')
+                                    filtered_models.append(model)
+                            
+                            filtered_models.sort(key=lambda x: x.get('quality_score', 0), reverse=True)
+                            print(f"HF (huggingface_hub): 筛选后 {len(filtered_models)} 个模型")
+                            return filtered_models[:5]
+                    except Exception as e:
+                        print(f"HF sort={sort_by} 失败: {e}")
+                        continue
+                        
+            except Exception as e:
+                print(f"huggingface_hub 库调用失败: {e}")
+        
+        # 策略2: HTTP API Fallback
+        print("使用 HTTP API Fallback...")
         headers = {'Authorization': f'Bearer {self.hf_token}'}
-        url = 'https://huggingface.co/api/models'
-        
-        yesterday, today = self.get_date_range(hours_back=24)
-        date_str = yesterday.strftime('%Y-%m-%d')
-        today_str = today.strftime('%Y-%m-%d')
-        
+        fallback_url = 'https://huggingface.co/api/models'
         params = {
-            'filter': 'pytorch',
-            'sort': 'createdAt',
+            'sort': 'likes',
             'direction': -1,
-            'limit': 50,
-            'createdAt': f'{date_str}T00:00:00.000Z..{today_str}T23:59:59.999Z'  # 严格限制时间范围
+            'limit': 30
         }
         
         try:
-            print(f"搜索Hugging Face模型")
-            response = requests.get(url, headers=headers, params=params)
-            print(f"HF API响应状态: {response.status_code}")
+            response = requests.get(fallback_url, headers=headers, params=params, timeout=30)
+            print(f"HF HTTP API 响应状态: {response.status_code}")
             
             if response.status_code == 200:
                 models = response.json()
                 
-                # 过滤最近24小时的模型
                 filtered_models = []
-                for model in models:
-                    if not self.is_duplicate(model) and self.is_within_time_range(model, 'huggingface'):
-                        model['quality_score'] = self.calculate_quality_score(model, 'huggingface')
-                        filtered_models.append(model)
-                    elif not self.is_within_time_range(model, 'huggingface'):
-                        print(f"过滤掉过期HF模型: {model.get('modelId', '')[:50]}... (创建时间: {model.get('createdAt', '')})")
+                for model in models[:20]:
+                    if self.is_duplicate(model):
+                        continue
+                    
+                    normalized = {
+                        'modelId': model.get('modelId', model.get('id', '')),
+                        'pipeline_tag': model.get('pipeline_tag', '未知'),
+                        'downloads': model.get('downloads', 0),
+                        'likes': model.get('likes', 0),
+                        'lastModified': model.get('lastModified', ''),
+                        'source_type': 'http_api'
+                    }
+                    
+                    if normalized['modelId']:
+                        normalized['quality_score'] = self.calculate_quality_score(normalized, 'huggingface')
+                        filtered_models.append(normalized)
                 
-                filtered_models.sort(key=lambda x: x['quality_score'], reverse=True)
-                
-                print(f"HF: 原始 {len(models)} 个，筛选后 {len(filtered_models)} 个")
+                filtered_models.sort(key=lambda x: x.get('quality_score', 0), reverse=True)
+                print(f"HF HTTP Fallback: 找到 {len(filtered_models)} 个模型")
                 return filtered_models[:5]
             else:
-                print(f"HF API错误: {response.status_code}")
+                print(f"HF HTTP API 错误: {response.status_code}")
         except Exception as e:
-            print(f"Hugging Face搜索错误: {e}")
+            print(f"Hugging Face HTTP 搜索错误: {e}")
             
         return []
     
@@ -1065,7 +1169,14 @@ class DailyAICollectorV2:
 根据今日内容，提供：
 - 技术趋势观察（2-3条）
 - 值得关注的方向
+## 💡 编辑点评
+根据今日内容，提供：
+- 技术趋势观察（2-3条）
+- 值得关注的方向
 - 行业影响分析
+
+**新增数据源说明**：
+- perplexity_news: 来自 Perplexity 的深度搜索结果，请根据内容将其**整合**到上述合适的分类中（如"今日焦点"或"应用与产品"），或者如果内容独特，可以单独设立 "🌐 全网热搜" 章节。
 
 **要求**：
 1. 严格按照各章节的专用数据源生成内容
@@ -1086,12 +1197,20 @@ class DailyAICollectorV2:
         try:
             print("开始AI生成摘要（新格式）...")
             
+            model_used = "unknown"
+            
             if self.use_google_sdk:
-                response = self.ai_client.generate_content(prompt)
+                # 新 SDK 调用方式
+                model_used = 'gemini-2.0-flash-exp'
+                response = self.ai_client.models.generate_content(
+                    model=model_used, 
+                    contents=prompt
+                )
                 content = response.text if hasattr(response, 'text') else None
             else:
+                model_used = "gemini-2.5-flash"
                 response = self.ai_client.chat.completions.create(
-                    model="gemini-2.5-flash",
+                    model=model_used,
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=3000,
                     temperature=0.7
@@ -1106,9 +1225,16 @@ class DailyAICollectorV2:
             return content
             
         except Exception as e:
-            print(f"AI生成摘要错误: {e}")
-            import traceback
-            traceback.print_exc()
+            error_msg = str(e)
+            if "429" in error_msg and "RESOURCE_EXHAUSTED" in error_msg:
+                print(f"\nAI生成摘要出错 (429 RESOURCE_EXHAUSTED):")
+                print(f"  - 使用模型: {model_used}")
+                print(f"  - 失败原因: 配额耗尽 (Quota Exceeded)")
+                # 不需要打印完整堆栈
+            else:
+                print(f"AI生成摘要错误: {e}")
+                import traceback
+                traceback.print_exc()
             return self.generate_fallback_summary(collected_data)
     
     def generate_fallback_summary(self, collected_data: Dict) -> str:
@@ -1194,6 +1320,25 @@ class DailyAICollectorV2:
         else:
             summary += "⚠️ 今日暂无新应用与产品发布。\n\n"
         
+        # 全网热搜 - 使用 perplexity_news
+        perplexity_news = collected_data.get('perplexity_news', [])
+        if perplexity_news:
+             summary += "## 🌐 全网热搜 (Perplexity)\n\n"
+             # 简单去重 (URL)
+             shown_urls = set()
+             for item in perplexity_news[:5]:
+                 url = item.get('url', '')
+                 if url in shown_urls: continue
+                 shown_urls.add(url)
+                 
+                 title = item.get('title', '无标题')
+                 snippet = item.get('snippet', '')[:150]
+                 date = item.get('date', '')
+                 
+                 summary += f"### [{title}]({url})\n"
+                 summary += f"- **摘要**: {snippet}...\n"
+                 summary += f"- **时间**: {date}\n\n"
+        
         # 学术前沿 - 使用 arxiv_papers (arXiv)
         summary += "## 📚 学术前沿\n\n"
         arxiv_papers = collected_data.get('arxiv_papers', [])
@@ -1267,7 +1412,10 @@ class DailyAICollectorV2:
             'github_projects': self.search_github_trending(),
             
             # 应用与产品 - NewsAPI, Tavily, Google, Serper, Brave 并行搜索
-            'applications': self.search_applications(),
+            'applications': self.search_applications(), 
+            
+            # 深度搜索 - Perplexity (补充视角)
+            'perplexity_news': self.search_perplexity_ai_news(),
         }
         
         print("=" * 60)
@@ -1287,6 +1435,7 @@ class DailyAICollectorV2:
 本报告采用**分章节专用数据源**策略：
 
 - 📰 **今日焦点**: Google Search（专注大模型厂商：OpenAI, Gemini, Anthropic, xAI, Meta, Qwen, DeepSeek, GLM, Kimi等）
+- 🌐 **全网热搜**: Perplexity AI（深度语义搜索补全）
 - 🧠 **模型与算法**: HuggingFace（新开源模型）
 - 📚 **学术前沿**: arXiv（最新AI论文）
 - 🛠️ **工具与框架**: GitHub（Star快速增长的AI项目）
