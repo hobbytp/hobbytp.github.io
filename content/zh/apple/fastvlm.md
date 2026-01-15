@@ -1,22 +1,18 @@
 ---
-wordCount: 2549
-readingTime: 7
-
----
 title: "FastVLM-WebGPU 技术报告解读"
 date: "2025-09-02T20:10:00+08:00"
 draft: false
 tags: ["Opensource", "FastVLM-WebGPU", "apple", "VLM"]
 categories: ["large_models"]
 description: "本文介绍了苹果公司开源的FastVLM-WebGPU模型，并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
-wordCount: 2488
-readingTime: 10
 
 ai_cover: "static/images/generated-covers/f790eb466d80c333d1754d1a363a3c83.webp"
 cover:
   image: "static/images/generated-covers/f790eb466d80c333d1754d1a363a3c83.webp"
   alt: "FastVLM-WebGPU 技术报告解读"
   ai_generated: true
+wordCount: 2488
+readingTime: 7
 ---
 
 苹果公司开源的 **FastVLM-WebGPU** 是一个可以在浏览器中实时运行的视觉语言模型（VLM）。下面为你详细介绍它的核心特性、技术原理、应用场景以及如何体验。你可以直接访问 <https://huggingface.co/spaces/apple/fastvlm-webgpu> 亲身体验其效果。
