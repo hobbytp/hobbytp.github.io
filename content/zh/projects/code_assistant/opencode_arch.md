@@ -3,7 +3,7 @@ title: OpenCode CLI 核心架构深度解析
 date: "2026-01-18T18:50:00+08:00"
 draft: false
 tags: ["code_assistant", "opencode"]
-categories: ["code_assistant"]
+categories: ["code_assistant","projects","mas"]
 description: "OpenCode CLI 核心架构深度解析"
 wordCount: 3513
 readingTime: 9

@@ -3,7 +3,7 @@ title: Gemini CLI 核心架构深度解析
 date: "2026-01-18T18:50:00+08:00"
 draft: false
 tags: ["code assistant", "gemini"]
-categories: ["code_assistant"]
+categories: ["code_assistant","projects","mas"]
 description: "Gemini CLI 核心架构深度解析"
 wordCount: 3739
 readingTime: 10
