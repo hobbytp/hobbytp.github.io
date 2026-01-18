@@ -1,11 +1,11 @@
 ---
-title: OpenCode CLI 架构深度解析
+title: OpenCode CLI 核心架构深度解析
 date: "2026-01-18T18:50:00+08:00"
 draft: false
 tags: ["code_assistant", "opencode"]
 categories: ["code_assistant"]
-description: "OpenCode CLI 架构深度解析"
-wordCount: 3369
+description: "OpenCode CLI 核心架构深度解析"
+wordCount: 3513
 readingTime: 9
 ---
 
@@ -242,6 +242,66 @@ OpenCode 已经原生支持 MCP 协议。
 *   **OpenCode 的机会**: 凭借其强大的 `Session` 状态管理和 `Plan` Agent，OpenCode 有潜力成为这种 **Autonomous Agentic IDE** 的核心引擎。
 
 OpenCode 不仅仅是一个工具，它是通往未来软件开发新范式的一扇门。在这个新范式中，人类保留创造力和决策权，而繁琐的编码实现将由智能体代劳。
+
+## 附录：系统架构图 (System Architecture Diagram)
+
+这张图展示了 OpenCode 的各个组件如何协同工作，从用户输入到工具执行的完整闭环。
+
+```mermaid
+graph TB
+    subgraph Client ["Client Layer (客户端层)"]
+        CLI["CLI / TUI (终端)"]
+        Electron["Electron / Web UI (图形界面)"]
+    end
+
+    subgraph Server ["Server Layer (Web 服务层)"]
+        API["REST API (Hono)"]
+    end
+
+    subgraph SessionCore ["Session Layer (核心会话层)"]
+        Processor("SessionProcessor<br/>(Event Loop 事件循环)")
+        History[("Message History<br/>(状态存储)")]
+        subgraph ContextEngine ["Context Engine (上下文引擎)"]
+            SysPrompt["System Prompt<br/>(身份ID, 动态环境)"]
+            Compaction["Compaction Agent<br/>(摘要提取, 自动修剪)"]
+        end
+    end
+
+    subgraph Capability ["Capability Layer (能力层)"]
+        subgraph Tools ["Tool Registry (工具注册表)"]
+            LSP["LSP Tool<br/>(语义导航)"]
+            Grep["Grep/Ripgrep<br/>(快速搜索)"]
+            Edit["Edit Tool<br/>(模糊匹配编辑)"]
+            Web["CodeSearch<br/>(外部知识检索)"]
+        end
+        Plugins["Plugin Hooks<br/>(鉴权, 事件拦截)"]
+    end
+
+    LLM[("LLM Provider<br/>(OpenAI / Claude / Gemini)")]
+
+    Client --> API
+    API --> Processor
+    Processor --> History
+    Processor -- "Build Context<br/>(构建上下文)" --> ContextEngine
+    Processor -- "Stream Request<br/>(流式请求)" --> LLM
+    LLM -- "Tool Call<br/>(工具调用请求)" --> Processor
+    Processor -- "Execute<br/>(执行工具)" --> Tools
+    Tools --> LSP
+    Tools --> Grep
+    Tools --> Edit
+    Tools --> Web
+    Processor -- "Trigger<br/>(触发钩子)" --> Plugins
+    ContextEngine --> History
+    Compaction -.-> History
+
+    classDef core fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef storage fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef ext fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+
+    class Processor,API core;
+    class History,LLM storage;
+    class LSP,Grep,Edit,Web ext;
+```
 
 ## 参考文献
 
