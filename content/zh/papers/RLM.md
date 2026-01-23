@@ -1,28 +1,24 @@
 ---
-title: "RLM"
+title: "MIT RLM(递归语言模型)-克服LLM上下文窗口限制和性能衰减"
 date: "2026-01-20T22:18:36+08:00"
 draft: false
 tags: ["paper", "research"]
 categories: ["papers"]
-description: "论文 RLM 的详细解读与资料整理。"
+description: "MIT 递归语言模型（RLM）模型，旨在攻克大语言模型在处理超长文本时的上下文衰减与窗口限制难题。"
 cover:
   image: "/images/optimized/png/RLM.webp"
   alt: "RLM 示意图"
-wordCount: 4634
-readingTime: 12
+wordCount: 4845
+readingTime: 13
 ---
 
 ## 摘要
 
-(此处添加摘要内容)
+这篇研究介绍了一种名为递归语言模型（RLM）的新型推理策略，旨在攻克大语言模型在处理超长文本时的上下文衰减与窗口限制难题。RLM的核心思想是将长提示词视为外部环境而非直接输入，并将其加载至 Python REPL 环境中。通过这种方式，模型能够以编程化手段对文本进行拆解、筛选和递归调用，从而突破数百万词元的限制。实验表明，RLM 在长文本推理任务中的表现显著优于传统的总结代理或检索工具，且成本效益极高。该方法实现了推理侧的计算扩展，为通向无限上下文和复杂长程任务处理开辟了新路径。
 
-## 论文示意图
 
-![RLM示意图](/images/optimized/png/RLM.webp)
 
-## 论文 PDF
-
-{{< pdf src="/pdf/RLM.pdf" >}}
+{{< pdf-slide src="/pdf/RLM.pdf" title="Recursive Language Models" >}}
 
 ## 闪卡回顾
 
@@ -99,3 +95,7 @@ readingTime: 12
 {{< flashcard q="在YouTube视频的图表中，即使应用了RLM策略，为什么在OOLONG-Pairs任务上的得分仍会随着上下文长度的增加而下降？" >}}尽管下降速度远慢于基础模型，但任务固有的二次方级复杂度意味着随着输入规模的增长，解决难度仍然会增加，导致性能有所下降。{{< /flashcard >}}
 {{< flashcard q="RLM方法如何为解决“长时程任务”（long-horizon tasks）提供支持？" >}}通过提供处理数千万词元输入的能力，它使语言模型能够处理需要跨越巨大信息范围进行推理和规划的复杂任务。{{< /flashcard >}}
 {{< /flashcards >}}
+
+## 参考文献
+* 论文：https://arxiv.org/pdf/2512.24601
+* 解读：https://www.youtube.com/watch?v=huszaaJPjU8
