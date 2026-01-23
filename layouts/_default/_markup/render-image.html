@@ -1,26 +1,34 @@
 {{- $u := urls.Parse .Destination -}}
 {{- $src := $u.String -}}
+{{- $fullSrc := $src -}}
+{{- $isLocal := false -}}
+
+{{- /* Check if it's a local resource to optimize */ -}}
 {{- if not $u.IsAbs -}}
-  {{- $path := strings.TrimPrefix "./" $u.Path }}
-  {{- with or (.Page.Resources.Get $path) (resources.Get $path) -}}
-    {{- $src = .RelPermalink -}}
-    {{- with $u.RawQuery -}}
-      {{- $src = printf "%s?%s" $src . -}}
-    {{- end -}}
-    {{- with $u.Fragment -}}
-      {{- $src = printf "%s#%s" $src . -}}
-    {{- end -}}
-  {{- end -}}
+{{- $path := strings.TrimPrefix "./" $u.Path }}
+{{- with or (.Page.Resources.Get $path) (resources.Get $path) -}}
+{{- $isLocal = true -}}
+{{- /* Resize to a reasonable max width for the page flow, e.g., 1200px */ -}}
+{{- /* We use fit to ensure we don't upscale small images */ -}}
+{{- $thumb := .Resize "1200x" -}}
+{{- $src = $thumb.RelPermalink -}}
+{{- $fullSrc = .RelPermalink -}}
 {{- end -}}
-{{- $attributes := merge .Attributes (dict "alt" .Text "src" $src "title" (.Title | transform.HTMLEscape) "loading" "lazy") -}}
-<img
-  {{- range $k, $v := $attributes -}}
-    {{- if $v -}}
-      {{- printf " %s=%q" $k $v | safeHTMLAttr -}}
-    {{- end -}}
-  {{- end -}}>
-{{- /**/ -}}
+{{- end -}}
 
+{{- if not $isLocal -}}
+{{- /* For remote images, we can't resize, but we can still use lightbox */ -}}
+{{- with $u.RawQuery -}}
+{{- $src = printf "%s?%s" $src . -}}
+{{- $fullSrc = $src -}}
+{{- end -}}
+{{- with $u.Fragment -}}
+{{- $src = printf "%s#%s" $src . -}}
+{{- $fullSrc = $src -}}
+{{- end -}}
+{{- end -}}
 
-
-
+{{- $attributes := merge .Attributes (dict "alt" .Text "src" $src "title" (.Title | transform.HTMLEscape) "loading"
+"lazy" "class" "lightbox-image" "data-full-src" $fullSrc) -}}
+<img {{- range $k, $v :=$attributes -}} {{- if $v -}} {{- printf " %s=%q" $k $v | safeHTMLAttr -}} {{- end -}} {{- end
+  -}}>

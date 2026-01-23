@@ -1,8 +1,10 @@
 {{- /* Custom CSS for blog styling */ -}}
 {{- partial "inline-css.html" . -}}
+{{- $lightboxCSS := resources.Get "css/lightbox.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $lightboxCSS.RelPermalink }}" integrity="{{ $lightboxCSS.Data.Integrity }}">
 
 {{- /* Chat Widget Support */ -}}
-<link rel="stylesheet" href="{{ "assets/css/chat.css" | relURL }}">
+<link rel="stylesheet" href="{{ " assets/css/chat.css" | relURL }}">
 <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
 
@@ -15,26 +17,26 @@
       setTimeout(initMermaid, 100);
       return;
     }
-    
+
     // 初始化 Mermaid
-    mermaid.initialize({ 
+    mermaid.initialize({
       startOnLoad: false,
       theme: 'default'
     });
-    
+
     // 将 Hugo 生成的代码块转换为 Mermaid 可识别的格式
-    document.querySelectorAll('pre code.language-mermaid').forEach(function(codeBlock) {
+    document.querySelectorAll('pre code.language-mermaid').forEach(function (codeBlock) {
       const pre = codeBlock.parentElement;
       const mermaidDiv = document.createElement('div');
       mermaidDiv.className = 'mermaid';
       mermaidDiv.textContent = codeBlock.textContent;
       pre.parentElement.replaceChild(mermaidDiv, pre);
     });
-    
+
     // 渲染所有 Mermaid 图表
     mermaid.run();
   }
-  
+
   // DOMContentLoaded 时执行
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMermaid);

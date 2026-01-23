@@ -37,7 +37,7 @@
             const html = document.querySelector("html");
             const currentTheme = html.dataset.theme;
             const newTheme = currentTheme === "dark" ? "light" : "dark";
-            
+
             html.dataset.theme = newTheme;
             localStorage.setItem("pref-theme", newTheme);
         }
@@ -65,3 +65,5 @@
 
 {{- /* Chat Widget */ -}}
 {{- partial "chatbox.html" . -}}
+{{- $lightboxJS := resources.Get "js/lightbox.js" | minify | fingerprint }}
+<script src="{{ $lightboxJS.RelPermalink }}" integrity="{{ $lightboxJS.Data.Integrity }}"></script>

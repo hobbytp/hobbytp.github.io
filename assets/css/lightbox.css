@@ -1,0 +1,69 @@
+/* Lightbox Overlay */
+#lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#lightbox-modal.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* Modal Image */
+#lightbox-img {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  animation-name: zoom;
+  animation-duration: 0.3s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* Close Button */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 10001;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Thumbnail Styling (applied to images in content) */
+.lightbox-image {
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+
+.lightbox-image:hover {
+  opacity: 0.9;
+}
