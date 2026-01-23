@@ -8,7 +8,7 @@ description: "Claude AI新宪章: Anthropic 为其 AI 模型 Claude 设定的核
 cover:
   image: "/images/optimized/png/claude_new_constitution.webp"
   alt: "claude_new_constitution 示意图"
-wordCount: 4691
+wordCount: 4694
 readingTime: 12
 ---
 
@@ -17,6 +17,11 @@ readingTime: 12
 Anthropic 为其 AI 模型 Claude 设定的核心价值观、行为准则及其被称为“宪章”的训练愿景。该框架旨在**培养一个既极具助人精神，又在诚实、道德和安全方面保持极高标准的智能体**。文本强调了人类监督的最高优先级，明确了模型在处理复杂伦理冲突、保护用户福祉以及遵守绝对禁令（如拒绝协助制造生物武器）时的判断逻辑。此外，来源还深入探讨了 AI 的**自我认同、心理稳定性和潜在的道德地位**等哲学前沿问题。总之，这套方案体现了开发者在技术飞速进步的背景下，通过结构化的引导而非机械的规则，力求实现 AI 与人类社会长效、安全协作的宏伟蓝图。
 
 Claude宪章（Claude’s Constitution）的组织结构设计得非常系统，旨在从宏观愿景到具体操作细节全方位地指导Claude的行为。
+
+![claude_new_constitution示意图](/images/optimized/png/claude_new_constitution.webp)
+
+
+{{< pdf-slide src="/pdf/claude_new_constitution.pdf" title="Claude AI新宪章" >}}
 
 宪章的整体结构主要由**前言与概述**、**四大核心价值观板块**、**关于Claude本质的探讨**以及**结语**组成。
 
@@ -76,12 +81,6 @@ Claude宪章（Claude’s Constitution）的组织结构设计得非常系统，
 
 
 
-
-![claude_new_constitution示意图](/images/optimized/png/claude_new_constitution.webp)
-
-
-
-{{< pdf src="/pdf/claude_new_constitution.pdf" >}}
 
 ## 闪卡回顾
 
