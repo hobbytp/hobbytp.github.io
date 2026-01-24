@@ -5,7 +5,11 @@
 
 {{- /* Check if it's a local resource to optimize */ -}}
 {{- if not $u.IsAbs -}}
+{{- /* Strip starting ./ or / for resource lookup */ -}}
 {{- $path := strings.TrimPrefix "./" $u.Path }}
+{{- $path := strings.TrimPrefix "/" $path }}
+
+{{- /* Try to find the resource in page bundle or assets */ -}}
 {{- with or (.Page.Resources.Get $path) (resources.Get $path) -}}
 {{- $isLocal = true -}}
 {{- /* Resize to a reasonable max width for the page flow, e.g., 1200px */ -}}

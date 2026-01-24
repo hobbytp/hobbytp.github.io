@@ -77,7 +77,7 @@ class PdfSlideViewer {
         // Window resize
         window.addEventListener('resize', () => {
             if (this.modal.classList.contains('active')) {
-                this.renderPage(this.pageNum);
+                this.queueRenderPage(this.pageNum);
             }
         });
     }
@@ -173,7 +173,7 @@ class PdfSlideViewer {
         } else {
             // PDF already loaded (e.g. by renderPreview), but we need to ensure UI is synced
             this.pageCountDom.textContent = this.pdfDoc.numPages;
-            this.renderPage(this.pageNum);
+            this.queueRenderPage(this.pageNum);
             this.hideSpinner();
         }
     }
@@ -214,7 +214,16 @@ class PdfSlideViewer {
      * Get page info from document, resize canvas accordingly, and render page.
      * @param num Page number.
      */
+    /**
+     * Get page info from document, resize canvas accordingly, and render page.
+     * @param num Page number.
+     */
     async renderPage(num) {
+        if (this.pageRendering) {
+            this.pageNumPending = num;
+            return;
+        }
+
         this.pageRendering = true;
 
         try {

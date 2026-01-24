@@ -27,14 +27,19 @@
   max-width: 90%;
   max-height: 90vh;
   object-fit: contain;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
   animation-name: zoom;
   animation-duration: 0.3s;
 }
 
 @keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
 }
 
 /* Close Button */
@@ -62,6 +67,10 @@
 .lightbox-image {
   cursor: zoom-in;
   transition: opacity 0.2s;
+  /* Ensure image fits within its container */
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 .lightbox-image:hover {
