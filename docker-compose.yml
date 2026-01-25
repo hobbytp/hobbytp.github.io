@@ -11,9 +11,11 @@ services:
     working_dir: /src
     environment:
       - HUGO_ENV=development
-    # 移除 --disableFastRender --disableLiveReload --ignoreCache 以提升启动速度
-    # --poll: 启用轮询模式以解决 Windows/Docker 卷挂载下的文件变更检测失效问题
-    command: server --bind 0.0.0.0 -D --poll 700ms
+    # 完全禁用文件监控，避免 Windows Docker 卷下的无限重建死循环
+    # --watch=false: 禁用所有文件监控
+    # --disableLiveReload: 禁用浏览器自动刷新
+    # --noHTTPCache: 禁用 HTTP 缓存，确保每次都能获取最新内容
+    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --noHTTPCache
 
   # 生产环境构建服务
   hugo-build:

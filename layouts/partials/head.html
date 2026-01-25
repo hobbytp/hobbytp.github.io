@@ -122,6 +122,9 @@
 {{ site.Params.customHead | safeHTML }}
 {{- end }}
 
+{{- /* Extended head for custom CSS/JS */ -}}
+{{- partial "extend_head.html" . -}}
+
 {{- /* Analytics */}}
 {{- if hugo.IsProduction }}
 {{- template "_internal/google_analytics.html" . }}

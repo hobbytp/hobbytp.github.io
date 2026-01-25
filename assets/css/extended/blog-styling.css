@@ -658,10 +658,17 @@ article li,
 
 /* 图片样式增强 */
 .post-content img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 1rem auto !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
   margin: 1.5rem 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
 }
 
 .post-content img:hover {
@@ -958,7 +965,7 @@ html {
 
 /* 文章页面整体布局优化 */
 .post-content {
-  background: #ffffff !important;
+  background: var(--entry) !important;
   border-radius: 12px !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
   overflow: hidden !important;
@@ -1252,4 +1259,34 @@ html {
   .post-content ul:last-child li {
     margin-bottom: 0.5rem !important;
   }
+}
+/* ===== 修复 TOC 目录样式 ===== */
+/*强制覆盖暗色模式下的背景色 */
+.toc-sidebar .toc-container,
+.toc {
+  background-color: var(--entry) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border) !important;
+}
+
+[data-theme="dark"] .toc-sidebar .toc-container,
+[data-theme="dark"] .toc {
+  background-color: var(--entry) !important;
+  color: var(--primary) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3) !important;
+}
+
+.toc-sidebar a,
+.toc a {
+  color: var(--secondary) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.toc-sidebar a:hover,
+.toc-sidebar a.active,
+.toc a:hover,
+.toc a.active {
+  color: var(--primary) !important;
+  background: transparent !important;
 }

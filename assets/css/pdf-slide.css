@@ -351,3 +351,25 @@
         padding: 0 1rem;
     }
 }
+
+.pdf-modal-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.pdf-modal-fullscreen {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    line-height: 1;
+    padding: 0.25rem 0.5rem;
+}
+
+.pdf-modal-fullscreen:hover {
+    opacity: 1;
+}

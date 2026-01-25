@@ -639,6 +639,7 @@ body {
 }
 
 [data-theme="dark"] .toc-sidebar .toc-container {
+  background-color: #1f2937; /* Force dark background */
   border-color: rgba(226, 232, 240, 0.08);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }

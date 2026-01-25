@@ -3,12 +3,42 @@
  * Uses Mozilla's PDF.js to render PDF pages on a canvas in a full-screen modal.
  */
 
-// Configure PDF.js worker
-// We use the same version as the main library we'll load in the layout
-const PDFJS_VERSION = '3.11.174';
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS_VERSION}/pdf.worker.min.js`;
+(function () {
+    const PDFJS_VERSION = '3.11.174';
 
-class PdfSlideViewer {
+    function lockBodyScroll() {
+        const body = document.body;
+        const current = Number(body.dataset.scrollLockCount || '0');
+        if (current === 0) {
+            body.dataset.scrollLockOverflow = body.style.overflow || '';
+            body.style.overflow = 'hidden';
+        }
+        body.dataset.scrollLockCount = String(current + 1);
+    }
+
+    function unlockBodyScroll() {
+        const body = document.body;
+        const current = Number(body.dataset.scrollLockCount || '0');
+        const next = Math.max(0, current - 1);
+        if (next === 0) {
+            body.style.overflow = body.dataset.scrollLockOverflow || '';
+            delete body.dataset.scrollLockOverflow;
+            delete body.dataset.scrollLockCount;
+        } else {
+            body.dataset.scrollLockCount = String(next);
+        }
+    }
+
+    function ensurePdfJsReady() {
+        if (!window.pdfjsLib) return false;
+        // Configure PDF.js worker only once.
+        if (!window.pdfjsLib.GlobalWorkerOptions.workerSrc) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${PDFJS_VERSION}/pdf.worker.min.js`;
+        }
+        return true;
+    }
+
+    class PdfSlideViewer {
     constructor(elementId, pdfUrl, title) {
         this.elementId = elementId;
         this.pdfUrl = pdfUrl;
@@ -33,7 +63,13 @@ class PdfSlideViewer {
         this.prevBtn = this.modal.querySelector('.pdf-prev-btn');
         this.nextBtn = this.modal.querySelector('.pdf-next-btn');
         this.closeBtn = this.modal.querySelector('.pdf-modal-close');
+        this.fullscreenBtn = this.modal.querySelector('.pdf-modal-fullscreen');
         this.spinner = this.modal.querySelector('.pdf-loading-spinner');
+
+        // Move modal to body to ensure position:fixed works correctly (avoids transform contexts)
+        if (this.modal && this.modal.parentElement !== document.body) {
+            document.body.appendChild(this.modal);
+        }
 
         this.init();
     }
@@ -45,6 +81,18 @@ class PdfSlideViewer {
         // Event Listeners
         this.card.addEventListener('click', () => this.openModal());
         this.closeBtn.addEventListener('click', () => this.closeModal());
+
+        // Click backdrop to close
+        this.modal.addEventListener('click', (e) => {
+            if (e.target === this.modal) this.closeModal();
+        });
+
+        if (this.fullscreenBtn) {
+            this.fullscreenBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleFullscreen();
+            });
+        }
 
         // Navigation
         this.prevBtn.addEventListener('click', (e) => {
@@ -101,7 +149,7 @@ class PdfSlideViewer {
             // optimizing: let's reuse this task if user opens modal quickly.
 
             if (!this.loadingTask) {
-                this.loadingTask = pdfjsLib.getDocument(this.pdfUrl);
+                this.loadingTask = window.pdfjsLib.getDocument(this.pdfUrl);
             }
 
             const pdf = await this.loadingTask.promise;
@@ -148,7 +196,7 @@ class PdfSlideViewer {
 
     openModal() {
         this.modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling background
+        lockBodyScroll(); // Prevent scrolling background (supports multiple overlays)
 
         if (!this.pdfDoc) {
             // Check if we already started loading in renderPreview
@@ -164,6 +212,7 @@ class PdfSlideViewer {
                     (error) => {
                         console.error('Error loading PDF:', error);
                         alert('Failed to load PDF. Please check your connection.');
+                        this.closeModal();
                         this.hideSpinner();
                     }
                 );
@@ -180,7 +229,23 @@ class PdfSlideViewer {
 
     closeModal() {
         this.modal.classList.remove('active');
-        document.body.style.overflow = '';
+        unlockBodyScroll();
+
+        // If we entered browser fullscreen, exit when closing.
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        }
+    }
+
+    toggleFullscreen() {
+        const target = this.modal;
+        if (!document.fullscreenElement) {
+            if (target.requestFullscreen) {
+                target.requestFullscreen({ navigationUI: 'hide' }).catch(() => {});
+            }
+        } else {
+            document.exitFullscreen().catch(() => {});
+        }
     }
 
     showSpinner() {
@@ -197,7 +262,7 @@ class PdfSlideViewer {
     async loadPdf() {
         this.showSpinner();
         try {
-            const loadingTask = pdfjsLib.getDocument(this.pdfUrl);
+            const loadingTask = window.pdfjsLib.getDocument(this.pdfUrl);
             this.pdfDoc = await loadingTask.promise;
 
             this.pageCountDom.textContent = this.pdfDoc.numPages;
@@ -205,6 +270,7 @@ class PdfSlideViewer {
         } catch (error) {
             console.error('Error loading PDF:', error);
             alert('Failed to load PDF. Please check your connection.');
+            this.closeModal();
         } finally {
             this.hideSpinner();
         }
@@ -316,9 +382,23 @@ class PdfSlideViewer {
 
 // Global initialization function
 window.initPdfSlide = function (elementId, pdfUrl, title) {
-    if (document.readyState === 'loading') { // Loading hasn't finished yet
-        document.addEventListener('DOMContentLoaded', () => new PdfSlideViewer(elementId, pdfUrl, title));
-    } else { // `DOMContentLoaded` has already fired
+    const init = () => {
+        if (!ensurePdfJsReady()) {
+            // PDF.js 被阻断/加载失败时：降级为新标签打开 PDF，避免“点击没反应”且不锁滚动
+            const card = document.getElementById(`pdf-card-${elementId}`);
+            if (card) {
+                card.addEventListener('click', () => window.open(pdfUrl, '_blank', 'noopener,noreferrer'));
+            }
+            return;
+        }
         new PdfSlideViewer(elementId, pdfUrl, title);
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
     }
 };
+
+})();
