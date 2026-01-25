@@ -4,27 +4,86 @@ services:
     container_name: hugo-blog
     volumes:
       - .:/src
-      - /src/resources
-      - /src/public
+      # 使用命名卷缓存生成的资源，避免每次重建
+      - hugo_resources:/src/resources
+      - hugo_public:/src/public
     ports:
       - "1313:1313"
     working_dir: /src
     environment:
       - HUGO_ENV=development
-    # 完全禁用文件监控，避免 Windows Docker 卷下的无限重建死循环
-    # --watch=false: 禁用所有文件监控
-    # --disableLiveReload: 禁用浏览器自动刷新
-    # --noHTTPCache: 禁用 HTTP 缓存，确保每次都能获取最新内容
-    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --noHTTPCache
+      - HUGO_NUMWORKERMULTIPLIER=4
+    # 开发模式优化：
+    # --watch=false: 禁用文件监控（Windows Docker 兼容）
+    # --disableLiveReload: 禁用浏览器刷新
+    # --noHTTPCache: 禁用 HTTP 缓存
+    # --templateMetrics: 可选，用于调试模板性能
+    # --disableKinds: 跳过不必要的页面类型生成
+    # --gc: 启用垃圾回收优化内存
+    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --noHTTPCache --gc --minify=false --disableKinds=RSS,sitemap
+
+  # 快速开发模式 - 跳过静态文件复制，极速启动
+  hugo-fast:
+    image: hugomods/hugo:exts-0.152.2
+    container_name: hugo-blog-fast
+    volumes:
+      - .:/src
+      - hugo_resources:/src/resources
+      - hugo_public:/src/public
+    ports:
+      - "1313:1313"
+    working_dir: /src
+    environment:
+      - HUGO_ENV=development
+      - HUGO_NUMWORKERMULTIPLIER=8
+    # 极速模式：
+    # --renderStaticToDisk=false: 静态文件直接从源目录服务，不复制到 public
+    # --disableKinds: 跳过 RSS/sitemap/分类/标签页
+    # --ignoreCache=false: 使用缓存
+    # --printMemoryUsage=false: 不打印内存使用
+    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --noHTTPCache --gc --minify=false --disableKinds=RSS,sitemap,taxonomy,term --renderStaticToDisk=false --printMemoryUsage=false
+    profiles:
+      - fast
+
+  # 超快开发模式 - 仅中文，跳过所有非必要功能
+  hugo-turbo:
+    image: hugomods/hugo:exts-0.152.2
+    container_name: hugo-blog-turbo
+    volumes:
+      - .:/src:ro
+      - ./content/zh:/src/content/zh:ro
+      - ./themes:/src/themes:ro
+      - ./layouts:/src/layouts:ro
+      - ./assets:/src/assets:ro
+      - ./config:/src/config:ro
+      - ./static/images:/src/static/images:ro
+      - hugo_resources:/src/resources
+      - hugo_public:/src/public
+    ports:
+      - "1313:1313"
+    working_dir: /src
+    environment:
+      - HUGO_ENV=development
+      - HUGO_NUMWORKERMULTIPLIER=8
+      - HUGO_DISABLELANGUAGES=en
+    # 涡轮模式：仅中文，跳过 PDF 等大文件
+    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --gc --minify=false --disableKinds=RSS,sitemap,taxonomy,term,404 --renderStaticToDisk=false --printMemoryUsage=false
+    profiles:
+      - turbo
 
   # 生产环境构建服务
   hugo-build:
     image: hugomods/hugo:exts-0.152.2
     volumes:
       - .:/src
-      - /src/resources
-      - /src/public
+      - hugo_resources:/src/resources
+      - hugo_public:/src/public
     working_dir: /src
-    command: build --minify
+    command: build --minify --gc
     profiles:
       - build
+
+# 命名卷用于持久化缓存
+volumes:
+  hugo_resources:
+  hugo_public:

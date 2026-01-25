@@ -1,0 +1,80 @@
+# 开发环境专用配置 - 覆盖默认配置以提升速度
+
+# 禁用开发时不需要的功能
+enableGitInfo = false
+enableRobotsTXT = false
+buildDrafts = true
+buildFuture = true
+
+# 禁用资源指纹（开发时不需要缓存破坏）
+[assets]
+disableFingerprinting = true
+
+[assets.css]
+minify = false
+
+[assets.js]
+minify = false
+
+# 简化输出格式
+[outputs]
+home = ["HTML"]
+section = ["HTML"]
+taxonomy = ["HTML"]
+term = ["HTML"]
+
+# 禁用分页以加速
+[pagination]
+pageSize = 100
+
+# 图片处理 - 开发时降低质量加速
+[imaging]
+quality = 60
+resampleFilter = "Box"
+
+# 关闭相关内容计算（耗时）
+[related]
+threshold = 0
+includeNewer = false
+toLower = false
+
+# 模块配置 - 最小化静态目录以加速开发
+# 开发时只挂载必要的图片，跳过 backup 和嵌套的 optimized 目录
+# 如需访问完整资源，请使用 make dev 而非 make dev-fast
+[module]
+  # 只挂载 generated-covers（用于封面图）
+  [[module.mounts]]
+    source = "static/images/generated-covers"
+    target = "static/images/generated-covers"
+  # 挂载优化后的 png 目录（常用封面）
+  [[module.mounts]]
+    source = "static/images/optimized/png"
+    target = "static/images/optimized/png"
+  # 挂载优化后的封面
+  [[module.mounts]]
+    source = "static/images/optimized/generated-covers"
+    target = "static/images/optimized/generated-covers"
+  [[module.mounts]]
+    source = "static/css"
+    target = "static/css"
+  [[module.mounts]]
+    source = "static/flashcards"
+    target = "static/flashcards"
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "data"
+    target = "data"
+  [[module.mounts]]
+    source = "i18n"
+    target = "i18n"
+  [[module.mounts]]
+    source = "archetypes"
+    target = "archetypes"

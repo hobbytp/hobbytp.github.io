@@ -1290,3 +1290,96 @@ body.has-sidebar > .header {
   color: var(--color-secondary);
   background: var(--article-surface);
 }
+
+/* ===== 修复文章列表显示问题 (Fix List Display) ===== */
+/* 强制重置列表样式，确保与标准的 Markdown 渲染一致 */
+
+/* 基础列表容器样式 */
+.post-content ul,
+.post-content ol,
+.post-content ul ul,
+.post-content ul ol,
+.post-content ol ul,
+.post-content ol ol {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+  padding-left: 2rem !important;
+  list-style-position: outside !important;
+  overflow: visible !important;
+}
+
+/* 无序列表样式层级 */
+.post-content ul {
+  list-style-type: disc !important;
+}
+.post-content ul ul {
+  list-style-type: circle !important;
+}
+.post-content ul ul ul {
+  list-style-type: square !important;
+}
+
+/* 有序列表样式层级 */
+.post-content ol {
+  list-style-type: decimal !important;
+}
+.post-content ol ol,
+.post-content ul ol {
+  list-style-type: lower-roman !important;
+}
+.post-content ol ol ol,
+.post-content ul ol ol,
+.post-content ol ul ol {
+  list-style-type: lower-alpha !important;
+}
+
+/* 列表项基础样式 */
+.post-content li {
+  margin-bottom: 0.4rem !important;
+  padding-left: 0.25rem !important;
+  display: list-item !important;
+  position: static !important;
+}
+
+/* 列表序号/标记样式 - 使用原生 marker */
+.post-content li::marker {
+  color: var(--color-primary) !important;
+  font-weight: 600 !important;
+}
+
+/* 重要：禁用所有自定义伪元素序号（高优先级覆盖） */
+.post-content li::before,
+.post-content ul li::before,
+.post-content ol li::before,
+.post-content ul ul li::before,
+.post-content ul ol li::before,
+.post-content ol ul li::before,
+.post-content ol ol li::before,
+.post-content ol:last-child li::before,
+.post-content ul:last-child li::before {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: static !important;
+}
+
+/* 覆盖参考文献区域的特殊样式，恢复正常列表 */
+.post-content ol:last-child,
+.post-content ul:last-child {
+  list-style: decimal !important;
+  counter-reset: none !important;
+  padding-left: 2rem !important;
+}
+
+.post-content ul:last-child {
+  list-style: disc !important;
+}
+
+.post-content ol:last-child li,
+.post-content ul:last-child li {
+  counter-increment: none !important;
+  padding-left: 0.25rem !important;
+  position: static !important;
+}

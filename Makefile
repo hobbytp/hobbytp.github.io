@@ -1,4 +1,4 @@
-.PHONY: dev build clean stop optimize-images optimize-one analyze-performance build-measure analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers generate-cover-from-photo test-covers generate-covers-for-directory ingest-data help
+.PHONY: dev dev-fast dev-turbo build clean stop clean-cache optimize-images optimize-one analyze-performance build-measure analyze-content analyze-content-ai full-build full-build-ai validate-architecture generate-covers generate-ai-covers generate-cover-from-photo test-covers generate-covers-for-directory ingest-data help
 
 # Shell 设置
 # 让每个配方(target)的所有命令在同一个 shell 中执行，确保 .env 中的导出变量可在后续命令中生效
@@ -18,10 +18,27 @@ PYTHON_CMD := $(shell \
 	fi \
 )
 
-# 开发环境
+# 开发环境（完整功能，约56秒启动）
 dev:
-	@echo "🚀 启动Hugo开发服务器..."
+	@echo "🚀 启动Hugo开发服务器（完整模式）..."
 	docker-compose up hugo
+
+# 快速开发模式（约14秒启动，跳过大量静态文件）
+# 注意：部分图片和PDF可能无法显示，适合文章编写和样式调试
+dev-fast:
+	@echo "⚡ 启动Hugo快速开发模式（约14秒）..."
+	docker-compose --profile fast up hugo-fast
+
+# 涡轮开发模式（仅中文，跳过PDF等大文件，最快启动）
+dev-turbo:
+	@echo "🚀 启动Hugo涡轮模式（仅中文）..."
+	docker-compose --profile turbo up hugo-turbo
+
+# 清理Docker卷缓存（如果遇到缓存问题）
+clean-cache:
+	@echo "🧹 清理Hugo缓存卷..."
+	docker-compose down -v
+	@echo "✅ 缓存已清理，下次启动将重新构建"
 
 # 生产环境构建
 build:

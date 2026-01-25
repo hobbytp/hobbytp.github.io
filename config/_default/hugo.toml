@@ -15,7 +15,10 @@ buildFuture = false
 buildExpired = false
 
 # 忽略不必要的文件以提升性能
-# ignoreFiles = ["\\.git", "\\.vscode", "\\.idea", "node_modules", "public", "resources/_gen", "\\.DS_Store"]
+ignoreFiles = ["\\.git$", "\\.vscode$", "\\.idea$", "node_modules", "\\.DS_Store$", "Thumbs\\.db$", "\\.backup$", "~$"]
+
+# 忽略缓存目录
+ignoreVendorPaths = "github.com"
 
 [pagination]
 pageSize = 5
@@ -32,9 +35,13 @@ mediaType = "image/webp"
 
 # 构建优化配置
 [build]
-useResourceCacheWhen = "fallback"
+useResourceCacheWhen = "always"
 writeStats = false
-noJSConfigInAssets = false
+noJSConfigInAssets = true
+
+# 并行处理
+[build.buildStats]
+enable = false
 
 # 资源处理优化
 [assets]
@@ -49,11 +56,21 @@ minify = true
 # HTTP缓存策略
 [caches.getresource]
 dir = ":cacheDir/:project"
-maxAge = "10m"
+maxAge = "24h"
 
 [caches.getjson]
 dir = ":cacheDir/json"
-maxAge = "10m"
+maxAge = "24h"
+
+# 图片缓存 - 避免重复处理
+[caches.images]
+dir = ":cacheDir/images"
+maxAge = "24h"
+
+# 资源缓存
+[caches.assets]
+dir = ":resourceDir/_gen"
+maxAge = "24h"
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]

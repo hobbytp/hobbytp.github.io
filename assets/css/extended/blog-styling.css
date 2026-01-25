@@ -1153,42 +1153,8 @@ html {
   display: none !important;
 }
 
-/* 参考文献列表样式 */
-.post-content ol:last-child,
-.post-content ul:last-child {
-  margin: 0 !important;
-  padding: 0 !important;
-  list-style: none !important;
-  counter-reset: reference-counter !important;
-}
-
-.post-content ol:last-child li,
-.post-content ul:last-child li {
-  counter-increment: reference-counter !important;
-  margin-bottom: 0.75rem !important;
-  padding-left: 0 !important;
-  position: relative !important;
-}
-
-/* 有序列表的编号 */
-.post-content ol:last-child li::before {
-  content: counter(reference-counter) ". " !important;
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important;
-  font-weight: 600 !important;
-  color: #6b7280 !important;
-}
-
-/* 无序列表的编号（手动添加数字） */
-.post-content ul:last-child li::before {
-  content: counter(reference-counter) ". " !important;
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important;
-  font-weight: 600 !important;
-  color: #6b7280 !important;
-}
+/* 参考文献列表样式 - 使用原生列表样式，避免 ::before 伪元素冲突 */
+/* 注意：自定义序号样式已移至 custom.css 中统一管理 */
 
 /* 参考文献链接样式 */
 .post-content ol:last-child a,
