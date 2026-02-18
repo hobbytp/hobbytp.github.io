@@ -7,6 +7,12 @@ categories: ["courses"]
 description: "DeepLearning.AI官网频繁更新来自不同大厂和开源社区领军人的课程。非常值得日常及时跟进学习。"
 wordCount: 1016
 readingTime: 3
+
+ai_cover: "/images/generated-covers/762b17197ef6eb8a29edb2fbc1ab080a.webp"
+cover:
+  image: "/images/generated-covers/762b17197ef6eb8a29edb2fbc1ab080a.webp"
+  alt: "DeepLearning.AI官网"
+  ai_generated: true
 ---
 
 

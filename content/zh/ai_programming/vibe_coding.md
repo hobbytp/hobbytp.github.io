@@ -6,6 +6,12 @@ categories: ["ai_programming"]
 description: "Vibe Coding（氛围编程）是2025年备受关注的一种编程新范式，其核心是开发者通过自然语言与AI协作，将关注点从语法细节转向意图表达。"
 wordCount: 736
 readingTime: 2
+
+ai_cover: "/images/generated-covers/6d7e909fd00918dcb2234748d64ecd02.webp"
+cover:
+  image: "/images/generated-covers/6d7e909fd00918dcb2234748d64ecd02.webp"
+  alt: "何为Vibe Coding"
+  ai_generated: true
 ---
 
 Vibe Coding（氛围编程）是2025年备受关注的一种编程新范式，其核心是开发者通过自然语言与AI协作，将关注点从语法细节转向意图表达。下面这个表格能帮你快速把握其核心脉络。

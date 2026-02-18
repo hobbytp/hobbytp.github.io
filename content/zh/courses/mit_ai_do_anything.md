@@ -7,6 +7,12 @@ categories: ["courses"]
 description: "MIT课程《如何用AI（几乎）做任何事》（*How to AI (Almost) Anything*）"
 wordCount: 1175
 readingTime: 3
+
+ai_cover: "/images/generated-covers/50522b0135b14fae405e485157e16f7b.webp"
+cover:
+  image: "/images/generated-covers/50522b0135b14fae405e485157e16f7b.webp"
+  alt: "MIT AI Do Anything"
+  ai_generated: true
 ---
 
 ## **MIT AI Do Anything**

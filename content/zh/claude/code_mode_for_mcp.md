@@ -7,6 +7,12 @@ tags: [MCP, Code Mode, 模型上下文协议, 代码模式, 代码执行, 高效
 categories: ["big_companies", "context_engineering"]
 wordCount: 1913
 readingTime: 5
+
+ai_cover: "/images/generated-covers/687d39894f9ab6ea08dc750b54240252.webp"
+cover:
+  image: "/images/generated-covers/687d39894f9ab6ea08dc750b54240252.webp"
+  alt: "通过代码执行提高模型上下文协议（MCP）效率的机制"
+  ai_generated: true
 ---
 
 ## 背景

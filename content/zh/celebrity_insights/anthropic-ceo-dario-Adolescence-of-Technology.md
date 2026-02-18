@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "Dario Amodei（The Adolescence of Technology），系统阐述强大AI对人类社会的深远影响，既肯定其变革潜力，也重点警示未妥善管控的风险，引发全球广泛关注。"
 wordCount: 1644
 readingTime: 5
+
+ai_cover: "/images/generated-covers/5c5c3b83181ca4ab37d00e3ec3fff2da.webp"
+cover:
+  image: "/images/generated-covers/5c5c3b83181ca4ab37d00e3ec3fff2da.webp"
+  alt: "Anthropic CEO Dario Amodei博客-《技术的青春期》"
+  ai_generated: true
 ---
 
 Anthropic掌门人、首席执行官达里奥·阿莫迪（Dario Amodei）2026年1月27日在个人博客发布两万字长文《技术的青春期》（The Adolescence of Technology），系统阐述强大AI对人类社会的深远影响，既肯定其变革潜力，也重点警示未妥善管控的风险，引发全球广泛关注。

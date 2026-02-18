@@ -7,6 +7,12 @@ categories: ["courses"]
 description: "Kaggle Learn Guide：Google 5 天 AI Agents 强化课程中文整理（Setup + Day1~Day5），覆盖 agents 基础、工具与 MCP、上下文工程、质量评估与可观测性、从原型到生产与 A2A 协议，并保留原始资源链接。"
 wordCount: 2711
 readingTime: 7
+
+ai_cover: "/images/generated-covers/b5fe23e8da486bb43f9906d9d45f0191.webp"
+cover:
+  image: "/images/generated-covers/b5fe23e8da486bb43f9906d9d45f0191.webp"
+  alt: "Kaggle 5-Day AI Agents Intensive（Google）课程笔记"
+  ai_generated: true
 ---
 
 

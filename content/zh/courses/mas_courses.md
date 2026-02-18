@@ -7,6 +7,12 @@ categories: ["courses"]
 description: "搜集网络上来自各知名机构的Agent相关课程。"
 wordCount: 185
 readingTime: 1
+
+ai_cover: "/images/generated-covers/d2b8bef850b5de5e5b1da75c309a7145.webp"
+cover:
+  image: "/images/generated-covers/d2b8bef850b5de5e5b1da75c309a7145.webp"
+  alt: "Agent 相关课程收集"
+  ai_generated: true
 ---
 
 ## AI Agents for Beginners - From MS

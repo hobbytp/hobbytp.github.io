@@ -7,6 +7,12 @@ categories: ["context_engineering"]
 description: "从“念咒语”到“造世界”：提示工程退位，上下文工程登场"
 wordCount: 2560
 readingTime: 7
+
+ai_cover: "/images/generated-covers/74e0d2ff96abc8a072425cf80cbacd73.webp"
+cover:
+  image: "/images/generated-covers/74e0d2ff96abc8a072425cf80cbacd73.webp"
+  alt: "从“念咒语”到“造世界”：提示工程退位，上下文工程登场"
+  ai_generated: true
 ---
 
 ## 一、热闹之后，真正的变革在哪里？

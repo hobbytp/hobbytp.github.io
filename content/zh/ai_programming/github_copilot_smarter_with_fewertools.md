@@ -7,6 +7,12 @@ categories: ["ai_programming"]
 description: "deep dive into LLMs like ChatGPT相关资源链接"
 wordCount: 1051
 readingTime: 3
+
+ai_cover: "/images/generated-covers/3348a86477d530dfd46ef5d7e68b5718.webp"
+cover:
+  image: "/images/generated-covers/3348a86477d530dfd46ef5d7e68b5718.webp"
+  alt: "GitHub Copilot 优化工具数量，如何保证大模型推理效率和准确性？"
+  ai_generated: true
 ---
 
 这篇来自 GitHub 官方技术团队的[文章](https://github.blog/ai-and-ml/github-copilot/how-were-making-github-copilot-smarter-with-fewer-tools/)非常有“干货”，它直击了当前 Agent 开发中的一个核心痛点：**当工具（Tools）数量爆炸时，如何保证大模型的推理效率和准确性？**

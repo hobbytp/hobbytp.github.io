@@ -8,6 +8,12 @@ author: "Peng Tan"
 description: "claude mcp server相关资源链接"
 wordCount: 12
 readingTime: 1
+
+ai_cover: "/images/generated-covers/1db666749fba8fea4875ab46e16b7ff0.webp"
+cover:
+  image: "/images/generated-covers/1db666749fba8fea4875ab46e16b7ff0.webp"
+  alt: "claude mcp server"
+  ai_generated: true
 ---
 
 # claude mcp server

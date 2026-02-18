@@ -8,6 +8,12 @@ categories: ["big_companies", "context_engineering"]
 description: "Claude Skills 是一种模块化的、可重复使用的能力包。你可以把它看作一个文件夹，里面封装了针对特定任务的指令、知识、甚至是可执行的代码脚本。它的核心价值在于，能将通用的 Claude 模型，转变为能够精准执行特定领域任务的“专家”。"
 wordCount: 5243
 readingTime: 14
+
+ai_cover: "/images/generated-covers/d7f8e1a45f63a5f5bc296c27949afc12.webp"
+cover:
+  image: "/images/generated-covers/d7f8e1a45f63a5f5bc296c27949afc12.webp"
+  alt: "Claude Skills"
+  ai_generated: true
 ---
 
 

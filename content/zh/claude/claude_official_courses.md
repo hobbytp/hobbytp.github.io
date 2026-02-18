@@ -7,6 +7,12 @@ categories: ["course"]
 description: "Anthropic 官方课程，覆盖从基础到高级的AI技术与应用"
 wordCount: 248
 readingTime: 1
+
+ai_cover: "/images/generated-covers/91d2ce70c7cdd94471c0d7bd73932a0a.webp"
+cover:
+  image: "/images/generated-covers/91d2ce70c7cdd94471c0d7bd73932a0a.webp"
+  alt: "Anthropic 官方课程"
+  ai_generated: true
 ---
 
 Anthropic [Academy](https://www.anthropic.com/learn)

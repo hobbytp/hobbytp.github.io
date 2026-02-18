@@ -7,6 +7,12 @@ categories: ["courses"]
 description: "搜集到的网络上的各种AI课程合集"
 wordCount: 90
 readingTime: 1
+
+ai_cover: "/images/generated-covers/84de1804aa1d3f59225ad08d8751f94b.webp"
+cover:
+  image: "/images/generated-covers/84de1804aa1d3f59225ad08d8751f94b.webp"
+  alt: "AI课程集合（持续更新中...）"
+  ai_generated: true
 ---
 
 ## Coding Interview - 关于成为一名软件工程师的完整计算机科学学习计划

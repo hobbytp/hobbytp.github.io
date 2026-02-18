@@ -7,6 +7,12 @@ categories: ["context_engineering","projects"]
 description: "Context Engineering Intro 是一个全面的模板，用于实现上下文工程，这是通过为 AI 编码助手提供完整上下文来更高效地处理任务的技术。"
 wordCount: 439
 readingTime: 2
+
+ai_cover: "/images/generated-covers/335b02b3614d5e22d4f5d7f055c79e78.webp"
+cover:
+  image: "/images/generated-covers/335b02b3614d5e22d4f5d7f055c79e78.webp"
+  alt: "Context Engineering Intro"
+  ai_generated: true
 ---
 
 该项目名为 **Context Engineering Intro**，提供了一个全面的模板，用于实现上下文工程（Context Engineering），这是通过为 AI 编码助手提供完整上下文来更高效地处理任务的技术。相比传统的提示工程（Prompt Engineering），上下文工程可减少失败率、提高一致性、支持复杂功能并具备自我修正能力。

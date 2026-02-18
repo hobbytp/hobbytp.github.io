@@ -7,6 +7,12 @@ categories: ["context_engineering"]
 description: "Context Engineering 是大型语言模型（LLM）应用中的系统性技术，旨在通过动态构建、管理和优化输入模型的信息负载（包括指令、记忆、工具输出、外部知识等），提升模型在复杂任务中的性能、稳定性和可靠性。"
 wordCount: 4026
 readingTime: 11
+
+ai_cover: "/images/generated-covers/2ec74f70169f42f97e202038a2718c09.webp"
+cover:
+  image: "/images/generated-covers/2ec74f70169f42f97e202038a2718c09.webp"
+  alt: "Context Engineering"
+  ai_generated: true
 ---
 
 ## 大语言模型上下文工程常见问题解答

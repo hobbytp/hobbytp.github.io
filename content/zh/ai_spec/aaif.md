@@ -7,6 +7,12 @@ categories: ["ai_spec"]
 description: "Agentic AI Foundation (AAIF) 是在Linux Foundation托管下成立的一个新型开放治理倡议，旨在推动代理人工智能（Agentic AI）生态系统的透明、互操作和可互换发展。AAIF于2025年12月9日正式宣布成立，由Anthropic、Block和OpenAI三家科技巨头共同创立，代表了AI产业向生产级代理系统转变的关键里程碑。后发的竞争对手（如中国的AI公司）如果想融入全球生态，必须兼容这些标准，从而陷入跟随者的被动局面。"
 wordCount: 3417
 readingTime: 9
+
+ai_cover: "/images/generated-covers/89d31de417e1e5b5f53e7e64c5f56ea5.webp"
+cover:
+  image: "/images/generated-covers/89d31de417e1e5b5f53e7e64c5f56ea5.webp"
+  alt: "Agentic AI Foundation (AAIF) 深度介绍"
+  ai_generated: true
 ---
 
 ## 概述

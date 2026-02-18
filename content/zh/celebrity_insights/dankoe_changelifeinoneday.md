@@ -6,6 +6,12 @@ categories: ["celebrity_insights"]
 description: "Dan Koe阐述了通过重塑身份来实现人生转变的核心逻辑，强调真正的改变并非源于行为的被迫调整，而是源于内在自我的根本重新定义。"
 wordCount: 6288
 readingTime: 16
+
+ai_cover: "/images/generated-covers/b68be2480f90ec1fcc01dce8e7b8b96c.webp"
+cover:
+  image: "/images/generated-covers/b68be2480f90ec1fcc01dce8e7b8b96c.webp"
+  alt: "Dan Koe: 如何在一天内彻底改变你的人生"
+  ai_generated: true
 ---
 
 

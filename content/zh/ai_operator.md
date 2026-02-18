@@ -7,6 +7,12 @@ categories: ["ai_tools"]
 description: "计算机使用代理"
 wordCount: 1872
 readingTime: 5
+
+ai_cover: "/images/generated-covers/e3aff9406869aeab6760a64c497c53ee.webp"
+cover:
+  image: "/images/generated-covers/e3aff9406869aeab6760a64c497c53ee.webp"
+  alt: "计算机使用代理"
+  ai_generated: true
 ---
 
 # 各种操作电脑的AI代理

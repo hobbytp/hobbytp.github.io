@@ -6,6 +6,12 @@ categories: ["ai_programming"]
 description: 来自YC的Vibe Coding 的最佳实践
 wordCount: 1652
 readingTime: 5
+
+ai_cover: "/images/generated-covers/f0626fcd39dd9979480b9e383b97eea8.webp"
+cover:
+  image: "/images/generated-covers/f0626fcd39dd9979480b9e383b97eea8.webp"
+  alt: "来自YC的Vibe Coding 的最佳实践"
+  ai_generated: true
 ---
 
 

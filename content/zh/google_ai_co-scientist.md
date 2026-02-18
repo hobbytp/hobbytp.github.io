@@ -7,6 +7,12 @@ categories: ["product"]
 description: "本文介绍了Google开发的AI协同科学家系统（AI co-scientist），并对其技术原理、主要贡献、论文方法、评估结果和局限性进行了详细解读。"
 wordCount: 2303
 readingTime: 6
+
+ai_cover: "/images/generated-covers/61b31100e9d46217c3950a7f3cb08f0b.webp"
+cover:
+  image: "/images/generated-covers/61b31100e9d46217c3950a7f3cb08f0b.webp"
+  alt: "Google AI协同科学家系统"
+  ai_generated: true
 ---
 
 ## 文章概述

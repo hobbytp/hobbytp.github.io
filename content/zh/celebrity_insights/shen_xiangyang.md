@@ -7,6 +7,12 @@ categories: ["celebrity_insights"]
 description: "沈向洋的观点搜集"
 wordCount: 2305
 readingTime: 6
+
+ai_cover: "/images/generated-covers/517226ad97c25363e4e33f24ae4576c5.webp"
+cover:
+  image: "/images/generated-covers/517226ad97c25363e4e33f24ae4576c5.webp"
+  alt: "沈向洋"
+  ai_generated: true
 ---
 
 <details>

@@ -7,6 +7,12 @@ categories: ["课程资源"]
 description: "顶尖的数学可视化教育网站，包含Neural Networks系列视频"
 wordCount: 63
 readingTime: 1
+
+ai_cover: "/images/generated-covers/09b51ddcab3fb16146ea6b2183c111d3.webp"
+cover:
+  image: "/images/generated-covers/09b51ddcab3fb16146ea6b2183c111d3.webp"
+  alt: "3Blue1Brown - 数学可视化教育"
+  ai_generated: true
 ---
 
 # 3Blue1Brown - 数学可视化教育
