@@ -118,6 +118,8 @@ Limited Epiplexity Increase Property 指出：在计算受限世界中，ST(G(Z)
 1. 课程学习自动化： 利用 Epiplexity 实时评估数据的“学习回报率”，动态调整训练混合比例。
 2. 解决数据墙： 通过生产高 ST 的逻辑合成数据，我们将跨越自然语言枯竭的瓶颈，推动 Scaling Laws 向更高维度的结构化智能演进。
 
+![Epiplexity](./images/Epiplexity.webp)
+
 量化并内化“结构化信息”，是解决 AI 扩展律瓶颈、通往 AGI 的唯一理论路径。
 
 
