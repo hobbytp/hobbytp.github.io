@@ -337,7 +337,9 @@ class DailyAICollectorV2_1:
         
         elif source == 'huggingface':
             downloads = item.get('downloads', 0)
+            likes = item.get('likes', 0)
             score += min(downloads / 500, 3.0)  # 提高 downloads 权重（最多加3分）
+            score += min(likes / 10, 2.0)       # 提高 likes 权重（最多加2分）
             
             # 是否有 pipeline_tag
             if item.get('pipeline_tag'):
@@ -487,6 +489,63 @@ class DailyAICollectorV2_1:
             print("提示: Perplexity API 调用失败，将跳过新闻搜索")
             return []
 
+    async def search_metasota_async(self, query: str) -> List[Dict]:
+        """Manually search MetaSota API with POST request"""
+        if not self.metasosearch_api_key:
+            print("WARNING: METASOSEARCH_API_KEY 未设置，跳过 MetaSota 搜索")
+            return []
+
+        url = "https://metaso.cn/api/v1/search"
+        headers = {
+            "Authorization": f"Bearer {self.metasosearch_api_key}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "q": query,
+            "scope": "webpage",
+            "includeSummary": False,
+            "size": 10,
+            "includeRawContent": False,
+            "conciseSnippet": False
+        }
+        
+        print(f"MetaSota Manual Search: {query}")
+
+        try:
+             import asyncio
+             # Sync request in executor to avoid blocking main thread
+             def _do_request():
+                 return requests.post(url, json=payload, headers=headers, timeout=20)
+             
+             loop = asyncio.get_event_loop()
+             response = await loop.run_in_executor(None, _do_request)
+             
+             if response.status_code == 200:
+                 data = response.json()
+                 results = data.get('data', [])
+                 articles = []
+                 for item in results:
+                     # Adapt to article format expected by collector
+                     # MetaSota might not return date, use current time as fallback or try to extract from snippet/content if possible
+                     now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                     
+                     articles.append({
+                         "title": item.get('title'),
+                         "url": item.get('url'),
+                         "description": item.get('snippet') or item.get('content', '')[:300],
+                         "source": "metasota",
+                         "published_date": now_iso, 
+                         "published": now_iso 
+                     })
+                 print(f"MetaSota manual search found {len(articles)} results")
+                 return articles
+             else:
+                 print(f"MetaSota API Error: {response.status_code} - {response.text}")
+                 return []
+        except Exception as e:
+            print(f"MetaSota Request Failed: {e}")
+            return []
+
     def search_ai_news_lib(self) -> List[Dict]:
         """使用 ai_news_collector_lib 搜索多源 AI 新闻"""
         if not USE_AI_NEWS_LIB:
@@ -510,7 +569,7 @@ class DailyAICollectorV2_1:
                 enable_google_search=True,  # GOOGLE_SEARCH_API_KEY
                 enable_serper=True,         # SERPER_API_KEY
                 enable_brave_search=True,   # BRAVE_SEARCH_API_KEY
-                enable_metasota_search=True, # METASOSEARCH_API_KEY
+                enable_metasota_search=False, # METASOSEARCH_API_KEY (Disabled due to library bug)
                 
                 # 搜索参数 - 严格限制时间范围
                 max_articles_per_source=3,
@@ -542,22 +601,48 @@ class DailyAICollectorV2_1:
             import asyncio
             
             async def collect_async():
+                tasks = []
+                # 1. Lib Collection
                 if hasattr(collector, 'collect_multiple_topics'):
-                    return await collector.collect_multiple_topics(topics)
+                    tasks.append(collector.collect_multiple_topics(topics))
                 else:
                     # 兼容回退：逐主题收集
-                    results = []
+                    # 这里为了简化，假设新版lib支持collect_multiple_topics，或者不并发调用旧版
+                    # 如果必须兼容，逻辑会复杂点，这里保持原逻辑架构
+                    pass 
+
+                # 2. MetaSota Manual Search (Concurrent)
+                tasks.append(self.search_metasota_async(topics[0])) # Search generic topic
+
+                # Execute
+                if hasattr(collector, 'collect_multiple_topics'):
+                     # run both lib and metasota
+                     results = await asyncio.gather(*tasks, return_exceptions=True)
+                     lib_result = results[0] if not isinstance(results[0], Exception) else {"articles": []}
+                     metasota_result = results[1] if len(results) > 1 and not isinstance(results[1], Exception) else []
+                     
+                     all_articles = lib_result.get('articles', [])
+                     all_articles.extend(metasota_result)
+                     return {"articles": all_articles}
+
+                else:
+                    # Fallback for old lib: linear execution
+                    lib_results = []
                     for topic in topics:
                         if hasattr(collector, 'collect_news_advanced'):
-                            result = await collector.collect_news_advanced(topic)
-                            results.append(result)
+                            res = await collector.collect_news_advanced(topic)
+                            lib_results.append(res)
                     
-                    # 合并结果
-                    all_articles = []
-                    for r in results:
-                        all_articles.extend(r.get('articles', []))
-                    return {"articles": all_articles, "unique_articles": len(all_articles)}
-            
+                    lib_articles = []
+                    for r in lib_results:
+                        lib_articles.extend(r.get('articles', []))
+                        
+                    # Manual MetaSota
+                    metasota_articles = await self.search_metasota_async(topics[0] + " " + topics[1])
+                    lib_articles.extend(metasota_articles)
+                    
+                    return {"articles": lib_articles}
+
             # 运行异步收集
             result = asyncio.run(collect_async())
             articles = result.get('articles', [])
@@ -874,6 +959,9 @@ class DailyAICollectorV2_1:
                         created_at = item.get('created_at', '')
                         stars = item.get('stargazers_count', 0)
                         
+                        # 确保不处理 stars 为 0 的
+                        if stars == 0: continue
+                        
                         if created_at:
                             try:
                                 create_time = datetime.datetime.strptime(created_at, '%Y-%m-%dT%H:%M:%SZ')
@@ -899,8 +987,6 @@ class DailyAICollectorV2_1:
                     break
                 elif response.status_code == 401:
                     print("[ERROR] GitHub Token 无效 (401 Unauthorized)")
-                    print("        请检查 .env 文件中的 GITHUB_TOKEN 是否正确")
-                    print("        运行 'python scripts/test_github_token.py' 验证Token有效性")
                     break
                 else:
                     print(f"GitHub API错误: {response.status_code}")
@@ -911,14 +997,22 @@ class DailyAICollectorV2_1:
         if not all_projects:
             return []
         
-        # 按 star 增长率排序（优先）或按 quality_score 排序
-        all_projects.sort(key=lambda x: (x.get('stars_per_day', 0), x.get('quality_score', 0)), reverse=True)
+        # 修正排序逻辑：
+        # 1. 首先确保只保留有描述且stars > 5的项目（过滤垃圾项目）
+        filtered_projects = [p for p in all_projects if p.get('stargazers_count', 0) > 5 and len(p.get('description') or '') > 10]
         
-        print(f"GitHub: 共找到 {len(all_projects)} 个项目，按star增长率排序")
+        # 如果过滤后太少，则放宽条件
+        if len(filtered_projects) < 5:
+            filtered_projects = all_projects
+
+        # 按 star 增长率排序（优先）
+        filtered_projects.sort(key=lambda x: x.get('stars_per_day', 0), reverse=True)
         
-        # 返回前10个快速增长的项目
-        top_projects = all_projects[:10]
-        for p in top_projects:
+        print(f"GitHub: 共找到 {len(all_projects)} 个项目，过滤后 {len(filtered_projects)} 个，按star增长率排序")
+        
+        # 返回前15个快速增长的项目供生成模型选择
+        top_projects = filtered_projects[:15]
+        for p in top_projects[:5]:
             print(f"  - {p.get('name', '')}: {p.get('stargazers_count', 0)} stars ({p.get('stars_per_day', 0):.1f} stars/day)")
         
         return top_projects
@@ -930,10 +1024,16 @@ class DailyAICollectorV2_1:
         1. 使用 huggingface_hub 库的 list_models(sort='trending') - 官方推荐
         2. 使用 huggingface_hub 库的 list_models(sort='likes') - Fallback
         3. 使用 HTTP API - 最终 Fallback
+        
+        修改：增加严格的时间过滤（只显示最近7天内发布的模型）
         """
         if not self.hf_token:
             print("WARNING: Hugging Face token 未设置，跳过 HF 搜索")
             return []
+            
+        # 定义时间截止点 (7天前)
+        cutoff_date = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)
+        print(f"HF搜索时间截止: {cutoff_date.strftime('%Y-%m-%d %H:%M:%S')}")
         
         # 策略1: 使用 huggingface_hub 官方库 (推荐)
         if USE_HF_HUB:
@@ -941,29 +1041,45 @@ class DailyAICollectorV2_1:
                 print("搜索 Hugging Face 热门模型 (huggingface_hub 库)...")
                 api = HfApi(token=self.hf_token)
                 
-                # 尝试 sort='trending' (按过去7天 likes 增长排序)
-                # 如果不支持 trending，回退到 likes
-                sort_options = ['trending', 'likes', 'downloads']
+                # 尝试 sort='trending_score' (按趋势排序)
+                # 策略：获取前 200 个趋势模型，然后过滤出最近7天发布的
+                sort_options = ['trending_score', 'likes']
                 
                 for sort_by in sort_options:
                     try:
+                        # 获取更多模型以便过滤
                         models = list(api.list_models(
                             sort=sort_by,
                             direction=-1,
-                            limit=20
+                            limit=200
                         ))
                         
                         if models:
                             print(f"HF API (sort={sort_by}): 找到 {len(models)} 个模型")
                             
                             filtered_models = []
-                            for m in models[:15]:
+                            for m in models:
+                                # 检查创建时间
+                                created_at = m.created_at if hasattr(m, 'created_at') else None
+                                
+                                # 如果没有创建时间，或者是旧模型，则跳过
+                                if not created_at:
+                                    continue
+                                    
+                                # 确保 created_at 是 aware datetime
+                                if created_at.tzinfo is None:
+                                    created_at = created_at.replace(tzinfo=datetime.timezone.utc)
+                                    
+                                if created_at < cutoff_date:
+                                    continue
+                                
                                 model = {
                                     'modelId': m.id if hasattr(m, 'id') else str(m),
                                     'pipeline_tag': m.pipeline_tag if hasattr(m, 'pipeline_tag') else '未知',
                                     'downloads': m.downloads if hasattr(m, 'downloads') else 0,
                                     'likes': m.likes if hasattr(m, 'likes') else 0,
                                     'lastModified': str(m.last_modified) if hasattr(m, 'last_modified') else '',
+                                    'createdAt': created_at.isoformat(),
                                     'author': m.author if hasattr(m, 'author') else '',
                                     'source_type': f'hf_hub_{sort_by}'
                                 }
@@ -971,10 +1087,14 @@ class DailyAICollectorV2_1:
                                 if not self.is_duplicate(model) and model['modelId']:
                                     model['quality_score'] = self.calculate_quality_score(model, 'huggingface')
                                     filtered_models.append(model)
-                            
-                            filtered_models.sort(key=lambda x: x.get('quality_score', 0), reverse=True)
-                            print(f"HF (huggingface_hub): 筛选后 {len(filtered_models)} 个模型")
-                            return filtered_models[:5]
+                                    
+                            if filtered_models:
+                                filtered_models.sort(key=lambda x: x.get('quality_score', 0), reverse=True)
+                                print(f"HF (huggingface_hub): 时间筛选后 {len(filtered_models)} 个模型 (最近7天)")
+                                return filtered_models[:5]
+                            else:
+                                print(f"HF (huggingface_hub): sort={sort_by} 筛选后无符合时间条件的模型")
+                                
                     except Exception as e:
                         print(f"HF sort={sort_by} 失败: {e}")
                         continue
@@ -987,20 +1107,44 @@ class DailyAICollectorV2_1:
         headers = {'Authorization': f'Bearer {self.hf_token}'}
         fallback_url = 'https://huggingface.co/api/models'
         params = {
-            'sort': 'likes',
+            'sort': 'trending_score', # 尝试 trending_score
             'direction': -1,
-            'limit': 30
+            'limit': 200  # 获取更多以便过滤
         }
         
         try:
             response = requests.get(fallback_url, headers=headers, params=params, timeout=30)
             print(f"HF HTTP API 响应状态: {response.status_code}")
             
+            if response.status_code != 200 and params['sort'] == 'trending_score':
+                 # Fallback to likes if trending_score fails
+                 print("HTTP API trending_score 失败，回退到 likes")
+                 params['sort'] = 'likes'
+                 response = requests.get(fallback_url, headers=headers, params=params, timeout=30)
+
             if response.status_code == 200:
                 models = response.json()
                 
                 filtered_models = []
-                for model in models[:20]:
+                for model in models:
+                    # 检查创建时间
+                    created_at_str = model.get('createdAt')
+                    if not created_at_str:
+                        continue
+                        
+                    try:
+                        # 解析时间 (ISO 8601)
+                        if 'T' in created_at_str:
+                            created_at = datetime.datetime.fromisoformat(created_at_str.replace('Z', '+00:00'))
+                        else:
+                            continue
+                            
+                        if created_at < cutoff_date:
+                            continue
+                            
+                    except Exception:
+                        continue
+
                     if self.is_duplicate(model):
                         continue
                     
@@ -1010,15 +1154,19 @@ class DailyAICollectorV2_1:
                         'downloads': model.get('downloads', 0),
                         'likes': model.get('likes', 0),
                         'lastModified': model.get('lastModified', ''),
+                        'createdAt': created_at_str,
                         'source_type': 'http_api'
                     }
                     
                     if normalized['modelId']:
                         normalized['quality_score'] = self.calculate_quality_score(normalized, 'huggingface')
                         filtered_models.append(normalized)
+                        
+                    if len(filtered_models) >= 15:
+                        break
                 
                 filtered_models.sort(key=lambda x: x.get('quality_score', 0), reverse=True)
-                print(f"HF HTTP Fallback: 找到 {len(filtered_models)} 个模型")
+                print(f"HF HTTP Fallback: 时间筛选后 {len(filtered_models)} 个模型")
                 return filtered_models[:5]
             else:
                 print(f"HF HTTP API 错误: {response.status_code}")
@@ -1141,18 +1289,20 @@ class DailyAICollectorV2_1:
             return None
             
         try:
+            print(f"Generating section '{section_name}' with {len(section_data)} items...")
+            
             if self.use_google_sdk:
                 response = self.ai_client.models.generate_content(
-                    model='gemini-2.0-flash-exp',
+                    model='gemini-1.5-flash-001',
                     contents=section_prompt,
-                    config={'temperature': 0.5, 'max_output_tokens': 1500}
+                    config={'temperature': 0.5, 'max_output_tokens': 8192}
                 )
                 content = response.text if hasattr(response, 'text') else None
             else:
                 response = self.ai_client.chat.completions.create(
-                    model="gemini-2.5-flash",
+                    model="gemini-1.5-flash-001",
                     messages=[{"role": "user", "content": section_prompt}],
-                    max_tokens=1500,
+                    max_tokens=8192,
                     temperature=0.5
                 )
                 content = response.choices[0].message.content if response.choices else None
@@ -1161,6 +1311,7 @@ class DailyAICollectorV2_1:
                 return content.strip()
             else:
                 print(f"[WARNING] Section '{section_name}' AI生成内容过短或为空")
+                print(f"DEBUG Prompt for {section_name}: {section_prompt[:200]}...")
                 return None
                 
         except Exception as e:
@@ -1252,17 +1403,20 @@ class DailyAICollectorV2_1:
             prompt = f"""你是AI技术分析师。请基于以下数据生成"工具与框架"章节。
 
 数据：
-{json.dumps(github_projects[:8], ensure_ascii=False, indent=2)}
+{json.dumps(github_projects[:10], ensure_ascii=False, indent=2)}
 
 输出格式：
 ## 🛠️ 工具与框架
 
 对于每个项目，按以下格式输出：
 ### [项目名](html_url)
-- **功能**: 简要说明
+- **功能**: 简要说明（不超过50字）
 - **趋势**: Stars数量 (stars_per_day stars/day)
 
-要求：展示前5-8个项目，按增长率排序。"""
+要求：
+1. 必须展示前8个项目（如果数据足够）。
+2. 按Stars增长率（stars_per_day）降序排列。
+3. 描述要精练，确保生成的Markdown格式正确。"""
             
             content = self._generate_section("工具与框架", github_projects, prompt)
             if content:
@@ -1352,6 +1506,12 @@ class DailyAICollectorV2_1:
         final_summary = "\n\n".join(sections)
         print(f"AI摘要生成完成（长度: {len(final_summary)}，错误章节: {len(section_errors)}）")
         
+        # 调试：检查GitHub章节长度
+        for sec in sections:
+            if "工具与框架" in sec:
+                print(f"DEBUG: 工具与框架章节长度: {len(sec)}")
+                print(f"DEBUG: 内容预览: {sec[:100]}...")
+
         return final_summary
     
     def _fallback_focus_news(self, focus_news: List[Dict]) -> str:
@@ -1385,14 +1545,16 @@ class DailyAICollectorV2_1:
     def _fallback_github(self, github_projects: List[Dict]) -> str:
         """工具与框架章节的fallback生成器"""
         summary = "## 🛠️ 工具与框架\n\n"
-        for project in github_projects[:5]:
+        # 增加显示数量到 8
+        for project in github_projects[:8]:
             name = project.get('name', '未知项目')
             desc = project.get('description', '无描述')
+            if not desc: desc = "暂无描述"
             url = project.get('html_url', '')
             stars = project.get('stargazers_count', 0)
             stars_per_day = project.get('stars_per_day', 0)
             summary += f"### [{name}]({url})\n"
-            summary += f"- **功能**: {desc}\n"
+            summary += f"- **功能**: {desc[:100]}...\n"
             summary += f"- **Stars**: {stars:,} ({stars_per_day:.1f} stars/day)\n\n"
         return summary
     
