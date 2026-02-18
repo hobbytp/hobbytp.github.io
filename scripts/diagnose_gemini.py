@@ -41,7 +41,7 @@ if has_genai:
     print("\n3. 测试 Google SDK:")
     try:
         genai.configure(api_key=gemini_key)
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        model = genai.GenerativeModel('gemini-3-flash-preview')
         response = model.generate_content("用中文回复：你好，请说一句话")
         print(f"   ✅ API 调用成功")
         print(f"   响应类型: {type(response)}")
@@ -60,7 +60,7 @@ if has_openai and not has_genai:
             base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
         )
         response = client.chat.completions.create(
-            model="gemini-2.5-flash",
+            model="gemini-3-flash-preview",
             messages=[{"role": "user", "content": "用中文回复：你好，请说一句话"}],
             max_tokens=100
         )

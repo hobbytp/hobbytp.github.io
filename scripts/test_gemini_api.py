@@ -16,7 +16,7 @@ try:
     
     print("\n尝试调用 Gemini API...")
     response = client.chat.completions.create(
-        model="gemini-1.5-flash",
+        model="gemini-3-flash-preview",
         messages=[{"role": "user", "content": "请用中文回复：你好"}],
         max_tokens=100
     )

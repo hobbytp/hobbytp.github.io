@@ -378,11 +378,11 @@ def main():
         
         # 设置默认模型
         default_models = {
-            'gemini': 'gemini-2.0-flash',
-            'openrouter': 'google/gemini-2.0-flash-001',
+            'gemini': 'gemini-3-flash-preview',
+            'openrouter': 'google/gemini-3-flash-preview',
             'openai': 'gpt-4o-mini',
         }
-        model = args.model or default_models.get(args.provider, 'gemini-2.0-flash')
+        model = args.model or default_models.get(args.provider, 'gemini-3-flash-preview')
         
         # 调用相应的 API
         print(f"🔧 正在生成 {args.count} 个问答对...")

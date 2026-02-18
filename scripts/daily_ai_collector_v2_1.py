@@ -1293,14 +1293,14 @@ class DailyAICollectorV2_1:
             
             if self.use_google_sdk:
                 response = self.ai_client.models.generate_content(
-                    model='gemini-1.5-flash-001',
+                    model='gemini-3-flash-preview',
                     contents=section_prompt,
                     config={'temperature': 0.5, 'max_output_tokens': 8192}
                 )
                 content = response.text if hasattr(response, 'text') else None
             else:
                 response = self.ai_client.chat.completions.create(
-                    model="gemini-1.5-flash-001",
+                    model="gemini-3-flash-preview",
                     messages=[{"role": "user", "content": section_prompt}],
                     max_tokens=8192,
                     temperature=0.5
