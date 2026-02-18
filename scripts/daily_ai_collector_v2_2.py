@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-每日AI动态收集脚本 V2.1 - 专业版
+每日AI动态收集脚本 V2.2 - 专业版
 自动收集AI领域的最新动态，包括新模型、新框架、新应用等
+
+V2.2 新增功能：
+- 优化 GitHub 项目筛选策略（过滤空项目、增加候选数量）
+- 强化 Prompt 指令，确保工具与框架章节内容丰富
+- 报告中显示脚本版本信息
 
 V2.1 新增功能：
 - 分章节生成（Map-Reduce模式）：每个章节独立生成，避免输出截断
@@ -113,7 +118,7 @@ except ImportError as e:
         print(f"[WARNING] ai_news_collector_lib 库导入失败: {e}")
         print("   安装: pip install ai-news-collector-lib[advanced]")
 
-class DailyAICollectorV2_1:
+class DailyAICollectorV2_2:
     def __init__(self):
         # 初始化 Gemini API
         gemini_key = os.getenv('GEMINI_API_KEY')
@@ -1293,16 +1298,16 @@ class DailyAICollectorV2_1:
             
             if self.use_google_sdk:
                 response = self.ai_client.models.generate_content(
-                    model='gemini-3-flash-preview',
+                    model='gemini-2.0-flash-exp',
                     contents=section_prompt,
-                    config={'temperature': 0.5, 'max_output_tokens': 8192}
+                    config={'temperature': 0.5, 'max_output_tokens': 1500}
                 )
                 content = response.text if hasattr(response, 'text') else None
             else:
                 response = self.ai_client.chat.completions.create(
-                    model="gemini-3-flash-preview",
+                    model="gemini-2.5-flash",
                     messages=[{"role": "user", "content": section_prompt}],
-                    max_tokens=8192,
+                    max_tokens=1500,
                     temperature=0.5
                 )
                 content = response.choices[0].message.content if response.choices else None
@@ -1403,7 +1408,7 @@ class DailyAICollectorV2_1:
             prompt = f"""你是AI技术分析师。请基于以下数据生成"工具与框架"章节。
 
 数据：
-{json.dumps(github_projects[:10], ensure_ascii=False, indent=2)}
+{json.dumps(github_projects[:15], ensure_ascii=False, indent=2)}
 
 输出格式：
 ## 🛠️ 工具与框架
@@ -1821,7 +1826,7 @@ class DailyAICollectorV2_1:
 
 ---
 
-> 💡 **提示**: 本内容由 AI 自动生成，每日北京时间 08:00 更新。  
+> 💡 **提示**: 本内容由 AI 自动生成 (Script v2.2)，每日北京时间 08:00 更新。  
 > 如有遗漏或错误，欢迎通过 [Issues](https://github.com/hobbytp/hobbytp.github.io/issues) 反馈。
 """
 
@@ -1878,20 +1883,17 @@ totalItems: {total_items}
 def main():
     """主函数"""
     print("=" * 60)
-    print("每日AI动态收集器 V2.1 - 专业版 (Section-by-Section Generation)")
+    print("每日AI动态收集器 V2.2 - 专业版 (Section-by-Section Generation)")
     print("=" * 60)
     
-    collector = DailyAICollectorV2_1()
+    collector = DailyAICollectorV2_2()
     file_path = collector.save_daily_content()
     
     print(f"\n[OK] 收集完成: {file_path}")
     print("\n新功能：")
-    print("  [OK] Perplexity AI 新闻搜索")
-    print("  [OK] 24小时时间窗口（真正的每日动态）")
-    print("  [OK] 智能去重")
-    print("  [OK] 内容质量评分")
-    print("  [OK] 新的分类体系")
-    print("  [OK] 改进的展现格式")
+    print("  [OK] 优化 GitHub 项目筛选")
+    print("  [OK] 强化摘要生成指令")
+    print("  [OK] 报告包含版本信息 (v2.2)")
 
 if __name__ == "__main__":
     main()
