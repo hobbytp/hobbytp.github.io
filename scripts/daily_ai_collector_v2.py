@@ -1201,14 +1201,14 @@ class DailyAICollectorV2:
             
             if self.use_google_sdk:
                 # 新 SDK 调用方式
-                model_used = 'gemini-2.0-flash-exp'
+                model_used = 'gemini-3-flash-preview'
                 response = self.ai_client.models.generate_content(
                     model=model_used, 
                     contents=prompt
                 )
                 content = response.text if hasattr(response, 'text') else None
             else:
-                model_used = "gemini-2.5-flash"
+                model_used = "gemini-3-flash-preview"
                 response = self.ai_client.chat.completions.create(
                     model=model_used,
                     messages=[{"role": "user", "content": prompt}],

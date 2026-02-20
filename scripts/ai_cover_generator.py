@@ -51,7 +51,7 @@ class ImageGenConfig:
     use_llm_prompt: bool = False  # 是否使用LLM生成提示词
     llm_provider: str = "gemini"  # gemini, openai
     gemini_api_key: str = ""  # Gemini API Key
-    gemini_model: str = "gemini-2.5-flash"  # Gemini 模型
+    gemini_model: str = "gemini-3-flash-preview"  # Gemini 模型
     llm_openai_api_key: str = ""  # OpenAI API Key (用于生成prompt)
     llm_openai_model: str = "gpt-4o-mini"  # OpenAI 模型
 

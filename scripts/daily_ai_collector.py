@@ -41,9 +41,9 @@ class DailyAICollector:
             if USE_GOOGLE_SDK:
                 try:
                     genai.configure(api_key=gemini_key)
-                    self.ai_client = genai.GenerativeModel('gemini-2.5-flash')
+                    self.ai_client = genai.GenerativeModel('gemini-3-flash-preview')
                     self.use_google_sdk = True
-                    print("Google Gemini SDK 初始化成功 (模型: gemini-2.5-flash)")
+                    print("Google Gemini SDK 初始化成功 (模型: gemini-3-flash-preview)")
                 except Exception as e:
                     print(f"ERROR: Google SDK 初始化失败: {e}")
                     self.ai_client = None
@@ -56,7 +56,7 @@ class DailyAICollector:
                         base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
                     )
                     self.use_google_sdk = False
-                    print("OpenAI兼容客户端初始化成功 (模型: gemini-2.5-flash)")
+                    print("OpenAI兼容客户端初始化成功 (模型: gemini-3-flash-preview)")
                 except Exception as e:
                     print(f"ERROR: OpenAI客户端初始化失败: {e}")
                     self.ai_client = None
@@ -290,7 +290,7 @@ class DailyAICollector:
                 # 使用 OpenAI 兼容接口
                 print("DEBUG: 调用 OpenAI 兼容接口...")
                 response = self.ai_client.chat.completions.create(
-                    model="gemini-2.5-flash",
+                    model="gemini-3-flash-preview",
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=2000,
                     temperature=0.7
