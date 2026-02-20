@@ -1,4 +1,4 @@
-name: 每日AI动态更新 V2
+name: 每日AI动态更新 V2.2
 
 on:
     schedule:
@@ -42,7 +42,7 @@ jobs:
                   echo "运行诊断脚本..."
                   python scripts/diagnose_gemini.py || true
 
-            - name: 运行AI动态收集脚本 V2
+            - name: 运行AI动态收集脚本 V2.2
               env:
                   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
                   PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
@@ -58,9 +58,9 @@ jobs:
                   METASOSEARCH_API_KEY: ${{ secrets.METASOSEARCH_API_KEY }}
               run: |
                   echo "============================================"
-                  echo "开始收集每日AI动态 (V2)"
+                  echo "开始收集每日AI动态 (V2.2)"
                   echo "============================================"
-                  python scripts/daily_ai_collector_v2_1.py
+                  python scripts/daily_ai_collector_v2_2.py
                   echo "============================================"
                   echo "收集完成"
                   echo "============================================"
@@ -82,5 +82,5 @@ jobs:
                   git config --local user.name "GitHub Action"
                   git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
                   git add content/zh/daily_ai/
-                  git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 V2 - $(date '+%Y-%m-%d')"
+                  git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 V2.2 - $(date '+%Y-%m-%d')"
                   git push origin main
