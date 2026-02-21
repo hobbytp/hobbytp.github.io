@@ -102,36 +102,14 @@ if ! command -v docker &> /dev/null || ! docker info &> /dev/null; then
     echo "   Build test requires Docker. Run 'make build' manually to verify."
     echo "   Architecture checks passed, but build verification skipped."
 else
-    # Docker is available, try to build with timeout
-    # Use GNU timeout if available, otherwise fallback to python or no timeout
-    BUILD_RESULT=0
-    TIMEOUT_OCCURRED=0
+    # Run build directly without timeout
+    # The timeout wrappers were causing issues on Windows Git Bash during pre-push hooks
+    make build > /dev/null 2>&1
+    BUILD_RESULT=$?
     
-    if command -v timeout &> /dev/null; then
-        # Use GNU timeout (60 seconds)
-        timeout 60 make build > /dev/null 2>&1
-        BUILD_RESULT=$?
-        if [ $BUILD_RESULT -eq 124 ]; then
-            TIMEOUT_OCCURRED=1
-        fi
-    elif command -v python &> /dev/null; then
-        # Use python timeout (60 seconds)
-        python -c "import subprocess, sys; sys.exit(124 if subprocess.run(sys.argv[1:], timeout=60).returncode != 0 else 0)" make build > /dev/null 2>&1
-        BUILD_RESULT=$?
-        if [ $BUILD_RESULT -eq 124 ]; then
-            TIMEOUT_OCCURRED=1
-        fi
-    else
-        # No timeout available, run directly
-        make build > /dev/null 2>&1
-        BUILD_RESULT=$?
-    fi
+    set -e # Re-enable exit on error
 
-    if [ $TIMEOUT_OCCURRED -eq 1 ]; then
-        echo -e "${YELLOW}⚠️  WARNING: Hugo build timed out (60s). Docker might be hung.${NC}"
-        echo "   Skipping build verification to allow push."
-        echo "   Please check Docker Desktop status and try 'make build' manually."
-    elif [ $BUILD_RESULT -eq 0 ]; then
+    if [ $BUILD_RESULT -eq 0 ]; then
         echo -e "${GREEN}✅ Hugo build successful${NC}"
     else
         echo -e "${RED}❌ ERROR: Hugo build failed with exit code $BUILD_RESULT${NC}"
