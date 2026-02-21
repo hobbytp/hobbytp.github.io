@@ -1,0 +1,1096 @@
+{
+    "providers": {
+        "OpenAI": {
+            "docUrl": "https://openai.com/",
+            "apiBaseUrl": "https://api.openai120.com/v1",
+            "apiKeyEnv": "OPENAI_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "gpt-4o": {
+                    "displayName": "GPT-4O",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 5.0,
+                        "outputTokensPrice": 15.0,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "gpt-4o-mini": {
+                    "displayName": "GPT-4O Mini",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.15,
+                        "outputTokensPrice": 0.6,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "gpt-4.1": {
+                    "displayName": "GPT-4.1",
+                    "contextWindow": 1048576,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 2,
+                        "outputTokensPrice": 8,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "gpt-4.1-mini": {
+                    "displayName": "GPT-4.1 Mini",
+                    "contextWindow": 1048576,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.4,
+                        "outputTokensPrice": 1.6,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "gpt-4.1-nano": {
+                    "displayName": "GPT-4.1 Nano",
+                    "contextWindow": 1048576,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.1,
+                        "outputTokensPrice": 0.4,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "o3": {
+                    "displayName": "o3",
+                    "contextWindow": 1048576,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 2,
+                        "outputTokensPrice": 8,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "o4-mini": {
+                    "displayName": "o4 Mini",
+                    "contextWindow": 1048576,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 1,
+                        "outputTokensPrice": 4.4,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "Anthropic": {
+            "docUrl": "https://docs.anthropic.com/claude/",
+            "apiBaseUrl": "https://api.anthropic.com/v1",
+            "apiKeyEnv": "ANTHROPIC_API_KEY",
+            "openaiCompatible": false,
+            "models": {
+                "claude-sonnet-4-20250514": {
+                    "displayName": "Claude Sonnet 4",
+                    "contextWindow": 100000,
+                    "maxOutputTokens": 100000,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 3,
+                        "outputTokensPrice": 15,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "claude-opus-4-20250514": {
+                    "displayName": "Claude Opus 4",
+                    "contextWindow": 100000,
+                    "maxOutputTokens": 100000,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 15,
+                        "outputTokensPrice": 75,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "Google": {
+            "docUrl": "https://cloud.google.com/ai-platform/generative-language",
+            "apiBaseUrl": "https://generativelanguage.googleapis.com",
+            "apiKeyEnv": "GOOGLE_API_KEY",
+            "openaiCompatible": false,
+            "models": {
+                "gemini-3-flash-preview": {
+                    "displayName": "Gemini 3 Flash Preview",
+                    "contextWindow": 1114111,
+                    "maxOutputTokens": 65535,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.15,
+                        "outputTokensPrice": 0.6,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "gemini-3-pro-preview": {
+                    "displayName": "Gemini 3 Pro Preview",
+                    "contextWindow": 1114111,
+                    "maxOutputTokens": 65535,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 1.2,
+                        "outputTokensPrice": 10,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "gemma-3n-e4b-it": {
+                    "displayName": "Gemma 3N E4B IT",
+                    "contextWindow": 2097152,
+                    "maxOutputTokens": 8192,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 1.25,
+                        "outputTokensPrice": 5.0,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "gemini-1.5-flash": {
+                    "displayName": "Gemini 1.5 Flash",
+                    "contextWindow": 1048576,
+                    "maxOutputTokens": 8192,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.075,
+                        "outputTokensPrice": 0.3,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "Groq": {
+            "docUrl": "https://groq.com/",
+            "apiBaseUrl": "https://api.groq.com/openai/v1",
+            "apiKeyEnv": "GROQ_API_KEY",
+            "openaiCompatible": false,
+            "models": {
+                "meta-llama/Llama-4-Scout-17B-16E-Instruct": {
+                    "displayName": "Llama4 Scout 17B",
+                    "contextWindow": 8192,
+                    "maxOutputTokens": 8192,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.11,
+                        "outputTokensPrice": 0.34,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "meta-llama/Llama-4-Maverick-17B-128E-Instruct": {
+                    "displayName": "Llama 4 Maverick 17B",
+                    "contextWindow": 131072,
+                    "maxOutputTokens": 8192,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.2,
+                        "outputTokensPrice": 0.6,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "mistral-saba-24b": {
+                    "displayName": "Mistral Saba 24B",
+                    "contextWindow": 32768,
+                    "maxOutputTokens": 32768,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.79,
+                        "outputTokensPrice": 0.79,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "deepseek-ai/DeepSeek-R1-Distill-Llama-70B": {
+                    "displayName": "DeepSeek R1 Distill Llama 70B",
+                    "contextWindow": 8192,
+                    "maxOutputTokens": 8192,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.75,
+                        "outputTokensPrice": 0.99,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "Qwen/Qwen3-32B": {
+                    "displayName": "Qwen3 32B",
+                    "contextWindow": 8192,
+                    "maxOutputTokens": 8192,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.29,
+                        "outputTokensPrice": 0.59,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "DeepSeek": {
+            "docUrl": "https://deepseek.com/",
+            "apiBaseUrl": "https://api.deepseek.com/v1",
+            "apiKeyEnv": "DEEPSEEK_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "deepseek-chat": {
+                    "displayName": "DeepSeek Chat",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 8000,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 2,
+                        "outputTokensPrice": 3,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "deepseek-reasoner": {
+                    "displayName": "DeepSeek Reasoner",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 64000,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "isReasoning": true,
+                    "pricing": {
+                        "inputTokensPrice": 2,
+                        "outputTokensPrice": 3,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "VolcEngine": {
+            "docUrl": "https://www.volces.com/",
+            "apiBaseUrl": "https://ark.cn-beijing.volces.com/api/v3",
+            "apiKeyEnv": "ARK_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "doubao-seed-1-6-flash-250828": {
+                    "displayName": "doubao-seed-1-6-flash-250828",
+                    "contextWindow": 256000,
+                    "maxInputTokens": 224000,
+                    "maxOutputTokens": 32000,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.15,
+                        "outputTokensPrice": 1.5,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "doubao-seed-1-8-251215": {
+                    "displayName": "doubao-seed-1.8-251215",
+                    "contextWindow": 256000,
+                    "maxInputTokens": 224000,
+                    "maxOutputTokens": 32000,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.8,
+                        "outputTokensPrice": 2,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "doubao-seed-1-6-thinking-250615": {
+                    "displayName": "doubao-seed-1.6-thinking",
+                    "contextWindow": 224000,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 4,
+                        "outputTokensPrice": 8,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "doubao-embedding-large-text-250515": {
+                    "displayName": "doubao-embedding-large-text-250515",
+                    "isEmbedding": true,
+                    "contextWindow": 4096,
+                    "maxOutputTokens": 4096,
+                    "maxVecDimension": 2048,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.7,
+                        "outputTokensPrice": 0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "deepseek-r1": {
+                    "displayName": "DeepSeek R1",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 4,
+                        "outputTokensPrice": 16,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "deepseek-v3.2": {
+                    "displayName": "DeepSeek V3.2",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 2,
+                        "outputTokensPrice": 3,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "DashScope": {
+            "docUrl": "https://bailian.console.aliyun.com/",
+            "apiBaseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+            "apiKeyEnv": "DASHSCOPE_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "qwen-flash": {
+                    "displayName": "Qwen Flash",
+                    "contextWindow": 1000000,
+                    "maxOutputTokens": 32768,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "ratelimit": {
+                        "rpm": 15000,
+                        "tpm": 1000000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 0.15,
+                        "outputTokensPrice": 1.5,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "qwen-max": {
+                    "displayName": "Qwen Max",
+                    "contextWindow": 262144,
+                    "maxOutputTokens": 65536,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "ratelimit": {
+                        "rpm": 600,
+                        "tpm": 1000000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 3.2,
+                        "outputTokensPrice": 12,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "qwen-plus": {
+                    "displayName": "Qwen Plus",
+                    "contextWindow": 1000000,
+                    "maxInputTokens": 131072,
+                    "maxOutputTokens": 32768,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "ratelimit": {
+                        "rpm": 15000,
+                        "tpm": 1200000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 0.8,
+                        "outputTokensPrice": 2,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "qwen-vl-ocr": {
+                    "displayName": "Qwen VL OCR",
+                    "contextWindow": 34096,
+                    "maxInputTokens": 30000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": true,
+                    "ratelimit": {
+                        "rpm": 600,
+                        "tpm": 6000000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 5,
+                        "outputTokensPrice": 5,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "deepseek-v3.2": {
+                    "displayName": "DeepSeek V3.2",
+                    "contextWindow": 131072,
+                    "maxInputTokens": 98304,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "ratelimit": {
+                        "rpm": 15000,
+                        "tpm": 1200000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 2,
+                        "outputTokensPrice": 3,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "GLM-4.7": {
+                    "displayName": "GLM 4.7",
+                    "contextWindow": 202752,
+                    "maxInputTokens": 169984,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 3,
+                        "outputTokensPrice": 14,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "ModelScope": {
+            "docUrl": "https://modelscope.cn/models/",
+            "apiBaseUrl": "https://api-inference.modelscope.cn/v1",
+            "apiKeyEnv": "MODELSCOPE_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "ZhipuAI/GLM-4.7": {
+                    "displayName": "GLM 4.7",
+                    "docUrl": "https://www.modelscope.cn/models/ZhipuAI/GLM-4.7",
+                    "contextWindow": 202752,
+                    "maxInputTokens": 169984,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 3,
+                        "outputTokensPrice": 14,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "Qwen/Qwen3-Next-80B-A3B-Instruct": {
+                    "displayName": "Qwen3-Next-80B-A3B-Instruct",
+                    "docUrl": "https://www.modelscope.cn/models/Qwen/Qwen3-Next-80B-A3B-Instruct",
+                    "contextWindow": 262144,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.14,
+                        "outputTokensPrice": 0.28,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "Qwen/Qwen3-235B-A22B-Instruct-2507": {
+                    "displayName": "Qwen3-235B-A22B-Instruct-2507",
+                    "docUrl": "https://www.modelscope.cn/models/Qwen/Qwen3-235B-A22B-Instruct-2507",
+                    "contextWindow": 262144,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.14,
+                        "outputTokensPrice": 0.28,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "Qwen/Qwen3-235B-A22B-Thinking-2507": {
+                    "displayName": "Qwen3-235B-A22B-Thinking-2507",
+                    "docUrl": "https://www.modelscope.cn/models/Qwen/Qwen3-235B-A22B-Thinking-2507",
+                    "contextWindow": 262144,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.14,
+                        "outputTokensPrice": 0.28,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "Qwen/Qwen3-Coder-480B-A35B-Instruct": {
+                    "displayName": "Qwen3-Coder-480B-A35B-Instruct",
+                    "contextWindow": 262144,
+                    "maxOutputTokens": 65536,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.14,
+                        "outputTokensPrice": 0.28,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "SiliconFlow": {
+            "docUrl": "https://cloud.siliconflow.cn/me/models",
+            "apiBaseUrl": "https://api.siliconflow.cn/v1",
+            "apiKeyEnv": "SILICONFLOW_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "deepseek-ai/DeepSeek-OCR": {
+                    "displayName": "DeepSeek OCR",
+                    "contextWindow": 8000,
+                    "maxOutputTokens": 8000,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": true,
+                    "ratelimit": {
+                        "rpm": 1000,
+                        "tpm": 80000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 0,
+                        "outputTokensPrice": 0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "zai-org/GLM-4.6V": {
+                    "displayName": "GLM-4.6V",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 1,
+                        "outputTokensPrice": 3,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "zai-org/GLM-4.7": {
+                    "displayName": "GLM-4.7",
+                    "contextWindow": 198000,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "ratelimit": {
+                        "rpm": 500,
+                        "tpm": 2000000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 3.5,
+                        "outputTokensPrice": 14,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "deepseek-ai/DeepSeek-V3.2": {
+                    "displayName": "DeepSeek V3",
+                    "contextWindow": 160000,
+                    "maxOutputTokens": 160000,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "ratelimit": {
+                        "rpm": 1000,
+                        "tpm": 100000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 2,
+                        "outputTokensPrice": 3,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "deepseek-ai/DeepSeek-R1": {
+                    "displayName": "DeepSeek R1",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 16384,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 4,
+                        "outputTokensPrice": 16,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "BAAI/bge-m3": {
+                    "displayName": "BAAI BGE M3",
+                    "isEmbedding": true,
+                    "contextWindow": 8192,
+                    "maxOutputTokens": 8192,
+                    "maxVecDimension": 1024,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": false,
+                    "ratelimit": {
+                        "rpm": 2000,
+                        "tpm": 500000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 0.0,
+                        "outputTokensPrice": 0.0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "Qwen/Qwen3-Embedding-8B": {
+                    "displayName": "Qwen3-Embedding-8B",
+                    "isEmbedding": true,
+                    "contextWindow": 32000,
+                    "maxOutputTokens": 4096,
+                    "maxVecDimension": 4096,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": false,
+                    "ratelimit": {
+                        "rpm": 2000,
+                        "tpm": 1000000
+                    },
+                    "pricing": {
+                        "inputTokensPrice": 0.28,
+                        "outputTokensPrice": 0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "OpenRouter": {
+            "docUrl": "https://openrouter.ai/",
+            "apiBaseUrl": "https://openrouter.ai/api/v1",
+            "apiKeyEnv": "OPENROUTER_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "openai/gpt-4o-mini": {
+                    "displayName": "GPT-4O Mini",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 5.0,
+                        "outputTokensPrice": 15.0,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "openai/gpt-4o": {
+                    "displayName": "GPT-4O",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 5.0,
+                        "outputTokensPrice": 15.0,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "openai/o3-mini": {
+                    "displayName": "o3 Mini",
+                    "contextWindow": 200000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 1.1,
+                        "outputTokensPrice": 4.4,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "openai/o3-mini-high": {
+                    "displayName": "o3 Mini High",
+                    "contextWindow": 200000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 1.1,
+                        "outputTokensPrice": 4.4,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "openai/o4-mini": {
+                    "displayName": "o4 Mini",
+                    "contextWindow": 200000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 1.1,
+                        "outputTokensPrice": 4.4,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "openai/o4-mini-high": {
+                    "displayName": "o4 Mini High",
+                    "contextWindow": 200000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 1.1,
+                        "outputTokensPrice": 4.4,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "anthropic/claude-sonnet-4": {
+                    "displayName": "Claude Sonnet 4",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 3,
+                        "outputTokensPrice": 15,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "google/gemini-3-flash-preview": {
+                    "displayName": "Gemini 3 Flash Preview",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 65535,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.5,
+                        "outputTokensPrice": 3,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                },
+                "google/gemini-3-pro-preview": {
+                    "displayName": "Gemini 3 Pro Preview",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 65535,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 2,
+                        "outputTokensPrice": 12,
+                        "currency": "USD",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "VVEAI": {
+            "docUrl": "https://vveai.com/",
+            "apiBaseUrl": "https://api.vveai.com/v1",
+            "apiKeyEnv": "VVEAI_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "gemini-2.5-pro": {
+                    "displayName": "Gemini 2.5 Pro",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 2.0,
+                        "outputTokensPrice": 16.0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "gemini-2.5-flash": {
+                    "displayName": "Gemini 2.5 Flash Latest",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.6,
+                        "outputTokensPrice": 5.0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "gpt-4o-mini": {
+                    "displayName": "GPT-4O Mini",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 0.3,
+                        "outputTokensPrice": 1.2,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "gpt-4o": {
+                    "displayName": "GPT-4O",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 5.0,
+                        "outputTokensPrice": 20.0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "o3-mini": {
+                    "displayName": "o3 Mini",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 2.2,
+                        "outputTokensPrice": 8.8,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "o3": {
+                    "displayName": "o3",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 4.0,
+                        "outputTokensPrice": 16.0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "o3-pro": {
+                    "displayName": "o3 Pro",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 40.0,
+                        "outputTokensPrice": 160.0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "o4-mini": {
+                    "displayName": "o4 Mini",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 2.2,
+                        "outputTokensPrice": 8.8,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "o4": {
+                    "displayName": "o4",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 40.0,
+                        "outputTokensPrice": 160.0,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "claude-sonnet-4-20250514": {
+                    "displayName": "Claude Sonnet 4",
+                    "contextWindow": 128000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": true,
+                    "supportsVision": true,
+                    "pricing": {
+                        "inputTokensPrice": 18,
+                        "outputTokensPrice": 90,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                }
+            }
+        },
+        "Ollama": {
+            "docUrl": "https://docs.ollama.com/",
+            "apiBaseUrl": "http://localhost:11434",
+            "apiKeyEnv": "DEEPSEEK_API_KEY",
+            "openaiCompatible": true,
+            "models": {
+                "OxW/Qwen2.5-0.5B-Instruct_Q8_0": {
+                    "displayName": "Qwen2.5-0.5B-Instruct_Q8_0",
+                    "contextWindow": 32000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": false,
+                    "pricing": {
+                        "inputTokensPrice": 4,
+                        "outputTokensPrice": 16,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                },
+                "dengcao/Qwen3-Reranker-8B:Q3_K_M": {
+                    "displayName": "Qwen3-Reranker-8B:Q3_K_M",
+                    "contextWindow": 32000,
+                    "maxOutputTokens": 4096,
+                    "supportsFunctionCalling": false,
+                    "supportsVision": false,
+                    "isReasoning": false,
+                    "pricing": {
+                        "inputTokensPrice": 0.55,
+                        "outputTokensPrice": 2.19,
+                        "currency": "CNY",
+                        "per": 1000000
+                    }
+                }
+            }
+        }
+    },
+    "roleConfigs": {
+        "SMART_ROUTER": {
+            "provider": "Ollama",
+            "model": "OxW/Qwen2.5-0.5B-Instruct_Q8_0",
+            "temperature": 0.7,
+            "description": "智能路由"
+        },
+        "OCR_SCANNER": {
+            "provider": "SiliconFlow",
+            "model": "deepseek-ai/DeepSeek-OCR",
+            "temperature": 0.7,
+            "description": "OCR扫描"
+        },
+        "RERANKER": {
+            "provider": "SiliconFlow",
+            "model": "Qwen/Qwen3-Reranker-0.6B",
+            "temperature": 0.7,
+            "description": "文本重排模型"
+        },
+        "SCREEN_ANALYZE": {
+            "provider": "VolcEngine",
+            "model": "doubao-seed-1-6-flash-250828",
+            "temperature": 0.7,
+            "description": "分析屏幕内容"
+        },
+        "TEXT_SUMMARY": {
+            "provider": "SiliconFlow",
+            "model": "zai-org/GLM-4.6",
+            "temperature": 0.0,
+            "description": "文本总结"
+        },
+        "DAILY_REPORT": {
+            "provider": "Google",
+            "model": "gemini-3-flash-preview",
+            "temperature": 0.0,
+            "description": "生成每日报告"
+        },
+        "DAILY_REPORT_BK": {
+            "provider": "DashScope",
+            "model": "qwen-max",
+            "temperature": 0.0,
+            "description": "生成每日报告(备用)"
+        },
+        "DEEP_THINKING": {
+            "provider": "SiliconFlow",
+            "model": "deepseek-ai/DeepSeek-V3.2",
+            "temperature": 0.6,
+            "description": "深度思考"
+        },
+        "CRITIQUE": {
+            "provider": "ModelScope",
+            "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+            "temperature": 0.2,
+            "description": "批判性思考"
+        },
+        "CODER": {
+            "provider": "ModelScope",
+            "model": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+            "temperature": 0.0,
+            "description": "处理代码生成与执行"
+        },
+        "EMBEDDING": {
+            "provider": "SiliconFlow",
+            "model": "BAAI/bge-m3",
+            "temperature": 0.0,
+            "description": "文本嵌入向量化"
+        },
+        "PULSE_AGENT": {
+            "provider": "ModelScope",
+            "model": "Qwen/Qwen3-235B-A22B-Thinking-2507",
+            "temperature": 0.6,
+            "description": "Pulse Agent用的模型"
+        },
+        "SPROUT_MGR_AGENT": {
+            "provider": "DashScope",
+            "model": "qwen-max",
+            "temperature": 0.6,
+            "description": "Sprout Manager用的模型"
+        },
+        "SPROUT_AGENT": {
+            "provider": "DashScope",
+            "model": "qwen-flash",
+            "temperature": 0.4,
+            "description": "Sprout Agent用的模型"
+        },
+        "SPROUT_REPORTOR": {
+            "provider": "DashScope",
+            "model": "qwen-long",
+            "temperature": 0.2,
+            "description": "Sprout Reportor用的模型"
+        }
+    }
+}
