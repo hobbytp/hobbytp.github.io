@@ -35,7 +35,20 @@ class PerplexityFallbackFetcher(BaseFetcher):
         if self.perplexity_client:
             print("[INFO] 尝试使用 Perplexity 获取热点...")
             try:
-                response = self.perplexity_client.search_sync(query)
+                # 尝试调用 search 方法 (可能是 sync 或 async，这里假设是 sync 或库支持)
+                # 如果库版本不同，可能需要调整
+                if hasattr(self.perplexity_client, 'search_sync'):
+                    response = self.perplexity_client.search_sync(query)
+                elif hasattr(self.perplexity_client, 'search'):
+                    response = self.perplexity_client.search(query)
+                    # 如果返回是协程，则需要 await，但这里是在同步方法中
+                    import inspect
+                    if inspect.iscoroutine(response):
+                        import asyncio
+                        response = asyncio.run(response)
+                else:
+                    raise AttributeError("Perplexity client has no search method")
+
                 answer = response.get('answer', '')
                 sources = response.get('citations', [])
                 
@@ -73,7 +86,12 @@ class PerplexityFallbackFetcher(BaseFetcher):
                 search_config.days_back = 1
                 search_config.max_articles_per_source = 3
                 search_config.enable_query_enhancement = True
-                search_config.llm_provider = llm_config.provider_name
+                
+                # 映射 provider 名称，确保 ai_news_collector_lib 能识别
+                provider = llm_config.provider_name.lower()
+                if provider == "google":
+                    provider = "gemini"
+                search_config.llm_provider = provider
                 search_config.llm_model = llm_config.model_name
                 
                 if llm_config.api_key:
@@ -83,7 +101,10 @@ class PerplexityFallbackFetcher(BaseFetcher):
                 # 使用大模型重写基础query，发散给搜索源
                 lib_results = asyncio.run(collector.collect_news("最新突破性 AI大模型 人工智能 新闻"))
                 
-                for item in lib_results:
+                # 修复: SearchResult 对象不可迭代，需访问 articles 属性
+                items = getattr(lib_results, 'articles', [])
+                
+                for item in items:
                      results.append(ArticleItem(
                          title=item.title,
                          url=item.url,
