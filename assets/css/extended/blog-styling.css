@@ -117,20 +117,20 @@
 }
 
 /* 暗色模式适配：引用 dark 变量 */
-.dark .flex-1 {
+[data-theme="dark"] .flex-1 {
   background: var(--color-dark-bg-primary);
   color: var(--color-dark-text-primary);
 }
 
-.dark .flex-1 h1 {
+[data-theme="dark"] .flex-1 h1 {
   color: var(--color-dark-text-primary);
 }
 
-.dark .flex-1 h2 {
+[data-theme="dark"] .flex-1 h2 {
   color: var(--color-dark-text-secondary);
 }
 
-.dark .flex-1 h3 {
+[data-theme="dark"] .flex-1 h3 {
   color: var(--color-dark-text-secondary);
 }
 
@@ -171,7 +171,7 @@
 }
 
 /* 暗色模式下的链接样式 */
-.dark .post-content a {
+[data-theme="dark"] .post-content a {
   color: #4a9eff !important;
   border-bottom-color: #4a9eff !important;
 }
@@ -188,7 +188,7 @@
 }
 
 /* 暗色模式下的悬停效果 */
-.dark .post-content a:hover {
+[data-theme="dark"] .post-content a:hover {
   color: #66b3ff !important;
   border-bottom-color: #66b3ff !important;
   background-color: rgba(74, 158, 255, 0.15) !important;
@@ -218,8 +218,8 @@
   border-bottom: 2px solid #0066cc !important;
 }
 
-.dark .post-content a[href^="/"], 
-.dark .post-content a[href^="#"] {
+[data-theme="dark"] .post-content a[href^="/"], 
+[data-theme="dark"] .post-content a[href^="#"] {
   color: #4a9eff !important;
   border-bottom-color: #4a9eff !important;
 }
@@ -257,8 +257,8 @@
   padding-bottom: 0.5px !important;
 }
 
-.dark .post-content ul a,
-.dark .post-content ol a {
+[data-theme="dark"] .post-content ul a,
+[data-theme="dark"] .post-content ol a {
   color: #4a9eff !important;
   border-bottom-color: #4a9eff !important;
 }
@@ -270,7 +270,7 @@
   opacity: 0.9 !important;
 }
 
-.dark .post-content blockquote a {
+[data-theme="dark"] .post-content blockquote a {
   color: #4a9eff !important;
   border-bottom-color: #4a9eff !important;
 }
@@ -285,8 +285,8 @@
   border-radius: 2px !important;
 }
 
-.dark .post-content code a,
-.dark .post-content pre a {
+[data-theme="dark"] .post-content code a,
+[data-theme="dark"] .post-content pre a {
   color: #4a9eff !important;
   border-bottom-color: #4a9eff !important;
   background-color: rgba(74, 158, 255, 0.15) !important;
@@ -304,7 +304,7 @@
   border-bottom-color: #333 !important;
 }
 
-.dark .post-content a[href*="github.com"] {
+[data-theme="dark"] .post-content a[href*="github.com"] {
   color: #f0f6fc !important;
   border-bottom-color: #f0f6fc !important;
 }
@@ -432,44 +432,44 @@ article h6:hover,
 }
 
 /* 暗色模式下的标题样式调整 */
-.dark article h1,
-.dark .max-w-4xl h1,
-.dark .flex-1 h1 {
+[data-theme="dark"] article h1,
+[data-theme="dark"] .max-w-4xl h1,
+[data-theme="dark"] .flex-1 h1 {
   color: #e2e8f0 !important;
   border-bottom-color: #4a9eff !important;
 }
 
-.dark article h2,
-.dark .max-w-4xl h2,
-.dark .flex-1 h2 {
+[data-theme="dark"] article h2,
+[data-theme="dark"] .max-w-4xl h2,
+[data-theme="dark"] .flex-1 h2 {
   color: #cbd5e1 !important;
   border-left-color: #4a9eff !important;
   background: linear-gradient(90deg, rgba(74, 158, 255, 0.1), transparent) !important;
 }
 
-.dark article h3,
-.dark .max-w-4xl h3,
-.dark .flex-1 h3 {
+[data-theme="dark"] article h3,
+[data-theme="dark"] .max-w-4xl h3,
+[data-theme="dark"] .flex-1 h3 {
   color: #94a3b8 !important;
   border-bottom-color: #475569 !important;
 }
 
-.dark article h4,
-.dark .max-w-4xl h4,
-.dark .flex-1 h4 {
+[data-theme="dark"] article h4,
+[data-theme="dark"] .max-w-4xl h4,
+[data-theme="dark"] .flex-1 h4 {
   color: #94a3b8 !important;
   border-left-color: #475569 !important;
 }
 
-.dark article h5,
-.dark .max-w-4xl h5,
-.dark .flex-1 h5 {
+[data-theme="dark"] article h5,
+[data-theme="dark"] .max-w-4xl h5,
+[data-theme="dark"] .flex-1 h5 {
   color: #64748b !important;
 }
 
-.dark article h6,
-.dark .max-w-4xl h6,
-.dark .flex-1 h6 {
+[data-theme="dark"] article h6,
+[data-theme="dark"] .max-w-4xl h6,
+[data-theme="dark"] .flex-1 h6 {
   color: #64748b !important;
 }
 
@@ -538,7 +538,7 @@ article li,
   color: var(--secondary) !important;
 }
 
-.dark .post-content blockquote {
+[data-theme="dark"] .post-content blockquote {
   background: linear-gradient(90deg, rgba(74, 158, 255, 0.1), transparent) !important;
   color: #cbd5e1 !important;
 }
@@ -773,27 +773,27 @@ article li,
 }
 
 /* 暗色模式下的增强 */
-.dark .post-content::before {
+[data-theme="dark"] .post-content::before {
   background: linear-gradient(135deg, rgba(74, 158, 255, 0.05), rgba(148, 163, 184, 0.02)) !important;
 }
 
-.dark .post-content img {
+[data-theme="dark"] .post-content img {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-.dark .post-content img:hover {
+[data-theme="dark"] .post-content img:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
 }
 
-.dark .post-content pre {
+[data-theme="dark"] .post-content pre {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
-.dark .post-content table {
+[data-theme="dark"] .post-content table {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
 }
 
-.dark .post-content blockquote {
+[data-theme="dark"] .post-content blockquote {
   background: linear-gradient(135deg, rgba(74, 158, 255, 0.1), rgba(148, 163, 184, 0.05)) !important;
   color: #cbd5e1 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
@@ -1193,22 +1193,22 @@ html {
 }
 
 /* 暗色模式下的参考文献样式 */
-.dark .post-content h2:has(+ ol),
-.dark .post-content h2:has(+ ul) {
+[data-theme="dark"] .post-content h2:has(+ ol),
+[data-theme="dark"] .post-content h2:has(+ ul) {
   color: #f9fafb !important;
 }
 
-.dark .post-content ol:last-child li::before {
+[data-theme="dark"] .post-content ol:last-child li::before {
   color: #9ca3af !important;
 }
 
-.dark .post-content ol:last-child a,
-.dark .post-content ul:last-child a {
+[data-theme="dark"] .post-content ol:last-child a,
+[data-theme="dark"] .post-content ul:last-child a {
   color: #60a5fa !important;
 }
 
-.dark .post-content ol:last-child a:hover,
-.dark .post-content ul:last-child a:hover {
+[data-theme="dark"] .post-content ol:last-child a:hover,
+[data-theme="dark"] .post-content ul:last-child a:hover {
   color: #93c5fd !important;
   background-color: rgba(96, 165, 250, 0.1) !important;
 }
