@@ -6,9 +6,75 @@ draft: false
 description: "日常想法随手记"
 tags: ["AI", "Thinking", "Daily","2026"]
 categories: ["my_insights"]
-wordCount: 1717
+wordCount: 1917
 readingTime: 5
 ---
+
+## 2026-03-06
+现在Langraph可以作为外层编排/运行时（runtime & orchestration），把 AutoGen 的 agent 当成一个“节点能力”来调用。[参考链接](https://7x.mintlify.app/langsmith/autogen-integration),这个方法还可以延伸到使用别的agent。
+
+```mermaid
+flowchart TB
+  %% =========================
+  %% High-level: runtime + deployment
+  %% =========================
+  U[用户/客户端<br/>发送消息] -->|HTTP/WebSocket| S[LangGraph Server / App Runtime]
+  S --> G[LangGraph Graph 执行引擎<br/>StateGraph + MessagesState]
+  G <--> CP[Checkpointer<br/>MemorySaver / 持久化存储<br/>按 thread_id 读写状态]
+  
+  %% =========================
+  %% Graph structure: START -> autogen node
+  %% =========================
+  subgraph GRAPH[Graph 结构]
+    START((START)) --> N1[节点: autogen<br/>call_autogen_agent]
+  end
+  
+  G --> START
+  
+  %% =========================
+  %% Node internals: bridge LangGraph <-> AutoGen
+  %% =========================
+  subgraph BRIDGE[桥接层: LangGraph ↔ AutoGen]
+    N1 --> M1[读取 state.messages<br/>对话历史]
+    M1 --> M2[convert_to_openai_messages<br/>转换为 OpenAI messages]
+    M2 --> L1[拆分消息<br/>last_message 与 carryover]
+    L1 --> A0[AutoGen 运行时]
+    
+    subgraph AUTOGEN[AutoGen 侧]
+      A0 --> UP[user_proxy: UserProxyAgent<br/>human_input_mode=NEVER<br/>可配置代码执行]
+      UP -->|initiate_chat<br/>message + carryover| AA[autogen_agent: AssistantAgent]
+      AA --> RSP[response.chat_history<br/>生成最终答复]
+    end
+    
+    RSP --> O1[提取 final_content<br/>取最后一条 content]
+    O1 --> O2[封装回 LangGraph 消息<br/>role=assistant + content]
+    O2 --> NRET[返回并更新 state.messages]
+  end
+  
+  %% =========================
+  %% Streaming / response back
+  %% =========================
+  NRET -->|graph.stream 输出 chunk| OUT[流式/分块输出给客户端]
+  OUT --> U
+  
+  %% =========================
+  %% Deployment lane
+  %% =========================
+  subgraph DEPLOY[部署到 LangSmith 生产环境]
+    FS[项目结构<br/>agent.py / requirements.txt / langgraph.json] --> CLI[langgraph deploy<br/>--config langgraph.json]
+    CLI --> LS[LangSmith 托管与观测<br/>Traces / Eval / Datasets / Prompts]
+  end
+  
+  LS -->|线上请求| S
+  
+  %% =========================
+  %% Notes
+  %% =========================
+  CP -. 关键点 .-> NOTE1[LangGraph 负责持久化/线程记忆<br/>AutoGen 通过 carryover 显式获得上下文]
+  LS -. 关键点 .-> NOTE2[LangSmith 提供生产能力<br/>可观测/评估/部署/版本管理]
+```
+
+
 
 ## 2026-01-18
 
