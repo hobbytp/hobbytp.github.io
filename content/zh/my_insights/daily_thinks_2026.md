@@ -1,14 +1,21 @@
 ---
 title: "日常想法随手记-2026"
 date: "2026-01-13T14:20:00+08:00"
-lastmod: "2026-01-18T22:30:00+08:00"
+lastmod: "2026-03-07T22:30:00+08:00"
 draft: false
 description: "日常想法随手记"
 tags: ["AI", "Thinking", "Daily","2026"]
 categories: ["my_insights"]
-wordCount: 1917
-readingTime: 5
+wordCount: 2104
+readingTime: 6
 ---
+
+## 2026-03-07
+达利欧最新的一个观点很有说服力，他把美国以**利润为导向的模式**与中国的做法进行了对比,指出中国当局可能会将人工智能"像电力一样"对待,并**通过开源开发以低成本或免费的方式提供强大的工具**。
+​
+
+"他们可能会获得更高的使用率,并通过使用获得生产力提升,而我们则需要通过盈利系统来收回投资,"达里奥说道,他质疑**当竞争对手经济体愿意放弃利润以追求广泛采用时,在人工智能基础设施上投入数十亿美元的美国公司如何能够竞争**。
+​
 
 ## 2026-03-06
 现在Langraph可以作为外层编排/运行时（runtime & orchestration），把 AutoGen 的 agent 当成一个“节点能力”来调用。[参考链接](https://7x.mintlify.app/langsmith/autogen-integration),这个方法还可以延伸到使用别的agent。
