@@ -6,15 +6,19 @@ draft: false
 description: "日常想法随手记"
 tags: ["AI", "Thinking", "Daily","2026"]
 categories: ["my_insights"]
-wordCount: 2104
+wordCount: 2156
 readingTime: 6
 ---
+## 2026-03-08
+GPT-5.4 Pro（xhigh）在 CritPt 基准测试中取得把最高分从9分（去年11月份，来自Gemini 3 pro preview）提高了10分到19分(GPT-5 (high) 仅达到 5.7%)。CritPt 是一个使用**私有数据集**的基准测试，用于测试在**研究级物理推理任务**上的性能。国产最高分是DeepSeekV3.2 Speciale（7.4分）。详情可以参考[CritPt Benchmark Leaderboard](https://artificialanalysis.ai/evaluations/critpt?models=gpt-oss-120b%2Cgpt-5-4-pro%2Cgpt-5-2%2Cgpt-5-3-codex%2Cgpt-5-4%2Cgemini-3-1-pro-preview%2Cgemini-3-flash-reasoning%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-4-6-adaptive%2Cclaude-sonnet-4-6-adaptive%2Cmistral-large-3%2Cdeepseek-v3-2-reasoning%2Cdeepseek-v3-2-speciale%2Cgrok-4-1-fast-reasoning%2Cminimax-m2-5%2Ckimi-k2-5%2Cglm-5%2Cqwen3-5-397b-a17b%2Cgemini-3-pro)
 
 ## 2026-03-07
-达利欧最新的一个观点很有说服力，他把美国以**利润为导向的模式**与中国的做法进行了对比,指出中国当局可能会将人工智能"像电力一样"对待,并**通过开源开发以低成本或免费的方式提供强大的工具**。
-​
+最近达利欧表达了一个对比中美在AI开发和使用上的观点很有意思：
 
-"他们可能会获得更高的使用率,并通过使用获得生产力提升,而我们则需要通过盈利系统来收回投资,"达里奥说道,他质疑**当竞争对手经济体愿意放弃利润以追求广泛采用时,在人工智能基础设施上投入数十亿美元的美国公司如何能够竞争**。
+**美国模式**：以利润为导向，投入巨额资本建设 AI 基础设施，再通过收费产品/服务收回投资。  
+**中国模式**：把 AI 视为公共基础设施，用开源+低价甚至免费的方式最大化普及率，借大规模使用直接拉动生产力。  
+
+所以达利欧质疑：当中国愿意牺牲利润换普及，砸下重金的美国公司如何还能竞争？
 ​
 
 ## 2026-03-06
