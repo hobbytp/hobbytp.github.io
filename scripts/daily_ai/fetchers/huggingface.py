@@ -13,7 +13,7 @@ except ImportError:
 
 class HuggingFaceModelsFetcher(BaseFetcher):
     """获取 Hugging Face 趋势模型 (侧重下载量与更新)"""
-    def fetch(self, limit: int = 10, days_back: int = 3) -> List[ModelItem]:
+    def fetch(self, limit: int = 50, days_back: int = 3) -> List[ModelItem]:
         models = []
         try:
             if USE_HF_HUB:

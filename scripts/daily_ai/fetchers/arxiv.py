@@ -5,7 +5,7 @@ from scripts.daily_ai.models import PaperItem
 from scripts.daily_ai.fetchers.base import BaseFetcher
 
 class ArxivFetcher(BaseFetcher):
-    def fetch(self, max_results: int = 20) -> List[PaperItem]:
+    def fetch(self, max_results: int = 50) -> List[PaperItem]:
         papers = []
         # cs.CL (Computation and Language), cs.AI, cs.LG, cs.CV
         query = "cat:cs.CL OR cat:cs.AI OR cat:cs.LG OR cat:cs.CV"

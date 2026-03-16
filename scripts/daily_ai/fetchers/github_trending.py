@@ -1,5 +1,6 @@
+
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import List
 from scripts.daily_ai.models import GitHubProjectItem
 from scripts.daily_ai.fetchers.base import BaseFetcher
@@ -7,7 +8,7 @@ from scripts.daily_ai.config.env_config import env_config
 
 
 class GitHubTrendingFetcher(BaseFetcher):
-    """获取 GitHub Trending AI 项目并按 stars-per-day 增速排序"""
+    """获取 GitHub Trending AI 项目 (侧重最近创建的高星项目)"""
 
     def __init__(self, topics: List[str] = None):
         super().__init__()
@@ -16,6 +17,7 @@ class GitHubTrendingFetcher(BaseFetcher):
             'machine-learning',
             'llm',
             'generative-ai',
+            'agent',
         ]
 
     def _make_headers(self, authenticated: bool = True) -> dict:
@@ -24,16 +26,20 @@ class GitHubTrendingFetcher(BaseFetcher):
             h['Authorization'] = f'token {env_config.GITHUB_TOKEN}'
         return h
 
-    def fetch(self, per_topic: int = 20, limit: int = 10) -> List[GitHubProjectItem]:
+    def fetch(self, per_topic: int = 50, limit: int = 10) -> List[GitHubProjectItem]:
         # 首先尝试认证模式，遇到 401 时降级为匿名模式
         use_auth = bool(env_config.GITHUB_TOKEN)
 
         all_items: dict = {}  # keyed by html_url to deduplicate
+        
+        # 只关注最近 30 天创建的项目，确保是"新"工具
+        date_threshold = (datetime.utcnow() - timedelta(days=30)).strftime('%Y-%m-%d')
 
         for topic in self.topics:
+            # 查询: 指定 topic，且创建时间在 30 天内，按 stars 倒序
             url = (
                 f"https://api.github.com/search/repositories"
-                f"?q=topic:{topic}&sort=stars&order=desc&per_page={per_topic}"
+                f"?q=topic:{topic}+created:>{date_threshold}&sort=stars&order=desc&per_page={per_topic}"
             )
             try:
                 response = requests.get(url, headers=self._make_headers(use_auth), timeout=15)
@@ -58,7 +64,8 @@ class GitHubTrendingFetcher(BaseFetcher):
 
                     description = item.get('description') or ''
                     stars_count = item.get('stargazers_count', 0)
-                    if stars_count < 10 or len(description) < 5:
+                    # 降低门槛，因为是新项目
+                    if stars_count < 5 or len(description) < 5:
                         continue
 
                     # 计算每天平均获星速度

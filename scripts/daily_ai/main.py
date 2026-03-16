@@ -44,7 +44,8 @@ class Orchestrator:
         }
         
         # Processors
-        self.dedup = Deduplicator()
+        history_file = project_root / "scripts" / "daily_ai" / "data" / "history.json"
+        self.dedup = Deduplicator(history_file=history_file)
         self.scorer = QualityScorer()
         
         # Generator & Renderer
@@ -149,6 +150,9 @@ class Orchestrator:
          self.content_dir.mkdir(parents=True, exist_ok=True)
          with open(file_path, "w", encoding="utf-8") as f:
              f.write(final_md)
+             
+         # Save deduplication state
+         self.dedup.save_state()
              
          print(f"[OK] 每日AI动态 v3 架构完成！文件生成至: {file_path}")
 
