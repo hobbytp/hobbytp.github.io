@@ -1,640 +1,5 @@
 [
   {
-    "url": "www.youtube.com/watch",
-    "title": "gemini - \"i'm in tears! this is the best reading i've seen ...",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "community.openai.com/t/product-feedback-allow-business-workspace-users-to-restore-personal-space/1376866",
-    "title": "allow business workspace users to restore personal space",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "www.bbc.com/news/articles/cgk2lzmm22eo",
-    "title": "teens sue musk's xai over grok's pornographic images of them - bbc",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "www.reuters.com/business/openai-courts-private-equity-join-enterprise-ai-venture-sources-say-2026-03-16",
-    "title": "exclusive: openai courts private equity to join enterprise ai venture ...",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "www.instagram.com/p/dv7qiw3dpl8",
-    "title": "with the help of gemini and grok, i created these pics and video of ...",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "mashable.com/article/deepseek-ai-privacy-policy-keystroke-data-chinese-servers",
-    "title": "deepseek ai collects keystroke data and more, storing it in chinese ...",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "aeroclubcomo.com",
-    "title": "hot ! men's under armour speedform gemini ... - aero club como",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "www.reddit.com/r/ada/comments/1rv9bw5/surprisingly_high_productivity_with_ada_and_llms",
-    "title": "surprisingly high productivity with ada and llms (gpt/gemini)",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "support.google.com/gemini/thread/417526714/model-issues",
-    "title": "model issues - gemini apps community - google help",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/fishaudio/s2-pro",
-    "title": "fishaudio/s2-pro",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
-    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/lightricks/ltx-2.3",
-    "title": "lightricks/ltx-2.3",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/tesslate/omnicoder-9b",
-    "title": "tesslate/omnicoder-9b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-9b",
-    "title": "qwen/qwen3.5-9b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-bf16",
-    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-bf16",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/humeai/tada-1b",
-    "title": "humeai/tada-1b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/locoremind/locotrainer-4b",
-    "title": "locoremind/locotrainer-4b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-nvfp4",
-    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-nvfp4",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-fp8",
-    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-fp8",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/humeai/tada-3b-ml",
-    "title": "humeai/tada-3b-ml",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/zai-org/glm-ocr",
-    "title": "zai-org/glm-ocr",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/unsloth/ltx-2.3-gguf",
-    "title": "unsloth/ltx-2.3-gguf",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/circlestone-labs/anima",
-    "title": "circlestone-labs/anima",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/tesslate/omnicoder-9b-gguf",
-    "title": "tesslate/omnicoder-9b-gguf",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-35b-a3b",
-    "title": "qwen/qwen3.5-35b-a3b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-gguf",
-    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-gguf",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-4.0-1b-speech",
-    "title": "ibm-granite/granite-4.0-1b-speech",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/black-forest-labs/flux.2-klein-9b-kv",
-    "title": "black-forest-labs/flux.2-klein-9b-kv",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.5-35b-a3b-gguf",
-    "title": "unsloth/qwen3.5-35b-a3b-gguf",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-4b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-4b-uncensored-hauhaucs-aggressive",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/crownelius/crow-9b-heretic-4.6",
-    "title": "crownelius/crow-9b-heretic-4.6",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-27b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-27b-uncensored-hauhaucs-aggressive",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/minimaxai/minimax-m2.5",
-    "title": "minimaxai/minimax-m2.5",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.5-9b-gguf",
-    "title": "unsloth/qwen3.5-9b-gguf",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/unsloth/nvidia-nemotron-3-super-120b-a12b-gguf",
-    "title": "unsloth/nvidia-nemotron-3-super-120b-a12b-gguf",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-27b",
-    "title": "qwen/qwen3.5-27b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/kijai/ltx2.3_comfy",
-    "title": "kijai/ltx2.3_comfy",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/dx8152/flux2-klein-9b-consistency",
-    "title": "dx8152/flux2-klein-9b-consistency",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-397b-a17b",
-    "title": "qwen/qwen3.5-397b-a17b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/zai-org/glm-5",
-    "title": "zai-org/glm-5",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-9b-claude-4.6-opus-reasoning-distilled-gguf",
-    "title": "jackrong/qwen3.5-9b-claude-4.6-opus-reasoning-distilled-gguf",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-4b",
-    "title": "qwen/qwen3.5-4b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/fireredteam/firered-image-edit-1.1",
-    "title": "fireredteam/firered-image-edit-1.1",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/sarvamai/sarvam-105b",
-    "title": "sarvamai/sarvam-105b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/microsoft/bitnet-b1.58-2b-4t",
-    "title": "microsoft/bitnet-b1.58-2b-4t",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/black-forest-labs/flux.1-dev",
-    "title": "black-forest-labs/flux.1-dev",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-0.8b",
-    "title": "qwen/qwen3.5-0.8b",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/black-forest-labs/flux.2-klein-9b-kv-fp8",
-    "title": "black-forest-labs/flux.2-klein-9b-kv-fp8",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/huihui-ai/huihui-qwen3.5-27b-claude-4.6-opus-abliterated",
-    "title": "huihui-ai/huihui-qwen3.5-27b-claude-4.6-opus-abliterated",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.5-27b-gguf",
-    "title": "unsloth/qwen3.5-27b-gguf",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/moonshotai/kimi-k2.5",
-    "title": "moonshotai/kimi-k2.5",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3-coder-next",
-    "title": "qwen/qwen3-coder-next",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/alissonerdx/bfs-best-face-swap",
-    "title": "alissonerdx/bfs-best-face-swap",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/huihui-ai/huihui-qwen3.5-9b-abliterated",
-    "title": "huihui-ai/huihui-qwen3.5-9b-abliterated",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/tongyi-mai/z-image-turbo",
-    "title": "tongyi-mai/z-image-turbo",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/z-lab/qwen3.5-9b-paro",
-    "title": "z-lab/qwen3.5-9b-paro",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/facebook/sam3",
-    "title": "facebook/sam3",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13228v1",
-    "title": "physmodpo: physically-plausible humanoid motion with preference optimization",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13227v1",
-    "title": "representation learning for spatiotemporal physical systems",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13224v1",
-    "title": "visual-erm: reward modeling for visual equivalence",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13215v1",
-    "title": "out of sight, out of mind? evaluating state evolution in video world models",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13201v1",
-    "title": "neuron-aware data selection in instruction tuning for large language models",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13191v1",
-    "title": "from experiments to expertise: scientific knowledge consolidation for ai-driven computational research",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13189v1",
-    "title": "llm constitutional multi-agent governance",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13186v1",
-    "title": "learnability and privacy vulnerability are entangled in a few critical weights",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13185v1",
-    "title": "towards spatio-temporal world scene graph generation from monocular videos",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13182v1",
-    "title": "diffusion-based feature denoising and using nnmf for robust brain tumor classification",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13180v1",
-    "title": "mxnorm: reusing mxfp block scales for efficient tensor normalisation",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13177v1",
-    "title": "clustering astronomical orbital synthetic data using advanced feature extraction and dimensionality reduction techniques",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13176v1",
-    "title": "perceive what matters: relevance-driven scheduling for multimodal streaming perception",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13173v1",
-    "title": "semantic invariance in agentic ai",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13168v1",
-    "title": "developing and evaluating a chatbot to support maternal health care",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13163v1",
-    "title": "towards faithful multimodal concept bottleneck models",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13162v1",
-    "title": "dit-ic: aligned diffusion transformer for efficient image compression",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13154v1",
-    "title": "esg-bench: benchmarking long-context esg reports for hallucination mitigation",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13134v1",
-    "title": "when right meets wrong: bilateral context conditioning with reward-confidence correction for grpo",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13131v1",
-    "title": "steve-evolving: open-world embodied self-evolution via fine-grained diagnosis and dual-track knowledge distillation",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13126v1",
-    "title": "developing the psycogmetrics ai lab to evaluate large language models and advance cognitive science -- a three-cycle action design science study",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13121v1",
-    "title": "fdeid-toolbox: face de-identification toolbox",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13119v1",
-    "title": "geometry-guided camera motion understanding in videollms",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13118v1",
-    "title": "noir: neural operator mapping for implicit representations",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13115v1",
-    "title": "zo-sam: zero-order sharpness-aware minimization for efficient sparse training",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13109v1",
-    "title": "boss: a best-of-strategies selector as an oracle for deep active learning",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13108v1",
-    "title": "panoramic multimodal semantic occupancy prediction for quadruped robots",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13102v1",
-    "title": "bendfm: a taxonomy and synthetic cad dataset for manufacturability assessment in sheet metal bending",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13100v1",
-    "title": "evaluating vlms' spatial reasoning over robot motion: a step towards robot planning with motion preferences",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13099v1",
-    "title": "beyond final answers: crystal benchmark for transparent multimodal reasoning evaluation",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13098v1",
-    "title": "sldprtnet: a large-scale multimodal dataset for cad generation in language-driven 3d design",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13092v1",
-    "title": "breaking the tuning barrier: zero-hyperparameters yield multi-corner analysis via learned priors",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13091v1",
-    "title": "reasoning over video: evaluating how mllms extract, integrate, and reconstruct spatiotemporal evidence",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13089v1",
-    "title": "v-bridge: bridging video generative priors to versatile few-shot image restoration",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13085v1",
-    "title": "influence malleability in linearized attention: dual implications of non-convergent ntk dynamics",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13083v1",
-    "title": "human-in-the-loop llm grading for handwritten mathematics assessments",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13082v1",
-    "title": "interedit: navigating text-guided multi-human 3d motion editing",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13077v1",
-    "title": "rooftop wind field reconstruction using sparse sensors: from deterministic to generative learning methods",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13070v1",
-    "title": "mitigating memorization in text-to-image diffusion via region-aware prompt augmentation and multimodal copy detection",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13069v1",
-    "title": "fractals made practical: denoising diffusion as partitioned iterated function systems",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13068v1",
-    "title": "geochemad: benchmarking unsupervised geochemical anomaly detection for mineral exploration",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13065v1",
-    "title": "l2gtx: from local to global time series explanations",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13059v1",
-    "title": "competition-aware cpc forecasting with near-market coverage",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13057v1",
-    "title": "reference-free image quality assessment for virtual try-on via human feedback",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13056v1",
-    "title": "team ras in 10th abaw competition: multimodal valence and arousal estimation approach",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13054v1",
-    "title": "topo-r1: detecting topological anomalies via vision-language models",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13051v1",
-    "title": "causal cellular context transfer learning (c3tl): an efficient architecture for prediction of unseen perturbation effects",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13049v1",
-    "title": "3dtcr: a physics-based generative framework for vortex-following 3d reconstruction to improve tropical cyclone intensity forecasting",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13048v1",
-    "title": "convergence rate of a functional learning method for contextual stochastic optimization",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "arxiv.org/pdf/2603.13044v1",
-    "title": "are general-purpose vision models all we need for 2d medical image segmentation? a cross-dataset empirical study",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/papers/2603.12572",
-    "title": "lmeb: long-horizon memory embedding benchmark",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/papers/2603.12793",
-    "title": "cheers: decoupling patch details from semantic representations enables unified multimodal comprehension and generation",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/papers/2603.08436",
-    "title": "can vision-language models solve the shell game?",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/papers/2603.13023",
-    "title": "davinci-env: open swe environment synthesis at scale",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/papers/2603.11647",
-    "title": "omniforcing: unleashing real-time joint audio-visual generation",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/papers/2603.13032",
-    "title": "multimodal ocr: parse anything from documents",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/papers/2603.12266",
-    "title": "mm-condchain: a programmatically verified benchmark for visually grounded deep compositional reasoning",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "huggingface.co/papers/2603.12262",
-    "title": "video streaming thinking: videollms can watch and think simultaneously",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/tanweai/pua",
-    "title": "pua",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/rightnow-ai/openfang",
-    "title": "openfang",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/alexsjones/llmfit",
-    "title": "llmfit",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/cft0808/edict",
-    "title": "edict",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/sstklen/trump-code",
-    "title": "trump-code",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/narcooo/inkos",
-    "title": "inkos",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/wanshuiyin/auto-claude-code-research-in-sleep",
-    "title": "auto-claude-code-research-in-sleep",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/aiming-lab/metaclaw",
-    "title": "metaclaw",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/keyid-ai/agent-kit",
-    "title": "agent-kit",
-    "date": "2026-03-16"
-  },
-  {
-    "url": "github.com/leonxlnx/taste-skill",
-    "title": "taste-skill",
-    "date": "2026-03-16"
-  },
-  {
     "url": "www.linkedin.com/company/anthropicresearch/posts",
     "title": "anthropic - linkedin",
     "date": "2026-03-17"
@@ -1983,5 +1348,255 @@
     "url": "github.com/openyak/desktop",
     "title": "desktop",
     "date": "2026-03-22"
+  },
+  {
+    "url": "www.reddit.com/r/openai/comments/1s0g1as/i_think_using_ai_is_quietly_changing_how_i_talk",
+    "title": "i think using ai is quietly changing how i talk : r/openai - reddit",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "forum.openai.com/public/clubs/ai-in-higher-education-luv/forum/boards/ai-in-higher-education-3rc/posts/brain-in-overdrive-7d22f2cbed",
+    "title": "brain in overdrive - openai forum",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "community.openai.com/t/gpt-5-models-not-following-system-prompts/1377459",
+    "title": "gpt-5* models not following system prompts - bugs",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "www.reddit.com/r/sillytavernai/comments/1s0em4t/problems_with_deepseek_v32",
+    "title": "problems with deepseek v3.2 : r/sillytavernai - reddit",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "www.youtube.com/shorts/hugkivcfm7w",
+    "title": "daniela amodei: can ai actually teach us compassion ... - youtube",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "news.ycombinator.com/item",
+    "title": "walmart fires openai in playbook-changing move - hacker news",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "help.openai.com/es-es/articles/11165333-chatgpt-enterprise-and-edu-models-limits",
+    "title": "chatgpt enterprise and edu - models & limits - openai help center",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "www.instagram.com/reel/dwl_o7fjbhe",
+    "title": "let gemini choose my next car and it said land rover defender ...",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
+    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/fishaudio/s2-pro",
+    "title": "fishaudio/s2-pro",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/zai-org/glm-ocr",
+    "title": "zai-org/glm-ocr",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/tesslate/omnicoder-9b",
+    "title": "tesslate/omnicoder-9b",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.5-9b",
+    "title": "qwen/qwen3.5-9b",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-gguf",
+    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-gguf",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.5-35b-a3b",
+    "title": "qwen/qwen3.5-35b-a3b",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/tesslate/omnicoder-9b-gguf",
+    "title": "tesslate/omnicoder-9b-gguf",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/circlestone-labs/anima",
+    "title": "circlestone-labs/anima",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-4b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-4b-uncensored-hauhaucs-aggressive",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-bf16",
+    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-bf16",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/minimaxai/minimax-m2.5",
+    "title": "minimaxai/minimax-m2.5",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-27b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-27b-uncensored-hauhaucs-aggressive",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/ibm-granite/granite-4.0-1b-speech",
+    "title": "ibm-granite/granite-4.0-1b-speech",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/unsloth/qwen3.5-35b-a3b-gguf",
+    "title": "unsloth/qwen3.5-35b-a3b-gguf",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/tongyi-mai/z-image-turbo",
+    "title": "tongyi-mai/z-image-turbo",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-nvfp4",
+    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-nvfp4",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/unsloth/qwen3.5-9b-gguf",
+    "title": "unsloth/qwen3.5-9b-gguf",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/black-forest-labs/flux.1-dev",
+    "title": "black-forest-labs/flux.1-dev",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/moonshotai/kimi-k2.5",
+    "title": "moonshotai/kimi-k2.5",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.5-27b",
+    "title": "qwen/qwen3.5-27b",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/zai-org/glm-5",
+    "title": "zai-org/glm-5",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-fp8",
+    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-fp8",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-9b-claude-4.6-opus-reasoning-distilled-gguf",
+    "title": "jackrong/qwen3.5-9b-claude-4.6-opus-reasoning-distilled-gguf",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/black-forest-labs/flux.2-klein-9b-kv",
+    "title": "black-forest-labs/flux.2-klein-9b-kv",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/crownelius/crow-9b-heretic-4.6",
+    "title": "crownelius/crow-9b-heretic-4.6",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.5-397b-a17b",
+    "title": "qwen/qwen3.5-397b-a17b",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-4b-claude-4.6-opus-reasoning-distilled-v2-gguf",
+    "title": "jackrong/qwen3.5-4b-claude-4.6-opus-reasoning-distilled-v2-gguf",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/rednote-hilab/dots.mocr",
+    "title": "rednote-hilab/dots.mocr",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/unsloth/mistral-small-4-119b-2603-gguf",
+    "title": "unsloth/mistral-small-4-119b-2603-gguf",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.5-4b",
+    "title": "qwen/qwen3.5-4b",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/microsoft/bitnet-b1.58-2b-4t",
+    "title": "microsoft/bitnet-b1.58-2b-4t",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3-coder-next",
+    "title": "qwen/qwen3-coder-next",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "github.com/tanweai/pua",
+    "title": "pua",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "github.com/rightnow-ai/openfang",
+    "title": "openfang",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "github.com/cft0808/edict",
+    "title": "edict",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "github.com/wanshuiyin/auto-claude-code-research-in-sleep",
+    "title": "auto-claude-code-research-in-sleep",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "github.com/narcooo/inkos",
+    "title": "inkos",
+    "date": "2026-03-23"
+  },
+  {
+    "url": "github.com/aiming-lab/metaclaw",
+    "title": "metaclaw",
+    "date": "2026-03-23"
   }
 ]
