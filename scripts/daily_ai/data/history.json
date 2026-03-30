@@ -1,255 +1,5 @@
 [
   {
-    "url": "www.reddit.com/r/openai/comments/1s0g1as/i_think_using_ai_is_quietly_changing_how_i_talk",
-    "title": "i think using ai is quietly changing how i talk : r/openai - reddit",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "forum.openai.com/public/clubs/ai-in-higher-education-luv/forum/boards/ai-in-higher-education-3rc/posts/brain-in-overdrive-7d22f2cbed",
-    "title": "brain in overdrive - openai forum",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "community.openai.com/t/gpt-5-models-not-following-system-prompts/1377459",
-    "title": "gpt-5* models not following system prompts - bugs",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "www.reddit.com/r/sillytavernai/comments/1s0em4t/problems_with_deepseek_v32",
-    "title": "problems with deepseek v3.2 : r/sillytavernai - reddit",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "www.youtube.com/shorts/hugkivcfm7w",
-    "title": "daniela amodei: can ai actually teach us compassion ... - youtube",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "news.ycombinator.com/item",
-    "title": "walmart fires openai in playbook-changing move - hacker news",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "help.openai.com/es-es/articles/11165333-chatgpt-enterprise-and-edu-models-limits",
-    "title": "chatgpt enterprise and edu - models & limits - openai help center",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "www.instagram.com/reel/dwl_o7fjbhe",
-    "title": "let gemini choose my next car and it said land rover defender ...",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
-    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/fishaudio/s2-pro",
-    "title": "fishaudio/s2-pro",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/zai-org/glm-ocr",
-    "title": "zai-org/glm-ocr",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/tesslate/omnicoder-9b",
-    "title": "tesslate/omnicoder-9b",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-9b",
-    "title": "qwen/qwen3.5-9b",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-gguf",
-    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-gguf",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-35b-a3b",
-    "title": "qwen/qwen3.5-35b-a3b",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/lightricks/ltx-2.3",
-    "title": "lightricks/ltx-2.3",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/tesslate/omnicoder-9b-gguf",
-    "title": "tesslate/omnicoder-9b-gguf",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/circlestone-labs/anima",
-    "title": "circlestone-labs/anima",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-4b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-4b-uncensored-hauhaucs-aggressive",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-bf16",
-    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-bf16",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/minimaxai/minimax-m2.5",
-    "title": "minimaxai/minimax-m2.5",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-27b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-27b-uncensored-hauhaucs-aggressive",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-4.0-1b-speech",
-    "title": "ibm-granite/granite-4.0-1b-speech",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.5-35b-a3b-gguf",
-    "title": "unsloth/qwen3.5-35b-a3b-gguf",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/tongyi-mai/z-image-turbo",
-    "title": "tongyi-mai/z-image-turbo",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-nvfp4",
-    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-nvfp4",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.5-9b-gguf",
-    "title": "unsloth/qwen3.5-9b-gguf",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/black-forest-labs/flux.1-dev",
-    "title": "black-forest-labs/flux.1-dev",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/moonshotai/kimi-k2.5",
-    "title": "moonshotai/kimi-k2.5",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-27b",
-    "title": "qwen/qwen3.5-27b",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/zai-org/glm-5",
-    "title": "zai-org/glm-5",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-fp8",
-    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-fp8",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-9b-claude-4.6-opus-reasoning-distilled-gguf",
-    "title": "jackrong/qwen3.5-9b-claude-4.6-opus-reasoning-distilled-gguf",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/black-forest-labs/flux.2-klein-9b-kv",
-    "title": "black-forest-labs/flux.2-klein-9b-kv",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/crownelius/crow-9b-heretic-4.6",
-    "title": "crownelius/crow-9b-heretic-4.6",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-397b-a17b",
-    "title": "qwen/qwen3.5-397b-a17b",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-4b-claude-4.6-opus-reasoning-distilled-v2-gguf",
-    "title": "jackrong/qwen3.5-4b-claude-4.6-opus-reasoning-distilled-v2-gguf",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/rednote-hilab/dots.mocr",
-    "title": "rednote-hilab/dots.mocr",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/unsloth/mistral-small-4-119b-2603-gguf",
-    "title": "unsloth/mistral-small-4-119b-2603-gguf",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-4b",
-    "title": "qwen/qwen3.5-4b",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/microsoft/bitnet-b1.58-2b-4t",
-    "title": "microsoft/bitnet-b1.58-2b-4t",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3-coder-next",
-    "title": "qwen/qwen3-coder-next",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "github.com/tanweai/pua",
-    "title": "pua",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "github.com/rightnow-ai/openfang",
-    "title": "openfang",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "github.com/cft0808/edict",
-    "title": "edict",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "github.com/wanshuiyin/auto-claude-code-research-in-sleep",
-    "title": "auto-claude-code-research-in-sleep",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "github.com/narcooo/inkos",
-    "title": "inkos",
-    "date": "2026-03-23"
-  },
-  {
-    "url": "github.com/aiming-lab/metaclaw",
-    "title": "metaclaw",
-    "date": "2026-03-23"
-  },
-  {
     "url": "artificialanalysis.ai/models/comparisons/minimax-m2-7-vs-gemini-3-1-pro-preview",
     "title": "minimax-m2.7 vs gemini 3.1 pro preview: model comparison",
     "date": "2026-03-24"
@@ -1968,5 +1718,190 @@
     "url": "github.com/nidhinjs/prompt-master",
     "title": "prompt-master",
     "date": "2026-03-29"
+  },
+  {
+    "url": "mashable.com/article/openai-sora-shutting-down",
+    "title": "openai's sora shutting down as disney exits deal | mashable",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "community.openai.com/t/structured-model-outputs-responses-api-returning-invalid-json-80-of-the-time/1378069",
+    "title": "structured model outputs (responses api) returning invalid json ...",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "www.instagram.com/p/dwdvsfaf-nk",
+    "title": "spring yoga & wellbeing retreat 17th-19th april 2026 brathay hall ...",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "www.linkedin.com/company/anthropicresearch/posts",
+    "title": "anthropic - linkedin",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "redwoodforests.org/dada-009/posts/will-gemini-refund-me-if-i-get-scammed-in-2000a",
+    "title": "will gemini refund me if i get scammed in 2000?[a]: - redwood",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "www.facebook.com/upstate.primebully/videos/big-boy-and-gemini-she-doing-too-much-today-goat-woooo-lux-gemini-doingtoomuch/838829739236850",
+    "title": "big boy and gemini. she doing too much today #goat #woooo #lux ...",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "www.youtube.com/shorts/nrcbqdkupdy",
+    "title": "highlightdangerous - gemini#dangerousgeminimv ... - youtube",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "openai.com/careers/search",
+    "title": "careers | openai",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
+    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/chromadb/context-1",
+    "title": "chromadb/context-1",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/tesslate/omnicoder-9b",
+    "title": "tesslate/omnicoder-9b",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-gguf",
+    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-gguf",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.5-9b",
+    "title": "qwen/qwen3.5-9b",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.5-27b",
+    "title": "qwen/qwen3.5-27b",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.5-35b-a3b",
+    "title": "qwen/qwen3.5-35b-a3b",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-9b-claude-4.6-opus-reasoning-distilled-gguf",
+    "title": "jackrong/qwen3.5-9b-claude-4.6-opus-reasoning-distilled-gguf",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/zai-org/glm-ocr",
+    "title": "zai-org/glm-ocr",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/fishaudio/s2-pro",
+    "title": "fishaudio/s2-pro",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/facebook/sam3.1",
+    "title": "facebook/sam3.1",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/tongyi-mai/z-image-turbo",
+    "title": "tongyi-mai/z-image-turbo",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/moonshotai/kimi-k2.5",
+    "title": "moonshotai/kimi-k2.5",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/tesslate/omnicoder-9b-gguf",
+    "title": "tesslate/omnicoder-9b-gguf",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/minimaxai/minimax-m2.5",
+    "title": "minimaxai/minimax-m2.5",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/unsloth/qwen3.5-9b-gguf",
+    "title": "unsloth/qwen3.5-9b-gguf",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-4b-claude-4.6-opus-reasoning-distilled-v2-gguf",
+    "title": "jackrong/qwen3.5-4b-claude-4.6-opus-reasoning-distilled-v2-gguf",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-27b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-27b-uncensored-hauhaucs-aggressive",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/nvidia/nvidia-nemotron-3-super-120b-a12b-nvfp4",
+    "title": "nvidia/nvidia-nemotron-3-super-120b-a12b-nvfp4",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/zai-org/glm-5",
+    "title": "zai-org/glm-5",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/circlestone-labs/anima",
+    "title": "circlestone-labs/anima",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3-coder-next",
+    "title": "qwen/qwen3-coder-next",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "github.com/tanweai/pua",
+    "title": "pua",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "github.com/wanshuiyin/auto-claude-code-research-in-sleep",
+    "title": "auto-claude-code-research-in-sleep",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "github.com/narcooo/inkos",
+    "title": "inkos",
+    "date": "2026-03-30"
+  },
+  {
+    "url": "github.com/aiming-lab/metaclaw",
+    "title": "metaclaw",
+    "date": "2026-03-30"
   }
 ]
