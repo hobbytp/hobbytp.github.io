@@ -1,80 +1,5 @@
 [
   {
-    "url": "www.linkedin.com/company/openai/life/562d9602-9634-47cd-8917-be007ae3d767",
-    "title": "openai - linkedin",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "play.google.com/store/apps/details",
-    "title": "gemini: buy crypto & bitcoin – apps on google play",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "www.afsin.bel.tr/investing/en/gemini-crypto-futures-trading",
-    "title": "gemini crypto futures trading - beginner mistakes to avoid",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "podcasts.apple.com/hr/podcast/anthropic-the-pentagon-and-the/id1056200096",
-    "title": "anthropic, the pentagon, and the future of autonomous weapons",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "www.afsin.bel.tr/investing/en/coinbase-vs-gemini-for-us-customers",
-    "title": "coinbase vs gemini for us customers",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "www.izolkoleji.com/investing/en/gemini-transfer-failed",
-    "title": "gemini transfer failed - crypto index fund performance review",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "www.seatrade-maritime.com/containers/gemini-shines-as-container-line-punctuality-plummets-in-2026",
-    "title": "gemini shines as container line punctuality plummets in 2026",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "www.reddit.com/r/productivity/comments/1s5xjtd/best_integration_of_chatgpt_gemini_claude_etc_in",
-    "title": "best integration of chatgpt, gemini, claude, etc in an email and ...",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "inovasyondisklinigi.com/investing/en/gemini-tax-report-error",
-    "title": "gemini tax report error - hidden risks you must know",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "huggingface.co/nvidia/nemotron-cascade-2-30b-a3b",
-    "title": "nvidia/nemotron-cascade-2-30b-a3b",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-v2-gguf",
-    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-v2-gguf",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "huggingface.co/facebook/tribev2",
-    "title": "facebook/tribev2",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-nano-4b-gguf",
-    "title": "nvidia/nvidia-nemotron-3-nano-4b-gguf",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "github.com/jxnxts/mcp-brasil",
-    "title": "mcp-brasil",
-    "date": "2026-03-29"
-  },
-  {
-    "url": "github.com/nidhinjs/prompt-master",
-    "title": "prompt-master",
-    "date": "2026-03-29"
-  },
-  {
     "url": "mashable.com/article/openai-sora-shutting-down",
     "title": "openai's sora shutting down as disney exits deal | mashable",
     "date": "2026-03-30"
@@ -2018,5 +1943,70 @@
     "url": "github.com/pacifio/cersei",
     "title": "cersei",
     "date": "2026-04-04"
+  },
+  {
+    "url": "community.openai.com/t/codex-limits-change-is-a-serious-mistake/1378492/4",
+    "title": "codex limits change is a serious mistake - #4 by torronen",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "www.reddit.com/r/ai_agents/comments/1sbxshw/omg_anthropic_just_ended_claude_subscriptions_for",
+    "title": "omg! anthropic just ended claude subscriptions for tools ... - reddit",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "community.openai.com/t/codex-limits-finally-good-after-april-1st-reset/1378333",
+    "title": "codex limits - finally good after april 1st reset",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "x.com/izatabaro/status/2040355673129570365/photo/2",
+    "title": "this post made it into grok's highlights. grok's summary captures my ...",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "x.com/katiemiller",
+    "title": "katie miller (@katiemiller) / posts / x - twitter",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "www.youtube.com/watch",
+    "title": "chatgpt vs claude ai vs gemini (stop using the wrong one!)",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-v2-gguf",
+    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-v2-gguf",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "huggingface.co/facebook/tribev2",
+    "title": "facebook/tribev2",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "huggingface.co/nvidia/nemotron-cascade-2-30b-a3b",
+    "title": "nvidia/nemotron-cascade-2-30b-a3b",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "huggingface.co/rta-ailabs/nandi-mini-150m",
+    "title": "rta-ailabs/nandi-mini-150m",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "github.com/prathamlearnstocode/paper2code",
+    "title": "paper2code",
+    "date": "2026-04-05"
+  },
+  {
+    "url": "github.com/nidhinjs/prompt-master",
+    "title": "prompt-master",
+    "date": "2026-04-05"
   }
 ]
