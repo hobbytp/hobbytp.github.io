@@ -1,70 +1,5 @@
 [
   {
-    "url": "community.openai.com/t/codex-limits-change-is-a-serious-mistake/1378492/4",
-    "title": "codex limits change is a serious mistake - #4 by torronen",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "www.reddit.com/r/ai_agents/comments/1sbxshw/omg_anthropic_just_ended_claude_subscriptions_for",
-    "title": "omg! anthropic just ended claude subscriptions for tools ... - reddit",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "community.openai.com/t/codex-limits-finally-good-after-april-1st-reset/1378333",
-    "title": "codex limits - finally good after april 1st reset",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "x.com/izatabaro/status/2040355673129570365/photo/2",
-    "title": "this post made it into grok's highlights. grok's summary captures my ...",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "x.com/katiemiller",
-    "title": "katie miller (@katiemiller) / posts / x - twitter",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "www.youtube.com/watch",
-    "title": "chatgpt vs claude ai vs gemini (stop using the wrong one!)",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-v2-gguf",
-    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled-v2-gguf",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "huggingface.co/facebook/tribev2",
-    "title": "facebook/tribev2",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "huggingface.co/nvidia/nemotron-cascade-2-30b-a3b",
-    "title": "nvidia/nemotron-cascade-2-30b-a3b",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "huggingface.co/rta-ailabs/nandi-mini-150m",
-    "title": "rta-ailabs/nandi-mini-150m",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "github.com/prathamlearnstocode/paper2code",
-    "title": "paper2code",
-    "date": "2026-04-05"
-  },
-  {
-    "url": "github.com/nidhinjs/prompt-master",
-    "title": "prompt-master",
-    "date": "2026-04-05"
-  },
-  {
     "url": "www.linkedin.com/company/anthropicresearch/posts",
     "title": "anthropic - linkedin",
     "date": "2026-04-06"
@@ -1908,5 +1843,60 @@
     "url": "github.com/863401402/she-love-me",
     "title": "she-love-me",
     "date": "2026-04-11"
+  },
+  {
+    "url": "www.anthropic.com/engineering/managed-agents",
+    "title": "scaling managed agents: decoupling the brain from the hands",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "support.google.com/gemini/thread/424101009/can-t-sign-in-with-google-on-antigravity-on-linux",
+    "title": "can't sign in with google on antigravity on linux - gemini apps ...",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "x.com/katiemiller/status/2042984570069332474",
+    "title": "dinosaur bingo with my boys brought to life with grok imagine. a ...",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "www.youtube.com/watch",
+    "title": "gemini ♊️”a very important week! pay attention to what i ...",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "x.com/sebbycorp/status/2042974546622328875",
+    "title": "moving to @xai @grok for my @openclaw @steipete",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "huggingface.co/tencent/hy-embodied-0.5",
+    "title": "tencent/hy-embodied-0.5",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "huggingface.co/facebook/tribev2",
+    "title": "facebook/tribev2",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "huggingface.co/ace-step/acestep-v15-xl-base",
+    "title": "ace-step/acestep-v15-xl-base",
+    "date": "2026-04-12"
+  },
+  {
+    "url": "github.com/nesquena/hermes-webui",
+    "title": "hermes-webui",
+    "date": "2026-04-12"
   }
 ]
