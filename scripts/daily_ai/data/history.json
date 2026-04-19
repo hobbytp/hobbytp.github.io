@@ -1,60 +1,5 @@
 [
   {
-    "url": "www.anthropic.com/engineering/managed-agents",
-    "title": "scaling managed agents: decoupling the brain from the hands",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "support.google.com/gemini/thread/424101009/can-t-sign-in-with-google-on-antigravity-on-linux",
-    "title": "can't sign in with google on antigravity on linux - gemini apps ...",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "x.com/katiemiller/status/2042984570069332474",
-    "title": "dinosaur bingo with my boys brought to life with grok imagine. a ...",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "www.youtube.com/watch",
-    "title": "gemini ♊️”a very important week! pay attention to what i ...",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "x.com/sebbycorp/status/2042974546622328875",
-    "title": "moving to @xai @grok for my @openclaw @steipete",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "huggingface.co/tencent/hy-embodied-0.5",
-    "title": "tencent/hy-embodied-0.5",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "huggingface.co/facebook/tribev2",
-    "title": "facebook/tribev2",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "huggingface.co/lightricks/ltx-2.3",
-    "title": "lightricks/ltx-2.3",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "huggingface.co/ace-step/acestep-v15-xl-base",
-    "title": "ace-step/acestep-v15-xl-base",
-    "date": "2026-04-12"
-  },
-  {
-    "url": "github.com/nesquena/hermes-webui",
-    "title": "hermes-webui",
-    "date": "2026-04-12"
-  },
-  {
     "url": "www.linkedin.com/company/anthropicresearch/posts",
     "title": "anthropic - linkedin",
     "date": "2026-04-13"
@@ -1823,5 +1768,90 @@
     "url": "github.com/ekkolearnai/hermes-web-ui",
     "title": "hermes-web-ui",
     "date": "2026-04-18"
+  },
+  {
+    "url": "www.reddit.com/r/anthropic/comments/1sp7prc/why_does_opus_47_sound_like_chatgpt",
+    "title": "why does opus 4.7 sound like chatgpt? : r/anthropic - reddit",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "www.reddit.com/r/openai/comments/1sp1o91/why_are_mid_level_leaders_leaving_openai",
+    "title": "why are mid level leaders leaving openai? - reddit",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "www.linkedin.com/posts/tristanahumada_claudeai-anthropic-aitools-activity-7451098875962167296-qg58",
+    "title": "#claudeai #anthropic #aitools #claudedesign | tristan ahumada",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "www.youtube.com/shorts/vqbajr89uxi",
+    "title": "when gemini knows nothing about pokémon #gemini #nuzlocke ...",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "www.azadvertizer.net/azresourcetypes/microsoft.cognitiveservices_accounts_openai.html",
+    "title": "openai microsoft.cognitiveservices/accounts/openai azure ...",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "www.marinetraffic.com/en/ais/details/ships/shipid:196061/mmsi:215134000/imo:9410791/vessel:cma%20cgm%20gemini",
+    "title": "cma cgm gemini (imo 9410791), container ship | position & specs",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "x.com/quinnwr/status/2045432311014162849",
+    "title": "anyone else noticed the difference with the images generated using ...",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "www.youtube.com/watch",
+    "title": "gemini zodiac reading 4/17 - youtube",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "huggingface.co/tencent/hy-embodied-0.5",
+    "title": "tencent/hy-embodied-0.5",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/gemma-4-e4b-uncensored-hauhaucs-aggressive",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "huggingface.co/redhatai/qwen3.6-35b-a3b-nvfp4",
+    "title": "redhatai/qwen3.6-35b-a3b-nvfp4",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-9b-glm5.1-distill-v1",
+    "title": "jackrong/qwen3.5-9b-glm5.1-distill-v1",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "huggingface.co/jiunsong/supergemma4-31b-abliterated-gguf",
+    "title": "jiunsong/supergemma4-31b-abliterated-gguf",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "huggingface.co/facebook/tribev2",
+    "title": "facebook/tribev2",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "github.com/nesquena/hermes-webui",
+    "title": "hermes-webui",
+    "date": "2026-04-19"
+  },
+  {
+    "url": "github.com/holaboss-ai/holaos",
+    "title": "holaos",
+    "date": "2026-04-19"
   }
 ]
