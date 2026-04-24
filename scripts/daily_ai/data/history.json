@@ -1,365 +1,5 @@
 [
   {
-    "url": "community.openai.com/t/codex-rate-limits-discussion-thread/1378553/324",
-    "title": "codex rate limits discussion thread - #324 by engineer1",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "www.engadget.com/ai/anthropic-will-ask-claude-users-to-verify-their-identities-for-a-few-use-cases-115754092.html",
-    "title": "anthropic will ask claude users to verify their identities 'for a few use ...",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "community.openai.com/t/purchased-1000-credits-gone-in-under-an-hour/1378847/6",
-    "title": "purchased 1000 credits, gone in under an hour - #6 by whaleski",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "www.reddit.com/r/artificialinteligence/comments/1smx0bc/github_user_on_claudecode_predicts_anthropic_is",
-    "title": "github user on claude-code predicts \"anthropic is constructively ...",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "www.youtube.com/shorts/ewbe58ybxva",
-    "title": "99% people don't know this gemini trick - youtube",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "ca.finance.yahoo.com/quote/xflt",
-    "title": "xai octagon floating rate & alternative income trust (xflt)",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "www.linkedin.com/posts/patrick-barattin_the-early-days-of-anthropic-how-21-of-22-activity-7450433169411047424-w3e9",
-    "title": "the early days of anthropic & how 21 of 22 vcs rejected it - linkedin",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "www.reuters.com/business/healthcare-pharmaceuticals/openai-launches-ai-model-gpt-rosalind-life-sciences-research-2026-04-16",
-    "title": "openai launches ai model gpt-rosalind for life sciences research",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-31b-it",
-    "title": "google/gemma-4-31b-it",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/baidu/ernie-image",
-    "title": "baidu/ernie-image",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/baidu/ernie-image-turbo",
-    "title": "baidu/ernie-image-turbo",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/obliteratus/gemma-4-e4b-it-obliterated",
-    "title": "obliteratus/gemma-4-e4b-it-obliterated",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/unsloth/ernie-image-turbo-gguf",
-    "title": "unsloth/ernie-image-turbo-gguf",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-e4b-it",
-    "title": "google/gemma-4-e4b-it",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-26b-a4b-it",
-    "title": "google/gemma-4-26b-a4b-it",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-e2b-it",
-    "title": "google/gemma-4-e2b-it",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/liquidai/lfm2.5-vl-450m",
-    "title": "liquidai/lfm2.5-vl-450m",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/ace-step/acestep-v15-xl-turbo",
-    "title": "ace-step/acestep-v15-xl-turbo",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/gemma-4-e2b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/gemma-4-e2b-uncensored-hauhaucs-aggressive",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "huggingface.co/google/tipsv2-b14",
-    "title": "google/tipsv2-b14",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14149v1",
-    "title": "one token per highly selective frame: towards extreme compression for long video understanding",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14148v1",
-    "title": "seedance 2.0: advancing video generation for world complexity",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14147v1",
-    "title": "rose: retrieval-oriented segmentation enhancement",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14144v1",
-    "title": "spatialevo: self-evolving spatial intelligence via deterministic geometric environments",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14142v1",
-    "title": "from $p(y|x)$ to $p(y)$: investigating reinforcement learning in pre-train space",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14141v1",
-    "title": "geometric context transformer for streaming 3d reconstruction",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14140v1",
-    "title": "longcot: benchmarking long-horizon chain-of-thought reasoning",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14137v1",
-    "title": "from feelings to metrics: understanding and formalizing how users vibe-test llms",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14129v1",
-    "title": "don't let the video speak: audio-contrastive preference optimization for audio-visual language models",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14128v1",
-    "title": "rhetorical questions in llm representations: a linear probing study",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14125v1",
-    "title": "hivla: a visual-grounded-centric hierarchical embodied manipulation system",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14121v1",
-    "title": "correct prediction, wrong steps? consensus reasoning knowledge graph for robust chain-of-thought synthesis",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14118v1",
-    "title": "complex interpolation of matrices with an application to multi-manifold learning",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14116v1",
-    "title": "trex: automating llm fine-tuning via agent-driven tree-based exploration",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14114v1",
-    "title": "id and graph view contrastive learning with multi-view attention fusion for sequential recommendation",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14113v1",
-    "title": "ui-zoomer: uncertainty-driven adaptive zoom-in for gui grounding",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14111v1",
-    "title": "interpretable stylistic variation in human and llm writing across genres, models, and decoding strategies",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14108v1",
-    "title": "momentum further constrains sharpness at the edge of stochastic stability",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14090v1",
-    "title": "from weights to activations: is steering the next frontier of adaptation?",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14089v1",
-    "title": "umi-3d: extending universal manipulation interface from vision-limited to 3d spatial perception",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14084v1",
-    "title": "tip: token importance in on-policy distillation",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14075v1",
-    "title": "multistage conditional compositional optimization",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14074v1",
-    "title": "training-free semantic multi-object tracking with vision-language models",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14073v1",
-    "title": "neural architectures for resolving references in program code",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14069v1",
-    "title": "towards unconstrained human-object interaction",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14062v1",
-    "title": "onehoi: unifying human-object interaction generation and editing",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14059v1",
-    "title": "a comparative study of dynamic programming and reinforcement learning in finite horizon dynamic pricing",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14054v1",
-    "title": "$π$-play: multi-agent self-play via privileged self-distillation without external data",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14053v1",
-    "title": "from where words come: efficient regularization of code tokenizers through source attribution",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14048v1",
-    "title": "free geometry: refining 3d reconstruction from longer versions of itself",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14044v1",
-    "title": "decoding the delta: unifying remote sensing change detection and understanding with multimodal large language models",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14041v1",
-    "title": "seek-and-solve: benchmarking mllms for visual clue-driven reasoning in daily scenarios",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14037v1",
-    "title": "a complete symmetry classification of shallow relu networks",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14035v1",
-    "title": "first-see-then-design: a multi-stakeholder view for optimal performance-fairness trade-offs",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14034v1",
-    "title": "large language models to enhance business process modeling: past, present, and future trends",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14032v1",
-    "title": "hierarchical reinforcement learning with runtime safety shielding for power grid operation",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14030v1",
-    "title": "dual-enhancement product bundling: bridging interactive graph and large language model",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14029v1",
-    "title": "points-seeker: towards training a multimodal agentic search model from scratch",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14025v1",
-    "title": "feed-forward 3d scene modeling: a problem-driven perspective",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14017v1",
-    "title": "stochastic trust-region methods for over-parameterized models",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14016v1",
-    "title": "many: merge anything for multimodal continual instruction tuning",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14013v1",
-    "title": "towards multi-object-tracking with radar on a fast moving vehicle: on the potential of processing radar in the frequency domain",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14010v1",
-    "title": "parameter importance is not static: evolving parameter isolation for supervised fine-tuning",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14004v1",
-    "title": "memory transfer learning: how memories are transferred across domains in coding agents",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.14001v1",
-    "title": "diffusion language models for speech recognition",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.13995v1",
-    "title": "depth-aware image and video orientation estimation",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.13994v1",
-    "title": "remote sensing image super-resolution for imbalanced textures: a texture-aware diffusion framework",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.13993v1",
-    "title": "reward design for physical reasoning in vision-language models",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.13992v1",
-    "title": "physics-informed neural networks for methane sorption: cross-gas transfer learning, ensemble collapse under physics constraints, and monte carlo dropout uncertainty quantification",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.13991v1",
-    "title": "adaptive conformal prediction for improving factuality of generations by large language models",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "github.com/calesthio/openmontage",
-    "title": "openmontage",
-    "date": "2026-04-17"
-  },
-  {
-    "url": "github.com/alvinreal/awesome-opensource-ai",
-    "title": "awesome-opensource-ai",
-    "date": "2026-04-17"
-  },
-  {
     "url": "www.washingtonpost.com/technology/2026/04/17/anthropic-ai-trump-security",
     "title": "anthropic ceo visits white house amid hacking fears over new ai ...",
     "date": "2026-04-18"
@@ -1923,5 +1563,360 @@
     "url": "github.com/windy3f3f3f3f/how-claude-code-works",
     "title": "how-claude-code-works",
     "date": "2026-04-23"
+  },
+  {
+    "url": "community.openai.com/t/agent-builder-mcp-problem/1361698/8",
+    "title": "agent builder mcp problem - #8 by che.kulhan - bugs",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "openai.com/careers/manager-forward-deployed-engineering-paris-paris-france",
+    "title": "manager, forward deployed engineering - paris - openai",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "omanarbitration.om/products/white-elm-gemini-69e2fd2e97ca7-0442y7mq",
+    "title": "white elm gemini bag | buy online at omanarbitration",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "openai.com/academy/codex-how-to-start",
+    "title": "how to get started with codex - openai",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "www.reddit.com/r/localllama/comments/1ste9zs/deepseek_has_released_deepep_v2_and_tilekernels",
+    "title": "deepseek has released deepep v2 and tilekernels. : r/localllama",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "www.lennysnewsletter.com/p/how-anthropics-product-team-moves",
+    "title": "how anthropic's product team moves faster than anyone else",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.6-27b",
+    "title": "qwen/qwen3.6-27b",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/openai/privacy-filter",
+    "title": "openai/privacy-filter",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/unsloth/qwen3.6-27b-gguf",
+    "title": "unsloth/qwen3.6-27b-gguf",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/obliteratus/gemma-4-e4b-it-obliterated",
+    "title": "obliteratus/gemma-4-e4b-it-obliterated",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-31b-it",
+    "title": "google/gemma-4-31b-it",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/baidu/ernie-image",
+    "title": "baidu/ernie-image",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.6-27b-fp8",
+    "title": "qwen/qwen3.6-27b-fp8",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-27b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.6-27b-uncensored-hauhaucs-aggressive",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-e4b-it",
+    "title": "google/gemma-4-e4b-it",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/baidu/ernie-image-turbo",
+    "title": "baidu/ernie-image-turbo",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-26b-a4b-it",
+    "title": "google/gemma-4-26b-a4b-it",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/unsloth/ernie-image-turbo-gguf",
+    "title": "unsloth/ernie-image-turbo-gguf",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "huggingface.co/ytan2000/qwen3.6-27b-tq3_4s",
+    "title": "ytan2000/qwen3.6-27b-tq3_4s",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20842v1",
+    "title": "speechparaling-bench: a comprehensive benchmark for paralinguistic-aware speech generation",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20841v1",
+    "title": "devi: physics-based dexterous human-object interaction via synthetic video imitation",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20835v1",
+    "title": "parallel-sft: improving zero-shot cross-programming-language transfer for code rl",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20833v1",
+    "title": "avise: framework for evaluating the security of ai systems",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20825v1",
+    "title": "fedsir: spectral client identification and relabeling for federated learning with noisy labels",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20824v1",
+    "title": "closing the domain gap in biomedical imaging by in-context control samples",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20822v1",
+    "title": "global offshore wind infrastructure: deployment and operational dynamics from dense sentinel-1 time series",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20819v1",
+    "title": "stream-cqsa: avoiding out-of-memory in attention computation via flexible workload scheduling",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20817v1",
+    "title": "convergent evolution: how different language models learn similar number representations",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20816v1",
+    "title": "paretoslider: diffusion models post-training for continuous reward control",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20813v1",
+    "title": "adapting trocr for printed tigrinya text recognition: word-aware loss weighting for cross-script transfer learning",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20811v1",
+    "title": "diagnosing cfg interpretation in llms",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20806v1",
+    "title": "omibench: benchmarking olympiad-level multi-image reasoning in large vision-language model",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20805v1",
+    "title": "relative principals, pluralistic alignment, and the structural value alignment problem",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20800v1",
+    "title": "lexis: latent proximal interaction signatures for 3d hoi from an image",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20797v1",
+    "title": "gauge-equivariant graph neural networks for lattice gauge theories",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20796v1",
+    "title": "llada2.0-uni: unifying multimodal understanding and generation with diffusion large language model",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20795v1",
+    "title": "automatic ontology construction using llms as an external layer of memory, verification, and planning for hybrid intelligent systems",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20791v1",
+    "title": "can \"ai\" be a doctor? a study of empathy, readability, and alignment in clinical llms",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20789v1",
+    "title": "working memory constraints scaffold learning in transformers under data scarcity",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20784v1",
+    "title": "georect4d: geometry-compatible generative rectification for dynamic sparse-view 3d reconstruction",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20783v1",
+    "title": "physics-conditioned synthesis of internal ice-layer thickness for incomplete layer traces",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20779v1",
+    "title": "swe-chat: coding agent interactions from real users in the wild",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20777v1",
+    "title": "efficient multi-cohort inference for long-term effects and lifetime value in a/b testing with user learning",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20775v1",
+    "title": "relative entropy estimation in function space: theory and applications to trajectory inference",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20771v1",
+    "title": "daire: a lightweight ai model for real-time detection of controller area network attacks in the internet of vehicles",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20764v1",
+    "title": "personalized electric vehicle energy consumption estimation framework that integrates driver behavior with map data",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20763v1",
+    "title": "coverage, not averages: semantic stratification for trustworthy retrieval evaluation",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20760v1",
+    "title": "exploring high-order self-similarity for video understanding",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20755v1",
+    "title": "v-tabler1: process-supervised multimodal table reasoning with critic-guided policy optimization",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20749v1",
+    "title": "where and what: reasoning dynamic and implicit preferences in situated conversational recommendation",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20748v1",
+    "title": "amodal sam: a unified amodal segmentation framework with generalization",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20745v1",
+    "title": "lifecycle-aware federated continual learning in mobile autonomous systems",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20744v1",
+    "title": "aac: admissible-by-architecture differentiable landmark compression for alt",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20738v1",
+    "title": "respondeoqa: a benchmark for bilingual latin-english question answering",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20736v1",
+    "title": "f\\textsuperscript{2}lp-ap: fast \\& flexible label propagation with adaptive propagation kernel",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20735v1",
+    "title": "fast bayesian equipment condition monitoring via simulation based inference: applications to heat exchanger health",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20733v1",
+    "title": "near-future policy optimization",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20732v1",
+    "title": "anchor-and-resume concession under dynamic pricing for llm-augmented freight negotiation",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20730v1",
+    "title": "render-in-the-loop: vector graphics generation via visual self-feedback",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20728v1",
+    "title": "interval pomdp shielding for imperfect-perception agents",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20726v1",
+    "title": "exploiting llm-as-a-judge disposition on free text legal qa via prompt optimization",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20727v1",
+    "title": "supplement generation training for enhancing agentic task performance",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20723v1",
+    "title": "tokenised flow matching for hierarchical simulation based inference",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20720v1",
+    "title": "compass: continual multilingual peft with adaptive semantic sampling",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20719v1",
+    "title": "onote: benchmarking omnimodal notation processing for expert-level music intelligence",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20715v1",
+    "title": "georelight: learning joint geometrical relighting and reconstruction with flexible multi-modal diffusion transformers",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20714v1",
+    "title": "learning to evolve: a self-improving framework for multi-agent systems via textual parameter graph optimization",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20711v1",
+    "title": "participatory provenance as representational auditing for ai-mediated public consultation",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "arxiv.org/pdf/2604.20707v1",
+    "title": "generative flow networks for model adaptation in digital twins of natural systems",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "github.com/calesthio/openmontage",
+    "title": "openmontage",
+    "date": "2026-04-24"
+  },
+  {
+    "url": "github.com/iamzhihuix/skills-manage",
+    "title": "skills-manage",
+    "date": "2026-04-24"
   }
 ]
