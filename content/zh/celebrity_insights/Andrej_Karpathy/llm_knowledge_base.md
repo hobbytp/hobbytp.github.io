@@ -1,5 +1,5 @@
 ---
-title: Karpathy: 基于大语言模型的个人知识库
+title: "Karpathy:基于大语言模型的个人知识库"
 date: "2026-04-03T22:30:00+08:00"
 draft: false
 tags: ["AI","Karpathy","llm","knowledge"]
