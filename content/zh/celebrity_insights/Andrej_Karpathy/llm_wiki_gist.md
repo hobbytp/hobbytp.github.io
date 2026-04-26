@@ -1,5 +1,5 @@
 ---
-title: Karpathy （Gist）: LLM Wiki实操理念说明
+title: "Karpathy （Gist）: LLM Wiki实操理念说明"
 date: "2026-04-04T22:30:00+08:00"
 draft: false
 tags: ["AI","Karpathy","llm","knowledge","wiki"]
