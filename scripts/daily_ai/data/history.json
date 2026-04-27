@@ -1,120 +1,5 @@
 [
   {
-    "url": "www.linkedin.com/company/anthropicresearch/posts",
-    "title": "anthropic - linkedin",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "support.google.com/gemini/thread/426495527/gemini-api-blocked-paid-1-tier-cap-reached-awaiting-automatic-tier-upgrade-past-72-hours",
-    "title": "gemini api blocked: paid 1 tier cap reached, awaiting automatic ...",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "community.openai.com/t/cannot-login-codex-desktop-via-continue-with-chatgpt/1379271",
-    "title": "cannot login codex desktop via continue with chatgpt",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "www.reuters.com/business/us-security-agency-is-using-anthropics-mythos-despite-blacklist-axios-reports-2026-04-19",
-    "title": "us security agency is using anthropic's mythos despite blacklist ...",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "www.instagram.com/reel/dxurejdkyty",
-    "title": "they have two personalities #gemini #cringe #comedy - instagram",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "mashable.com/article/openai-gpt-54-cyber-cybersecurity-ai-model",
-    "title": "openai follows anthropic's lead in limited release of gpt‑5.4‑cyber",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "www.instagram.com/p/dxs23mrkwuq",
-    "title": "give it up for this weekend's feature, ramie makhlouf and host ...",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "support.google.com/gemini/thread/426537299/request-for-standalone-advanced-gemini-subscription-option-no-bundles",
-    "title": "request for standalone advanced gemini ...",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/minimaxai/minimax-m2.7",
-    "title": "minimaxai/minimax-m2.7",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/jiunsong/supergemma4-26b-uncensored-gguf-v2",
-    "title": "jiunsong/supergemma4-26b-uncensored-gguf-v2",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/dealignai/gemma-4-31b-jang_4m-crack",
-    "title": "dealignai/gemma-4-31b-jang_4m-crack",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwopus-glm-18b-merged-gguf",
-    "title": "jackrong/qwopus-glm-18b-merged-gguf",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/jiunsong/supergemma4-26b-uncensored-mlx-4bit-v2",
-    "title": "jiunsong/supergemma4-26b-uncensored-mlx-4bit-v2",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
-    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-35b-a3b-uncensored-hauhaucs-aggressive",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/prism-ml/ternary-bonsai-8b-mlx-2bit",
-    "title": "prism-ml/ternary-bonsai-8b-mlx-2bit",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/motif-technologies/motif-video-2b",
-    "title": "motif-technologies/motif-video-2b",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/kylehessling1/qwopus-glm-18b-merged-gguf",
-    "title": "kylehessling1/qwopus-glm-18b-merged-gguf",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.5-9b",
-    "title": "qwen/qwen3.5-9b",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "huggingface.co/rta-ailabs/nandi-mini-150m-instruct",
-    "title": "rta-ailabs/nandi-mini-150m-instruct",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "github.com/juliusbrussee/caveman",
-    "title": "caveman",
-    "date": "2026-04-20"
-  },
-  {
-    "url": "github.com/arthur-ficial/apfel",
-    "title": "apfel",
-    "date": "2026-04-20"
-  },
-  {
     "url": "blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-mac-os",
     "title": "the gemini app is now on mac - google blog",
     "date": "2026-04-21"
@@ -1908,5 +1793,105 @@
     "url": "github.com/nesquena/hermes-webui",
     "title": "hermes-webui",
     "date": "2026-04-26"
+  },
+  {
+    "url": "community.openai.com/t/developing-sprite-sheets-with-gpt-image-2/1379831/5",
+    "title": "developing sprite sheets with gpt-image-2 - #5 by sergeliatko",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "www.linkedin.com/company/anthropicresearch/posts",
+    "title": "anthropic - linkedin",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "www.instagram.com/gemini.twins.magic",
+    "title": "lindsey ❤️ & hope (@gemini.twins.magic) - instagram",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "www.reddit.com/r/grok/comments/1svwh2i/made_her_with_grok",
+    "title": "made her with grok - reddit",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "www.facebook.com/groups/824940620926723/posts/26730334443293986",
+    "title": "this is interesting. physician and social reformer dr. muthulakshmi ...",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "x.com/lucas_montano/status/2048435809829658906",
+    "title": "anthropic is using ux trickery to nerf the experience in order to save ...",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "www.facebook.com/groups/804194622991414/posts/26562818610035662",
+    "title": "acoustic music at gemini lounge in bandon, or - facebook",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "pl.linkedin.com/posts/okonskaagnieszka_drogi-biznesie-macie-jeszcze-4h-%c5%bceby-wesprze%c4%87-activity-7454102396160557056-o1jq",
+    "title": "drogi biznesie macie jeszcze 4h żeby wesprzeć tych genialnych ...",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "support.google.com/gemini/thread/428415913/gemini-is-refusing-to-respond-to-legitimate-requests",
+    "title": "gemini is refusing to respond to legitimate requests. - google help",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwopus-glm-18b-merged-gguf",
+    "title": "jackrong/qwopus-glm-18b-merged-gguf",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/minimaxai/minimax-m2.7",
+    "title": "minimaxai/minimax-m2.7",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/dealignai/gemma-4-31b-jang_4m-crack",
+    "title": "dealignai/gemma-4-31b-jang_4m-crack",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/jiunsong/supergemma4-26b-uncensored-gguf-v2",
+    "title": "jiunsong/supergemma4-26b-uncensored-gguf-v2",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
+    "title": "jackrong/qwen3.5-27b-claude-4.6-opus-reasoning-distilled",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/kylehessling1/qwopus-glm-18b-merged-gguf",
+    "title": "kylehessling1/qwopus-glm-18b-merged-gguf",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/huihui-ai/huihui-qwen3.6-35b-a3b-claude-4.7-opus-abliterated",
+    "title": "huihui-ai/huihui-qwen3.6-35b-a3b-claude-4.7-opus-abliterated",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "huggingface.co/aeon-7/qwen3.6-27b-aeon-ultimate-uncensored",
+    "title": "aeon-7/qwen3.6-27b-aeon-ultimate-uncensored",
+    "date": "2026-04-27"
+  },
+  {
+    "url": "github.com/juliusbrussee/caveman",
+    "title": "caveman",
+    "date": "2026-04-27"
   }
 ]
