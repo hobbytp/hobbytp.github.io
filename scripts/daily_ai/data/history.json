@@ -1,320 +1,5 @@
 [
   {
-    "url": "blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-mac-os",
-    "title": "the gemini app is now on mac - google blog",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "www.instagram.com/reel/dxxngsygeid",
-    "title": "making new friends at the renn faire is more difficult than @gemini ...",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "platform.openai.com/settings/organization/billing/credit-grants",
-    "title": "credit grants - openai platform",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "support.google.com/gemini/thread/426735159/anyone-else-having-trouble-with-gemini-plus-too",
-    "title": "anyone else having trouble with gemini (plus) too? - google help",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "finance.yahoo.com/sectors/technology/live/tech-stocks-today-tech-sector-trades-at-record-highs-figma-stock-slides-after-anthropic-releases-claude-design-144220414.html",
-    "title": "tech stocks today: tech sector trades at record highs, figma stock ...",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "x.com/alliekmiller/status/2046235520993292704",
-    "title": "last week, anthropic dropped the coolest \"ai isn't just chat\" product ...",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "huggingface.co/openmoss-team/moss-tts-nano-100m",
-    "title": "openmoss-team/moss-tts-nano-100m",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "huggingface.co/liconstudio/ltx2.3-vbvr-lora-i2v",
-    "title": "liconstudio/ltx2.3-vbvr-lora-i2v",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "huggingface.co/dx8152/flux2-klein-9b-consistency",
-    "title": "dx8152/flux2-klein-9b-consistency",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "huggingface.co/ytan2000/qwen3.6-35b-a3b-tq3_4s",
-    "title": "ytan2000/qwen3.6-35b-a3b-tq3_4s",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "huggingface.co/unsloth/minimax-m2.7-gguf",
-    "title": "unsloth/minimax-m2.7-gguf",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "huggingface.co/luffythefox/qwen3.6-35b-a3b-uncensored-wasserstein-gguf",
-    "title": "luffythefox/qwen3.6-35b-a3b-uncensored-wasserstein-gguf",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16299v1",
-    "title": "repurposing 3d generative model for autoregressive layout generation",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16298v1",
-    "title": "finecog-nav: integrating fine-grained cognitive modules for zero-shot multimodal uav navigation",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16286v1",
-    "title": "asmr-bench: auditing for sabotage in ml research",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16284v1",
-    "title": "enhancing hazy wildlife imagery: animalhaze3k and incepdehazegan",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16282v1",
-    "title": "geometric regularization of autoencoders via observed stochastic dynamics",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16280v1",
-    "title": "using large language models and knowledge graphs to improve the interpretability of machine learning models in manufacturing",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16279v1",
-    "title": "evaluating the progression of large language model capabilities for small-molecule drug design",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16278v1",
-    "title": "learning to reason with insight for informal theorem proving",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16275v1",
-    "title": "no universal courtesy: a cross-linguistic, multi-model study of politeness effects on llms using the plum corpus",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16272v1",
-    "title": "vefx-bench: a holistic benchmark for generic video editing and visual effects",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16270v1",
-    "title": "from benchmarking to reasoning: a dual-aspect, large-scale evaluation of llms on vietnamese legal text",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16266v1",
-    "title": "hero-mamba: mamba-based dual domain learning for underwater image enhancement",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16265v1",
-    "title": "fl-mhsm: spatially-adaptive fusion and ensemble learning for flood-landslide multi-hazard susceptibility mapping at regional scale",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16264v1",
-    "title": "information router for mitigating modality dominance in vision-language models",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16262v1",
-    "title": "swannlp at semeval-2026 task 5: an llm-based framework for plausibility scoring in narrative word sense disambiguation",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16259v1",
-    "title": "beyond distribution sharpening: the importance of task rewards",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16258v1",
-    "title": "characterising llm-generated competency questions: a cross-domain empirical study using open and closed models",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16256v1",
-    "title": "do vision-language models truly perform vision reasoning? a rigorous study of the modality gap",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16248v1",
-    "title": "where do vision-language models fail? world scale analysis for image geolocalization",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16247v1",
-    "title": "joint-centric dual contrastive alignment with structure-preserving and information-balanced regularization",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16243v1",
-    "title": "find, fix, reason: context repair for video reasoning",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16242v1",
-    "title": "detecting and suppressing reward hacking with gradient fingerprints",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16241v1",
-    "title": "bagel: benchmarking animal knowledge expertise in language models",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16240v1",
-    "title": "collidenet: hierarchical multi-scale video representation learning with disentanglement for time-to-collision forecasting",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16239v1",
-    "title": "adaptive multi-fidelity optimization with fast learning rates",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16238v1",
-    "title": "enhancing ai and dynamical subseasonal forecasts with probabilistic bias correction",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16235v1",
-    "title": "optimizing korean-centric llms via token pruning",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16234v1",
-    "title": "a two-stage, object-centric deep learning framework for robust exam cheating detection",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16232v1",
-    "title": "neuro-symbolic ode discovery with latent grammar flow",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16231v1",
-    "title": "dental panoramic radiograph analysis using yolo26 from tooth detection to disease diagnosis",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16224v1",
-    "title": "\"taking stock at facct\": using participatory design to co-create a vision for the fairness, accountability and transparency community",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16220v1",
-    "title": "ot on the map: quantifying domain shifts in geographic space",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16217v1",
-    "title": "beyond surface statistics: robust conformal prediction for llms via internal representations",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16214v1",
-    "title": "gavid: a large-scale multimodal dataset for context-aware group affect recognition from videos",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16207v1",
-    "title": "aifind: artifact-aware interpreting fine-grained alignment for incremental face forgery detection",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16205v1",
-    "title": "chemgraph-xanes: an agentic framework for xanes simulation and analysis",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16201v1",
-    "title": "denali: a dataset enabling non-line-of-sight spatial reasoning with low-cost lidars",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16200v1",
-    "title": "saturation-aware space-variant blind image deblurring",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16197v1",
-    "title": "sketching the readout of large language models for scalable data attribution and valuation",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16182v1",
-    "title": "synthetic data in cryptocurrencies using generative models",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16177v1",
-    "title": "winner of cvpr2026 ntire challenge on image shadow removal: semantic and geometric guidance for shadow removal via cascaded refinement",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16175v1",
-    "title": "march: multi-agent radiology clinical hierarchy for ct report generation",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16171v1",
-    "title": "jumplora: sparse adapters for continual learning in large language models",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16170v1",
-    "title": "neuralcad-edit: an expert benchmark for multimodal-instructed 3d cad model editing",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16158v1",
-    "title": "atmanrl: towards faithful reasoning via differentiable attention saliency",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16147v1",
-    "title": "swnet: a cross-spectral network for camouflaged weed detection",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16146v1",
-    "title": "on the rejection criterion for proxy-based test-time alignment",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16145v1",
-    "title": "training time prediction for mixed precision-based distributed training",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16138v1",
-    "title": "sentiment analysis of german sign language fairy tales",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.16135v1",
-    "title": "motion-adapter: a diffusion model adapter for text-to-motion generation of compound actions",
-    "date": "2026-04-21"
-  },
-  {
-    "url": "github.com/hkuds/vibe-trading",
-    "title": "vibe-trading",
-    "date": "2026-04-21"
-  },
-  {
     "url": "platform.openai.com/settings/organization/security/domain-allowlist",
     "title": "domain allowlist - openai platform",
     "date": "2026-04-22"
@@ -1893,5 +1578,75 @@
     "url": "github.com/juliusbrussee/caveman",
     "title": "caveman",
     "date": "2026-04-27"
+  },
+  {
+    "url": "www.reddit.com/r/notebooklm/comments/1swsocb/why_is_gemini_in_notebooklm_now_looping_regularly",
+    "title": "why is gemini in notebooklm now \"looping\" regularly? - reddit",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "www.youtube.com/shorts/xrxamruwgmc",
+    "title": "gemini love message of the day ♊️ tarot #reading ... - youtube",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "www.investing.com/news/stock-market-news/qualcomm-shares-jump-9-premarket-on-report-of-openai-smartphone-chip-partnership-4637975",
+    "title": "qualcomm shares jump 13% premarket on report of openai ...",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "community.openai.com/t/regarding-the-use-of-image-2/1379838",
+    "title": "regarding the use of image-2 - openai developer community",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
+    "title": "elon musk and sam altman's court battle over the future of openai",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "x.com/ivanleomk/status/2048640281369886746",
+    "title": "most of it written by gemini 3 (high) inside @antigravity , with one ...",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "community.openai.com/t/why-is-chatgpt-pro-temporarily-limited-on-my-account/1379742",
+    "title": "why is chatgpt pro temporarily limited on my account? - page 2",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "x.com/sarbjeetjohal/status/2048837112586506487",
+    "title": "openai models come to amazon bedrock! great move by ...",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "www.reddit.com/r/anthropic/comments/1sxkjm6/best_way_to_access_claude_models_for_a_developer",
+    "title": "best way to access claude models for a developer? - reddit",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "huggingface.co/kai-os/carnice-v2-27b-gguf",
+    "title": "kai-os/carnice-v2-27b-gguf",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "huggingface.co/lorbus/qwen3.6-27b-int4-autoround",
+    "title": "lorbus/qwen3.6-27b-int4-autoround",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "huggingface.co/prism-ml/ternary-bonsai-8b-gguf",
+    "title": "prism-ml/ternary-bonsai-8b-gguf",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "huggingface.co/unsloth/deepseek-v4-flash",
+    "title": "unsloth/deepseek-v4-flash",
+    "date": "2026-04-28"
+  },
+  {
+    "url": "github.com/hkuds/vibe-trading",
+    "title": "vibe-trading",
+    "date": "2026-04-28"
   }
 ]
