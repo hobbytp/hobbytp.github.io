@@ -1,325 +1,5 @@
 [
   {
-    "url": "platform.openai.com/settings/organization/security/domain-allowlist",
-    "title": "domain allowlist - openai platform",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "www.bloomberg.com/news/articles/2026-04-21/anthropic-s-mythos-model-is-being-accessed-by-unauthorized-users",
-    "title": "anthropic's mythos model is being accessed by unauthorized users",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "www.threads.com/@google/post/dxzozvpgnqy/when-you-build-with-the-deep-research-agent-youre-tapping-into-the-same",
-    "title": "when you build with the deep research agent, you're tapping into ...",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "ag.ny.gov/press-release/2026/attorney-general-james-sues-coinbase-and-gemini-running-illegal-gambling",
-    "title": "attorney general james sues coinbase and gemini for running ...",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "www.linkedin.com/posts/idan-raman_gpt-54s-computer-use-agent-is-now-live-activity-7452382730903953408-psmk",
-    "title": "idan raman ⚓️'s post - linkedin",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "spectrumlocalnews.com/nys/capital-region/news/2026/04/21/new-york-sues-coinbase-and-gemini--seeking-to-halt-unlicensed-prediction-market-businesses",
-    "title": "n.y. state sues coinbase and gemini - spectrum news",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "www.yelp.com/biz/gemini-towing-warren",
-    "title": "gemini towing - updated april 2026 - phone number - yelp",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "huggingface.co/moonshotai/kimi-k2.6",
-    "title": "moonshotai/kimi-k2.6",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "huggingface.co/z-lab/qwen3.6-35b-a3b-dflash",
-    "title": "z-lab/qwen3.6-35b-a3b-dflash",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "huggingface.co/hesamation/qwen3.6-35b-a3b-claude-4.6-opus-reasoning-distilled-gguf",
-    "title": "hesamation/qwen3.6-35b-a3b-claude-4.6-opus-reasoning-distilled-gguf",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "huggingface.co/mudler/qwen3.6-35b-a3b-apex-gguf",
-    "title": "mudler/qwen3.6-35b-a3b-apex-gguf",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "huggingface.co/jiunsong/supergemma4-e4b-abliterated",
-    "title": "jiunsong/supergemma4-e4b-abliterated",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18584v1",
-    "title": "mathnet: a global multimodal benchmark for mathematical reasoning and retrieval",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18583v1",
-    "title": "mua: mobile ultra-detailed animatable avatars",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18580v1",
-    "title": "sessa: selective state space attention",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18578v1",
-    "title": "bounded ratio reinforcement learning",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18576v1",
-    "title": "agentic forecasting using sequential bayesian updating of linguistic beliefs",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18575v1",
-    "title": "recap: lightweight referential grounding for coherent story visualization",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18574v1",
-    "title": "when can llms learn to reason with weak supervision?",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18573v1",
-    "title": "t-ren: learning text-aligned region tokens improves dense vision-language alignment and scalability",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18572v1",
-    "title": "back into plato's cave: examining cross-modal representational convergence at scale",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18570v1",
-    "title": "a multimodal and temporal foundation model for virtual patient representations at healthcare system scale",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18569v1",
-    "title": "revisiting active sequential prediction-powered mean estimation",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18567v1",
-    "title": "latent phase-shift rollback: inference-time error correction via residual stream monitoring and kv-cache steering",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18566v1",
-    "title": "benchmarking system dynamics ai assistants: cloud versus local llms on cld extraction and discussion",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18564v1",
-    "title": "multiworld: scalable multi-agent multi-view video world models",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18563v1",
-    "title": "dual alignment between language model layers and human sentence processing",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18562v1",
-    "title": "anchorseg: language grounded query banks for reasoning segmentation",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18559v1",
-    "title": "confornets: latents-based conformational control in openfold3",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18557v1",
-    "title": "synagent: generalizable cooperative humanoid manipulation via solo-to-cooperative agent synergy",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18556v1",
-    "title": "gsq: highly-accurate low-precision scalar quantization for llms via gumbel-softmax sampling",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18555v1",
-    "title": "a note on turboquant and the earlier drive/eden line of work",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18549v1",
-    "title": "advancing vision transformer with enhanced spatial priors",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18548v1",
-    "title": "physics-informed neural networks for biological $2\\mathrm{d}{+}t$ reaction-diffusion systems",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18547v1",
-    "title": "fuse: ensembling verifiers with zero labeled data",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18546v1",
-    "title": "wasserstein distributionally robust risk-sensitive estimation via conditional value-at-risk",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18543v1",
-    "title": "clawenvkit: automatic environment generation for claw-like agents",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18540v1",
-    "title": "duality for the adversarial total variation",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18539v1",
-    "title": "transition-matrix regularization for next dialogue act prediction in counselling conversations",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18537v1",
-    "title": "metacloak-jpeg: jpeg-robust adversarial perturbation for preventing unauthorized dreambooth-based deepfake generation",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18532v1",
-    "title": "symbolic synthesis for ltlf+ obligations",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18530v1",
-    "title": "oger: a robust offline-guided exploration reward for hybrid reinforcement learning",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18521v1",
-    "title": "idobe: infectious disease outbreak forecasting benchmark ecosystem",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18519v1",
-    "title": "llm safety from within: detecting harmful content with internal representations",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18518v1",
-    "title": "udm-grpo: stable and efficient group relative policy optimization for uniform discrete diffusion models",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18512v1",
-    "title": "s2h-dpo: hardness-aware preference optimization for vision-language models",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18510v1",
-    "title": "different paths to harmful compliance: behavioral side effects and mechanistic divergence across llm jailbreaks",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18509v1",
-    "title": "mass-rag: multi-agent synthesis retrieval-augmented generation",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18508v1",
-    "title": "document-as-image representations fall short for scientific retrieval",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18507v1",
-    "title": "learning the riccati solution operator for time-varying lqr via deep operator networks",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18493v1",
-    "title": "too correct to learn: reinforcement learning on saturated reasoning data",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18492v1",
-    "title": "barrier-enforced multi-objective optimization for direct point and sharp interval forecasting",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18491v1",
-    "title": "faster by design: interactive aerodynamics via neural surrogates trained on expert-validated cfd",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18490v1",
-    "title": "lqm: linguistically motivated multidimensional quality metrics for machine translation",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18489v1",
-    "title": "aligning language models for lyric-to-melody generation with rule-based musical constraints",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18487v1",
-    "title": "adversarial humanities benchmark: results on stylistic robustness in frontier model safety",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18486v1",
-    "title": "onevl: one-step latent reasoning and planning with vision-language explanation",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18484v1",
-    "title": "xembodied: a foundation model with enhanced geometric and physical cues for large-scale embodied environments",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18482v1",
-    "title": "safe control using learned safety filters and adaptive conformal inference",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18481v1",
-    "title": "physics-informed neural networks: a didactic derivation of the complete training cycle",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18478v1",
-    "title": "worlddb: a vector graph-of-worlds memory engine with ontology-aware write-time reconciliation",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.18477v1",
-    "title": "multi-scale reversible chaos game representation: a unified framework for sequence classification",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "github.com/mempalace/mempalace",
-    "title": "mempalace",
-    "date": "2026-04-22"
-  },
-  {
-    "url": "github.com/cosmicstack-labs/mercury-agent",
-    "title": "mercury-agent",
-    "date": "2026-04-22"
-  },
-  {
     "url": "community.openai.com/t/livestream-starting-now-chatgpt-images-2-0/1379464",
     "title": "livestream starting now: chatgpt images 2.0 - page 2 - community",
     "date": "2026-04-23"
@@ -1648,5 +1328,115 @@
     "url": "github.com/hkuds/vibe-trading",
     "title": "vibe-trading",
     "date": "2026-04-28"
+  },
+  {
+    "url": "openai.com/careers/human-rights-and-responsible-deployment-lead-(national-security)-washington-dc",
+    "title": "human rights & responsible deployment lead (national security)",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "www.reddit.com/r/androidauto/comments/1sxs3ip/gemini_not_available_anymore",
+    "title": "gemini not available anymore : r/androidauto - reddit",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "www.instagram.com/p/dxriowfigs6",
+    "title": "a anthropic iniciou uma investigação após indícios de ... - instagram",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "support.google.com/gemini/thread/428912150/chat-history-disappeared-from-sidebar",
+    "title": "chat history disappeared from sidebar - gemini apps community",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "www.reddit.com/r/localllama/comments/1sxnzem/kimi_k26_vs_deepseek_v4_pro",
+    "title": "kimi k2.6 vs deepseek v4 pro : r/localllama - reddit",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "aws.amazon.com/about-aws/whats-new/2026/04/bedrock-openai-models-codex-managed-agents",
+    "title": "amazon bedrock now offers openai models, codex, and managed ...",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "www.linkedin.com/posts/seniorstoryteller_claude-claudecode-anthropic-activity-7454879406189277184-l3dl",
+    "title": "#claude #claudecode #anthropic #nocode | mark miller - linkedin",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "support.google.com/gemini/thread/428860735/issues-with-google-assistant-after-it-converted-to-using-gemini",
+    "title": "issues with google assistant after it converted to using gemini",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/moonshotai/kimi-k2.6",
+    "title": "moonshotai/kimi-k2.6",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/inclusionai/llada2.0-uni",
+    "title": "inclusionai/llada2.0-uni",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/xiaomimimo/mimo-v2.5",
+    "title": "xiaomimimo/mimo-v2.5",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/hesamation/qwen3.6-35b-a3b-claude-4.6-opus-reasoning-distilled-gguf",
+    "title": "hesamation/qwen3.6-35b-a3b-claude-4.6-opus-reasoning-distilled-gguf",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/z-lab/qwen3.6-35b-a3b-dflash",
+    "title": "z-lab/qwen3.6-35b-a3b-dflash",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/aeon-7/qwen3.6-27b-aeon-ultimate-uncensored-bf16",
+    "title": "aeon-7/qwen3.6-27b-aeon-ultimate-uncensored-bf16",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-bf16",
+    "title": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-bf16",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/spiritbuun/qwen3.6-27b-dflash-gguf",
+    "title": "spiritbuun/qwen3.6-27b-dflash-gguf",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/microsoft/vibevoice-asr",
+    "title": "microsoft/vibevoice-asr",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-27b-uncensored-hauhaucs-balanced",
+    "title": "hauhaucs/qwen3.6-27b-uncensored-hauhaucs-balanced",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "github.com/mempalace/mempalace",
+    "title": "mempalace",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "github.com/nexu-io/open-design",
+    "title": "open-design",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "github.com/cosmicstack-labs/mercury-agent",
+    "title": "mercury-agent",
+    "date": "2026-04-29"
+  },
+  {
+    "url": "github.com/udacity-ai/pumpfun-ai-trading-bot",
+    "title": "pumpfun-ai-trading-bot",
+    "date": "2026-04-29"
   }
 ]
