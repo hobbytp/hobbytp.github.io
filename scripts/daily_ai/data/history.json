@@ -1,75 +1,5 @@
 [
   {
-    "url": "www.reddit.com/r/notebooklm/comments/1swsocb/why_is_gemini_in_notebooklm_now_looping_regularly",
-    "title": "why is gemini in notebooklm now \"looping\" regularly? - reddit",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "www.youtube.com/shorts/xrxamruwgmc",
-    "title": "gemini love message of the day ♊️ tarot #reading ... - youtube",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "www.investing.com/news/stock-market-news/qualcomm-shares-jump-9-premarket-on-report-of-openai-smartphone-chip-partnership-4637975",
-    "title": "qualcomm shares jump 13% premarket on report of openai ...",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "community.openai.com/t/regarding-the-use-of-image-2/1379838",
-    "title": "regarding the use of image-2 - openai developer community",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
-    "title": "elon musk and sam altman's court battle over the future of openai",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "x.com/ivanleomk/status/2048640281369886746",
-    "title": "most of it written by gemini 3 (high) inside @antigravity , with one ...",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "community.openai.com/t/why-is-chatgpt-pro-temporarily-limited-on-my-account/1379742",
-    "title": "why is chatgpt pro temporarily limited on my account? - page 2",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "x.com/sarbjeetjohal/status/2048837112586506487",
-    "title": "openai models come to amazon bedrock! great move by ...",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "www.reddit.com/r/anthropic/comments/1sxkjm6/best_way_to_access_claude_models_for_a_developer",
-    "title": "best way to access claude models for a developer? - reddit",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "huggingface.co/kai-os/carnice-v2-27b-gguf",
-    "title": "kai-os/carnice-v2-27b-gguf",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "huggingface.co/lorbus/qwen3.6-27b-int4-autoround",
-    "title": "lorbus/qwen3.6-27b-int4-autoround",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "huggingface.co/prism-ml/ternary-bonsai-8b-gguf",
-    "title": "prism-ml/ternary-bonsai-8b-gguf",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "huggingface.co/unsloth/deepseek-v4-flash",
-    "title": "unsloth/deepseek-v4-flash",
-    "date": "2026-04-28"
-  },
-  {
-    "url": "github.com/hkuds/vibe-trading",
-    "title": "vibe-trading",
-    "date": "2026-04-28"
-  },
-  {
     "url": "openai.com/careers/human-rights-and-responsible-deployment-lead-(national-security)-washington-dc",
     "title": "human rights & responsible deployment lead (national security)",
     "date": "2026-04-29"
@@ -963,5 +893,80 @@
     "url": "huggingface.co/unsloth/mistral-medium-3.5-128b-gguf",
     "title": "unsloth/mistral-medium-3.5-128b-gguf",
     "date": "2026-05-04"
+  },
+  {
+    "url": "www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
+    "title": "altman vs. elon for the future of openai - the verge",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "www.blackstone.com/news/press/anthropic-partners-with-blackstone-hellman-friedman-and-goldman-sachs-to-launch-enterprise-ai-services-firm",
+    "title": "anthropic partners with blackstone, hellman & friedman, and ...",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "www.marinetraffic.com/en/ais/details/ships/shipid:372100/mmsi:613003596/imo:9000687/vessel:gemini",
+    "title": "gemini (imo 9000687), passenger ship | position & specs",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "openai.com/careers/full-stack-software-engineer-incubation-san-francisco",
+    "title": "full-stack software engineer, incubation | openai",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "x.com/arpitrage/status/2051284527545200969",
+    "title": "the difference between openai and anthropic seems to be ... - twitter",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "www.reddit.com/r/anthropic/comments/1t3n7yx/cant_upgrade_plan_and_no_customer_support",
+    "title": "can't upgrade plan and no customer support : r/anthropic - reddit",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "www.youtube.com/shorts/rcontbem5kk",
+    "title": "openai slows its plans for stargate - youtube",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "www.ft.com/content/01b31619-66ff-4a9d-8927-533296ae2b51",
+    "title": "blackstone and goldman among backers for $1.5bn jv with anthropic",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "huggingface.co/sulphurai/sulphur-2-base",
+    "title": "sulphurai/sulphur-2-base",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "huggingface.co/dx8152/flux2-klein-9b-consistency",
+    "title": "dx8152/flux2-klein-9b-consistency",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "huggingface.co/ibm-granite/granite-speech-4.1-2b-nar",
+    "title": "ibm-granite/granite-speech-4.1-2b-nar",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "github.com/raiyanyahya/how-to-train-your-gpt",
+    "title": "how-to-train-your-gpt",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "github.com/1weiho/open-slide",
+    "title": "open-slide",
+    "date": "2026-05-05"
+  },
+  {
+    "url": "github.com/appergb/openless",
+    "title": "openless",
+    "date": "2026-05-05"
   }
 ]
