@@ -1,150 +1,5 @@
 [
   {
-    "url": "platform.openai.com/settings/organization/people/members",
-    "title": "untitled",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "discuss.ai.google.dev/latest",
-    "title": "latest topics - google ai developers forum",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "www.wired.com/story/elon-musk-distill-openai-models-partly-xai",
-    "title": "elon musk seemingly admits xai has used openai's models to ...",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "www.reddit.com/r/sunoai/comments/1szjllt/anthropic_connected_claude_directly_into_ableton",
-    "title": "anthropic connected claude directly into ableton : r/sunoai - reddit",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "www.xda-developers.com/connecting-obsidian-to-gemini-transformed-notes-from-archive-to-useful",
-    "title": "connecting obsidian to gemini transformed my notes from archive ...",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "help.openai.com/en/articles/11909943-gpt-53-and-54-in-chatgpt",
-    "title": "gpt-5.3 and gpt-5.5 in chatgpt - openai help center",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "www.businessinsider.com/things-you-missed-from-elon-musks-testy-testimony-openai-trial-2026-4",
-    "title": "4 things you missed from elon musk's testy testimony at open ai ...",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "www.linkedin.com/posts/samkeen_how-gpt-5-claude-and-gemini-are-actually-activity-7455707770001076224-2sb1",
-    "title": "how gpt-5, claude, and gemini are actually trained and served",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "mashable.com/article/deepseek-ai-privacy-policy-keystroke-data-chinese-servers",
-    "title": "deepseek ai collects keystroke data and more, storing it in chinese ...",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/openai/privacy-filter",
-    "title": "openai/privacy-filter",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.6-27b",
-    "title": "qwen/qwen3.6-27b",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/xiaomimimo/mimo-v2.5-pro",
-    "title": "xiaomimimo/mimo-v2.5-pro",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/mistralai/mistral-medium-3.5-128b",
-    "title": "mistralai/mistral-medium-3.5-128b",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.6-27b-gguf",
-    "title": "unsloth/qwen3.6-27b-gguf",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/poolside/laguna-xs.2",
-    "title": "poolside/laguna-xs.2",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/inclusionai/ling-2.6-flash",
-    "title": "inclusionai/ling-2.6-flash",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.6-27b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.6-27b-uncensored-hauhaucs-aggressive",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-31b-it",
-    "title": "google/gemma-4-31b-it",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/sensenova/sensenova-u1-8b-mot",
-    "title": "sensenova/sensenova-u1-8b-mot",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/unsloth/nvidia-nemotron-3-nano-omni-30b-a3b-reasoning-gguf",
-    "title": "unsloth/nvidia-nemotron-3-nano-omni-30b-a3b-reasoning-gguf",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-26b-a4b-it",
-    "title": "google/gemma-4-26b-a4b-it",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-e4b-it",
-    "title": "google/gemma-4-e4b-it",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/obliteratus/gemma-4-e4b-it-obliterated",
-    "title": "obliteratus/gemma-4-e4b-it-obliterated",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-nvfp4",
-    "title": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-nvfp4",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/baidu/ernie-image",
-    "title": "baidu/ernie-image",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-speech-4.1-2b",
-    "title": "ibm-granite/granite-speech-4.1-2b",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.6-27b-fp8",
-    "title": "qwen/qwen3.6-27b-fp8",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "huggingface.co/kai-os/carnice-v2-27b",
-    "title": "kai-os/carnice-v2-27b",
-    "date": "2026-05-01"
-  },
-  {
-    "url": "github.com/endless-sky-team/ai-trading-agent",
-    "title": "ai-trading-agent",
-    "date": "2026-05-01"
-  },
-  {
     "url": "mashable.com/article/google-veo-31-social-videos-gemini",
     "title": "google veo 3.1 will generate social-ready vertical videos in gemini",
     "date": "2026-05-02"
@@ -1198,5 +1053,135 @@
     "url": "github.com/titanflow-systems/best-of-algorithmic-trading",
     "title": "best-of-algorithmic-trading",
     "date": "2026-05-07"
+  },
+  {
+    "url": "www.instagram.com/p/dyal--3cov1",
+    "title": "gemini szn friday, may 22nd / 10pm-2am @spiritpgh ... - instagram",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "www.purplewave.com/selleralt/217730450f1e948b368d607dc5cadd1a",
+    "title": "gemini motor transport | no-reserve auction - purple wave",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "github.com/deepseek-ai/deepseek-ocr/tree/main/deepseek-ocr-master",
+    "title": "deepseek-ocr-master - github",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "www.facebook.com/groups/aiautomotiveart/posts/1523561725831702",
+    "title": "created with midjourney and grok. витев мп e pme •• e - facebook",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "www.linkedin.com/posts/abbyrakshit_ai-openai-ainativehardware-activity-7458138590217285632-vund",
+    "title": "abby rakshit's post - ai #openai #ainativehardware - linkedin",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite",
+    "title": "gemini 3.1 flash-lite | gemini api - google ai for developers",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "community.openai.com/t/list-of-chatgpt-apps-is-empty/1380432",
+    "title": "list of chatgpt apps is empty - openai developer community",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "www.youtube.com/shorts/npkp18i5v-y",
+    "title": "openai co-founder greg brockman on the goal of ai regulation",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/openai/privacy-filter",
+    "title": "openai/privacy-filter",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/zyphra/zaya1-8b",
+    "title": "zyphra/zaya1-8b",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/tenstrip/ltx2.3-10eros",
+    "title": "tenstrip/ltx2.3-10eros",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/xiaomimimo/mimo-v2.5-pro",
+    "title": "xiaomimimo/mimo-v2.5-pro",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.6-27b",
+    "title": "qwen/qwen3.6-27b",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/mistralai/mistral-medium-3.5-128b",
+    "title": "mistralai/mistral-medium-3.5-128b",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/sensenova/sensenova-u1-8b-mot",
+    "title": "sensenova/sensenova-u1-8b-mot",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-31b-it",
+    "title": "google/gemma-4-31b-it",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/unsloth/qwen3.6-27b-gguf",
+    "title": "unsloth/qwen3.6-27b-gguf",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/poolside/laguna-xs.2",
+    "title": "poolside/laguna-xs.2",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwopus3.6-35b-a3b-v1-gguf",
+    "title": "jackrong/qwopus3.6-35b-a3b-v1-gguf",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-e4b-it",
+    "title": "google/gemma-4-e4b-it",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-27b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.6-27b-uncensored-hauhaucs-aggressive",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/z-lab/gemma-4-31b-it-dflash",
+    "title": "z-lab/gemma-4-31b-it-dflash",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-26b-a4b-it",
+    "title": "google/gemma-4-26b-a4b-it",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-nvfp4",
+    "title": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-nvfp4",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/huggingfacetb/nanowhale-100m",
+    "title": "huggingfacetb/nanowhale-100m",
+    "date": "2026-05-08"
+  },
+  {
+    "url": "huggingface.co/inclusionai/ling-2.6-flash",
+    "title": "inclusionai/ling-2.6-flash",
+    "date": "2026-05-08"
   }
 ]
