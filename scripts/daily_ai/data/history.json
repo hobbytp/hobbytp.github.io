@@ -1,385 +1,5 @@
 [
   {
-    "url": "mashable.com/article/google-veo-31-social-videos-gemini",
-    "title": "google veo 3.1 will generate social-ready vertical videos in gemini",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "www.youtube.com/shorts/_vgjbakggdg",
-    "title": "grok imagine agent - youtube",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "community.openai.com/t/domain-verification-succeeds-but-verified-domain-disappears-from-profile-then-re-verification-says-already-verified/1380167",
-    "title": "domain verification succeeds but verified domain disappears from ...",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "x.com/elonmusk/status/2050310001600893382",
-    "title": "grok imagine tutorial made with grok imagine. these is all ai ...",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "www.facebook.com/groups/aiautomotiveart/posts/1518461709675037",
-    "title": "created with midjourney and grok. пс a스le - facebook",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "x.com/ivanleomk/status/2050018602871595395",
-    "title": "got gemini to click through and file my claims last night that was true ...",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "www.facebook.com/foxybrownarchive/posts/mayjune-babies-finna-act-like-this-is-the-united-states-of-gemini-/1507348450772545",
-    "title": "may/june babies finna act like this is the united states of gemini",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "www.instagram.com/p/dxx3r8edwtl",
-    "title": "how is gemini season eve going for y'all? - instagram",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "www.linkedin.com/posts/ruchi798_ive-been-thinking-about-what-happens-when-activity-7455851030187118592-088e",
-    "title": "ruchi bhatia's post - linkedin",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
-    "title": "qwen/qwen3.6-35b-a3b",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.6-35b-a3b-gguf",
-    "title": "unsloth/qwen3.6-35b-a3b-gguf",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-4.1-30b",
-    "title": "ibm-granite/granite-4.1-30b",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-embedding-97m-multilingual-r2",
-    "title": "ibm-granite/granite-embedding-97m-multilingual-r2",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/seesee21/z-anime",
-    "title": "seesee21/z-anime",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/tencent/hy3-preview",
-    "title": "tencent/hy3-preview",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/k2-fsa/omnivoice",
-    "title": "k2-fsa/omnivoice",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-embedding-311m-multilingual-r2",
-    "title": "ibm-granite/granite-embedding-311m-multilingual-r2",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwopus3.6-27b-v1-preview-gguf",
-    "title": "jackrong/qwopus3.6-27b-v1-preview-gguf",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-4.1-3b",
-    "title": "ibm-granite/granite-4.1-3b",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "huggingface.co/unsloth/gemma-4-26b-a4b-it-gguf",
-    "title": "unsloth/gemma-4-26b-a4b-it-gguf",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28196v1",
-    "title": "hermes++: toward a unified driving world model for 3d scene understanding and generation",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28197v1",
-    "title": "omnirobothome: a multi-camera platform for real-time multiadic human-robot interaction",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28193v1",
-    "title": "generalizable sparse-view 3d reconstruction from unconstrained images",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28192v1",
-    "title": "last-r1: reinforcing action via adaptive physical latent reasoning for vla models",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28190v1",
-    "title": "representation fréchet loss for visual generation",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28186v1",
-    "title": "computing equilibrium beyond unilateral deviation",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28185v1",
-    "title": "visual generation in the new era: an evolution from atomic mapping to agentic world modeling",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28182v1",
-    "title": "exploration hacking: can llms learn to resist rl training?",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28181v1",
-    "title": "synthetic computers at scale for long-horizon productivity simulation",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28180v1",
-    "title": "an adaptive wavelet-based pinn for problems with localized high-magnitude source",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28179v1",
-    "title": "stop holding your breath: ct-informed gaussian splatting for dynamic bronchoscopy",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28178v1",
-    "title": "llm as clinical graph structure refiner: enhancing representation learning in eeg seizure diagnosis",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28177v1",
-    "title": "aegis: a holistic benchmark for evaluating forensic analysis of ai-generated academic images",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28176v1",
-    "title": "defending quantum classifiers against adversarial perturbations through quantum autoencoders",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28175v1",
-    "title": "strait: perceiving priority and interference in ml inference serving",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28173v1",
-    "title": "action motifs: self-supervised hierarchical representation of human body movements",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28169v1",
-    "title": "phyco: learning controllable physical priors for generative motion",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28167v1",
-    "title": "mapping the phase diagram of the vicsek model with machine learning",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28163v1",
-    "title": "sequential inference for gaussian processes: a signal processing perspective",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28159v1",
-    "title": "continuous-tone simple points: an $\\ell_0$-norm of cyclic gradient for topology-preserving data-driven image segmentation",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28158v1",
-    "title": "intern-atlas: a methodological evolution graph as research infrastructure for ai scientists",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28156v1",
-    "title": "flexitac: a low-cost, open-source, scalable tactile sensing solution for robotic systems",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28149v1",
-    "title": "explainable load forecasting with covariate-informed time series foundation models",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28147v1",
-    "title": "on the proper treatment of units in surprisal theory",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28144v1",
-    "title": "global optimality for constrained exploration via penalty regularization",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28142v1",
-    "title": "efficient multivector retrieval with token-aware clustering and hierarchical indexing",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28139v1",
-    "title": "claw-eval-live: a live agent benchmark for evolving real-world workflows",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28138v1",
-    "title": "crab: a semantics-aware checkpoint/restore runtime for agent sandboxes",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28136v1",
-    "title": "beyond pixel fidelity: minimizing perceptual distortion and color bias in night photography rendering",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28134v1",
-    "title": "3d-regen: a unified 3d geometry regeneration framework",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28130v1",
-    "title": "mocapanything v2: end-to-end motion capture for arbitrary skeletons",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28129v1",
-    "title": "latent adversarial detection: adaptive probing of llm activations for multi-turn attack detection",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28125v1",
-    "title": "normativity and productivism: ableist intelligence? a degrowth analysis of ai sign language translation tools for deaf people",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28123v1",
-    "title": "prism: pre-alignment via black-box on-policy distillation for multimodal reinforcement learning",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28122v1",
-    "title": "beyond gaussian bottlenecks: topologically aligned encoding of vision-transformer feature spaces",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28119v1",
-    "title": "do sparse autoencoders capture concept manifolds?",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28118v1",
-    "title": "default++: automated fault detection, categorization, and diagnosis for transformer architectures",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28115v1",
-    "title": "freeocc: training-free embodied open-vocabulary occupancy prediction",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28112v1",
-    "title": "splitting argumentation frameworks with collective attacks and supports",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28109v1",
-    "title": "auto-flexswitch: efficient dynamic model merging via learnable task vector compression",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28107v1",
-    "title": "neural aided kalman filtering for uav state estimation in degraded sensing environments",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28102v1",
-    "title": "filmmed: feature-wise linear modulation for cross-problem multi-depot vehicle routing",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28098v1",
-    "title": "mapping the methodological space of classroom interaction research: scale, duration, and modality in an age of ai",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28095v1",
-    "title": "uhr-net: an uncertainty-aware hypergraph refinement network for medical image segmentation",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28093v1",
-    "title": "what makes a good terminal-agent benchmark task: a guideline for adversarial, difficult, and legible evaluation design",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28087v1",
-    "title": "towards neuro-symbolic causal rule synthesis, verification, and evaluation grounded in legal and safety principles",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28082v1",
-    "title": "characterizing the consistency of the emergent misalignment persona",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28078v1",
-    "title": "aesrm: improving video aesthetics with expert-level feedback",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28076v1",
-    "title": "topbench: a benchmark for implicit prediction and reasoning over tabular question answering",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "arxiv.org/pdf/2604.28075v1",
-    "title": "repetition over diversity: high-signal data filtering for sample-efficient german language modeling",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "github.com/ekkolearnai/hermes-web-ui",
-    "title": "hermes-web-ui",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "github.com/gammalabtechnologies/harmonist",
-    "title": "harmonist",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "github.com/lukiiabs/trading-agents",
-    "title": "trading-agents",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "github.com/machinepulse-ai/world2agent",
-    "title": "world2agent",
-    "date": "2026-05-02"
-  },
-  {
-    "url": "github.com/future-agi/future-agi",
-    "title": "future-agi",
-    "date": "2026-05-02"
-  },
-  {
     "url": "discuss.ai.google.dev/c/ai-studio/8",
     "title": "latest google ai studio topics",
     "date": "2026-05-03"
@@ -1183,5 +803,115 @@
     "url": "huggingface.co/inclusionai/ling-2.6-flash",
     "title": "inclusionai/ling-2.6-flash",
     "date": "2026-05-08"
+  },
+  {
+    "url": "ai.google.dev/gemini-api/docs/interactions/deep-research",
+    "title": "gemini deep research agent - google ai for developers",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "platform.openai.com/settings/organization/admin-keys",
+    "title": "admin api key - openai platform",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "discuss.ai.google.dev/tag/gemini/44",
+    "title": "topics tagged gemini - google ai developers forum",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "www.reddit.com/r/linustechtips/comments/1t6un0d/gemini_admits_that_its_just_predictive_text",
+    "title": "gemini admits that it's just predictive text : r/linustechtips - reddit",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "de.linkedin.com/posts/benprohl_claude-anthropic-aiworkflow-activity-7458410059736211456-zzfb",
+    "title": "#claude #anthropic #aiworkflow #powerpoint #aibuilder | ben prohl",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "mashable.com/article/google-veo-31-social-videos-gemini",
+    "title": "google veo 3.1 will generate social-ready vertical videos in gemini",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "x.com/wsummerlinai/status/2052571140837474599",
+    "title": "the demand for anthropic is absolutely insane and most people ...",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "community.n8n.io/t/deepseek-v4-the-reasoning-content-in-the-thinking-mode-must-be-passed-back-to-the-api/295015",
+    "title": "deepseek v4 - \"the reasoning_content in the thinking mode must be ...",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/seesee21/z-anime",
+    "title": "seesee21/z-anime",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
+    "title": "qwen/qwen3.6-35b-a3b",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/unsloth/qwen3.6-35b-a3b-gguf",
+    "title": "unsloth/qwen3.6-35b-a3b-gguf",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/k2-fsa/omnivoice",
+    "title": "k2-fsa/omnivoice",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/ibm-granite/granite-4.1-30b",
+    "title": "ibm-granite/granite-4.1-30b",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-e2b-it-assistant",
+    "title": "google/gemma-4-e2b-it-assistant",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/havenoammo/qwen3.6-27b-mtp-ud-gguf",
+    "title": "havenoammo/qwen3.6-27b-mtp-ud-gguf",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/supertone/supertonic-3",
+    "title": "supertone/supertonic-3",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/jackxinning/leanly_ai",
+    "title": "jackxinning/leanly_ai",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/davidau/qwen3.6-40b-claude-4.6-opus-deckard-heretic-uncensored-thinking-neo-code-di-imatrix-max-gguf",
+    "title": "davidau/qwen3.6-40b-claude-4.6-opus-deckard-heretic-uncensored-thinking-neo-code-di-imatrix-max-gguf",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "huggingface.co/unsloth/gemma-4-26b-a4b-it-gguf",
+    "title": "unsloth/gemma-4-26b-a4b-it-gguf",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "github.com/ekkolearnai/hermes-web-ui",
+    "title": "hermes-web-ui",
+    "date": "2026-05-09"
+  },
+  {
+    "url": "github.com/gammalabtechnologies/harmonist",
+    "title": "harmonist",
+    "date": "2026-05-09"
   }
 ]
