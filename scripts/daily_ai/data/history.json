@@ -1,80 +1,5 @@
 [
   {
-    "url": "www.theverge.com/tech/917225/sam-altman-elon-musk-openai-lawsuit",
-    "title": "altman vs. elon for the future of openai - the verge",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "www.blackstone.com/news/press/anthropic-partners-with-blackstone-hellman-friedman-and-goldman-sachs-to-launch-enterprise-ai-services-firm",
-    "title": "anthropic partners with blackstone, hellman & friedman, and ...",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "www.marinetraffic.com/en/ais/details/ships/shipid:372100/mmsi:613003596/imo:9000687/vessel:gemini",
-    "title": "gemini (imo 9000687), passenger ship | position & specs",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "openai.com/careers/full-stack-software-engineer-incubation-san-francisco",
-    "title": "full-stack software engineer, incubation | openai",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "x.com/arpitrage/status/2051284527545200969",
-    "title": "the difference between openai and anthropic seems to be ... - twitter",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "www.reddit.com/r/anthropic/comments/1t3n7yx/cant_upgrade_plan_and_no_customer_support",
-    "title": "can't upgrade plan and no customer support : r/anthropic - reddit",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "www.youtube.com/shorts/rcontbem5kk",
-    "title": "openai slows its plans for stargate - youtube",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "www.ft.com/content/01b31619-66ff-4a9d-8927-533296ae2b51",
-    "title": "blackstone and goldman among backers for $1.5bn jv with anthropic",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "huggingface.co/sulphurai/sulphur-2-base",
-    "title": "sulphurai/sulphur-2-base",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "huggingface.co/lightricks/ltx-2.3",
-    "title": "lightricks/ltx-2.3",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "huggingface.co/dx8152/flux2-klein-9b-consistency",
-    "title": "dx8152/flux2-klein-9b-consistency",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-speech-4.1-2b-nar",
-    "title": "ibm-granite/granite-speech-4.1-2b-nar",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "github.com/raiyanyahya/how-to-train-your-gpt",
-    "title": "how-to-train-your-gpt",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "github.com/1weiho/open-slide",
-    "title": "open-slide",
-    "date": "2026-05-05"
-  },
-  {
-    "url": "github.com/appergb/openless",
-    "title": "openless",
-    "date": "2026-05-05"
-  },
-  {
     "url": "mashable.com/article/grok-blocking-elon-musk-prompts-misinformation",
     "title": "grok engineer instructed the bot to censor sources accusing musk of ...",
     "date": "2026-05-06"
@@ -883,5 +808,105 @@
     "url": "huggingface.co/unsloth/gemma-4-e4b-it-gguf",
     "title": "unsloth/gemma-4-e4b-it-gguf",
     "date": "2026-05-11"
+  },
+  {
+    "url": "platform.openai.com/settings/organization/projects",
+    "title": "projects - openai platform",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "openai.com/bg-bg/index/scaling-trusted-access-for-cyber-defense",
+    "title": "trusted access for the next era of cyber defense - openai",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "www.nytimes.com/2026/05/11/technology/satya-nadella-openai-sam-altman.html",
+    "title": "microsoft's c.e.o. intervened when openai fired sam altman ...",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "www.linkedin.com/company/anthropicresearch/posts",
+    "title": "anthropic - linkedin",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "docs.x.ai/developers/model-capabilities/text/multi-agent",
+    "title": "multi agent - xai docs",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "www.linkedin.com/posts/mattgarman_amazon-web-services-aws-is-the-first-cloud-activity-7459680352056471555-pf3y",
+    "title": "amazon web services (aws) is the first cloud provider to offer ...",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "www.instagram.com/p/dym2uunimk8",
+    "title": "ai is no longer about experimentation; it's about execution. the ...",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "x.com/copsanuofficial/status/2053789832531595470",
+    "title": "hey @grok, my father gifted me a small piece of land, what should i ...",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "huggingface.co/sulphurai/sulphur-2-base",
+    "title": "sulphurai/sulphur-2-base",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "huggingface.co/hidream-ai/hidream-o1-image-dev",
+    "title": "hidream-ai/hidream-o1-image-dev",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "huggingface.co/antirez/deepseek-v4-gguf",
+    "title": "antirez/deepseek-v4-gguf",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "huggingface.co/inclusionai/ling-2.6-1t",
+    "title": "inclusionai/ling-2.6-1t",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "huggingface.co/manjunathshiva/gpt-oss-20b-tq3",
+    "title": "manjunathshiva/gpt-oss-20b-tq3",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "huggingface.co/joyfox/ltx2.3-icedit-insight",
+    "title": "joyfox/ltx2.3-icedit-insight",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "huggingface.co/rundiffusion/juggernaut-z-image",
+    "title": "rundiffusion/juggernaut-z-image",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "github.com/1weiho/open-slide",
+    "title": "open-slide",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "github.com/raiyanyahya/how-to-train-your-gpt",
+    "title": "how-to-train-your-gpt",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "github.com/christianjr19/goblinos",
+    "title": "goblinos",
+    "date": "2026-05-12"
+  },
+  {
+    "url": "github.com/open-less/openless",
+    "title": "openless",
+    "date": "2026-05-12"
   }
 ]
