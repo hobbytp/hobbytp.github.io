@@ -1,115 +1,5 @@
 [
   {
-    "url": "ai.google.dev/gemini-api/docs/interactions/deep-research",
-    "title": "gemini deep research agent - google ai for developers",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "platform.openai.com/settings/organization/admin-keys",
-    "title": "admin api key - openai platform",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "discuss.ai.google.dev/tag/gemini/44",
-    "title": "topics tagged gemini - google ai developers forum",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "www.reddit.com/r/linustechtips/comments/1t6un0d/gemini_admits_that_its_just_predictive_text",
-    "title": "gemini admits that it's just predictive text : r/linustechtips - reddit",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "de.linkedin.com/posts/benprohl_claude-anthropic-aiworkflow-activity-7458410059736211456-zzfb",
-    "title": "#claude #anthropic #aiworkflow #powerpoint #aibuilder | ben prohl",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "mashable.com/article/google-veo-31-social-videos-gemini",
-    "title": "google veo 3.1 will generate social-ready vertical videos in gemini",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "x.com/wsummerlinai/status/2052571140837474599",
-    "title": "the demand for anthropic is absolutely insane and most people ...",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "community.n8n.io/t/deepseek-v4-the-reasoning-content-in-the-thinking-mode-must-be-passed-back-to-the-api/295015",
-    "title": "deepseek v4 - \"the reasoning_content in the thinking mode must be ...",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/seesee21/z-anime",
-    "title": "seesee21/z-anime",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
-    "title": "qwen/qwen3.6-35b-a3b",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.6-35b-a3b-gguf",
-    "title": "unsloth/qwen3.6-35b-a3b-gguf",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/k2-fsa/omnivoice",
-    "title": "k2-fsa/omnivoice",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/ibm-granite/granite-4.1-30b",
-    "title": "ibm-granite/granite-4.1-30b",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-e2b-it-assistant",
-    "title": "google/gemma-4-e2b-it-assistant",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/havenoammo/qwen3.6-27b-mtp-ud-gguf",
-    "title": "havenoammo/qwen3.6-27b-mtp-ud-gguf",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/supertone/supertonic-3",
-    "title": "supertone/supertonic-3",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/jackxinning/leanly_ai",
-    "title": "jackxinning/leanly_ai",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/davidau/qwen3.6-40b-claude-4.6-opus-deckard-heretic-uncensored-thinking-neo-code-di-imatrix-max-gguf",
-    "title": "davidau/qwen3.6-40b-claude-4.6-opus-deckard-heretic-uncensored-thinking-neo-code-di-imatrix-max-gguf",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "huggingface.co/unsloth/gemma-4-26b-a4b-it-gguf",
-    "title": "unsloth/gemma-4-26b-a4b-it-gguf",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "github.com/ekkolearnai/hermes-web-ui",
-    "title": "hermes-web-ui",
-    "date": "2026-05-09"
-  },
-  {
-    "url": "github.com/gammalabtechnologies/harmonist",
-    "title": "harmonist",
-    "date": "2026-05-09"
-  },
-  {
     "url": "platform.openai.com/usage/chat-completions",
     "title": "chat completions - openai platform",
     "date": "2026-05-10"
@@ -663,5 +553,115 @@
     "url": "github.com/python-telegrambot/ai-auto-trading",
     "title": "ai-auto-trading",
     "date": "2026-05-15"
+  },
+  {
+    "url": "anthropic.skilljar.com/ai-fluency-for-small-businesses",
+    "title": "ai fluency for small businesses - anthropic skilljar",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "learn.microsoft.com/en-us/azure/foundry/openai/how-to/latency",
+    "title": "azure openai in microsoft foundry models performance & latency",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "www.securityweek.com/openai-hit-by-tanstack-supply-chain-attack",
+    "title": "openai hit by tanstack supply chain attack - securityweek",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "x.com/_nathancalvin/status/2055297150293262676",
+    "title": "i'm glad to see that openai is making clear in illinois that they don't ...",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "academy.openai.com/public/clubs/builders-etkn1/events/codex-fundamentals-an2pl5654l",
+    "title": "codex fundamentals - event - openai academy",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "support.google.com/gemini/thread/434080227/error-1099-affecting-gemini-3-flash",
+    "title": "error 1099 affecting gemini 3 flash - google help",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "www.linkedin.com/posts/chaddavis1_if-gemini-is-your-only-ai-option-at-work-activity-7461123955177930752-y5kc",
+    "title": "if gemini is your only ai option at work, please use the pro setting ...",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "support.google.com/gemini/thread/433986226/gemini-side-panel-no-longer-providing-direct-clickable-links-to-gmail-messages",
+    "title": "gemini side panel no longer providing direct clickable links to gmail ...",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/supertone/supertonic-3",
+    "title": "supertone/supertonic-3",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/seesee21/z-anime",
+    "title": "seesee21/z-anime",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
+    "title": "qwen/qwen3.6-35b-a3b",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/k2-fsa/omnivoice",
+    "title": "k2-fsa/omnivoice",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/jackxinning/leanly_ai",
+    "title": "jackxinning/leanly_ai",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/unsloth/qwen3.6-35b-a3b-gguf",
+    "title": "unsloth/qwen3.6-35b-a3b-gguf",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/microsoft/fara-7b",
+    "title": "microsoft/fara-7b",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/havenoammo/qwen3.6-27b-mtp-ud-gguf",
+    "title": "havenoammo/qwen3.6-27b-mtp-ud-gguf",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/davidau/qwen3.6-40b-claude-4.6-opus-deckard-heretic-uncensored-thinking-neo-code-di-imatrix-max-gguf",
+    "title": "davidau/qwen3.6-40b-claude-4.6-opus-deckard-heretic-uncensored-thinking-neo-code-di-imatrix-max-gguf",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/unsloth/gemma-4-26b-a4b-it-gguf",
+    "title": "unsloth/gemma-4-26b-a4b-it-gguf",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/jinaai/jina-embeddings-v5-omni-small",
+    "title": "jinaai/jina-embeddings-v5-omni-small",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "huggingface.co/hexgrad/kokoro-82m",
+    "title": "hexgrad/kokoro-82m",
+    "date": "2026-05-16"
+  },
+  {
+    "url": "github.com/agentic-in/elephant-agent",
+    "title": "elephant-agent",
+    "date": "2026-05-16"
   }
 ]
