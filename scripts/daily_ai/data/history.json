@@ -1,80 +1,5 @@
 [
   {
-    "url": "platform.openai.com/usage/chat-completions",
-    "title": "chat completions - openai platform",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "mashable.com/article/openai-super-bowl-commercial-2026",
-    "title": "openai reportedly readies lengthy super bowl commercial - mashable",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "www.bigfinish.com/ranges/v/gemini-force-one",
-    "title": "gemini force one - ranges - big finish",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "www.facebook.com/groups/teslamodelyownerclub/posts/1722499122111943",
-    "title": "anyone having issues with grok saying you reached your data limit",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "www.linkedin.com/posts/paul-lavigne-taylor_anthropic-two-days-a-room-full-of-faith-activity-7458880230678585344-1eua",
-    "title": "paul taylor's post - linkedin",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "support.google.com/gemini/thread/432078018/quizzes-no-longer-showing-rationales",
-    "title": "quizzes no longer showing rationales - gemini apps community",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
-    "title": "deepseek-ai/deepseek-v4-pro",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
-    "title": "deepseek-ai/deepseek-v4-flash",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "huggingface.co/davidau/qwen3.6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf",
-    "title": "davidau/qwen3.6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "huggingface.co/z-lab/qwen3.6-27b-dflash",
-    "title": "z-lab/qwen3.6-27b-dflash",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwen3.5-9b-deepseek-v4-flash-gguf",
-    "title": "jackrong/qwen3.5-9b-deepseek-v4-flash-gguf",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "huggingface.co/froggeric/qwen3.6-27b-mtp-gguf",
-    "title": "froggeric/qwen3.6-27b-mtp-gguf",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "github.com/conardli/garden-skills",
-    "title": "garden-skills",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "github.com/tddworks/baguette",
-    "title": "baguette",
-    "date": "2026-05-10"
-  },
-  {
-    "url": "github.com/jingyaogong/minimind-o",
-    "title": "minimind-o",
-    "date": "2026-05-10"
-  },
-  {
     "url": "www.youtube.com/shorts/dlgrvo2-jv4",
     "title": "grok ai now does your emails & files! #shorts - youtube",
     "date": "2026-05-11"
@@ -663,5 +588,100 @@
     "url": "github.com/agentic-in/elephant-agent",
     "title": "elephant-agent",
     "date": "2026-05-16"
+  },
+  {
+    "url": "github.com/deepseek-ai/deepseek-ocr/tree/main/deepseek-ocr-master",
+    "title": "deepseek-ocr-master - github",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "docs.cloud.google.com/gemini/enterprise/docs/connectors/salesforce/set-up-data-store",
+    "title": "set up a salesforce data store | gemini enterprise",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "x.com/morganlinton/status/2055713484466524605",
+    "title": "morgan",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "docs.cloud.google.com/gemini/enterprise/docs/connectors/ms-onedrive/set-up-data-store",
+    "title": "set up a microsoft onedrive data store | gemini enterprise",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "de.linkedin.com/posts/yves-schleich_es-gibt-leute-die-claude-certified-kurse-activity-7461320796121006080-bq38",
+    "title": "beitrag von yves schleich - linkedin",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "www.reddit.com/r/localllm/comments/1tef1xq/i_couldnt_make_deepseekr1671bq4_k_m_run_on_my_mac",
+    "title": "i couldn't make deepseek-r1-671b:q4_k_m run on my mac studio ...",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "www.businessinsider.com/marc-benioff-salesforce-anthropic-spend-tokens-slack-2026-5",
+    "title": "marc benioff said salesforce will spend $300m on anthropic tokens",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "www.reddit.com/r/openai/comments/1tekhln/this_ai_finished_my_project_while_i_made_coffee",
+    "title": "this ai finished my project while i made coffee : r/openai - reddit",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
+    "title": "deepseek-ai/deepseek-v4-pro",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/resembleai/dramabox",
+    "title": "resembleai/dramabox",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
+    "title": "deepseek-ai/deepseek-v4-flash",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/frontiersmind/nandi-mini-600m-early-checkpoint",
+    "title": "frontiersmind/nandi-mini-600m-early-checkpoint",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/internlm/intern-s2-preview",
+    "title": "internlm/intern-s2-preview",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/inclusionai/ring-2.6-1t",
+    "title": "inclusionai/ring-2.6-1t",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/davidau/qwen3.6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf",
+    "title": "davidau/qwen3.6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/lakonik/asymflux.2-klein-9b",
+    "title": "lakonik/asymflux.2-klein-9b",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/gemma4-26b-a4b-uncensored-hauhaucs-balanced",
+    "title": "hauhaucs/gemma4-26b-a4b-uncensored-hauhaucs-balanced",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "github.com/2508965-ship-it/harmonist-orchestral",
+    "title": "harmonist-orchestral",
+    "date": "2026-05-17"
+  },
+  {
+    "url": "github.com/conardli/garden-skills",
+    "title": "garden-skills",
+    "date": "2026-05-17"
   }
 ]
