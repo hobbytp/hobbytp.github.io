@@ -1,105 +1,5 @@
 [
   {
-    "url": "platform.openai.com/settings/organization/projects",
-    "title": "projects - openai platform",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "openai.com/bg-bg/index/scaling-trusted-access-for-cyber-defense",
-    "title": "trusted access for the next era of cyber defense - openai",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "www.nytimes.com/2026/05/11/technology/satya-nadella-openai-sam-altman.html",
-    "title": "microsoft's c.e.o. intervened when openai fired sam altman ...",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "www.linkedin.com/company/anthropicresearch/posts",
-    "title": "anthropic - linkedin",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "docs.x.ai/developers/model-capabilities/text/multi-agent",
-    "title": "multi agent - xai docs",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "www.linkedin.com/posts/mattgarman_amazon-web-services-aws-is-the-first-cloud-activity-7459680352056471555-pf3y",
-    "title": "amazon web services (aws) is the first cloud provider to offer ...",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "www.instagram.com/p/dym2uunimk8",
-    "title": "ai is no longer about experimentation; it's about execution. the ...",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "x.com/copsanuofficial/status/2053789832531595470",
-    "title": "hey @grok, my father gifted me a small piece of land, what should i ...",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "huggingface.co/sulphurai/sulphur-2-base",
-    "title": "sulphurai/sulphur-2-base",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "huggingface.co/hidream-ai/hidream-o1-image-dev",
-    "title": "hidream-ai/hidream-o1-image-dev",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "huggingface.co/antirez/deepseek-v4-gguf",
-    "title": "antirez/deepseek-v4-gguf",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "huggingface.co/lightricks/ltx-2.3",
-    "title": "lightricks/ltx-2.3",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "huggingface.co/inclusionai/ling-2.6-1t",
-    "title": "inclusionai/ling-2.6-1t",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "huggingface.co/manjunathshiva/gpt-oss-20b-tq3",
-    "title": "manjunathshiva/gpt-oss-20b-tq3",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "huggingface.co/joyfox/ltx2.3-icedit-insight",
-    "title": "joyfox/ltx2.3-icedit-insight",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "huggingface.co/rundiffusion/juggernaut-z-image",
-    "title": "rundiffusion/juggernaut-z-image",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "github.com/1weiho/open-slide",
-    "title": "open-slide",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "github.com/raiyanyahya/how-to-train-your-gpt",
-    "title": "how-to-train-your-gpt",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "github.com/christianjr19/goblinos",
-    "title": "goblinos",
-    "date": "2026-05-12"
-  },
-  {
-    "url": "github.com/open-less/openless",
-    "title": "openless",
-    "date": "2026-05-12"
-  },
-  {
     "url": "forums.developer.nvidia.com/t/fully-custom-cuda-native-deepseek-4-flash-optimized-for-1x-spark-antirez-ds4/369791",
     "title": "fully custom cuda-native deepseek 4 flash optimized for 1x spark ...",
     "date": "2026-05-13"
@@ -663,5 +563,95 @@
     "url": "github.com/opensquilla/opensquilla",
     "title": "opensquilla",
     "date": "2026-05-18"
+  },
+  {
+    "url": "www.yelp.com/biz/gemini-legal-salinas-office-salinas",
+    "title": "gemini legal - salinas office - updated may 2026 - yelp",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "www.reddit.com/r/geminiai/comments/1tgolth/gemini_4_is_tested_in_google",
+    "title": "gemini 4 is tested in google : r/geminiai - reddit",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "www.linkedin.com/company/anthropicresearch/posts",
+    "title": "anthropic - linkedin",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "www.instagram.com/reel/dyfald8ozbz",
+    "title": "gemini season loading - instagram",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "www.youtube.com/shorts/imhqgnlloxo",
+    "title": "so anthropic is just winning now - youtube",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "www.gemini.com/converter/usdt/sgd",
+    "title": "price of tether (usdt) to singapore dollar (sgd) - gemini",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "www.linkedin.com/posts/malkaduhimi_anthropic-just-entered-the-legal-market-activity-7462034271931621376-1ahy",
+    "title": "mohamed alkaduhimi's post - linkedin",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "www.instagram.com/reel/dyermceruyr",
+    "title": "#gemini #geminiseason #geminis #geminiwoman #geminination",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "www.anthropic.com/news/anthropic-acquires-stainless",
+    "title": "anthropic acquires stainless",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "huggingface.co/sulphurai/sulphur-2-base",
+    "title": "sulphurai/sulphur-2-base",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "huggingface.co/antirez/deepseek-v4-gguf",
+    "title": "antirez/deepseek-v4-gguf",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "huggingface.co/rundiffusion/juggernaut-z-image",
+    "title": "rundiffusion/juggernaut-z-image",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "huggingface.co/tongyi-mai/z-image-turbo",
+    "title": "tongyi-mai/z-image-turbo",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "huggingface.co/joyfox/ltx2.3-icedit-insight",
+    "title": "joyfox/ltx2.3-icedit-insight",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "huggingface.co/unsloth/qwen3.5-9b-mtp-gguf",
+    "title": "unsloth/qwen3.5-9b-mtp-gguf",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "github.com/1weiho/open-slide",
+    "title": "open-slide",
+    "date": "2026-05-19"
+  },
+  {
+    "url": "github.com/raiyanyahya/how-to-train-your-gpt",
+    "title": "how-to-train-your-gpt",
+    "date": "2026-05-19"
   }
 ]
