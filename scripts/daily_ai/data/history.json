@@ -1,75 +1,5 @@
 [
   {
-    "url": "forums.developer.nvidia.com/t/fully-custom-cuda-native-deepseek-4-flash-optimized-for-1x-spark-antirez-ds4/369791",
-    "title": "fully custom cuda-native deepseek 4 flash optimized for 1x spark ...",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "www.reddit.com/r/openai/comments/1tb8umi/gpt_55_outperforming_opus_47_on_programbench",
-    "title": "gpt 5.5 outperforming opus 4.7 on programbench : r/openai - reddit",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "www.reddit.com/r/geminiai/comments/1tayz3u/people_complain_that_gemini_needs_perfect_prompts",
-    "title": "people complain that gemini needs perfect prompts. but maybe the ...",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "support.google.com/edu/assignments/answer/17078207",
-    "title": "set up gemini lti™ with moodle - google workspace lti™ help",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "www.linkedin.com/posts/joaquincan_last-friday-was-my-last-day-at-openai-i-activity-7459981156227354624-7nyy",
-    "title": "joaquin quiñonero candela's post - linkedin",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "it.linkedin.com/posts/stefanoschiavo_ai-promptengineering-contextengineering-activity-7459841047062409216-ecs-",
-    "title": "post di stefano schiavo - linkedin",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "openai.com/ga-ie/business/workspace-agents",
-    "title": "workspace agents for business - openai",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "ai.google.dev/gemini-api/docs/quickstart",
-    "title": "guía de inicio rápido de la api de gemini - google ai for developers",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "huggingface.co/jiunsong/supergemma4-26b-uncensored-gguf-v2",
-    "title": "jiunsong/supergemma4-26b-uncensored-gguf-v2",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "huggingface.co/moonshotai/kimi-k2.6",
-    "title": "moonshotai/kimi-k2.6",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "huggingface.co/circlestone-labs/anima",
-    "title": "circlestone-labs/anima",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "github.com/nexu-io/open-design",
-    "title": "open-design",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "github.com/cosmicstack-labs/mercury-agent",
-    "title": "mercury-agent",
-    "date": "2026-05-13"
-  },
-  {
-    "url": "github.com/jmerelnyc/photo-agents",
-    "title": "photo-agents",
-    "date": "2026-05-13"
-  },
-  {
     "url": "abc7news.com/live-updates/elon-musk-sam-altman-live-updates-microsoft-ceo-satya-nadella-testify-week-3-trial-begins/19080697",
     "title": "elon musk v. sam altman live updates: open ai ceo testifies in trial ...",
     "date": "2026-05-14"
@@ -653,5 +583,85 @@
     "url": "github.com/raiyanyahya/how-to-train-your-gpt",
     "title": "how-to-train-your-gpt",
     "date": "2026-05-19"
+  },
+  {
+    "url": "www.youtube.com/watch",
+    "title": "gemini - this is a lot of love and someone ... - youtube",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "docs.cloud.google.com/gemini-enterprise-agent-platform/build/managed-agents",
+    "title": "managed agents api on agent platform overview",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "www.engadget.com/2176592/google-says-gemini-3-5-flash-rivals-large-flagship-models-for-coding-and-agentic-tasks",
+    "title": "google says gemini 3.5 flash rivals 'large flagship models' for ...",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "ai.google",
+    "title": "google ai - how we're making ai helpful for everyone",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "healthcare.ascension.org/find-care/provider/1306075684/xaiyavong-saenphansiri",
+    "title": "xaiyavong saenphansiri, dnp, aprn, family medicine - ascension",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "x.com/geminiapp/status/2056802363269329304",
+    "title": "download the gemini app on macos",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "community.openai.com/t/bug-report-app-hang-tokio-runtime-parks-indefinitely/1381294",
+    "title": "bug report - app hang - tokio runtime parks indefinitely - codex cli",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "www.reddit.com/r/codex/comments/1them8z/anthropic_openai_before_and_until_now",
+    "title": "anthropic > openai before and until now : r/codex - reddit",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "openai.com/careers/director-ai-deployment-management-san-francisco",
+    "title": "director, ai deployment management - openai",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "huggingface.co/circlestone-labs/anima",
+    "title": "circlestone-labs/anima",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "huggingface.co/sapientinc/hrm-text-1b",
+    "title": "sapientinc/hrm-text-1b",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "huggingface.co/jiunsong/supergemma4-26b-uncensored-gguf-v2",
+    "title": "jiunsong/supergemma4-26b-uncensored-gguf-v2",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "huggingface.co/hidream-ai/hidream-o1-image-dev-2604",
+    "title": "hidream-ai/hidream-o1-image-dev-2604",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwopus3.5-9b-coder-mtp-gguf",
+    "title": "jackrong/qwopus3.5-9b-coder-mtp-gguf",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "huggingface.co/alissonerdx/bfs-best-face-swap",
+    "title": "alissonerdx/bfs-best-face-swap",
+    "date": "2026-05-20"
+  },
+  {
+    "url": "github.com/nexu-io/open-design",
+    "title": "open-design",
+    "date": "2026-05-20"
   }
 ]
