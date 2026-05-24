@@ -1,100 +1,5 @@
 [
   {
-    "url": "github.com/deepseek-ai/deepseek-ocr/tree/main/deepseek-ocr-master",
-    "title": "deepseek-ocr-master - github",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "docs.cloud.google.com/gemini/enterprise/docs/connectors/salesforce/set-up-data-store",
-    "title": "set up a salesforce data store | gemini enterprise",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "x.com/morganlinton/status/2055713484466524605",
-    "title": "morgan",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "docs.cloud.google.com/gemini/enterprise/docs/connectors/ms-onedrive/set-up-data-store",
-    "title": "set up a microsoft onedrive data store | gemini enterprise",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "de.linkedin.com/posts/yves-schleich_es-gibt-leute-die-claude-certified-kurse-activity-7461320796121006080-bq38",
-    "title": "beitrag von yves schleich - linkedin",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "www.reddit.com/r/localllm/comments/1tef1xq/i_couldnt_make_deepseekr1671bq4_k_m_run_on_my_mac",
-    "title": "i couldn't make deepseek-r1-671b:q4_k_m run on my mac studio ...",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "www.businessinsider.com/marc-benioff-salesforce-anthropic-spend-tokens-slack-2026-5",
-    "title": "marc benioff said salesforce will spend $300m on anthropic tokens",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "www.reddit.com/r/openai/comments/1tekhln/this_ai_finished_my_project_while_i_made_coffee",
-    "title": "this ai finished my project while i made coffee : r/openai - reddit",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
-    "title": "deepseek-ai/deepseek-v4-pro",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/resembleai/dramabox",
-    "title": "resembleai/dramabox",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
-    "title": "deepseek-ai/deepseek-v4-flash",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/frontiersmind/nandi-mini-600m-early-checkpoint",
-    "title": "frontiersmind/nandi-mini-600m-early-checkpoint",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/internlm/intern-s2-preview",
-    "title": "internlm/intern-s2-preview",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/inclusionai/ring-2.6-1t",
-    "title": "inclusionai/ring-2.6-1t",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/davidau/qwen3.6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf",
-    "title": "davidau/qwen3.6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/lakonik/asymflux.2-klein-9b",
-    "title": "lakonik/asymflux.2-klein-9b",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/gemma4-26b-a4b-uncensored-hauhaucs-balanced",
-    "title": "hauhaucs/gemma4-26b-a4b-uncensored-hauhaucs-balanced",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "github.com/2508965-ship-it/harmonist-orchestral",
-    "title": "harmonist-orchestral",
-    "date": "2026-05-17"
-  },
-  {
-    "url": "github.com/conardli/garden-skills",
-    "title": "garden-skills",
-    "date": "2026-05-17"
-  },
-  {
     "url": "openai.com/codex/for-work",
     "title": "codex for work - openai",
     "date": "2026-05-18"
@@ -648,5 +553,95 @@
     "url": "github.com/agentic-in/elephant-agent",
     "title": "elephant-agent",
     "date": "2026-05-23"
+  },
+  {
+    "url": "discuss.ai.google.dev/c/gemini-api/4",
+    "title": "latest gemini api topics - google ai developers forum",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "www.crimeandinvestigation.co.uk/articles/deadliest-gemini-serial-killers",
+    "title": "the deadliest gemini serial killers of all time - crime+investigation",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "www.instagram.com/p/dyssehpzocz",
+    "title": "gemini season has arrived! may babies are captivating, full of life ...",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/tencent/hy-mt2-30b-a3b",
+    "title": "tencent/hy-mt2-30b-a3b",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
+    "title": "deepseek-ai/deepseek-v4-pro",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/tencent/hy-mt2-7b",
+    "title": "tencent/hy-mt2-7b",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/resembleai/dramabox",
+    "title": "resembleai/dramabox",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwopus3.6-27b-v2-gguf",
+    "title": "jackrong/qwopus3.6-27b-v2-gguf",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
+    "title": "deepseek-ai/deepseek-v4-flash",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwopus3.6-27b-v2-mtp-gguf",
+    "title": "jackrong/qwopus3.6-27b-v2-mtp-gguf",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/obliteratus/qwen3.6-27b-obliterated",
+    "title": "obliteratus/qwen3.6-27b-obliterated",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/gemma4-26b-a4b-uncensored-hauhaucs-balanced",
+    "title": "hauhaucs/gemma4-26b-a4b-uncensored-hauhaucs-balanced",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/davidau/qwen3.6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf",
+    "title": "davidau/qwen3.6-27b-heretic-uncensored-finetune-neo-code-di-imatrix-max-gguf",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/byteshape/qwen3.6-35b-a3b-mtp-gguf",
+    "title": "byteshape/qwen3.6-35b-a3b-mtp-gguf",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/inclusionai/ring-2.6-1t",
+    "title": "inclusionai/ring-2.6-1t",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/internlm/intern-s2-preview",
+    "title": "internlm/intern-s2-preview",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "huggingface.co/pyannote/speaker-diarization-3.1",
+    "title": "pyannote/speaker-diarization-3.1",
+    "date": "2026-05-24"
+  },
+  {
+    "url": "github.com/vila-lab/figmirror",
+    "title": "figmirror",
+    "date": "2026-05-24"
   }
 ]
