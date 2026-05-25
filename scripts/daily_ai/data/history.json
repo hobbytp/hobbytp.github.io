@@ -1,65 +1,5 @@
 [
   {
-    "url": "openai.com/codex/for-work",
-    "title": "codex for work - openai",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "github.com/anthropics/skills/tree/main/skills/skill-creator",
-    "title": "anthropics/skills — skill-creator - github",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "pt.linkedin.com/posts/luciola-coelho-agencia-de-ia_gratuitos-activity-7461709629555679232-bfsq",
-    "title": "#gratuitos | lucíola coelho - linkedin",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "support.google.com/gemini/thread/434515478/dma-blocking-for-music-creation",
-    "title": "dma blocking for music creation - gemini apps community",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "help.openai.com/en/articles/20001107-codex-security",
-    "title": "codex security | openai help center",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "community.openai.com/t/output-directly-to-email-option/1381123",
-    "title": "output directly to email option - openai developer community",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "x.com/elonmusk/status/2055965456146821584",
-    "title": "grok build is improving like lightning",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "9to5google.com/2026/05/17/gemini-app-thinking-level",
-    "title": "gemini app rolling out 'extended' thinking level - 9to5google",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "www.marinetraffic.com/en/ais/details/ships/shipid:196061/mmsi:215134000/imo:9410791/vessel:cma%20cgm%20gemini",
-    "title": "cma cgm gemini (imo 9410791), container ship | position & specs",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "huggingface.co/hidream-ai/hidream-o1-image",
-    "title": "hidream-ai/hidream-o1-image",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwopus3.5-9b-coder-gguf",
-    "title": "jackrong/qwopus3.5-9b-coder-gguf",
-    "date": "2026-05-18"
-  },
-  {
-    "url": "github.com/opensquilla/opensquilla",
-    "title": "opensquilla",
-    "date": "2026-05-18"
-  },
-  {
     "url": "www.yelp.com/biz/gemini-legal-salinas-office-salinas",
     "title": "gemini legal - salinas office - updated may 2026 - yelp",
     "date": "2026-05-19"
@@ -643,5 +583,70 @@
     "url": "github.com/vila-lab/figmirror",
     "title": "figmirror",
     "date": "2026-05-24"
+  },
+  {
+    "url": "platform.openai.com/settings/organization/security/ip-allowlist",
+    "title": "ip allowlist - openai platform",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "discuss.ai.google.dev/tag/bug/7",
+    "title": "topics tagged bug - google ai developers forum",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "www.opi.com/en-ch/products/nail-lacquer-gemini-and-i",
+    "title": "opi® switzerland. shop gemini and i | nail lacquer",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "www.zzounds.com/item--gmngx350",
+    "title": "gemini gx350 powered 2-way loudspeaker (200 watts, 1x12 in.)",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "www.youtube.com/shorts/tcyvioo9toe",
+    "title": "gemini ♊️ - youtube",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwopus3.5-9b-coder-gguf",
+    "title": "jackrong/qwopus3.5-9b-coder-gguf",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "huggingface.co/microsoft/lens-turbo",
+    "title": "microsoft/lens-turbo",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "huggingface.co/hidream-ai/hidream-o1-image",
+    "title": "hidream-ai/hidream-o1-image",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "huggingface.co/latitudegames/equinox-31b",
+    "title": "latitudegames/equinox-31b",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "huggingface.co/black-forest-labs/flux.1-dev",
+    "title": "black-forest-labs/flux.1-dev",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "huggingface.co/scenemaai/scenema-audio",
+    "title": "scenemaai/scenema-audio",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-27b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.6-27b-uncensored-hauhaucs-aggressive",
+    "date": "2026-05-25"
+  },
+  {
+    "url": "github.com/opensquilla/opensquilla",
+    "title": "opensquilla",
+    "date": "2026-05-25"
   }
 ]
