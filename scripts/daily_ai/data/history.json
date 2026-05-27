@@ -1,85 +1,5 @@
 [
   {
-    "url": "www.youtube.com/watch",
-    "title": "gemini - this is a lot of love and someone ... - youtube",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "docs.cloud.google.com/gemini-enterprise-agent-platform/build/managed-agents",
-    "title": "managed agents api on agent platform overview",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "www.engadget.com/2176592/google-says-gemini-3-5-flash-rivals-large-flagship-models-for-coding-and-agentic-tasks",
-    "title": "google says gemini 3.5 flash rivals 'large flagship models' for ...",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "ai.google",
-    "title": "google ai - how we're making ai helpful for everyone",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "healthcare.ascension.org/find-care/provider/1306075684/xaiyavong-saenphansiri",
-    "title": "xaiyavong saenphansiri, dnp, aprn, family medicine - ascension",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "x.com/geminiapp/status/2056802363269329304",
-    "title": "download the gemini app on macos",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "community.openai.com/t/bug-report-app-hang-tokio-runtime-parks-indefinitely/1381294",
-    "title": "bug report - app hang - tokio runtime parks indefinitely - codex cli",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "www.reddit.com/r/codex/comments/1them8z/anthropic_openai_before_and_until_now",
-    "title": "anthropic > openai before and until now : r/codex - reddit",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "openai.com/careers/director-ai-deployment-management-san-francisco",
-    "title": "director, ai deployment management - openai",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "huggingface.co/circlestone-labs/anima",
-    "title": "circlestone-labs/anima",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "huggingface.co/sapientinc/hrm-text-1b",
-    "title": "sapientinc/hrm-text-1b",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "huggingface.co/jiunsong/supergemma4-26b-uncensored-gguf-v2",
-    "title": "jiunsong/supergemma4-26b-uncensored-gguf-v2",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "huggingface.co/hidream-ai/hidream-o1-image-dev-2604",
-    "title": "hidream-ai/hidream-o1-image-dev-2604",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwopus3.5-9b-coder-mtp-gguf",
-    "title": "jackrong/qwopus3.5-9b-coder-mtp-gguf",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "huggingface.co/alissonerdx/bfs-best-face-swap",
-    "title": "alissonerdx/bfs-best-face-swap",
-    "date": "2026-05-20"
-  },
-  {
-    "url": "github.com/nexu-io/open-design",
-    "title": "open-design",
-    "date": "2026-05-20"
-  },
-  {
     "url": "platform.openai.com/settings/profile/api-keys",
     "title": "openai.profile",
     "date": "2026-05-21"
@@ -623,5 +543,85 @@
     "url": "github.com/study8677/awesome-architecture",
     "title": "awesome-architecture",
     "date": "2026-05-26"
+  },
+  {
+    "url": "platform.openai.com/settings/organization/people/members",
+    "title": "people - openai platform",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "gemini.google/overview/daily-brief",
+    "title": "gemini daily brief – smart summaries for busy minds",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "www.linkedin.com/company/anthropicresearch/posts",
+    "title": "anthropic - linkedin",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "x.com/durvidimel/status/2059265463155106008",
+    "title": "gemini coach loops questions and information over and over ...",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "www.reuters.com/world/asia-pacific/china-restricts-overseas-travel-top-ai-talent-alibaba-deepseek-bloomberg-news-2026-05-26",
+    "title": "china restricts overseas travel for top ai talent at alibaba ... - reuters",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "www.youtube.com/watch",
+    "title": "anthropic's mythos only found 1 real curl vulnerability - youtube",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "huggingface.co/openbmb/minicpm5-1b",
+    "title": "openbmb/minicpm5-1b",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "huggingface.co/sapientinc/hrm-text-1b",
+    "title": "sapientinc/hrm-text-1b",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "huggingface.co/circlestone-labs/anima",
+    "title": "circlestone-labs/anima",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwopus3.5-9b-coder-mtp-gguf",
+    "title": "jackrong/qwopus3.5-9b-coder-mtp-gguf",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "huggingface.co/jedisct1/mimo-v2.5-coder-q2",
+    "title": "jedisct1/mimo-v2.5-coder-q2",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "huggingface.co/jiunsong/supergemma4-26b-uncensored-gguf-v2",
+    "title": "jiunsong/supergemma4-26b-uncensored-gguf-v2",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "huggingface.co/openbmb/minicpm5-1b-gguf",
+    "title": "openbmb/minicpm5-1b-gguf",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "huggingface.co/facebook/sam3",
+    "title": "facebook/sam3",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "github.com/nexu-io/open-design",
+    "title": "open-design",
+    "date": "2026-05-27"
+  },
+  {
+    "url": "github.com/uditakhourii/adhd",
+    "title": "adhd",
+    "date": "2026-05-27"
   }
 ]
