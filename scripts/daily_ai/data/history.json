@@ -1,70 +1,5 @@
 [
   {
-    "url": "discuss.ai.google.dev/latest",
-    "title": "latest topics - google ai developers forum",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "www.linkedin.com/company/openai/posts",
-    "title": "openai - linkedin",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "community.openai.com/t/turn-valuable-replies-into-a-personal-insight-library/1381764",
-    "title": "turn valuable replies into a personal insight library - feature requests",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "senorantonio.com/items/s214459123",
-    "title": "berghaus ridgemaster shops gemini 3 in 1 - official online store",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "x.com/johnrdallasjr/status/2058963133792727102",
-    "title": "“john r. dallas jr., a metacognition strategist, posts that unlike ...",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "sotelomargalef.com/s/sot1-13-157793-6-29-64-14k+gold+gemini+pendant",
-    "title": "14k gold gemini pendant",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "huggingface.co/sulphurai/sulphur-2-base",
-    "title": "sulphurai/sulphur-2-base",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "huggingface.co/microsoft/lens",
-    "title": "microsoft/lens",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "huggingface.co/lightricks/ltx-2.3",
-    "title": "lightricks/ltx-2.3",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "huggingface.co/openbmb/bitcpm-cann-8b",
-    "title": "openbmb/bitcpm-cann-8b",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "github.com/raiyanyahya/how-to-train-your-gpt",
-    "title": "how-to-train-your-gpt",
-    "date": "2026-05-26"
-  },
-  {
-    "url": "github.com/study8677/awesome-architecture",
-    "title": "awesome-architecture",
-    "date": "2026-05-26"
-  },
-  {
     "url": "platform.openai.com/settings/organization/people/members",
     "title": "people - openai platform",
     "date": "2026-05-27"
@@ -658,5 +593,100 @@
     "url": "github.com/gi-dellav/zerostack",
     "title": "zerostack",
     "date": "2026-06-01"
+  },
+  {
+    "url": "www.snowflake.com/en/news/press-releases/snowflake-and-anthropic-accelerate-enterprise-ai-adoption-driven-by-rising-demand-for-governed-ai",
+    "title": "snowflake and anthropic accelerate enterprise ai adoption",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "help.openai.com/th-th/articles/20001232-setting-up-chatgpt-for-intune",
+    "title": "setting up chatgpt for intune - openai help center",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "www.instagram.com/reel/dzd7voopsjf",
+    "title": "happy gemini season to those who celebrate ... - instagram",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "community.openai.com/t/openai-needs-a-compute-token-economy-before-anthropic-builds-one-a-strategic-proposal/1382180/9",
+    "title": "openai needs a compute token economy before anthropic builds ...",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "www.instagram.com/p/dzdpcgnipyi",
+    "title": "is my gemini showing? - instagram",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "x.com/kirat_tw/status/2061268525592014951",
+    "title": "spending some time working with gemini, anthropic and openai ...",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "community.openai.com/t/too-many-requests-every-5-10-actions-in-the-archive/1382204",
+    "title": "“too many requests” every 5–10 actions in the archive - bugs",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "help.openai.com/en/articles/20001105-trusted-contacts-in-chatgpt",
+    "title": "trusted contacts in chatgpt - openai help center",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "huggingface.co/nvidia/pid",
+    "title": "nvidia/pid",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "huggingface.co/sulphurai/sulphur-2-base",
+    "title": "sulphurai/sulphur-2-base",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "huggingface.co/nvidia/cosmos3-nano",
+    "title": "nvidia/cosmos3-nano",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "huggingface.co/microsoft/lens",
+    "title": "microsoft/lens",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "huggingface.co/nvidia/cosmos3-super",
+    "title": "nvidia/cosmos3-super",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "huggingface.co/unsloth/lfm2.5-8b-a1b-gguf",
+    "title": "unsloth/lfm2.5-8b-a1b-gguf",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen-image-bench",
+    "title": "qwen/qwen-image-bench",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "github.com/stormneonnightraven4640692/deepfake-ai-realtime",
+    "title": "deepfake-ai-realtime",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "github.com/johnbean393/keytype",
+    "title": "keytype",
+    "date": "2026-06-02"
+  },
+  {
+    "url": "github.com/alibaba/open-code-review",
+    "title": "open-code-review",
+    "date": "2026-06-02"
   }
 ]
