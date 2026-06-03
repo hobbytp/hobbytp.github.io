@@ -1,85 +1,5 @@
 [
   {
-    "url": "platform.openai.com/settings/organization/people/members",
-    "title": "people - openai platform",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "gemini.google/overview/daily-brief",
-    "title": "gemini daily brief – smart summaries for busy minds",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "www.linkedin.com/company/anthropicresearch/posts",
-    "title": "anthropic - linkedin",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "x.com/durvidimel/status/2059265463155106008",
-    "title": "gemini coach loops questions and information over and over ...",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "www.reuters.com/world/asia-pacific/china-restricts-overseas-travel-top-ai-talent-alibaba-deepseek-bloomberg-news-2026-05-26",
-    "title": "china restricts overseas travel for top ai talent at alibaba ... - reuters",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "www.youtube.com/watch",
-    "title": "anthropic's mythos only found 1 real curl vulnerability - youtube",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "huggingface.co/openbmb/minicpm5-1b",
-    "title": "openbmb/minicpm5-1b",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "huggingface.co/sapientinc/hrm-text-1b",
-    "title": "sapientinc/hrm-text-1b",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "huggingface.co/circlestone-labs/anima",
-    "title": "circlestone-labs/anima",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwopus3.5-9b-coder-mtp-gguf",
-    "title": "jackrong/qwopus3.5-9b-coder-mtp-gguf",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "huggingface.co/jedisct1/mimo-v2.5-coder-q2",
-    "title": "jedisct1/mimo-v2.5-coder-q2",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "huggingface.co/jiunsong/supergemma4-26b-uncensored-gguf-v2",
-    "title": "jiunsong/supergemma4-26b-uncensored-gguf-v2",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "huggingface.co/openbmb/minicpm5-1b-gguf",
-    "title": "openbmb/minicpm5-1b-gguf",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "huggingface.co/facebook/sam3",
-    "title": "facebook/sam3",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "github.com/nexu-io/open-design",
-    "title": "open-design",
-    "date": "2026-05-27"
-  },
-  {
-    "url": "github.com/uditakhourii/adhd",
-    "title": "adhd",
-    "date": "2026-05-27"
-  },
-  {
     "url": "openai.com/careers/technical-program-manager-demand-planning-and-sandop-remote-us",
     "title": "technical program manager, demand planning and s&op | openai",
     "date": "2026-05-28"
@@ -688,5 +608,100 @@
     "url": "github.com/alibaba/open-code-review",
     "title": "open-code-review",
     "date": "2026-06-02"
+  },
+  {
+    "url": "openai.com/careers/customer-education-program-manager-new-products-san-francisco",
+    "title": "customer education program manager, new products - openai",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "x.com/nitashakaul/status/2061930982370873594/photo/1",
+    "title": "hell yeah. what a long way anthropic have come in such a short ...",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "www.linkedin.com/company/anthropicresearch/posts",
+    "title": "anthropic - linkedin",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "www.youtube.com/watch",
+    "title": "anthropic files for $1t ipo: is ai an existential threat? - youtube",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "www.linkedin.com/posts/sol-rashidi-mba-a672291_artificialintelligence-anthropic-aistrategy-activity-7467543026022694913-zwux",
+    "title": "sol rashidi, mba's post - linkedin",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "www.afr.com/world/north-america/anthropic-offers-australia-access-to-powerful-mythos-model-20260603-p603bw",
+    "title": "anthropic offers australia access to powerful mythos model - afr",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "www.instagram.com/p/dzfc77vdbjx",
+    "title": "a gemini bb defrosting - instagram",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "www.reddit.com/r/googlegeminiai/comments/1tuw2o0/gemini_ai",
+    "title": "gemini ai : r/googlegeminiai - reddit",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "openai.com/careers/revenue-operations-bp-technical-success-san-francisco",
+    "title": "revenue operations bp - technical success - openai",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/openbmb/minicpm5-1b",
+    "title": "openbmb/minicpm5-1b",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/jetbrains/mellum2-12b-a2.5b-thinking",
+    "title": "jetbrains/mellum2-12b-a2.5b-thinking",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/sapientinc/hrm-text-1b",
+    "title": "sapientinc/hrm-text-1b",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/nvidia/cosmos3-super-image2video",
+    "title": "nvidia/cosmos3-super-image2video",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/nvidia/cosmos3-super-text2image",
+    "title": "nvidia/cosmos3-super-text2image",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/circlestone-labs/anima",
+    "title": "circlestone-labs/anima",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/comfy-org/pixeldit",
+    "title": "comfy-org/pixeldit",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/facebook/sam3",
+    "title": "facebook/sam3",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "huggingface.co/meta-llama/llama-3.1-8b-instruct",
+    "title": "meta-llama/llama-3.1-8b-instruct",
+    "date": "2026-06-03"
+  },
+  {
+    "url": "github.com/uditakhourii/adhd",
+    "title": "adhd",
+    "date": "2026-06-03"
   }
 ]
