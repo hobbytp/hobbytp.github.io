@@ -1,95 +1,5 @@
 [
   {
-    "url": "docs.x.ai/developers/models/grok-imagine-video-1.5-preview",
-    "title": "grok imagine video 1.5 preview - xai docs",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "www.reddit.com/r/grok/new",
-    "title": "grok - reddit",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "platform.openai.com/settings/profile/security",
-    "title": "security settings - openai platform",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "www.linkedin.com/posts/divyanshis-saasleadgen_everyone-keeps-saying-ai-gives-them-garbage-activity-7466368369374695424-djel",
-    "title": "everyone keeps saying ai gives them garbage. anthropic just ...",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "community.openai.com/t/may-2026-chatgpt-api-image-gallery-prompt-tips-and-help-generative-art-theme-science/1378298/1274",
-    "title": "may 2026 — chatgpt / api image gallery, prompt tips, and help ...",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "docs.cloud.google.com/gemini-enterprise-agent-platform/build/vector-search-2/try-it",
-    "title": "vector search 2.0 interactive demo | gemini enterprise agent platform",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "www.instagram.com/p/dy-tngasi61",
-    "title": "the arbpro gemini foot & camp turbospur ascenders work so well ...",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "support.google.com/gemini/thread/437690986/chatbot-being-slow",
-    "title": "chatbot being slow :( - gemini apps community - google help",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
-    "title": "deepseek-ai/deepseek-v4-pro",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/tencent/hy-mt2-30b-a3b",
-    "title": "tencent/hy-mt2-30b-a3b",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwopus3.6-27b-v2-mtp-gguf",
-    "title": "jackrong/qwopus3.6-27b-v2-mtp-gguf",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwopus3.6-27b-v2-gguf",
-    "title": "jackrong/qwopus3.6-27b-v2-gguf",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
-    "title": "deepseek-ai/deepseek-v4-flash",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/pyannote/speaker-diarization-3.1",
-    "title": "pyannote/speaker-diarization-3.1",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/stepfun-ai/step-3.7-flash-gguf",
-    "title": "stepfun-ai/step-3.7-flash-gguf",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/obliteratus/qwen3.6-27b-obliterated",
-    "title": "obliteratus/qwen3.6-27b-obliterated",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/kwai-keye/keye-vl-2.0-30b-a3b",
-    "title": "kwai-keye/keye-vl-2.0-30b-a3b",
-    "date": "2026-05-31"
-  },
-  {
-    "url": "huggingface.co/nvidia/qwen3.6-35b-a3b-nvfp4",
-    "title": "nvidia/qwen3.6-35b-a3b-nvfp4",
-    "date": "2026-05-31"
-  },
-  {
     "url": "platform.openai.com/settings/organization/security/ip-allowlist",
     "title": "ip allowlist - openai platform",
     "date": "2026-06-01"
@@ -943,5 +853,85 @@
     "url": "github.com/2arons/duel-agents",
     "title": "duel-agents",
     "date": "2026-06-06"
+  },
+  {
+    "url": "www.anthropic.com/institute/recursive-self-improvement",
+    "title": "when ai builds itself - anthropic",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "business.gemini.google",
+    "title": "gemini business",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "www.reddit.com/r/claudeai/comments/1tybrpv/anthropic_is_not_a_normal_company",
+    "title": "anthropic is not a normal company : r/claudeai - reddit",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "docs.cloud.google.com/gemini-enterprise-agent-platform/models/deploy/priority-paygo",
+    "title": "priority paygo | gemini enterprise agent platform",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "mshale.com/2051b889/5f2100949qrvtgon_r8",
+    "title": "anthropic at $350 billion: would i buy if it ipo'd today? benfica ...",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "www.nature.com/articles/s41598-026-55656-w",
+    "title": "a comparative study of large language models (chatgpt/deepseek ...",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
+    "title": "deepseek-ai/deepseek-v4-pro",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/bosonai/higgs-audio-v3-tts-4b",
+    "title": "bosonai/higgs-audio-v3-tts-4b",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/nvidia/qwen3.6-35b-a3b-nvfp4",
+    "title": "nvidia/qwen3.6-35b-a3b-nvfp4",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
+    "title": "deepseek-ai/deepseek-v4-flash",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/unsloth/gemma-4-12b-it-qat-gguf",
+    "title": "unsloth/gemma-4-12b-it-qat-gguf",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/unsloth/gemma-4-26b-a4b-it-qat-gguf",
+    "title": "unsloth/gemma-4-26b-a4b-it-qat-gguf",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-12b-it-qat-q4_0-gguf",
+    "title": "google/gemma-4-12b-it-qat-q4_0-gguf",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/pyannote/speaker-diarization-3.1",
+    "title": "pyannote/speaker-diarization-3.1",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "huggingface.co/kwai-keye/keye-vl-2.0-30b-a3b",
+    "title": "kwai-keye/keye-vl-2.0-30b-a3b",
+    "date": "2026-06-07"
+  },
+  {
+    "url": "github.com/vibebench/vibesearchbench",
+    "title": "vibesearchbench",
+    "date": "2026-06-07"
   }
 ]
