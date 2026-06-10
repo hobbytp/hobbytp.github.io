@@ -9,6 +9,25 @@ categories: ["my_insights"]
 wordCount: 2156
 readingTime: 6
 ---
+
+## 2026-05-24
+未来真正厉害的人不是：写代码最快的人
+
+而是：
+* 能定义风格的人
+* 能定义约束的人
+* 能定义方向的人
+
+因为 AI 会负责执行。
+
+AI时代最稀缺的人不是 coder。
+
+而是：
+* curator（策展人）
+* editor（编辑）
+* director（导演）
+* architect（架构师）
+
 ## 2026-03-08
 GPT-5.4 Pro（xhigh）在 CritPt 基准测试中取得把最高分从9分（去年11月份，来自Gemini 3 pro preview）提高了10分到19分(GPT-5 (high) 仅达到 5.7%)。CritPt 是一个使用**私有数据集**的基准测试，用于测试在**研究级物理推理任务**上的性能。国产最高分是DeepSeekV3.2 Speciale（7.4分）。详情可以参考[CritPt Benchmark Leaderboard](https://artificialanalysis.ai/evaluations/critpt?models=gpt-oss-120b%2Cgpt-5-4-pro%2Cgpt-5-2%2Cgpt-5-3-codex%2Cgpt-5-4%2Cgemini-3-1-pro-preview%2Cgemini-3-flash-reasoning%2Cclaude-4-5-haiku-reasoning%2Cclaude-opus-4-6-adaptive%2Cclaude-sonnet-4-6-adaptive%2Cmistral-large-3%2Cdeepseek-v3-2-reasoning%2Cdeepseek-v3-2-speciale%2Cgrok-4-1-fast-reasoning%2Cminimax-m2-5%2Ckimi-k2-5%2Cglm-5%2Cqwen3-5-397b-a17b%2Cgemini-3-pro)
 
