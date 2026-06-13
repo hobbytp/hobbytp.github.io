@@ -1,370 +1,5 @@
 [
   {
-    "url": "platform.openai.com/settings/profile/user",
-    "title": "profile user - openai platform",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "www.dragos.com/blog/dragos-joins-anthropic-project-glasswing",
-    "title": "dragos joins anthropic's project glasswing",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "pt.linkedin.com/posts/milena-barros-leal_googlecloud-sele%c3%a7%c3%a3obrasileira-gemini-activity-7468661069201170432-b5ec",
-    "title": "#googlecloud #seleçãobrasileira #gemini | milena leal - linkedin",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "www.france24.com/en/technology/20260605-anthropic-calls-for-global-ai-slowdown-says-systems-may-outpace-human-control",
-    "title": "'human role narrowing': anthropic calls for global ai slowdown as ...",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "x.com/clintbetts/status/2062703399389508067",
-    "title": "anthropic is calling for a collective pause (or slowdown) in ai ...",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "www.cnbc.com/2026/06/05/model-routing-on-ai-is-a-problem-for-openai-and-anthropic.html",
-    "title": "model routing on ai is a problem for openai and anthropic - cnbc",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "x.com/vtrivedy10/status/2062907178428567791",
-    "title": "did openai basically solve compaction? i pretty much never have ...",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/liquidai/lfm2.5-8b-a1b",
-    "title": "liquidai/lfm2.5-8b-a1b",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/ideogram-ai/ideogram-4-fp8",
-    "title": "ideogram-ai/ideogram-4-fp8",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/stepfun-ai/step-3.7-flash",
-    "title": "stepfun-ai/step-3.7-flash",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/ideogram-ai/ideogram-4-nf4",
-    "title": "ideogram-ai/ideogram-4-nf4",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b",
-    "title": "nvidia/nemotron-3.5-asr-streaming-0.6b",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/paddlepaddle/paddleocr-vl-1.6",
-    "title": "paddlepaddle/paddleocr-vl-1.6",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/meituan-longcat/longcat-video-avatar-1.5",
-    "title": "meituan-longcat/longcat-video-avatar-1.5",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-ultra-550b-a55b-bf16",
-    "title": "nvidia/nvidia-nemotron-3-ultra-550b-a55b-bf16",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-ultra-550b-a55b-nvfp4",
-    "title": "nvidia/nvidia-nemotron-3-ultra-550b-a55b-nvfp4",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/liquidai/lfm2.5-8b-a1b-gguf",
-    "title": "liquidai/lfm2.5-8b-a1b-gguf",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/google/magenta-realtime-2",
-    "title": "google/magenta-realtime-2",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/jdopensource/joyai-echo",
-    "title": "jdopensource/joyai-echo",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
-    "title": "qwen/qwen3.6-35b-a3b",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "huggingface.co/supertone/supertonic-3",
-    "title": "supertone/supertonic-3",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06494v1",
-    "title": "taillor: protecting principal components in parameter-efficient continual learning",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06493v1",
-    "title": "handoff: humanoid agentic task-space whole-body control via distilled complementary teachers",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06492v1",
-    "title": "code2lora: hypernetwork-generated adapters for code language models under software evolution",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06491v1",
-    "title": "tempovla: learning speed-controllable vision-language-action policies",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06486v1",
-    "title": "regret minimization with adaptive opponents in repeated games",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06485v1",
-    "title": "par3d: a unified 3d-mllm with part-aware representation for scene understanding",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06481v1",
-    "title": "operation-guided progressive human-to-ai text transformation benchmark for multi-granularity ai-text detection",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06480v1",
-    "title": "dnq: deep nash q-network for partially observable n-player games",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06479v1",
-    "title": "pretraining recurrent networks without recurrence",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06477v1",
-    "title": "complexity-balanced diffusion splitting",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06476v1",
-    "title": "thinking with imagination: agentic visual spatial reasoning with world simulators",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06475v1",
-    "title": "rredcot: segment-level reward redistribution for reasoning models",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06474v1",
-    "title": "self-augmenting retrieval for diffusion language models",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06473v1",
-    "title": "mlevolve: a self-evolving framework for automated machine learning algorithm discovery",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06470v1",
-    "title": "pc layer: polynomial weight preconditioning for improving llm pre-training",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06469v1",
-    "title": "how abundant are good interpolators?",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06468v1",
-    "title": "goedel-architect: streamlining formal theorem proving with blueprint generation and refinement",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06467v1",
-    "title": "you only index once: cross-layer sparse attention with shared routing",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06464v1",
-    "title": "human adults and llms as scientists: who benefits from active exploration?",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06462v1",
-    "title": "benchmark everything everywhere all at once",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06460v1",
-    "title": "will the agent recuse itself? measuring llm-agent compliance with in-band access-deny signals",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06459v1",
-    "title": "event detection for parameter-to-kpi dependency learning for ai-ran",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06458v1",
-    "title": "in-context multiple instance learning",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06454v1",
-    "title": "scaffold, not vocabulary? a controlled, two-tier, pre-registered study of a popperian code-generation skill",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06453v1",
-    "title": "vortex: efficient and programmable sparse attention serving for ai agents",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06448v1",
-    "title": "agent memory: characterization and system implications of stateful long-horizon workloads",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06447v1",
-    "title": "latent reasoning with normalizing flows",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06444v1",
-    "title": "usad 2.0: scaling representation distillation for universal audio understanding",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06443v1",
-    "title": "revising context, shifting simulated stance: auditing llm-based stance simulation in online discussions",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06440v1",
-    "title": "causal atlases from entropic inference: bayesian networks beyond optimal dags",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06428v1",
-    "title": "reinforcement learning elicits contextual learning of unseen language translation",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06423v1",
-    "title": "riskflow: fast and faithful safety-critical traffic scenario generation",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06420v1",
-    "title": "a komi-yazva--russian parallel corpus and evaluation protocol for zero- and few-shot llm translation",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06418v1",
-    "title": "double preconditioning (dopr): optimization for test-time performance, not validation loss",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06416v1",
-    "title": "unsupervised skill discovery for agentic data analysis",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06407v1",
-    "title": "a vision-language framework for comparative reasoning in radiology",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06399v1",
-    "title": "collabsim: a cscw-grounded methodology for investigating collaborative competence of llm agents through controlled multi-agent experiments",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06397v1",
-    "title": "the post-gcn decade revisited: curvature-stratified evaluation of relational learning",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06396v1",
-    "title": "risk assessment of autonomous driving: integrating technical failures, ethical dilemmas, and policy frameworks",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06393v1",
-    "title": "proper scoring rules for right-censored survival data",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06391v1",
-    "title": "conformal risk sharing: certified cost allocation with participation guarantees",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06390v1",
-    "title": "homeworld: a unified floorplan-to-furnished framework for generating controllable, densely interactive whole-home scenes",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06388v1",
-    "title": "humans' almanac: a human collaboration dataset of action-level mental model annotations for agent collaboration",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06385v1",
-    "title": "learned response-field inertia operator for hec-ras 2d water-surface elevation prediction",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06380v1",
-    "title": "emergent language as an approach to conscious ai",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06379v1",
-    "title": "easylens: a training-free plug-and-play subtle-lesion representation amplifier for medical vision-language models",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06375v1",
-    "title": "rethinking infrastructure inspection as image difference classification: a traffic sign case study",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06373v1",
-    "title": "latentwave: jepa pretraining for wireless foundation models",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06369v1",
-    "title": "visual commonsense driven knowledge refinements for scene graph generation",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.06364v1",
-    "title": "end-to-end subgraph detection with graphdetr",
-    "date": "2026-06-06"
-  },
-  {
-    "url": "github.com/2arons/duel-agents",
-    "title": "duel-agents",
-    "date": "2026-06-06"
-  },
-  {
     "url": "www.anthropic.com/institute/recursive-self-improvement",
     "title": "when ai builds itself - anthropic",
     "date": "2026-06-07"
@@ -2108,5 +1743,380 @@
     "url": "github.com/cobusgreyling/loop-engineering",
     "title": "loop-engineering",
     "date": "2026-06-12"
+  },
+  {
+    "url": "darioamodei.com/post/policy-on-the-ai-exponential",
+    "title": "policy on the ai exponential - dario amodei",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "www.instagram.com/p/dzgxv9jdttx",
+    "title": "happy birthday to my fellow gemini! sean, from sunup ... - instagram",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-gemma",
+    "title": "use gemma open models | gemini enterprise agent platform",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "x.com/howardl3/status/2065466105619951874",
+    "title": "sorry @grok but the massive velocity downshift when i switch to ...",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "blog.google/intl/en-ie/products/gemini-omni",
+    "title": "introducing gemini omni - google blog",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "x.com/theo/status/2065578944716308965",
+    "title": "i think anthropic silently edited the system card for mythos 5 and ...",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "support.google.com/googleone/thread/441002007/my-main-account-with-a-18-month-gemini-pro-subscription-is-locked-after-a-phone-reset-jio-team-aske",
+    "title": "my main account with a 18-month gemini pro subscription is locked ...",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "www.youtube.com/shorts/encblcmirlg",
+    "title": "this year with gemini and captain fayez, we'll learn that ... - youtube",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/google/diffusiongemma-26b-a4b-it",
+    "title": "google/diffusiongemma-26b-a4b-it",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/ideogram-ai/ideogram-4-fp8",
+    "title": "ideogram-ai/ideogram-4-fp8",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/unsloth/diffusiongemma-26b-a4b-it-gguf",
+    "title": "unsloth/diffusiongemma-26b-a4b-it-gguf",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b",
+    "title": "nvidia/nemotron-3.5-asr-streaming-0.6b",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/ideogram-ai/ideogram-4-nf4",
+    "title": "ideogram-ai/ideogram-4-nf4",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/google/magenta-realtime-2",
+    "title": "google/magenta-realtime-2",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/nvidia/nvidia-nemotron-3-ultra-550b-a55b-bf16",
+    "title": "nvidia/nvidia-nemotron-3-ultra-550b-a55b-bf16",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/liquidai/lfm2.5-8b-a1b",
+    "title": "liquidai/lfm2.5-8b-a1b",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
+    "title": "qwen/qwen3.6-35b-a3b",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/jdopensource/joyai-echo",
+    "title": "jdopensource/joyai-echo",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/nvidia/nvidia-nemotron-3-ultra-550b-a55b-nvfp4",
+    "title": "nvidia/nvidia-nemotron-3-ultra-550b-a55b-nvfp4",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/unsloth/north-mini-code-1.0-gguf",
+    "title": "unsloth/north-mini-code-1.0-gguf",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "huggingface.co/paddlepaddle/paddleocr-vl-1.6",
+    "title": "paddlepaddle/paddleocr-vl-1.6",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13681v1",
+    "title": "evoarena: tracking memory evolution for robust llm agents in dynamic environments",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13680v1",
+    "title": "learning to reason by analogy via retrieval-augmented reinforcement fine-tuning",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13679v1",
+    "title": "interleavethinker: reinforcing agentic interleaved generation",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13677v1",
+    "title": "mana: dexterous manipulation of articulated tools",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13676v1",
+    "title": "modality forcing for scalable spatial generation",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13674v1",
+    "title": "repwam: world action modeling with representation visual-action tokenizers",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13673v1",
+    "title": "spatialclaw: rethinking action interface for agentic spatial reasoning",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13671v1",
+    "title": "understanding truncated positional encodings for graph neural networks",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13670v1",
+    "title": "automated reproducibility assessments in the social and behavioral sciences using large language models",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13669v1",
+    "title": "agents-k1: towards agent-native knowledge orchestration",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13668v1",
+    "title": "influcoder: distilling decoders' gradient influence rankings into an encoder for data attribution",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13663v1",
+    "title": "hypertool: beyond step-wise tool calls for tool-augmented agents",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13662v1",
+    "title": "eurekagent: agent environment engineering is all you need for autonomous scientific discovery",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13658v1",
+    "title": "before you think: system 0, ai-mediated cognition and cognitive colonization",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13657v1",
+    "title": "dense supervision, sparse updates: on the sparsity and geometry of on-policy distillation",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13655v1",
+    "title": "flex4dhuman: flexible multi-view video diffusion for 4d human reconstruction",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13652v1",
+    "title": "world tracing: generative pixel-aligned geometry beyond the visible",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13649v1",
+    "title": "operadic consistency: a label-free signal for compositional reasoning failures in llms",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13647v1",
+    "title": "skmteb: slovak massive text embedding benchmark and model adaptation",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13644v1",
+    "title": "surflo: consistent 3d surface flow model with global state",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13643v1",
+    "title": "recursive agent harnesses",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13637v1",
+    "title": "the stable recovery manifold: geometric principles governing recoverability in continual learning",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13634v1",
+    "title": "operads for compositional reasoning in llms",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13633v1",
+    "title": "aerial wildfire suppression planning with a hybrid cnn-cellular automata fire model",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13630v1",
+    "title": "from tokens to faces: investigating discrete speech representations for 3d facial animation",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13629v1",
+    "title": "valid inference with synthetic data via task exchangeability",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13626v1",
+    "title": "generative modeling of bach-style symbolic music: a comparative study of autoregressive, latent-variable, and adversarial approaches",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13625v1",
+    "title": "revisiting vehicle color recognition in long-tailed surveillance scenarios",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13624v1",
+    "title": "beyond uniform tokens: adaptive compression for time series language models",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13621v1",
+    "title": "beyond runtime enforcement: shield synthesis as defensibility analysis for adversarial networks",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13614v1",
+    "title": "majority-of-three is optimal",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13610v1",
+    "title": "one polluted page is enough: evaluating web content pollution in generative recommenders",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13608v1",
+    "title": "agentbeats: agentifying agent assessment for openness, standardization, and reproducibility",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13607v1",
+    "title": "reasoning as pattern matching: shared mechanisms in human and llm everyday reasoning",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13605v1",
+    "title": "distribution-agnostic robust trajectory optimization via chance-constrained reinforcement learning",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13604v1",
+    "title": "multi-agent reinforcement learning from delayed marketplace feedback for objective-weight adaptation in three-sided dispatch",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13603v1",
+    "title": "beyond the commitment boundary: probing epiphenomenal chain-of-thought in large reasoning models",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13602v1",
+    "title": "epibench: verifiable evaluation of ai agents on epigenomics analysis",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13598v1",
+    "title": "reward modeling for multi-agent orchestration",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13591v1",
+    "title": "multiagent protocols with aggregated confidence signals",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13589v1",
+    "title": "simplex-constrained sparse bagging: transitioning from uniform priors to sparse posteriors in ensemble learning",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13587v1",
+    "title": "towards effective waste segmentation for automated waste recycling in cluttered background",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13581v1",
+    "title": "the tone of awareness: topic, sentiment, and toxicity maps during mental health month on tiktok",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13580v1",
+    "title": "evtexture++: event-driven texture enhancement for video super-resolution",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13578v1",
+    "title": "labvla: grounding vision-language-action models in scientific laboratories",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13576v1",
+    "title": "learning with simulators: no regret in a computationally bounded world",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13572v1",
+    "title": "arogyasutra: a multi-agent framework for multimodal medical reasoning in indic languages",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13571v1",
+    "title": "existence precedes value: joint modeling of observational existence and evolving states in time series forecasting",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13568v1",
+    "title": "adjusted cup-product neural layer",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "arxiv.org/pdf/2606.13566v1",
+    "title": "a three-layer framework for ai in scientific discovery",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "github.com/dietrichgebert/ponytail",
+    "title": "ponytail",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "github.com/alchaincyf/fanbox",
+    "title": "fanbox",
+    "date": "2026-06-13"
+  },
+  {
+    "url": "github.com/2arons/duel-agents",
+    "title": "duel-agents",
+    "date": "2026-06-13"
   }
 ]
