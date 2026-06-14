@@ -1,85 +1,5 @@
 [
   {
-    "url": "www.anthropic.com/institute/recursive-self-improvement",
-    "title": "when ai builds itself - anthropic",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "business.gemini.google",
-    "title": "gemini business",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "www.reddit.com/r/claudeai/comments/1tybrpv/anthropic_is_not_a_normal_company",
-    "title": "anthropic is not a normal company : r/claudeai - reddit",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "docs.cloud.google.com/gemini-enterprise-agent-platform/models/deploy/priority-paygo",
-    "title": "priority paygo | gemini enterprise agent platform",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "mshale.com/2051b889/5f2100949qrvtgon_r8",
-    "title": "anthropic at $350 billion: would i buy if it ipo'd today? benfica ...",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "www.nature.com/articles/s41598-026-55656-w",
-    "title": "a comparative study of large language models (chatgpt/deepseek ...",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
-    "title": "deepseek-ai/deepseek-v4-pro",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/bosonai/higgs-audio-v3-tts-4b",
-    "title": "bosonai/higgs-audio-v3-tts-4b",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/nvidia/qwen3.6-35b-a3b-nvfp4",
-    "title": "nvidia/qwen3.6-35b-a3b-nvfp4",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
-    "title": "deepseek-ai/deepseek-v4-flash",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/unsloth/gemma-4-12b-it-qat-gguf",
-    "title": "unsloth/gemma-4-12b-it-qat-gguf",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/unsloth/gemma-4-26b-a4b-it-qat-gguf",
-    "title": "unsloth/gemma-4-26b-a4b-it-qat-gguf",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/google/gemma-4-12b-it-qat-q4_0-gguf",
-    "title": "google/gemma-4-12b-it-qat-q4_0-gguf",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/pyannote/speaker-diarization-3.1",
-    "title": "pyannote/speaker-diarization-3.1",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "huggingface.co/kwai-keye/keye-vl-2.0-30b-a3b",
-    "title": "kwai-keye/keye-vl-2.0-30b-a3b",
-    "date": "2026-06-07"
-  },
-  {
-    "url": "github.com/vibebench/vibesearchbench",
-    "title": "vibesearchbench",
-    "date": "2026-06-07"
-  },
-  {
     "url": "discuss.ai.google.dev/c/antigravity/64",
     "title": "latest google antigravity topics - google ai developers forum",
     "date": "2026-06-08"
@@ -2118,5 +2038,105 @@
     "url": "github.com/2arons/duel-agents",
     "title": "duel-agents",
     "date": "2026-06-13"
+  },
+  {
+    "url": "www.linkedin.com/company/openai/posts",
+    "title": "openai - linkedin",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "www.reddit.com/r/singularity/comments/1u4wrxb/amazon_ceos_talks_with_us_officials_triggered",
+    "title": "amazon ceo's talks with u.s. officials, triggered crackdown on ...",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "www.cbc.ca/news/business/anthropic-ai-mythos-latest-model-offline-9.7234543",
+    "title": "anthropic says it has taken its latest ai models offline | cbc news",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "www.anthropic.com/webinars/claude-corps-how-to-become-a-host-organization",
+    "title": "claude corps: how to become a host organization - anthropic",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "docs.cloud.google.com/gemini-enterprise-agent-platform/models/deploy/priority-paygo",
+    "title": "priority paygo | gemini enterprise agent platform",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/moonshotai/kimi-k2.7-code",
+    "title": "moonshotai/kimi-k2.7-code",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/minimaxai/minimax-m3",
+    "title": "minimaxai/minimax-m3",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/bosonai/higgs-audio-v3-tts-4b",
+    "title": "bosonai/higgs-audio-v3-tts-4b",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/jackrong/qwopus3.6-27b-coder-mtp-gguf",
+    "title": "jackrong/qwopus3.6-27b-coder-mtp-gguf",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/prefeitura-rio/rio-3.5-open-397b",
+    "title": "prefeitura-rio/rio-3.5-open-397b",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/unsloth/gemma-4-12b-it-qat-gguf",
+    "title": "unsloth/gemma-4-12b-it-qat-gguf",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
+    "title": "deepseek-ai/deepseek-v4-pro",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/unsloth/gemma-4-26b-a4b-it-qat-gguf",
+    "title": "unsloth/gemma-4-26b-a4b-it-qat-gguf",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-12b-it-qat-q4_0-gguf",
+    "title": "google/gemma-4-12b-it-qat-q4_0-gguf",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/yuxinlu1/gemma-4-12b-coder-fable5-composer2.5-v1-gguf",
+    "title": "yuxinlu1/gemma-4-12b-coder-fable5-composer2.5-v1-gguf",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/pyannote/speaker-diarization-3.1",
+    "title": "pyannote/speaker-diarization-3.1",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
+    "title": "deepseek-ai/deepseek-v4-flash",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "huggingface.co/nvidia/diffusiongemma-26b-a4b-it-nvfp4",
+    "title": "nvidia/diffusiongemma-26b-a4b-it-nvfp4",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "github.com/buynao/aipath",
+    "title": "aipath",
+    "date": "2026-06-14"
+  },
+  {
+    "url": "github.com/kadevin/ilab-gpt-conjure",
+    "title": "ilab-gpt-conjure",
+    "date": "2026-06-14"
   }
 ]
