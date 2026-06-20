@@ -1,380 +1,5 @@
 [
   {
-    "url": "darioamodei.com/post/policy-on-the-ai-exponential",
-    "title": "policy on the ai exponential - dario amodei",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "www.instagram.com/p/dzgxv9jdttx",
-    "title": "happy birthday to my fellow gemini! sean, from sunup ... - instagram",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "docs.cloud.google.com/gemini-enterprise-agent-platform/models/open-models/use-gemma",
-    "title": "use gemma open models | gemini enterprise agent platform",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "x.com/howardl3/status/2065466105619951874",
-    "title": "sorry @grok but the massive velocity downshift when i switch to ...",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "blog.google/intl/en-ie/products/gemini-omni",
-    "title": "introducing gemini omni - google blog",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "x.com/theo/status/2065578944716308965",
-    "title": "i think anthropic silently edited the system card for mythos 5 and ...",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "support.google.com/googleone/thread/441002007/my-main-account-with-a-18-month-gemini-pro-subscription-is-locked-after-a-phone-reset-jio-team-aske",
-    "title": "my main account with a 18-month gemini pro subscription is locked ...",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "www.youtube.com/shorts/encblcmirlg",
-    "title": "this year with gemini and captain fayez, we'll learn that ... - youtube",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/google/diffusiongemma-26b-a4b-it",
-    "title": "google/diffusiongemma-26b-a4b-it",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/ideogram-ai/ideogram-4-fp8",
-    "title": "ideogram-ai/ideogram-4-fp8",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/unsloth/diffusiongemma-26b-a4b-it-gguf",
-    "title": "unsloth/diffusiongemma-26b-a4b-it-gguf",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b",
-    "title": "nvidia/nemotron-3.5-asr-streaming-0.6b",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/ideogram-ai/ideogram-4-nf4",
-    "title": "ideogram-ai/ideogram-4-nf4",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/google/magenta-realtime-2",
-    "title": "google/magenta-realtime-2",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-ultra-550b-a55b-bf16",
-    "title": "nvidia/nvidia-nemotron-3-ultra-550b-a55b-bf16",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/liquidai/lfm2.5-8b-a1b",
-    "title": "liquidai/lfm2.5-8b-a1b",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
-    "title": "qwen/qwen3.6-35b-a3b",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/jdopensource/joyai-echo",
-    "title": "jdopensource/joyai-echo",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/nvidia/nvidia-nemotron-3-ultra-550b-a55b-nvfp4",
-    "title": "nvidia/nvidia-nemotron-3-ultra-550b-a55b-nvfp4",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/unsloth/north-mini-code-1.0-gguf",
-    "title": "unsloth/north-mini-code-1.0-gguf",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "huggingface.co/paddlepaddle/paddleocr-vl-1.6",
-    "title": "paddlepaddle/paddleocr-vl-1.6",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13681v1",
-    "title": "evoarena: tracking memory evolution for robust llm agents in dynamic environments",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13680v1",
-    "title": "learning to reason by analogy via retrieval-augmented reinforcement fine-tuning",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13679v1",
-    "title": "interleavethinker: reinforcing agentic interleaved generation",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13677v1",
-    "title": "mana: dexterous manipulation of articulated tools",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13676v1",
-    "title": "modality forcing for scalable spatial generation",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13674v1",
-    "title": "repwam: world action modeling with representation visual-action tokenizers",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13673v1",
-    "title": "spatialclaw: rethinking action interface for agentic spatial reasoning",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13671v1",
-    "title": "understanding truncated positional encodings for graph neural networks",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13670v1",
-    "title": "automated reproducibility assessments in the social and behavioral sciences using large language models",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13669v1",
-    "title": "agents-k1: towards agent-native knowledge orchestration",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13668v1",
-    "title": "influcoder: distilling decoders' gradient influence rankings into an encoder for data attribution",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13663v1",
-    "title": "hypertool: beyond step-wise tool calls for tool-augmented agents",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13662v1",
-    "title": "eurekagent: agent environment engineering is all you need for autonomous scientific discovery",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13658v1",
-    "title": "before you think: system 0, ai-mediated cognition and cognitive colonization",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13657v1",
-    "title": "dense supervision, sparse updates: on the sparsity and geometry of on-policy distillation",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13655v1",
-    "title": "flex4dhuman: flexible multi-view video diffusion for 4d human reconstruction",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13652v1",
-    "title": "world tracing: generative pixel-aligned geometry beyond the visible",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13649v1",
-    "title": "operadic consistency: a label-free signal for compositional reasoning failures in llms",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13647v1",
-    "title": "skmteb: slovak massive text embedding benchmark and model adaptation",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13644v1",
-    "title": "surflo: consistent 3d surface flow model with global state",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13643v1",
-    "title": "recursive agent harnesses",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13637v1",
-    "title": "the stable recovery manifold: geometric principles governing recoverability in continual learning",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13634v1",
-    "title": "operads for compositional reasoning in llms",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13633v1",
-    "title": "aerial wildfire suppression planning with a hybrid cnn-cellular automata fire model",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13630v1",
-    "title": "from tokens to faces: investigating discrete speech representations for 3d facial animation",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13629v1",
-    "title": "valid inference with synthetic data via task exchangeability",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13626v1",
-    "title": "generative modeling of bach-style symbolic music: a comparative study of autoregressive, latent-variable, and adversarial approaches",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13625v1",
-    "title": "revisiting vehicle color recognition in long-tailed surveillance scenarios",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13624v1",
-    "title": "beyond uniform tokens: adaptive compression for time series language models",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13621v1",
-    "title": "beyond runtime enforcement: shield synthesis as defensibility analysis for adversarial networks",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13614v1",
-    "title": "majority-of-three is optimal",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13610v1",
-    "title": "one polluted page is enough: evaluating web content pollution in generative recommenders",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13608v1",
-    "title": "agentbeats: agentifying agent assessment for openness, standardization, and reproducibility",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13607v1",
-    "title": "reasoning as pattern matching: shared mechanisms in human and llm everyday reasoning",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13605v1",
-    "title": "distribution-agnostic robust trajectory optimization via chance-constrained reinforcement learning",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13604v1",
-    "title": "multi-agent reinforcement learning from delayed marketplace feedback for objective-weight adaptation in three-sided dispatch",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13603v1",
-    "title": "beyond the commitment boundary: probing epiphenomenal chain-of-thought in large reasoning models",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13602v1",
-    "title": "epibench: verifiable evaluation of ai agents on epigenomics analysis",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13598v1",
-    "title": "reward modeling for multi-agent orchestration",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13591v1",
-    "title": "multiagent protocols with aggregated confidence signals",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13589v1",
-    "title": "simplex-constrained sparse bagging: transitioning from uniform priors to sparse posteriors in ensemble learning",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13587v1",
-    "title": "towards effective waste segmentation for automated waste recycling in cluttered background",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13581v1",
-    "title": "the tone of awareness: topic, sentiment, and toxicity maps during mental health month on tiktok",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13580v1",
-    "title": "evtexture++: event-driven texture enhancement for video super-resolution",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13578v1",
-    "title": "labvla: grounding vision-language-action models in scientific laboratories",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13576v1",
-    "title": "learning with simulators: no regret in a computationally bounded world",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13572v1",
-    "title": "arogyasutra: a multi-agent framework for multimodal medical reasoning in indic languages",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13571v1",
-    "title": "existence precedes value: joint modeling of observational existence and evolving states in time series forecasting",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13568v1",
-    "title": "adjusted cup-product neural layer",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.13566v1",
-    "title": "a three-layer framework for ai in scientific discovery",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "github.com/dietrichgebert/ponytail",
-    "title": "ponytail",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "github.com/alchaincyf/fanbox",
-    "title": "fanbox",
-    "date": "2026-06-13"
-  },
-  {
-    "url": "github.com/2arons/duel-agents",
-    "title": "duel-agents",
-    "date": "2026-06-13"
-  },
-  {
     "url": "www.linkedin.com/company/openai/posts",
     "title": "openai - linkedin",
     "date": "2026-06-14"
@@ -1633,5 +1258,115 @@
     "url": "github.com/study8677/awesome-architecture",
     "title": "awesome-architecture",
     "date": "2026-06-19"
+  },
+  {
+    "url": "community.openai.com/t/my-account-was-deactivated/1384168",
+    "title": "my account was deactivated! - openai developer community",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "x.com/theo/status/2068078193349910581",
+    "title": "gemini's current position reminds me of llama's position early last ...",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "www.reddit.com/r/hermesagent/comments/1u9vpus/grok_43",
+    "title": "grok 4.3 : r/hermesagent - reddit",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "fr.linkedin.com/posts/marie-line-rubini-a6867a5b_ia-generativeai-anthropic-activity-7473603256863301632-v6cq",
+    "title": "post de marie-line rubini - linkedin",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "www.linkedin.com/posts/elisabeta-moraru-418b7519_gemini-gemini-omni-activity-7473640865014566914-oquj",
+    "title": "#gemini #gemini #omni #google | elisabeta moraru - linkedin",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "www.cybertruckownersclub.com/forum/threads/new-grok-tricks.59333",
+    "title": "new grok tricks | tesla cybertruck forum",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "www.instagram.com/p/dzw_bzrlbpe",
+    "title": "gemini season + family plannings - happy 18th anniversary to my ...",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "www.youtube.com/shorts/c0gvudvflrs",
+    "title": "open ai or black box? #ai #chatgpt #linux #gemini - youtube",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/google/diffusiongemma-26b-a4b-it",
+    "title": "google/diffusiongemma-26b-a4b-it",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/unsloth/glm-5.2-gguf",
+    "title": "unsloth/glm-5.2-gguf",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/nvidia/nemotron-3.5-asr-streaming-0.6b",
+    "title": "nvidia/nemotron-3.5-asr-streaming-0.6b",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/unsloth/diffusiongemma-26b-a4b-it-gguf",
+    "title": "unsloth/diffusiongemma-26b-a4b-it-gguf",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
+    "title": "qwen/qwen3.6-35b-a3b",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/ostris/ideogram_4_turbotime_lora",
+    "title": "ostris/ideogram_4_turbotime_lora",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/ideogram-ai/ideogram-4-fp8",
+    "title": "ideogram-ai/ideogram-4-fp8",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/alexwortega/siq-1-35b",
+    "title": "alexwortega/siq-1-35b",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/gryphe/gemma-4-31b-styletune",
+    "title": "gryphe/gemma-4-31b-styletune",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "huggingface.co/google/gemma-4-31b-it",
+    "title": "google/gemma-4-31b-it",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "github.com/dietrichgebert/ponytail",
+    "title": "ponytail",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "github.com/alchaincyf/fanbox",
+    "title": "fanbox",
+    "date": "2026-06-20"
+  },
+  {
+    "url": "github.com/2arons/duel-agents",
+    "title": "duel-agents",
+    "date": "2026-06-20"
   }
 ]
