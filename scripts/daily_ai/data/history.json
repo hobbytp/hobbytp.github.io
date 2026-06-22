@@ -1,280 +1,5 @@
 [
   {
-    "url": "houseofscorpio.com/membership.html",
-    "title": "house of scorpio > membership & event tickets",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "www.japantimes.co.jp/business/2026/06/14/tech/anthropic-mythos-us-order",
-    "title": "anthropic shuts down mythos access after sweeping u.s. order",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "www.newsweek.com/trumps-ban-on-foreign-access-to-new-anthropic-models-sparks-tech-backlash-12070846",
-    "title": "trump's ban on foreign access to new anthropic models sparks tech ...",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "www.reuters.com/legal/litigation/eu-commission-looking-practical-consequences-anthropic-decision-spokesperson-2026-06-14",
-    "title": "eu commission looking at practical consequences of anthropic ...",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "www.reddit.com/r/directvstream/comments/1u5oudj/new_lg_tv_with_my_directv_gemini_keeps_changing",
-    "title": "new lg tv with my directv gemini, keeps changing resolution!!",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14629v1",
-    "title": "when good verifiers go bad: self-improving vlms can regress on new tasks",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14626v1",
-    "title": "characterizing cultural localization in ai-generated stories",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14620v1",
-    "title": "neither parallel nor sequential: how diffusiongemma actually commits tokens",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14619v1",
-    "title": "stereogeo: an end-to-end stereo camera calibration method",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14612v1",
-    "title": "moonlight in latent space: chirality and structural correspondence between beethoven's op. 27 no. 2 and machine learning mechanisms",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14608v1",
-    "title": "expert-driven survival machines: improving stratification and interpretability in multiple clinical cohorts",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14604v1",
-    "title": "a comparative study of deep learning architectures for multi-horizon behavioural forecasting for mobile health",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14601v1",
-    "title": "a statistical and machine learning framework for operational threshold detection and deployable dispatch controller development in hydrogen multi-energy systems",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14600v1",
-    "title": "losona: a benchmark for local social norm adaptation in group conversations",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14598v1",
-    "title": "realizing native int8 compute for diffusion transformers on consumer gpus: a fused int8 gemm kernel for ideogram 4.0",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14597v1",
-    "title": "zero-shot generalization of transformer neural operators to larger domains",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14594v1",
-    "title": "regulating the machine contributor: governance and policy alignment in open source",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14592v1",
-    "title": "cluster loco: feature importance for interpreting clusters",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14591v1",
-    "title": "audioder: a deduplication-enhanced reasoning dataset for post-training large audio-language models",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14589v1",
-    "title": "when errors become narratives: a longitudinal taxonomy of silent failures in a production llm agent runtime",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14586v1",
-    "title": "s$^2$cope: self-supervised concept discovery via preference learning",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14585v1",
-    "title": "sensitivity shaping for latent modeling",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14582v1",
-    "title": "a temporal planning framework for disruption aware dynamic route optimization in heterogeneous railway systems",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14581v1",
-    "title": "care: controlling llm-generated policies through auditable review of evidence in scientific experimentation",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14580v1",
-    "title": "persuasion index: a theory-guided framework for persuasion analysis",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14579v1",
-    "title": "vista: view-consistent self-verified training for gui grounding",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14578v1",
-    "title": "a qualitative review of genai-based methods for data generation and augmentation in industrial computer vision applications",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14574v1",
-    "title": "simmer: benchmarking latent failures in llm executable planning with a world model",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14571v1",
-    "title": "streammembench: streaming evaluation of agent memory for future-oriented assistance",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14570v1",
-    "title": "regional climate model emulation with diffusion approaches: what is the added value of generative machine learning?",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14568v1",
-    "title": "trimodal glioma representation alignment via volumetric contrastive learning",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14565v1",
-    "title": "cann-euclid: unsupervised constitutive artificial neural network model discovery from full-field data",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14562v1",
-    "title": "nest3d: a high-resolution multimodal dataset of sociable weaver tree nests",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14561v1",
-    "title": "orca: a platform for open-source dexterity research",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14560v1",
-    "title": "free heavy-tailed lunch for muon: a theoretical justification of empirical success",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14556v1",
-    "title": "visual quality score assessment of large white goods in remanufacture with multi-view deformable-detr",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14555v1",
-    "title": "rethinking global average pooling: your classifier is secretly a multi-instance learner",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14551v1",
-    "title": "trace: trajectory-routed causal memory for delayed-evidence visuomotor imitation",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14536v1",
-    "title": "provably safe, yet scalable reinforcement learning",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14534v1",
-    "title": "a lightweight fiducial-based pipeline for 3d hyperspectral mapping of ex-vivo lumpectomy specimens",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14533v1",
-    "title": "the risk shadow of principal component analysis: when 99.9999% variance preservation causes catastrophic decision errors",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14530v1",
-    "title": "code correctness signals in llm hidden states: pre-generation probing and repair geometry",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14528v1",
-    "title": "bayling-duplex: native full-duplex speech dialogue with a single autoregressive llm",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14518v1",
-    "title": "behavioral audit of machine unlearning has a privacy cost",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14517v1",
-    "title": "from shield to target: denial-of-service attacks on llm-based agent guardrails",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14516v1",
-    "title": "every eval ever: a unifying schema and community repository for ai evaluation results",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14515v1",
-    "title": "securing the future of iomt in the post-quantum era: an edge-native federated learning approach",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14512v1",
-    "title": "fodor and pylyshyn's systematicity challenge still stands",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14510v1",
-    "title": "pepald: macrocyclic peptide generation via autoregressive latent diffusion",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14507v1",
-    "title": "dense coordinate-list fine-tuning induces a controllable interference surface in vision-language models",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14506v1",
-    "title": "beyond the training distribution: evaluating predictions under distribution shift and selection bias",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14504v1",
-    "title": "scratched lenses, shifted depth: passive camera-side optical attacks",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14502v1",
-    "title": "from chatbot to digital colleague: the paradigm shift toward persistent autonomous ai",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14498v1",
-    "title": "a fixed-point neural operator for size- and functional-transferable hamiltonian prediction",
-    "date": "2026-06-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.14492v1",
-    "title": "recipe-controlled decoder audit for structural knowledge-graph completion",
-    "date": "2026-06-15"
-  },
-  {
     "url": "www.oxfordlearnersdictionaries.com/us/definition/english/gemini",
     "title": "gemini noun - definition, pictures, pronunciation and usage notes",
     "date": "2026-06-16"
@@ -1653,5 +1378,70 @@
     "url": "github.com/kadevin/ilab-gpt-conjure",
     "title": "ilab-gpt-conjure",
     "date": "2026-06-21"
+  },
+  {
+    "url": "pi.dev/packages/@diegopetrucci/pi-openai-fast",
+    "title": "diegopetrucci/pi-openai-fast · packages - pi coding agent",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "platform.openai.com/settings/organization/service-health",
+    "title": "service health dashboard - openai platform",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "nflrc.hawaii.edu/ojs/plugins/generic/pdfjsviewer/pdf.js/web/viewer.html",
+    "title": "best grok nsfw alternatives for chat and visual creation {6147e8q}",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "www.spbto.info",
+    "title": "under armour gemini 6 green women - spbto.info",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "x.com/peterberezinbca/status/2068704929267519837",
+    "title": "anthropic really needs to come up with some better names for its ...",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "spbto.info",
+    "title": "clearance amazon apple watch 44mm bands cheap sale libra ...",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "www.reddit.com/r/deepseek/comments/1ubxhen/is_deepseek_actually_good",
+    "title": "is deepseek actually good - reddit",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "www.linkedin.com/posts/peter-mccrory-econ_anthropics-co-founder-and-top-economist-activity-7474541391898107904-s3fh",
+    "title": "peter mccrory's post - odd lots - linkedin",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "huggingface.co/datalab-to/lift",
+    "title": "datalab-to/lift",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "huggingface.co/empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
+    "title": "empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "github.com/sums001/windows-copilot-api",
+    "title": "windows-copilot-api",
+    "date": "2026-06-22"
+  },
+  {
+    "url": "github.com/raiyanyahya/recall",
+    "title": "recall",
+    "date": "2026-06-22"
   }
 ]
