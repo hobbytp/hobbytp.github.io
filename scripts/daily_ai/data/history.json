@@ -1,390 +1,5 @@
 [
   {
-    "url": "openrouter.ai/collections/roleplay",
-    "title": "best ai models for roleplay (rp) and creative writing - openrouter",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "darioamodei.com/post/policy-on-the-ai-exponential",
-    "title": "policy on the ai exponential - dario amodei",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "x.com/mrp/status/2068399213290135947/photo/1",
-    "title": "xai deal economics “people always talk about google and their ...",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "www.bloomberg.com/news/videos/2026-06-20/spacex-ipo-sparks-anticipation-for-openai-and-anthropic-video",
-    "title": "watch spacex ipo sparks anticipation for openai and anthropic",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "www.gemini.com/converter/usdt/sgd",
-    "title": "price of tether (usdt) to singapore dollar (sgd) - gemini exchange",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "www.linkedin.com/jobs/view/policy-design-manager-age-appropriate-design-at-anthropic-4389835680",
-    "title": "policy design manager, age-appropriate design - linkedin",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "www.instagram.com/p/dz0v_l-iwct",
-    "title": "“gemini season” cerâmica, joias, acrílica e magia! ♊️ disponível",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "x.com/mcuban/status/2068363933400850738",
-    "title": "hey @grok, of the 10 wealthiest americans , what percentage of ...",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "www.marinetraffic.com/en/ais/details/ships/shipid:196061/mmsi:215134000/imo:9410791/vessel:cma%20cgm%20gemini",
-    "title": "cma cgm gemini (imo 9410791), container ship | position & specs",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/yuxinlu1/gemma-4-12b-coder-fable5-composer2.5-v1-gguf",
-    "title": "yuxinlu1/gemma-4-12b-coder-fable5-composer2.5-v1-gguf",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/minimaxai/minimax-m3",
-    "title": "minimaxai/minimax-m3",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/moonshotai/kimi-k2.7-code",
-    "title": "moonshotai/kimi-k2.7-code",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/prefeitura-rio/rio-3.5-open-397b",
-    "title": "prefeitura-rio/rio-3.5-open-397b",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/yuxinlu1/gemma-4-12b-agentic-fable5-composer2.5-v2-3.5x-tau2-gguf",
-    "title": "yuxinlu1/gemma-4-12b-agentic-fable5-composer2.5-v2-3.5x-tau2-gguf",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
-    "title": "deepseek-ai/deepseek-v4-pro",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/jackrong/qwopus3.6-27b-coder-mtp-gguf",
-    "title": "jackrong/qwopus3.6-27b-coder-mtp-gguf",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/bosonai/higgs-audio-v3-tts-4b",
-    "title": "bosonai/higgs-audio-v3-tts-4b",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/poolside/laguna-m.1",
-    "title": "poolside/laguna-m.1",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/liquidai/lfm2.5-colbert-350m",
-    "title": "liquidai/lfm2.5-colbert-350m",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
-    "title": "deepseek-ai/deepseek-v4-flash",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/unsloth/gemma-4-12b-it-qat-gguf",
-    "title": "unsloth/gemma-4-12b-it-qat-gguf",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/microsoft/fastcontext-1.0-4b-rl",
-    "title": "microsoft/fastcontext-1.0-4b-rl",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/mia-ailab/qwable-3.6-35b",
-    "title": "mia-ailab/qwable-3.6-35b",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "huggingface.co/pyannote/speaker-diarization-3.1",
-    "title": "pyannote/speaker-diarization-3.1",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20563v1",
-    "title": "janusmesh: fast and zero-shot 3d visual illusion generation via cross-space denoising",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20561v1",
-    "title": "timeprove: propose, then verify for efficient long video temporal reasoning in activities of daily living",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20560v1",
-    "title": "how transparent is diffusiongemma?",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20559v1",
-    "title": "uniego: proxies as mediators for unified egocentric video representation learning",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20557v1",
-    "title": "optimal deterministic multicalibration and omniprediction",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20556v1",
-    "title": "thinking in boxes: 3d editing in real images made easy",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20554v1",
-    "title": "structuring and tokenizing distributed user interest context for generative recommendation",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20547v1",
-    "title": "the token is a group element: on lie-algebra attention over matrix lie groups",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20546v1",
-    "title": "predictability as a fine-grained measure for privacy",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20545v1",
-    "title": "current world models lack a persistent state core",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20544v1",
-    "title": "toward calibrated mixture-of-experts under distribution shift",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20543v1",
-    "title": "ssd: spatially speculative decoding accelerates autoregressive image generation",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20542v1",
-    "title": "caltennis: large multi-view tennis video dataset and benchmark of monocular-to-3d pose estimation",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20538v1",
-    "title": "multi-task bayesian in-context learning",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20537v1",
-    "title": "execution-state capsules: graph-bound execution-state checkpoint and restore for low-latency, small-batch, on-device physical-ai serving",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20536v1",
-    "title": "the fid lottery: quantifying hidden randomness in generative-model evaluation",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20532v1",
-    "title": "how do instructions shape speech? cross-attention attribution for style-captioned text-to-speech",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20531v1",
-    "title": "visdom: sparse novel view synthesis with visible domain constraint",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20529v1",
-    "title": "ledgeragent: structured state for policy-adherent tool-calling agents",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20527v1",
-    "title": "stylisticbias: a few human visual cues drive most social biases in mllms",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20526v1",
-    "title": "deepswip: quotient-wmc counterfactuals for neural probabilistic logic programs",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20523v1",
-    "title": "sarlo-80: worldwide slant sar language optic dataset 80cm",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20521v1",
-    "title": "humanscale: egocentric human video can outperform real-robot data for embodied pretraining",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20520v1",
-    "title": "sovereign execution brokers: enforcing certificate-bound authority in agentic control planes",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20518v1",
-    "title": "flowedit: associative memory for lifelong pronunciation adaptation in flow-matching tts",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20517v1",
-    "title": "multi-lcb: extending livecodebench to multiple programming languages",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20515v1",
-    "title": "s-agent: spatial tool-use elicits reasoning for spatial intelligence",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20512v1",
-    "title": "probe-and-refine tuning of repository guidance for coding agents",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20510v1",
-    "title": "efficient and sound probabilistic verification for ai agents",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20508v1",
-    "title": "what do safety-aligned llms learn from mixed compliance demonstrations?",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20506v1",
-    "title": "freestyle: free control of style-content dual-reference generation from community lora mining",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20504v1",
-    "title": "entropy estimation in multi-qutrit systems via variational and classical neural networks",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20502v1",
-    "title": "calibration without comprehension: diagnosing the limits of fine-tuning llms for vulnerability detection in systems software",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20493v1",
-    "title": "contagion networks: evaluator bias propagation in multi-agent llm systems",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20491v1",
-    "title": "fast human attention prediction for fixation-guided active perception in autonomous navigation",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20488v1",
-    "title": "how fragile are training-free ai-generated image detectors? a controlled audit of score direction, preprocessing, and compression",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20487v1",
-    "title": "beyond global replanning: hierarchical recovery for cross-device agent systems",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20485v1",
-    "title": "optimal order of multi-agent and general many-body systems",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20482v1",
-    "title": "your mouse and eyes secretly leak your preference: llm alignment using implicit feedback from users",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20477v1",
-    "title": "scalable training of spatially grounded 2d vision-language models for radiology",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20475v1",
-    "title": "marginal advantage accumulation for memory-driven agent self-evolution",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20474v1",
-    "title": "ultraquant: 4-bit kv caching for context-heavy agents",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20470v1",
-    "title": "analyzing defensive misdirection against model-guided automated attacks on agentic ai systems",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20469v1",
-    "title": "fisher-geometric sharpness and the implicit bias of sgd toward flat minima",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20467v1",
-    "title": "agentic symbolic search: characterizing pdes beyond hand-crafted expressions, meshes, and neural networks",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20461v1",
-    "title": "data bias mitigation under coverage constraints & the price of fairness",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20459v1",
-    "title": "context-aware hierarchical bayesian modeling of ivf laboratory environmental conditions",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20457v1",
-    "title": "repurposing a speech classifier for guided diffusion-based speech generation",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20455v1",
-    "title": "pcfootprint: a large-scale dataset and benchmark for vectorized building footprint extraction from aerial lidar point clouds",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "arxiv.org/pdf/2606.20451v1",
-    "title": "ssh-net: a deep neural network for predicting failure time distribution functions under competing risks with application to gpu data",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "github.com/startrail-org/pixelrag",
-    "title": "pixelrag",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "github.com/cobusgreyling/loop-engineering",
-    "title": "loop-engineering",
-    "date": "2026-06-21"
-  },
-  {
-    "url": "github.com/kadevin/ilab-gpt-conjure",
-    "title": "ilab-gpt-conjure",
-    "date": "2026-06-21"
-  },
-  {
     "url": "pi.dev/packages/@diegopetrucci/pi-openai-fast",
     "title": "diegopetrucci/pi-openai-fast · packages - pi coding agent",
     "date": "2026-06-22"
@@ -1433,5 +1048,110 @@
     "url": "github.com/graelefix/gitverse",
     "title": "gitverse",
     "date": "2026-06-27"
+  },
+  {
+    "url": "platform.openai.com/settings/organization/people/members",
+    "title": "people - openai platform",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "discuss.ai.google.dev/latest",
+    "title": "latest topics - google ai developers forum",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "community.openai.com/t/pro-account-randomly-deleted-deactivated/1384980",
+    "title": "pro account randomly deleted/deactivated - support",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "www.reddit.com/r/claudeai/comments/1uh3dj3/scoop_powerful_anthropic_model_fable_5_on_track",
+    "title": "scoop: powerful anthropic model, fable 5, on track to return soon",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "www.youtube.com/shorts/hgntvdofync",
+    "title": "hermes agent: save money with openai codex #shorts - youtube",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "www.npr.org/2026/06/27/nx-s1-5871245/trump-administration-imposes-restrictions-for-anthropic-to-halt-access-to-2-ai-models",
+    "title": "trump administration partially lifts export ban on anthropic's most ...",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "www.marinetraffic.com/en/ais/details/ships/shipid:196061/mmsi:215134000/imo:9410791/vessel:cma%20cgm%20gemini",
+    "title": "cma cgm gemini (imo 9410791), container ship | position & specs",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/yuxinlu1/gemma-4-12b-agentic-fable5-composer2.5-v2-3.5x-tau2-gguf",
+    "title": "yuxinlu1/gemma-4-12b-agentic-fable5-composer2.5-v2-3.5x-tau2-gguf",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/yuxinlu1/gemma-4-12b-coder-fable5-composer2.5-v1-gguf",
+    "title": "yuxinlu1/gemma-4-12b-coder-fable5-composer2.5-v1-gguf",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/deepreinforce-ai/ornith-1.0-9b",
+    "title": "deepreinforce-ai/ornith-1.0-9b",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/nvidia/glm-5.2-nvfp4",
+    "title": "nvidia/glm-5.2-nvfp4",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/minimaxai/minimax-m3",
+    "title": "minimaxai/minimax-m3",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-pro",
+    "title": "deepseek-ai/deepseek-v4-pro",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/deepseek-ai/deepseek-v4-flash",
+    "title": "deepseek-ai/deepseek-v4-flash",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/moonshotai/kimi-k2.7-code",
+    "title": "moonshotai/kimi-k2.7-code",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/pyannote/speaker-diarization-3.1",
+    "title": "pyannote/speaker-diarization-3.1",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.5-9b-uncensored-hauhaucs-aggressive",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "huggingface.co/liquidai/lfm2.5-230m-gguf",
+    "title": "liquidai/lfm2.5-230m-gguf",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "github.com/eli-labz/godcoder",
+    "title": "godcoder",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "github.com/cobusgreyling/loop-engineering",
+    "title": "loop-engineering",
+    "date": "2026-06-28"
+  },
+  {
+    "url": "github.com/inkeep/open-knowledge",
+    "title": "open-knowledge",
+    "date": "2026-06-28"
   }
 ]
