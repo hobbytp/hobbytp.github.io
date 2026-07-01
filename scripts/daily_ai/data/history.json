@@ -1,100 +1,5 @@
 [
   {
-    "url": "platform.openai.com/usage/chat-completions",
-    "title": "chat completions - openai platform",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "hr.syr.edu",
-    "title": "gemini 1/400 b747-400 マレーシア航空",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "www.linkedin.com/company/anthropicresearch/posts",
-    "title": "anthropic - linkedin",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "towardsdatascience.com/i-spent-an-hour-on-a-data-preprocessing-task-before-asking-gemini",
-    "title": "i spent an hour on a data preprocessing task before asking gemini",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "news.ycombinator.com/item",
-    "title": "gemini models increasingly stucking in thinking loop | hacker news",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "www.linkedin.com/posts/salone-sehgal-b758693_indiaaisummit-alphawomen-ai-activity-7475044972422012929-arls",
-    "title": "#indiaaisummit #alphawomen #ai #openai #alpha | salone sehgal",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "www.reddit.com/r/anthropic/comments/1udafpy/what_do_i_master_in",
-    "title": "what do i master in ? : r/anthropic - reddit",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "www.morganautogroup.com/inventory/new-2026-land-rover-discovery-gemini-edition-awd-sport-utility-salrw4euxt2525027",
-    "title": "new 2026 discovery gemini edition awd sport utility",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "openai.com/careers/ai-deployment-engineer-messenger-integrations-san-francisco",
-    "title": "ai deployment engineer, messenger integrations - openai",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "huggingface.co/baidu/unlimited-ocr",
-    "title": "baidu/unlimited-ocr",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "huggingface.co/boogu/boogu-image-0.1-edit",
-    "title": "boogu/boogu-image-0.1-edit",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "huggingface.co/coherelabs/north-mini-code-1.0",
-    "title": "coherelabs/north-mini-code-1.0",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/gemma4-12b-qat-uncensored-hauhaucs-balanced",
-    "title": "hauhaucs/gemma4-12b-qat-uncensored-hauhaucs-balanced",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "huggingface.co/boogu/boogu-image-0.1-turbo",
-    "title": "boogu/boogu-image-0.1-turbo",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "huggingface.co/squ11z1/mythos-nano",
-    "title": "squ11z1/mythos-nano",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "huggingface.co/mradermacher/mythos-nano-i1-gguf",
-    "title": "mradermacher/mythos-nano-i1-gguf",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "github.com/omnigent-ai/omnigent",
-    "title": "omnigent",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "github.com/simpl3x3/eseilane",
-    "title": "eseilane",
-    "date": "2026-06-24"
-  },
-  {
-    "url": "github.com/reyzowter/hello-agents",
-    "title": "hello-agents",
-    "date": "2026-06-24"
-  },
-  {
     "url": "github.com/anthropics/skills/tree/main/skills",
     "title": "anthropics/skills/tree/main/skills - github",
     "date": "2026-06-25"
@@ -1148,5 +1053,110 @@
     "url": "huggingface.co/hauhaucs/gemma4-26b-a4b-qat-uncensored-hauhaucs-balanced-mtp",
     "title": "hauhaucs/gemma4-26b-a4b-qat-uncensored-hauhaucs-balanced-mtp",
     "date": "2026-06-30"
+  },
+  {
+    "url": "x.com/sophiacai99/status/2072108279296041232",
+    "title": "commerce has alerted anthropic, which says it will begin restoring ...",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "www.wsj.com/tech/ai/anthropic-nears-deal-with-trump-administration-to-restore-access-to-fable-ai-model-6f4177f3",
+    "title": "anthropic nears deal with trump administration to restore access ...",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "www.linkedin.com/company/anthropicresearch/posts",
+    "title": "anthropic - linkedin",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "openai.com/careers/executive-business-partner-b2b-ads-solutions-new-york-city",
+    "title": "executive business partner, b2b ads solutions | openai",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "www.axios.com/2026/06/30/trump-anthropic-ai-model-fable-restrictions",
+    "title": "trump administration to lift restrictions on anthropic's fable 5 - axios",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "mimo.mi.com/docs/en-us/api/chat/anthropic-api",
+    "title": "anthropic api compatibility - xiaomi mimo home",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "www.linkedin.com/posts/jahic_why-anthropic-should-buy-salesforce-distribution-activity-7477743298607128578-vgkx",
+    "title": "semir jahic's post - linkedin",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "www.ccfamct.us/product/category/14653900131800",
+    "title": "nespresso gemini cs100 pro cafetera gemini cs 100 pro my ...",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "huggingface.co/baidu/unlimited-ocr",
+    "title": "baidu/unlimited-ocr",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/gemma4-12b-qat-uncensored-hauhaucs-balanced",
+    "title": "hauhaucs/gemma4-12b-qat-uncensored-hauhaucs-balanced",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "huggingface.co/nvidia/nemotron-labs-twotower-30b-a3b-base-bf16",
+    "title": "nvidia/nemotron-labs-twotower-30b-a3b-base-bf16",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "huggingface.co/deepreinforce-ai/ornith-1.0-35b-fp8",
+    "title": "deepreinforce-ai/ornith-1.0-35b-fp8",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "huggingface.co/huihui-ai/huihui-qwythos-9b-claude-mythos-5-1m-abliterated-gguf",
+    "title": "huihui-ai/huihui-qwythos-9b-claude-mythos-5-1m-abliterated-gguf",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "huggingface.co/nvidia/minimax-m3-nvfp4",
+    "title": "nvidia/minimax-m3-nvfp4",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "huggingface.co/beinsezii/krea-2-turbo-projector-scale-lora-diffusers",
+    "title": "beinsezii/krea-2-turbo-projector-scale-lora-diffusers",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "github.com/omnigent-ai/omnigent",
+    "title": "omnigent",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "github.com/reunios2024/cortex-sentinel-trading-nexus",
+    "title": "cortex-sentinel-trading-nexus",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "github.com/jaimasih05-commits/swarm-foraging-qlearn",
+    "title": "swarm-foraging-qlearn",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "github.com/abnormal-codex/ai-pixel-design-archive",
+    "title": "ai-pixel-design-archive",
+    "date": "2026-07-01"
+  },
+  {
+    "url": "github.com/okesipoke/manuscript-phoneme-decipher",
+    "title": "manuscript-phoneme-decipher",
+    "date": "2026-07-01"
   }
 ]
