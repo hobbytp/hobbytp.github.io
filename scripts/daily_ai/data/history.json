@@ -1,65 +1,5 @@
 [
   {
-    "url": "www.reddit.com/r/singularity/comments/1uhkyg4/china_has_matched_anthropic_in_cybersecurity",
-    "title": "china has matched anthropic in cybersecurity, resetting ai race",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "www.linkedin.com/posts/praveentech_claude-writes-the-code-codex-reviews-it-activity-7476907256295378944-8r_s",
-    "title": "claude writes the code codex reviews it gemini explains it ... - linkedin",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "www.reuters.com/business/austria-lobbies-eu-host-anthropic-ai-after-us-curbs-bloomberg-news-reports-2026-06-28",
-    "title": "austria urges europe to host anthropic following us curbs on ai ...",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "x.com/tech__unicorn/status/2071277451825520792/photo/1",
-    "title": "\"let's just mog the us government by turning down the anthropic x ...",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "www.reddit.com/r/geminiai/comments/1uhmg4a/programming_with_gemini",
-    "title": "programming with gemini : r/geminiai - reddit",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "huggingface.co/empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
-    "title": "empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "huggingface.co/deepreinforce-ai/ornith-1.0-397b",
-    "title": "deepreinforce-ai/ornith-1.0-397b",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "huggingface.co/datalab-to/lift",
-    "title": "datalab-to/lift",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "huggingface.co/deepreinforce-ai/ornith-1.0-397b-fp8",
-    "title": "deepreinforce-ai/ornith-1.0-397b-fp8",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "huggingface.co/vantagewithai/krea-2-turbo-gguf",
-    "title": "vantagewithai/krea-2-turbo-gguf",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "github.com/sums001/windows-copilot-api",
-    "title": "windows-copilot-api",
-    "date": "2026-06-29"
-  },
-  {
-    "url": "github.com/raiyanyahya/recall",
-    "title": "recall",
-    "date": "2026-06-29"
-  },
-  {
     "url": "platform.openai.com/settings/organization/projects",
     "title": "projects - openai platform",
     "date": "2026-06-30"
@@ -1193,5 +1133,75 @@
     "url": "github.com/cobusgreyling/loop-engineering",
     "title": "loop-engineering",
     "date": "2026-07-05"
+  },
+  {
+    "url": "fleurco.com/portes-de-douche/porte-de-douche-bidirectionnelle-2-cotes-gemini",
+    "title": "gemini | porte de douche - fleurco",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "news.ycombinator.com/item",
+    "title": "i swear some days ago someone here claimed openai succeeded ...",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "anthropic.skilljar.com/accounts/profile",
+    "title": "anthropic skilljar",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "discuss.ai.google.dev/latest",
+    "title": "latest topics - google ai developers forum",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "workspaceupdates.googleblog.com/search/label/gemini",
+    "title": "gemini - google workspace updates",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "huggingface.co/empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
+    "title": "empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "huggingface.co/deepreinforce-ai/ornith-1.0-397b",
+    "title": "deepreinforce-ai/ornith-1.0-397b",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "huggingface.co/internscience/agents-a1-q4_k_m-gguf",
+    "title": "internscience/agents-a1-q4_k_m-gguf",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "huggingface.co/bosonai/higgs-tts-3-4b",
+    "title": "bosonai/higgs-tts-3-4b",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "huggingface.co/kai-os/grug-12b",
+    "title": "kai-os/grug-12b",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "huggingface.co/papers/2606.29526",
+    "title": "the mirage of optimizing training policies: monotonic inference policies as the real objective for llm reinforcement learning",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "huggingface.co/papers/2607.00052",
+    "title": "age: adaptive-masking for graph embedding in graph retrieval-augmented generation",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "github.com/synthetic-sciences/openscience",
+    "title": "openscience",
+    "date": "2026-07-06"
+  },
+  {
+    "url": "github.com/ai4s-research/open-science",
+    "title": "open-science",
+    "date": "2026-07-06"
   }
 ]
