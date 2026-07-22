@@ -1,365 +1,5 @@
 [
   {
-    "url": "www.linkedin.com/company/anthropicresearch/posts",
-    "title": "anthropic - linkedin",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "www.facebook.com/abcnews/posts/even-after-a-potential-ipo-anthropic-says-its-mission-will-not-change-president-/1468139751839567",
-    "title": "even after a potential ipo, anthropic says its \"mission will not ...",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "chatgpt.com/google-gemini-ai",
-    "title": "google gemini ai - chatgpt",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "forums.developer.nvidia.com/c/accelerated-computing/dgx-spark-gb10/719",
-    "title": "dgx spark / gb10 user forum - nvidia developer forums",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "www.instagram.com/reel/dayxouhcgtt",
-    "title": "his $180b anthropic investment could've been $5b - instagram",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "podcasts.apple.com/nl/podcast/apple-sues-openai-states-move-to-block-paramount-deal/id1073226719",
-    "title": "apple sues openai, states move…–pivot - apple podcasts",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "www.ft.com/content/6deb470e-d152-43a2-be0d-cc1fde4f3db8",
-    "title": "deepseek weighs new fundraising a month after closing first round",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/baidu/unlimited-ocr",
-    "title": "baidu/unlimited-ocr",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/prism-ml/bonsai-27b-gguf",
-    "title": "prism-ml/bonsai-27b-gguf",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/ath-maas/ovisocr2",
-    "title": "ath-maas/ovisocr2",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/cactus-compute/needle",
-    "title": "cactus-compute/needle",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/openbmb/minicpm5-1b",
-    "title": "openbmb/minicpm5-1b",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/gnlolot/minicpm5-1b-claude-opus-fable5-thinking",
-    "title": "gnlolot/minicpm5-1b-claude-opus-fable5-thinking",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/hexgrad/kokoro-82m",
-    "title": "hexgrad/kokoro-82m",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/sensenova/sensenova-vision-7b-mot",
-    "title": "sensenova/sensenova-vision-7b-mot",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/liconstudio/ltx-2.3-multiple-subject-reference",
-    "title": "liconstudio/ltx-2.3-multiple-subject-reference",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/black-forest-labs/flux.1-dev",
-    "title": "black-forest-labs/flux.1-dev",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/ewinregirgojr/minicpm5-1b-agentic-tooluse-gguf",
-    "title": "ewinregirgojr/minicpm5-1b-agentic-tooluse-gguf",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13034v1",
-    "title": "do ai agents know when a task is simple? toward complexity-aware reasoning and execution",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13031v1",
-    "title": "the seriality gap in video diffusion models",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13028v1",
-    "title": "terrazero: procedural driving simulation for zero-demonstration self-play at scale",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13027v1",
-    "title": "palmclaw: a native on-device agent framework for mobile phones",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13022v1",
-    "title": "a shortcut to statistically steady-state turbulence with flow matching",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13017v1",
-    "title": "flowwam: optical flow as a unified action representation for world action models",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13013v1",
-    "title": "audio-native speech recognition with a frozen discrete-diffusion language model",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13010v1",
-    "title": "dermdepth: toward monocular metric scale 3d reconstruction models for dermatology",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13007v1",
-    "title": "dynamic resource allocation for ensemble determinization mcts",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13006v1",
-    "title": "the spectrum is not enough: when context helps time-series forecasting",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.13003v1",
-    "title": "watermark forensics for generative models: an information-theoretic perspective",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12993v1",
-    "title": "x-lens: real-time metric depth estimation with heterogeneous cameras",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12987v1",
-    "title": "controllable generation of diverse dermatological imagery for fair and efficient malignancy classification",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12986v1",
-    "title": "win by silence: deletion non-monotonicity, autonomous exploitation, and typed-state gating in llm plan evaluation",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12985v1",
-    "title": "resist and update: counterfactual report coordinates for incentive-compatible llms",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12982v1",
-    "title": "formalanalyticgeo: a neural-symbolic based framework for multimodal analytic geometry problem generation",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12975v1",
-    "title": "ensemble controlled-flow filtering for implicit data assimilation",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12963v1",
-    "title": "the illusion of robustness: aggregate accuracy hides prediction flips under task-irrelevant context",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12962v1",
-    "title": "form, not content? a preregistered, placebo-controlled evaluation of learned error-conditioned self-repair through prompts and weights in frozen small code models",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12959v1",
-    "title": "vico3d: empowering lidar-based collaborative 3d object detection with vision foundation models",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12954v1",
-    "title": "robustness of deep learning models for pv power forecasting under nwp forecast errors: a spatiotemporal and physically interpretable analysis",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12946v1",
-    "title": "vihorec: a quality-controlled vietnamese hotel recommendation dataset and cold-start benchmark",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12939v1",
-    "title": "point tracking in surgery--the 2025 surgical tattoos in infrared challenge (stirc2025)",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12937v1",
-    "title": "exact and calibrated diffusion reconstruction for digital breast tomosynthesis",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12934v1",
-    "title": "domain-incremental remote sensing change detection via difference-guided adaptation and frequency-decoupled distillation",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12928v1",
-    "title": "efficient sequential calibration with $o(t^{2/3-ε})$ error bound",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12924v1",
-    "title": "knowledge- and gradient-guided reinforcement learning for parametrized action markov decision processes",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12922v1",
-    "title": "latentflow: a general framework for conditioning stochastic processes",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12916v1",
-    "title": "contrastive-collapsed loss for flexible and geometrically optimal embeddings and faster convergence",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12911v1",
-    "title": "open-knead: knowledge-grounded nutrition estimation via agentic decomposition",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12909v1",
-    "title": "real-time fall detection based on vision for low-power edge platforms",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12903v1",
-    "title": "rank-1 identity consensus predicts gallery enrollment in 1:n face matching more accurately than score thresholding",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12902v1",
-    "title": "accelerated mixing time of randomized hamiltonian monte carlo",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12896v1",
-    "title": "unimedseg: unified in-context learning for multi-paradigm 2d/3d medical image segmentation",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12894v1",
-    "title": "hy-embodied-vlm-1.0: efficient physical-world agents",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12893v1",
-    "title": "memops: benchmarking lifecycle memory operations in long-horizon conversations",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12892v1",
-    "title": "ur-vc: unsupervised robotic value correction for time-derived progress proxies",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12888v1",
-    "title": "energy-based physics-informed form finding for clustered tensegrity structures",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12886v1",
-    "title": "a multi-agent system for autonomous, fine-tuning-free clinical symptom detection: development and validation study",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12885v1",
-    "title": "llm judges can be too generous when there is no reference answer",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12884v1",
-    "title": "evaluating large language models on misconceptions in multi-turn medical conversations",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12881v1",
-    "title": "inhibited self-attention: sharpening focus in vision transformers",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12874v1",
-    "title": "metric-guided synthetic image data rendering for deep learning compatible with agentic ai",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12868v1",
-    "title": "deep4ge: dnn training trajectories for fault detection and diagnosis",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12866v1",
-    "title": "statistical non-linear reconstruction loss for image anomaly detection",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12863v1",
-    "title": "toward localizing and repairing bias in transformer attention heads",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12861v1",
-    "title": "unveiling complex collective behaviors from simple rewards",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12858v1",
-    "title": "larad: layout-aware road anomaly detection via spatial-logic reasoning",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12857v1",
-    "title": "chartgeneval: corruption-tested multi-dimensional feedback for rhythm-game chart generation",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.12856v1",
-    "title": "verifier-based reinforcement fine-tuning of reasoning models for thermal energy storage control",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "huggingface.co/papers/2607.11111",
-    "title": "know before fix: qa-driven repository knowledge acquisition for software issue resolution",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "github.com/quantumbyteoss/quantumbyte",
-    "title": "quantumbyte",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "github.com/william-lu-stack/flawless",
-    "title": "flawless",
-    "date": "2026-07-15"
-  },
-  {
-    "url": "github.com/sahir619/fable-method",
-    "title": "fable-method",
-    "date": "2026-07-15"
-  },
-  {
     "url": "ca.finance.yahoo.com/quote/xflt",
     "title": "xai floating rate & alternative income trust (xflt)",
     "date": "2026-07-16"
@@ -1698,5 +1338,380 @@
     "url": "github.com/smilelikeye/agent-chief",
     "title": "agent-chief",
     "date": "2026-07-21"
+  },
+  {
+    "url": "www.reddit.com/r/grok/comments/1v25kxm/grok_censorship",
+    "title": "grok censorship? : r/grok - reddit",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "www.linkedin.com/company/anthropicresearch/posts",
+    "title": "anthropic - linkedin",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "www.reddit.com/r/anthropic/comments/1v2himr/anthropic_quietly_rolled_out_a_reflect_dashboard",
+    "title": "anthropic quietly rolled out a \"reflect\" dashboard in claude's ...",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "x.com/ryancarson/status/2079687101331681597",
+    "title": "that scary hugging face attack? turns out it was openai models ...",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "x.com/jrsowash/status/2079521825269113046",
+    "title": "i used gemini to \"vibe code\" this interactive simulation. i don't know ...",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "www.instagram.com/p/dbdesh0aorn",
+    "title": "ive been dabbling with gemini omni flash, a new ai video model ...",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "x.com/itsolelehmann/status/2079634899276087561",
+    "title": "i've noticed anthropic started autocompleting prompts in claude ...",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "www.youtube.com/hashtag/gemini",
+    "title": "gemini - youtube",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "support.google.com/gemini/thread/453249745/replaced-gemini-chat",
+    "title": "replaced gemini chat - gemini apps community - google help",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/baidu/unlimited-ocr",
+    "title": "baidu/unlimited-ocr",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/prism-ml/bonsai-27b-gguf",
+    "title": "prism-ml/bonsai-27b-gguf",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/poolside/laguna-s-2.1",
+    "title": "poolside/laguna-s-2.1",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/ath-maas/ovisocr2",
+    "title": "ath-maas/ovisocr2",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/gnlolot/minicpm5-1b-claude-opus-fable5-thinking",
+    "title": "gnlolot/minicpm5-1b-claude-opus-fable5-thinking",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/cactus-compute/needle",
+    "title": "cactus-compute/needle",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/nvidia/cosmos3-edge",
+    "title": "nvidia/cosmos3-edge",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/qwen/qwen3.6-35b-a3b",
+    "title": "qwen/qwen3.6-35b-a3b",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/lightricks/ltx-2.3",
+    "title": "lightricks/ltx-2.3",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/internscience/agents-a1-4b",
+    "title": "internscience/agents-a1-4b",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/poolside/laguna-s-2.1-nvfp4",
+    "title": "poolside/laguna-s-2.1-nvfp4",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "huggingface.co/black-forest-labs/flux.1-dev",
+    "title": "black-forest-labs/flux.1-dev",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18237v1",
+    "title": "the many senses of visual similarity: a text-prompted image perceptual metric",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18236v1",
+    "title": "patch policy: efficient embodied control via dense visual representations",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18235v1",
+    "title": "automated discovery has no universally superior harness",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18232v1",
+    "title": "it's not what you say, it's how you say it: evaluating llm responses to expressions of belief",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18230v1",
+    "title": "simple domain generalization for strong pixel-level image tampering detection in modern vlms",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18228v1",
+    "title": "logical judgments under pressure: diagnosing syllogistic stability with learned soft prefixes",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18227v1",
+    "title": "flowmimic: mask-free visual editing and generation with pixel-pair warped flow field for online video editing data generation and modality mimicry",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18226v1",
+    "title": "causal discovery on irregular time series",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18225v1",
+    "title": "vector search as nearest neighbor matching: rag-based policy learning in causal inference",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18218v1",
+    "title": "gigapath-flash and gigatime-flash: efficient pathology foundation models for whole-slide and tumor microenvironment analysis",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18217v1",
+    "title": "homie: human-object centric video personalization via multimodal intelligent enchancement",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18213v1",
+    "title": "swe-pruner pro: the coder llm already knows what to prune",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18209v1",
+    "title": "unveiling invariant and transferable latent factors across heterogeneous environments via atlas",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18200v1",
+    "title": "learning adaptive safety margins for visual navigation",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18199v1",
+    "title": "ppl-factory: task-aware and budget-aware data selection from language modeling to reasoning",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18198v1",
+    "title": "three-body scattering for generative modeling",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18195v1",
+    "title": "certified training for convolutional perturbations",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18187v1",
+    "title": "evolve: efficient learned volume compression with variable-rate encoding on a cross-domain database",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18181v1",
+    "title": "vehbench: a stage-local diagnostic benchmark for llm-assisted vibration energy harvester design",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18171v1",
+    "title": "flashrt: agent harness for guiding agents to deploy real-time multimodal applications",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18164v1",
+    "title": "a continual validation, updating, and decision-making framework for self-adaptive digital twins via robust model predictive control: a case study in additive manufacturing",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18163v1",
+    "title": "or else: a differentiable trust region for policy optimization",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18162v1",
+    "title": "the calibration channel determines the bayes-error proxy: an exact law for temperature-induced distortion",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18161v1",
+    "title": "trim: reducing ai-generated codeslop via agent trajectory minimization",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18153v1",
+    "title": "robust multimodal dynamic object segmentation",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18151v1",
+    "title": "plenoptic condensation: a novel approach to generalized scene reconstruction",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18150v1",
+    "title": "lossless-inr: lossless volumetric implicit neural representations",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18149v1",
+    "title": "differentiable logic gate networks for low-latency eeg classification on edge devices",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18148v1",
+    "title": "totally positive matrices and the highest-order coefficients of the characteristic polynomial",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18147v1",
+    "title": "llms and agentic ai systems for smart grids: a tutorial on architectures and applications",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18144v1",
+    "title": "do language models dream of binding molecules? benchmarking llms under spatial constraints",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18142v1",
+    "title": "o-vad: industrial video anomaly detection through object-centric tracking and reasoning",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18130v1",
+    "title": "manifold-constrained hyper-connections for parameter-efficient finetuning",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18127v1",
+    "title": "cloudens: operational context-aware anomaly detection for large-scale cloud system monitoring",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18119v1",
+    "title": "covariance-induced fairness gap penalty for subgroup-fair clustering",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18116v1",
+    "title": "sga: plug&play geometric verification for educational video synthesis",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18114v1",
+    "title": "how does alignment tuning shape representations of sycophancy and related cue-induced biases in llms?",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18112v1",
+    "title": "occlusion-aware panoptic segmentation with joint position embedding and occlusion-level attention",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18110v1",
+    "title": "llm-as-a-coach: experiential learning for non-verifiable tasks",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18109v1",
+    "title": "spemoc: a balanced speaker-segment multimodal emotion benchmark",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18102v1",
+    "title": "finsagent: corpus-aligned multi-agent rag framework for evidence-grounded sec filing question answering",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18101v1",
+    "title": "empowering on-device model adaptation with an edge ai inference accelerator",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18100v1",
+    "title": "can we break llms out of self-loops? fine-grained reasoning control with activation steering",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18098v1",
+    "title": "vdar-router: adaptive llms routing via verbalized query difficulty analysis retrieval",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18091v1",
+    "title": "sciforma: structure-faithful generation of scientific diagrams",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18088v1",
+    "title": "the label complexity of class-conditional coverage under distribution shift",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18086v1",
+    "title": "judge-dependent safety gains and model-specific helpfulness costs of evidence-sufficiency prompting in clinical llms",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18084v1",
+    "title": "worldcuparena: fine-grained evaluation of language models and deep-research agents on football forecasting",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18082v1",
+    "title": "enhancing rubric-based rl via self-distillation",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "arxiv.org/pdf/2607.18081v1",
+    "title": "selectinfer: selective neuron loading and computation for on-device llms",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "github.com/kritt-ai/open-kritt",
+    "title": "open-kritt",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "github.com/sahir619/fable-method",
+    "title": "fable-method",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "github.com/livetennisapi/livetennisapi-mcp",
+    "title": "livetennisapi-mcp",
+    "date": "2026-07-22"
+  },
+  {
+    "url": "github.com/william-lu-stack/flawless",
+    "title": "flawless",
+    "date": "2026-07-22"
   }
 ]
