@@ -1,75 +1,5 @@
 [
   {
-    "url": "www.youtube.com/watch",
-    "title": "5 things only gemini notebook can do (improves claude!)",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "www.tiktok.com/@tylerpath/video/7666649541675945230",
-    "title": "felt like will smith in gemini man meeting up with ... - tiktok",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "www.linkedin.com/posts/johnkthompson_why-this-philosopher-turned-down-anthropic-activity-7487116504040095744-b-uq",
-    "title": "why this philosopher turned down anthropic | john thompson",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "thenextweb.com/news/deepseek-funding-pause-viral-posts-liang-wenfeng",
-    "title": "deepseek pauses fundraising after founder's leaked comments go ...",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "github.com/anthropics/courses/tree/master/anthropic_api_fundamentals",
-    "title": "anthropic api fundamentals course - github",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "huggingface.co/empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
-    "title": "empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "huggingface.co/microsoft/vibevoice-asr-bitnet",
-    "title": "microsoft/vibevoice-asr-bitnet",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "huggingface.co/unsloth/qwen3.6-35b-a3b-gguf",
-    "title": "unsloth/qwen3.6-35b-a3b-gguf",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "huggingface.co/fdtn-ai/antares-350m",
-    "title": "fdtn-ai/antares-350m",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "huggingface.co/tvall43/qwen3.6-14b-a3b-fablevibes-gguf",
-    "title": "tvall43/qwen3.6-14b-a3b-fablevibes-gguf",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "github.com/synthetic-sciences/openscience",
-    "title": "openscience",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "github.com/makecindy/cindy",
-    "title": "cindy",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "github.com/alephaitech/workbuddyguide",
-    "title": "workbuddyguide",
-    "date": "2026-07-27"
-  },
-  {
-    "url": "github.com/deerwork-ai/deer-workflow",
-    "title": "deer-workflow",
-    "date": "2026-07-27"
-  },
-  {
     "url": "www.reddit.com/r/anthropic/comments/1v8adfq/my_experience_with_opus_5",
     "title": "my experience with opus 5 : r/anthropic - reddit",
     "date": "2026-07-28"
@@ -1933,5 +1863,75 @@
     "url": "huggingface.co/inference-optimization/kimi-k3-0.40b",
     "title": "inference-optimization/kimi-k3-0.40b",
     "date": "2026-08-02"
+  },
+  {
+    "url": "x.com/elonmusk/status/2083731654846140670",
+    "title": "elon musk (@elonmusk) on x",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "api-docs.deepseek.com/guides/responses_api",
+    "title": "using the responses api - deepseek api docs",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "x.com/omarsar0/status/2084001897967444248",
+    "title": "elvis on x",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "www.instagram.com/geminibar.hu/p/dbiyxjvdv0b",
+    "title": "gemini lounge on instagram: \"every detail deserves its moment ...",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "www.reddit.com/r/aigamedev/comments/1vdo3n4/entire_gameartanimations_in_grok_cli",
+    "title": "entire game/art/animations in grok cli : r/aigamedev - reddit",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "www.youtube.com/watch",
+    "title": "gemini: this person wants you bad! you are beautiful to them ...",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "help.openai.com/en/articles/20001105-trusted-contacts-in-chatgpt",
+    "title": "trusted contacts in chatgpt - openai help center",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "huggingface.co/microsoft/vibevoice-asr-bitnet",
+    "title": "microsoft/vibevoice-asr-bitnet",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "huggingface.co/antirez/deepseek-v4-gguf",
+    "title": "antirez/deepseek-v4-gguf",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "huggingface.co/empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
+    "title": "empero-ai/qwythos-9b-claude-mythos-5-1m-gguf",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "github.com/fareedkhan-dev/kimi-k3-in-c",
+    "title": "kimi-k3-in-c",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "github.com/anionex/codex-vision-proxy",
+    "title": "codex-vision-proxy",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "github.com/makecindy/cindy",
+    "title": "cindy",
+    "date": "2026-08-03"
+  },
+  {
+    "url": "github.com/alephaitech/workbuddyguide",
+    "title": "workbuddyguide",
+    "date": "2026-08-03"
   }
 ]
