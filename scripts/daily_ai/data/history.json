@@ -1,370 +1,5 @@
 [
   {
-    "url": "platform.openai.com/settings/organization/tunnels",
-    "title": "openai platform tunnel settings",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "www.bbc.com/news/articles/cz7dl7w8y7po",
-    "title": "anthropic's claude ai escapes tests to hack three organisations - bbc",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation",
-    "title": "disrupting a criminal scam operation | openai",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "www.reddit.com/r/ai_agents/comments/1vbhntm/anthropic_admits_claude_broke_out_of_sandbox",
-    "title": "anthropic admits claude broke out of sandbox, attacked three ...",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "www.linkedin.com/posts/mikesportfolio_am-i-dreaming-i-woke-up-to-a-notification-activity-7488928322505158656-cmde",
-    "title": "mike miller's post - linkedin",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "x.com/garymarcus/status/2083276801334559213",
-    "title": "gary marcus on x: \"anthropic employee vouches for fiancee of ...",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "www.instagram.com/p/dbc3su7nmsu",
-    "title": "a mind that never stops wandering. gemini, meet your spirit bird",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "x.com/quinnypig/status/2083030548554101246",
-    "title": "corey quinn on x: \"i seem to have fallen down an openai billing ...",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/microsoft/fara1.5-27b",
-    "title": "microsoft/fara1.5-27b",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/upstage/solar-open2-250b",
-    "title": "upstage/solar-open2-250b",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/audio8/audio8-tts-preview-0.6b",
-    "title": "audio8/audio8-tts-preview-0.6b",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/xyzailab/xyz-aquila-mini",
-    "title": "xyzailab/xyz-aquila-mini",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/thinkingmachines/inkling",
-    "title": "thinkingmachines/inkling",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/eschalabs/qwen3.6-35b-a3b-escha-w2",
-    "title": "eschalabs/qwen3.6-35b-a3b-escha-w2",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/empero-ai/qwythos-27b-v1",
-    "title": "empero-ai/qwythos-27b-v1",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/moonshotai/kimi-k2.7-code",
-    "title": "moonshotai/kimi-k2.7-code",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/unsloth/inkling-small-gguf",
-    "title": "unsloth/inkling-small-gguf",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/fishaudio/s2-pro",
-    "title": "fishaudio/s2-pro",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/krafton/a.x-k2-raon-speech-21b-a3b",
-    "title": "krafton/a.x-k2-raon-speech-21b-a3b",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "huggingface.co/thinkingmachines/inkling-small-nvfp4",
-    "title": "thinkingmachines/inkling-small-nvfp4",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28628v1",
-    "title": "learning to trace seiberg dualities",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28627v1",
-    "title": "retoken: one token to improve vision-language models for visual retrieval",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28625v1",
-    "title": "ace-data-0: human-centric ambient capture as embodied data engine",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28624v1",
-    "title": "phizero: a world model built around physical language",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28623v1",
-    "title": "pac-man: perception-aware cbf-rl for whole-body safety in humanoid dodgeball",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28618v1",
-    "title": "askchem: claim-centered infrastructure for chemistry literature synthesis",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28617v1",
-    "title": "aispa: user-centric system prompt auditing for large language model applications",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28611v1",
-    "title": "chimera: designing and chinchilla-scaling hybrid visual diffusion transformers",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28609v1",
-    "title": "osreward: instituting standardized evaluation for cross-platform computer-use reward models",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28608v1",
-    "title": "kaisen: reproducible subgroup fairness auditing for clinical risk models",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28607v1",
-    "title": "inducing language models to assert their own consciousness restores human beliefs and values",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28595v1",
-    "title": "beacon: knowing when and how to perform agentic visual reasoning",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28591v1",
-    "title": "change2task: from repository changes to executable coding agent tasks and environments",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28590v1",
-    "title": "vad: attributing visual evidence for target reconstruction in multimodal on-policy distillation",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28589v1",
-    "title": "mixfrag: fragility-guided mixed-precision post-training quantization for vision transformers",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28587v1",
-    "title": "paichecker: uncovering and checking pr-issue misalignment in swe-bench-like benchmarks",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28582v1",
-    "title": "$β$-opsd: deriving with policy optimization, training with self-distillation",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28581v1",
-    "title": "road: reciprocal-objective alignment of discriminative semantics for 3d shape generation",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28580v1",
-    "title": "dualg-mrag: decoupling macro-reasoning and micro-matching for multimodal retrieval-augmented generation",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28576v1",
-    "title": "sample more, reflect less: self-refine and reflexion lose to repeated sampling at equal token cost, from 1.5b to 7b",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28575v1",
-    "title": "algorithms for structured elections under thiele voting rules",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28573v1",
-    "title": "rethinking inference-time scaling in local computer-use agents: failure modes and compute tradeoffs",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28571v1",
-    "title": "finding change in satellite archives from text: how to combine before-and-after images efficiently",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28568v1",
-    "title": "frontis-ma1: training an ai4ai model towards recursive self-improvement in machine learning engineering",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28567v1",
-    "title": "doubly robust functional representation learning for longitudinal causal inference with irregular histories",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28565v1",
-    "title": "mind: multimodal intent-driven network via diffusion transformers for medical image fusion",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28553v1",
-    "title": "apo: unsupervised atomic policy optimization for 3d structure prediction of atomic systems",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28545v1",
-    "title": "orca-bench: how ready are language model agents for oncall?",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28538v1",
-    "title": "scafe: data-efficient scar classification with llm-generated clinical feature programs",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28537v1",
-    "title": "graph neural network force fields for spin dynamics in metallic magnets",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28532v1",
-    "title": "markushglyph and ocsrglyph: improved chemical structure recognition",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28528v1",
-    "title": "ai systems and the reproduction of (standard) language ideologies in world englishes",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28527v1",
-    "title": "manta: multi-agent network topology adaptation for self-evolving multi-agent systems",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28526v1",
-    "title": "what to remove, what to preserve: dual-ambiguity rectification for all-in-one image restoration",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28525v1",
-    "title": "same graph cross-task transfer in gnns: protocols and predictors",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28523v1",
-    "title": "selective credibility-limited belief update",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28520v1",
-    "title": "agents that certify their own exploits: confidence-scheduled restricted responses for safe opponent exploitation",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28516v1",
-    "title": "beyond frame selection: generative latent evidence aggregation for long-video understanding",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28513v1",
-    "title": "creative transformation in literary texts: modelling change across representational levels",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28509v1",
-    "title": "refcaptioner: multi-reference image-grounded video captioning",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28505v1",
-    "title": "generative ai and linguistic diversity in academic writing and publishing: perspectives from world englishes",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28503v1",
-    "title": "infoops bench: a live information operations safety benchmark",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28498v1",
-    "title": "tca-sir: learning target-conditioned abstractions for scientific inspiration retrieval",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28497v1",
-    "title": "the role of causality in algorithmic recourse",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28496v1",
-    "title": "beyond sentiment: structured information extraction from financial news",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28495v1",
-    "title": "stage-replay divergence follows the kv cache: fixed-prefix precision controls and bidirectional cache transplantation",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28488v1",
-    "title": "scope: supply-chain operations through coupled policies for end-to-end coordination",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28487v1",
-    "title": "auricularworld: hierarchical action-guided world modeling for fine-grained auricular structure segmentation from ct scans",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28483v1",
-    "title": "towards real-time pixood: efficient anomaly segmentation for autonomous vehicles",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "arxiv.org/pdf/2607.28481v1",
-    "title": "a fuzzy rule-based neuro-symbolic approach for pipe severity prediction in sewer networks",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "github.com/0xwilliamortiz/ratchet",
-    "title": "ratchet",
-    "date": "2026-08-01"
-  },
-  {
-    "url": "github.com/aigclink/geolook",
-    "title": "geolook",
-    "date": "2026-08-01"
-  },
-  {
     "url": "platform.claude.com/docs/en/about-claude/pricing",
     "title": "pricing - claude platform docs",
     "date": "2026-08-02"
@@ -1903,5 +1538,240 @@
     "url": "github.com/kirodotdev/kirocrew",
     "title": "kirocrew",
     "date": "2026-08-07"
+  },
+  {
+    "url": "www.semafor.com/article/08/07/2026/deepseek-warns-of-price-increase",
+    "title": "deepseek warns of price increase - semafor",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "www.facebook.com/jhunter101/posts/damn-man-grok-45-openclaw-is-absolutely-ridiculous-ive-switch-beau-over-to-it-a-/4054740438160171",
+    "title": "damn man, grok 4.5 + openclaw is absolutely ridiculous. i've switch ...",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "www.helpnetsecurity.com/2026/08/07/openai-gpt-5-6-sol-luna-chatgpt-free-limits",
+    "title": "openai drops chatgpt text chat limits for free users, adds new ...",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "www.youtube.com/shorts/3hbqucb2nk8",
+    "title": "openai's luxury retreat sparks backlash #openai #controversy",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "learn.microsoft.com/en-us/azure/aks/open-ai-quickstart",
+    "title": "deploy an application that uses openai on azure kubernetes ...",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "omart.org/64a31nfscynmsozslafg",
+    "title": "new deepseek crushed anthropic raiplay (xx51p1ogm4)",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "www.instagram.com/reel/dbvtgc9bolj",
+    "title": "here is what happens when you ignore a gemini… do it at your own ...",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "x.com/brendannyhan/status/2085546232752034276",
+    "title": "\"the short-term trend\" in anthropic revenue \"is so extreme, if you ...",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "www.reddit.com/r/picodingagent/comments/1vi1t2z/sol_as_orchestator_and_deepseek_as_implementor",
+    "title": "sol as orchestator and deepseek as implementor. : r/picodingagent",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "huggingface.co/deepgrove/maple-preview",
+    "title": "deepgrove/maple-preview",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "huggingface.co/audio8/audio8-tts-preview-0.6b",
+    "title": "audio8/audio8-tts-preview-0.6b",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "huggingface.co/eschalabs/qwen3.6-35b-a3b-escha-w2",
+    "title": "eschalabs/qwen3.6-35b-a3b-escha-w2",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "huggingface.co/syzygyresearch/mach-1-additive-35b",
+    "title": "syzygyresearch/mach-1-additive-35b",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "huggingface.co/hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "title": "hauhaucs/qwen3.6-35b-a3b-uncensored-hauhaucs-aggressive",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "huggingface.co/xyzailab/xyz-aquila-mini",
+    "title": "xyzailab/xyz-aquila-mini",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "huggingface.co/empero-ai/qwythos-27b-v1",
+    "title": "empero-ai/qwythos-27b-v1",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "huggingface.co/nvidia/locateanything-3b",
+    "title": "nvidia/locateanything-3b",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06377v1",
+    "title": "learning when to trust via selective context preference optimization",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06370v1",
+    "title": "the bitter lesson of tool calling",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06366v1",
+    "title": "tracing the heart: an evidence-linked pipeline for heart-failure feature engineering",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06364v1",
+    "title": "investigating artificial intelligence digital sovereignty in mobile shopping apps: a case study of nigeria",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06363v1",
+    "title": "an optimal agnostic pac algorithm",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06362v1",
+    "title": "av-aivat: 74x cheaper agent evaluation with certified anytime-valid stopping in imperfect-information games",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06361v1",
+    "title": "the low frequency trap: video language models fail at simple event bookkeeping",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06353v1",
+    "title": "resourced authority a mechanism-design model for participatory governance of deployed ai agents",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06352v1",
+    "title": "calibforge: adversarial solver calibration for scaling learnable terminal tasks",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06351v1",
+    "title": "challenges in evaluating explanation methods for static and evolving data",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06347v1",
+    "title": "rp-opsd: reasoning-pivot-guided on-policy self-distillation for multilingual reasoning transfer",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06346v1",
+    "title": "trajdebug: tracing error lifecycle to identify critical failures in long-horizon agent trajectories",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06340v1",
+    "title": "scalable estimation of varma models",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06337v1",
+    "title": "optimal rates for learning with monotone adversaries",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06331v1",
+    "title": "tytan: interactive neurosymbolic construction of analytic semantic schemas from relational data",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06329v1",
+    "title": "benchmarking the benchmarks: evaluating benchmarks for conversational agents",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06312v1",
+    "title": "benchmarking and enhancing llms for rule-intensive review of national standard documents",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06311v1",
+    "title": "does flair super-resolution erase or hallucinate small white-matter lesions?",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06310v1",
+    "title": "rrc: unlocking generative reward models in llm reinforcement learning via ranking-based reward construction",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06307v1",
+    "title": "uq-loc: uncertainty-aware lidar scene coordinate regression",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06305v1",
+    "title": "beyond top-k: replacing black-box retrieval with interpretable agentic operations",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06301v1",
+    "title": "harnessopt-bench: evaluating llms at harness optimization",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06300v1",
+    "title": "bias analysis of l2 speaking assessment systems using concept activation vectors",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06296v1",
+    "title": "on-policy self-distillation without any supervision",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06294v1",
+    "title": "quantimedai: quantum-enhanced time-series model guided by agentic ai for cardiac arrest mortality prediction",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06292v1",
+    "title": "nesy-rag: neuro-symbolic rag for explainable question answering",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06291v1",
+    "title": "bakron: efficient quantization with kronecker-factored hessians",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06288v1",
+    "title": "surv-iptb: an attention-based model for estimating individual probability of treatment benefit with survival data",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "arxiv.org/pdf/2608.06283v1",
+    "title": "the tamed subgradient unadjusted langevin algorithm beyond convexity",
+    "date": "2026-08-08"
+  },
+  {
+    "url": "github.com/wanmol/goal-flow",
+    "title": "goal-flow",
+    "date": "2026-08-08"
   }
 ]
