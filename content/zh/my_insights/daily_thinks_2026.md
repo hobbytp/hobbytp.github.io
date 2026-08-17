@@ -10,6 +10,31 @@ wordCount: 2156
 readingTime: 6
 ---
 
+## 2026-08-17
+
+如何理解Agent Runtime，Harness和Harness Engineering, 可以类比操作系统：
+```text
+    Agent Runtime ≈ 操作系统内核 + 进程调度器
+    Agent Harness ≈ 完整操作系统发行版
+    Harness Engineering ≈ 操作系统工程 + SRE + DevSecOps
+```
+或者类比汽车：
+```text
+    Model             = 发动机
+    Agent Runtime      = 传动、转向和车辆控制系统
+    Agent Harness      = 整辆汽车
+    Harness Engineering = 整车工程、安全测试和生产维护体系
+```
+
+    只有模型，就像只有发动机；没有 Runtime，它不能执行现实任务。只有 Runtime 但缺乏 Harness Engineering，系统可能可以运行，却不一定可靠、安全、可恢复或可维护。
+
+**最准确的一句话定义**
+
+>Agent Runtime 是 Harness 在运行时的执行底座；
+>Harness Engineering 是围绕模型与 Runtime 构建完整 Agent 系统的工程学。
+
+需要注意：行业术语目前还没有完全统一。有些项目会直接把完整 Agent Runtime 称为“Harness”，例如 DeepSeek Harness；因此在阅读项目文档时，应判断对方说的 Harness 是“运行时产品”，还是更广义的“Harness 工程体系”。
+
 ## 2026-05-24
 未来真正厉害的人不是：写代码最快的人
 
