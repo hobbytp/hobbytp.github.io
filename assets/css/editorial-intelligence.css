@@ -645,11 +645,12 @@ body:not(.list) .main {
   overflow-x: auto;
 }
 .editorial-toc {
+  position: sticky;
+  top: 90px;
+  align-self: start;
   min-width: 0;
 }
 .editorial-toc-inner {
-  position: sticky;
-  top: 90px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   padding-left: 20px;
