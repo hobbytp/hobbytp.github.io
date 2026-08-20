@@ -9,6 +9,7 @@ wordCount: 13896
 readingTime: 35
 ShowToc: true
 TocOpen: false
+editorialEvidence: true
 
 ai_cover: "/images/generated-covers/deepseek-harness-model-x-harness.webp"
 cover:

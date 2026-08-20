@@ -2,6 +2,10 @@
 {{- partial "inline-css.html" . -}}
 {{- $blogStyle := resources.Get "css/extended/blog-styling.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $blogStyle.RelPermalink }}" integrity="{{ $blogStyle.Data.Integrity }}">
+{{- if .IsPage }}
+{{- $editorialStyle := resources.Get "css/editorial-intelligence.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $editorialStyle.RelPermalink }}" integrity="{{ $editorialStyle.Data.Integrity }}">
+{{- end }}
 {{- $lightboxCSS := resources.Get "css/lightbox.css" | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $lightboxCSS.RelPermalink }}" integrity="{{ $lightboxCSS.Data.Integrity }}">
 
