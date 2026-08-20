@@ -566,7 +566,7 @@ body:not(.list) .main {
   color: var(--ei-code-ink) !important;
   background: var(--ei-code) !important;
   border: 1px solid var(--ei-line-strong) !important;
-  border-radius: 3px !important;
+  border-radius: 8px !important;
   box-shadow: none !important;
   scrollbar-color: var(--ei-line-strong) transparent;
 }
@@ -639,10 +639,59 @@ body:not(.list) .main {
   background: var(--ei-line-strong) !important;
   border: 0 !important;
 }
-.editorial-article .editorial-content .mermaid,
-.editorial-article .editorial-content .highlight {
+.editorial-article .editorial-content .mermaid {
   max-width: 100%;
   overflow-x: auto;
+}
+.editorial-article .editorial-content .highlight {
+  max-width: 100%;
+  margin: 2rem 0;
+  overflow-x: auto;
+  color: var(--ei-code-ink);
+  background: var(--ei-code);
+  border: 1px solid var(--ei-line-strong);
+  border-radius: 8px;
+}
+.editorial-article .editorial-content .highlight > div {
+  min-width: max-content;
+  background: transparent !important;
+}
+.editorial-article .editorial-content .highlight table {
+  display: table;
+  width: 100% !important;
+  min-width: 100%;
+  margin: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-collapse: collapse !important;
+}
+.editorial-article .editorial-content .highlight td {
+  min-width: 0;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+.editorial-article .editorial-content .highlight td:first-child {
+  width: 1%;
+  border-right: 1px solid var(--ei-line-strong) !important;
+  text-align: right !important;
+}
+.editorial-article .editorial-content .highlight td:last-child {
+  width: 100%;
+}
+.editorial-article .editorial-content .highlight pre {
+  margin: 0 !important;
+  padding: 20px 18px !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+.editorial-article .editorial-content .highlight td:first-child pre {
+  padding-right: 10px !important;
+  padding-left: 10px !important;
 }
 .editorial-toc {
   position: sticky;
