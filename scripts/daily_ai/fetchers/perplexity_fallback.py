@@ -86,13 +86,18 @@ class PerplexityFallbackFetcher(BaseFetcher):
                 search_config.days_back = 1
                 search_config.max_articles_per_source = 3
                 search_config.enable_query_enhancement = True
+                search_config.enable_keyword_extraction = True
+                search_config.enable_sentiment_analysis = True
+                search_config.enable_content_extraction = True
+                search_config.keyword_count = 4
                 
                 # 映射 provider 名称，确保 ai_news_collector_lib 能识别
                 provider = llm_config.provider_name.lower()
-                if provider == "google":
-                    provider = "gemini"
+                if provider in ["google", "gemini"]:
+                    provider = "google-gemini"
                 search_config.llm_provider = provider
                 search_config.llm_model = llm_config.model_name
+
                 
                 if llm_config.api_key:
                      search_config.llm_api_key = llm_config.api_key
@@ -110,8 +115,12 @@ class PerplexityFallbackFetcher(BaseFetcher):
                          url=item.url,
                          source=item.source,
                          description=item.summary or item.content[:200] if hasattr(item, 'summary') else "",
-                         published_date=item.published_date
+                         published_date=getattr(item, 'published', getattr(item, 'published_date', None)),
+                         keywords=getattr(item, 'keywords', []) or [],
+                         sentiment=getattr(item, 'sentiment', None)
                      ))
+
+
                      
                 print(f"[OK] 降级搜索成功，获取到 {len(results)} 条聚合热搜记录")
                 

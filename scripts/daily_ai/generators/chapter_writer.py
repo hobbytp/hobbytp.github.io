@@ -32,6 +32,10 @@ class ChapterWriter:
                 context_lines.append(f"    下载量: {item.downloads}")
             if hasattr(item, 'authors') and item.authors:
                 context_lines.append(f"    作者: {', '.join(getattr(item, 'authors', []))}")
+            if getattr(item, 'keywords', None):
+                context_lines.append(f"    技术标签: {', '.join(item.keywords)}")
+            if getattr(item, 'sentiment', None):
+                context_lines.append(f"    舆情/行业倾向: {item.sentiment}")
             context_lines.append("")
         return "\n".join(context_lines)
 
@@ -42,27 +46,39 @@ class ChapterWriter:
             title = item.title.strip()
             url = item.url.strip()
             desc = (item.description or "").strip()
+            extra_meta = []
+            
+            # 关键词标签渲染
+            if getattr(item, 'keywords', None) and item.keywords:
+                tags_str = " ".join([f"`#{k}`" for k in item.keywords[:4]])
+                extra_meta.append(f"- **🏷️ 核心标签**：{tags_str}")
+            # 舆情倾向徽章渲染
+            if getattr(item, 'sentiment', None) and item.sentiment:
+                extra_meta.append(f"- **📊 行业倾向**：`{item.sentiment}`")
+                
+            extra_lines = ("\n" + "\n".join(extra_meta)) if extra_meta else ""
             
             if section_name == "focus_news":
-                block = f"### 🔥 [{title}]({url})\n- **⚡ 极客速看**：{desc[:120] if desc else '今日重要行业发布'}\n- **🏷️ 信源**：{item.source}"
+                block = f"### 🔥 [{title}]({url})\n- **⚡ 极客速看**：{desc[:120] if desc else '今日重要行业发布'}\n- **🏷️ 信源**：{item.source}{extra_lines}"
             elif section_name == "hf_models":
                 pipeline = getattr(item, 'pipeline_tag', 'text-generation') or 'text-generation'
                 downloads = getattr(item, 'downloads', 0)
-                block = f"### 🌟 [{title}]({url})\n- **🎯 任务类型**：`{pipeline}`\n- **✨ 社区热度**：📥 {downloads:,} 次下载\n- **🔗 快速通道**：[前往 Hugging Face 模型卡片]({url})"
+                block = f"### 🌟 [{title}]({url})\n- **🎯 任务类型**：`{pipeline}`\n- **✨ 社区热度**：📥 {downloads:,} 次下载\n- **🔗 快速通道**：[前往 Hugging Face 模型卡片]({url}){extra_lines}"
             elif section_name == "arxiv_papers":
                 authors = ", ".join(getattr(item, 'authors', [])[:4]) or "研究团队"
-                block = f"### 📚 [{title}]({url})\n- **👥 作者与机构**：{authors}\n- **🔬 核心摘要**：{desc[:200]}...\n- **📄 论文直达**：[查看原文/PDF]({url})"
+                block = f"### 📚 [{title}]({url})\n- **👥 作者与机构**：{authors}\n- **🔬 核心摘要**：{desc[:200]}...\n- **📄 论文直达**：[查看原文/PDF]({url}){extra_lines}"
             elif section_name == "github_projects":
                 stars = getattr(item, 'stars', 0)
                 speed = getattr(item, 'stars_per_day', 0.0)
-                block = f"### 🚀 [{title}]({url})\n- **⚡ 项目定位**：{desc[:150]}\n- **📈 社区热度**：⭐ {stars:,} stars (🔥 +{speed:.0f}/天)\n- **📦 开源仓库**：[GitHub 代码库]({url})"
+                block = f"### 🚀 [{title}]({url})\n- **⚡ 项目定位**：{desc[:150]}\n- **📈 社区热度**：⭐ {stars:,} stars (🔥 +{speed:.0f}/天)\n- **📦 开源仓库**：[GitHub 代码库]({url}){extra_lines}"
             elif section_name == "hacker_news":
-                block = f"### 💬 [{title}]({url})\n- **🔥 社区讨论**：{desc}\n- **🏷️ 来源**：Hacker News 极客社区"
+                block = f"### 💬 [{title}]({url})\n- **🔥 社区讨论**：{desc}\n- **🏷️ 来源**：Hacker News 极客社区{extra_lines}"
             else:
-                block = f"### 📱 [{title}]({url})\n- **💡 简述**：{desc[:150]}\n- **🏷️ 来源**：{item.source}"
+                block = f"### 📱 [{title}]({url})\n- **💡 简述**：{desc[:150]}\n- **🏷️ 来源**：{item.source}{extra_lines}"
             blocks.append(block)
             
         return "\n\n".join(blocks)
+
           
     def write_section(self, section_name: str, items: List[BaseItem]) -> str:
         if not items:

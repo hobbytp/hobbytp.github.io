@@ -8,10 +8,13 @@ class BaseItem(BaseModel):
     description: Optional[str] = ""
     quality_score: float = 5.0
     published_date: Optional[str] = None
+    keywords: List[str] = Field(default_factory=list)
+    sentiment: Optional[str] = None
     
 class ArticleItem(BaseItem):
     """用于新闻、报道和应用"""
     pass
+
 
 class PaperItem(BaseItem):
     """用于 arXiv / HF Papers 的学术论文"""
