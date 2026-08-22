@@ -39,11 +39,10 @@ if gemini_key:
     try:
         from google import genai
         client = genai.Client(api_key=gemini_key.strip())
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents='用一句话回答：1+1等于几？'
-        )
+        chat = client.chats.create(model='gemini-2.5-flash')
+        response = chat.send_message('用一句话回答：1+1等于几？')
         ans = response.text if hasattr(response, 'text') else str(response)
+
         print(f"   ✅ Google Gemini API 调用成功！")
         print(f"   回复内容: {ans.strip()[:100]}")
     except Exception as e:
