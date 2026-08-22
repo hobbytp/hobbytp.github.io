@@ -2393,5 +2393,10 @@
     "url": "https://www.experimental-history.com/p/why-arent-smart-people-happier",
     "title": "why aren t smart people happier 2022",
     "date": "2026-08-22"
+  },
+  {
+    "url": "https://github.com/openai/codex/issues/37674",
+    "title": "codex on aws bedrock bug causing 10x charges",
+    "date": "2026-08-22"
   }
 ]

@@ -18,7 +18,7 @@ from scripts.daily_ai.fetchers.huggingface import HuggingFaceModelsFetcher, Hugg
 from scripts.daily_ai.fetchers.arxiv import ArxivFetcher
 from scripts.daily_ai.fetchers.github_trending import GitHubTrendingFetcher
 from scripts.daily_ai.fetchers.applications import ApplicationsFetcher
-from scripts.daily_ai.fetchers.perplexity_fallback import PerplexityFallbackFetcher
+from scripts.daily_ai.fetchers.multi_engine_news import MultiEngineNewsFetcher
 from scripts.daily_ai.processors.deduplicator import Deduplicator
 from scripts.daily_ai.processors.quality_scorer import QualityScorer
 from scripts.daily_ai.generators.chapter_writer import ChapterWriter
@@ -51,8 +51,9 @@ class Orchestrator:
             'hf_papers': HuggingFacePapersFetcher(),
             'github_projects': GitHubTrendingFetcher(),
             'applications': ApplicationsFetcher(),
-            'perplexity_news': PerplexityFallbackFetcher()
+            'perplexity_news': MultiEngineNewsFetcher()
         }
+
         
         # Processors
         history_file = project_root / "scripts" / "daily_ai" / "data" / "history.json"

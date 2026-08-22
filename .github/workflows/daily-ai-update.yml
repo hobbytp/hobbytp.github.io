@@ -40,7 +40,6 @@ jobs:
                   DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
                   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
                   SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
-                  PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
               run: |
                   echo "运行诊断脚本..."
                   python scripts/diagnose_gemini.py || true
@@ -49,7 +48,6 @@ jobs:
             - name: 运行AI动态收集脚本 V3.5
               env:
                   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-                  PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
                   GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
                   HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
                   DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
@@ -61,6 +59,7 @@ jobs:
                   SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
                   BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
                   METASOSEARCH_API_KEY: ${{ secrets.METASOSEARCH_API_KEY }}
+
               run: |
                   echo "============================================"
                   echo "开始收集每日AI动态 (V3.5 - Multi-source Pipeline)"

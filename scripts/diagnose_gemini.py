@@ -22,8 +22,8 @@ keys = {
     'DASHSCOPE_API_KEY': os.getenv('DASHSCOPE_API_KEY'),
     'OPENAI_API_KEY': os.getenv('OPENAI_API_KEY'),
     'SILICONFLOW_API_KEY': os.getenv('SILICONFLOW_API_KEY'),
-    'PERPLEXITY_API_KEY': os.getenv('PERPLEXITY_API_KEY'),
 }
+
 
 for name, val in keys.items():
     if val:
