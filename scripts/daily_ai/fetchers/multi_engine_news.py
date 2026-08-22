@@ -25,20 +25,37 @@ class MultiEngineNewsFetcher(BaseFetcher):
             from scripts.daily_ai.config.config_loader import config as llm_config
 
             search_config = AdvancedSearchConfig()
+            # 仅开启可靠且高效的纯搜索引擎源，关闭重复或容易异常的外部服务
             search_config.enable_duckduckgo = True
             search_config.enable_tavily = bool(env_config.TAVILY_API_KEY)
+            search_config.tavily_api_key = env_config.TAVILY_API_KEY if env_config.TAVILY_API_KEY else None
             search_config.enable_brave_search = bool(env_config.BRAVE_SEARCH_API_KEY)
+            search_config.brave_search_api_key = env_config.BRAVE_SEARCH_API_KEY if env_config.BRAVE_SEARCH_API_KEY else None
+
+            # 彻底关闭失效或易产生挂起重试的源
+            search_config.enable_perplexity = False
+            search_config.perplexity_api_key = None
+            search_config.enable_metasota_search = False
+            search_config.metasota_search_api_key = None
+            search_config.enable_hackernews = False
+            search_config.enable_arxiv = False
+            search_config.enable_rss_feeds = False
             search_config.enable_newsapi = False
             search_config.enable_google_search = False
             search_config.enable_serper = False
+            search_config.enable_baidu_search = False
+            search_config.enable_youtube = False
+            search_config.enable_github_search = False
+            search_config.enable_huggingface = False
+
             search_config.days_back = 1
             search_config.max_articles_per_source = 3
             search_config.enable_keyword_extraction = True
             search_config.enable_sentiment_analysis = True
-            search_config.enable_content_extraction = True
+            search_config.enable_content_extraction = False  # 关闭重量级网页全文抓取，防止慢速卡死
             search_config.keyword_count = 4
 
-            # 映射 provider 名称，仅在 API Key 存在时启用查询增强
+            # LLM 增强配置
             provider = llm_config.provider_name.lower()
             if provider in ["google", "gemini"]:
                 provider = "google-gemini"
@@ -51,8 +68,19 @@ class MultiEngineNewsFetcher(BaseFetcher):
             else:
                 search_config.enable_query_enhancement = False
 
+            active_sources = ["duckduckgo"]
+            if search_config.enable_tavily:
+                active_sources.append("tavily")
+            if search_config.enable_brave_search:
+                active_sources.append("brave_search")
+
             collector = AdvancedAINewsCollector(config=search_config)
-            lib_results = asyncio.run(collector.collect_news(query))
+
+            async def _collect():
+                return await collector.collect_news(query, sources=active_sources)
+
+            # 增加 30 秒强制超时保护，确保 CI/CD 绝不挂起
+            lib_results = asyncio.run(asyncio.wait_for(_collect(), timeout=30.0))
 
             items = getattr(lib_results, 'articles', [])
             for item in items:
@@ -67,8 +95,10 @@ class MultiEngineNewsFetcher(BaseFetcher):
                 ))
 
             print(f"[OK] 多引擎聚合检索成功，获取到 {len(results)} 条热搜记录")
+        except asyncio.TimeoutError:
+            print("[WARNING] 多引擎聚合检索请求超时(>30s)，自动跳过以保障主流程顺畅执行。")
         except Exception as e:
-            print(f"[ERROR] 多引擎聚合检索执行失败: {e}")
+            print(f"[ERROR] 多引擎聚合检索执行异常: {e}")
 
         return results
 
