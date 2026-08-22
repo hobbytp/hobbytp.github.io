@@ -1,4 +1,4 @@
-name: 每日AI动态更新 V3.0
+name: 每日AI动态更新 V3.5
 
 on:
     schedule:
@@ -31,7 +31,7 @@ jobs:
                   pip install -r scripts/requirements.txt
                   echo "============================================"
                   echo "已安装的包:"
-                  pip list | grep -E "(google-generativeai|openai|perplexity|jinja2|python-dotenv)"
+                  pip list | grep -E "(google-genai|openai|perplexity|jinja2|python-dotenv|feedparser|pydantic)"
                   echo "============================================"
 
             - name: 诊断 API 连接
@@ -46,7 +46,7 @@ jobs:
                   python scripts/diagnose_gemini.py || true
 
 
-            - name: 运行AI动态收集脚本 V3.0
+            - name: 运行AI动态收集脚本 V3.5
               env:
                   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
                   PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
@@ -63,7 +63,7 @@ jobs:
                   METASOSEARCH_API_KEY: ${{ secrets.METASOSEARCH_API_KEY }}
               run: |
                   echo "============================================"
-                  echo "开始收集每日AI动态 (V3.0 - MVC Pipeline)"
+                  echo "开始收集每日AI动态 (V3.5 - Multi-source Pipeline)"
                   echo "============================================"
                   python scripts/daily_ai_collector.py
                   echo "============================================"
@@ -107,5 +107,6 @@ jobs:
                   git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
                   git add content/zh/daily_ai/
                   git add scripts/daily_ai/data/history.json
-                  git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 V3.0 - $(date '+%Y-%m-%d')"
+                  git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 V3.5 - $(date '+%Y-%m-%d')"
                   git push origin main
+
