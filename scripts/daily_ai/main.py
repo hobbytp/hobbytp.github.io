@@ -1,14 +1,16 @@
-#!/usr/bin/env python3
 import sys
 import os
+import json
 import datetime
 from pathlib import Path
+from typing import Dict, List
 
 # 添加项目根目录到 Python Path
 current_dir = Path(__file__).resolve().parent
 project_root = current_dir.parent.parent
 sys.path.append(str(project_root))
 
+from scripts.daily_ai.models import BaseItem, ArticleItem, ModelItem, PaperItem, GitHubProjectItem
 from scripts.daily_ai.fetchers.rss_official import OfficialRSSFetcher
 from scripts.daily_ai.fetchers.google_search import GoogleSearchFetcher
 from scripts.daily_ai.fetchers.hacker_news import HackerNewsFetcher
@@ -21,6 +23,7 @@ from scripts.daily_ai.processors.deduplicator import Deduplicator
 from scripts.daily_ai.processors.quality_scorer import QualityScorer
 from scripts.daily_ai.generators.chapter_writer import ChapterWriter
 from scripts.daily_ai.renderers.jinja_renderer import JinjaRenderer
+
 
 BEIJING_TZ = datetime.timezone(datetime.timedelta(hours=8))
 
@@ -186,12 +189,69 @@ class Orchestrator:
         return chapters
 
 
+    def _merge_with_daily_candidates(self, date_str: str, raw_data: Dict[str, List[BaseItem]]) -> Dict[str, List[BaseItem]]:
+        """同日候选快照合并：累积保存当天所有抓取到的候选对象，避免重复运行时因临时网络抖动丢失条目"""
+        candidates_file = project_root / "scripts" / "daily_ai" / "data" / f"candidates_{date_str}.json"
+        saved_items_map = {}
+        
+        # 1. 尝试读取已有快照
+        if candidates_file.exists():
+            try:
+                with open(candidates_file, "r", encoding="utf-8") as f:
+                    snapshot = json.load(f)
+                for cat, items in snapshot.items():
+                    saved_items_map[cat] = []
+                    for it in items:
+                        if "stars" in it:
+                            saved_items_map[cat].append(GitHubProjectItem(**it))
+                        elif "pipeline_tag" in it or "downloads" in it:
+                            saved_items_map[cat].append(ModelItem(**it))
+                        elif "authors" in it:
+                            saved_items_map[cat].append(PaperItem(**it))
+                        else:
+                            saved_items_map[cat].append(ArticleItem(**it))
+                print(f"[INFO] 已加载今日已有候选快照: {sum(len(v) for v in saved_items_map.values())} 条")
+            except Exception as e:
+                print(f"[WARNING] 读取当天候选快照失败: {e}")
+
+        # 2. 合并当前抓取结果（URL 去重，累加并集）
+        merged_data = {}
+        all_categories = set(raw_data.keys()) | set(saved_items_map.keys())
+        for cat in all_categories:
+            current_list = raw_data.get(cat, [])
+            saved_list = saved_items_map.get(cat, [])
+            
+            seen_urls = set()
+            combined = []
+            for item in current_list + saved_list:
+                if item.url not in seen_urls:
+                    seen_urls.add(item.url)
+                    combined.append(item)
+            merged_data[cat] = combined
+
+        # 3. 持久化当天的完整候选快照
+        try:
+            candidates_file.parent.mkdir(parents=True, exist_ok=True)
+            to_save = {}
+            for cat, items in merged_data.items():
+                to_save[cat] = [item.model_dump() for item in items]
+            with open(candidates_file, "w", encoding="utf-8") as f:
+                json.dump(to_save, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"[WARNING] 保存当天候选快照失败: {e}")
+
+        return merged_data
+
     def run(self):
-        # 1. Fetch
+        now = datetime.datetime.now(BEIJING_TZ)
+        date_str = now.strftime('%Y-%m-%d')
+
+        # 1. Fetch & Daily Snapshot Merge
         raw_data = self._fetch_all()
+        aggregated_data = self._merge_with_daily_candidates(date_str, raw_data)
         
         # 2. Process
-        processed_data = self._process_data(raw_data)
+        processed_data = self._process_data(aggregated_data)
         stats = {k: len(v) for k, v in processed_data.items()}
         total_items = sum(stats.values())
         
@@ -204,8 +264,8 @@ class Orchestrator:
         
         # 4. Render
         print("====== [Pipeline Step 4] Jinja 视图渲染与发布 ======")
-        now = datetime.datetime.now(BEIJING_TZ)
         yesterday = now - datetime.timedelta(days=1)
+
         date_str = now.strftime('%Y-%m-%d')
         time_range = f"{yesterday.strftime('%Y年%m月%d日 %H:%M')} - {now.strftime('%Y年%m月%d日 %H:%M')}"
         current_time = now.strftime('%Y-%m-%dT%H:%M:%S+08:00')

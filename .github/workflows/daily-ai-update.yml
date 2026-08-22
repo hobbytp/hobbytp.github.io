@@ -75,7 +75,13 @@ jobs:
                   echo "============================================"
                   echo "🔍 检查生成产物完整性..."
                   echo "============================================"
-                  latest_file=$(ls -t content/zh/daily_ai/*.md | head -1)
+                  today_file="content/zh/daily_ai/$(TZ='Asia/Shanghai' date +%Y-%m-%d).md"
+                  if [ -f "$today_file" ]; then
+                      latest_file="$today_file"
+                  else
+                      latest_file=$(ls -t content/zh/daily_ai/*.md | head -1)
+                  fi
+
                   if [ ! -f "$latest_file" ]; then
                       echo "❌ ERROR: content/zh/daily_ai/ 下未找到任何 Markdown 文章！"
                       exit 1
@@ -93,9 +99,24 @@ jobs:
                       echo "❌ ERROR: 检测到模板渲染错误残留，拒绝提交！"
                       exit 1
                   fi
-                  
-                  echo "✅ 质量校验通过，预览最新生成内容:"
+
+                  # 数量门禁 1：内容条目数 totalItems 下限（防止同日重跑/采集异常导致内容被清空）
+                  total_items=$(grep -m1 '^totalItems:' "$latest_file" | sed -E "s/^totalItems:[[:space:]]*['\"]?([0-9]+)['\"]?.*/\1/" | tr -d '\r' | tr -d ' ')
+                  if [ -z "$total_items" ] || ! [[ "$total_items" =~ ^[0-9]+$ ]] || [ "$total_items" -lt 5 ]; then
+                      echo "❌ ERROR: 内容条目数过少或不合法 (totalItems='${total_items}')，疑似采集/去重异常，拒绝提交！"
+                      exit 1
+                  fi
+
+                  # 数量门禁 2：章节数下限（兼容 <h2 id= 与 ## 标题）
+                  section_count=$(grep -c -E '^(<h2 id=|## )' "$latest_file" || true)
+                  if [ "$section_count" -lt 3 ]; then
+                      echo "❌ ERROR: 章节数过少 ($section_count)，疑似生成失败，拒绝提交！"
+                      exit 1
+                  fi
+
+                  echo "✅ 质量校验通过 (totalItems=$total_items, sections=$section_count)，预览最新生成内容:"
                   head -n 45 "$latest_file"
+
 
 
             - name: 提交更改

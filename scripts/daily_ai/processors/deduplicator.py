@@ -23,6 +23,8 @@ class Deduplicator:
         
         self.seen_urls: Set[str] = set()
         self.seen_titles: Set[str] = set()
+        self.first_seen_title: Dict[str, str] = {}
+        self.first_seen_url: Dict[str, str] = {}
         self.history_data: List[Dict] = []
         
         if self.history_file and self.history_file.exists():
@@ -50,9 +52,15 @@ class Deduplicator:
                     
                     if url_norm:
                         self.seen_urls.add(url_norm)
+                        prev_date = self.first_seen_url.get(url_norm)
+                        if prev_date is None or date_str < prev_date:
+                            self.first_seen_url[url_norm] = date_str
                     if title_norm:
                         self.seen_titles.add(title_norm)
-                        
+                        prev_date = self.first_seen_title.get(title_norm)
+                        if prev_date is None or date_str < prev_date:
+                            self.first_seen_title[title_norm] = date_str
+
                     self.history_data.append(item)
                     valid_count += 1
             
@@ -104,55 +112,92 @@ class Deduplicator:
         clean = re.sub(r'[^\w\s\u4e00-\u9fa5]', ' ', title.lower())
         return re.sub(r'\s+', ' ', clean).strip()
 
-    def _is_similar_to_seen(self, title: str) -> bool:
-        norm = self._normalize_title(title)
-        if not norm:
-            return False
-        for seen in self.seen_titles:
+    def _fuzzy_match_in_set(self, norm_title: str, seen_set: Set[str]) -> Optional[str]:
+        """在给定集合中查找与标题精确/模糊匹配的条目，返回匹配项（无匹配返回 None）"""
+        if not norm_title:
+            return None
+        for seen in seen_set:
             # 严格相等
-            if norm == seen:
-                return True
+            if norm_title == seen:
+                return seen
             # 短标题略过模糊比较
-            if len(norm) > 15 and len(seen) > 15:
-                ratio = SequenceMatcher(None, norm, seen).ratio()
+            if len(norm_title) > 15 and len(seen) > 15:
+                ratio = SequenceMatcher(None, norm_title, seen).ratio()
                 if ratio >= self.similarity_threshold:
-                    return True
-        return False
+                    return seen
+        return None
+
+    def _first_seen_date(self, title_norm: str, url_norm: str) -> Optional[str]:
+        """查询条目的首次出现日期：精确URL > 精确标题 > 模糊标题匹配；未出现过返回 None"""
+        if url_norm and url_norm in self.first_seen_url:
+            return self.first_seen_url[url_norm]
+        if title_norm and title_norm in self.first_seen_title:
+            return self.first_seen_title[title_norm]
+        if title_norm:
+            matched = self._fuzzy_match_in_set(title_norm, self.seen_titles)
+            if matched and matched in self.first_seen_title:
+                return self.first_seen_title[matched]
+        return None
+
 
     def process(self, items: List[BaseItem]) -> List[BaseItem]:
         unique_items = []
         today_str = datetime.now(BEIJING_TZ).strftime('%Y-%m-%d')
         new_count = 0
+        same_day_kept = 0
+        # 本次运行内的去重集合（防止同一次抓取中来自多个渠道的重复条目）
+        run_seen_titles: Set[str] = set()
+        run_seen_urls: Set[str] = set()
 
-        
         for item in items:
             title_norm = self._normalize_title(item.title)
             url_norm = self._normalize_url(item.url)
-            
+
             if not title_norm:
                 continue
 
-            if self._is_similar_to_seen(item.title):
+            # 1) 本次运行内部去重（同一批次内的重复来源，如 RSS 与 Google 报道同一事件）
+            if self._fuzzy_match_in_set(title_norm, run_seen_titles) or (url_norm and url_norm in run_seen_urls):
                 continue
-                
-            if url_norm and url_norm in self.seen_urls:
+
+            # 2) 历史去重：查询条目首次出现日期
+            first_seen = self._first_seen_date(title_norm, url_norm)
+            if first_seen is not None:
+                if first_seen < today_str:
+                    # 历史（非今天）已出现过 → 旧闻，丢弃
+                    continue
+                # 今天已出现过（同日重跑）→ 保留但不重复计数、不重复入库
+                unique_items.append(item)
+                same_day_kept += 1
+                run_seen_titles.add(title_norm)
+                if url_norm:
+                    run_seen_urls.add(url_norm)
                 continue
-                
+
+            # 3) 全新条目：保留并记录首次出现日期
+            unique_items.append(item)
+            new_count += 1
+            run_seen_titles.add(title_norm)
+            if url_norm:
+                run_seen_urls.add(url_norm)
             self.seen_titles.add(title_norm)
+            self.first_seen_title[title_norm] = today_str
             if url_norm:
                 self.seen_urls.add(url_norm)
-            
+                self.first_seen_url[url_norm] = today_str
             self.history_data.append({
                 "url": url_norm,
                 "title": title_norm,
                 "date": today_str
             })
-            
-            unique_items.append(item)
-            new_count += 1
-            
-        if new_count < len(items):
-            print(f"[INFO] 语义去重完成: {len(items)} -> {new_count} (过滤 {len(items) - new_count} 条同质/历史内容)")
-            
+
+        total_out = len(unique_items)
+        dropped = len(items) - total_out
+        if dropped > 0 or same_day_kept > 0:
+            print(
+                f"[INFO] 语义去重完成: {len(items)} -> {total_out} "
+                f"(新增 {new_count} 条, 同日保留 {same_day_kept} 条, 过滤历史/重复 {dropped} 条)"
+            )
+
         return unique_items
 
