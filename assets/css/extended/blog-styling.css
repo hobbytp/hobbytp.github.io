@@ -1256,3 +1256,145 @@ html {
   color: var(--primary) !important;
   background: transparent !important;
 }
+
+/* ===== 社交媒体分享栏横排美化 ===== */
+.share-buttons-container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin: 28px 0 20px 0 !important;
+  padding: 12px 18px !important;
+  background: var(--entry, rgba(255, 255, 255, 0.03)) !important;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.08)) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+.share-buttons-label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: var(--secondary, #94a3b8) !important;
+  user-select: none !important;
+}
+
+.share-buttons-label svg {
+  color: var(--color-primary, #3b82f6) !important;
+}
+
+ul.share-buttons,
+.editorial-article .share-buttons,
+.share-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+ul.share-buttons li,
+.editorial-article .share-buttons li,
+.share-buttons li {
+  display: inline-flex !important;
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ul.share-buttons li::before,
+ul.share-buttons li::marker,
+.editorial-article .share-buttons li::before,
+.editorial-article .share-buttons li::marker,
+.share-buttons li::before,
+.share-buttons li::marker {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.share-buttons a,
+.share-buttons .share-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  background: var(--code-bg, rgba(255, 255, 255, 0.05)) !important;
+  color: var(--secondary, #94a3b8) !important;
+  border: 1px solid var(--border, rgba(255, 255, 255, 0.1)) !important;
+  text-decoration: none !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: none !important;
+}
+
+.share-buttons a svg,
+.share-buttons .share-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+  fill: currentColor !important;
+  transition: transform 0.2s ease !important;
+}
+
+.share-buttons a:hover,
+.share-buttons .share-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+.share-buttons a:hover svg,
+.share-buttons .share-btn:hover svg {
+  transform: scale(1.1) !important;
+}
+
+/* 品牌专属悬停色 */
+.share-btn--x:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #555555 !important;
+}
+.share-btn--linkedin:hover {
+  background: #0a66c2 !important;
+  color: #ffffff !important;
+  border-color: #0a66c2 !important;
+}
+.share-btn--reddit:hover {
+  background: #ff4500 !important;
+  color: #ffffff !important;
+  border-color: #ff4500 !important;
+}
+.share-btn--facebook:hover {
+  background: #1877f2 !important;
+  color: #ffffff !important;
+  border-color: #1877f2 !important;
+}
+.share-btn--whatsapp:hover {
+  background: #25d366 !important;
+  color: #ffffff !important;
+  border-color: #25d366 !important;
+}
+.share-btn--telegram:hover {
+  background: #229ed9 !important;
+  color: #ffffff !important;
+  border-color: #229ed9 !important;
+}
+.share-btn--hn:hover {
+  background: #ff6600 !important;
+  color: #ffffff !important;
+  border-color: #ff6600 !important;
+}
+
