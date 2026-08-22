@@ -1,27 +1,28 @@
 
 import json
 import os
+import re
 from pathlib import Path
 from typing import List, Set, Dict, Optional
-from urllib.parse import urlparse
-from datetime import datetime, timedelta
+from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
+from datetime import datetime, timedelta, timezone
+from difflib import SequenceMatcher
 from scripts.daily_ai.models import BaseItem
 
+BEIJING_TZ = timezone(timedelta(hours=8))
+
+
+
 class Deduplicator:
-    def __init__(self, history_file: Optional[Path] = None, retention_days: int = 7):
-        """
-        初始化去重处理器
-        :param history_file: 历史记录文件路径 (JSON格式)
-        :param retention_days: 历史记录保留天数
-        """
+    """去重引擎：支持 URL 规范化清理、历史状态持久化以及标题模糊相似度去重"""
+
+    def __init__(self, history_file: Optional[Path] = None, retention_days: int = 7, title_similarity_threshold: float = 0.78):
         self.history_file = Path(history_file) if history_file else None
         self.retention_days = retention_days
+        self.similarity_threshold = title_similarity_threshold
         
-        # 内存中的去重集合 (normalize后的URL和标题)
         self.seen_urls: Set[str] = set()
         self.seen_titles: Set[str] = set()
-        
-        # 完整的历史记录数据 [{"url": "...", "title": "...", "date": "YYYY-MM-DD"}, ...]
         self.history_data: List[Dict] = []
         
         if self.history_file and self.history_file.exists():
@@ -32,11 +33,11 @@ class Deduplicator:
             with open(self.history_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 
-            cutoff_date = datetime.now() - timedelta(days=self.retention_days)
+            cutoff_date = datetime.now(BEIJING_TZ).replace(tzinfo=None) - timedelta(days=self.retention_days)
             valid_count = 0
+
             
             for item in data:
-                # item format: {"url": "...", "title": "...", "date": "YYYY-MM-DD"}
                 date_str = item.get('date', '2000-01-01')
                 try:
                     item_date = datetime.strptime(date_str, '%Y-%m-%d')
@@ -56,21 +57,17 @@ class Deduplicator:
                     valid_count += 1
             
             print(f"[INFO] 已加载历史去重记录: {valid_count} 条 (保留 {self.retention_days} 天内)")
-            
         except Exception as e:
             print(f"[WARNING] 加载历史记录失败: {e}")
 
     def save_state(self):
-        """保存当前去重状态到文件"""
         if not self.history_file:
             return
             
         try:
-            # Create directory if not exists
             self.history_file.parent.mkdir(parents=True, exist_ok=True)
-            
-            # 同样在保存时清理过期的
-            cutoff_date = datetime.now() - timedelta(days=self.retention_days)
+            cutoff_date = datetime.now(BEIJING_TZ).replace(tzinfo=None) - timedelta(days=self.retention_days)
+
             to_save = []
             
             for item in self.history_data:
@@ -84,51 +81,78 @@ class Deduplicator:
             
             with open(self.history_file, 'w', encoding='utf-8') as f:
                 json.dump(to_save, f, ensure_ascii=False, indent=2)
-            print(f"[INFO] 已更新历史记录至: {self.history_file} (共 {len(to_save)} 条)")
-            
+            print(f"[INFO] 已更新历史去重库: {self.history_file} (保留 {len(to_save)} 条)")
         except Exception as e:
             print(f"[ERROR] 保存历史记录失败: {e}")
 
     def _normalize_url(self, url: str) -> str:
-        if not url: return ""
+        if not url:
+            return ""
         try:
-             parsed = urlparse(url)
-             return f"{parsed.netloc}{parsed.path}".rstrip('/').lower()
-        except:
-             return url.lower()
-             
+            parsed = urlparse(url)
+            # 过滤追踪参数
+            params = parse_qs(parsed.query)
+            clean_params = {k: v for k, v in params.items() if not k.startswith(('utm_', 'ref', 'source', 'fbclid', 'gclid'))}
+            clean_query = urlencode(clean_params, doseq=True)
+            clean_url = urlunparse((parsed.scheme, parsed.netloc.lower(), parsed.path.rstrip('/'), '', clean_query, ''))
+            return clean_url
+        except Exception:
+            return url.lower()
+
+    def _normalize_title(self, title: str) -> str:
+        # 去除特殊标点，保留核心词
+        clean = re.sub(r'[^\w\s\u4e00-\u9fa5]', ' ', title.lower())
+        return re.sub(r'\s+', ' ', clean).strip()
+
+    def _is_similar_to_seen(self, title: str) -> bool:
+        norm = self._normalize_title(title)
+        if not norm:
+            return False
+        for seen in self.seen_titles:
+            # 严格相等
+            if norm == seen:
+                return True
+            # 短标题略过模糊比较
+            if len(norm) > 15 and len(seen) > 15:
+                ratio = SequenceMatcher(None, norm, seen).ratio()
+                if ratio >= self.similarity_threshold:
+                    return True
+        return False
+
     def process(self, items: List[BaseItem]) -> List[BaseItem]:
-         unique_items = []
-         today_str = datetime.now().strftime('%Y-%m-%d')
-         new_count = 0
-         
-         for item in items:
-             title_lower = item.title.lower().strip()
-             url_norm = self._normalize_url(item.url)
-             
-             if title_lower and title_lower in self.seen_titles:
-                 # print(f"  - [Dedupe] 跳过重复标题: {title_lower[:30]}...")
-                 continue
-                 
-             if url_norm and url_norm in self.seen_urls:
-                 # print(f"  - [Dedupe] 跳过重复URL: {url_norm}")
-                 continue
-                 
-             # Add to current memory
-             self.seen_titles.add(title_lower)
-             if url_norm: self.seen_urls.add(url_norm)
-             
-             # Add to history data
-             self.history_data.append({
-                 "url": url_norm,
-                 "title": title_lower,
-                 "date": today_str
-             })
-             
-             unique_items.append(item)
-             new_count += 1
-             
-         if new_count < len(items):
-             print(f"[INFO] 去重: {len(items)} -> {new_count} (过滤掉 {len(items) - new_count} 条重复)")
-             
-         return unique_items
+        unique_items = []
+        today_str = datetime.now(BEIJING_TZ).strftime('%Y-%m-%d')
+        new_count = 0
+
+        
+        for item in items:
+            title_norm = self._normalize_title(item.title)
+            url_norm = self._normalize_url(item.url)
+            
+            if not title_norm:
+                continue
+
+            if self._is_similar_to_seen(item.title):
+                continue
+                
+            if url_norm and url_norm in self.seen_urls:
+                continue
+                
+            self.seen_titles.add(title_norm)
+            if url_norm:
+                self.seen_urls.add(url_norm)
+            
+            self.history_data.append({
+                "url": url_norm,
+                "title": title_norm,
+                "date": today_str
+            })
+            
+            unique_items.append(item)
+            new_count += 1
+            
+        if new_count < len(items):
+            print(f"[INFO] 语义去重完成: {len(items)} -> {new_count} (过滤 {len(items) - new_count} 条同质/历史内容)")
+            
+        return unique_items
+

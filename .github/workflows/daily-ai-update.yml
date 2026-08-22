@@ -37,10 +37,14 @@ jobs:
             - name: 诊断 API 连接
               env:
                   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+                  DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+                  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+                  SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
                   PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
               run: |
                   echo "运行诊断脚本..."
                   python scripts/diagnose_gemini.py || true
+
 
             - name: 运行AI动态收集脚本 V3.0
               env:
@@ -66,18 +70,33 @@ jobs:
                   echo "收集完成"
                   echo "============================================"
 
-            - name: 检查生成的文件
+            - name: 产物完整性与质量门禁校验
               run: |
-                  echo "生成的文件:"
-                  ls -lh content/zh/daily_ai/ | tail -5
-                  echo ""
-                  echo "最新文件内容预览:"
+                  echo "============================================"
+                  echo "🔍 检查生成产物完整性..."
+                  echo "============================================"
                   latest_file=$(ls -t content/zh/daily_ai/*.md | head -1)
-                  if [ -f "$latest_file" ]; then
-                      head -50 "$latest_file"
-                  else
-                      echo "Warning: No .md file found in content/zh/daily_ai/"
+                  if [ ! -f "$latest_file" ]; then
+                      echo "❌ ERROR: content/zh/daily_ai/ 下未找到任何 Markdown 文章！"
+                      exit 1
                   fi
+                  
+                  file_size=$(stat -c%s "$latest_file" 2>/dev/null || stat -f%z "$latest_file")
+                  echo "最新生成文件: $latest_file (大小: $file_size bytes)"
+                  
+                  if [ "$file_size" -lt 1500 ]; then
+                      echo "❌ ERROR: 文章体积过小 ($file_size bytes)，可能存在残缺或生成失败！"
+                      exit 1
+                  fi
+                  
+                  if grep -q "模板渲染错误" "$latest_file"; then
+                      echo "❌ ERROR: 检测到模板渲染错误残留，拒绝提交！"
+                      exit 1
+                  fi
+                  
+                  echo "✅ 质量校验通过，预览最新生成内容:"
+                  head -n 45 "$latest_file"
+
 
             - name: 提交更改
               env:

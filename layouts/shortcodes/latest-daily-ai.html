@@ -1,185 +1,38 @@
-{{/* latest-daily-ai shortcode - 显示最新的每日AI动态 */}}
-{{ $dailyAIPath := "content/zh/daily_ai" }}
-{{ $dailyAIFiles := readDir $dailyAIPath }}
+{{/* latest-daily-ai shortcode - 基于 Hugo 原生 Page 对象的高性能动态卡片 */}}
+{{ $dailyAiPages := where (where site.RegularPages "Section" "daily_ai") ".Params.draft" "!=" true }}
+{{ $sortedPages := $dailyAiPages.ByDate.Reverse }}
 
-{{/* 获取所有日期文件，排除_index.md */}}
-{{ $dateFiles := slice }}
-{{ range $dailyAIFiles }}
-{{ if and (not (eq .Name "_index.md")) (strings.HasSuffix .Name ".md") }}
-{{ $dateFiles = $dateFiles | append .Name }}
-{{ end }}
-{{ end }}
+{{ if gt (len $sortedPages) 0 }}
+  {{ $latest := index $sortedPages 0 }}
+  {{ with $latest }}
+    <div class="latest-daily-ai-container">
+      <div class="daily-ai-hero-card">
+        <div class="hero-card-meta">
+          <span class="hero-badge">🔥 最新一期</span>
+          <span class="hero-date">📅 {{ .Date.Format "2006-01-02" }}</span>
+          {{ with .Params.totalItems }}
+            <span class="hero-count">📊 共 {{ . }} 条精选动态</span>
+          {{ end }}
+          {{ with .Params.readingTime }}
+            <span class="hero-reading">⏱️ {{ . }} 分钟速读</span>
+          {{ end }}
+        </div>
+        <h3 class="hero-card-title">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h3>
+        {{ with .Description }}
+          <p class="hero-card-desc">{{ . }}</p>
+        {{ end }}
 
-{{/* 按日期排序，获取最新的文件 */}}
-{{ $sortedFiles := sort $dateFiles "value" "desc" }}
-{{ $latestFile := index $sortedFiles 0 }}
-
-{{ if $latestFile }}
-{{ $latestPath := printf "%s/%s" $dailyAIPath $latestFile }}
-{{ $latestContent := readFile $latestPath }}
-
-{{/* 解析front matter和内容 */}}
-{{ $parts := split $latestContent "---" }}
-{{ if ge (len $parts) 3 }}
-{{ $frontMatter := index $parts 1 }}
-{{ $content := index $parts 2 }}
-
-{{/* 提取日期和标题 */}}
-{{ $date := "" }}
-{{ $title := "" }}
-{{ range (split $frontMatter "\n") }}
-{{ if strings.HasPrefix . "date:" }}
-{{ $date = strings.TrimPrefix "date:" . | strings.TrimSpace }}
-{{ else if strings.HasPrefix . "title:" }}
-{{ $title = strings.TrimPrefix "title:" . | strings.TrimSpace }}
-{{ end }}
-{{ end }}
-
-<div class="latest-daily-ai">
-  <div class="daily-ai-header">
-    <h3>📅 {{ $title | default "每日AI动态" }}</h3>
-    <p class="daily-ai-date">{{ $date }}</p>
-  </div>
-
-  <div class="daily-ai-content">
-    {{ $content | markdownify }}
-  </div>
-
-  <div class="daily-ai-footer">
-    <a href="/zh/daily_ai" class="view-all-link">查看所有动态 →</a>
-  </div>
-</div>
+        <div class="hero-card-actions">
+          <a href="{{ .RelPermalink }}" class="read-full-btn">查看今日完整报告 →</a>
+          <a href="/zh/daily_ai/" class="archive-btn">浏览往期归档 📚</a>
+        </div>
+      </div>
+    </div>
+  {{ end }}
 {{ else }}
-<div class="latest-daily-ai">
-  <p>暂无每日AI动态内容</p>
-</div>
+  <div class="latest-daily-ai-empty">
+    <p>暂无最新动态数据</p>
+  </div>
 {{ end }}
-{{ else }}
-<div class="latest-daily-ai">
-  <p>暂无每日AI动态内容</p>
-</div>
-{{ end }}
-
-<style>
-  .latest-daily-ai {
-    background: var(--color-bg-secondary, #f8fafc);
-    border: 1px solid var(--color-border-light, #e2e8f0);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-
-  .daily-ai-header {
-    border-bottom: 1px solid var(--color-border-light, #e2e8f0);
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .daily-ai-header h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--color-primary, #1e40af);
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
-
-  .daily-ai-date {
-    margin: 0;
-    color: var(--color-text-secondary, #6b7280);
-    font-size: 0.9rem;
-  }
-
-  .daily-ai-content {
-    line-height: 1.6;
-    color: var(--color-text-primary, #1f2937);
-  }
-
-  .daily-ai-content h4 {
-    color: var(--color-primary, #1e40af);
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .daily-ai-content ul {
-    margin: 0.75rem 0;
-    padding-left: 1.5rem;
-  }
-
-  .daily-ai-content li {
-    margin: 0.5rem 0;
-  }
-
-  .daily-ai-footer {
-    border-top: 1px solid var(--color-border-light, #e2e8f0);
-    padding-top: 1rem;
-    margin-top: 1rem;
-    text-align: right;
-  }
-
-  .view-all-link {
-    color: var(--color-primary, #1e40af);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s ease;
-  }
-
-  .view-all-link:hover {
-    color: var(--color-primary-dark, #1e3a8a);
-    text-decoration: underline;
-  }
-
-  /* 暗色模式适配 */
-  .dark .latest-daily-ai {
-    background: var(--color-dark-bg-secondary, #1f2937);
-    border-color: var(--color-dark-border, #374151);
-    color: var(--color-dark-text-primary, #f9fafb);
-  }
-
-  .dark .daily-ai-header {
-    border-bottom-color: var(--color-dark-border, #374151);
-  }
-
-  .dark .daily-ai-header h3 {
-    color: var(--color-primary-light, #60a5fa);
-  }
-
-  .dark .daily-ai-date {
-    color: var(--color-dark-text-secondary, #9ca3af);
-  }
-
-  .dark .daily-ai-content {
-    color: var(--color-dark-text-primary, #f9fafb);
-  }
-
-  .dark .daily-ai-content h4 {
-    color: var(--color-primary-light, #60a5fa);
-  }
-
-  .dark .daily-ai-footer {
-    border-top-color: var(--color-dark-border, #374151);
-  }
-
-  .dark .view-all-link {
-    color: var(--color-primary-light, #60a5fa);
-  }
-
-  .dark .view-all-link:hover {
-    color: var(--color-primary, #3b82f6);
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const dailyAiContent = document.querySelector('.daily-ai-content');
-    if (dailyAiContent) {
-      const links = dailyAiContent.querySelectorAll('a');
-      links.forEach(link => {
-        // Check if it's an external link (starts with http)
-        if (link.href.startsWith('http')) {
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-        }
-      });
-    }
-  });
-</script>
