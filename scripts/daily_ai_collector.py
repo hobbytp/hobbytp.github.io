@@ -11,7 +11,12 @@
 
 import sys
 import os
+import warnings
 from pathlib import Path
+
+# 过滤第三方库 (ai_news_collector_lib 等) 内部导入旧版 SDK 触发的 FutureWarning 噪音
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", message=".*google.generativeai.*")
 
 # 添加项目根目录到 Python Path 以支持包导入
 project_root = Path(__file__).resolve().parent.parent
@@ -19,6 +24,7 @@ if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
 from scripts.daily_ai.main import Orchestrator
+
 
 if __name__ == "__main__":
     print("============================================")

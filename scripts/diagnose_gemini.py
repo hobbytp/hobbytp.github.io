@@ -4,6 +4,12 @@
 """
 import os
 import sys
+import warnings
+
+# 过滤废弃告警
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", message=".*google.generativeai.*")
+
 
 print("="*60)
 print("🤖 博客 AI 接口诊断工具 (Multi-Provider)")
