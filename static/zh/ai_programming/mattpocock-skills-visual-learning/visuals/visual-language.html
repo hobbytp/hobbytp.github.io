@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skills 中文视觉语言样张</title>
+
+  <style>
+    a[aria-disabled="true"] { cursor: default; pointer-events: none; }
+    /* ── Design tokens ────────────────────────────── */
+    :root {
+      --ink:          #17232b;
+      --ink-soft:     #52616a;
+      --paper:        #f5f1e8;
+      --paper-deep:   #e8e0d1;
+      --line:         #b9b1a2;
+      --blue:         #2f6680;
+      --blue-pale:    #dcebf0;
+      --yellow:       #c9940e;        /* darker for badge text */
+      --yellow-pale:  #f8edc9;
+      --green:        #28796d;
+      --green-pale:   #d9eee7;
+      --red:          #b84d48;
+      --red-pale:     #f4d9d2;
+      --coral:        #d96c54;
+      --coral-pale:   #f5ddd4;
+      --slate:        #5a6b78;        /* shared-primitive neutral */
+      --slate-pale:   #e4eaed;
+      --white:        #fffdf8;
+      --shadow:       0 12px 36px rgba(23,35,43,.09);
+      --radius:       10px;
+    }
+
+    /* ── Reset ────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      color: var(--ink);
+      background-color: var(--paper);
+      /* subtle ruled lines — only visible through transparent body bg, cards are opaque */
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 31px,
+        var(--paper-deep) 31px,
+        var(--paper-deep) 32px
+      );
+      font-family: 'DM Sans', 'Segoe UI', sans-serif;
+      line-height: 1.55;
+    }
+
+    /* ── Layout ───────────────────────────────────── */
+    .page   { max-width: 1180px; margin: 0 auto; padding: 64px 28px 96px; }
+    .band   { padding: 40px 0; }
+    .rule   { height: 1px; margin: 44px 0; background: var(--line); }
+
+    /* ── Typography ───────────────────────────────── */
+    .eyebrow {
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .72rem; font-weight: 500;
+      color: var(--coral); letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    h1 {
+      /* Noto Serif SC covers Chinese; Fraunces as fallback for Latin */
+      font-family: 'Noto Serif SC', 'Fraunces', Georgia, serif;
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      line-height: 1.08; letter-spacing: 0;
+      max-width: 700px; margin: 14px 0 18px;
+    }
+    h2 {
+      font-family: 'Noto Serif SC', 'Fraunces', Georgia, serif;
+      font-size: 1.75rem; line-height: 1.1; letter-spacing: 0;
+      margin-bottom: 10px;
+    }
+    .intro { max-width: 580px; color: var(--ink-soft); font-size: 1rem; }
+    p      { color: var(--ink-soft); font-size: .92rem; }
+
+    .section-head {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; gap: 24px; margin-bottom: 28px;
+    }
+    .section-head p { max-width: 400px; flex-shrink: 0; }
+
+    /* ── Badge ────────────────────────────────────── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-bottom: 10px; padding: 3px 8px;
+      border: 1.5px solid currentColor; border-radius: 999px;
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .6rem; font-weight: 500; line-height: 1;
+      white-space: nowrap;
+    }
+    .badge.user     { color: var(--blue); }
+    .badge.agent    { color: var(--green); }
+    .badge.shared   { color: var(--slate); }
+    .badge.artifact { color: var(--ink-soft); }
+    .badge.decision { color: var(--yellow); }
+
+    .skill   {
+      display: block; font-family: 'DM Mono', Consolas, monospace;
+      font-size: .82rem; font-weight: 500;
+      overflow-wrap: anywhere; line-height: 1.4;
+    }
+    .caption {
+      display: block; margin-top: 6px;
+      color: var(--ink-soft); font-size: .76rem;
+    }
+
+    /* ── ══════ SECTION 01: Route ════════════════════ */
+    .route {
+      display: grid;
+      /* artifact col is narrower to avoid overflow */
+      grid-template-columns: 1fr auto 1fr 1fr 1fr;
+      gap: 0;
+      align-items: stretch;
+      padding: 28px 20px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow-x: auto;
+    }
+
+    /* arrow gutter between steps */
+    .route-arrow {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; flex-shrink: 0;
+    }
+    .route-arrow svg { overflow: visible; }
+
+    .route-step  { padding: 4px 10px; min-width: 0; }
+
+    /* ── Node shapes ────────────────────────────── */
+    .node {
+      height: 100%;
+      padding: 14px 14px 12px;
+      border: 2px solid var(--blue);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+    /* model-invoked discipline: inner shadow ring */
+    .discipline {
+      height: 100%;
+      padding: 14px 14px 12px;
+      border: 2px solid var(--green);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: inset 0 0 0 4px var(--green-pale);
+    }
+    /* artifact card: folded corner via gradient */
+    .artifact {
+      height: 100%;
+      padding: 14px 14px 12px;
+      padding-top: 22px;  /* room for badge above fold */
+      border: 1.5px solid var(--line);
+      border-radius: 3px 0 3px 3px;
+      background:
+        linear-gradient(135deg, transparent 20px, var(--paper-deep) 20px, var(--paper-deep) 21px, var(--white) 21px)
+        top right / 28px 28px no-repeat,
+        var(--white);
+      position: relative;
+    }
+    /* decision: skewed container */
+    .decision-wrap {
+      height: 100%;
+      display: flex; align-items: stretch;
+    }
+    .decision {
+      flex: 1;
+      padding: 14px 14px 12px;
+      border: 2px solid var(--yellow);
+      border-radius: var(--radius);
+      background: var(--yellow-pale);
+      transform: skewX(-5deg);
+    }
+    .decision > * { transform: skewX(5deg); }
+
+    /* ── Shared primitive strip ──────────────────── */
+    .primitive-section {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 24px; align-items: center;
+      padding: 24px 28px;
+      border-left: 5px solid var(--slate);
+      background: var(--slate-pale);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    /* hexagon via SVG background — no clip-path border artifacts */
+    .hexnode {
+      position: relative;
+      width: 160px; height: 92px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 4px;
+    }
+    .hexnode svg.hex-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+    }
+    .hexnode .hex-content {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column;
+      align-items: center; text-align: center; gap: 2px;
+    }
+    .consumer-list {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    a.consumer {
+      display: inline-block;
+      padding: 7px 11px;
+      border: 1.5px solid var(--slate);
+      border-radius: 5px;
+      background: var(--white);
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .76rem;
+      color: var(--slate); text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    a.consumer:hover  { background: var(--slate); color: var(--white); }
+    a.consumer:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+
+    /* ── Section 03: Legend (with real mini-shapes) ─ */
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .legend-item {
+      padding: 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .legend-item strong { display: block; margin: 12px 0 4px; font-size: .88rem; }
+    .legend-item span   { color: var(--ink-soft); font-size: .78rem; }
+
+    /* mini shape demonstrations */
+    .mini-node {
+      width: 100%; height: 40px;
+      border: 2px solid var(--blue);
+      border-radius: 8px; background: var(--white);
+    }
+    .mini-discipline {
+      width: 100%; height: 40px;
+      border: 2px solid var(--green);
+      border-radius: 8px; background: var(--white);
+      box-shadow: inset 0 0 0 4px var(--green-pale);
+    }
+    .mini-artifact {
+      width: 100%; height: 40px;
+      border: 1.5px solid var(--line);
+      border-radius: 2px;
+      background:
+        linear-gradient(135deg, transparent 14px, var(--paper-deep) 14px, var(--paper-deep) 15px, var(--white) 15px)
+        top right / 18px 18px no-repeat,
+        var(--white);
+    }
+    .mini-decision {
+      width: 80%; height: 40px; margin: 0 auto;
+      border: 2px solid var(--yellow);
+      border-radius: 6px; background: var(--yellow-pale);
+      transform: skewX(-8deg);
+    }
+    /* mini hexagon */
+    .mini-hex { display: block; margin: 0 auto; }
+
+    /* ── Section 04: Arrow vocabulary ───────────────── */
+    .arrow-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .arrow-item {
+      padding: 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .arrow-item strong { display: block; margin-top: 10px; font-size: .88rem; }
+    .arrow-item span   { color: var(--ink-soft); font-size: .78rem; }
+    .arrow-demo { height: 40px; display: flex; align-items: center; }
+    .arrow-demo svg { overflow: visible; width: 100%; height: 32px; }
+
+    /* ── Section 05: Swatches ───────────────────────── */
+    .swatches {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;
+    }
+    .swatch {
+      min-height: 90px; padding: 14px;
+      border: 1px solid rgba(23,35,43,.12);
+      border-radius: 6px;
+    }
+    .swatch strong { display: block; font-size: .8rem; }
+    .swatch small  {
+      display: block; margin-top: 6px;
+      font-family: 'DM Mono', Consolas, monospace; font-size: .66rem;
+      color: var(--ink-soft);
+    }
+    .swatch.blue   { background: var(--blue-pale); }
+    .swatch.yellow { background: var(--yellow-pale); }
+    .swatch.green  { background: var(--green-pale); }
+    .swatch.red    { background: var(--red-pale); }
+    .swatch.gray   { background: var(--paper-deep); }
+
+    /* ── Linear summary ─────────────────────────────── */
+    .linear-summary {
+      margin-top: 20px; padding: 16px 20px;
+      border-left: 3px solid var(--blue);
+      background: var(--blue-pale);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--ink-soft); font-size: .88rem;
+    }
+    .linear-summary strong { color: var(--ink); }
+
+    /* ── Links / footer ─────────────────────────────── */
+    a { color: var(--blue); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+    a:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+    footer { margin-top: 56px; color: var(--ink-soft); font-size: .82rem; }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 800px) {
+      .page { padding: 40px 16px 72px; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 10px; }
+      .route { grid-template-columns: 1fr; }
+      .route-arrow { width: auto; height: 28px; }
+      .route-arrow svg { transform: rotate(90deg); }
+      .legend, .arrow-grid, .swatches { grid-template-columns: repeat(2, 1fr); }
+      .primitive-section { grid-template-columns: 1fr; }
+    }
+
+    /* ── Motion ─────────────────────────────────────── */
+    @media (prefers-reduced-motion: no-preference) {
+      .page > header   { animation: rise .45s ease both; }
+      .page > .rule    { animation: rise .45s .06s ease both; }
+      .page > section:nth-of-type(1) { animation: rise .45s .12s ease both; }
+      .page > section:nth-of-type(2) { animation: rise .45s .20s ease both; }
+      .page > section:nth-of-type(3) { animation: rise .45s .28s ease both; }
+      .page > section:nth-of-type(4) { animation: rise .45s .36s ease both; }
+      .page > section:nth-of-type(5) { animation: rise .45s .44s ease both; }
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <!-- ── Header ───────────────────────────────────────── -->
+    <header>
+      <div class="eyebrow">Phase B / 视觉语言样张</div>
+      <h1>让工作保持形状的一张地图。</h1>
+      <p class="intro">这是 Skills 视觉学习系统的交互预览样张，用来验证路线、调用类型、产物、决策和共享 primitive 的形状与标记是否能在不依赖颜色的条件下独立传递语义。</p>
+    </header>
+
+    <div class="rule"></div>
+
+    <!-- ══════ 01 路线结构 ═══════════════════════════════ -->
+    <section class="band" aria-labelledby="route-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">01 / 路线结构</div>
+          <h2 id="route-title">一条路线，五次交接</h2>
+        </div>
+        <p>路线是视觉焦点。每一步都有清晰角色，并且会携带一个产物进入下一步。</p>
+      </div>
+
+      <div class="route" aria-label="Feature route: grill-with-docs to code-review">
+        <!-- Step 1: user-invoked -->
+        <div class="route-step">
+          <div class="node">
+            <span class="badge user">用户 / 工程</span>
+            <span class="skill">/grill-with-docs</span>
+            <span class="caption">澄清意图</span>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="route-arrow" aria-hidden="true">
+          <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+            <line x1="0" y1="8" x2="20" y2="8" stroke="#d96c54" stroke-width="2"/>
+            <polyline points="14,2 22,8 14,14" stroke="#d96c54" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Step 2: artifact -->
+        <div class="route-step">
+          <div class="artifact">
+            <span class="badge artifact">产物</span>
+            <span class="skill">CONTEXT.md<br>+ ADR</span>
+            <span class="caption">共享语言</span>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="route-arrow" aria-hidden="true">
+          <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+            <line x1="0" y1="8" x2="20" y2="8" stroke="#d96c54" stroke-width="2"/>
+            <polyline points="14,2 22,8 14,14" stroke="#d96c54" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Step 3: user-invoked -->
+        <div class="route-step">
+          <div class="node">
+            <span class="badge user">用户 / 工程</span>
+            <span class="skill">/to-spec</span>
+            <span class="caption">塑造行为</span>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="route-arrow" aria-hidden="true">
+          <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+            <line x1="0" y1="8" x2="20" y2="8" stroke="#d96c54" stroke-width="2"/>
+            <polyline points="14,2 22,8 14,14" stroke="#d96c54" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Step 4: model-invoked discipline -->
+        <div class="route-step">
+          <div class="discipline">
+            <span class="badge agent">Agent / 工程</span>
+            <span class="skill">{tdd}</span>
+            <span class="caption">验证一个切片</span>
+          </div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="route-arrow" aria-hidden="true">
+          <svg width="28" height="16" viewBox="0 0 28 16" fill="none">
+            <line x1="0" y1="8" x2="20" y2="8" stroke="#d96c54" stroke-width="2"/>
+            <polyline points="14,2 22,8 14,14" stroke="#d96c54" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Step 5: model-invoked discipline (code-review IS model-invoked) -->
+        <div class="route-step">
+          <div class="discipline">
+            <span class="badge agent">Agent / 工程</span>
+            <span class="skill">{code-review}</span>
+            <span class="caption">检查规范与 spec</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="linear-summary">
+        <strong>线性阅读顺序：</strong>
+        用户从 <code>/grill-with-docs</code> 开始，产出共享上下文（CONTEXT.md + ADR）。<code>/to-spec</code> 把澄清后的意图转成行为。Agent 使用 <code>{tdd}</code> 进行测试驱动开发，最后 <code>{code-review}</code> 审查最终变更。
+      </div>
+    </section>
+
+    <!-- ══════ 02 共享 Primitive 层 ═══════════════════════ -->
+    <section class="band" aria-labelledby="primitive-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">02 / 共享层</div>
+          <h2 id="primitive-title">地图下方的引擎</h2>
+        </div>
+        <p>共享 primitive 是可复用的 discipline，不是路线上的另一个停靠点。五个 orchestrator 都通过它完成"挖掘决策分支"这件事。</p>
+      </div>
+
+      <div class="primitive-section">
+        <!-- SVG hexagon — no clip-path border artifacts -->
+        <div class="hexnode" role="img" aria-label="Shared primitive: grilling">
+          <svg class="hex-bg" viewBox="0 0 160 92" fill="none" aria-hidden="true">
+            <polygon
+              points="20,46 40,6 120,6 140,46 120,86 40,86"
+              fill="#e4eaed"
+              stroke="#5a6b78"
+              stroke-width="2.5"
+            />
+            <!-- double border ring -->
+            <polygon
+              points="26,46 44,12 116,12 134,46 116,80 44,80"
+              fill="none"
+              stroke="#5a6b78"
+              stroke-width="1"
+              stroke-dasharray="none"
+            />
+          </svg>
+          <div class="hex-content">
+            <span class="badge shared" style="margin-bottom:4px;">共享 PRIMITIVE</span>
+            <span class="skill" style="color:var(--slate);">{grilling}</span>
+            <span class="caption" style="color:var(--slate);">暴露决策分支</span>
+          </div>
+        </div>
+
+        <!-- Consumers -->
+        <div>
+          <p style="margin-bottom:12px; font-size:.82rem;">为以下五个 orchestrator 提供采访引擎：</p>
+          <div class="consumer-list" aria-label="Consumers of the grilling primitive">
+            <a class="consumer" aria-disabled="true" title="技能文档未随博客发布">/grill-me</a>
+            <a class="consumer" aria-disabled="true" title="技能文档未随博客发布">/grill-with-docs</a>
+            <a class="consumer" aria-disabled="true" title="技能文档未随博客发布">/triage</a>
+            <a class="consumer" aria-disabled="true" title="技能文档未随博客发布">/wayfinder</a>
+            <a class="consumer" aria-disabled="true" title="技能文档未随博客发布">/improve-codebase-architecture</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ 03 形状图例 ════════════════════════════════ -->
+    <section class="band" aria-labelledby="legend-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">03 / 阅读图例</div>
+          <h2 id="legend-title">形状承载语义</h2>
+        </div>
+        <p>颜色加强含义，但即使不依赖颜色，形状、徽章和文字也足够清晰。</p>
+      </div>
+
+      <div class="legend">
+        <!-- User-invoked: rounded rect, blue border -->
+        <div class="legend-item">
+          <div class="mini-node" role="img" aria-label="Rounded rectangle with blue border"></div>
+          <strong>圆角矩形</strong>
+          <span>用户调用的 orchestrator 或明确动作<br><code>[USER]</code> badge + 蓝色边框</span>
+        </div>
+
+        <!-- Model-invoked: rounded rect + inner ring, green -->
+        <div class="legend-item">
+          <div class="mini-discipline" role="img" aria-label="Rounded rectangle with green double border"></div>
+          <strong>内侧边框矩形</strong>
+          <span>模型调用的可复用 discipline<br><code>[AGENT]</code> badge + 绿色双层边框</span>
+        </div>
+
+        <!-- Artifact: folded corner card -->
+        <div class="legend-item">
+          <div class="mini-artifact" role="img" aria-label="Card with folded top-right corner"></div>
+          <strong>折角文档卡</strong>
+          <span>在步骤之间传递的产物<br><code>[产物]</code> badge + 右上折角</span>
+        </div>
+
+        <!-- Decision: skewed diamond-ish shape -->
+        <div class="legend-item">
+          <div class="mini-decision" role="img" aria-label="Skewed yellow rectangle representing decision"></div>
+          <strong>倾斜菱形</strong>
+          <span>决策或路线分叉问题<br><code>[决策]</code> badge + 黄色斜体框</span>
+        </div>
+
+        <!-- Shared primitive: hexagon -->
+        <div class="legend-item" style="grid-column: span 2;">
+          <svg class="mini-hex" viewBox="0 0 120 52" width="120" height="52" fill="none" aria-label="Hexagon for shared primitive">
+            <polygon points="14,26 28,4 92,4 106,26 92,48 28,48" fill="#e4eaed" stroke="#5a6b78" stroke-width="2"/>
+            <polygon points="19,26 32,8 88,8 101,26 88,44 32,44" fill="none" stroke="#5a6b78" stroke-width="1"/>
+          </svg>
+          <strong>双线六边形</strong>
+          <span>共享 primitive：被多个 orchestrator 调用的可复用 discipline<br><code>[SHARED]</code> badge + 灰蓝双线六边形</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ 04 箭头词汇表 ══════════════════════════════ -->
+    <section class="band" aria-labelledby="arrow-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">04 / 箭头词汇</div>
+          <h2 id="arrow-title">四种箭头，四种关系</h2>
+        </div>
+        <p>箭头传递交接方式，每种箭头只有一种意义。</p>
+      </div>
+
+      <div class="arrow-grid">
+        <!-- Solid: normal handoff -->
+        <div class="arrow-item">
+          <div class="arrow-demo" aria-label="Solid arrow">
+            <svg viewBox="0 0 120 32" fill="none">
+              <line x1="4" y1="16" x2="104" y2="16" stroke="#17232b" stroke-width="2"/>
+              <polyline points="96,8 108,16 96,24" stroke="#17232b" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <strong>实线箭头</strong>
+          <span>正常交接或主路线流转</span>
+        </div>
+
+        <!-- Dashed: optional detour -->
+        <div class="arrow-item">
+          <div class="arrow-demo" aria-label="Dashed arrow">
+            <svg viewBox="0 0 120 32" fill="none">
+              <line x1="4" y1="16" x2="104" y2="16"
+                stroke="#52616a" stroke-width="2" stroke-dasharray="6 4"/>
+              <polyline points="96,8 108,16 96,24" stroke="#52616a" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <strong>虚线箭头</strong>
+          <span>可选绕路或支撑性 discipline</span>
+        </div>
+
+        <!-- Loop: feedback cycle -->
+        <div class="arrow-item">
+          <div class="arrow-demo" aria-label="Loop arrow">
+            <svg viewBox="0 0 120 40" fill="none">
+              <path d="M20,20 C20,6 100,6 100,20 C100,34 20,34 20,20"
+                stroke="#2f6680" stroke-width="2" fill="none"/>
+              <polyline points="22,14 14,20 22,26" stroke="#2f6680" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <strong>循环箭头</strong>
+          <span>显式反馈或维护循环</span>
+        </div>
+
+        <!-- Split: route decision -->
+        <div class="arrow-item">
+          <div class="arrow-demo" aria-label="Split arrow">
+            <svg viewBox="0 0 120 48" fill="none">
+              <line x1="4" y1="24" x2="56" y2="24" stroke="#17232b" stroke-width="2"/>
+              <!-- upper branch -->
+              <line x1="56" y1="24" x2="116" y2="8" stroke="#17232b" stroke-width="2"/>
+              <polyline points="108,4 118,8 112,16" stroke="#17232b" stroke-width="2" fill="none" stroke-linejoin="round"/>
+              <!-- lower branch -->
+              <line x1="56" y1="24" x2="116" y2="40" stroke="#52616a" stroke-width="2" stroke-dasharray="5 3"/>
+              <polyline points="108,36 118,40 112,48" stroke="#52616a" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <strong>分叉箭头</strong>
+          <span>路线决策，每条分支标注条件</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ 05 语义色板 ════════════════════════════════ -->
+    <section class="band" aria-labelledby="color-title">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">05 / 语义色板</div>
+          <h2 id="color-title">克制的信号系统</h2>
+        </div>
+        <p>bucket 标签区分工程与生产力。颜色描述工作流状态，不区分 bucket。</p>
+      </div>
+
+      <div class="swatches" aria-label="Semantic color tokens">
+        <div class="swatch blue">
+          <strong>方向与上下文</strong>
+          <small>--blue-pale: #DCEBF0</small>
+        </div>
+        <div class="swatch yellow">
+          <strong>决策与不确定</strong>
+          <small>--yellow-pale: #F8EDC9</small>
+        </div>
+        <div class="swatch green">
+          <strong>实现与验证</strong>
+          <small>--green-pale: #D9EEE7</small>
+        </div>
+        <div class="swatch red">
+          <strong>风险与阻断</strong>
+          <small>--red-pale: #F4D9D2</small>
+        </div>
+        <div class="swatch gray">
+          <strong>产物与边界</strong>
+          <small>--paper-deep: #E8E0D1</small>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      视觉语言样张。完整工作流请返回博客导读查看，skill 名称在博客版中作为参考标签。
+      形状图例、箭头样例、共享原语和色板已通过 Phase B checklist。
+    </footer>
+
+  </main>
+</body>
+</html>

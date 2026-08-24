@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 04 · 深度模块 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 04</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-03.html">← 图 03</a>
+      <a href="./diagram-05.html">图 05 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 04 · 深度模块</div>
+      <h1>设计师如何把行为转化成可维护的模块？</h1>
+      <p class="purpose">深度模块的反馈循环：以行为描述为起点，通过测试缝建立快速反馈，再围绕最小接口收敛实现。{code-review} 在循环中作为看门人，防止接口扩张。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 880 500" fill="none" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="d04-title">
+        <title id="d04-title">深度模块反馈循环图</title>
+        <rect width="880" height="500" fill="#fffdf8"/>
+
+        <!-- Outer loop ring -->
+        <ellipse cx="440" cy="265" rx="380" ry="210" stroke="#b9b1a2" stroke-width="1.5" stroke-dasharray="6 4"/>
+        <text x="440" y="30" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#b9b1a2" letter-spacing="1">── 实际调用者（Real Callers）──</text>
+
+        <!-- Module boundary inner rect -->
+        <rect x="210" y="160" width="460" height="220" rx="12" fill="#d9eee7" stroke="#28796d" stroke-width="2"/>
+        <text x="440" y="178" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#28796d" font-weight="600">模块边界（Module Boundary）</text>
+
+        <!-- Interface strip -->
+        <rect x="220" y="186" width="440" height="46" rx="6" fill="#fffdf8" stroke="#28796d" stroke-width="1.5"/>
+        <text x="440" y="203" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#28796d">公共接口（Public Interface）</text>
+        <text x="440" y="218" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">activate(entity) · deactivate(entity) · onMount(cb) · onUnmount(cb)</text>
+        <text x="440" y="227" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">// 目标：接口小，实现深</text>
+
+        <!-- Hidden implementation -->
+        <rect x="240" y="242" width="400" height="110" rx="6" fill="#e8e0d1" stroke="#b9b1a2" stroke-width="1"/>
+        <text x="440" y="260" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#52616a">隐藏实现（Hidden Implementation）</text>
+        <text x="440" y="278" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b">EventEmitter registry</text>
+        <text x="440" y="293" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b">生命周期状态机</text>
+        <text x="440" y="308" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b">钩子执行顺序控制</text>
+        <text x="440" y="338" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">// 调用者无需知道这些细节</text>
+
+        <!-- Test seam annotation (below module boundary) -->
+        <line x1="210" y1="380" x2="670" y2="380" stroke="#c9940e" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <text x="440" y="374" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#c9940e">测试缝（Test Seam）</text>
+        <text x="440" y="390" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#c9940e">注入 mock registry，不需要改接口</text>
+
+        <!-- Behavior description (left, entering) -->
+        <rect x="14" y="190" width="168" height="64" rx="8" fill="#f5ddd4" stroke="#d96c54" stroke-width="1.5"/>
+        <text x="98" y="212" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#d96c54">行为描述</text>
+        <text x="98" y="227" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#17232b">「onMount 在 entity.activate()</text>
+        <text x="98" y="239" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#17232b">之后同步执行」</text>
+        <text x="98" y="248" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">来自：spec（/to-spec 产物）</text>
+
+        <!-- Arrow: behavior → interface -->
+        <line x1="182" y1="222" x2="218" y2="210" stroke="#d96c54" stroke-width="1.8"/>
+        <polyline points="214,205 220,210 214,215" stroke="#d96c54" stroke-width="1.8" fill="none"/>
+
+        <!-- TDD loop -->
+        <rect x="14" y="290" width="168" height="80" rx="8" fill="#f8edc9" stroke="#c9940e" stroke-width="1.5"/>
+        <text x="98" y="311" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e">[Agent / 工程]</text>
+        <text x="98" y="326" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#17232b" font-weight="500">{tdd}</text>
+        <text x="98" y="341" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">红 → 绿 → 重构</text>
+        <text x="98" y="355" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">先写测试，驱动接口</text>
+
+        <!-- TDD → Interface (upward) -->
+        <path d="M 98 290 C 98 260 160 240 218 220" stroke="#c9940e" stroke-width="1.5" fill="none"/>
+        <polyline points="214,215 220,220 214,225" stroke="#c9940e" stroke-width="1.5" fill="none"/>
+
+        <!-- Code review (right) -->
+        <rect x="698" y="190" width="168" height="80" rx="8" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="782" y="211" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#28796d">[Agent / 工程]</text>
+        <text x="782" y="226" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#17232b" font-weight="500">{code-review}</text>
+        <text x="782" y="241" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">接口是否仍然最小？</text>
+        <text x="782" y="255" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">规范与 spec 的双轴检查</text>
+        <text x="782" y="264" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">若接口扩张 → 退回重新设计</text>
+
+        <!-- Interface → code-review (right) -->
+        <line x1="660" y1="209" x2="696" y2="220" stroke="#28796d" stroke-width="1.8"/>
+        <polyline points="692,215 698,220 692,225" stroke="#28796d" stroke-width="1.8" fill="none"/>
+
+        <!-- code-review → refine (loop back arrow) -->
+        <path d="M 782 270 C 782 410 440 450 160 400 C 100 380 80 360 80 310"
+              stroke="#52616a" stroke-width="1.3" stroke-dasharray="5 3" fill="none"/>
+        <polyline points="75,316 80,308 85,316" stroke="#52616a" stroke-width="1.3" fill="none"/>
+        <text x="450" y="465" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#52616a">若发现接口扩张 → 退回 {tdd} 重新收敛</text>
+
+        <!-- Result box -->
+        <rect x="698" y="300" width="168" height="64" rx="8" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="782" y="320" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#28796d">已审查 diff</text>
+        <text x="782" y="336" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b">深度实现 + 最小接口</text>
+        <text x="782" y="350" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">可维护的模块</text>
+
+        <!-- code-review → result -->
+        <line x1="782" y1="270" x2="782" y2="298" stroke="#28796d" stroke-width="1.8"/>
+        <polyline points="777,294 782,300 787,294" stroke="#28796d" stroke-width="1.8" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel green-acc">
+        <h3>什么是「深度模块」？</h3>
+        <p>深度模块 = 小接口 + 深实现。调用者只需要知道 4 个方法，但模块内部处理了事件系统、状态机和并发逻辑。接口扩张（「浅模块」）是可维护性问题的早期信号。</p>
+      </div>
+      <div class="panel coral-acc">
+        <h3>{code-review} 的防护作用</h3>
+        <p>code-review 在这里不仅检查是否符合 spec，还检查接口是否发生了扩张。每多一个公共方法都是需要意识到的成本。如果接口扩张了，循环退回到 {tdd} 阶段重新收敛。</p>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="section-label">实例：TypeScript 实体库 onMount 钩子</div>
+      <div class="example-grid">
+        <div class="example-col">
+          <h3>设计目标</h3>
+          <p>接口：<code>entity.onMount(cb)</code> — 一个方法。实现：内部维护 WeakMap 存储回调，在 activate() 中顺序调用，支持异步取消注册。调用者不知道这些细节。</p>
+        </div>
+        <div class="example-col">
+          <h3>测试缝的作用</h3>
+          <p>测试注入一个 mock 时钟，可以在不调用真实 DOM 的情况下验证 onMount 的调用时序。测试缝让这个隐藏实现在 CI 中可快速验证。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>从 spec 中的行为描述出发 → {tdd} 写失败的测试，驱动接口形状 → 实现深埋在模块边界内（隐藏细节）→ 测试缝允许快速注入 mock → {code-review} 检查接口是否仍最小、是否符合 spec → 若接口扩张则退回 {tdd} 收敛 → 产出深度模块：小接口 + 深实现。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/to-spec</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{tdd}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{code-review}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{codebase-design}</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 04 · 深度模块</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-03.html">← 图 03</a>
+      <a href="./diagram-05.html">图 05 →</a>
+    </div>
+  </footer>
+</body>
+</html>

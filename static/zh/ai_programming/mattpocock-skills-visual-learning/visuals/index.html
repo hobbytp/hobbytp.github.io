@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skills 视觉学习系统</title>
+  <meta name="description" content="软件架构师和软件设计师的技能可视化学习系统，12 张交互图表，25 个技能图集。">
+  <link rel="stylesheet" href="./shared.css">
+  <style>
+    .hero { padding: 60px 0 44px; border-bottom: 1px solid var(--line); margin-bottom: 48px; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); max-width: 700px; margin-bottom: 14px; }
+    .hero p { max-width: 540px; font-size: .95rem; color: var(--ink-soft); }
+
+    .phase-label {
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .68rem; color: var(--ink-soft);
+      text-transform: uppercase; margin: 32px 0 14px;
+    }
+    .diagram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 14px;
+    }
+    .diagram-card {
+      display: flex; flex-direction: column; gap: 6px;
+      padding: 18px 20px;
+      border: 1.5px solid var(--line); border-radius: var(--radius);
+      background: var(--white); text-decoration: none; color: inherit;
+      transition: border-color .18s, transform .15s, box-shadow .18s;
+    }
+    .diagram-card:hover {
+      border-color: var(--blue); transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .diagram-card.phase-c { border-left: 4px solid var(--blue); }
+    .diagram-card.phase-d { border-left: 4px solid var(--green); }
+    .card-num {
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .64rem; color: var(--ink-soft);
+    }
+    .zone-tag {
+      display: inline-block;
+      padding: 2px 8px; border-radius: 999px;
+      border: 1px solid currentColor;
+      font-family: 'DM Mono', Consolas, monospace; font-size: .6rem;
+    }
+    .zt-orient   { color: var(--blue); }
+    .zt-clarify  { color: var(--purple); }
+    .zt-decide   { color: var(--yellow); }
+    .zt-shape    { color: var(--coral); }
+    .zt-build    { color: var(--green); }
+    .zt-sustain  { color: #2a6b38; }
+    .zt-transfer { color: var(--slate); }
+    .zt-ref      { color: var(--ink-soft); }
+    .diagram-card h3 { font-size: .94rem; line-height: 1.35; color: var(--ink); }
+    .diagram-card p  { font-size: .78rem; color: var(--ink-soft); }
+
+    .reading-order {
+      margin-top: 44px; padding: 22px 24px;
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+    .reading-order h2 { margin-bottom: 14px; }
+    .reading-steps {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 6px; list-style: none; counter-reset: step;
+    }
+    .reading-steps li {
+      counter-increment: step;
+      padding: 8px 12px;
+      border-left: 3px solid var(--line); font-size: .82rem;
+    }
+    .reading-steps li::before {
+      content: counter(step) ". ";
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .68rem; color: var(--ink-soft);
+    }
+    .reading-steps li a { color: var(--ink); text-decoration: none; }
+    .reading-steps li a:hover { color: var(--blue); }
+
+    @media (max-width: 600px) {
+      .diagram-grid { grid-template-columns: 1fr; }
+      .reading-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span>
+    <span class="sep">/</span>
+    <span>视觉学习系统</span>
+    <div class="spacer"></div>
+    <a href="./visual-language.html">视觉语言样张</a>
+  </nav>
+
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">Skills 视觉学习系统</div>
+      <h1>25 个技能的工作地图</h1>
+      <p>为软件架构师和软件设计师设计的可视化学习路径。每张图回答一个实际问题，并标出对应 skill 在工作流中的位置。推荐从图 00 开始，按需深入。</p>
+    </header>
+
+    <p class="phase-label">── Phase C · 核心学习路径 ──────────────────</p>
+    <div class="diagram-grid">
+      <a class="diagram-card phase-c" href="./diagram-00.html">
+        <span class="card-num">图 00</span>
+        <span class="zone-tag zt-orient">总览</span>
+        <h3>我在工作的哪个阶段，应该走哪条路线？</h3>
+        <p>七区操作地图，{grilling} 共享原语层，25 个技能的位置一目了然。</p>
+      </a>
+      <a class="diagram-card phase-c" href="./diagram-01.html">
+        <span class="card-num">图 01</span>
+        <span class="zone-tag zt-clarify">功能流</span>
+        <h3>一个模糊的功能需求如何变成可验证的小改动？</h3>
+        <p>双泳道服务蓝图：人工决策层 + Agent 工作流，含 Triage 汇入点。</p>
+      </a>
+      <a class="diagram-card phase-c" href="./diagram-02.html">
+        <span class="card-num">图 02</span>
+        <span class="zone-tag zt-decide">入口选择</span>
+        <h3>工作以不同形态出现时，我应该怎么做？</h3>
+        <p>六条入口路线的决策树，避免"所有问题用同一个流程"的错误。</p>
+      </a>
+      <a class="diagram-card phase-c" href="./diagram-03.html">
+        <span class="card-num">图 03</span>
+        <span class="zone-tag zt-decide">架构决策</span>
+        <h3>我正在解决哪种不确定性？</h3>
+        <p>六层决策堆，从领域语言到验证行为，展示架构是决策序列而非一次性图纸。</p>
+      </a>
+      <a class="diagram-card phase-c" href="./diagram-04.html">
+        <span class="card-num">图 04</span>
+        <span class="zone-tag zt-build">深度模块</span>
+        <h3>设计师如何把行为转化成可维护的模块？</h3>
+        <p>模块边界的反馈循环：行为 → 测试缝 → 小接口 → 实现 → 审查 → 精炼。</p>
+      </a>
+      <a class="diagram-card phase-c" href="./diagram-05.html">
+        <span class="card-num">图 05</span>
+        <span class="zone-tag zt-decide">原型边界</span>
+        <h3>如何在不直接上线原型代码的情况下保留原型的决策？</h3>
+        <p>双轨桥梁：原型轨 → 决策 → 生产轨，保留决策，丢弃一次性代码。</p>
+      </a>
+      <a class="diagram-card phase-c" href="./diagram-06.html">
+        <span class="card-num">图 06</span>
+        <span class="zone-tag zt-decide">跨会话规划</span>
+        <h3>目标太大、决策不明时，如何跨多个会话推进？</h3>
+        <p>Wayfinder 的决策票据循环：从模糊终点到清晰 spec，逐决策推进。</p>
+      </a>
+      <a class="diagram-card phase-c" href="./diagram-07.html">
+        <span class="card-num">图 07</span>
+        <span class="zone-tag zt-build">调试</span>
+        <h3>如何从"有什么东西坏了"走到有据可查的修复？</h3>
+        <p>证据漏斗：症状逐步收窄为最小案例、假设、仪表化、修复、回归测试。</p>
+      </a>
+    </div>
+
+    <p class="phase-label" style="margin-top:36px;">── Phase D · 维护与迁移视图 ──────────────────</p>
+    <div class="diagram-grid">
+      <a class="diagram-card phase-d" href="./diagram-08.html">
+        <span class="card-num">图 08</span>
+        <span class="zone-tag zt-sustain">代码库治理</span>
+        <h3>架构团队如何防止 AI 驱动的代码库熵增？</h3>
+        <p>可持续代码库循环：发布 → 摩擦观察 → 架构扫描 → 改进 → 再循环。</p>
+      </a>
+      <a class="diagram-card phase-d" href="./diagram-09.html">
+        <span class="card-num">图 09</span>
+        <span class="zone-tag zt-transfer">上下文交接</span>
+        <h3>哪些信息需要跨会话、跨人员或跨 Agent 传递？</h3>
+        <p>三层上下文数据包：共享词汇 + 工作状态 + 交接摘要，按需持久化。</p>
+      </a>
+      <a class="diagram-card phase-d" href="./diagram-10.html">
+        <span class="card-num">图 10</span>
+        <span class="zone-tag zt-transfer">方法迁移</span>
+        <h3>同一套操作模型如何支持日常内容创作工作？</h3>
+        <p>内容生产故事板：澄清 → 研究 → 草稿 → 挑战 → 发布 → 复盘。</p>
+      </a>
+      <a class="diagram-card phase-d" href="./diagram-11.html">
+        <span class="card-num">图 11</span>
+        <span class="zone-tag zt-ref">技能图集</span>
+        <h3>25 个技能各自在什么情况下使用，产出什么？</h3>
+        <p>可按阶段、调用类型、bucket 筛选的技能卡片图集，供随时查阅。</p>
+      </a>
+    </div>
+
+    <div class="reading-order">
+      <h2>推荐阅读顺序</h2>
+      <ol class="reading-steps">
+        <li><a href="./diagram-00.html">图 00：认识七个区域</a></li>
+        <li><a href="./diagram-02.html">图 02：选择正确的入口</a></li>
+        <li><a href="./diagram-01.html">图 01：主功能流程</a></li>
+        <li><a href="./diagram-03.html">图 03：架构决策层次</a></li>
+        <li><a href="./diagram-04.html">图 04：深度模块与反馈</a></li>
+        <li><a href="./diagram-05.html">图 05：原型边界</a></li>
+        <li><a href="./diagram-06.html">图 06：多会话决策映射</a></li>
+        <li><a href="./diagram-07.html">图 07：基于证据的调试</a></li>
+        <li><a href="./diagram-08.html">图 08：持续架构维护</a></li>
+        <li><a href="./diagram-09.html">图 09：上下文传递</a></li>
+        <li><a href="./diagram-10.html">图 10：迁移到内容创作</a></li>
+        <li><a href="./diagram-11.html">图 11：技能图集（参考）</a></li>
+      </ol>
+    </div>
+  </main>
+
+  <footer>
+    <span>Skills 视觉学习系统 · Phase C &amp; D</span>
+    <a href="./visual-language.html">视觉语言样张</a>
+  </footer>
+</body>
+</html>

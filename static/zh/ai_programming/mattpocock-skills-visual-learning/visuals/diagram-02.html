@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 02 · 入口选择 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 02</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-01.html">← 图 01</a>
+      <a href="./diagram-03.html">图 03 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 02 · 入口选择</div>
+      <h1>工作以不同形态出现时，我应该怎么做？</h1>
+      <p class="purpose">六条入口路线的决策树。每种起始情况对应一个明确的首选技能，避免用同一个流程处理所有类型的不确定性。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 880 540" fill="none" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="d02-title d02-desc">
+        <title id="d02-title">入口选择决策树</title>
+        <desc id="d02-desc">从六种起始情况出发，选择不同的技能作为入口，最终汇聚到 to-spec 和 implement。</desc>
+
+        <rect width="880" height="540" fill="#fffdf8"/>
+
+        <!-- Central question diamond -->
+        <polygon points="440,28 620,80 440,132 260,80" fill="#f8edc9" stroke="#c9940e" stroke-width="2"/>
+        <text x="440" y="72" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#17232b" font-weight="600">当前工作的起始情况是什么？</text>
+        <text x="440" y="86" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#52616a">选择最接近的描述</text>
+
+        <!-- Branch 1: New feature idea → grill-with-docs -->
+        <line x1="315" y1="80" x2="80" y2="175" stroke="#2f6680" stroke-width="1.5"/>
+        <text x="140" y="130" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#2f6680">一个会话内可以</text>
+        <text x="140" y="140" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#2f6680">说清楚的新功能</text>
+        <rect x="14" y="175" width="132" height="80" rx="8" fill="#fffdf8" stroke="#2f6680" stroke-width="2"/>
+        <text x="80" y="194" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680">[用户 / 工程]</text>
+        <text x="80" y="210" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#17232b" font-weight="500">/grill-with-docs</text>
+        <text x="80" y="225" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">澄清意图 + 建立</text>
+        <text x="80" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">共享词汇</text>
+
+        <!-- Branch 2: Raw incoming request → triage -->
+        <line x1="360" y1="120" x2="210" y2="175" stroke="#6b4fa0" stroke-width="1.5"/>
+        <text x="245" y="148" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#6b4fa0">外部提交的原始</text>
+        <text x="245" y="158" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#6b4fa0">bug 报告 / 请求</text>
+        <rect x="148" y="175" width="124" height="80" rx="8" fill="#fffdf8" stroke="#6b4fa0" stroke-width="2"/>
+        <text x="210" y="194" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#6b4fa0">[用户 / 工程]</text>
+        <text x="210" y="210" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#17232b" font-weight="500">/triage</text>
+        <text x="210" y="225" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">状态机分拣，</text>
+        <text x="210" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">给工单分配角色</text>
+
+        <!-- Branch 3: Hard bug → diagnosing-bugs -->
+        <line x1="405" y1="132" x2="355" y2="175" stroke="#b84d48" stroke-width="1.5"/>
+        <text x="350" y="158" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#b84d48">难以复现的 bug</text>
+        <text x="350" y="168" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#b84d48">/ 生产回归</text>
+        <rect x="286" y="175" width="136" height="80" rx="8" fill="#fffdf8" stroke="#b84d48" stroke-width="2"/>
+        <text x="354" y="194" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#b84d48">[Agent / 工程]</text>
+        <text x="354" y="210" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#17232b" font-weight="500">{diagnosing-bugs}</text>
+        <text x="354" y="225" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">先建立反馈循环，</text>
+        <text x="354" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">再分析原因</text>
+
+        <!-- Branch 4: Large effort → wayfinder -->
+        <line x1="475" y1="132" x2="520" y2="175" stroke="#c9940e" stroke-width="1.5"/>
+        <text x="532" y="148" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#c9940e">大型工作，架构</text>
+        <text x="532" y="158" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#c9940e">决策尚不清晰</text>
+        <rect x="456" y="175" width="128" height="80" rx="8" fill="#fffdf8" stroke="#c9940e" stroke-width="2"/>
+        <text x="520" y="194" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e">[用户 / 工程]</text>
+        <text x="520" y="210" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#17232b" font-weight="500">/wayfinder</text>
+        <text x="520" y="225" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">多会话决策映射，</text>
+        <text x="520" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">逐决策推进</text>
+
+        <!-- Branch 5: Runnable design question → prototype -->
+        <line x1="530" y1="108" x2="670" y2="175" stroke="#d96c54" stroke-width="1.5"/>
+        <text x="638" y="135" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#d96c54">可运行的设计问题</text>
+        <text x="638" y="145" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#d96c54">（比讨论便宜）</text>
+        <rect x="604" y="175" width="128" height="80" rx="8" fill="#fffdf8" stroke="#d96c54" stroke-width="2"/>
+        <text x="668" y="194" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#d96c54">[Agent / 工程]</text>
+        <text x="668" y="210" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#17232b" font-weight="500">{prototype}</text>
+        <text x="668" y="225" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">可扔掉的原型，</text>
+        <text x="668" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">回答一个设计问题</text>
+
+        <!-- Branch 6: Content idea → grill-me -->
+        <line x1="565" y1="80" x2="800" y2="175" stroke="#5a6b78" stroke-width="1.5"/>
+        <text x="730" y="120" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#5a6b78">内容创意，受众</text>
+        <text x="730" y="130" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#5a6b78">或证据不明</text>
+        <rect x="736" y="175" width="128" height="80" rx="8" fill="#fffdf8" stroke="#5a6b78" stroke-width="2"/>
+        <text x="800" y="194" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#5a6b78">[用户 / 生产力]</text>
+        <text x="800" y="210" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#17232b" font-weight="500">/grill-me</text>
+        <text x="800" y="225" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">澄清受众与</text>
+        <text x="800" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">改变目标</text>
+
+        <!-- Arrows down from each to convergence -->
+        <!-- From grill-with-docs → to-spec -->
+        <line x1="80" y1="255" x2="80" y2="290" stroke="#2f6680" stroke-width="1.5"/>
+        <line x1="80" y1="290" x2="310" y2="330" stroke="#2f6680" stroke-width="1.5"/>
+        <!-- From triage → to-spec or grill-with-docs -->
+        <line x1="210" y1="255" x2="210" y2="295" stroke="#6b4fa0" stroke-width="1.5"/>
+        <line x1="210" y1="295" x2="330" y2="330" stroke="#6b4fa0" stroke-width="1.5"/>
+        <!-- From diagnosing-bugs → to-tickets (after fix) -->
+        <line x1="354" y1="255" x2="354" y2="295" stroke="#b84d48" stroke-width="1.5"/>
+        <line x1="354" y1="295" x2="380" y2="330" stroke="#b84d48" stroke-width="1.5"/>
+        <!-- From wayfinder → to-spec -->
+        <line x1="520" y1="255" x2="520" y2="295" stroke="#c9940e" stroke-width="1.5"/>
+        <line x1="520" y1="295" x2="450" y2="330" stroke="#c9940e" stroke-width="1.5"/>
+        <!-- From prototype (dashed) → to-spec -->
+        <line x1="668" y1="255" x2="668" y2="295" stroke="#d96c54" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <line x1="668" y1="295" x2="490" y2="330" stroke="#d96c54" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <text x="620" y="288" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#d96c54" text-anchor="middle">虚线：先提取决策</text>
+        <!-- From grill-me (dashed) → content brief (not to-spec) -->
+        <line x1="800" y1="255" x2="800" y2="340" stroke="#5a6b78" stroke-width="1.5" stroke-dasharray="5 3"/>
+
+        <!-- Convergence: /to-spec -->
+        <rect x="296" y="330" width="220" height="75" rx="8" fill="#fffdf8" stroke="#d96c54" stroke-width="2"/>
+        <text x="406" y="350" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#d96c54">[用户 / 工程]</text>
+        <text x="406" y="366" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="11" fill="#17232b" font-weight="600">/to-spec → /to-tickets → /implement</text>
+        <text x="406" y="382" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#52616a">所有工程路线的主流程（图 01）</text>
+        <polyline points="402,325 406,330 410,325" stroke="#17232b" stroke-width="1.5" fill="none"/>
+
+        <!-- Content brief (grill-me output) -->
+        <rect x="724" y="330" width="140" height="75" rx="8" fill="#e4eaed" stroke="#5a6b78" stroke-width="1.5"/>
+        <text x="794" y="350" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#5a6b78">[产物 / 生产力]</text>
+        <text x="794" y="366" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#17232b" font-weight="500">内容简报</text>
+        <text x="794" y="382" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">进入图 10 内容流水线</text>
+
+        <!-- Important note: triage annotation -->
+        <rect x="14" y="415" width="550" height="50" rx="6" fill="#f4d9d2" stroke="#b84d48" stroke-width="1"/>
+        <text x="289" y="435" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#b84d48" font-weight="600">⚠ 注意：/triage 仅用于外部到来的未塑形工作</text>
+        <text x="289" y="451" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">/to-tickets 产出的工单已经是 agent-ready，不需要再次 triage</text>
+
+        <!-- Route notes box -->
+        <rect x="590" y="415" width="276" height="112" rx="6" fill="#fffdf8" stroke="#b9b1a2" stroke-width="1"/>
+        <text x="728" y="433" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#52616a" font-weight="600">路线选择提示</text>
+        <text x="728" y="449" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">grill-with-docs = 工程场景，语言持久化到仓库</text>
+        <text x="728" y="462" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">grill-me = 无状态采访，内容或临时探索</text>
+        <text x="728" y="475" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">prototype = 可运行比讨论便宜时使用</text>
+        <text x="728" y="488" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">wayfinder = 多会话决策，终点不清晰</text>
+        <text x="728" y="501" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">triage = 仅用于外部到来的未塑形工作</text>
+        <text x="728" y="516" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">grill-me (内容) → 进入图 10，不经过 to-spec</text>
+      </svg>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel blue-acc">
+        <h3>常见错误：用同一个流程处理所有问题</h3>
+        <p>一个生产回归不需要 grill-with-docs——需要的是可复现的失败检查。一个外部提交的模糊 bug 报告不应该直接进入 to-spec——需要先经过 triage 赋予状态角色。</p>
+      </div>
+      <div class="panel yellow-acc">
+        <h3>内容路线的分叉点</h3>
+        <p><code>/grill-me</code> 用于内容创意时，它的输出（内容简报）不进入 <code>/to-spec</code>，而是进入图 10 的内容流水线。这条路线展示的是可迁移的方法（澄清→研究→产出），而不是工程技能的直接复用。</p>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>面对中央问题「当前情况是什么」，选择六条路线之一：新功能 → /grill-with-docs；外部工单 → /triage；难 bug → {diagnosing-bugs}；大型工作 → /wayfinder；可运行设计问题 → {prototype}；内容创意 → /grill-me。工程路线最终汇聚到 /to-spec → /to-tickets → /implement。内容路线进入图 10。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/grill-with-docs</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/triage</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{diagnosing-bugs}</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/wayfinder</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{prototype}</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/grill-me</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 02 · 入口选择</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-01.html">← 图 01</a>
+      <a href="./diagram-03.html">图 03 →</a>
+    </div>
+  </footer>
+</body>
+</html>

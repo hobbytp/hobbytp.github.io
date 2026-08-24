@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 06 · Wayfinder 跨会话规划 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 06</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-05.html">← 图 05</a>
+      <a href="./diagram-07.html">图 07 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 06 · 跨会话规划</div>
+      <h1>目标太大、决策不明时，如何跨多个会话推进？</h1>
+      <p class="purpose">/wayfinder 的决策票据循环：从模糊终点开始，每个会话解决一个关键决策分支，逐步收敛到足够清晰的 spec，才切换到功能流。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 880 520" fill="none" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="d06-title">
+        <title id="d06-title">Wayfinder 跨会话决策循环图</title>
+        <rect width="880" height="520" fill="#fffdf8"/>
+
+        <!-- Foggy start (left) -->
+        <rect x="14" y="180" width="140" height="80" rx="8" fill="#e8e0d1" stroke="#b9b1a2" stroke-width="2" stroke-dasharray="5 3"/>
+        <text x="84" y="202" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#52616a">起始状态</text>
+        <text x="84" y="220" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b" font-weight="500">模糊的大目标</text>
+        <text x="84" y="236" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">「改进代码库架构」</text>
+        <text x="84" y="248" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">但不知道从何开始</text>
+
+        <!-- Arrow to wayfinder -->
+        <line x1="154" y1="220" x2="198" y2="220" stroke="#c9940e" stroke-width="2"/>
+        <polyline points="194,215 200,220 194,225" stroke="#c9940e" stroke-width="2" fill="none"/>
+
+        <!-- Wayfinder (central orchestrator) -->
+        <rect x="200" y="154" width="200" height="132" rx="10" fill="#f8edc9" stroke="#c9940e" stroke-width="2.5"/>
+        <text x="300" y="174" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e">[用户 / 工程]</text>
+        <text x="300" y="192" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="13" fill="#17232b" font-weight="600">/wayfinder</text>
+        <text x="300" y="210" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">映射已知决策</text>
+        <text x="300" y="224" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">生成决策票据</text>
+        <text x="300" y="238" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">评估进展，判断是否足够</text>
+        <text x="300" y="276" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e">内部使用 {grilling}</text>
+
+        <!-- Decision ticket board (right side) -->
+        <rect x="440" y="30" width="420" height="400" rx="10" fill="#e4eaed" stroke="#5a6b78" stroke-width="1.5"/>
+        <text x="650" y="52" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#5a6b78" font-weight="600">决策票据板（Decision Ticket Board）</text>
+
+        <!-- Session 1 ticket -->
+        <rect x="456" y="64" width="184" height="96" rx="6" fill="#f4d9d2" stroke="#b84d48" stroke-width="1.5"/>
+        <text x="548" y="82" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#b84d48">会话 1 · OPEN</text>
+        <text x="548" y="97" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b" font-weight="500">决策：模块边界如何划分？</text>
+        <text x="548" y="111" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">需要：audit + {codebase-design}</text>
+        <text x="548" y="124" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">影响：后续 5 张工单的范围</text>
+        <text x="548" y="137" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#b84d48">阻塞 → 其他决策无法推进</text>
+        <text x="548" y="151" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#b84d48">⊳ 本会话重点</text>
+
+        <!-- Session 2 ticket -->
+        <rect x="656" y="64" width="188" height="96" rx="6" fill="#f8edc9" stroke="#c9940e" stroke-width="1.5"/>
+        <text x="750" y="82" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e">会话 2 · PENDING</text>
+        <text x="750" y="97" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b" font-weight="500">决策：测试策略？</text>
+        <text x="750" y="111" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">需要：决策 1 完成后可推进</text>
+        <text x="750" y="124" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">选项：集成测试 / 单元 + 测试缝</text>
+        <text x="750" y="138" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#c9940e">阻塞于：决策 1</text>
+
+        <!-- Session 3 ticket (resolved) -->
+        <rect x="456" y="174" width="388" height="72" rx="6" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="650" y="192" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#28796d">会话 0 · RESOLVED ✓</text>
+        <text x="650" y="207" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b" font-weight="500">决策：使用 TypeScript strict mode？</text>
+        <text x="650" y="222" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">结论：是。所有新文件启用，存量文件按模块迁移。已记录 ADR-001。</text>
+        <text x="650" y="237" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#28796d">已解锁：决策 1（边界划分可以在 strict 约束下设计）</text>
+
+        <!-- Collapse threshold -->
+        <rect x="456" y="262" width="388" height="50" rx="6" fill="#dcebf0" stroke="#2f6680" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <text x="650" y="282" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#2f6680">折叠阈值（Collapse Threshold）</text>
+        <text x="650" y="298" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">当已知决策 ≥ 80%，剩余不确定性不影响开始构建 → 切换到图 01 功能流</text>
+
+        <!-- Remaining unknowns -->
+        <rect x="456" y="328" width="388" height="88" rx="6" fill="#f5ddd4" stroke="#d96c54" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <text x="650" y="346" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#d96c54">剩余未知量（持久化到 CONTEXT.md）</text>
+        <text x="650" y="362" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b">· bundle size 目标（将在第一个工单完成后验证）</text>
+        <text x="650" y="377" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b">· CI 速度要求（待 /implement 第一个切片后测量）</text>
+        <text x="650" y="392" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#d96c54">明确已知的不知道，比假装都知道更安全</text>
+        <text x="650" y="404" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#52616a">记录到：handoff 产物</text>
+
+        <!-- Wayfinder → ticket board -->
+        <line x1="400" y1="205" x2="438" y2="205" stroke="#c9940e" stroke-width="2"/>
+        <polyline points="433,200 440,205 433,210" stroke="#c9940e" stroke-width="2" fill="none"/>
+
+        <!-- Feedback loop: resolve one → update map -->
+        <path d="M 440 168 C 400 168 360 154 300 154" stroke="#52616a" stroke-width="1.3" stroke-dasharray="4 3" fill="none"/>
+        <polyline points="304,149 298,154 304,159" stroke="#52616a" stroke-width="1.3" fill="none"/>
+        <text x="370" y="150" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">解决一个 → 更新地图</text>
+
+        <!-- Exit arrow to feature flow -->
+        <rect x="200" y="440" width="200" height="64" rx="8" fill="#d9eee7" stroke="#28796d" stroke-width="2"/>
+        <text x="300" y="460" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#28796d">退出条件：折叠阈值达到</text>
+        <text x="300" y="476" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b" font-weight="500">→ 切换到图 01 功能流</text>
+        <text x="300" y="491" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#28796d">/grill-with-docs → /to-spec → ...</text>
+
+        <!-- Wayfinder → exit -->
+        <line x1="300" y1="286" x2="300" y2="438" stroke="#28796d" stroke-width="2"/>
+        <polyline points="295,434 300,440 305,434" stroke="#28796d" stroke-width="2" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel yellow-acc">
+        <h3>/wayfinder 的核心机制</h3>
+        <ul>
+          <li style="margin-bottom:4px;"><strong>映射决策依赖图：</strong>哪些决策阻塞其他决策？</li>
+          <li style="margin-bottom:4px;"><strong>生成决策票据：</strong>每个未知量对应一张可追踪的票据</li>
+          <li style="margin-bottom:4px;"><strong>内部使用 {grilling}：</strong>通过采访引擎挖掘分支</li>
+          <li><strong>评估折叠阈值：</strong>每个会话结束时问：现在足够开始了吗？</li>
+        </ul>
+      </div>
+      <div class="panel blue-acc">
+        <h3>折叠阈值 ≠ 所有问题都答完</h3>
+        <p>等待所有问题都有答案再开始构建是一种错觉。折叠阈值是「剩余不确定性不影响开始构建第一个切片」。</p>
+        <p style="margin-top:8px;">明确记录「已知的不知道」（CONTEXT.md 中的剩余未知量），比假装知道更安全，也让后续工单有明确的探索目标。</p>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="section-label">实例：「改进 TypeScript 实体库的架构」</div>
+      <div class="example-grid">
+        <div class="example-col">
+          <h3>会话 0（已解决）</h3>
+          <p>决策：strict mode？<br>→ 是。Audit 显示 97% 的文件可以直接启用。ADR-001 已记录。<br>解锁：边界划分可以在 strict 约束下进行。</p>
+        </div>
+        <div class="example-col">
+          <h3>折叠后（切换到图 01）</h3>
+          <p>第一张工单：将 EntityRegistry 模块边界迁移到 strict mode，覆盖 onMount/onUnmount 接口。<br>这是第一个可验证的切片，而不是「全面迁移」。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>大目标 → /wayfinder 映射决策依赖图，生成决策票据板 → 每个会话：选最阻塞的票据 → 使用 {grilling} / {research} / {prototype} 解决 → 解决后更新地图，解锁下游决策 → 重复直到折叠阈值（≥80% 已知，可以开始构建）→ 切换到图 01 功能流，持久化剩余未知量到 CONTEXT.md。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/wayfinder</a>
+        <a class="skill-chip shared" aria-disabled="true" title="技能文档未随博客发布">{grilling}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{codebase-design}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{research}</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/handoff</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 06 · Wayfinder 跨会话规划</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-05.html">← 图 05</a>
+      <a href="./diagram-07.html">图 07 →</a>
+    </div>
+  </footer>
+</body>
+</html>

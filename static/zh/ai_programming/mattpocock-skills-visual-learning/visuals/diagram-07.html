@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 07 · 调试证据漏斗 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 07</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-06.html">← 图 06</a>
+      <a href="./diagram-08.html">图 08 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 07 · 调试</div>
+      <h1>如何从"有什么东西坏了"走到有据可查的修复？</h1>
+      <p class="purpose">证据漏斗：从模糊症状开始，逐步收窄到最小可复现案例，建立假设，通过仪表化验证，最后产出一个防止回归的测试。每一级都排除一类可能的原因。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 880 560" fill="none" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="d07-title">
+        <title id="d07-title">调试证据漏斗，七个阶段从症状到回归测试</title>
+        <rect width="880" height="560" fill="#fffdf8"/>
+
+        <!-- Funnel layers from wide (top) to narrow (bottom) -->
+        <!-- Stage 1: Symptom — full width -->
+        <rect x="40" y="20" width="800" height="60" rx="6" fill="#f4d9d2" stroke="#b84d48" stroke-width="1.5"/>
+        <text x="440" y="42" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#b84d48" font-weight="600">阶段 1 · 症状</text>
+        <text x="440" y="58" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9.5" fill="#17232b">「生产环境上有实体随机消失，复现概率约 5%」</text>
+        <text x="780" y="45" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#b84d48">{diagnosing-bugs}</text>
+        <text x="780" y="56" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#b84d48">入口</text>
+
+        <!-- Stage 2: Reproducible — slightly narrower -->
+        <rect x="80" y="92" width="720" height="56" rx="6" fill="#f5ddd4" stroke="#d96c54" stroke-width="1.5"/>
+        <text x="440" y="112" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#d96c54" font-weight="600">阶段 2 · 建立可复现的失败</text>
+        <text x="440" y="128" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b">先建立反馈循环（快速失败），再分析原因</text>
+        <text x="720" y="115" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#d96c54">产物：</text>
+        <text x="720" y="127" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#d96c54">失败的测试</text>
+
+        <!-- Stage 3: Minimize -->
+        <rect x="130" y="160" width="620" height="56" rx="6" fill="#f8edc9" stroke="#c9940e" stroke-width="1.5"/>
+        <text x="440" y="180" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#c9940e" font-weight="600">阶段 3 · 最小化案例</text>
+        <text x="440" y="196" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b">移除所有不相关因素，直到只剩触发 bug 的核心条件</text>
+        <text x="700" y="183" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e">产物：</text>
+        <text x="700" y="195" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e">最小案例</text>
+
+        <!-- Stage 4: Hypothesis -->
+        <rect x="190" y="228" width="500" height="56" rx="6" fill="#ede8f5" stroke="#6b4fa0" stroke-width="1.5"/>
+        <text x="440" y="248" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#6b4fa0" font-weight="600">阶段 4 · 建立假设</text>
+        <text x="440" y="264" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b">「竞态条件发生在 activate() 和 onMount 回调之间」</text>
+        <text x="648" y="251" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#6b4fa0">优先级：</text>
+        <text x="648" y="263" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#6b4fa0">最简假设优先</text>
+
+        <!-- Stage 5: Instrument -->
+        <rect x="240" y="296" width="400" height="56" rx="6" fill="#dcebf0" stroke="#2f6680" stroke-width="1.5"/>
+        <text x="440" y="316" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#2f6680" font-weight="600">阶段 5 · 仪表化验证</text>
+        <text x="440" y="332" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b">添加日志 / 断点 / 时序记录，观察是否符合假设</text>
+        <text x="605" y="319" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680">如果</text>
+        <text x="605" y="331" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680">不符 → 阶段 4</text>
+
+        <!-- Stage 6: Fix -->
+        <rect x="290" y="364" width="300" height="56" rx="6" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="440" y="384" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#28796d" font-weight="600">阶段 6 · 修复</text>
+        <text x="440" y="400" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b">针对根因做最小修改，不过度修复</text>
+
+        <!-- Stage 7: Regression test -->
+        <rect x="330" y="432" width="220" height="56" rx="6" fill="#d9eee7" stroke="#28796d" stroke-width="2.5"/>
+        <text x="440" y="452" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9" fill="#28796d" font-weight="600">阶段 7 · 回归测试</text>
+        <text x="440" y="468" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b">将阶段 2 的失败测试变为永久守卫</text>
+
+        <!-- Narrowing visual guides (dashed verticals) -->
+        <line x1="40" y1="80" x2="80" y2="92" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="840" y1="80" x2="800" y2="92" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="80" y1="148" x2="130" y2="160" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="800" y1="148" x2="670" y2="160" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="130" y1="216" x2="190" y2="228" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="670" y1="216" x2="590" y2="228" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="190" y1="284" x2="240" y2="296" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="590" y1="284" x2="640" y2="296" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="240" y1="352" x2="290" y2="364" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="640" y1="352" x2="590" y2="364" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="290" y1="420" x2="330" y2="432" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+        <line x1="590" y1="420" x2="550" y2="432" stroke="#b9b1a2" stroke-width="1" stroke-dasharray="3 3"/>
+
+        <!-- Left annotation:排除的内容 -->
+        <text x="26" y="340" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#52616a" transform="rotate(-90,26,340)">排除的干扰因素（漏斗向下收窄）</text>
+
+        <!-- Right annotation: anti-patterns -->
+        <rect x="680" y="228" width="186" height="120" rx="6" fill="#fffdf8" stroke="#b9b1a2" stroke-width="1"/>
+        <text x="773" y="246" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#52616a" font-weight="600">常见反模式</text>
+        <text x="773" y="262" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#b84d48">× 在没有假设前就修复</text>
+        <text x="773" y="276" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#b84d48">× 假设和仪表化同时做</text>
+        <text x="773" y="290" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#b84d48">× 跳过阶段 2（未建立</text>
+        <text x="773" y="302" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#b84d48">  反馈循环就开始分析）</text>
+        <text x="773" y="317" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#b84d48">× 不写回归测试就合并</text>
+        <text x="773" y="333" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#b84d48">× 过度修复（改了太多）</text>
+
+        <!-- Regression is permanent -->
+        <rect x="330" y="496" width="220" height="38" rx="6" fill="#d9eee7" stroke="#28796d" stroke-width="1" stroke-dasharray="5 3"/>
+        <text x="440" y="515" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#28796d">产物：已合并的 fix + 永久回归测试</text>
+        <text x="440" y="527" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">这个 bug 不会再次出现</text>
+      </svg>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel coral-acc">
+        <h3>为什么先建立反馈循环？（阶段 2 的重要性）</h3>
+        <p>在可复现失败存在之前进行的所有分析都是猜测。一旦有了失败测试，你就有了一个可以对抗的目标——每次修改后立刻知道是否更接近修复。没有反馈循环，调试是一场猜谜游戏。</p>
+      </div>
+      <div class="panel green-acc">
+        <h3>阶段 7 不是可选的</h3>
+        <p>修复后如果不写回归测试，这个 bug 会在三个月后由不同的人用完全相同的方式再次引入。回归测试将「发现过这个 bug」的知识编码进代码库，比任何文档都更可靠。</p>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="section-label">实例：实体随机消失（竞态条件）</div>
+      <div class="example-grid">
+        <div class="example-col">
+          <h3>阶段 2 → 5 的过程</h3>
+          <p>
+            <strong>阶段 2</strong>：写一个并发测试，在 100 次 activate() 后检查实体计数。立刻失败（约 3%）。<br>
+            <strong>阶段 3</strong>：移除网络层、UI 层，只保留 EntityRegistry 的两个并发操作。仍然失败。<br>
+            <strong>阶段 4</strong>：假设是 Set 的 delete() 和 add() 在同一 microtask 内无锁执行。<br>
+            <strong>阶段 5</strong>：添加 <code>console.time</code>，确认两个操作在同一 tick 内。
+          </p>
+        </div>
+        <div class="example-col">
+          <h3>阶段 6 → 7 的产物</h3>
+          <p>
+            <strong>阶段 6</strong>：最小修复：在 activate() 中加入操作队列（单消费者模式），解决竞态。<br>
+            <strong>阶段 7</strong>：将阶段 2 的 100 次并发测试重命名为 <code>regression: entity count stable under concurrency</code>，加入 CI。
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>症状（模糊报告）→ 建立可复现失败（先有失败测试，再分析）→ 最小化案例（排除干扰因素）→ 建立最简假设 → 仪表化验证（如不符 → 退回阶段 4）→ 最小修复 → 回归测试（永久守卫，合并到 CI）→ 产出：fix + 防回归测试。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{diagnosing-bugs}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{tdd}</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/triage</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 07 · 调试证据漏斗</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-06.html">← 图 06</a>
+      <a href="./diagram-08.html">图 08 →</a>
+    </div>
+  </footer>
+</body>
+</html>
