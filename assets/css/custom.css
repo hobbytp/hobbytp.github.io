@@ -486,6 +486,12 @@ body {
   color: var(--color-primary);
 }
 
+[data-theme="dark"] .sidebar-menu a.active {
+  background-color: #1d4ed8;
+  color: #eff6ff;
+  font-weight: 600;
+}
+
 /* Sidebar Icons */
 .sidebar-menu svg.feather {
   width: 18px;
@@ -500,6 +506,10 @@ body {
 .sidebar-menu a:hover svg.feather,
 .sidebar-menu a.active svg.feather {
   color: var(--color-primary);
+}
+
+[data-theme="dark"] .sidebar-menu a.active svg.feather {
+  color: #bfdbfe;
 }
 
 /* Sidebar Theme Toggle */
