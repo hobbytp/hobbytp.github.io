@@ -1,90 +1,5 @@
 [
   {
-    "url": "https://github.com/SheberDavid/v4-flash-godmode-opencode-go",
-    "title": "v4 flash godmode opencode go",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://github.com/lencx/Minke",
-    "title": "minke",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://github.com/MirroS-Lab/HarnessEval-W",
-    "title": "harnesseval w",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://www.reuters.com/world/how-texas-student-blew-whistle-rogue-ai-hacking-attempt-2026-08-20",
-    "title": "how a texas student blew the whistle on a rogue ai hacking attempt",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://forum.level1techs.com/t/why-your-local-llm-feels-dumber-than-it-is/253917",
-    "title": "why your local llm feels dumber than it is",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
-    "title": "gpt 5 6 sol 20 price reduction",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://github.com/adnanakil/nobuzz/blob/main/README.md",
-    "title": "claudette make claude stop talking like a buzzfeed article",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
-    "title": "unsloth qwen3 8 27b gguf",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://huggingface.co/JonathanColetti/Qwen3.8-27B-Uncensored-GGUF",
-    "title": "jonathancoletti qwen3 8 27b uncensored gguf",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://huggingface.co/MiniMaxAI/MiniMax-Music3",
-    "title": "minimaxai minimax music3",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://huggingface.co/Qwen/Qwen3.8-27B-FP8",
-    "title": "qwen qwen3 8 27b fp8",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/22/harvards-699-startup-bootcamp-offers-ai-avatars-of-its-instructors",
-    "title": "harvard s 699 startup bootcamp offers ai avatars of its instructors",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/22/inherent-founded-by-deepmind-alumni-says-its-ai-teammate-just-outperformed-anthropic-and-openai-at-replicating-research",
-    "title": "inherent founded by deepmind alumni says its ai teammate just outperformed anthropic and openai at replicating research",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/22/openai-says-california-should-strengthen-its-ai-safety-bill",
-    "title": "openai says california should strengthen its ai safety bill",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/22/frontier-ai-labs-still-wont-say-how-theyd-contain-a-rogue-model",
-    "title": "frontier ai labs still won t say how they d contain a rogue model",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://www.aol.com/articles/openai-launches-chatgpt-teens-safety-152403000.html",
-    "title": "openai launches chatgpt for teens as safety questions swirl aol",
-    "date": "2026-08-23"
-  },
-  {
-    "url": "https://thetechboy.org/2026/08/22/17376",
-    "title": "take 3 openai launches chatgpteen ttb media thetechboy",
-    "date": "2026-08-23"
-  },
-  {
     "url": "https://www.primeintellect.ai/research/nanogpt-speedrun",
     "title": "nanogpt speedrun frontier",
     "date": "2026-08-24"
@@ -2578,5 +2493,175 @@
     "url": "https://huggingface.co/papers/2608.26530",
     "title": "pilot in the loop live self improvement for long horizon agents",
     "date": "2026-08-29"
+  },
+  {
+    "url": "https://github.com/DDGTESTDEV-IONICS/ollama-gui-simple",
+    "title": "ollama gui simple",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://github.com/24vojo-coder/rembg-gui-batch",
+    "title": "rembg gui batch",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://github.com/claudiosequeida81-maker/whisper-gui-windows",
+    "title": "whisper gui windows",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://github.com/nooour2/buzz-transcriber-alt",
+    "title": "buzz transcriber alt",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://github.com/usedotai/dot-reflex",
+    "title": "dot reflex",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft",
+    "title": "sony music warner sue anthropic alleging a brazen campaign of intellectual property theft",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://techcrunch.com/2026/08/29/were-not-doing-30-bets-a-year-vijay-pande-on-betting-small-after-running-4-billion-at-a16z",
+    "title": "we re not doing 30 bets a year vijay pande on betting small after running 4 billion at a16z",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu",
+    "title": "nvidia s ai advantage is moving beyond the gpu",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/986438/sony-music-warner-chappell-anthropic-lawsuit-copyright",
+    "title": "sony music and warner chappell are suing anthropic",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.theverge.com/entertainment/985866/h4rris-nihil-young-edm-suno-ai",
+    "title": "musicians turned detectives are hunting for ai grifters",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/08/481372.html",
+    "title": "ai本地部署不如官方版的元凶找到了 734个依赖包 每一个都可能坑",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/08/481318.html",
+    "title": "去年归国的徐梦迪 成了清华姚班班主任",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/08/481223.html",
+    "title": "claude开始训练claude 4美元一小时 跑赢150美元人类研究员",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/08/481075.html",
+    "title": "20ms把pdf变成markdown 开源ocr神器快了近300倍",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/08/480940.html",
+    "title": "coding不再是程序员专属 阿里qoder这波有点绝",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/08/480855.html",
+    "title": "openclaw 红过 爱过 散了",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/08/480787.html",
+    "title": "32gb大显存加持 英特尔锐炫pro b70搞定ai漫剧创作",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=tGkpU2V6QKQ",
+    "title": "ibm granite 4 2 vs qwen 3 8 27b vs gemma 4 local llm benchmark",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.thetechoutlook.com/current-affairs/business/openai-announces-to-end-its-partnership-with-cursor-after-its-acquisition-by-spacex-cursor-ceo-reacts",
+    "title": "openai announces to end its partnership with cursor after its",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://ainetwork.media/article/advancing-claude-in-healthcare-and-the-life-sciences-b7e5b8",
+    "title": "anthropic launches claude for healthcare with opus 4 5 ai network",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.adgully.com/post/19860/anthropic-introduces-model-hardware-standard-to-bridge-ai-agents-with-physical-devices",
+    "title": "anthropic introduces model hardware standard to bridge ai agents",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.igorslab.de/en/openai-announces-ads-chatgpt-privacy-questions",
+    "title": "openai announces ads in chatgpt privacy questions remain open",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://www.theweeklyledgernews.com/post/alabama-attorney-general-launches-investigation-into-openai-following-ai-security-breach",
+    "title": "alabama attorney general launches investigation into openai",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://artificialanalysis.ai/models/grok-4-6/providers",
+    "title": "grok 4 6 high api provider benchmarking analysis",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://lwn.net/Articles/1091231",
+    "title": "debian votes to allow responsible use of generative ai",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://newsletter.eng-leadership.com/p/good-culture-is-the-biggest-productivity",
+    "title": "good culture is the biggest productivity hack not ai",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://github.com/stemdeckapp/stemdeck",
+    "title": "stemdeck a free open source and local ai stem separator",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://optimizedbyotto.com/post/why-open-source-projects-ban-ai",
+    "title": "the growing divide between ai hype and software engineering reality",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://pwning.systems/posts/llm-memory-program-analysis",
+    "title": "i accidentally turned llm memory into program analysis",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://github.com/vllm-project/vllm/releases/tag/v0.28.0",
+    "title": "vllm v0 28 0",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://arxiv.org/abs/2608.23691",
+    "title": "autonomous mathematical discovery in an open world multi agent environment",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "title": "qwen qwen3 8 27b",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
+    "title": "unsloth qwen3 8 27b gguf",
+    "date": "2026-08-30"
+  },
+  {
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+    "title": "minimaxai minimax h3",
+    "date": "2026-08-30"
   }
 ]
