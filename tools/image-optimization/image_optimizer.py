@@ -83,9 +83,18 @@ class ImageOptimizer:
         if file_path.suffix.lower() not in self.SUPPORTED_FORMATS:
             return False
 
-        # 跳过已经优化过的文件
-        if file_path.parent.name == "optimized":
-            return False
+        # 跳过输出目录和备份目录中的所有文件，避免后续运行重复处理生成物
+        candidate_path = file_path.resolve()
+        excluded_dirs = [self.output_dir]
+        if self.backup:
+            excluded_dirs.append(self.backup_dir)
+
+        for excluded_dir in excluded_dirs:
+            try:
+                candidate_path.relative_to(excluded_dir.resolve())
+                return False
+            except ValueError:
+                continue
 
         return True
 
