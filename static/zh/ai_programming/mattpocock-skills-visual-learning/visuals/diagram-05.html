@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 05 · 原型边界 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 05</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-04.html">← 图 04</a>
+      <a href="./diagram-06.html">图 06 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 05 · 原型边界</div>
+      <h1>如何在不直接上线原型代码的情况下保留原型的决策？</h1>
+      <p class="purpose">双轨桥梁图：左侧是原型轨（可扔掉的代码，用来回答设计问题），右侧是生产轨（从决策开始，重新构建）。两轨在决策点相遇，原型代码被丢弃，只有决策被保留。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 920 620" fill="none" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="d05-title d05-desc">
+        <title id="d05-title">原型边界双轨桥梁图</title>
+        <desc id="d05-desc">左侧为原型轨（{prototype}、设计问题、基准测试、丢弃原型代码），中间为决策点（提取ADR），右侧为生产轨（/grill-with-docs更新CONTEXT、/to-spec、/implement、tdd、code-review）。</desc>
+
+        <rect width="920" height="620" fill="#fffdf8"/>
+
+        <!-- ══ Left Column: Prototype Track (Yellow) ══ -->
+        <rect x="24" y="24" width="390" height="572" rx="10" fill="#f8edc9" stroke="#c9940e" stroke-width="1.5"/>
+        <text x="44" y="52" font-family="'DM Mono',Consolas,monospace" font-size="11" fill="#c9940e" font-weight="700" letter-spacing="0.5">原型轨（THROWAWAY TRACK）</text>
+
+        <!-- Proto Step 1: {prototype} -->
+        <rect x="44" y="66" width="350" height="82" rx="8" fill="#fffdf8" stroke="#c9940e" stroke-width="2"/>
+        <rect x="48" y="70" width="342" height="74" rx="6" fill="none" stroke="#c9940e" stroke-width="1"/>
+        <text x="64" y="90" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#c9940e" font-weight="600">[Agent / 工程]</text>
+        <text x="64" y="112" font-family="'DM Mono',Consolas,monospace" font-size="15" fill="#17232b" font-weight="700">{prototype}</text>
+        <text x="64" y="132" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">构建可运行实验，回答一个具体的设计问题</text>
+
+        <!-- Down Arrow 1 -->
+        <line x1="219" y1="148" x2="219" y2="168" stroke="#c9940e" stroke-width="2"/>
+        <polyline points="214,163 219,169 224,163" stroke="#c9940e" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- Proto Step 2: Question -->
+        <rect x="44" y="170" width="350" height="78" rx="8" fill="#fffdf8" stroke="#c9940e" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <text x="64" y="192" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#c9940e" font-weight="600">设计问题（可运行比讨论便宜）</text>
+        <text x="64" y="212" font-family="'DM Sans',sans-serif" font-size="12" fill="#17232b" font-weight="600">「EventEmitter vs 直接回调：10k 实体下谁更快？」</text>
+        <text x="64" y="231" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">需要真实基准测试数据支持架构抉择</text>
+
+        <!-- Down Arrow 2 -->
+        <line x1="219" y1="248" x2="219" y2="268" stroke="#c9940e" stroke-width="2"/>
+        <polyline points="214,263 219,269 224,263" stroke="#c9940e" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- Proto Step 3: Observed Results -->
+        <rect x="44" y="270" width="350" height="78" rx="8" fill="#fffdf8" stroke="#c9940e" stroke-width="1.5"/>
+        <text x="64" y="292" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#c9940e" font-weight="600">观察结果与实测数据</text>
+        <text x="64" y="312" font-family="'DM Sans',sans-serif" font-size="12" fill="#17232b" font-weight="600">「直接回调快 2.3×，GC 压力低 40%，且更易测试」</text>
+        <text x="64" y="331" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">实测证明直接回调是更优解</text>
+
+        <!-- Down Arrow 3 -->
+        <line x1="219" y1="348" x2="219" y2="368" stroke="#c9940e" stroke-width="2"/>
+        <polyline points="214,363 219,369 224,363" stroke="#c9940e" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- Proto Step 4: Throwaway Artifact -->
+        <path d="M 44 370 L 366 370 L 394 398 L 394 472 L 44 472 Z" fill="#fffdf8" stroke="#c9940e" stroke-width="1.5"/>
+        <path d="M 366 370 L 366 398 L 394 398 Z" fill="#e8e0d1" stroke="#c9940e" stroke-width="1.5"/>
+        <text x="64" y="394" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#c9940e" font-weight="600">产物 · 决策证据</text>
+        <text x="64" y="418" font-family="'DM Mono',Consolas,monospace" font-size="13.5" fill="#17232b" font-weight="700">Benchmark 结果 + 探索笔记</text>
+        <text x="64" y="442" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">仅作为决策依据，代码本身不具备生产质量</text>
+
+        <!-- Discard Badge -->
+        <rect x="44" y="492" width="350" height="84" rx="8" fill="#f4d9d2" stroke="#b84d48" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <text x="219" y="522" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="12" fill="#b84d48" font-weight="700">⊗ 丢弃全部原型代码（Throw Away Code）</text>
+        <text x="219" y="546" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">原型缺少错误处理、类型守卫与测试，切勿强行推入生产！</text>
+
+
+        <!-- ══ Center: Decision Bridge ══ -->
+        <!-- Connection line from proto artifact to diamond -->
+        <path d="M 394 421 L 434 421 L 434 310 L 440 310" stroke="#d96c54" stroke-width="2.5" fill="none"/>
+        <polyline points="434,305 440,310 434,315" stroke="#d96c54" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+        <!-- Decision Diamond -->
+        <polygon points="460,270 500,310 460,350 420,310" fill="#fffdf8" stroke="#d96c54" stroke-width="2.5"/>
+        <text x="460" y="305" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="11" fill="#d96c54" font-weight="700">决策点</text>
+        <text x="460" y="322" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10" fill="#17232b" font-weight="600">提取 ADR</text>
+
+        <!-- Connection line from diamond to production -->
+        <line x1="500" y1="310" x2="520" y2="310" stroke="#28796d" stroke-width="2.5"/>
+        <polyline points="514,305 520,310 514,315" stroke="#28796d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+        <!-- Bridge Label Pill -->
+        <rect x="412" y="215" width="96" height="34" rx="6" fill="#fffdf8" stroke="#d96c54" stroke-width="1.5"/>
+        <text x="460" y="236" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10" fill="#d96c54" font-weight="600">✓ 仅保留决策</text>
+
+
+        <!-- ══ Right Column: Production Track (Green) ══ -->
+        <rect x="506" y="24" width="390" height="572" rx="10" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="526" y="52" font-family="'DM Mono',Consolas,monospace" font-size="11" fill="#28796d" font-weight="700" letter-spacing="0.5">生产轨（PRODUCTION TRACK）</text>
+
+        <!-- Prod Step 1: /grill-with-docs -->
+        <rect x="526" y="66" width="350" height="82" rx="8" fill="#fffdf8" stroke="#2f6680" stroke-width="2"/>
+        <text x="546" y="90" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#2f6680" font-weight="600">[用户 / 工程]</text>
+        <text x="546" y="112" font-family="'DM Mono',Consolas,monospace" font-size="15" fill="#17232b" font-weight="700">/grill-with-docs</text>
+        <text x="546" y="132" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">将 ADR 架构决策记录持久化到 CONTEXT.md</text>
+
+        <!-- Down Arrow P1 -->
+        <line x1="701" y1="148" x2="701" y2="168" stroke="#28796d" stroke-width="2"/>
+        <polyline points="696,163 701,169 706,163" stroke="#28796d" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- Prod Step 2: /to-spec -->
+        <rect x="526" y="170" width="350" height="78" rx="8" fill="#fffdf8" stroke="#d96c54" stroke-width="2"/>
+        <text x="546" y="192" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#d96c54" font-weight="600">[用户 / 工程]</text>
+        <text x="546" y="212" font-family="'DM Mono',Consolas,monospace" font-size="15" fill="#17232b" font-weight="700">/to-spec</text>
+        <text x="546" y="231" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">在决策约束下重新描述行为规范与前置/后置条件</text>
+
+        <!-- Down Arrow P2 -->
+        <line x1="701" y1="248" x2="701" y2="268" stroke="#28796d" stroke-width="2"/>
+        <polyline points="696,263 701,269 706,263" stroke="#28796d" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- Prod Step 3: /to-tickets & /implement -->
+        <rect x="526" y="270" width="350" height="78" rx="8" fill="#fffdf8" stroke="#28796d" stroke-width="2"/>
+        <text x="546" y="292" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#28796d" font-weight="600">[用户 / 工程]</text>
+        <text x="546" y="312" font-family="'DM Mono',Consolas,monospace" font-size="14.5" fill="#17232b" font-weight="700">/to-tickets → /implement</text>
+        <text x="546" y="331" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">从零构建生产实现切片，严禁复用原型捷径代码</text>
+
+        <!-- Down Arrow P3 -->
+        <line x1="701" y1="348" x2="701" y2="368" stroke="#28796d" stroke-width="2"/>
+        <polyline points="696,363 701,369 706,363" stroke="#28796d" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <!-- Prod Step 4: {tdd} & {code-review} -->
+        <rect x="526" y="370" width="350" height="102" rx="8" fill="#fffdf8" stroke="#28796d" stroke-width="2"/>
+        <rect x="530" y="374" width="342" height="94" rx="6" fill="none" stroke="#28796d" stroke-width="1"/>
+        <text x="546" y="394" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#28796d" font-weight="600">[Agent / 工程]</text>
+        <text x="546" y="416" font-family="'DM Mono',Consolas,monospace" font-size="14.5" fill="#17232b" font-weight="700">{tdd} → {code-review}</text>
+        <text x="546" y="437" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">先写测试驱动接口，确保测试覆盖率；双轴审查确保无接口扩张</text>
+        <text x="546" y="455" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#28796d">产出：高质量、深实现、小接口的可维护模块</text>
+
+        <!-- Retain Badge -->
+        <rect x="526" y="492" width="350" height="84" rx="8" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="701" y="522" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="12" fill="#28796d" font-weight="700">✓ 生产级可维护交付物（Production Code）</text>
+        <text x="701" y="546" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="#52616a">具备完整测试套件、错误处理、类型守卫与架构记录</text>
+      </svg>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel yellow-acc">
+        <h3>什么时候值得做原型？</h3>
+        <ul>
+          <li style="margin-bottom:4px;">存在一个具体的设计问题，可运行的实验比讨论更便宜</li>
+          <li style="margin-bottom:4px;">有两个以上的选项，性能或 DX 差异需要实测才能判断</li>
+          <li>原型结果可以转化为一个 ADR（架构决策记录）</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>不适合做原型的情况：</strong>如果问题可以通过 /research（文档查阅）回答，原型浪费时间。</p>
+      </div>
+      <div class="panel coral-acc">
+        <h3>原型代码为什么要丢弃？</h3>
+        <p>原型优化速度而非质量：没有测试、没有错误处理、耦合严重。把原型代码硬推进生产轨会积累技术债。决策点的作用是提取观察到的「事实」，丢弃实现的「捷径」。</p>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="section-label">实例：EventEmitter vs 直接回调</div>
+      <div class="example-grid">
+        <div class="example-col">
+          <h3>原型轨内容</h3>
+          <p>用 Vitest bench 在 1k/10k/100k 实体规模下运行两种实现，测量每次 activate() 的平均耗时和 GC 压力。测试文件约 120 行，不含任何错误处理。</p>
+        </div>
+        <div class="example-col">
+          <h3>决策点提取的 ADR</h3>
+          <p><code>ADR-003: 使用直接回调而非 EventEmitter</code><br>理由：在 10k 实体下快 2.3×，且测试中不需要 mock EventEmitter。代价：需要自己管理取消注册。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>识别一个具体的设计问题（哪种实现更好）→ {prototype} 构建可扔掉的实验 → 观察结果（基准测试、DX 测试）→ 决策点：提取 ADR，丢弃原型代码 → 生产轨从 /grill-with-docs 更新 CONTEXT.md 开始 → /to-spec 在决策约束下重写 → /to-tickets → /implement → {tdd} → {code-review}。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{prototype}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{research}</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/grill-with-docs</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/to-spec</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/to-tickets</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{tdd}</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 05 · 原型边界</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-04.html">← 图 04</a>
+      <a href="./diagram-06.html">图 06 →</a>
+    </div>
+  </footer>
+</body>
+</html>

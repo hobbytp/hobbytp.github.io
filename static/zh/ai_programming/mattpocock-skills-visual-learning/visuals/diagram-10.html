@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 10 · 自媒体内容流水线 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+  <style>
+    .storyboard {
+      padding: 24px; background: var(--white); overflow-x: auto;
+    }
+    .storyboard-note {
+      padding: 10px 14px; margin-bottom: 18px;
+      border-left: 3px solid var(--coral); background: var(--coral-pale);
+      font-size: .82rem; color: var(--ink-soft); border-radius: 0 6px 6px 0;
+    }
+    .sb-row { display: flex; gap: 0; align-items: stretch; min-width: 860px; }
+    .sb-step {
+      flex: 1; display: flex; flex-direction: column;
+      border: 1.5px solid var(--line); background: var(--white);
+      padding: 12px 10px; position: relative; min-height: 180px;
+    }
+    .sb-step:not(:first-child) { border-left: none; }
+    .sb-step:first-child { border-radius: 8px 0 0 8px; }
+    .sb-step:last-child  { border-radius: 0 8px 8px 0; }
+    .sb-step.has-skill { border-top: 3px solid var(--blue); }
+    .sb-step.has-agent-skill { border-top: 3px solid var(--green); }
+    .sb-step.no-skill { border-top: 3px dashed var(--line); }
+
+    .sb-num {
+      font-family: 'DM Mono', Consolas, monospace; font-size: .6rem; color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+    .sb-title { font-size: .85rem; font-weight: 700; margin-bottom: 6px; }
+    .sb-question { font-size: .76rem; color: var(--ink-soft); margin-bottom: 8px; flex: 1; }
+    .sb-skill {
+      font-family: 'DM Mono', Consolas, monospace; font-size: .72rem;
+      padding: 3px 6px; border-radius: 4px; margin-bottom: 4px;
+      display: inline-block;
+    }
+    .sb-skill.user  { background: var(--blue-pale);  color: var(--blue); }
+    .sb-skill.agent { background: var(--green-pale); color: var(--green); }
+    .sb-skill.none  { background: var(--paper-deep); color: var(--ink-soft); border: 1px dashed var(--line); }
+
+    .sb-artifact {
+      font-size: .7rem; color: var(--ink-soft);
+      padding: 3px 6px; background: var(--paper-deep);
+      border-radius: 3px; margin-top: 4px;
+    }
+    .sb-arrow {
+      display: flex; align-items: center; justify-content: center;
+      width: 20px; flex-shrink: 0;
+    }
+
+    .equivalence-row {
+      margin-top: 28px; padding: 18px 20px;
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--white);
+    }
+    .eq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; }
+    .eq-col h3 { font-size: .82rem; color: var(--ink-soft); margin-bottom: 8px; }
+    .eq-list { list-style: none; }
+    .eq-list li {
+      display: flex; gap: 10px; align-items: flex-start;
+      font-size: .82rem; padding: 6px 0; border-bottom: 1px solid var(--paper-deep);
+    }
+    .eq-list li:last-child { border-bottom: none; }
+    .eq-eng { font-family: 'DM Mono', Consolas, monospace; font-size: .72rem; color: var(--blue); min-width: 120px; }
+    .eq-content { color: var(--ink-soft); }
+  </style>
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 10</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-09.html">← 图 09</a>
+      <a href="./diagram-11.html">图 11 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 10 · 方法迁移</div>
+      <h1>同一套操作模型如何支持日常内容创作工作？</h1>
+      <p class="purpose">自媒体内容流水线：澄清 → 研究 → 草稿 → 挑战 → 发布 → 复盘。这张图展示的是可迁移的方法（结构化采访、证据驱动、挑战检查），而不是工程技能的直接复用。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <div class="storyboard">
+        <div class="storyboard-note">
+          ⚠ 诚实标注：<code>outline</code>、<code>draft</code>、<code>challenge</code>、<code>publish</code> 等阶段目前没有对应的 promoted skill，不引用 in-progress 中的 writing skills。灰色虚线框表示「尚无专用技能」的阶段。
+        </div>
+
+        <div class="sb-row">
+          <!-- Step 1: 澄清受众与目标 -->
+          <div class="sb-step has-skill">
+            <div class="sb-num">01</div>
+            <div class="sb-title">澄清受众与目标</div>
+            <div class="sb-question">「这篇文章写给谁？他们读完后会有什么改变？」</div>
+            <span class="sb-skill user">/grill-me</span>
+            <div class="sb-artifact">产物：内容简报（受众、改变目标、反例）</div>
+          </div>
+          <div class="sb-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <line x1="2" y1="12" x2="20" y2="12" stroke="#d96c54" stroke-width="1.8"/>
+              <polyline points="15,7 21,12 15,17" stroke="#d96c54" stroke-width="1.8" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Step 2: 研究与证据收集 -->
+          <div class="sb-step has-agent-skill">
+            <div class="sb-num">02</div>
+            <div class="sb-title">研究与证据收集</div>
+            <div class="sb-question">「现有的研究、数据、反例是什么？」</div>
+            <span class="sb-skill agent">{research}</span>
+            <div class="sb-artifact">产物：证据摘要 + 参考资料</div>
+          </div>
+          <div class="sb-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <line x1="2" y1="12" x2="20" y2="12" stroke="#d96c54" stroke-width="1.8"/>
+              <polyline points="15,7 21,12 15,17" stroke="#d96c54" stroke-width="1.8" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Step 3: 大纲 -->
+          <div class="sb-step no-skill">
+            <div class="sb-num">03</div>
+            <div class="sb-title">大纲</div>
+            <div class="sb-question">「论证结构是什么？读者的认知路径是什么？」</div>
+            <span class="sb-skill none">尚无专用技能</span>
+            <div class="sb-artifact">产物：分节大纲 + 每节要旨</div>
+          </div>
+          <div class="sb-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <line x1="2" y1="12" x2="20" y2="12" stroke="#d96c54" stroke-width="1.8"/>
+              <polyline points="15,7 21,12 15,17" stroke="#d96c54" stroke-width="1.8" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Step 4: 草稿 -->
+          <div class="sb-step no-skill">
+            <div class="sb-num">04</div>
+            <div class="sb-title">草稿</div>
+            <div class="sb-question">「能否先写出不完美的草稿，再迭代？」</div>
+            <span class="sb-skill none">尚无专用技能</span>
+            <div class="sb-artifact">产物：初稿（关注论证，不关注打磨）</div>
+          </div>
+          <div class="sb-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <line x1="2" y1="12" x2="20" y2="12" stroke="#d96c54" stroke-width="1.8"/>
+              <polyline points="15,7 21,12 15,17" stroke="#d96c54" stroke-width="1.8" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Step 5: 挑战 -->
+          <div class="sb-step no-skill">
+            <div class="sb-num">05</div>
+            <div class="sb-title">挑战检查</div>
+            <div class="sb-question">「最强的反驳是什么？草稿能否经受检验？」</div>
+            <span class="sb-skill none">尚无专用技能</span>
+            <div class="sb-artifact">产物：修订草稿 + 纳入的反例</div>
+          </div>
+          <div class="sb-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <line x1="2" y1="12" x2="20" y2="12" stroke="#d96c54" stroke-width="1.8"/>
+              <polyline points="15,7 21,12 15,17" stroke="#d96c54" stroke-width="1.8" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Step 6: 发布 -->
+          <div class="sb-step no-skill">
+            <div class="sb-num">06</div>
+            <div class="sb-title">发布</div>
+            <div class="sb-question">「选择哪个平台？标题、钩子、CTA 是什么？」</div>
+            <span class="sb-skill none">尚无专用技能</span>
+            <div class="sb-artifact">产物：已发布内容</div>
+          </div>
+          <div class="sb-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <line x1="2" y1="12" x2="20" y2="12" stroke="#d96c54" stroke-width="1.8"/>
+              <polyline points="15,7 21,12 15,17" stroke="#d96c54" stroke-width="1.8" fill="none"/>
+            </svg>
+          </div>
+
+          <!-- Step 7: 复盘 -->
+          <div class="sb-step has-skill">
+            <div class="sb-num">07</div>
+            <div class="sb-title">复盘</div>
+            <div class="sb-question">「受众反应是否符合改变目标？下次应该调整什么？」</div>
+            <span class="sb-skill user">/grill-me</span>
+            <div class="sb-artifact">产物：学到的东西，更新内容简报模板</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Equivalence map -->
+    <div class="equivalence-row">
+      <div class="section-label">方法等价图：工程技能 ↔ 内容创作阶段</div>
+      <div class="eq-grid">
+        <div class="eq-col">
+          <h3>工程中的相似实践</h3>
+          <ul class="eq-list">
+            <li>
+              <span class="eq-eng">/grill-with-docs</span>
+              <span class="eq-content">→ 内容中的「澄清受众与改变目标」（/grill-me）</span>
+            </li>
+            <li>
+              <span class="eq-eng">{research}</span>
+              <span class="eq-content">→ 收集证据与反例，与工程研究完全相同</span>
+            </li>
+            <li>
+              <span class="eq-eng">/to-spec</span>
+              <span class="eq-content">→ 大纲（论证结构 = 行为规范）</span>
+            </li>
+            <li>
+              <span class="eq-eng">{tdd} 红阶段</span>
+              <span class="eq-content">→ 草稿（先写不完美的，再迭代）</span>
+            </li>
+            <li>
+              <span class="eq-eng">{code-review}</span>
+              <span class="eq-content">→ 挑战检查（最强的反驳是否纳入？）</span>
+            </li>
+          </ul>
+        </div>
+        <div class="eq-col">
+          <h3>内容创作特有的关注点</h3>
+          <ul class="eq-list">
+            <li>
+              <span class="eq-eng" style="color:var(--slate);">受众与改变目标</span>
+              <span class="eq-content">工程中没有直接等价（spec 关注行为，不关注读者心理状态）</span>
+            </li>
+            <li>
+              <span class="eq-eng" style="color:var(--slate);">平台与发布策略</span>
+              <span class="eq-content">工程中没有直接等价（代码合并不需要钩子和 CTA）</span>
+            </li>
+            <li>
+              <span class="eq-eng" style="color:var(--slate);">反例作为内容</span>
+              <span class="eq-content">内容中反例是论证的一部分；工程中反例是测试的一部分</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel blue-acc">
+        <h3>为什么从「改变目标」而不是「内容主题」开始？</h3>
+        <p>内容主题（「AI 时代的架构」）不可测试。改变目标（「读者能识别什么时候不应该让 AI 做架构决策」）可以测试——读者评论和分享行为会告诉你是否成功。</p>
+      </div>
+      <div class="panel coral-acc">
+        <h3>挑战检查是什么？</h3>
+        <p>把自己的草稿当成需要被证伪的假设。「这个观点最强的反驳是什么？」「我纳入了反例吗？」「论证有没有漏洞？」这和 {code-review} 的「规范 + spec 双轴检查」有相同的结构。</p>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="section-label">实例：「AI 时代如何做代码审查」文章</div>
+      <div class="example-grid">
+        <div class="example-col">
+          <h3>阶段 01：/grill-me 澄清</h3>
+          <p>受众：已有 3 年以上经验的工程师，正在把 AI 引入团队。<br>改变目标：读者在一周内改变至少一个代码审查实践，不是「了解 AI 审查」而是「应用一个具体技巧」。<br>反例：不是所有 AI 辅助审查都是好的（要说清楚什么时候不用）。</p>
+        </div>
+        <div class="example-col">
+          <h3>阶段 05：挑战检查结果</h3>
+          <p>最强反驳：「AI 审查让工程师失去批判性思维」→ 纳入到文章的第三节，加入「何时人工审查更重要」的具体场景。修订草稿增加了 400 字的反例讨论。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>/grill-me 澄清受众与改变目标 → {research} 收集证据与反例 → 大纲（尚无专用技能）→ 草稿（先完成再完美）→ 挑战检查（纳入最强反驳）→ 发布（平台与钩子，尚无专用技能）→ /grill-me 复盘（受众反应是否符合改变目标）→ 更新内容简报模板 → 下一篇。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/grill-me</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{research}</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/teach</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 10 · 自媒体内容流水线</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-09.html">← 图 09</a>
+      <a href="./diagram-11.html">图 11 →</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -26,7 +26,8 @@ class LLMConfig:
                 with open(config_path, "r", encoding="utf-8") as f:
                     config = json.load(f)
                 
-                role_config = config.get("roleConfigs", {}).get("DAILY_REPORT", {})
+                roles = config.get("roles") or config.get("roleConfigs", {})
+                role_config = roles.get("DAILY_REPORT", {})
                 self.provider_name = role_config.get("provider", self.provider_name)
                 self.model_name = role_config.get("model", self.model_name)
                 self.temperature = role_config.get("temperature", self.temperature)
@@ -35,8 +36,9 @@ class LLMConfig:
                 self.api_base_url = provider_config.get("apiBaseUrl", self.api_base_url)
                 self.api_key_env = provider_config.get("apiKeyEnv", self.api_key_env)
                 self.is_openai_compatible = provider_config.get("openaiCompatible", self.is_openai_compatible)
+                
                 # 备用配置 (DAILY_REPORT_BK)
-                bk_role_config = config.get("roleConfigs", {}).get("DAILY_REPORT_BK", {})
+                bk_role_config = roles.get("DAILY_REPORT_BK", {})
                 self.bk_provider_name = bk_role_config.get("provider", "")
                 self.bk_model_name = bk_role_config.get("model", "")
                 self.bk_temperature = bk_role_config.get("temperature", 0.5)
@@ -53,6 +55,7 @@ class LLMConfig:
         except Exception as e:
             print(f"[ERROR] 读取 llm_config.json 失败: {e}，将使用默认配置")
             self.bk_api_key_env = ""
+
             
         self.api_key = os.getenv(self.api_key_env)
         if not self.api_key and self.api_key_env == "GOOGLE_API_KEY":

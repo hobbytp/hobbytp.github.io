@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 00 · 操作地图 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 00</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./index.html">← 首页</a>
+      <a href="./diagram-01.html">图 01 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 00 · 路线导览</div>
+      <h1>我在工作的哪个阶段，应该走哪条路线？</h1>
+      <p class="purpose">七区操作地图：每个区描述一种工作状态，箭头显示常规流向。<code>{grilling}</code> 是跨区共享原语，为五个 orchestrator 提供采访引擎。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="d00-title d00-desc">
+        <title id="d00-title">Skills 操作地图：七区布局</title>
+        <desc id="d00-desc">七个工作区按流程排列：定向、澄清与接收、决策、塑形、构建与验证、维护、传递与支持。{grilling} 共享原语层位于地图底部。</desc>
+
+        <!-- Background -->
+        <rect width="900" height="520" fill="#fffdf8"/>
+
+        <!-- ── Zone 1: ORIENT ── -->
+        <rect x="14" y="14" width="108" height="130" rx="8" fill="#dcebf0" stroke="#2f6680" stroke-width="1.5"/>
+        <text x="68" y="34" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680" font-weight="600" letter-spacing="0.5">区 1 · 定向</text>
+        <text x="68" y="50" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/ask-matt</text>
+        <text x="68" y="64" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户]</text>
+        <text x="68" y="82" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/setup-matt-</text>
+        <text x="68" y="93" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">pocock-skills</text>
+        <text x="68" y="107" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户]</text>
+        <text x="68" y="134" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">路由与初始配置</text>
+
+        <!-- Z1 → Z2 arrow -->
+        <line x1="122" y1="79" x2="148" y2="79" stroke="#d96c54" stroke-width="1.8"/>
+        <polyline points="143,74 150,79 143,84" stroke="#d96c54" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+
+        <!-- ── Zone 2: CLARIFY & INTAKE ── -->
+        <rect x="150" y="14" width="165" height="245" rx="8" fill="#ede8f5" stroke="#6b4fa0" stroke-width="1.5"/>
+        <text x="232" y="34" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#6b4fa0" font-weight="600" letter-spacing="0.5">区 2 · 澄清与接收</text>
+        <text x="232" y="54" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/grill-with-docs</text>
+        <text x="232" y="66" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/工程]</text>
+        <text x="232" y="83" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/grill-me</text>
+        <text x="232" y="95" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/生产力]</text>
+        <text x="232" y="112" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/triage</text>
+        <text x="232" y="124" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/工程]</text>
+        <text x="232" y="141" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{domain-modeling}</text>
+        <text x="232" y="153" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="232" y="247" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">澄清意图与接收外部工作</text>
+
+        <!-- Z2 → Z3 arrow -->
+        <line x1="315" y1="136" x2="340" y2="136" stroke="#d96c54" stroke-width="1.8"/>
+        <polyline points="335,131 342,136 335,141" stroke="#d96c54" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+
+        <!-- ── Zone 3: DECIDE ── -->
+        <rect x="342" y="14" width="158" height="245" rx="8" fill="#f8edc9" stroke="#c9940e" stroke-width="1.5"/>
+        <text x="421" y="34" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e" font-weight="600" letter-spacing="0.5">区 3 · 决策</text>
+        <text x="421" y="54" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/prototype</text>
+        <text x="421" y="66" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="421" y="83" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/research</text>
+        <text x="421" y="95" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="421" y="112" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/wayfinder</text>
+        <text x="421" y="124" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/工程]</text>
+        <text x="421" y="141" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/to-questionnaire</text>
+        <text x="421" y="153" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/生产力]</text>
+        <text x="421" y="247" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">收集证据与解决设计问题</text>
+
+        <!-- Z3 → Z4 arrow -->
+        <line x1="500" y1="79" x2="525" y2="79" stroke="#d96c54" stroke-width="1.8"/>
+        <polyline points="520,74 527,79 520,84" stroke="#d96c54" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+
+        <!-- ── Zone 4: SHAPE ── -->
+        <rect x="527" y="14" width="148" height="130" rx="8" fill="#f5ddd4" stroke="#d96c54" stroke-width="1.5"/>
+        <text x="601" y="34" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#d96c54" font-weight="600" letter-spacing="0.5">区 4 · 塑形</text>
+        <text x="601" y="54" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/to-spec</text>
+        <text x="601" y="66" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/工程]</text>
+        <text x="601" y="83" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/to-tickets</text>
+        <text x="601" y="95" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/工程]</text>
+        <text x="601" y="112" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{codebase-design}</text>
+        <text x="601" y="124" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="601" y="134" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">分解工作与设计模块</text>
+
+        <!-- Z4 → Z5 arrow -->
+        <line x1="675" y1="79" x2="698" y2="79" stroke="#d96c54" stroke-width="1.8"/>
+        <polyline points="693,74 700,79 693,84" stroke="#d96c54" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+
+        <!-- ── Zone 5: BUILD & VERIFY ── -->
+        <rect x="700" y="14" width="185" height="245" rx="8" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="792" y="34" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#28796d" font-weight="600" letter-spacing="0.5">区 5 · 构建与验证</text>
+        <text x="792" y="54" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/implement</text>
+        <text x="792" y="66" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/工程]</text>
+        <text x="792" y="83" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{tdd}</text>
+        <text x="792" y="95" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="792" y="112" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{diagnosing-bugs}</text>
+        <text x="792" y="124" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="792" y="141" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{code-review}</text>
+        <text x="792" y="153" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="792" y="247" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">实现代码与验证行为</text>
+
+        <!-- ── Zone 4 → Zone 6 (down arrow within SUSTAIN) ── -->
+        <line x1="601" y1="144" x2="601" y2="166" stroke="#d96c54" stroke-width="1.8"/>
+        <polyline points="596,161 601,168 606,161" stroke="#d96c54" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+
+        <!-- ── Zone 6: SUSTAIN ── -->
+        <rect x="527" y="168" width="148" height="91" rx="8" fill="#d9eee7" stroke="#28796d" stroke-width="1.5" stroke-dasharray="5 3"/>
+        <text x="601" y="186" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#28796d" font-weight="600" letter-spacing="0.5">区 6 · 维护</text>
+        <text x="601" y="204" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/improve-codebase-</text>
+        <text x="601" y="215" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">architecture</text>
+        <text x="601" y="227" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/工程]</text>
+        <text x="601" y="249" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">持续改善架构质量</text>
+
+        <!-- Z5 down to Z7 -->
+        <line x1="792" y1="259" x2="792" y2="278" stroke="#52616a" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <polyline points="787,273 792,280 797,273" stroke="#52616a" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+
+        <!-- ── Zone 7: TRANSFER & SUPPORT ── -->
+        <rect x="14" y="278" width="860" height="120" rx="8" fill="#e4eaed" stroke="#5a6b78" stroke-width="1.5"/>
+        <text x="444" y="297" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#5a6b78" font-weight="600" letter-spacing="0.5">区 7 · 传递与支持</text>
+        <text x="100" y="318" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/handoff</text>
+        <text x="100" y="330" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/生产力]</text>
+        <text x="230" y="318" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/wait-what</text>
+        <text x="230" y="330" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/生产力]</text>
+        <text x="360" y="318" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">/teach</text>
+        <text x="360" y="330" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[用户/生产力]</text>
+        <text x="510" y="318" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{writing-for-agents}</text>
+        <text x="510" y="330" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/生产力]</text>
+        <text x="672" y="318" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{resolving-merge-conflicts}</text>
+        <text x="672" y="330" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="836" y="318" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{wizard}</text>
+        <text x="836" y="330" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a">[Agent/工程]</text>
+        <text x="444" y="385" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#52616a">保存上下文、传递工作、支持协作</text>
+
+        <!-- ── Grilling shared primitive ── -->
+        <rect x="14" y="416" width="860" height="90" rx="8" fill="#e4eaed" stroke="#5a6b78" stroke-width="2"/>
+        <rect x="20" y="422" width="848" height="78" rx="6" fill="none" stroke="#5a6b78" stroke-width="1"/>
+        <text x="444" y="441" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#5a6b78" font-weight="600" letter-spacing="1">── 共享原语层 ──</text>
+        <text x="444" y="458" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="11" fill="#5a6b78" font-weight="500">{grilling}</text>
+        <text x="444" y="473" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#52616a">驱动：/grill-me · /grill-with-docs · /triage · /wayfinder · /improve-codebase-architecture</text>
+        <text x="444" y="488" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">不是第八个区，而是五个 orchestrator 共用的采访引擎。[Agent/生产力]</text>
+
+        <!-- Feedback arrow: Z7 → Z2 (loop back) -->
+        <path d="M 14 338 C 0 338 0 136 150 136" stroke="#52616a" stroke-width="1.3" stroke-dasharray="4 3" fill="none"/>
+        <polyline points="145,131 152,136 145,141" stroke="#52616a" stroke-width="1.3" fill="none" stroke-linejoin="round"/>
+        <text x="4" y="260" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#52616a" transform="rotate(-90,4,260)">可重入</text>
+      </svg>
+    </div>
+
+    <p style="font-size:.82rem;color:var(--ink-soft);margin-bottom:24px;">
+      <strong>区域阅读规则：</strong>区域描述工作状态，不是强制经过的顺序阶段。箭头显示常规流向。一个难以复现的 bug 可以从区 5 <code>{diagnosing-bugs}</code> 直接进入；一个外部提交的原始工单则从区 2 <code>/triage</code> 进入。
+    </p>
+
+    <div class="content-grid">
+      <div class="panel blue-acc">
+        <h3>如何使用这张地图</h3>
+        <ol style="padding-left:16px;font-size:.85rem;color:var(--ink-soft);">
+          <li style="margin-bottom:6px;">找到当前工作所在的区域。</li>
+          <li style="margin-bottom:6px;">选择该区域中最合适的技能。</li>
+          <li style="margin-bottom:6px;">查看技能产出的产物。</li>
+          <li>跟随箭头进入下一个区域。</li>
+        </ol>
+      </div>
+      <div class="panel yellow-acc">
+        <h3>关于 {grilling} 原语</h3>
+        <p>五个 orchestrator（/grill-me、/grill-with-docs、/triage、/wayfinder、/improve-codebase-architecture）都在内部使用 <code>{grilling}</code> 来逐一挖掘未解决的决策分支。用户启动 orchestrator，agent 使用原语。</p>
+      </div>
+    </div>
+
+    <div class="linear-summary" style="margin-top:20px;">
+      <strong>线性阅读顺序：</strong>七个区从左到右对应工作的不同状态：定向（知道从哪开始）→ 澄清与接收（理解问题）→ 决策（收集证据）→ 塑形（分解工作）→ 构建与验证（实现代码）→ 维护（持续改善）→ 传递与支持（保存上下文）。{grilling} 是贯穿所有澄清类技能的共享底层引擎。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能文档</div>
+      <div class="skill-list">
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/ask-matt</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/grill-with-docs</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/triage</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/wayfinder</a>
+        <a class="skill-chip shared" aria-disabled="true" title="技能文档未随博客发布">{grilling}</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 00 · 操作地图</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./index.html">← 首页</a>
+      <a href="./diagram-01.html">图 01 →</a>
+    </div>
+  </footer>
+</body>
+</html>

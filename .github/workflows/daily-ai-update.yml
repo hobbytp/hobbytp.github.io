@@ -1,4 +1,4 @@
-name: 每日AI动态更新 V3.0
+name: 每日AI动态更新 V3.5
 
 on:
     schedule:
@@ -31,21 +31,23 @@ jobs:
                   pip install -r scripts/requirements.txt
                   echo "============================================"
                   echo "已安装的包:"
-                  pip list | grep -E "(google-generativeai|openai|perplexity|jinja2|python-dotenv)"
+                  pip list | grep -E "(google-genai|openai|perplexity|jinja2|python-dotenv|feedparser|pydantic)"
                   echo "============================================"
 
             - name: 诊断 API 连接
               env:
                   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-                  PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+                  DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+                  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+                  SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
               run: |
                   echo "运行诊断脚本..."
                   python scripts/diagnose_gemini.py || true
 
-            - name: 运行AI动态收集脚本 V3.0
+
+            - name: 运行AI动态收集脚本 V3.5
               env:
                   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-                  PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
                   GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
                   HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
                   DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
@@ -57,27 +59,64 @@ jobs:
                   SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
                   BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
                   METASOSEARCH_API_KEY: ${{ secrets.METASOSEARCH_API_KEY }}
+
               run: |
                   echo "============================================"
-                  echo "开始收集每日AI动态 (V3.0 - MVC Pipeline)"
+                  echo "开始收集每日AI动态 (V3.5 - Multi-source Pipeline)"
                   echo "============================================"
                   python scripts/daily_ai_collector.py
                   echo "============================================"
                   echo "收集完成"
                   echo "============================================"
 
-            - name: 检查生成的文件
+            - name: 产物完整性与质量门禁校验
               run: |
-                  echo "生成的文件:"
-                  ls -lh content/zh/daily_ai/ | tail -5
-                  echo ""
-                  echo "最新文件内容预览:"
-                  latest_file=$(ls -t content/zh/daily_ai/*.md | head -1)
-                  if [ -f "$latest_file" ]; then
-                      head -50 "$latest_file"
+                  echo "============================================"
+                  echo "🔍 检查生成产物完整性..."
+                  echo "============================================"
+                  today_file="content/zh/daily_ai/$(TZ='Asia/Shanghai' date +%Y-%m-%d).md"
+                  if [ -f "$today_file" ]; then
+                      latest_file="$today_file"
                   else
-                      echo "Warning: No .md file found in content/zh/daily_ai/"
+                      latest_file=$(ls -t content/zh/daily_ai/*.md | head -1)
                   fi
+
+                  if [ ! -f "$latest_file" ]; then
+                      echo "❌ ERROR: content/zh/daily_ai/ 下未找到任何 Markdown 文章！"
+                      exit 1
+                  fi
+                  
+                  file_size=$(stat -c%s "$latest_file" 2>/dev/null || stat -f%z "$latest_file")
+                  echo "最新生成文件: $latest_file (大小: $file_size bytes)"
+                  
+                  if [ "$file_size" -lt 1500 ]; then
+                      echo "❌ ERROR: 文章体积过小 ($file_size bytes)，可能存在残缺或生成失败！"
+                      exit 1
+                  fi
+                  
+                  if grep -q "模板渲染错误" "$latest_file"; then
+                      echo "❌ ERROR: 检测到模板渲染错误残留，拒绝提交！"
+                      exit 1
+                  fi
+
+                  # 数量门禁 1：内容条目数 totalItems 下限（防止同日重跑/采集异常导致内容被清空）
+                  total_items=$(grep -m1 '^totalItems:' "$latest_file" | sed -E "s/^totalItems:[[:space:]]*['\"]?([0-9]+)['\"]?.*/\1/" | tr -d '\r' | tr -d ' ')
+                  if [ -z "$total_items" ] || ! [[ "$total_items" =~ ^[0-9]+$ ]] || [ "$total_items" -lt 5 ]; then
+                      echo "❌ ERROR: 内容条目数过少或不合法 (totalItems='${total_items}')，疑似采集/去重异常，拒绝提交！"
+                      exit 1
+                  fi
+
+                  # 数量门禁 2：章节数下限（兼容 <h2 id= 与 ## 标题）
+                  section_count=$(grep -c -E '^(<h2 id=|## )' "$latest_file" || true)
+                  if [ "$section_count" -lt 3 ]; then
+                      echo "❌ ERROR: 章节数过少 ($section_count)，疑似生成失败，拒绝提交！"
+                      exit 1
+                  fi
+
+                  echo "✅ 质量校验通过 (totalItems=$total_items, sections=$section_count)，预览最新生成内容:"
+                  head -n 45 "$latest_file"
+
+
 
             - name: 提交更改
               env:
@@ -88,5 +127,6 @@ jobs:
                   git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
                   git add content/zh/daily_ai/
                   git add scripts/daily_ai/data/history.json
-                  git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 V3.0 - $(date '+%Y-%m-%d')"
+                  git diff --staged --quiet || git commit -m "🤖 自动更新每日AI动态 V3.5 - $(date '+%Y-%m-%d')"
                   git push origin main
+

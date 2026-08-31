@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 09 · 上下文交接 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+  <style>
+    .context-layers {
+      display: flex; flex-direction: column; gap: 0;
+      padding: 28px 24px; background: var(--white);
+    }
+    .ctx-layer {
+      padding: 16px 20px; border-radius: 0;
+      border: 1.5px solid var(--line);
+      position: relative;
+    }
+    .ctx-layer:first-child { border-radius: 8px 8px 0 0; }
+    .ctx-layer:last-child  { border-radius: 0 0 8px 8px; margin-top: -1px; }
+    .ctx-layer + .ctx-layer { margin-top: -1px; }
+
+    .ctx-layer.l1 { background: var(--blue-pale); border-color: var(--blue); }
+    .ctx-layer.l2 { background: var(--yellow-pale); border-color: var(--yellow); }
+    .ctx-layer.l3 { background: var(--green-pale); border-color: var(--green); }
+
+    .ctx-layer-head {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+    }
+    .ctx-num {
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .62rem; font-weight: 600;
+      width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .l1 .ctx-num { background: var(--blue); color: white; }
+    .l2 .ctx-num { background: var(--yellow); color: white; }
+    .l3 .ctx-num { background: var(--green); color: white; }
+    .ctx-title { font-size: .92rem; font-weight: 700; }
+    .ctx-subtitle { font-size: .78rem; color: var(--ink-soft); margin-left: auto; font-family: 'DM Mono', Consolas, monospace; }
+
+    .ctx-items {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px; margin-top: 8px;
+    }
+    .ctx-item {
+      padding: 10px 12px; border-radius: 6px;
+      background: rgba(255,253,248,.8); border: 1px solid rgba(23,35,43,.1);
+    }
+    .ctx-item .item-name {
+      font-family: 'DM Mono', Consolas, monospace; font-size: .76rem; font-weight: 500;
+    }
+    .ctx-item .item-cap { font-size: .72rem; color: var(--ink-soft); margin-top: 3px; }
+    .ctx-item .item-who { font-size: .66rem; color: var(--ink-soft); margin-top: 4px; }
+
+    .boundary-strip {
+      padding: 8px 20px;
+      background: var(--paper-deep); border-left: 3px solid var(--slate);
+      font-family: 'DM Mono', Consolas, monospace; font-size: .68rem; color: var(--slate);
+      display: flex; gap: 24px; flex-wrap: wrap;
+    }
+    .boundary-strip span::before { content: "⎯⎯ "; }
+  </style>
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 09</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-08.html">← 图 08</a>
+      <a href="./diagram-10.html">图 10 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 09 · 上下文交接</div>
+      <h1>哪些信息需要跨会话、跨人员或跨 Agent 传递？</h1>
+      <p class="purpose">三层上下文数据包：每一层按需持久化，从不依赖接收者的记忆力。层 1 是项目级共享语言，层 2 是当前工作状态，层 3 是单次交接摘要。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <div class="context-layers">
+
+        <!-- Layer 1: Shared vocabulary (persistent) -->
+        <div class="ctx-layer l1">
+          <div class="ctx-layer-head">
+            <span class="ctx-num">1</span>
+            <span class="ctx-title">共享词汇与决策记录</span>
+            <span class="ctx-subtitle">持久化到仓库 · 项目级</span>
+          </div>
+          <p style="font-size:.82rem;color:var(--ink-soft);margin-bottom:10px;">这一层是不随个别会话变化的「项目语言」。任何人（人类或 Agent）都可以从这一层建立对项目的基本理解。</p>
+          <div class="ctx-items">
+            <div class="ctx-item">
+              <div class="item-name">CONTEXT.md</div>
+              <div class="item-cap">领域词汇表、核心概念定义、团队约定</div>
+              <div class="item-who">来自：/grill-with-docs</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">ADR（架构决策记录）</div>
+              <div class="item-cap">每个重要决策的理由和被否决的替代方案</div>
+              <div class="item-who">来自：/grill-with-docs · {codebase-design}</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">AGENTS.md / CLAUDE.md</div>
+              <div class="item-cap">Agent 行为约定、格式要求、禁止操作</div>
+              <div class="item-who">来自：{writing-for-agents}</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">代码库结构说明</div>
+              <div class="item-cap">模块边界、关键接口、测试约定</div>
+              <div class="item-who">来自：{codebase-design}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boundary 1 -->
+        <div class="boundary-strip">
+          <span>跨会话边界</span>
+          <span>跨 Agent 边界</span>
+          <span>跨人员边界</span>
+          <span>层 1 总是可见的</span>
+        </div>
+
+        <!-- Layer 2: Work state (task-scoped) -->
+        <div class="ctx-layer l2">
+          <div class="ctx-layer-head">
+            <span class="ctx-num">2</span>
+            <span class="ctx-title">当前工作状态</span>
+            <span class="ctx-subtitle">工单级 · 按需持久化</span>
+          </div>
+          <p style="font-size:.82rem;color:var(--ink-soft);margin-bottom:10px;">这一层描述「正在做的这件事」。当一个工单需要多个会话时，必须在每次会话开始前重建此层。</p>
+          <div class="ctx-items">
+            <div class="ctx-item">
+              <div class="item-name">spec</div>
+              <div class="item-cap">当前工单的行为规范（前置条件、后置条件、错误边界）</div>
+              <div class="item-who">来自：/to-spec</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">工单内容</div>
+              <div class="item-cap">工单描述、验收标准、依赖边、当前状态</div>
+              <div class="item-who">来自：/to-tickets</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">原型结果（如有）</div>
+              <div class="item-cap">benchmark 数据、观察到的 DX 问题、决策证据</div>
+              <div class="item-who">来自：{prototype} · {research}</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">测试进度</div>
+              <div class="item-cap">哪些测试通过，哪些还在失败，当前的最小失败案例</div>
+              <div class="item-who">来自：{tdd} · {diagnosing-bugs}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boundary 2 -->
+        <div class="boundary-strip">
+          <span>单次交接边界</span>
+          <span>层 1+2 构成接收者的完整上下文</span>
+        </div>
+
+        <!-- Layer 3: Handoff summary -->
+        <div class="ctx-layer l3">
+          <div class="ctx-layer-head">
+            <span class="ctx-num">3</span>
+            <span class="ctx-title">交接摘要</span>
+            <span class="ctx-subtitle">单次会话结束时 · 消耗性</span>
+          </div>
+          <p style="font-size:.82rem;color:var(--ink-soft);margin-bottom:10px;">这一层描述「这次会话做了什么，下一步是什么」。在新会话开始时读取，不需要永久保存。</p>
+          <div class="ctx-items">
+            <div class="ctx-item">
+              <div class="item-name">已完成的事项</div>
+              <div class="item-cap">这次会话中完成的决策、代码、测试</div>
+              <div class="item-who">来自：/handoff</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">下一步行动</div>
+              <div class="item-cap">明确的下一个操作（不是「继续做」）</div>
+              <div class="item-who">来自：/handoff</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">未解决的问题</div>
+              <div class="item-cap">这次会话遇到但未解决的决策分支、问题</div>
+              <div class="item-who">来自：/handoff · /wait-what</div>
+            </div>
+            <div class="ctx-item">
+              <div class="item-name">注意事项</div>
+              <div class="item-cap">不明显的依赖、可能的陷阱、需要关注的测试</div>
+              <div class="item-who">来自：/handoff</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transfer scenarios -->
+    <div style="margin-top:24px;">
+      <div class="section-label">三种交接场景</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;">
+        <div class="panel blue-acc">
+          <h3>跨会话（同一个人）</h3>
+          <p>中断工作后恢复。需要：层 1（项目上下文）+ 层 2（工单状态）+ 层 3（/handoff 摘要）。</p>
+          <p style="margin-top:8px;">技能：<code>/handoff</code></p>
+        </div>
+        <div class="panel yellow-acc">
+          <h3>跨人员（代码评审后）</h3>
+          <p>reviewer 需要：层 1（理解项目约定）+ 层 2（spec 和工单背景）。不需要层 3。</p>
+          <p style="margin-top:8px;">技能：<code>{code-review}</code></p>
+        </div>
+        <div class="panel green-acc">
+          <h3>跨 Agent（新会话启动）</h3>
+          <p>Agent 从空白上下文开始。读取层 1（CONTEXT.md）+ 层 2（spec + 工单）+ 层 3（/handoff 摘要）后开始工作。</p>
+          <p style="margin-top:8px;">技能：<code>{writing-for-agents}</code></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel slate-acc">
+        <h3>什么信息不需要传递？</h3>
+        <ul>
+          <li style="margin-bottom:4px;">思考过程（不是决策的推理路径）</li>
+          <li style="margin-bottom:4px;">已被否决的替代方案的实现细节</li>
+          <li style="margin-bottom:4px;">调试过程中尝试过的失败路径</li>
+          <li>对接收者显而易见的信息</li>
+        </ul>
+      </div>
+      <div class="panel coral-acc">
+        <h3>/wait-what 的作用</h3>
+        <p>当接收者（人或 Agent）读取了层 1-3 后仍然「不知道自己在哪」，使用 /wait-what 重建方向感。它不是失败信号，而是上下文重建的入口。</p>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>层 1（持久化到仓库：CONTEXT.md、ADR、AGENTS.md）→ 层 2（工单级：spec、工单、原型结果、测试进度）→ 层 3（会话级：/handoff 产出的摘要）→ 交接时：根据场景选择传递哪些层 → 接收者重建上下文，继续工作。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/handoff</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/wait-what</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{writing-for-agents}</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/grill-with-docs</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{codebase-design}</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 09 · 上下文交接</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-08.html">← 图 08</a>
+      <a href="./diagram-10.html">图 10 →</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 11 · 技能图集 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+  <style>
+    /* Filter bar */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
+      padding: 12px 0; border-bottom: 1px solid var(--line);
+    }
+    .filter-group { display: flex; gap: 6px; align-items: center; }
+    .filter-label {
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .62rem; color: var(--ink-soft); text-transform: uppercase;
+      margin-right: 4px;
+    }
+    .filter-btn {
+      padding: 4px 10px; border-radius: 999px;
+      border: 1.5px solid var(--line); background: var(--white);
+      font-family: 'DM Mono', Consolas, monospace; font-size: .66rem;
+      cursor: pointer; transition: all .14s;
+    }
+    .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+    .filter-btn.active-user   { border-color: var(--blue);  background: var(--blue-pale);  color: var(--blue); }
+    .filter-btn.active-agent  { border-color: var(--green); background: var(--green-pale); color: var(--green); }
+    .filter-btn.active-shared { border-color: var(--slate); background: var(--slate-pale); color: var(--slate); }
+    .filter-btn.active-eng    { border-color: var(--coral); background: var(--coral-pale); color: var(--coral); }
+    .filter-btn.active-prod   { border-color: var(--purple); background: var(--purple-pale); color: var(--purple); }
+    .filter-btn.active-all    { border-color: var(--ink); background: var(--ink); color: white; }
+
+    /* Section header */
+    .atlas-section { margin-top: 24px; }
+    .atlas-section-label {
+      font-family: 'DM Mono', Consolas, monospace;
+      font-size: .68rem; color: var(--ink-soft); text-transform: uppercase;
+      border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: 14px;
+    }
+
+    /* Skill cards */
+    .atlas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+    }
+    .skill-card {
+      padding: 14px 16px;
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      transition: border-color .14s, transform .12s, box-shadow .14s;
+    }
+    .skill-card:hover {
+      transform: translateY(-2px); box-shadow: var(--shadow);
+    }
+    .skill-card.user-card  { border-top: 3px solid var(--blue); }
+    .skill-card.agent-card { border-top: 3px solid var(--green); }
+    .skill-card.shared-card{ border-top: 3px solid var(--slate); }
+
+    .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .card-name {
+      font-family: 'DM Mono', Consolas, monospace; font-size: .86rem; font-weight: 500;
+      flex: 1;
+    }
+    .card-name a { color: var(--ink); text-decoration: none; }
+    .card-name a:hover { color: var(--blue); }
+
+    .card-row {
+      display: grid; grid-template-columns: 56px 1fr;
+      gap: 4px 8px; font-size: .74rem; margin-bottom: 4px;
+    }
+    .card-key { color: var(--ink-soft); font-family: 'DM Mono', Consolas, monospace; font-size: .64rem; }
+    .card-val { color: var(--ink); }
+    .card-next { margin-top: 6px; font-size: .72rem; }
+    .card-next a {
+      font-family: 'DM Mono', Consolas, monospace;
+      color: var(--blue); text-decoration: none;
+    }
+    .card-next a:hover { text-decoration: underline; }
+
+    /* Hidden state */
+    .skill-card.hidden { display: none; }
+
+    @media (max-width: 600px) {
+      .atlas-grid { grid-template-columns: 1fr; }
+      .filter-bar { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 11</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-10.html">← 图 10</a>
+      <a href="./index.html">首页</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 11 · 技能图集</div>
+      <h1>25 个技能各自在什么情况下使用，产出什么？</h1>
+      <p class="purpose">可按调用类型和 bucket 筛选的技能卡片图集。每张卡片包含：适用情境、执行动作、产出产物、下一步。</p>
+    </header>
+
+    <!-- Filter bar -->
+    <div class="filter-bar" role="group" aria-label="技能筛选器">
+      <div class="filter-group">
+        <span class="filter-label">调用类型</span>
+        <button class="filter-btn active-all" id="btn-all" onclick="filterCards('all')">全部</button>
+        <button class="filter-btn" id="btn-user" onclick="filterCards('user')">用户调用</button>
+        <button class="filter-btn" id="btn-agent" onclick="filterCards('agent')">Agent 调用</button>
+        <button class="filter-btn" id="btn-shared" onclick="filterCards('shared')">共享原语</button>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Bucket</span>
+        <button class="filter-btn" id="btn-eng" onclick="filterCards('eng')">工程</button>
+        <button class="filter-btn" id="btn-prod" onclick="filterCards('prod')">生产力</button>
+      </div>
+    </div>
+
+    <!-- Zone 1: ORIENT -->
+    <div class="atlas-section">
+      <div class="atlas-section-label">区 1 · 定向 ── 路由与初始配置</div>
+      <div class="atlas-grid">
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/ask-matt</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">不知道从哪个技能开始，需要路由建议</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">询问当前情况，推荐最合适的技能</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">路由决策（下一步用哪个技能）</span></div>
+          <div class="card-next">→ 见图 02 入口决策树</div>
+        </div>
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/setup-matt-pocock-skills</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">新仓库，尚未配置 Skills 工作约定</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">初始化 AGENTS.md、CONTEXT.md 模板</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">仓库配置文件</span></div>
+          <div class="card-next">→ /grill-with-docs</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Zone 2: CLARIFY & INTAKE -->
+    <div class="atlas-section">
+      <div class="atlas-section-label">区 2 · 澄清与接收 ── 澄清意图与接收外部工作</div>
+      <div class="atlas-grid">
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/grill-with-docs</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">一个新功能，领域术语不明确</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">结构化采访，建立共享词汇</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">CONTEXT.md + ADR</span></div>
+          <div class="card-next">→ /to-spec 或 /to-tickets · 见图 01</div>
+        </div>
+
+        <div class="skill-card user-card" data-type="user" data-bucket="prod">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/grill-me</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">生产力</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">有一个想法，但受众或目标不清晰（内容或临时探索）</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">无状态结构化采访，澄清改变目标</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">内容简报（不持久化到仓库）</span></div>
+          <div class="card-next">→ 图 10 内容流水线</div>
+        </div>
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/triage</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">外部提交的原始 bug 报告或功能请求</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">状态机分拣，赋予工单角色（需要更多信息 / 可执行 / 关闭）</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">分拣后的工单（含角色标记）</span></div>
+          <div class="card-next">→ /grill-with-docs 或 /to-spec</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{domain-modeling}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">建立领域词汇时需要深度建模</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">提取实体、关系和不变量</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">领域模型文档</span></div>
+          <div class="card-next">→ /grill-with-docs 更新 CONTEXT.md</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Zone 3: DECIDE -->
+    <div class="atlas-section">
+      <div class="atlas-section-label">区 3 · 决策 ── 收集证据与解决设计问题</div>
+      <div class="atlas-grid">
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{prototype}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">存在可运行设计问题，实验比讨论便宜</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">构建可扔掉的原型，回答一个设计问题</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">benchmark 结果 / 观察结果（不是 production 代码）</span></div>
+          <div class="card-next">→ 决策点 → /grill-with-docs 更新 ADR · 见图 05</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{research}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">问题可以通过文档或现有资料回答</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">查阅、汇总、对比证据</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">调查报告</span></div>
+          <div class="card-next">→ /to-spec 或更新 ADR</div>
+        </div>
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/wayfinder</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">大型工作，架构决策尚不清晰，需多会话推进</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">映射决策依赖图，生成决策票据，逐决策推进</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">决策票据板 + 折叠后的 spec 前置条件</span></div>
+          <div class="card-next">→ 折叠阈值后 → /grill-with-docs · 见图 06</div>
+        </div>
+
+        <div class="skill-card user-card" data-type="user" data-bucket="prod">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/to-questionnaire</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">生产力</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">需要从多人收集结构化反馈</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">将问题集转化为分发用问卷</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">问卷文档</span></div>
+          <div class="card-next">→ 收集反馈 → /grill-me 分析</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Zone 4: SHAPE -->
+    <div class="atlas-section">
+      <div class="atlas-section-label">区 4 · 塑形 ── 分解工作与设计模块</div>
+      <div class="atlas-grid">
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/to-spec</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">意图已澄清，需要形式化行为规范</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">描述前置条件、后置条件、错误边界</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">spec（行为描述文档）</span></div>
+          <div class="card-next">→ /to-tickets</div>
+        </div>
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/to-tickets</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">有 spec，需要分解为 agent-ready 工单</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">分解为带依赖边的独立工单</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">工单（含验收标准和依赖边）</span></div>
+          <div class="card-next">→ /implement</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{codebase-design}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">需要设计模块边界或分析现有结构</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">评估内聚性、边界清晰度、依赖方向</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">ADR + 架构建议</span></div>
+          <div class="card-next">→ /to-spec 或 /to-tickets · 见图 03</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Zone 5: BUILD & VERIFY -->
+    <div class="atlas-section">
+      <div class="atlas-section-label">区 5 · 构建与验证 ── 实现代码与验证行为</div>
+      <div class="atlas-grid">
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/implement</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">有工单，开始构建</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">按工单逐切片构建，不偏离 spec</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">可工作的代码切片</span></div>
+          <div class="card-next">→ {tdd} → {code-review}</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{tdd}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">在实现过程中，需要验证一个切片</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">红（失败测试）→ 绿（通过）→ 重构循环</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">通过的测试 + 经过重构的实现</span></div>
+          <div class="card-next">→ {code-review} · 见图 04</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{diagnosing-bugs}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">难以复现的 bug 或生产回归</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">证据漏斗：症状→可复现→最小化→假设→修复</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">fix + 回归测试</span></div>
+          <div class="card-next">→ 见图 07</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{code-review}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">实现完成，需要审查</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">双轴检查：规范合规 + spec 符合性</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">已审查的 diff（接口无扩张，行为符合 spec）</span></div>
+          <div class="card-next">→ 合并 PR · 见图 04</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Zone 6: SUSTAIN -->
+    <div class="atlas-section">
+      <div class="atlas-section-label">区 6 · 维护 ── 持续改善架构质量</div>
+      <div class="atlas-grid">
+
+        <div class="skill-card user-card" data-type="user" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/improve-codebase-architecture</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">发现摩擦信号（测试变慢、重复代码、牵连修改）</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">架构扫描，识别高杠杆改进机会，选一个执行</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">改进机会排序 + 选定改进的工单</span></div>
+          <div class="card-next">→ 进入图 01 功能流 · 见图 08</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Zone 7: TRANSFER & SUPPORT -->
+    <div class="atlas-section">
+      <div class="atlas-section-label">区 7 · 传递与支持 ── 保存上下文与协作</div>
+      <div class="atlas-grid">
+
+        <div class="skill-card user-card" data-type="user" data-bucket="prod">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/handoff</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">生产力</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">会话即将结束，需要保存状态供下次恢复</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">生成交接摘要（已完成 + 下一步 + 注意事项）</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">交接文档（层 3 上下文）</span></div>
+          <div class="card-next">→ 见图 09</div>
+        </div>
+
+        <div class="skill-card user-card" data-type="user" data-bucket="prod">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/wait-what</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">生产力</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">读取了上下文后仍然不知道自己在哪</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">重建方向感，澄清当前工作的位置</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">重建的工作上下文</span></div>
+          <div class="card-next">→ 继续中断的工作</div>
+        </div>
+
+        <div class="skill-card user-card" data-type="user" data-bucket="prod">
+          <div class="card-header">
+            <span class="badge badge-user">用户</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">/teach</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">生产力</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">需要解释一个概念或系统给其他人</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">按受众调整深度，生成可分享的说明</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">说明文档或演示材料</span></div>
+          <div class="card-next">→ 图 10 内容流水线</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="prod">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{writing-for-agents}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">生产力</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">需要为 Agent 写指令或 AGENTS.md</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">优化指令的可执行性，消除歧义</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">Agent-ready 指令文档</span></div>
+          <div class="card-next">→ 见图 09</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{resolving-merge-conflicts}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">合并时出现冲突，需要语义感知解决</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">分析冲突意图，按语义而非行级别合并</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">已解决冲突的代码</span></div>
+          <div class="card-next">→ {code-review}</div>
+        </div>
+
+        <div class="skill-card agent-card" data-type="agent" data-bucket="eng">
+          <div class="card-header">
+            <span class="badge badge-agent">Agent</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{wizard}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">工程</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">需要引导用户完成多步配置或初始化流程</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">逐步引导，收集选项，生成配置</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">配置文件或初始化代码</span></div>
+          <div class="card-next">→ /implement</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Shared primitive -->
+    <div class="atlas-section">
+      <div class="atlas-section-label">共享原语层 ── 为多个 orchestrator 提供采访引擎</div>
+      <div class="atlas-grid">
+
+        <div class="skill-card shared-card" data-type="shared" data-bucket="prod">
+          <div class="card-header">
+            <span class="badge badge-shared">共享</span>
+            <span class="card-name"><a aria-disabled="true" title="技能文档未随博客发布">{grilling}</a></span>
+            <span style="font-size:.62rem;color:var(--ink-soft);">生产力</span>
+          </div>
+          <div class="card-row"><span class="card-key">情境</span><span class="card-val">orchestrator 需要挖掘未解决的决策分支</span></div>
+          <div class="card-row"><span class="card-key">动作</span><span class="card-val">结构化采访引擎：识别决策分支，逐一深挖</span></div>
+          <div class="card-row"><span class="card-key">产物</span><span class="card-val">已挖掘的决策分支（上层 orchestrator 消费）</span></div>
+          <div class="card-next">被：/grill-me · /grill-with-docs · /triage · /wayfinder · /improve-codebase-architecture 调用</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="linear-summary" style="margin-top:32px;">
+      <strong>线性阅读顺序：</strong>按区域阅读（区 1→区 7），从定向到传递与支持。共享原语层的 {grilling} 被五个 orchestrator 使用。每张卡片的「下一步」指向图表编号或相邻技能，构成学习路径。
+    </div>
+  </main>
+
+  <footer>
+    <span>图 11 · 技能图集（25 个技能）</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-10.html">← 图 10</a>
+      <a href="./index.html">返回首页</a>
+    </div>
+  </footer>
+
+  <script>
+    let currentFilter = 'all';
+
+    function filterCards(filter) {
+      currentFilter = filter;
+
+      // Update button states
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.className = 'filter-btn';
+      });
+      const btn = document.getElementById('btn-' + filter);
+      if (btn) btn.classList.add('active-' + filter);
+
+      // Show/hide cards
+      document.querySelectorAll('.skill-card').forEach(card => {
+        const type = card.dataset.type;
+        const bucket = card.dataset.bucket;
+        let show = false;
+
+        if (filter === 'all') show = true;
+        else if (filter === 'user')   show = type === 'user';
+        else if (filter === 'agent')  show = type === 'agent';
+        else if (filter === 'shared') show = type === 'shared';
+        else if (filter === 'eng')    show = bucket === 'eng';
+        else if (filter === 'prod')   show = bucket === 'prod';
+
+        card.classList.toggle('hidden', !show);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 08 · 可持续代码库循环 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 08</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-07.html">← 图 07</a>
+      <a href="./diagram-09.html">图 09 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 08 · 代码库治理</div>
+      <h1>架构团队如何防止 AI 驱动的代码库熵增？</h1>
+      <p class="purpose">可持续代码库循环：AI 加速输出功能的同时也加速积累技术债。/improve-codebase-architecture 作为周期性扫描仪，在发布后识别摩擦信号，选择最高价值的改进，然后进入普通功能流。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 880 540" fill="none" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="d08-title d08-desc">
+        <title id="d08-title">可持续代码库治理循环</title>
+        <desc id="d08-desc">六个阶段围绕核心治理中枢循环流动：①发布功能 → ②观察摩擦信号 → ③架构扫描 → ④挑选单一改进 → ⑤汇入功能流 → ⑥验证改善效果。中心包含大爆炸式重构警示与原语标注。</desc>
+
+        <rect width="880" height="540" fill="#fffdf8"/>
+
+        <!-- Orbit guide line in background -->
+        <ellipse cx="440" cy="268" rx="300" ry="205" stroke="#b9b1a2" stroke-width="1.5" stroke-dasharray="6 4" fill="none" opacity="0.5"/>
+
+        <!-- ═══ Curved Flow Connectors ═══ -->
+        <!-- 1 -> 2 (Top to Top-Right) -->
+        <path d="M 540 58 C 660 58, 740 60, 740 94" stroke="#5a6b78" stroke-width="2" fill="none"/>
+        <polyline points="735,88 740,94 745,88" stroke="#5a6b78" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- 2 -> 3 (Top-Right to Bottom-Right) -->
+        <line x1="740" y1="184" x2="740" y2="314" stroke="#5a6b78" stroke-width="2"/>
+        <polyline points="735,308 740,314 745,308" stroke="#5a6b78" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- 3 -> 4 (Bottom-Right to Bottom) -->
+        <path d="M 740 410 C 740 455, 650 476, 556 476" stroke="#5a6b78" stroke-width="2" fill="none"/>
+        <polyline points="562,471 556,476 562,481" stroke="#5a6b78" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- 4 -> 5 (Bottom to Bottom-Left) -->
+        <path d="M 330 476 C 230 476, 140 455, 140 416" stroke="#5a6b78" stroke-width="2" fill="none"/>
+        <polyline points="135,422 140,416 145,422" stroke="#5a6b78" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- 5 -> 6 (Bottom-Left to Top-Left) -->
+        <line x1="140" y1="320" x2="140" y2="190" stroke="#5a6b78" stroke-width="2"/>
+        <polyline points="135,196 140,190 145,196" stroke="#5a6b78" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- 6 -> 1 (Top-Left to Top) -->
+        <path d="M 140 100 C 140 60, 220 58, 334 58" stroke="#5a6b78" stroke-width="2" fill="none"/>
+        <polyline points="328,53 334,58 328,63" stroke="#5a6b78" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+
+        <!-- ═══ Node 1: 发布功能 (Top Center) ═══ -->
+        <rect x="340" y="20" width="200" height="76" rx="8" fill="#fffdf8" stroke="#28796d" stroke-width="2"/>
+        <text x="440" y="40" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#28796d">[生产发布]</text>
+        <text x="440" y="58" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">① 持续交付功能</text>
+        <text x="440" y="73" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">新代码进入生产环境</text>
+        <text x="440" y="85" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#28796d">AI 显著加速功能产出速度</text>
+
+        <!-- ═══ Node 2: 观察摩擦信号 (Top Right) ═══ -->
+        <rect x="630" y="100" width="220" height="84" rx="8" fill="#fffdf8" stroke="#b84d48" stroke-width="2"/>
+        <text x="740" y="120" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#b84d48">[熵增预警]</text>
+        <text x="740" y="137" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">② 观察摩擦信号</text>
+        <text x="740" y="153" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.8" fill="#52616a">· 代码重复增加 · 测试套件变慢</text>
+        <text x="740" y="167" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.8" fill="#52616a">· 修改一处牵连多处文件</text>
+        <text x="740" y="177" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#b84d48">AI 同时也加速了技术债积累</text>
+
+        <!-- ═══ Node 3: 架构扫描 (Bottom Right) ═══ -->
+        <rect x="630" y="320" width="220" height="90" rx="8" fill="#fffdf8" stroke="#c9940e" stroke-width="2"/>
+        <text x="740" y="339" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#c9940e">[用户 / 工程]</text>
+        <text x="740" y="356" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="9.5" fill="#17232b" font-weight="600">③ /improve-codebase-architecture</text>
+        <text x="740" y="373" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">运行周期性架构扫描（每 2-4 周）</text>
+        <text x="740" y="388" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">系统化识别高杠杆改进机会</text>
+        <text x="740" y="401" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#c9940e">底层采访引擎：{grilling}</text>
+
+        <!-- ═══ Node 4: 挑选单一改进 (Bottom Center) ═══ -->
+        <rect x="330" y="436" width="220" height="80" rx="8" fill="#fffdf8" stroke="#6b4fa0" stroke-width="2"/>
+        <text x="440" y="456" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#6b4fa0">[聚焦决策]</text>
+        <text x="440" y="473" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">④ 挑选单一高价值改进</text>
+        <text x="440" y="490" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">按 影响 / 风险 / 工作量 排序</text>
+        <text x="440" y="504" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#6b4fa0">每次只选一个切片，切勿贪多</text>
+
+        <!-- ═══ Node 5: 汇入标准功能流 (Bottom Left) ═══ -->
+        <rect x="30" y="320" width="220" height="90" rx="8" fill="#fffdf8" stroke="#2f6680" stroke-width="2"/>
+        <text x="140" y="339" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680">[用户 / 工程]</text>
+        <text x="140" y="356" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">⑤ 汇入图 01 功能流</text>
+        <text x="140" y="373" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.8" fill="#17232b">/grill-with-docs → /to-spec</text>
+        <text x="140" y="388" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.8" fill="#17232b">→ /to-tickets → /implement</text>
+        <text x="140" y="401" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#2f6680">重构也是功能，遵循标准交付</text>
+
+        <!-- ═══ Node 6: 验证与防退化 (Top Left) ═══ -->
+        <rect x="30" y="100" width="220" height="84" rx="8" fill="#fffdf8" stroke="#28796d" stroke-width="2"/>
+        <rect x="34" y="104" width="212" height="76" rx="6" fill="none" stroke="#28796d" stroke-width="1"/>
+        <text x="140" y="120" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#28796d">[Agent / 工程]</text>
+        <text x="140" y="137" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">⑥ 验证与防退化</text>
+        <text x="140" y="153" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b">{tdd} · {code-review}</text>
+        <text x="140" y="167" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.8" fill="#52616a">指标：测试提速 · 摩擦消除</text>
+        <text x="140" y="177" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.2" fill="#28796d">若未改善 → 重新评估改进切片</text>
+
+
+        <!-- ═══ Center Core: Hub & Anti-pattern ═══ -->
+        <!-- Center Hub Panel -->
+        <rect x="285" y="135" width="310" height="120" rx="8" fill="#e4eaed" stroke="#5a6b78" stroke-width="1.5"/>
+        <text x="440" y="156" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#5a6b78" font-weight="600" letter-spacing="1">── 架构治理中枢 ──</text>
+        <text x="440" y="176" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="12" fill="#17232b" font-weight="700">代码库持续演进循环</text>
+        <text x="440" y="196" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">AI 时代的高速开发必须配合周期性反熵增治理</text>
+        <text x="440" y="212" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">将架构改善化整为零，融入日常交付流</text>
+        <text x="440" y="238" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#5a6b78">共享原语：{grilling} 为 ③ 和 ⑤ 提供深挖采访</text>
+
+        <!-- Center Anti-pattern Warning Box -->
+        <rect x="285" y="270" width="310" height="135" rx="8" fill="#f4d9d2" stroke="#b84d48" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <text x="440" y="292" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8" fill="#b84d48" font-weight="600">⚠ 警惕陷阱：大爆炸式重构 (Big Bang Rewrite)</text>
+        <text x="440" y="312" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#b84d48">× 停止业务开发数月进行推倒重写（极易失败失控）</text>
+        <text x="440" y="332" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#17232b" font-weight="600">✓ 正确做法：小步快跑，增量演进</text>
+        <text x="440" y="350" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.8" fill="#52616a">每次架构扫描选定一个最关键切片（如提取单一服务）</text>
+        <text x="440" y="365" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.8" fill="#52616a">按普通功能标准编写测试并上线，保持系统随时可发布</text>
+        <text x="440" y="388" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#b84d48">重构不是应急抢险，而是持续的日常工作</text>
+      </svg>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel coral-acc">
+        <h3>为什么 AI 加速了熵增？</h3>
+        <p>AI 提升代码输出速度的同时，也提升了技术债积累的速度。它可以快速生成功能，但没有架构直觉来识别何时需要归还技术债。/improve-codebase-architecture 是人类架构师定期介入的工具。</p>
+      </div>
+      <div class="panel green-acc">
+        <h3>周期建议与触发时机</h3>
+        <p><strong>高速开发期</strong>：每 2 周运行一次扫描。<strong>稳定维护期</strong>：每 4 周一次。<strong>即时触发器</strong>：当任意摩擦信号（重复代码激增、测试显著变慢、单点修改牵连过大）出现时提前启动。</p>
+        <p style="margin-top:8px;">每次循环严格只选一个最高价值的改进切片，切忌贪多。</p>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="section-label">实例：实体库高速开发后的维护循环</div>
+      <div class="example-grid">
+        <div class="example-col">
+          <h3>摩擦信号（阶段 ②）</h3>
+          <p>3 个月的 AI 辅助开发后，发现：测试套件从 8s 增长到 45s；4 处文件重复了相似的「找到所有 active 实体」逻辑；新增一个 hook 类型需要修改 6 个不同的文件。</p>
+        </div>
+        <div class="example-col">
+          <h3>架构扫描结果（阶段 ③）</h3>
+          <p>扫描找到 3 个改进机会：① 提取 EntityQuery 服务（高影响，低风险）；② 分离测试 fixture（中影响，极低风险）；③ 拆分 EntityRegistry 模块（高影响，高风险）。本次聚焦选 ①，拆出工单进入图 01 交付。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>发布功能 → 观察摩擦信号（重复代码、测试变慢、牵连修改）→ /improve-codebase-architecture 运行架构扫描（内部用 {grilling}）→ 按影响/风险/工作量选最高价值改进 → 进入图 01 功能流（改进也是功能）→ 验证改进效果（测试速度、摩擦消失）→ 发布 → 循环。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/improve-codebase-architecture</a>
+        <a class="skill-chip shared" aria-disabled="true" title="技能文档未随博客发布">{grilling}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{codebase-design}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{code-review}</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 08 · 可持续代码库循环</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-07.html">← 图 07</a>
+      <a href="./diagram-09.html">图 09 →</a>
+    </div>
+  </footer>
+</body>
+</html>

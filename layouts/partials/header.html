@@ -29,6 +29,7 @@
 {{- end }}
 {{- end }}
 
+{{- $editorialHeader := and (eq .Kind "page") (ne .Layout "archives") (ne .Layout "search") -}}
 <header class="header">
     <nav class="nav">
         <div class="logo">
@@ -63,6 +64,13 @@
             </a>
             {{- end }}
         </div>
+
+        {{- if $editorialHeader }}
+        <button class="editorial-menu-toggle" type="button" aria-expanded="false" aria-controls="menu" hidden>
+            <span>Index</span>
+            <span class="editorial-menu-icon" aria-hidden="true"></span>
+        </button>
+        {{- end }}
 
         <ul id="menu">
             {{- $url := .RelPermalink -}}
@@ -135,6 +143,41 @@
         {{- end }}
     </nav>
 </header>
+
+{{- if $editorialHeader }}
+<script>
+(function () {
+    const button = document.querySelector('.editorial-menu-toggle');
+    const menu = document.getElementById('menu');
+    if (!button || !menu) return;
+    document.documentElement.classList.add('editorial-menu-enabled');
+    button.hidden = false;
+    menu.hidden = true;
+
+    function setOpen(open) {
+        menu.hidden = !open;
+        button.setAttribute('aria-expanded', String(open));
+    }
+
+    button.addEventListener('click', function () {
+        setOpen(button.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.addEventListener('click', function (event) {
+        if (!menu.hidden && !menu.contains(event.target) && !button.contains(event.target)) {
+            setOpen(false);
+        }
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && !menu.hidden) {
+            setOpen(false);
+            button.focus();
+        }
+    });
+})();
+</script>
+{{- end }}
 
 {{- if site.Params.search.enable }}
 <script>

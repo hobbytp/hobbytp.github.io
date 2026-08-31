@@ -1,178 +1,156 @@
-{{ define "main" }}
+{{- define "main" }}
 
-{{- /* Article page with sidebar and sticky TOC layout */ -}}
-{{- $tocEnabled := .Param "showToc" | default .Site.Params.ShowToc -}}
+{{- $tocEnabled := .Param "ShowToc" -}}
 {{- $tocContent := .TableOfContents -}}
 {{- $hasToc := and $tocEnabled (gt (len (findRE "<li" $tocContent)) 0) -}}
-<div class="main-container">
-  {{- partial "sidebar.html" . }}
-  
-  <div class="main-content-with-sidebar">
-    <div class="post-layout">
-      <article class="post-single">
-        <header class="post-header">
-          <h1 class="post-title">
-            {{ .Title }}
-          </h1>
-          {{- if not .Params.hideMeta }}
-          <div class="post-meta">
-            {{- $displayDate := .Date -}}
-            {{- if .Params.date -}}
-              {{- $displayDate = .Params.date -}}
-            {{- end -}}
-            {{- if eq (printf "%T" $displayDate) "string" -}}
-              {{- $displayDate = $displayDate | time -}}
-            {{- end -}}
-            <time datetime="{{ $displayDate.Format "2006-01-02T15:04:05Z07:00" }}">{{ $displayDate.Format (or .Site.Params.DateFormat "2006-01-02") }}</time>
-            {{- if .Lastmod.After .Date }}
-            <span class="post-lastmod">
-              &nbsp;·&nbsp;{{ i18n "last_mod" | default "最后更新" }}: {{ .Lastmod.Format (or .Site.Params.DateFormat "2006-01-02") }}
-            </span>
-            {{- end }}
-            {{- with .Params.author }}&nbsp;·&nbsp;{{ . }}{{ end -}}
-            {{- if .Params.categories }}&nbsp;·&nbsp;{{ range .Params.categories }}<a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}{{ end -}}
-            {{- if .Site.Params.ShowReadingTime }}&nbsp;·&nbsp;{{ or .Params.readingTime .ReadingTime }} 分钟{{ end -}}
-            {{- if .Site.Params.ShowWordCount }}&nbsp;·&nbsp;{{ or .Params.wordCount .WordCount }} 字{{ end -}}
-          </div>
-          {{- end }}
-        </header>
-        
-        <div class="post-content">{{ .Content }}</div>
-        
-        {{- if .Params.tags }}
-        <footer class="post-footer">
-          <ul class="post-tags">
-            {{- range .Params.tags }}
-            <li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a></li>
-            {{- end }}
-          </ul>
-        </footer>
-        {{- end }}
-      </article>
+{{- $tocList := replaceRE `(?s)^\s*<nav[^>]*>(.*)</nav>\s*$` "$1" $tocContent -}}
+{{- $sectionLabel := .Section | default "insight" -}}
+{{- with .Params.categories -}}
+  {{- $sectionLabel = index . 0 -}}
+{{- end -}}
 
-      {{- if $hasToc }}
-      <aside class="toc-sidebar" aria-label="{{ i18n "toc" | default "目录" }}">
-        <div class="toc-container">
-          <div class="toc-title">{{ i18n "toc" | default "目录" }}</div>
-          <nav class="toc-nav">
-            {{- $tocContent | safeHTML -}}
-          </nav>
-        </div>
-      </aside>
-      {{- end }}
+<article class="post-single editorial-article{{ if .Params.editorialEvidence }} editorial-article--evidence{{ end }}">
+  <header class="post-header editorial-hero">
+    <div class="editorial-kicker">
+      <span>{{ $sectionLabel | humanize | upper }}</span>
+      <span aria-hidden="true">/</span>
+      <span>{{ .Date.Format "2006" }}</span>
     </div>
 
-    {{- if .Site.Params.ShowPostNavLinks }}
-    {{- if or .PrevInSection .NextInSection }}
-    <nav class="post-nav">
-      {{- with .PrevInSection }}
-      <a href="{{ .Permalink }}" class="post-nav-prev">
-        <span class="nav-prev">{{- i18n "prev_post" | default "« 上一篇" }}</span>
-        <br>
-        <span>{{ .Title }}</span>
-      </a>
+    <h1 class="post-title entry-hint-parent">
+      {{ .Title }}
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">DRAFT</span>
       {{- end }}
-      {{- with .NextInSection }}
-      <a href="{{ .Permalink }}" class="post-nav-next">
-        <span class="nav-next">{{- i18n "next_post" | default "下一篇 »" }}</span>
-        <br>
-        <span>{{ .Title }}</span>
-      </a>
-      {{- end }}
-    </nav>
+    </h1>
+
+    {{- with .Description }}
+    <p class="post-description">{{ . }}</p>
     {{- end }}
+
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">
+      {{- partial "post_meta.html" . -}}
+      {{- partial "translation_list.html" . -}}
+      {{- partial "edit_post.html" . -}}
+      {{- partial "post_canonical.html" . -}}
+    </div>
+    {{- end }}
+  </header>
+
+  {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+
+  <div class="editorial-reading-grid{{ if not $hasToc }} editorial-reading-grid--solo{{ end }}">
+    <div class="editorial-reading-column">
+      {{- if $hasToc }}
+      <details class="editorial-mobile-toc">
+        <summary>
+          <span>{{ i18n "toc" | default "目录" }}</span>
+          <span aria-hidden="true">＋</span>
+        </summary>
+        <nav aria-label="{{ i18n "toc" | default "目录" }}">
+          {{- $tocList | safeHTML -}}
+        </nav>
+      </details>
+      {{- end }}
+
+      {{- with .Content }}
+      <div class="post-content editorial-content">
+        {{- if not ($.Param "disableAnchoredHeadings") }}
+          {{- partial "anchored_headings.html" . -}}
+        {{- else }}
+          {{- . -}}
+        {{- end }}
+      </div>
+      {{- end }}
+
+      <footer class="post-footer editorial-footer">
+        {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+        <ul class="post-tags">
+          {{- range ($.GetTerms $tags) }}
+          <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+          {{- end }}
+        </ul>
+      </footer>
+    </div>
+
+    {{- if $hasToc }}
+    <aside class="editorial-toc" aria-label="{{ i18n "toc" | default "目录" }}">
+      <div class="editorial-toc-inner">
+        <div class="editorial-toc-label">{{ i18n "toc" | default "目录" }}</div>
+        <nav class="editorial-toc-nav">
+          {{- $tocList | safeHTML -}}
+        </nav>
+        <p class="editorial-toc-meta">
+          {{ i18n "read_time" .ReadingTime | default (printf "%d min" .ReadingTime) }}<br>
+          {{ i18n "words" .WordCount | default (printf "%d words" .WordCount) }}
+        </p>
+      </div>
+    </aside>
     {{- end }}
   </div>
-</div>
+
+  {{- if (.Param "ShowPostNavLinks") }}
+  <div class="editorial-post-nav">
+    {{- partial "post_nav_links.html" . -}}
+  </div>
+  {{- end }}
+
+  {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+  {{- partial "share_icons.html" . -}}
+  {{- end }}
+
+  {{- if (.Param "comments") }}
+  {{- partial "comments.html" . -}}
+  {{- end }}
+</article>
 
 {{- if $hasToc }}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const tocLinks = Array.from(document.querySelectorAll('.toc-sidebar a[href^="#"]'));
-  if (!tocLinks.length) return;
-
-  const decodeHash = (hash) => decodeURIComponent(hash.replace(/^#/, ''));
-  const headingTargets = tocLinks
-    .map((link) => {
-      const id = decodeHash(link.getAttribute('href'));
-      const el = document.getElementById(id);
-      return el ? { id, el } : null;
-    })
-    .filter(Boolean);
-
-  if (!headingTargets.length) return;
-
-  const linkMap = new Map();
-  tocLinks.forEach((link) => {
-    const id = decodeHash(link.getAttribute('href'));
-    linkMap.set(id, link);
+  const links = Array.from(document.querySelectorAll('.editorial-toc a[href^="#"]'));
+  const targets = links.map(function (link) {
+    try {
+      return document.getElementById(decodeURIComponent(link.hash.slice(1)));
+    } catch (_) {
+      return null;
+    }
   });
 
-  let activeId = null;
-  const setActive = (id) => {
-    if (!id || id === activeId) return;
-    activeId = id;
-    tocLinks.forEach((link) => {
-      link.classList.remove('is-active');
-      if (link.parentElement) {
-        link.parentElement.classList.remove('is-active');
-      }
-    });
-    const activeLink = linkMap.get(id);
-    if (activeLink) {
-      activeLink.classList.add('is-active');
-      if (activeLink.parentElement) {
-        activeLink.parentElement.classList.add('is-active');
-      }
-    }
-  };
+  if (!links.length || !targets.some(Boolean)) return;
 
-  const headerOffset = 140;
-  const updateActive = () => {
-    const scrollPosition = window.scrollY + headerOffset;
-    let current = headingTargets[0].id;
-    for (const { id, el } of headingTargets) {
-      if (el.offsetTop <= scrollPosition) {
-        current = id;
+  function updateCurrentSection() {
+    let current = 0;
+    const marker = window.scrollY + 150;
+
+    targets.forEach(function (target, index) {
+      const targetTop = target ? target.getBoundingClientRect().top + window.scrollY : Infinity;
+      if (targetTop <= marker) current = index;
+    });
+
+    links.forEach(function (link, index) {
+      if (index === current) {
+        link.setAttribute('aria-current', 'true');
       } else {
-        break;
+        link.removeAttribute('aria-current');
       }
-    }
-    setActive(current);
-  };
-
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        updateActive();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }, { passive: true });
-
-  window.addEventListener('resize', updateActive);
-  updateActive();
-
-  tocLinks.forEach((link) => {
-    link.addEventListener('click', (event) => {
-      const id = decodeHash(link.getAttribute('href'));
-      const target = document.getElementById(id);
-      if (!target) return;
-      event.preventDefault();
-      window.scrollTo({
-        top: target.offsetTop - (headerOffset - 20),
-        behavior: 'smooth'
-      });
-      setActive(id);
-      history.replaceState(null, '', '#' + id);
     });
-  });
+  }
+
+  let scheduled = false;
+  window.addEventListener('scroll', function () {
+    if (scheduled) return;
+    scheduled = true;
+    window.requestAnimationFrame(function () {
+      updateCurrentSection();
+      scheduled = false;
+    });
+  }, { passive: true });
+  window.addEventListener('resize', updateCurrentSection);
+  updateCurrentSection();
 });
 </script>
 {{- end }}
 
-{{- /* Comments disabled - see config.toml [params.comments] */}}
-
-{{ end }}
+{{- end }}

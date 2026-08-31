@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>图 01 · 功能流 | Skills 视觉学习</title>
+  <link rel="stylesheet" href="./shared.css">
+</head>
+<body>
+  <nav class="page-nav">
+    <span class="logo">SKILLS</span><span class="sep">/</span>
+    <a href="./index.html">视觉学习系统</a><span class="sep">/</span>
+    <span>图 01</span>
+    <div class="spacer"></div>
+    <div class="nav-arrows">
+      <a href="./diagram-00.html">← 图 00</a>
+      <a href="./diagram-02.html">图 02 →</a>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header>
+      <div class="eyebrow">图 01 · 功能流</div>
+      <h1>一个模糊的功能需求如何变成可验证的小改动？</h1>
+      <p class="purpose">双泳道服务蓝图：上方是人工决策，下方是 Agent 工作流。每次交接都携带一个产物，防止信息在步骤之间丢失。</p>
+    </header>
+
+    <div class="diagram-frame">
+      <svg viewBox="0 0 880 580" fill="none" xmlns="http://www.w3.org/2000/svg"
+           role="img" aria-labelledby="d01-title d01-desc">
+        <title id="d01-title">功能流双泳道服务蓝图</title>
+        <desc id="d01-desc">上方泳道为人工决策（意图、范围、验收标准、审查），下方泳道为 Agent 工作流（/grill-with-docs、/to-spec、/to-tickets、/implement、tdd、code-review），中间展示产物传递与 Triage 汇入点。</desc>
+
+        <rect width="880" height="580" fill="#fffdf8"/>
+
+        <!-- ══ Lane 1: Human Decisions (Top) ══ -->
+        <rect x="16" y="16" width="848" height="110" rx="8" fill="#dcebf0" stroke="#2f6680" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <text x="32" y="36" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#2f6680" font-weight="600" letter-spacing="0.5">人工决策层（HUMAN DECISIONS）</text>
+
+        <!-- Human Step 1: 意图 -->
+        <rect x="36" y="48" width="170" height="64" rx="6" fill="#fffdf8" stroke="#2f6680" stroke-width="1.5"/>
+        <text x="121" y="70" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680">意图定义</text>
+        <text x="121" y="86" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b" font-weight="600">「我想做什么？」</text>
+        <text x="121" y="100" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">业务目标与价值动机</text>
+
+        <!-- Arrow H1 → H2 -->
+        <line x1="210" y1="80" x2="242" y2="80" stroke="#b9b1a2" stroke-width="1.5"/>
+        <polyline points="237,76 243,80 237,84" stroke="#b9b1a2" stroke-width="1.5" fill="none"/>
+
+        <!-- Human Step 2: 范围 -->
+        <rect x="248" y="48" width="170" height="64" rx="6" fill="#fffdf8" stroke="#2f6680" stroke-width="1.5"/>
+        <text x="333" y="70" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680">范围边界</text>
+        <text x="333" y="86" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b" font-weight="600">「改哪些模块？」</text>
+        <text x="333" y="100" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">权衡取舍与非目标</text>
+
+        <!-- Arrow H2 → H3 -->
+        <line x1="422" y1="80" x2="454" y2="80" stroke="#b9b1a2" stroke-width="1.5"/>
+        <polyline points="449,76 455,80 449,84" stroke="#b9b1a2" stroke-width="1.5" fill="none"/>
+
+        <!-- Human Step 3: 验收标准 -->
+        <rect x="460" y="48" width="170" height="64" rx="6" fill="#fffdf8" stroke="#2f6680" stroke-width="1.5"/>
+        <text x="545" y="70" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680">验收标准</text>
+        <text x="545" y="86" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b" font-weight="600">「成功是什么样？」</text>
+        <text x="545" y="100" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">验证条件与边界行为</text>
+
+        <!-- Arrow H3 → H4 -->
+        <line x1="634" y1="80" x2="666" y2="80" stroke="#b9b1a2" stroke-width="1.5"/>
+        <polyline points="661,76 667,80 661,84" stroke="#b9b1a2" stroke-width="1.5" fill="none"/>
+
+        <!-- Human Step 4: 审查与批准 -->
+        <rect x="672" y="48" width="176" height="64" rx="6" fill="#fffdf8" stroke="#2f6680" stroke-width="1.5"/>
+        <text x="760" y="70" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#2f6680">审查与批准</text>
+        <text x="760" y="86" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#17232b" font-weight="600">「批准合并上线」</text>
+        <text x="760" y="100" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">PR 评审与最终签发</text>
+
+        <!-- ══ Swimlane Boundary ══ -->
+        <line x1="16" y1="140" x2="864" y2="140" stroke="#b9b1a2" stroke-width="1.5" stroke-dasharray="6 4"/>
+        <rect x="360" y="131" width="160" height="18" rx="4" fill="#fffdf8" stroke="#b9b1a2" stroke-width="1"/>
+        <text x="440" y="143" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7.5" fill="#52616a">── 人机协作泳道边界 ──</text>
+
+        <!-- Vertical Connectors between lanes -->
+        <line x1="121" y1="112" x2="121" y2="170" stroke="#2f6680" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <polyline points="117,165 121,170 125,165" stroke="#2f6680" stroke-width="1.5" fill="none"/>
+
+        <line x1="333" y1="112" x2="333" y2="170" stroke="#2f6680" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <polyline points="329,165 333,170 337,165" stroke="#2f6680" stroke-width="1.5" fill="none"/>
+
+        <line x1="545" y1="112" x2="545" y2="290" stroke="#2f6680" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <polyline points="541,285 545,290 549,285" stroke="#2f6680" stroke-width="1.5" fill="none"/>
+
+        <line x1="760" y1="410" x2="760" y2="116" stroke="#28796d" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <polyline points="756,122 760,116 764,122" stroke="#28796d" stroke-width="1.5" fill="none"/>
+
+        <!-- ══ Lane 2: Agent Workflow (Bottom) ══ -->
+        <rect x="16" y="156" width="848" height="295" rx="8" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="32" y="174" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#28796d" font-weight="600" letter-spacing="0.5">Agent 工作流（AGENT WORKFLOW）</text>
+
+        <!-- Step 1: /grill-with-docs -->
+        <rect x="36" y="186" width="168" height="76" rx="8" fill="#fffdf8" stroke="#2f6680" stroke-width="2"/>
+        <text x="120" y="205" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#2f6680">[用户 / 工程]</text>
+        <text x="120" y="222" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10" fill="#17232b" font-weight="600">/grill-with-docs</text>
+        <text x="120" y="238" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">澄清意图与建立共享词汇</text>
+        <text x="120" y="251" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#5a6b78">底层使用 {grilling}</text>
+
+        <!-- Arrow S1 → A1 -->
+        <line x1="204" y1="224" x2="236" y2="224" stroke="#d96c54" stroke-width="2"/>
+        <polyline points="231,219 237,224 231,229" stroke="#d96c54" stroke-width="2" fill="none"/>
+
+        <!-- Artifact 1: CONTEXT.md + ADR -->
+        <path d="M 242 192 L 340 192 L 354 206 L 354 256 L 242 256 Z" fill="#fffdf8" stroke="#b9b1a2" stroke-width="1.5"/>
+        <path d="M 340 192 L 340 206 L 354 206 Z" fill="#e8e0d1" stroke="#b9b1a2" stroke-width="1.5"/>
+        <text x="298" y="210" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="6.5" fill="#52616a">产物 · 仓库持久化</text>
+        <text x="298" y="226" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b" font-weight="600">CONTEXT.md</text>
+        <text x="298" y="239" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#17232b" font-weight="600">+ ADR 决策</text>
+        <text x="298" y="250" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#52616a">共享语言基础</text>
+
+        <!-- Arrow A1 → S2 -->
+        <line x1="354" y1="224" x2="386" y2="224" stroke="#d96c54" stroke-width="2"/>
+        <polyline points="381,219 387,224 381,229" stroke="#d96c54" stroke-width="2" fill="none"/>
+
+        <!-- Step 2: /to-spec -->
+        <rect x="392" y="186" width="168" height="76" rx="8" fill="#fffdf8" stroke="#d96c54" stroke-width="2"/>
+        <text x="476" y="205" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#d96c54">[用户 / 工程]</text>
+        <text x="476" y="222" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">/to-spec</text>
+        <text x="476" y="238" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">描述行为前置与后置条件</text>
+        <text x="476" y="251" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">消除所有实现歧义</text>
+
+        <!-- Arrow S2 → A2 -->
+        <line x1="560" y1="224" x2="592" y2="224" stroke="#d96c54" stroke-width="2"/>
+        <polyline points="587,219 593,224 587,229" stroke="#d96c54" stroke-width="2" fill="none"/>
+
+        <!-- Artifact 2: spec -->
+        <path d="M 598 192 L 678 192 L 692 206 L 692 256 L 598 256 Z" fill="#fffdf8" stroke="#b9b1a2" stroke-width="1.5"/>
+        <path d="M 678 192 L 678 206 L 692 206 Z" fill="#e8e0d1" stroke="#b9b1a2" stroke-width="1.5"/>
+        <text x="645" y="210" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="6.5" fill="#52616a">产物 · 规范</text>
+        <text x="645" y="229" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="11" fill="#17232b" font-weight="600">spec</text>
+        <text x="645" y="246" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">确定行为契约</text>
+
+        <!-- Arrow A2 → Row 2 (Down and Left to /to-tickets) -->
+        <path d="M 692 224 C 730 224 740 250 740 274 C 740 286 720 290 600 290 L 120 290 L 120 306" stroke="#d96c54" stroke-width="2" fill="none"/>
+        <polyline points="115,301 120,307 125,301" stroke="#d96c54" stroke-width="2" fill="none"/>
+
+        <!-- Step 3: /to-tickets -->
+        <rect x="36" y="310" width="168" height="76" rx="8" fill="#fffdf8" stroke="#d96c54" stroke-width="2"/>
+        <text x="120" y="329" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#d96c54">[用户 / 工程]</text>
+        <text x="120" y="346" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">/to-tickets</text>
+        <text x="120" y="362" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">分解为带依赖边的工单</text>
+        <text x="120" y="375" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#28796d">产出已是 Agent-Ready</text>
+
+        <!-- Arrow S3 → S4 -->
+        <line x1="204" y1="348" x2="236" y2="348" stroke="#d96c54" stroke-width="2"/>
+        <polyline points="231,343 237,348 231,353" stroke="#d96c54" stroke-width="2" fill="none"/>
+
+        <!-- Step 4: /implement -->
+        <rect x="242" y="310" width="144" height="76" rx="8" fill="#fffdf8" stroke="#28796d" stroke-width="2"/>
+        <text x="314" y="329" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#28796d">[用户 / 工程]</text>
+        <text x="314" y="346" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">/implement</text>
+        <text x="314" y="362" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">按工单构建切片</text>
+        <text x="314" y="375" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">不偏离已定 spec</text>
+
+        <!-- Arrow S4 → S5 -->
+        <line x1="386" y1="348" x2="416" y2="348" stroke="#d96c54" stroke-width="2"/>
+        <polyline points="411,343 417,348 411,353" stroke="#d96c54" stroke-width="2" fill="none"/>
+
+        <!-- Step 5: {tdd} -->
+        <rect x="422" y="310" width="138" height="76" rx="8" fill="#fffdf8" stroke="#28796d" stroke-width="2"/>
+        <rect x="426" y="314" width="130" height="68" rx="6" fill="none" stroke="#28796d" stroke-width="1"/>
+        <text x="491" y="329" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#28796d">[Agent / 工程]</text>
+        <text x="491" y="346" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">{tdd}</text>
+        <text x="491" y="362" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">红 → 绿 → 重构</text>
+        <text x="491" y="375" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">先写失败测试</text>
+
+        <!-- Arrow S5 → S6 -->
+        <line x1="560" y1="348" x2="590" y2="348" stroke="#d96c54" stroke-width="2"/>
+        <polyline points="585,343 591,348 585,353" stroke="#d96c54" stroke-width="2" fill="none"/>
+
+        <!-- Step 6: {code-review} -->
+        <rect x="596" y="310" width="138" height="76" rx="8" fill="#fffdf8" stroke="#28796d" stroke-width="2"/>
+        <rect x="600" y="314" width="130" height="68" rx="6" fill="none" stroke="#28796d" stroke-width="1"/>
+        <text x="665" y="329" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#28796d">[Agent / 工程]</text>
+        <text x="665" y="346" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10.5" fill="#17232b" font-weight="600">{code-review}</text>
+        <text x="665" y="362" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#52616a">双轴审查检查</text>
+        <text x="665" y="375" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#52616a">规范合规 + 符合 spec</text>
+
+        <!-- Arrow S6 → Final Artifact -->
+        <line x1="734" y1="348" x2="754" y2="348" stroke="#28796d" stroke-width="2"/>
+        <polyline points="749,343 755,348 749,353" stroke="#28796d" stroke-width="2" fill="none"/>
+
+        <!-- Final Artifact: 已审查的 diff -->
+        <path d="M 758 316 L 836 316 L 850 330 L 850 380 L 758 380 Z" fill="#fffdf8" stroke="#28796d" stroke-width="2"/>
+        <path d="M 836 316 L 836 330 L 850 330 Z" fill="#d9eee7" stroke="#28796d" stroke-width="1.5"/>
+        <text x="804" y="335" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="6.5" fill="#28796d">最终产物</text>
+        <text x="804" y="352" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#17232b" font-weight="600">已审查 diff</text>
+        <text x="804" y="368" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#52616a">通过测试与规范</text>
+
+        <!-- ══ Triage Join Box (Bottom strip) ══ -->
+        <rect x="16" y="462" width="848" height="102" rx="8" fill="#ede8f5" stroke="#6b4fa0" stroke-width="1.5"/>
+        <text x="32" y="482" font-family="'DM Mono',Consolas,monospace" font-size="8.5" fill="#6b4fa0" font-weight="600">TRIAGE 汇入点（INCOMING WORK JOIN POINT）</text>
+
+        <rect x="36" y="492" width="130" height="60" rx="6" fill="#fffdf8" stroke="#6b4fa0" stroke-width="1.5"/>
+        <text x="101" y="511" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="7" fill="#6b4fa0">[用户 / 工程]</text>
+        <text x="101" y="527" text-anchor="middle" font-family="'DM Mono',Consolas,monospace" font-size="10" fill="#17232b" font-weight="600">/triage</text>
+        <text x="101" y="541" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#52616a">外部原始工单分拣</text>
+
+        <!-- Branch 1: Need clarification → /grill-with-docs -->
+        <path d="M 166 512 L 240 512 L 240 435 L 120 435 L 120 264" stroke="#6b4fa0" stroke-width="1.5" stroke-dasharray="4 2" fill="none"/>
+        <polyline points="116,270 120,264 124,270" stroke="#6b4fa0" stroke-width="1.5" fill="none"/>
+        <text x="250" y="515" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#6b4fa0">① 意图或领域词汇不明确 → 先走 /grill-with-docs</text>
+
+        <!-- Branch 2: Already clear → /to-spec -->
+        <path d="M 166 534 L 476 534 L 476 264" stroke="#6b4fa0" stroke-width="1.5" stroke-dasharray="4 2" fill="none"/>
+        <polyline points="472,270 476,264 480,270" stroke="#6b4fa0" stroke-width="1.5" fill="none"/>
+        <text x="250" y="537" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#6b4fa0">② 描述充分完整 → 直接进入 /to-spec</text>
+
+        <!-- Note on /to-tickets -->
+        <rect x="580" y="492" width="270" height="60" rx="6" fill="#fffdf8" stroke="#b84d48" stroke-width="1"/>
+        <text x="715" y="513" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7.5" fill="#b84d48" font-weight="600">⚠ 边界规则：/to-tickets 工单无需再次 Triage</text>
+        <text x="715" y="528" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#52616a">/to-tickets 产出的工单自带依赖边和验收标准，</text>
+        <text x="715" y="541" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#52616a">已经是 Agent-Ready，直接交给 /implement。</text>
+      </svg>
+    </div>
+
+    <div class="content-grid">
+      <div class="panel blue-acc">
+        <h3>为什么流程是顺序的？</h3>
+        <p>每次交接都携带一个产物。<code>CONTEXT.md</code> 让 <code>/to-spec</code> 不需要重新发现词汇；spec 让 <code>/to-tickets</code> 不需要猜测行为边界；工单让 <code>/implement</code> 不需要做范围决策。</p>
+      </div>
+      <div class="panel yellow-acc">
+        <h3>关于 {grilling} 原语</h3>
+        <p>五个 orchestrator（/grill-me、/grill-with-docs、/triage、/wayfinder、/improve-codebase-architecture）都在内部使用 <code>{grilling}</code> 来逐一挖掘未解决的决策分支。用户启动 orchestrator，agent 使用原语。</p>
+      </div>
+    </div>
+
+    <div class="worked-example">
+      <div class="section-label">实例：TypeScript 实体库生命周期钩子</div>
+      <div class="example-grid">
+        <div class="example-col">
+          <h3>软件工程场景</h3>
+          <p>「为 TypeScript 实体库添加生命周期钩子」→ /grill-with-docs 澄清"钩子"的触发条件 → CONTEXT.md 记录 <code>lifecycle event</code> 术语 → spec 描述 onMount/onUnmount 行为 → 3 个工单（接口、实现、文档）→ /implement → {tdd} → {code-review}</p>
+        </div>
+        <div class="example-col">
+          <h3>Triage 汇入示例</h3>
+          <p>外部 Issue #142：「实体 activate 偶尔不触发钩子」→ /triage 分拣确认是有效 bug 报告 → 因缺少复现条件，走 /grill-with-docs 澄清 → spec 补充边界时序 → /implement 修复。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="linear-summary">
+      <strong>线性阅读顺序：</strong>用户提供意图 → <code>/grill-with-docs</code> 产出共享语言（CONTEXT.md + ADR）→ <code>/to-spec</code> 产出 spec → <code>/to-tickets</code> 产出带依赖边的工单 → <code>/implement</code> 按工单构建 → <code>{tdd}</code> 验证 → <code>{code-review}</code> 审查 → 已审查的 diff 准备上线。
+    </div>
+
+    <div class="related" style="margin-top:24px;">
+      <div class="section-label">相关技能</div>
+      <div class="skill-list">
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/grill-with-docs</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/to-spec</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/to-tickets</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/implement</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{tdd}</a>
+        <a class="skill-chip agent" aria-disabled="true" title="技能文档未随博客发布">{code-review}</a>
+        <a class="skill-chip user" aria-disabled="true" title="技能文档未随博客发布">/triage</a>
+        <a class="skill-chip shared" aria-disabled="true" title="技能文档未随博客发布">{grilling}</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span>图 01 · 功能流</span>
+    <div style="display:flex;gap:16px;">
+      <a href="./diagram-00.html">← 图 00</a>
+      <a href="./diagram-02.html">图 02 →</a>
+    </div>
+  </footer>
+</body>
+</html>

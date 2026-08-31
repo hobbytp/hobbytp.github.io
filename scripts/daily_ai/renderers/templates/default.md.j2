@@ -3,76 +3,136 @@ title: "每日AI动态 - {{ date_str }}"
 date: {{ current_time }}
 draft: false
 categories: ["news"]
-tags: ["AI动态", "技术更新", "行业趋势"]
-description: "{{ date_str }}的AI技术动态汇总"
+tags: ["AI动态", "技术更新", "开源模型", "行业趋势"]
+description: "{{ date_str }}的AI技术动态与重磅突破汇总"
 readingTime: {{ reading_time }}
 wordCount: {{ word_count }}
 totalItems: {{ total_items }}
 ---
 
+<div class="daily-ai-article">
+
 # 每日AI动态 - {{ date_str }}
 
 > 📅 **时间范围**: {{ time_range }} (北京时间)  
-> 📊 **内容统计**: 共 {{ total_items }} 条动态  
+> 📊 **内容统计**: 共 **{{ total_items }}** 条高价值动态  
 > ⏱️ **预计阅读**: {{ reading_time }} 分钟
+
+<div class="daily-ai-quick-nav">
+  <span class="nav-title">⚡ 快速跳转：</span>
+  {% if focus_news_content %}<a href="#focus-news" class="nav-chip">📰 今日焦点</a>{% endif %}
+  {% if hf_models_content %}<a href="#hf-models" class="nav-chip">🧠 开源模型</a>{% endif %}
+  {% if arxiv_papers_content %}<a href="#arxiv-papers" class="nav-chip">📚 学术前沿</a>{% endif %}
+  {% if github_projects_content %}<a href="#github-projects" class="nav-chip">🛠️ 工具框架</a>{% endif %}
+  {% if hacker_news_content %}<a href="#hacker-news" class="nav-chip">💬 极客热议</a>{% endif %}
+  {% if applications_content %}<a href="#applications" class="nav-chip">📱 应用产品</a>{% endif %}
+  <a href="#editor-review" class="nav-chip">💡 趋势洞察</a>
+</div>
 
 ---
 
+{% if executive_summary %}
+<h2 id="executive-summary">⚡ 60秒极客速览</h2>
+
+<div class="daily-ai-summary-card">
+
+{{ executive_summary }}
+</div>
+
+---
+{% endif %}
+
 {% if focus_news_content %}
-## 📰 今日焦点
+<h2 id="focus-news">📰 今日焦点</h2>
+
 {{ focus_news_content }}
 {% endif %}
 
 {% if hf_models_content %}
-## 🧠 模型与算法
+<h2 id="hf-models">🧠 模型与算法</h2>
+
 {{ hf_models_content }}
 {% endif %}
 
 {% if arxiv_papers_content %}
-## 📚 学术前沿
+<h2 id="arxiv-papers">📚 学术前沿</h2>
+
 {{ arxiv_papers_content }}
 {% endif %}
 
 {% if github_projects_content %}
-## 🛠️ 工具与框架
+<h2 id="github-projects">🛠️ 工具与框架</h2>
+
 {{ github_projects_content }}
 {% endif %}
 
+{% if hacker_news_content %}
+<h2 id="hacker-news">💬 极客热议</h2>
+
+{{ hacker_news_content }}
+{% endif %}
+
 {% if applications_content %}
-## 📱 应用与产品
+<h2 id="applications">📱 应用与产品</h2>
+
 {{ applications_content }}
 {% endif %}
 
 {% if perplexity_news_content %}
-## 🌐 全网热搜感知
+<h2 id="perplexity-news">🌐 全网热搜感知</h2>
+
 {{ perplexity_news_content }}
 {% endif %}
 
 ---
 
-## 💡 编辑点评
+<h2 id="editor-review">💡 编辑总评与趋势洞察</h2>
 
-今日共收集到 {{ total_items }} 条AI动态，其中：
-{% if stats.get('focus_news', 0) > 0 %}- 📰 今日焦点（Google）: {{ stats.focus_news }} 条{% endif %}
-{% if stats.get('hf_models', 0) > 0 %}- 🧠 模型与算法（HuggingFace）: {{ stats.hf_models }} 个{% endif %}
-{% if stats.get('arxiv_papers', 0) > 0 %}- 📚 学术前沿（arXiv + HuggingFace Papers）: {{ stats.arxiv_papers }} 篇{% endif %}
-{% if stats.get('github_projects', 0) > 0 %}- 🛠️ 工具与框架（GitHub）: {{ stats.github_projects }} 个{% endif %}
-{% if stats.get('perplexity_news', 0) > 0 %}- 🌐 全网热搜（感知层）: {{ stats.perplexity_news }} 条{% endif %}
+<div class="daily-ai-editor-card">
 
+### 📊 今日全网数据分布
+{% if stats.get('focus_news', 0) > 0 %}
+- 📰 **今日焦点**（官方RSS + Google精选）: `{{ stats.focus_news }}` 条
+{% endif %}
+{% if stats.get('hf_models', 0) > 0 %}
+- 🧠 **模型与算法**（Hugging Face开源）: `{{ stats.hf_models }}` 个
+{% endif %}
+{% if stats.get('arxiv_papers', 0) > 0 %}
+- 📚 **学术前沿**（arXiv + HF Daily Papers）: `{{ stats.arxiv_papers }}` 篇
+{% endif %}
+{% if stats.get('github_projects', 0) > 0 %}
+- 🛠️ **工具与框架**（GitHub 爆发榜）: `{{ stats.github_projects }}` 个
+{% endif %}
+{% if stats.get('hacker_news', 0) > 0 %}
+- 💬 **极客热议**（Hacker News 社区）: `{{ stats.hacker_news }}` 条
+{% endif %}
+{% if stats.get('applications', 0) > 0 %}
+- 📱 **应用与产品**（商业落地）: `{{ stats.applications }}` 条
+{% endif %}
+{% if stats.get('perplexity_news', 0) > 0 %}
+- 🌐 **全网热搜**（感知层兜底）: `{{ stats.perplexity_news }}` 条
+{% endif %}
+
+### 🎯 核心趋势点评
 {{ editor_review_content }}
+
+</div>
 
 ---
 
-## 📊 数据基座与架构 (v3.0)
+<h2 id="data-pipeline">📊 数据基座与生产管线 (Pipeline v3.5)</h2>
 
-本报告采用全新的 **MVC架构** 下的分章节专用数据源策略生成的：
+本报告基于全新升级的 **多源高信噪比采集管线** 与 **四维质量评分雷达 (Quality Radar 2.0)** 自动生产：
 
-- 📰 **焦点新闻**: Google Search（针对大厂定向追踪）
-- 🌐 **全网感知**: Perplexity AI / `ai_news_collector_lib` (多引擎调度灾备，包含 Tavily, Brave 等)
-- 🧠 **开源基建**: HuggingFace（新开源模型挖掘）
-- 📚 **科研高线**: arXiv（追踪 CS.AI, CS.CL 最新论文）
-- 🛠️ **开发者套件**: GitHub（追踪短时内 Star 爆发的极客项目）
+- 📰 **官方一手**: 追踪 OpenAI, Anthropic, Google DeepMind, Meta, Microsoft, HuggingFace 官方发布
+- 💬 **社区先锋**: Hacker News 高赞讨论与 Show HN 开源首发
+- 🧠 **开源基建**: Hugging Face Trending Models（大厂开源与热度加权）
+- 📚 **前沿科研**: arXiv (cs.AI, cs.CL, cs.CV) + Hugging Face Daily Papers 社区精选
+- 🛠️ **极客工具**: GitHub 实时星速爆发监控（排除刷星与资料模板）
+- 📱 **商业落地**: Product Hunt AI 与 Show HN 优质应用精选
 
-所有底层素材均经过 **TimeFilter (时间滤网)**、**Deduplicator (去重引擎)** 以及专业的 **QualityScorer (质量雷达)** 打分计算选优脱水。最终由特定的 LLM 编辑人设（*“科技主编”、“全栈架构师”等*）动态成文。
+所有数据均经过 **URL规范化与语义模糊排重 (Deduplicator)**、**四维质量打分 (QualityScorer)** 与 **专家 Prompt 多人设提炼**。
 
-> 💡 **提示**: 本内容由 AI 全自动生产发布 (Architectural Redesign v3.0)。如有遗漏或错误，欢迎通过 [Issues](https://github.com/hobbytp/hobbytp.github.io/issues) 反馈。
+> 💡 **反馈与互动**: 如发现内容有遗漏或建议，欢迎提交 [Issues](https://github.com/hobbytp/hobbytp.github.io/issues)。
+
+</div>

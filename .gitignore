@@ -19,6 +19,8 @@ docker-compose.override.yml
 *.swp
 *.swo
 *~
+scripts/daily_ai/data/candidates_*.json
+
 
 # OS generated files
 .DS_Store
@@ -135,3 +137,5 @@ CLAUDE.md
 .wrangler
 
 .tbd/
+.codex-home/
+.hugo*/

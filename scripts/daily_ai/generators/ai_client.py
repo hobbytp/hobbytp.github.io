@@ -84,11 +84,11 @@ class AIClient:
     def _call_once(self, prompt: str) -> str:
         """发起一次主 LLM 调用（不含重试）"""
         if self.use_google_sdk:
-            response = self.client.models.generate_content(
+            chat = self.client.chats.create(
                 model=config.model_name,
-                contents=prompt,
                 config={'temperature': config.temperature, 'max_output_tokens': 8192},
             )
+            response = chat.send_message(prompt)
             return response.text if hasattr(response, 'text') else ""
         else:
             response = self.client.chat.completions.create(
@@ -102,11 +102,11 @@ class AIClient:
     def _call_once_bk(self, prompt: str) -> str:
         """发起一次备用 LLM 调用（不含重试）"""
         if getattr(config, "use_google_sdk_bk", False):
-            response = self.bk_client.models.generate_content(
+            chat = self.bk_client.chats.create(
                 model=config.bk_model_name,
-                contents=prompt,
                 config={'temperature': getattr(config, 'bk_temperature', 0.5), 'max_output_tokens': 8192},
             )
+            response = chat.send_message(prompt)
             return response.text if hasattr(response, 'text') else ""
         else:
             response = self.bk_client.chat.completions.create(
@@ -116,6 +116,7 @@ class AIClient:
                 temperature=getattr(config, 'bk_temperature', 0.5),
             )
             return response.choices[0].message.content if response.choices else ""
+
 
     def generate(self, prompt: str) -> str:
         if not self.client and not self.bk_client:
