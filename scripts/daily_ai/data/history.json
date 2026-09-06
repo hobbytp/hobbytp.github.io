@@ -1,175 +1,5 @@
 [
   {
-    "url": "https://github.com/DDGTESTDEV-IONICS/ollama-gui-simple",
-    "title": "ollama gui simple",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://github.com/24vojo-coder/rembg-gui-batch",
-    "title": "rembg gui batch",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://github.com/claudiosequeida81-maker/whisper-gui-windows",
-    "title": "whisper gui windows",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://github.com/nooour2/buzz-transcriber-alt",
-    "title": "buzz transcriber alt",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://github.com/usedotai/dot-reflex",
-    "title": "dot reflex",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/29/sony-music-warner-sue-anthropic-alleging-a-brazen-campaign-of-intellectual-property-theft",
-    "title": "sony music warner sue anthropic alleging a brazen campaign of intellectual property theft",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/29/were-not-doing-30-bets-a-year-vijay-pande-on-betting-small-after-running-4-billion-at-a16z",
-    "title": "we re not doing 30 bets a year vijay pande on betting small after running 4 billion at a16z",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/29/nvidias-ai-advantage-is-moving-beyond-the-gpu",
-    "title": "nvidia s ai advantage is moving beyond the gpu",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/986438/sony-music-warner-chappell-anthropic-lawsuit-copyright",
-    "title": "sony music and warner chappell are suing anthropic",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.theverge.com/entertainment/985866/h4rris-nihil-young-edm-suno-ai",
-    "title": "musicians turned detectives are hunting for ai grifters",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481372.html",
-    "title": "ai本地部署不如官方版的元凶找到了 734个依赖包 每一个都可能坑",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481318.html",
-    "title": "去年归国的徐梦迪 成了清华姚班班主任",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481223.html",
-    "title": "claude开始训练claude 4美元一小时 跑赢150美元人类研究员",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481075.html",
-    "title": "20ms把pdf变成markdown 开源ocr神器快了近300倍",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/480940.html",
-    "title": "coding不再是程序员专属 阿里qoder这波有点绝",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/480855.html",
-    "title": "openclaw 红过 爱过 散了",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/480787.html",
-    "title": "32gb大显存加持 英特尔锐炫pro b70搞定ai漫剧创作",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.youtube.com/watch?v=tGkpU2V6QKQ",
-    "title": "ibm granite 4 2 vs qwen 3 8 27b vs gemma 4 local llm benchmark",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.thetechoutlook.com/current-affairs/business/openai-announces-to-end-its-partnership-with-cursor-after-its-acquisition-by-spacex-cursor-ceo-reacts",
-    "title": "openai announces to end its partnership with cursor after its",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://ainetwork.media/article/advancing-claude-in-healthcare-and-the-life-sciences-b7e5b8",
-    "title": "anthropic launches claude for healthcare with opus 4 5 ai network",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.adgully.com/post/19860/anthropic-introduces-model-hardware-standard-to-bridge-ai-agents-with-physical-devices",
-    "title": "anthropic introduces model hardware standard to bridge ai agents",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.igorslab.de/en/openai-announces-ads-chatgpt-privacy-questions",
-    "title": "openai announces ads in chatgpt privacy questions remain open",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://www.theweeklyledgernews.com/post/alabama-attorney-general-launches-investigation-into-openai-following-ai-security-breach",
-    "title": "alabama attorney general launches investigation into openai",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://artificialanalysis.ai/models/grok-4-6/providers",
-    "title": "grok 4 6 high api provider benchmarking analysis",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://lwn.net/Articles/1091231",
-    "title": "debian votes to allow responsible use of generative ai",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://newsletter.eng-leadership.com/p/good-culture-is-the-biggest-productivity",
-    "title": "good culture is the biggest productivity hack not ai",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://github.com/stemdeckapp/stemdeck",
-    "title": "stemdeck a free open source and local ai stem separator",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://optimizedbyotto.com/post/why-open-source-projects-ban-ai",
-    "title": "the growing divide between ai hype and software engineering reality",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://pwning.systems/posts/llm-memory-program-analysis",
-    "title": "i accidentally turned llm memory into program analysis",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://github.com/vllm-project/vllm/releases/tag/v0.28.0",
-    "title": "vllm v0 28 0",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://arxiv.org/abs/2608.23691",
-    "title": "autonomous mathematical discovery in an open world multi agent environment",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
-    "title": "qwen qwen3 8 27b",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
-    "title": "unsloth qwen3 8 27b gguf",
-    "date": "2026-08-30"
-  },
-  {
-    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
-    "title": "minimaxai minimax h3",
-    "date": "2026-08-30"
-  },
-  {
     "url": "https://noaifridays.com",
     "title": "no ai fridays",
     "date": "2026-08-31"
@@ -2313,5 +2143,130 @@
     "url": "https://reactoratlas.com",
     "title": "reactor atlas",
     "date": "2026-09-05"
+  },
+  {
+    "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "title": "qwen qwen3 8 27b",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
+    "title": "unsloth qwen3 8 27b gguf",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
+    "title": "minimaxai minimax h3",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+    "title": "davidau qwen3 8 27b turbo fable cold fusion 735 882 heretic uncensored neo coder max mtp gguf",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://huggingface.co/openai/clip-vit-base-patch32",
+    "title": "openai clip vit base patch32",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.sylvainkalache.com/blog/ai-handles-incidents-engineers-lose-touch-with-their-systems",
+    "title": "ai handles incidents engineers lose touch with their systems",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://openrouter.ai/openai/gpt-6-astra",
+    "title": "gpt 6 astra on openrouter",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v4-2",
+    "title": "artificial analysis intelligence index v4 2",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://arxiv.org/abs/2609.03344",
+    "title": "llms as a cognitive virus",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/05/seattle-times-and-newsday-are-the-latest-publications-to-sue-openai-and-microsoft",
+    "title": "seattle times and newsday are the latest publications to sue openai and microsoft",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/05/hikers-rescued-after-using-google-gemini-for-planning",
+    "title": "hikers rescued after using google gemini for planning",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/05/openai-confirms-wiki-incident-says-its-working-on-a-framework-for-more-disclosure",
+    "title": "openai confirms wiki incident says it s working on a framework for more disclosure",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/990773/openai-german-wiki-incident",
+    "title": "openai admits to german wiki incident",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/484726.html",
+    "title": "gpt 6带火循环transformer 阿里早已布局",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/484683.html",
+    "title": "押中spacex的硅谷老将 把票投给了一家中国世界模型公司",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/484649.html",
+    "title": "陶哲轩吐槽gpt 6孪生素数新突破 令人无语的一幕",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/484611.html",
+    "title": "这个世界模型训练完就 退场 机器人反而更能干了",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.ewn.co.za/openai-introduces-chatgpt-for-teens-amid-legal-pressure",
+    "title": "openai introduces chatgpt for teens amid legal pressure ewn",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://openworklabs.com",
+    "title": "openwork open source claude cowork alternative for teams",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.humanoidsdaily.com/news/openai-s-gpt-6-astra-hits-95-on-physical-manipulation-benchmark-but-precision-tasks-expose-familiar-bottlenecks",
+    "title": "openai s gpt 6 astra hits 95 on physical manipulation",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://alpha-maven.com/news/private-equity/openai-releases-gpt-6-astra-scoring-999-on-agi-benchmark-seoul-economic-daily",
+    "title": "openai releases gpt 6 astra scoring 99 9 on agi benchmark",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.youtube.com/shorts/fVhOJg58JPY",
+    "title": "openai just dropped gpt 6 astra and the benchmark numbers are",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://www.threads.com/@polymarket/post/Dc6L3DBoMeL/chance-open-ai-launches-a-consumer-hardware-product-by-end-of-year",
+    "title": "14 chance openai launches a consumer hardware product by end",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://benchlm.ai/compare/claude-fable-vs-grok-4-5",
+    "title": "claude fable 5 vs grok 4 5 benchmarks cost benchlm ai",
+    "date": "2026-09-06"
+  },
+  {
+    "url": "https://github.com/fitchmultz/pi-posthorse",
+    "title": "pi posthorse",
+    "date": "2026-09-06"
   }
 ]
