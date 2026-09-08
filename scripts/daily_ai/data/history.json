@@ -1,505 +1,5 @@
 [
   {
-    "url": "https://openai.com/index/polimill",
-    "title": "polimill builds japan s next generation public ai infrastructure",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://openai.com/index/expanding-access-to-ai-with-chatgpt-ads",
-    "title": "a milestone in expanding access to ai",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/31/apple-shares-shocking-evidence-against-former-employee-accused-of-stealing-company-data-for-openai",
-    "title": "apple shares shocking evidence against former employee accused of stealing company data for openai",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/31/the-pentagon-now-has-its-own-version-of-chatgpt-and-grok",
-    "title": "the pentagon now has its own version of chatgpt and grok",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/31/instagram-puts-new-limits-on-undisclosed-ai-profiles",
-    "title": "instagram puts new limits on undisclosed ai profiles",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/31/harvard-law-dropout-raises-6m-for-blue-voice-to-build-a-harvey-for-police-officers",
-    "title": "harvard law dropout raises 6m for blue voice to build a harvey for police officers",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/31/three-year-old-ai-media-search-startup-clipto-hits-a-250m-valuation",
-    "title": "clipto uses ai to search terabytes of video and is now valued at 250m",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/31/nvidias-3-5b-mediatek-bet-reveals-its-plan-for-tackling-big-techs-ai-chip-buildout",
-    "title": "nvidia s 3 5b mediatek bet reveals its plan for tackling big tech s ai chip buildout",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/31/meeting-notetaker-circleback-adds-a-free-tier-to-attract-more-customers",
-    "title": "meeting note taker circleback adds a free tier to attract more customers",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/08/30/the-u-s-is-building-barriers-around-drones-and-robots-china-still-has-scale",
-    "title": "the us is building barriers around drones and robots but china has scale to get around them",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.theverge.com/tech/986789/linux-debian-generative-ai-policy",
-    "title": "debian won t ban ai code from its linux distribution",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.theverge.com/podcast/986661/ny-gov-kathy-hochul-ai-data-centers-ban-3d-printed-guns-flock-cameras",
-    "title": "new york governor kathy hochul thinks ai should be less evil",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/986682/openai-chatgpt-eu-dsa",
-    "title": "chatgpt to face tougher regulation in the eu",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.theverge.com/tech/986593/instagram-addresses-fake-ai-profile-slop",
-    "title": "instagram cracks down on ai accounts pretending to be human",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481928.html",
-    "title": "vc疯了 200万现金冠军奖 又花4000万造了一座ai 创业乌托邦",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481923.html",
-    "title": "滴滴自动驾驶新一代车型开启载客测试服务",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481919.html",
-    "title": "范式与华为达成重磅算力战略合作 成为首批拥抱国产最高端算力底座的ai企业",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481893.html",
-    "title": "gpt 6 灰测demo刷屏 周四发布在即",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481759.html",
-    "title": "openai买几万台mac搞强化训练 英伟达的活被苹果抢了",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481750.html",
-    "title": "全国第三 公司第二 初创黑马 灵犀智涌用ross harness把机器人送进工业具身智能第一梯队",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/08/481475.html",
-    "title": "aqua 让量化研究 agent 持续进化 也让回测结果经得起检验",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.ringier.com/ringier-and-openai-launch-collaboration",
-    "title": "ringier and openai launch collaboration",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.mercurynews.com/2026/08/31/openai-to-end-partnership-with-cursor-after-spacex-acquisition/amp",
-    "title": "openai to end partnership with cursor after spacex acquisition",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.technology.org/2026/08/31/openai-cursor-model-access-cutoff-spacex",
-    "title": "openai cuts off cursor after spacex takeover technology org",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://hueworldwide.com/article/weve-been-asking-what-happens-when-ai-can-act-on-its-own-openai-just-gave-us-a-real-world-answer",
-    "title": "openai ai agents hacked hugging face during safety test",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://tldr.tech/tech/2026-08-31",
-    "title": "openai blocks cursor apple s new ceo github agentic tldr",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://community.openai.com/t/passed-open-source-project-but-lost-email/1393724",
-    "title": "passed open source project but lost email codex",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://llm-stats.com/benchmarks/apex-agents",
-    "title": "apex agents leaderboard llm stats",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.threads.com/@polymarket/post/DcuCrsuoGBG/chance-open-ai-announces-bankruptcy-by-end-of-year",
-    "title": "2 chance openai announces bankruptcy by end of year threads",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://github.com/AMAP-ML/LoopArena",
-    "title": "looparena",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://github.com/rome-os/rome",
-    "title": "rome",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.macrumors.com/2026/08/30/apple-unexpected-mac-mini-and-studio-demand",
-    "title": "apple caught off guard by ai demand for mac mini and mac studio",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.chosun.com/english/industry-en/2026/08/30/SBFXUIJQYZEARKP5T4FBAY25HQ",
-    "title": "smartphone led detects hidden cameras with ai",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "http://muratbuffalo.blogspot.com/2026/08/the-safest-job-from-ai-may-be-writing.html",
-    "title": "the safest job from ai may be writing",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://www.abc.net.au/news/2026-08-29/fair-work-commission-condemns-ai-legal-advice/107089766",
-    "title": "fair work commission condemns plain wrong ai legal advice",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://twitter.com/ClaudeDevs/status/2093742322525810912",
-    "title": "claude code reduces it s weekly limit by 17 compared to today",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://sander.ai/2026/08/24/continuous-dlms.html",
-    "title": "continuous diffusion language models cdlm s",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://calpaterson.com/memoryfields.html",
-    "title": "agent memory as a file format",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://embracethered.com/blog/posts/2026/breaking-claude-code-opus-5-and-automode",
-    "title": "breaking claude code opus 5 auto mode",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://github.com/anthropics/claude-code/issues/66504",
-    "title": "claude session url appended to commit messages and pr descriptions by default",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/alibaba-pai/MiniMax-H3-Acc-LoRAs",
-    "title": "alibaba pai minimax h3 acc loras",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.28281",
-    "title": "looparena benchmarking models as runtime controllers for loop engineering",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.27550",
-    "title": "beyond data scaling representation centric continued pre training for vision language action models",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.18524",
-    "title": "dart sd diamond topology aware retrieval and tuning for self distillation of multi turn tool calling agents",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.28122",
-    "title": "agentic artifact creation systems evaluation principles and opportunities",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.27549",
-    "title": "code as worlds agentic discovery of executable world representations for physical reasoning",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.26582",
-    "title": "j zero unified challenger solver judge co evolution from zero data",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.27529",
-    "title": "revisiting local context for long horizon streaming 3d reconstruction",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.28460",
-    "title": "layerrecall a state conditioned memory router for long horizon consistency in video generation",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28589v1",
-    "title": "qgpinns a physics informed neural network framework for nonlocal differential equations on quantum graphs",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28578v1",
-    "title": "aero hand open a simulation ready tendon driven hand for dexterous manipulation learning",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28576v1",
-    "title": "learning a size weight frontier for synthetic augmented inference",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28568v1",
-    "title": "signrr retrieve and refine real motion for sign language production",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28567v1",
-    "title": "gebda building damage assessment as text based sequence prediction",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28566v1",
-    "title": "on two proofs of d 2 mixing of weighted dikin walks",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28564v1",
-    "title": "learning between the peaks sharp asymptotics for kernel ridge regression under power law anisotropy",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28560v1",
-    "title": "a formal limitation on learning human language from textual corpora",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28557v1",
-    "title": "blog survey of optimizers",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28553v1",
-    "title": "logos an agent harness on a cross process bus",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28552v1",
-    "title": "advancing interaction sensitive feature selection novel relief based algorithms expanded comparisons and recommendations for biomedical data mining",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28549v1",
-    "title": "video generative models as geometry learner",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28547v1",
-    "title": "darts decoder aware representation tuning via surgery for model merging",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28541v1",
-    "title": "an enclosed mode is a gauge choice topology relative to reach in certified code world models",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28534v1",
-    "title": "instructmesh selective refinement of generative 3d models for fabrication",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28524v1",
-    "title": "texture image classification using dwt alexnet feature fusion and deep neural networks",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28518v1",
-    "title": "when robots mishear us mapping the safety risks of voice controlled embodied ai",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28517v1",
-    "title": "learning the target priors before image translation a decoupled training paradigm for cross modal image translation in remote sensing",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28515v1",
-    "title": "conformal uncertainty quantification guarantees for neural operators",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28511v1",
-    "title": "training communication efficient mixture of experts language models with layer re configuration",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28508v1",
-    "title": "phoneme and word level metrics using self supervised speech representations for forced alignment evaluation",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28499v1",
-    "title": "replicant learning policies for evading and hardening malware detectors",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28497v1",
-    "title": "on the maintenance and co evolution of agent plugins an empirical study of claude code plugin marketplaces",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28496v1",
-    "title": "ladders in chaos when how and perhaps why does test time scaling improve llm machine translation",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28491v1",
-    "title": "acrossvam1 0 particle world modeling for text assisted robot video prediction",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28490v1",
-    "title": "llm based agents for software and systems security approaches applications and assessment",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28482v1",
-    "title": "how proper scoring rules shape llm forecasting",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28481v1",
-    "title": "nl2agbench benchmarking llm auto formalization for alphageometry",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28478v1",
-    "title": "blind men and the elephant probing the epistemic myopia of llms under long tail divergent knowledge",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28476v1",
-    "title": "contextpilot teaching agents for proactive context management via fine grained rl",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28475v1",
-    "title": "cover identifiable evaluation of coalition routing",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28468v1",
-    "title": "real time virtual circuits for plasma shape control via neural network emulators experimental demonstration on mast upgrade",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28467v1",
-    "title": "stranger fan or peer a systematic study on the role of interlocutor in persona based dialogue generation",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28461v1",
-    "title": "anatomy aware promptable segmentation with online interactive training for autopet v",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28458v1",
-    "title": "acquire repair preserve a diagnosis guided post training recipe for small model dialogue game agents",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28455v1",
-    "title": "arc ct anatomy routed contrastive vision language learning for 3d chest ct",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28453v1",
-    "title": "prompt guided interactive segmentation of interstitial lung disease in thoracic ct",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28447v1",
-    "title": "learning to use tools reinforcement learning for tool integrated mathematical reasoning",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28446v1",
-    "title": "generalized splines and gaussian processes",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28444v1",
-    "title": "sliding window beats linear attention",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28442v1",
-    "title": "curvature conditioned multiscale momentum with sphere constraints for llm pretraining",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28439v1",
-    "title": "fidelity is not enough dispatch level instrumentation for agentic datasheet extraction",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28433v1",
-    "title": "prove2me an open collaborative platform for scaling math formalization",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28432v1",
-    "title": "are these modules worth their cost a paradigm level accuracy cost analysis of in context learning text to sql",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28429v1",
-    "title": "lossy event compression from event stream distortion to task performance",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28425v1",
-    "title": "euclidean fourier neural operators",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28421v1",
-    "title": "program learning with verifiable rewards symbolic backpropagation for post training llms",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28411v1",
-    "title": "longpibench a long context benchmark for prompt injection",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://arxiv.org/pdf/2608.28408v1",
-    "title": "symbollm fe llm accelerated symbolic regression for automated feature engineering on tabular data",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://fellowgeek.github.io/mcp-speak",
-    "title": "what happens when you give your ai agents a voice and an attitude",
-    "date": "2026-09-01"
-  },
-  {
-    "url": "https://seenshot.app",
-    "title": "free fast screenshot app for macos with one click screenshot sharing",
-    "date": "2026-09-01"
-  },
-  {
     "url": "https://huggingface.co/papers/2609.01591",
     "title": "studentsim training llm based student simulators",
     "date": "2026-09-02"
@@ -2563,5 +2063,170 @@
     "url": "https://getvodforge.com",
     "title": "vodforge a free local desktop ui for youtube video playlist downloads",
     "date": "2026-09-07"
+  },
+  {
+    "url": "https://openai.com/index/supporting-independent-journalism-in-ukraine",
+    "title": "supporting independent journalism in ukraine",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/07/artificial-intelligence-definition-glossary-hallucinations-guide-to-common-ai-terms",
+    "title": "opaque recurrence and other ai terms that you should probably know",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485784.html",
+    "title": "深度智控获宁德时代 沙特阿美战投等重磅加码 加速打造物理ai时代算力与能源底座",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485630.html",
+    "title": "深入马来西亚ai现场 waic connect malaysia首日亮点全速递",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485555.html",
+    "title": "王云鹤创业后交出首个模型",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485525.html",
+    "title": "3秒变身 会合体的机器人 卖到全球50国",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485431.html",
+    "title": "gpt 6不只astra sol内测结果曝光 速度快6倍",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485154.html",
+    "title": "dhh领衔 英伟达 微软 huggingface等150 全球技术大咖集结 gosim shenzhen 2026全议程公布",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485108.html",
+    "title": "菲尔兹奖得主入局大模型 4b手机qwen 云端glm刷爆arc agi 3",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485064.html",
+    "title": "国内首份办公agent用户行为报告发布 北京用户量全国居首 海外用户占比超12",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485056.html",
+    "title": "原生全模态技术战略闭环 智象 hidream ai 发布具身世界模型hidream o1 embodied",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485046.html",
+    "title": "业内首个 千问办公 推出 多人工作台",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.youtube.com/shorts/sa2HK7r2DJg",
+    "title": "openai launches gpt 6 astra the future of ai youtube",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.morningstar.com/news/pr-newswire/20260907dc41124/alibaba-cloud-ant-group-cambricon-and-huawei-come-together-in-shanghai-to-advance-the-open-source-ai-stack-at-pytorch-conference-china",
+    "title": "alibaba cloud ant group cambricon and huawei come together",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.instagram.com/p/DdAhp5ECPRk",
+    "title": "openai s newest ai model gpt 6 astra has sparked fresh debate",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://github.com/orgs/anthropics/repositories",
+    "title": "repositories anthropic github",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://oit.duke.edu/service/ai-gateway",
+    "title": "ai gateway office of information technology duke oit s",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://github.com/QwenLM",
+    "title": "qwen github",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://community.openai.com/t/bug-astra-unable-to-parse-images-in-codex-chatgpt-desktop-app-macos/1395642",
+    "title": "bug astra unable to parse images in codex chatgpt desktop app",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.bottlenecklabs.com/blog/benchmarking-7-autonomous-businesses",
+    "title": "ai models ran real businesses they sent 12 431 in fake invoices lost 3 200",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://restofworld.org/2026/ai-training-jobs-expert-replacement",
+    "title": "i refused to train the ai that could replace me",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://github.com/timgordontg/engrim",
+    "title": "show hn engrim a universal local first sqlite memory engine for ai clis",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://www.economist.com/finance-and-economics/2026/09/04/the-jobs-apocalypse-is-postponed-an-ai-jobs-boom-is-here",
+    "title": "initial effects of ai technology on employment look positive",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=49600233",
+    "title": "tell hn openai brings back 5 hour limit for plus and business standard users",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://vllm.ai/blog/2026-08-23-speculative-decoding-amd-gpus",
+    "title": "speculative decoding in vllm on amd gpus",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=49596976",
+    "title": "apparently codepen 2 0 sends data to their servers as you type",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://github.com/datawhalechina/zero-to-sglang",
+    "title": "zero to sglang",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.02998",
+    "title": "verify before you distill prompt level teacher gating for on policy distillation",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.03254",
+    "title": "what else needs fixing exploring cost effective test time compute for revision propagation in artifacts generated through conversation",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://huggingface.co/openbmb/MiniCPM5-2B",
+    "title": "openbmb minicpm5 2b",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://huggingface.co/dealignai/GLM-5.3-CYBERSECURITY-FP8",
+    "title": "dealignai glm 5 3 cybersecurity fp8",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=49599559",
+    "title": "send flowers from your ai agent and make your mum happy",
+    "date": "2026-09-08"
+  },
+  {
+    "url": "https://askpod.ai",
+    "title": "pod a review site for dev tools where the reviewers are ai agents",
+    "date": "2026-09-08"
   }
 ]
