@@ -1,365 +1,5 @@
 [
   {
-    "url": "https://huggingface.co/papers/2609.01591",
-    "title": "studentsim training llm based student simulators",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.00028",
-    "title": "ui venus 2 technical report",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.00188",
-    "title": "zimablue evolving generalizable world action models through scalable video pre training",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.30468",
-    "title": "hi q hierarchical evidence guided query refinement for multi hop question answering",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.01343",
-    "title": "smelt scaling laws for compute matched moe looped transformers",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.01607",
-    "title": "uncovering understanding generation synergy in native unified multimodal models from representation task to system",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.01404",
-    "title": "evaluating multimodal llms as generalist vision language action agents for drone control commanding approaching tracking and searching",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.01560",
-    "title": "h3 world turning language understanding into world control",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.00551",
-    "title": "em 2mem event centric multimodal memory for large language models",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.00621",
-    "title": "control data flow separation stable prompt optimization in multi agent llms",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://selfship.ai",
-    "title": "selfship ai surface and fix isues with your agentic applications 24x7",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://masteranza.github.io/weedout",
-    "title": "weedout safari extension that hides youtube ai labeled videos",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://hnmatchmaker.com",
-    "title": "hn match maker matching who wants to be hired with who s hiring",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.orthogonal.com",
-    "title": "orthogonal one integration for agents to discover and pay for apis",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.supafork.com",
-    "title": "supafork share and fork sessions across harnesses",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://videoai.me/live",
-    "title": "i built a live stream site where every spot is instantly ai generated",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://danluu.com/zitron",
-    "title": "how accurate have ed zitron s ai skeptic predictions been",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.pcgamer.com/gaming-industry/dwarf-fortress-creator-says-the-industrys-in-shambles-over-ai-and-layoff-happy-ceos-everyone-i-know-their-bosses-are-slowly-getting-psychosis",
-    "title": "dwarf fortress creator says the industry s in shambles over ai",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.eff.org/deeplinks/2026/08/eff-courts-dont-rewrite-copyright-over-ai-hype",
-    "title": "eff to courts don t rewrite copyright over ai hype",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.hermit-tech.com/blog/ai-can-make-you-suck-faster-too",
-    "title": "ai can make you suck faster too",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://aviationweek.com/defense/aircraft-propulsion/saab-enters-collaborative-combat-aircraft-race-high-end-concept",
-    "title": "saab has unveiled its a3 collaborative combat aircraft concept",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://au.pcmag.com/ai/116091/meta-security-researchers-ai-agent-accidentally-deleted-her-emails",
-    "title": "meta security researcher s ai agent accidentally deleted her emails",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://mvakde.github.io/blog/44-on-arc-1",
-    "title": "i trained a small transformer in 1 5hrs and it beats many llms",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://openai.com/index/ai-native-company-workflows",
-    "title": "how ai native companies turn workflows into operating capability",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://openai.com/index/path-to-astra",
-    "title": "path to astra critical capabilities and frontier safeguards",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://openai.com/index/chatgpt-connects-health-records-and-healthcare-sources",
-    "title": "healthcare organizations can now connect ehr and additional industry data to chatgpt",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://openai.com/index/gilbert-tobin",
-    "title": "how law firm gilbert tobin governs and scales ai with openai",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://deepmind.google/blog/introducing-agentic-video-in-gemini",
-    "title": "introducing agentic video understanding with gemini",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://blog.google/innovation-and-ai/technology/google-ai-updates-august-2026",
-    "title": "the latest ai news we announced in august 2026",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://blog.google/products-and-platforms/products/workspace/google-pics",
-    "title": "try google pics easy image creation and editing in google workspace",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/blog/allenai/benchmirt",
-    "title": "benchmirt what are llm benchmarks actually measuring",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/blog/webgpu-kernels",
-    "title": "introducing huggingface kernels 200 webgpu kernels for local ai",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/afterquery-reportedly-becomes-y-combinators-fastest-ever-unicorn-now-valued-at-3-2b",
-    "title": "afterquery reportedly becomes y combinator s fastest ever unicorn now valued at 3 2b",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/open-ais-astra-model-is-on-the-way-and-very-good-at-breaking-into-computer-systems",
-    "title": "openai s astra model is on the way and very good at breaking into computer systems",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/googles-android-update-tackles-motion-sickness-accessibility-and-more",
-    "title": "google s android update tackles motion sickness accessibility and more",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/anthropics-new-fable-release-is-cheaper-less-restrictive",
-    "title": "anthropic s new fable release is cheaper less restrictive",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/googles-answer-to-canva-is-an-ai-tool-where-you-prompt-instead-of-design",
-    "title": "google s answer to canva is an ai tool where you prompt instead of design",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/chatgpt-health-adds-epic-integration-for-clinicians-to-import-patient-data",
-    "title": "chatgpt health adds epic integration for clinicians to import patient data",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/sequoia-incubated-empirik-launches-with-21m-to-predict-outages-before-they-happen",
-    "title": "sequoia incubated empirik launches with 21m to predict outages before they happen",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/amazon-alexa-can-now-alert-you-when-something-new-might-tempt-you-to-shop",
-    "title": "amazon alexa can now alert you when something new might tempt you to shop",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/air-raises-50m-to-help-companies-vet-the-skills-and-add-ons-ai-agents-use",
-    "title": "air raises 50m to help companies vet the skills and add ons ai agents use",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/01/fambot-introduces-an-ai-chief-of-staff-for-families",
-    "title": "fambot introduces an ai chief of staff for families",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.theverge.com/tech/987429/google-needs-hollywood-more-than-the-studios-need-ai",
-    "title": "google needs hollywood more than the studios need ai",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/987830/anthropic-claude-fable-mythos-5-1",
-    "title": "anthropic launches claude fable 5 1 and says it s up to 45 percent cheaper for agentic work",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/987695/openai-astra-unreleased-model-cybersecurity-delay",
-    "title": "openai delayed its new model s development after the hugging face hack",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/987566/ai-civilizations-opeai-hugging-face-hack",
-    "title": "the rise of ai civilizations and the fall of corporate responsibility",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.theverge.com/tech/987575/apple-openai-destroying-evidence-trade-secrets-lawsuit",
-    "title": "apple accuses openai of destroying evidence",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/987486/john-deere-jd-ai-chatbot",
-    "title": "john deere launched an ai chatbot for farmers",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.theverge.com/tech/987423/google-pics-ai-image-editor-generator",
-    "title": "google pics is like canva but with even more ai",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.theverge.com/tech/986378/nvidia-dlss-5-launch-nba-2k27",
-    "title": "nvidia s controversial dlss 5 arrives september 3rd and requires serious gpu horsepower",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482967.html",
-    "title": "企业级agent落地样板间 百融硅基员工批量上岗 按结果领工资",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482652.html",
-    "title": "claude最强fable 5 1发布 8项屠榜 最高降价45 反蒸馏机制上线",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482855.html",
-    "title": "香港首个真实开放场景服务机器人落地兰桂坊",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482699.html",
-    "title": "巨简单 更懂家 海信juos正式发布 行业首个家庭智能伴侣级aios",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482586.html",
-    "title": "李飞飞发布 全球首个多模态世界模型",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482512.html",
-    "title": "3秒出片比播放还快 minimax打开了ai视频的实时商业化路径",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482469.html",
-    "title": "github最热架构图agent 开发者故事看哭了",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482451.html",
-    "title": "急急急用电 马斯克开造燃气轮机叶片",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482406.html",
-    "title": "a社化身a割 claude官宣永久提额25 结果到手反而少17",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/482337.html",
-    "title": "自进化wam来了 清华air联手域变换提出具身in context causal learning",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.youtube.com/watch?v=nipyxCizxRM",
-    "title": "hermes vs deepseek harness best ai agent in 2026 youtube",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.testingcatalog.com/anthropic-launches-claude-fable-5-1-and-mythos-5-1",
-    "title": "anthropic launches claude fable 5 1 and mythos 5 1 testingcatalog",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://wtvbam.com/2026/09/01/openai-says-upcoming-model-is-so-capable-it-requires-stronger-guardrails",
-    "title": "openai says upcoming model is so capable it requires stronger",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://www.thurrott.com/a-i/anthropic/340951/anthropic-releases-claude-fable-5-1-and-mythos-5-1/attachment/fable-mythos",
-    "title": "fable mythos thurrott com",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://news.futunn.com/en/post/78659348/prices-slashed-by-75-across-the-board-anthropic-releases-fable",
-    "title": "prices slashed by 75 across the board anthropic releases fable",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://openrouter.ai/benchmarks",
-    "title": "ai model benchmarks openrouter",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://simonwillison.net/2026/Sep/1/claude-fable-5-1",
-    "title": "claude fable 5 1 made me a really nice animated pelican",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://openai.com/products/release-notes",
-    "title": "release notes openai",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/google/timesfm-3.0-pytorch",
-    "title": "google timesfm 3 0 pytorch",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://huggingface.co/HauhauCS/Qwen3.8-27B-Uncensored-HauhauCS-Aggressive-MTP-GGUF",
-    "title": "hauhaucs qwen3 8 27b uncensored hauhaucs aggressive mtp gguf",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://github.com/ApodexAI/FrontierAgent",
-    "title": "frontieragent",
-    "date": "2026-09-02"
-  },
-  {
-    "url": "https://github.com/Player-YN/PawWork_ZhuaZhua",
-    "title": "pawwork_zhuazhua",
-    "date": "2026-09-02"
-  },
-  {
     "url": "https://theyfell.com",
     "title": "every ai agrees with you this writes your startup s obituary instead",
     "date": "2026-09-03"
@@ -2228,5 +1868,530 @@
     "url": "https://askpod.ai",
     "title": "pod a review site for dev tools where the reviewers are ai agents",
     "date": "2026-09-08"
+  },
+  {
+    "url": "https://openai.com/index/codex-quantum-computing-experiments",
+    "title": "how gpt 5 6 sol helps run quantum computing experiments",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://openai.com/index/the-work-now-within-reach",
+    "title": "the work now within reach",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://openai.com/index/introducing-chatgpt-images-2-5",
+    "title": "introducing chatgpt images 2 5",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://openai.com/index/navier-stokes-solution",
+    "title": "on the navier stokes millennium prize problem",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://openai.com/index/teen-development-research-grants",
+    "title": "funding grants for new research into ai and teen development",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://openai.com/index/supporting-journalism-from-classrooms-to-newsrooms",
+    "title": "openai expands initiatives to support journalism from classrooms to newsrooms",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://openai.com/index/1password",
+    "title": "1password increases engineering productivity 21 with codex",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome",
+    "title": "alphagenome atlas a predictive map of every possible dna letter change in the human genome",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/blog/MultiverseComputingCAI/safety-for-whom",
+    "title": "safety for whom refusing the right subset of a topic not the whole topic",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/08/hackers-are-stealing-claude-tokens-from-subscribers",
+    "title": "hackers are stealing claude tokens from subscribers",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/08/cognition-hits-48b-valuation-signaling-investors-believe-ai-coding-is-far-from-a-winner-take-all-market",
+    "title": "cognition hits 48b valuation signaling investors believe ai coding is far from a winner take all market",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/08/meta-debuts-its-muse-ai-agent-will-consumers-trust-it",
+    "title": "meta debuts its muse ai agent will consumers trust it",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/08/openai-fought-dirty-on-career-making-math-problem-says-nyu-mathematician",
+    "title": "openai fought dirty on career making math problem says nyu mathematician",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/08/google-cloud-races-to-catch-up-in-the-ai-deployment-wars-with-accenture-deal",
+    "title": "google cloud races to catch up in the ai deployment wars with accenture deal",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/08/chrome-is-now-shipping-updates-every-2-weeks-as-ai-changes-the-security-landscape",
+    "title": "chrome is now shipping updates every 2 weeks as ai changes the security landscape",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/08/mistral-raises-e3b-as-sovereign-ai-becomes-big-business",
+    "title": "mistral raises 3b as sovereign ai becomes big business",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/991710/openai-navier-stokes-solution",
+    "title": "drama swirls around openai s legendary mathematical milestone",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/991727/openai-chatgpt-images-2-5-sketch",
+    "title": "chatgpt sketch turns your bad drawings into detailed ai images",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/991216/meta-bets-on-ai-agent-muse-to-catch-up-in-ai-race",
+    "title": "meta bets on ai agent muse to catch up in ai race",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/990313/anthropic-class-action-lawsuit-pricing-subscription-plans",
+    "title": "ai power users claim anthropic duped them with subscriptions and they re taking it to court",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/991180/google-launches-alpha-genome-atlas",
+    "title": "google s atlas of the human genome could pave the way for new treatments",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.theverge.com/tech/991133/adobe-is-trying-to-make-its-ai-generators-idiot-proof-in-premiere",
+    "title": "adobe is trying to make its ai generators idiot proof in premiere",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486052.html",
+    "title": "skyproduction限免活动第二期 minimax h3会员限时免费无限用",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486038.html",
+    "title": "宜宾 一场机器人 招聘会 的产业雄心",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485854.html",
+    "title": "感谢用gpt 6搓3d的 燃烧自己的token换来一次全体重置",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/485794.html",
+    "title": "现场围观金融ai决赛 大厂挑人的逻辑我悟了",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.iclarified.com/102036/openai-launches-chatgpt-images-25-with-sketch-and-up-to-50-lower-latency",
+    "title": "openai launches chatgpt images 2 5 with sketch and up to 50",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://biz.chosun.com/en/en-it/2026/09/09/YEZ6WWPZZBDA5F26USRGPOFXAY?outputType=amp",
+    "title": "openai launches chatgpt image 2 5 boosts faithful edits and",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.techtarget.com/it-infrastructure/opinion/Mistrals-3B-round-shows-value-beyond-AI-benchmarks",
+    "title": "mistral s 3b round shows value beyond ai benchmarks techtarget",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.reuters.com/world/china/openai-offers-ai-chip-design-touts-cost-advantage-over-open-source-cfo-says-2026-09-09",
+    "title": "openai offers ai for chip design touts cost advantage over reuters",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://qz.com/search",
+    "title": "search quartz",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://histalk2.com",
+    "title": "histalk healthcare it news and opinion",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://ua.news/en/technologies/openai-zaiavila-pro-zastosuvannia-shi-u-rozrobtsi-chipiv-i-znizhennia-tsin",
+    "title": "openai announces use of ai in chip design and price cuts ua news",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.outsource.gov.uz/en/media/uzbekistan-launches-ai-leaders-2026-program-with-stanford-and-openaii",
+    "title": "uzbekistan launches ai leaders 2026 program with stanford and",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.08183",
+    "title": "neohorse 1 towards recursive self improvement via agentic post training with routing harness",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.06055",
+    "title": "drivezero end to end driving beyond human demonstrations",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.05588",
+    "title": "ge act 2 0 pretraining and scaling a world action model for robotic manipulation",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.08368",
+    "title": "miles v0 1 production level post training",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.06758",
+    "title": "agentic visual generation from generative models to agentic control",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.06289",
+    "title": "steering geometry validating human value geometry in llm steering space",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.07816",
+    "title": "kalman delta networks uncertainty aware associative memory",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.05594",
+    "title": "scenemosaic efficient and diverse simulation ready scene generation via hybrid agentic layout evolution",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.08404",
+    "title": "environments as scaffold enriching feedback to bootstrap self evolving agents in long horizon tasks",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.06966",
+    "title": "mole detecting insider threats in ai agents",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09158v1",
+    "title": "tango humanoid navigation in cluttered environments with a whole body vision language action model",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09157v1",
+    "title": "learning length extrapolatable recurrent models",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09156v1",
+    "title": "recite agentic reasoning for faithful citation",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09155v1",
+    "title": "syncworld visual calibration enables world models as zero shot simulators",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09153v1",
+    "title": "procedural graphs self evolving execution structures for llm agents",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09152v1",
+    "title": "silver rate is almost optimal for gradient descent acceleration",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09150v1",
+    "title": "copying explains the collective behavior of ai agents in the wild",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09145v1",
+    "title": "point4d long range 4d motion reconstruction",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09143v1",
+    "title": "studying image tokenizers as visual languages in unified multimodal models",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09140v1",
+    "title": "noah learning the full patient journey a longitudinal multimodal time aware model for representation and forecasting",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09137v1",
+    "title": "a data driven framework for identifying and prioritizing rpa opportunities in healthcare processes",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09135v1",
+    "title": "entropy regularized rank masked policy optimization for test time reinforcement learning in code generation",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09134v1",
+    "title": "co evolving harnesses and models on policy correction helps weaker models catch up where imitation fails",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09133v1",
+    "title": "execcritic learn to test test to improve for coding agents",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09130v1",
+    "title": "nearly tight rademacher bounds for sparsely activated neural networks",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09126v1",
+    "title": "a generalization of amari s bayesian duality",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09124v1",
+    "title": "canonical color as a lens into concept decodability in vision encoders and vlms",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09123v1",
+    "title": "mask forcing improving autoregressive video diffusion distillation via dual noise masking rollout",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09119v1",
+    "title": "decal towards physically grounded dexterous vision language action models via contact aware latent co imagination",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09116v1",
+    "title": "when does scale invariant optimization become unstable an exact schedule law with weight decay",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09115v1",
+    "title": "meclear cooperative game theoretic attribution and risk aware memory clearance for long horizon llm agents",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09113v1",
+    "title": "saescientist bench can ai agents conduct autonomous sae interpretability research",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09099v1",
+    "title": "curriculum learning as transport understanding curricula with wasserstein geodesics",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09094v1",
+    "title": "the surprising effectiveness of approximate value iteration in self play",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09090v1",
+    "title": "measuring llm sycophancy under sustained multi turn pressure",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09085v1",
+    "title": "it s not rope that creates sinks the role of self concentration and value non mixing in attention",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09082v1",
+    "title": "godeep annotation free open vocabulary 3d scene understanding via language space lifting",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09081v1",
+    "title": "everything in moderation per domain coverage optima and alignment resistant domain gaps in multi domain mid training",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09076v1",
+    "title": "actreview rebuttal guided training data and rubric rewards for actionable peer review generation",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09075v1",
+    "title": "thinkprior zero rollout difficulty priors for cold start prompt selection in rlvr",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09072v1",
+    "title": "toolloop closed loop tool use data synthesis via decomposed generation and dynamic self feedback",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09070v1",
+    "title": "performance of clinical ai system and physicians and frontier language models in primary care diagnostics",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09069v1",
+    "title": "rethinking learned occupancy in autonomous active mapping with observation gated filtering",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09062v1",
+    "title": "multi task learning for sparsely labeled time series a case study on cold hardiness modeling",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09059v1",
+    "title": "playtrain an efficient reinforcement learning framework for llm generated adaptable javascript games",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09056v1",
+    "title": "time varying data as sheaves an invitation to narratives",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09055v1",
+    "title": "world knowledge in the weights reading concept circuits of vision transformers",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09054v1",
+    "title": "training free task vectors for llm behavioral control",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09048v1",
+    "title": "the audit decides the verdict instrument effects rival demographic bias in llm decision audits",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09038v1",
+    "title": "do reasoning representations help humans evaluate llm outputs",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09030v1",
+    "title": "answer distribution trajectories a stochastic dynamics view of llm reasoning",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09025v1",
+    "title": "task driven processing with coarse to fine glimpse based active perception",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09022v1",
+    "title": "it is not my code anymore",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09020v1",
+    "title": "pic revisiting inr for image coding with fast encoding and sub millisecond decoding",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09012v1",
+    "title": "spheriverse 3d scene understanding from spherical observations in the wild",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09011v1",
+    "title": "closed form of the local galactic potential and stellar distribution function from gaia dr3",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09010v1",
+    "title": "a joint 2d 3d statistical shape model for orthopedic reconstruction",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09009v1",
+    "title": "let it go or learn to self correct continuous diffusion for constrained discrete tasks",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09005v1",
+    "title": "dxpr depth based vision lidar cross modal place recognition using vision foundation models",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.09004v1",
+    "title": "evaluation of contextual understanding in large language models",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://manualdousuario.net/en/libreoffice-download-record-no-ai",
+    "title": "libreoffice breaks download records after declaring it has no ai features",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://ai.meta.com/muse",
+    "title": "muse meta s personal ai agent",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.mcsweeneys.net/articles/why-we-must-return-to-the-office-to-use-ai-in-person",
+    "title": "we must return to the office to use ai in person",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://mathstodon.xyz/@tao/117237320796901560",
+    "title": "tao open math problems being non renewably mined by ai",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://www.bbc.com/news/live/c6x2z0yy32ejt",
+    "title": "flights cancelled at uk airports due to atc issue",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://newsroom.arm.com/blog/arm-mali-g2-ultra-nx-ai-native-mobile-graphics",
+    "title": "arm mali g2 ultra nx gpu desktop class mobile gameplay with ai native graphics",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://sparrow2.tavuslabs.org",
+    "title": "sparrow 2 noise cancellation isn t designed for conversational ai",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://github.com/Player-YN/PawWork_ZhuaZhua",
+    "title": "pawwork_zhuazhua",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://github.com/tigerless-labs/agent-memory",
+    "title": "agent memory",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://github.com/MirroS-Lab/S-Space",
+    "title": "s space",
+    "date": "2026-09-09"
+  },
+  {
+    "url": "https://huggingface.co/google/timesfm-3.0-pytorch",
+    "title": "google timesfm 3 0 pytorch",
+    "date": "2026-09-09"
   }
 ]
