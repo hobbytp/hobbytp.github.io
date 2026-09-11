@@ -258,6 +258,30 @@
       z-index: 999;
       pointer-events: none;
     }
+    /* Footer Styles */
+    footer.footer {
+      margin: 40px auto 0;
+      padding: 2.5rem 1.5rem;
+      background: transparent !important;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--ei-muted);
+      line-height: 1.8;
+      border-top: 1px solid var(--ei-line);
+      max-width: 1200px;
+    }
+    footer.footer p {
+      margin: 0.25rem 0;
+    }
+    footer.footer a {
+      color: var(--ei-muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+    footer.footer a:hover {
+      color: var(--ei-cobalt);
+    }
   </style>
 </head>
 <body class="dark">
@@ -446,6 +470,14 @@
         </div>
       </aside>
     </div>
+
+    <footer class="footer">
+      <p>&copy; 2026 Peng Tan's AI Blog. All rights reserved.</p>
+      <p>
+        <a href="https://github.com/hobbytp/hobbytp.github.io" target="_blank" rel="noopener noreferrer">GitHub</a> |
+        <a href="https://github.com/hobbytp/hobbytp.github.io/issues" target="_blank" rel="noopener noreferrer">反馈</a>
+      </p>
+    </footer>
   </div>
 
   <div class="status-toast" id="status-toast">

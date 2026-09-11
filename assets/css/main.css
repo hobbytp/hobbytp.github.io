@@ -173,12 +173,45 @@ header nav ul li {
     margin: 0;
 }
 
-/* 在文件末尾添加 footer 样式 */
-footer {
-    margin-left: 250px;
-    padding: 2rem;
-    background: #f5f5f5;
+/* 页脚通用样式 */
+footer,
+.footer {
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    background: transparent;
     text-align: center;
-    font-size: 0.9rem;
-    color: #666;
+    font-size: 0.875rem;
+    color: var(--color-secondary, var(--secondary, #94a3b8));
+    line-height: 1.8;
+}
+
+footer p,
+.footer p {
+    margin: 0.25rem 0;
+}
+
+footer a,
+.footer a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+footer a:hover,
+.footer a:hover {
+    color: var(--color-primary, var(--primary, #38bdf8));
+}
+
+/* 仅在带有固定左侧边栏的页面（桌面端）向右偏移 */
+body.has-sidebar footer,
+body.has-sidebar .footer {
+    margin-left: 220px;
+}
+
+@media (max-width: 768px) {
+    body.has-sidebar footer,
+    body.has-sidebar .footer {
+        margin-left: 0;
+    }
 }
