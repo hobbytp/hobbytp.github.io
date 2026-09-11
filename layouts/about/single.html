@@ -1,0 +1,190 @@
+{{ define "main" }}
+<div class="main-container">
+  {{- partial "sidebar.html" . }}
+  
+  <div class="main-content-with-sidebar">
+    <div class="about-container">
+      <article class="post-single about-article">
+        <header class="post-header about-header">
+          <h1 class="post-title">{{ .Title }}</h1>
+          {{- with .Description }}
+          <div class="post-description about-description">{{ . }}</div>
+          {{- end }}
+        </header>
+
+        {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+        {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+
+        <div class="post-content about-content">
+          {{- .Content -}}
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<style>
+.about-container {
+  max-width: 960px;
+  margin: 2rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.about-article.post-single {
+  background: var(--color-bg, #ffffff);
+  border: 1px solid var(--article-border, rgba(148, 163, 184, 0.2));
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.06);
+  padding: clamp(1.5rem, 3vw, 3rem);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .about-article.post-single {
+  background: #111827 !important;
+  border-color: rgba(226, 232, 240, 0.08) !important;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.about-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border, rgba(148, 163, 184, 0.2));
+}
+
+.about-header .post-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-text-primary, var(--color-heading-strong, #0f172a));
+  margin: 0 0 0.75rem;
+  line-height: 1.25;
+}
+
+[data-theme="dark"] .about-header .post-title {
+  color: #f1f5f9 !important;
+}
+
+.about-description {
+  color: var(--color-secondary, #64748b);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+[data-theme="dark"] .about-description {
+  color: #94a3b8 !important;
+}
+
+.about-content {
+  color: var(--color-text-primary, #1c1917);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+[data-theme="dark"] .about-content {
+  color: #cbd5e1 !important;
+}
+
+.about-content h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--color-border, rgba(148, 163, 184, 0.2));
+  padding-bottom: 0.5rem;
+  color: var(--color-text-primary, #0f172a);
+}
+
+[data-theme="dark"] .about-content h2 {
+  color: #f1f5f9 !important;
+  border-bottom-color: rgba(148, 163, 184, 0.15);
+}
+
+.about-content h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #0f172a);
+}
+
+[data-theme="dark"] .about-content h3 {
+  color: #e2e8f0 !important;
+}
+
+.about-content h4 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.about-content ul {
+  padding-left: 1.5rem;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.about-content li {
+  margin: 0.35rem 0;
+}
+
+.about-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.about-content table th,
+.about-content table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border, rgba(148, 163, 184, 0.2));
+  text-align: left;
+}
+
+.about-content table th {
+  background: var(--color-bg-secondary, #f8fafc);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .about-content table th {
+  background: #1f2937 !important;
+  border-color: rgba(148, 163, 184, 0.15) !important;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .about-content table td {
+  border-color: rgba(148, 163, 184, 0.15) !important;
+}
+
+.about-content hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--color-border, rgba(148, 163, 184, 0.2));
+}
+
+[data-theme="dark"] .about-content hr {
+  border-top-color: rgba(148, 163, 184, 0.15);
+}
+
+.about-content a {
+  color: var(--color-primary, #2563eb);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+[data-theme="dark"] .about-content a {
+  color: #38bdf8 !important;
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 0 0.75rem;
+    margin: 1rem auto 2rem;
+  }
+  .about-article.post-single {
+    padding: 1.25rem;
+  }
+}
+</style>
+{{ end }}

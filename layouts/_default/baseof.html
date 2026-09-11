@@ -12,7 +12,8 @@
     {{- partial "head.html" . }}
 </head>
 
-{{- if (or (ne .Kind "page" ) (eq .Layout "archives") (eq .Layout "search")) }}
+{{- $hasSidebar := or (ne .Kind "page") (eq .Layout "archives") (eq .Layout "search") (eq .Type "about") (eq .Layout "about") (and .File (eq .File.BaseFileName "about")) }}
+{{- if $hasSidebar }}
 <body class="list has-sidebar" id="top">
 {{- else }}
 <body id="top">
