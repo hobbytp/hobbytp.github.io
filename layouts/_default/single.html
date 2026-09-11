@@ -120,7 +120,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!links.length || !targets.some(Boolean)) return;
 
-  function updateCurrentSection() {
+  const tocContainer = document.querySelector('.editorial-toc-inner');
+  let lastCurrent = -1;
+  let isTocHovered = false;
+
+  if (tocContainer) {
+    tocContainer.addEventListener('mouseenter', function () { isTocHovered = true; });
+    tocContainer.addEventListener('mouseleave', function () { isTocHovered = false; });
+  }
+
+  function scrollTocToActive(activeLink, isSmooth, force) {
+    if (!tocContainer) return;
+    if (!force && isTocHovered) return;
+    if (tocContainer.scrollHeight <= tocContainer.clientHeight) return;
+
+    const containerRect = tocContainer.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+
+    // Calculate active link's top position relative to scrollable content of tocContainer
+    const relativeTop = linkRect.top - containerRect.top + tocContainer.scrollTop;
+    // Keep active link comfortably centered vertically within the TOC container
+    const targetScrollTop = relativeTop - (containerRect.clientHeight / 2) + (linkRect.height / 2);
+    const maxScroll = tocContainer.scrollHeight - tocContainer.clientHeight;
+    const clampedScrollTop = Math.max(0, Math.min(targetScrollTop, maxScroll));
+
+    if (Math.abs(tocContainer.scrollTop - clampedScrollTop) > 3) {
+      tocContainer.scrollTo({
+        top: clampedScrollTop,
+        behavior: isSmooth ? 'smooth' : 'auto'
+      });
+    }
+  }
+
+  function updateCurrentSection(isSmooth) {
     let current = 0;
     const marker = window.scrollY + 150;
 
@@ -129,6 +161,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (targetTop <= marker) current = index;
     });
 
+    // If near the bottom of the page, activate the last heading
+    const atBottom = (window.innerHeight + Math.ceil(window.scrollY)) >= (document.documentElement.scrollHeight - 60);
+    if (atBottom) {
+      current = targets.length - 1;
+    }
+
     links.forEach(function (link, index) {
       if (index === current) {
         link.setAttribute('aria-current', 'true');
@@ -136,19 +174,43 @@ document.addEventListener('DOMContentLoaded', function () {
         link.removeAttribute('aria-current');
       }
     });
+
+    if (current !== lastCurrent) {
+      lastCurrent = current;
+      const activeLink = links[current];
+      if (activeLink) {
+        scrollTocToActive(activeLink, isSmooth !== false);
+      }
+    }
   }
+
+  links.forEach(function (link, index) {
+    link.addEventListener('click', function () {
+      lastCurrent = index;
+      links.forEach(function (l, i) {
+        if (i === index) l.setAttribute('aria-current', 'true');
+        else l.removeAttribute('aria-current');
+      });
+      scrollTocToActive(link, true, true);
+    });
+  });
 
   let scheduled = false;
   window.addEventListener('scroll', function () {
     if (scheduled) return;
     scheduled = true;
     window.requestAnimationFrame(function () {
-      updateCurrentSection();
+      updateCurrentSection(true);
       scheduled = false;
     });
   }, { passive: true });
-  window.addEventListener('resize', updateCurrentSection);
-  updateCurrentSection();
+
+  window.addEventListener('resize', function () {
+    updateCurrentSection(false);
+  });
+
+  // Initial call without smooth scroll animation
+  updateCurrentSection(false);
 });
 </script>
 {{- end }}
