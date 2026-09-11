@@ -7,12 +7,9 @@ description: "谭鹏(Peng Tan) - AI 领域独立研究者与技术博主，专�
 author: "Peng Tan"
 wordCount: 770
 readingTime: 2
-
-ai_cover: "/images/generated-covers/e8287b7dd66ed751414167457b19e124.webp"
 cover:
-  image: "/images/generated-covers/e8287b7dd66ed751414167457b19e124.webp"
-  alt: "关于作者"
-  ai_generated: true
+  image: "/images/about-author.jpg"
+  alt: "关于作者 - 谭鹏 (Peng Tan)"
 ---
 
 ## 👋 个人简介

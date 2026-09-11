@@ -75,6 +75,27 @@
   color: #94a3b8 !important;
 }
 
+.about-article .entry-cover {
+  margin: 0 0 2.25rem 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  border: 1px solid var(--article-border, rgba(148, 163, 184, 0.2));
+}
+
+.about-article .entry-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+[data-theme="dark"] .about-article .entry-cover {
+  border-color: rgba(226, 232, 240, 0.1) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
 .about-content {
   color: var(--color-text-primary, #1c1917);
   line-height: 1.8;
