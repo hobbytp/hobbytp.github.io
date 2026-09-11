@@ -1,345 +1,5 @@
 [
   {
-    "url": "https://huggingface.co/papers/2609.03796",
-    "title": "llada image building strong image generators with fully open training recipes",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.01507",
-    "title": "latentpress context compression beyond text and vision",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.04098",
-    "title": "why gated deltanet survives 4 bit quantization nvfp4 w4a4 for the recurrent half of a hybrid 27b llm",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.03430",
-    "title": "random attention rethinking kv cache eviction for efficient reasoning",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.04172",
-    "title": "rethinking on policy distillation of large language models ii one training example",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.04083",
-    "title": "core improving compositional reasoning in mllm embedding via reranker distillation",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.02367",
-    "title": "the missing temporal link temporal context routing for script driven audio video generation",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.04148",
-    "title": "terminal universe turning agent trajectories into scalable terminal environments",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2608.27831",
-    "title": "realswe a compositional evaluation of coding agents under realistic user requests",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.03563",
-    "title": "flashrender few step generative rendering via camera controlled video meanflow",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://openai.com/index/daybreak-for-frontline-defenders",
-    "title": "daybreak for frontline defenders 1b to protect essential services",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://openai.com/index/legora-financial-statement-review-with-astra",
-    "title": "legora reviewed 41 documents in minutes with gpt 6 astra",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://openai.com/index/playco-game-prototyping-with-astra",
-    "title": "playco cut manual fixes 50 prototyping games with gpt 6 astra",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://openai.com/index/safety-overview-gpt-6-astra",
-    "title": "safety overview gpt 6 astra",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model",
-    "title": "introducing weathernext 3 our most advanced and accurate global weather ai model",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/blog/Hcompany/neomme",
-    "title": "neomme an efficient multimodal native and multilingual encoder",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/blog/grpo-with-trl-ifstruct",
-    "title": "fine tuning a 350m model for better structured outputs in 100 grpo steps",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/blog/funes",
-    "title": "give your coding agents a memory you own",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/blog/train-to-paint-with-code",
-    "title": "training a coding model to paint watercolours with trl and openenv",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/03/crusoe-reportedly-raises-3b-at-a-30b-valuation",
-    "title": "crusoe reportedly raises 3b at a 30b valuation",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/03/accel-reportedly-in-talks-to-lead-1b-round-for-thinking-machines-at-40b-valuation",
-    "title": "accel reportedly in talks to lead 1b round for thinking machines at 40b valuation",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/03/abliteration-ai-is-making-a-business-out-of-removing-ai-guardrails",
-    "title": "abliteration ai is making a business out of removing ai guardrails",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/03/meta-is-paying-to-peek-at-how-you-use-their-latest-ai-model",
-    "title": "meta is paying to peek at how you use their latest ai model",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/03/openai-launches-astra-its-powerful-and-controversial-new-model",
-    "title": "openai launches astra its powerful and controversial new model",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/03/ollie-is-betting-privacy-can-win-the-ai-assistant-race",
-    "title": "ollie is betting its focus on privacy can help it win the ai assistant race",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/03/googles-latest-ai-weather-model-gives-you-no-excuse-to-forget-your-umbrella",
-    "title": "google s latest ai weather model gives you no excuse to forget your umbrella",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/03/nvidia-confirms-it-will-buy-hugging-face-for-12-9-billion",
-    "title": "nvidia confirms it will buy hugging face for 12 9 billion",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/989601/openai-gpt-6-astra-release",
-    "title": "openai s next big ai model has entered the agi era",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/989435/nvidia-pair-personal-ai-router-home-local-llm-compute-tool-rtx-macbook",
-    "title": "nvidia launches free tool that links idle computers into a personal ai data center",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.theverge.com/tech/989508/google-gmail-docs-keep-live-voice-modes-gemini",
-    "title": "google now lets you chat with gmail docs and keep",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/989503/chatgpt-grok-claude-outage-down",
-    "title": "chatgpt grok and claude all went down at the same time",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.theverge.com/tech/988921/weather-forecast-ai-model-google-satellite-update",
-    "title": "google says its ai weather model is getting better",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.theverge.com/tech/985474/nvidia-buying-hugging-face-deal",
-    "title": "nvidia is buying hugging face for almost 13 billion",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/483598.html",
-    "title": "卡车自动驾驶里程超10亿公里 嬴彻科技定义 货运物理ai",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/483948.html",
-    "title": "新版gpt image 2 5已经能伪造gpt 6发布会了",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/483898.html",
-    "title": "刚刚 gpt 6正式发布 openai 欢迎来到agi时代",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/483839.html",
-    "title": "没有token的cs学生 应立即退学",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/483786.html",
-    "title": "腾讯workbuddy联名硬件来了 首批100多家伙伴入场",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/483189.html",
-    "title": "世界生成模型来了3d头部玩家 可进入生产管线的场景级生成时代来临",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/483600.html",
-    "title": "陈大年复出 入局大模型",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
-    "title": "introducing claude fable 5 1 and claude mythos 5 1 anthropic",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.techinasia.com/news/openai-launches-gpt6-astra-critical-cyber-capability",
-    "title": "openai launches gpt 6 astra with critical cyber capability",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.investing.com/news/stock-market-news/chinese-ai-stocks-rise-after-openai-launches-astra-minimax-jumps-6-4888776",
-    "title": "chinese ai stocks rise after openai launches astra minimax jumps",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.youtube.com/watch?v=wn3llMbVj1s",
-    "title": "openai launches gpt 6 chatgpt claude and grok all crash",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.thestack.technology/ad-astra-openai-launches-gpt-6",
-    "title": "ad astra openai launches gpt 6 the stack",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.fox17online.com/science-and-tech/artificial-intelligence/openai-announces-new-tools-that-connect-chatgpt-with-authorized-patient-records",
-    "title": "openai announces new tools that connect chatgpt with authorized",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.youtube.com/watch?v=IqlvVPOPRfc",
-    "title": "fed governor turns dovish nvidia s acquisition motives youtube",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://d2233.cms.socastsrm.com/2026/09/03/openai-launches-new-astra-model-amid-growing-scrutiny-over-agents-safety",
-    "title": "openai launches new astra model amid growing scrutiny over",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://ph.investing.com/news/stock-market-news/openai-launches-gpt6-astra-for-enterprise-users-today-93CH-2577148",
-    "title": "openai launches gpt 6 astra for enterprise users today",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.instagram.com/reel/Dc1qAFWzEDb",
-    "title": "openai just dropped gpt 6 astra agi might finally be here",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://aibriefs.news",
-    "title": "real time ai news aggregator with daily digest",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://adchestra.com",
-    "title": "i built my first mcp to manage google ads",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://aietalks.com",
-    "title": "a searchable timestamped index of 1 124 ai engineer talks",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://ardent.ai",
-    "title": "ardent a code first agent for non engineering work",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://github.com/nhobin219/litelink",
-    "title": "litelink local first embedded stream capture into iceberg tables",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://github.com/2akouwu/reverify",
-    "title": "reverify",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://github.com/OnlyTerp/opengrok",
-    "title": "opengrok",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.kedglobal.com/artificial-intelligence/newsView/ked202607210007",
-    "title": "go grandmaster shin defeats ai katago with a two stone handicap",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.jordangoodman.xyz/the-post-ai-internet-doesnt-look-great",
-    "title": "the post ai internet doesn t look great",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://babyloniantwins.com/blog/porting-a-1993-amiga-game-to-godot",
-    "title": "porting my 1993 amiga game to godot with an llm reading the 68000 assembly",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://github.com/mlc-ai/web-llm",
-    "title": "webllm high performance in browser llm inference engine",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://openteams.com/intelligence-vs-cost",
-    "title": "llms intelligence vs cost",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://www.theguardian.com/world/2026/sep/02/japan-new-speed-limit-30kmh-narrow-city-streets",
-    "title": "japan halves speed limit to 30km h on all narrow city streets",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp",
-    "title": "deepseek ai deepseek v4 flash vision exp",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
-    "title": "sentence transformers all minilm l6 v2",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/openai-community/gpt2",
-    "title": "openai community gpt2",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/XHToken/Spark-X2.5-4B",
-    "title": "xhtoken spark x2 5 4b",
-    "date": "2026-09-04"
-  },
-  {
-    "url": "https://huggingface.co/google-bert/bert-base-uncased",
-    "title": "google bert bert base uncased",
-    "date": "2026-09-04"
-  },
-  {
     "url": "https://productrise.app/blog/google-ai-mode-prefers-more-expensive-products",
     "title": "google ai mode shows same products 21 6 more expensive than traditional search",
     "date": "2026-09-05"
@@ -2623,5 +2283,595 @@
     "url": "https://github.com/ZJU-REAL/Easel",
     "title": "easel",
     "date": "2026-09-10"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.10715",
+    "title": "ncp archpreview technical report moving towards latent space language models through next concept prediction",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.11929",
+    "title": "sensenova u1 5 towards native unified visual intelligence",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.05903",
+    "title": "evosafeharness evolving model and domain specific harnesses for securing agents",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.07064",
+    "title": "spatialblock enhancing spatial intelligence in lvlms via synthetic block stacking problem",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.06931",
+    "title": "cardea auditable reasoning grounded in spatial evidence for end to end coronary angiography interpretation",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.11499",
+    "title": "recursive code world models building complex worlds through recursive scene programs",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/papers/2608.27875",
+    "title": "hyquant hybrid precision quantization for llm attention",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.11548",
+    "title": "world in world explore the world with world models",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.10712",
+    "title": "an open recipe for imo gold training nemotron for olympiad mathematics",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11923v1",
+    "title": "gpu cfr 80x faster counterfactual regret minimization by compiling the game to static dataflow and cuda graph replay",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11918v1",
+    "title": "general quantification of covariate and concept shifts",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11917v1",
+    "title": "data scarcity and model sparsity mixtures of experts overfit more to repeated data",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11916v1",
+    "title": "can edge deployable vision language models identify species",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11915v1",
+    "title": "generative marketing mix modeling a causal inference framework linking geo and gem to business impact",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11913v1",
+    "title": "distance generalization in transformers why bother with positional encoding",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11911v1",
+    "title": "artificial id drive and persistent alignment in agentic ai",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11910v1",
+    "title": "from protocols to evidence bounded claims for ai in service of the common good",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11904v1",
+    "title": "tart a modular tool for technique aware audio to tablature guitar transcription",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11900v1",
+    "title": "mindtopo can foundation models reason in topological space",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11899v1",
+    "title": "caption once frames on demand visual need routing for budget aware agentic long video understanding",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11897v1",
+    "title": "causalarena benchmarking causal discovery in the foundation model era",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11894v1",
+    "title": "3d point splatting for mmwave radar novel view synthesis",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11892v1",
+    "title": "nuha speech building general purpose arabic speech llms",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11886v1",
+    "title": "guided super resolution of digital elevation models with diffusion based image generators",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11884v1",
+    "title": "cora nas coarse ranking and anchor residual refinement for neural architecture search",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11878v1",
+    "title": "domain specific hallucination detection in large language models",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11877v1",
+    "title": "biology in the loop amortized adaptive hit discovery in crispr screens",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11876v1",
+    "title": "on the regularization landscape for the linear recommendation models",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11873v1",
+    "title": "the last ai built by humans toward genuine recursive self improvement",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11872v1",
+    "title": "evaluating time series foundation models and multimodal dietary context for cgm forecasting",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11870v1",
+    "title": "augustinian babylm what ostensive definition can and cannot teach a small language model",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11867v1",
+    "title": "adamx cosine similarity meets gradient descent",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11865v1",
+    "title": "epistemic orientation predicts legislative effectiveness among members of the us congress",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11864v1",
+    "title": "retrothinker enabling retrospective thinking in speech llms",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11860v1",
+    "title": "explainability assistant a conversational xai interface for interpreting energy consumption models",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11859v1",
+    "title": "from parameters to answers how llms retrieve and use their internal knowledge",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11851v1",
+    "title": "indictrimix developing language identification datasets and models for tri language code mixing",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11842v1",
+    "title": "model aware schedules improve generation via fiberwise optimal transport",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11838v1",
+    "title": "target leakage not model class explains reported accuracy in survey based cardiovascular screening a leakage tiered audit of glass box and tabular foundation models",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11807v1",
+    "title": "near optimal reinforcement learning with multi step transition lookahead",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11805v1",
+    "title": "understanding operator attitudes toward ai supported decision making in maritime operations",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11804v1",
+    "title": "logit refiner improving visual autoregressive models via intra scale dependency modeling",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11801v1",
+    "title": "thinking with looped flows",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11799v1",
+    "title": "specguard inference time backdoor detection for free",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11790v1",
+    "title": "dynamic language model representations for multi objective reaction optimisation",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11786v1",
+    "title": "beyond word error rate a switch aware evaluation of asr and audio language models on english yoruba code switched speech",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11780v1",
+    "title": "predicting privacy leakage from weight spectral density",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11777v1",
+    "title": "differentially private eeg feature anonymization a privacy utility case study in clinical neurophysiology",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11772v1",
+    "title": "whisper based speech transcription from videos across multiple languages for cross cultural understanding",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11770v1",
+    "title": "the widening evaluation gap in medical large language model research 2023 to 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11769v1",
+    "title": "recognizing is not reversing a controlled inversion test of fact preserving news framing",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11768v1",
+    "title": "a unified per token gating family for on policy distillation fkl rkl mixing with multi channel and bias coefficients",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11762v1",
+    "title": "component aware differential privacy for federated multilingual speech llms",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11758v1",
+    "title": "rag safety bench reliable evaluation of retrieval augmented llm safety",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11752v1",
+    "title": "sirf a spec internalized risk foundation model for industrial content risk control",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11749v1",
+    "title": "sparsity regularized and robust mean variance portfolio selection under ellipsoidal uncertainty",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11744v1",
+    "title": "building py kvcache a performance characterization of external kv caching for vllm with nvme ssds",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2609.11739v1",
+    "title": "locus task aware low rank post training for token efficient language generation",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+    "title": "deepseek ai deepseek v4 1 flash",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/XHToken/Spark-X2.5-4B",
+    "title": "xhtoken spark x2 5 4b",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/nex-agi/Nex-N2.5-mini",
+    "title": "nex agi nex n2 5 mini",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-NVFP4",
+    "title": "nvidia qwen3 8 flash next nvfp4",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/Jackrong/Qwopus3.8-27B-Flash-GGUF",
+    "title": "jackrong qwopus3 8 27b flash gguf",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+    "title": "zai org glm 5 3 flash",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://botbin.io?v=next",
+    "title": "botbin io pastebin for ai agent artifacts",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://usefeyn.com/blog/multimatte",
+    "title": "multimatte a promptable image background removal model",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://github.com/egma-ai/egma",
+    "title": "open source simulation testing infra for voice agents",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://github.com/2akouwu/reverify",
+    "title": "reverify",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://github.com/xiaYuTian11/maskit",
+    "title": "maskit",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://github.com/Devesh-Shirsath/spotkit",
+    "title": "spotkit",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://openai.com/index/using-codex-chatgpt-to-search-for-new-antimicrobials",
+    "title": "how a researcher uses codex and chatgpt to search for new antimicrobial molecules",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://openai.com/index/put-data-to-work",
+    "title": "now everyone can put data to work",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://openai.com/index/introducing-chatgpt-financial-services",
+    "title": "introducing chatgpt for financial services",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://openai.com/index/expanding-ai-access-us-government",
+    "title": "expanding ai access and cyber defense for federal state local and tribal governments",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://openai.com/index/introducing-the-agents-api",
+    "title": "introducing the agents api",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://openai.com/index/introducing-gpt-live-1-in-the-api",
+    "title": "build more natural voice experiences with gpt live 1 in the api",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://blog.google/products-and-platforms/products/search/running-race-training-tips",
+    "title": "3 ways to prep for your next big race with search",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://huggingface.co/blog/gradio-workflow-1111",
+    "title": "rebuilding automatic1111 with gradio workflow",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/jensen-huang-explains-why-nvidia-will-grow-an-astounding-70-next-year",
+    "title": "jensen huang explains why nvidia will grow an astounding 70 next year",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/mark-wahlberg-is-coming-to-techcrunch-disrupt-2026",
+    "title": "mark wahlberg is coming to techcrunch disrupt 2026 and he wants to talk about your work not his",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/openai-puts-pro-subscriptions-on-hold-due-to-astra-demand",
+    "title": "openai puts pro subscriptions on hold due to astra demand",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/anthropic-details-distillation-campaigns-from-alibaba-moonshot-ai-and-deepseek",
+    "title": "anthropic details distillation campaigns from alibaba moonshot ai and deepseek",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/metas-ai-agent-muse-is-now-the-no-2-app-in-the-us",
+    "title": "meta s ai agent muse is now the no 2 app in the us",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/anthropic-reveals-rogue-ai-agents-hate-captchas-just-like-you",
+    "title": "anthropic reveals rogue ai agents hate captchas just like you",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/indias-pocket-fm-doubles-revenue-run-rate-to-500m-as-ai-powers-93-of-audio-content",
+    "title": "india s pocket fm doubles revenue run rate to 500m as ai powers 93 of audio content",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/ai-agents-are-flooding-public-services-with-new-requests",
+    "title": "ai agents are flooding public services with new requests",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/10/maven-robotics-wants-to-steal-your-robot-deployment-deal",
+    "title": "maven robotics wants to steal your robot deployment deal",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.theverge.com/tech/989853/slackforce-surfaces-launch",
+    "title": "slack can now vibe code interactive charts and reports inside chats",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.theverge.com/policy/993308/computer-science-ai-education-coding-kids",
+    "title": "schools are catching on to big tech s playbook",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/993465/universal-music-elevenlabs-ai",
+    "title": "universal music is launching an ai music platform with elevenlabs",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.theverge.com/tech/993391/meta-muse-ai-hands-on",
+    "title": "meta s muse ai works and creeps me out",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.theverge.com/podcast/992141/decoder-mailbag-ai-backlash-surveillance-midterms-data-centers",
+    "title": "why the current tech backlash feels different",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/993263/where-does-openai-get-mathematics-training-data",
+    "title": "mathematicians want proof openai didn t use their work",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/487163.html",
+    "title": "3万台无人车之后 这家公司盯上了城市级物理ai",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/487092.html",
+    "title": "openai这是拿千禧年难题当benchmark刷啊",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/487055.html",
+    "title": "吹爆开源 runninghub让minimax h3满血提速12倍 本地部署照样起飞",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486934.html",
+    "title": "eccv上 顶尖学者们开始研究如何让ai做生意了",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486900.html",
+    "title": "全球首个3d原生城市世界模型abot earth 0 7发布 构建ai理解真实世界的入口",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486747.html",
+    "title": "全球首个可仿真的人 场景交互重建框架 hsimul3r 让人类视频真正成为机器人技能来源",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486716.html",
+    "title": "这个新开源的世界模型只有1 3b 单卡就能实时跑",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486684.html",
+    "title": "agi时代的第一个生图模型 chatgpt images 2 5上线",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486651.html",
+    "title": "营销科技巨头蓝色光标与全球达人营销ai平台ahacreator达成深度合作 让品牌更高效连接全球500万创作者",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/486625.html",
+    "title": "一周连发6个模型 这家公司把具身智能的闭环跑通了",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier",
+    "title": "making sovereign open weight ai the technology frontier mistral",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://today.westlaw.com/Document/I2a3c9db0ad5f11f1ac97a37b4364fa53/View/FullText.html?transitionType=CategoryPageItem&contextData=%28sc.Default%29",
+    "title": "openai launches financial tool for wall street bankers",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://news.bpdata.com/article/openai-launches-agents-api-in-public-beta-exposing-codex-b32e9b84",
+    "title": "openai launches agents api in public beta exposing codex",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+    "title": "introducing claude fable 5 1 and claude mythos 5 1 anthropic",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://pypi.org/project/langchain-anthropic",
+    "title": "langchain anthropic pypi",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.kucoin.com/news/flash/deepseek-launches-v4-1-model-openai-introduces-financial-ai-assistant",
+    "title": "deepseek launches v4 1 model openai introduces financial ai",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.cosmicjs.com/rundown/cosmic-rundown-tailwind-joins-shopify-meta-launches-muse",
+    "title": "tailwind joins shopify meta launches muse ai agent cosmic js",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.afr.com/world/north-america/not-selling-my-soul-why-this-aussie-maths-professor-took-on-openai-20260911-p60wf8",
+    "title": "not selling my soul why this aussie maths professor took on openai",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://aventure.vc/news/2026-09-10-deepseek-releases-v4-1-flash-says-it-outperforms-flagship-v4-pro",
+    "title": "deepseek releases v4 1 flash says it out aventure news",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+    "title": "detecting and countering misuse of ai september 2026",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://slimemoldtimemold.com/2026/08/05/a-stupid-idea-for-ai-alignment-we-came-up-with-by-looking-at-the-list-of-specification-gaming-behaviours",
+    "title": "a stupid idea for ai alignment we came with by looking at specification gaming",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://blog.genesmindsmachines.com/p/im-sorry-youre-not-going-to-die-from",
+    "title": "i m sorry you re not going to die from an ai engineered supervirus",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://terriblesoftware.org/2026/09/10/ai-is-breaking-this-thing-we-call-trust",
+    "title": "ai is breaking this thing we call trust",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://www.the-independent.com/arts-entertainment/music/news/muse-band-meta-ai-tool-handle-b3047291.html",
+    "title": "rock band muse lose social media handles to meta s new ai tool",
+    "date": "2026-09-11"
+  },
+  {
+    "url": "https://jeffs.blog/p/defining-ai-psychosis-part-2-prolific",
+    "title": "defining ai psychosis part 2 prolific ai psychosis",
+    "date": "2026-09-11"
   }
 ]
