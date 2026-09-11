@@ -38,9 +38,9 @@
 
 /* Dark theme colors */
 [data-theme="dark"] {
-  --color-primary: #3b82f6;
-  --color-primary-50: #1e3a8a;
-  --color-primary-100: #1e40af;
+  --color-primary: #60a5fa;
+  --color-primary-50: rgba(56, 189, 248, 0.14);
+  --color-primary-100: rgba(56, 189, 248, 0.25);
   --color-accent: #fbbf24;
   --color-secondary: #94a3b8;
   --color-text: #e5e7eb;
@@ -878,11 +878,34 @@ body.has-sidebar > .header {
   color: var(--color-primary);
   font-size: 0.7rem;
   font-weight: 600;
-  padding: 0.15rem 0.5rem;
+  padding: 0.15rem 0.55rem;
   border-radius: 9999px;
   margin-bottom: 0.05rem;
   text-decoration: none;
   width: fit-content;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  transition: all 0.2s ease;
+}
+
+.article-card-category:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+[data-theme="dark"] .article-card-category,
+body.dark .article-card-category,
+.dark .article-card-category {
+  background-color: rgba(56, 189, 248, 0.12);
+  color: #7dd3fc;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+}
+
+[data-theme="dark"] .article-card-category:hover,
+body.dark .article-card-category:hover,
+.dark .article-card-category:hover {
+  background-color: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.5);
 }
 
 .article-card-title {
@@ -1053,7 +1076,7 @@ body.has-sidebar > .header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
   
@@ -1069,14 +1092,117 @@ body.has-sidebar > .header {
   );
 }
 
-[data-theme="dark"] .ai-generated-cover {
-  background: linear-gradient(135deg,
-    hsl(var(--hue-1), 60%, 30%),
-    hsl(var(--hue-2), 60%, 35%),
-    hsl(var(--hue-3), 60%, 40%)
-  );
+/* Category Specific Gradients in Light Mode */
+.ai-generated-cover.category-news,
+.ai-generated-cover.category-daily_ai {
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%) !important;
+}
+.ai-generated-cover.category-celebrity_insights {
+  background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #7c3aed 100%) !important;
+}
+.ai-generated-cover.category-papers { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; }
+.ai-generated-cover.category-technologies { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important; }
+.ai-generated-cover.category-projects { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important; }
+.ai-generated-cover.category-ai_tools { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important; }
+.ai-generated-cover.category-mas { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important; }
+.ai-generated-cover.category-training { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%) !important; }
+
+/* Dark mode fallback cover - Deep Midnight Tech Aurora Aesthetic (matching Image 2) */
+[data-theme="dark"] .ai-generated-cover,
+body.dark .ai-generated-cover,
+.dark .ai-generated-cover {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(56, 189, 248, 0.42) 0%, rgba(14, 165, 233, 0.15) 40%, transparent 65%),
+    radial-gradient(circle at 14% 84%, rgba(147, 51, 234, 0.38) 0%, rgba(99, 102, 241, 0.18) 40%, transparent 65%),
+    linear-gradient(145deg, #060a14 0%, #0c1427 48%, #141738 100%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+[data-theme="dark"] .ai-generated-cover.category-news,
+[data-theme="dark"] .ai-generated-cover.category-daily_ai,
+body.dark .ai-generated-cover.category-news,
+body.dark .ai-generated-cover.category-daily_ai,
+.dark .ai-generated-cover.category-news,
+.dark .ai-generated-cover.category-daily_ai {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(56, 189, 248, 0.42) 0%, rgba(14, 165, 233, 0.15) 40%, transparent 65%),
+    radial-gradient(circle at 14% 84%, rgba(147, 51, 234, 0.38) 0%, rgba(99, 102, 241, 0.18) 40%, transparent 65%),
+    linear-gradient(145deg, #060a14 0%, #0c1427 48%, #141738 100%) !important;
+}
+
+[data-theme="dark"] .ai-generated-cover.category-celebrity_insights,
+body.dark .ai-generated-cover.category-celebrity_insights,
+.dark .ai-generated-cover.category-celebrity_insights {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(56, 189, 248, 0.4) 0%, transparent 60%),
+    radial-gradient(circle at 14% 84%, rgba(168, 85, 247, 0.38) 0%, transparent 60%),
+    linear-gradient(145deg, #060a14 0%, #10122e 48%, #1c1538 100%) !important;
+}
+
+[data-theme="dark"] .ai-generated-cover.category-papers,
+body.dark .ai-generated-cover.category-papers,
+.dark .ai-generated-cover.category-papers {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(129, 140, 248, 0.4) 0%, transparent 60%),
+    radial-gradient(circle at 14% 84%, rgba(192, 132, 252, 0.35) 0%, transparent 60%),
+    linear-gradient(145deg, #060a14 0%, #0d122d 48%, #191436 100%) !important;
+}
+
+[data-theme="dark"] .ai-generated-cover.category-technologies,
+body.dark .ai-generated-cover.category-technologies,
+.dark .ai-generated-cover.category-technologies {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(244, 114, 182, 0.36) 0%, transparent 60%),
+    radial-gradient(circle at 14% 84%, rgba(168, 85, 247, 0.35) 0%, transparent 60%),
+    linear-gradient(145deg, #060a14 0%, #1a0f26 48%, #28122c 100%) !important;
+}
+
+[data-theme="dark"] .ai-generated-cover.category-projects,
+body.dark .ai-generated-cover.category-projects,
+.dark .ai-generated-cover.category-projects {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(34, 211, 238, 0.4) 0%, transparent 60%),
+    radial-gradient(circle at 14% 84%, rgba(59, 130, 246, 0.35) 0%, transparent 60%),
+    linear-gradient(145deg, #060a14 0%, #0a1b2d 48%, #0e243c 100%) !important;
+}
+
+[data-theme="dark"] .ai-generated-cover.category-ai_tools,
+body.dark .ai-generated-cover.category-ai_tools,
+.dark .ai-generated-cover.category-ai_tools {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(52, 211, 153, 0.38) 0%, transparent 60%),
+    radial-gradient(circle at 14% 84%, rgba(45, 212, 191, 0.35) 0%, transparent 60%),
+    linear-gradient(145deg, #060a14 0%, #071e19 48%, #0a2d24 100%) !important;
+}
+
+[data-theme="dark"] .ai-generated-cover.category-mas,
+body.dark .ai-generated-cover.category-mas,
+.dark .ai-generated-cover.category-mas {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(251, 191, 36, 0.35) 0%, transparent 60%),
+    radial-gradient(circle at 14% 84%, rgba(244, 63, 94, 0.35) 0%, transparent 60%),
+    linear-gradient(145deg, #060a14 0%, #1e131d 48%, #2b141a 100%) !important;
+}
+
+[data-theme="dark"] .ai-generated-cover.category-training,
+body.dark .ai-generated-cover.category-training,
+.dark .ai-generated-cover.category-training {
+  background-color: #060a14 !important;
+  background-image: 
+    radial-gradient(circle at 88% 16%, rgba(45, 212, 191, 0.38) 0%, transparent 60%),
+    radial-gradient(circle at 14% 84%, rgba(129, 140, 248, 0.35) 0%, transparent 60%),
+    linear-gradient(145deg, #060a14 0%, #0d172a 48%, #1e1b4b 100%) !important;
+}
+
+/* Light mode diagonal stripes, disabled in dark mode */
 .ai-generated-cover::before {
   content: '';
   position: absolute;
@@ -1092,7 +1218,13 @@ body.has-sidebar > .header {
     rgba(255, 255, 255, 0.03) 20px
   );
   animation: slide 20s linear infinite;
-  pointer-events: none; /* 允许点击穿透 */
+  pointer-events: none;
+}
+
+[data-theme="dark"] .ai-generated-cover::before,
+body.dark .ai-generated-cover::before,
+.dark .ai-generated-cover::before {
+  display: none !important;
 }
 
 @keyframes slide {
@@ -1105,43 +1237,55 @@ body.has-sidebar > .header {
   color: white;
   z-index: 1;
   position: relative;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  pointer-events: none; /* 允许点击穿透到父元素 */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  max-width: 100%;
+  padding: 0 0.75rem;
 }
 
 .ai-generated-cover .cover-category {
-  font-size: 0.75rem;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.25rem 0.75rem;
-  border-radius: 1rem;
-  margin-bottom: 0.75rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  padding: 0.15rem 0.65rem;
+  border-radius: 9999px;
+  margin-bottom: 0.4rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: inline-block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .ai-generated-cover .cover-title {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  margin: 0 0 0.5rem 0;
-  line-height: 1.2;
+  margin: 0 0 0.3rem 0;
+  line-height: 1.3;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .ai-generated-cover .cover-description {
-  font-size: 0.875rem;
-  opacity: 0.9;
-  line-height: 1.4;
-  max-width: 90%;
+  font-size: 0.78rem;
+  color: rgba(226, 232, 240, 0.88);
+  line-height: 1.38;
+  max-width: 95%;
   margin: 0 auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
-
-/* Category Specific Gradients */
-.ai-generated-cover.category-papers { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important; }
-.ai-generated-cover.category-technologies { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important; }
-.ai-generated-cover.category-projects { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important; }
-.ai-generated-cover.category-ai_tools { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%) !important; }
-.ai-generated-cover.category-mas { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%) !important; }
-.ai-generated-cover.category-training { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%) !important; }
 
 /* ===== Shortcode Styles ===== */
 

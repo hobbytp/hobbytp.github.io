@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Preview Test</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/custom.css">
+  <link rel="stylesheet" href="../assets/css/extended/blog-styling.css">
+  <style>
+    body {
+      background-color: #0b1120;
+      color: #e5e7eb;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 2rem;
+      margin: 0;
+    }
+    .preview-container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .preview-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #f8fafc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .theme-toggle-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s ease;
+    }
+    .theme-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .card-wrapper {
+      position: relative;
+    }
+    .card-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    /* 1. 修改前效果 (复现图一的棕褐色粗斜条纹和暗蓝色看不清的标签) */
+    .card-before .ai-generated-cover {
+      background: linear-gradient(135deg, #7c4b18 0%, #8a531a 50%, #995c1d 100%) !important;
+    }
+    .card-before .ai-generated-cover::before {
+      display: block !important;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 230, 150, 0.08) 10px,
+        rgba(255, 230, 150, 0.08) 20px
+      ) !important;
+    }
+    .card-before .article-card-category {
+      background-color: #172554 !important;
+      color: #1e3a8a !important;
+      border: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="preview-container">
+    <div class="preview-title">
+      <span>暗色模式卡片效果对比预览 (Dark Mode Card Preview)</span>
+      <button class="theme-toggle-btn" onclick="toggleTheme()">🌓 切换明暗主题 (Toggle Theme)</button>
+    </div>
+
+    <div class="preview-grid">
+      <!-- 1. 原版效果 (Before): 图一中的问题状态 -->
+      <div class="card-wrapper card-before">
+        <div class="card-label" style="color: #f87171;">❌ 修改前 (Before - 图一现状)</div>
+        <article class="article-card">
+          <div class="article-card-image">
+            <div class="ai-generated-cover">
+              <div class="cover-content">
+                <div class="cover-category">news</div>
+                <h3 class="cover-title">每日AI动态 - 2026-09-10</h3>
+                <div class="cover-description">2026-09-10的AI技术动态与重磅突破汇总</div>
+              </div>
+            </div>
+          </div>
+          <div class="article-card-content">
+            <a href="#" class="article-card-category" onclick="event.stopPropagation()">news</a>
+            <h2 class="article-card-title">
+              <a href="#">每日AI动态 - 2026-09-10</a>
+            </h2>
+            <div class="article-card-description">
+              2026-09-10的AI技术动态与重磅突破汇总
+            </div>
+            <div class="article-card-meta">
+              <span class="article-card-meta-item">📅 2026-09-10</span>
+              <span class="article-card-meta-item">⏱️ 18 分钟</span>
+              <span class="article-card-meta-item">📝 6806 字</span>
+            </div>
+            <div class="article-card-tags">
+              <a href="#" class="article-card-tag">#AI动态</a>
+              <a href="#" class="article-card-tag">#技术更新</a>
+              <a href="#" class="article-card-tag">#开源模型</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 2. 新版效果 (After): 类似图二的暗色极光科技感 + 修复的分类标签 (直接由 custom.css 驱动) -->
+      <div class="card-wrapper card-after">
+        <div class="card-label" style="color: #4ade80;">✨ 修改后 (After - 极光科技感)</div>
+        <article class="article-card">
+          <div class="article-card-image">
+            <div class="ai-generated-cover category-news" id="cover-test-news">
+              <div class="cover-content">
+                <div class="cover-category">news</div>
+                <h3 class="cover-title">每日AI动态 - 2026-09-10</h3>
+                <div class="cover-description">2026-09-10的AI技术动态与重磅突破汇总</div>
+              </div>
+            </div>
+          </div>
+          <div class="article-card-content">
+            <a href="#" class="article-card-category" onclick="event.stopPropagation()">news</a>
+            <h2 class="article-card-title">
+              <a href="#">每日AI动态 - 2026-09-10</a>
+            </h2>
+            <div class="article-card-description">
+              2026-09-10的AI技术动态与重磅突破汇总
+            </div>
+            <div class="article-card-meta">
+              <span class="article-card-meta-item">📅 2026-09-10</span>
+              <span class="article-card-meta-item">⏱️ 18 分钟</span>
+              <span class="article-card-meta-item">📝 6806 字</span>
+            </div>
+            <div class="article-card-tags">
+              <a href="#" class="article-card-tag">#AI动态</a>
+              <a href="#" class="article-card-tag">#技术更新</a>
+              <a href="#" class="article-card-tag">#开源模型</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 3. 图二效果 (Reference): 实际图片封面对比 -->
+      <div class="card-wrapper card-reference">
+        <div class="card-label" style="color: #60a5fa;">📌 图二参考 (Reference - 实际封面图)</div>
+        <article class="article-card">
+          <div class="article-card-image">
+            <img src="../static/images/celebrity_insights/human_os_cover_card.webp" alt="在人工智能时代保持人性">
+          </div>
+          <div class="article-card-content">
+            <a href="#" class="article-card-category" onclick="event.stopPropagation()">celebrity_insights</a>
+            <h2 class="article-card-title">
+              <a href="#">在人工智能时代保持人性：Michael Edmondson 博士的八大人类核心特质框架</a>
+            </h2>
+            <div class="article-card-description">
+              基于 Michael Edmondson 博士著作《在人工智能时代保持人性》的解读：在 AI 普及的时代，个人与组织如何通过强化人类核心特质来应对技术变革。
+            </div>
+            <div class="article-card-meta">
+              <span class="article-card-meta-item">📅 2026-08-26</span>
+              <span class="article-card-meta-item">⏱️ 5 分钟</span>
+              <span class="article-card-meta-item">📝 1850 字</span>
+            </div>
+            <div class="article-card-tags">
+              <a href="#" class="article-card-tag">#Michael Edmondson</a>
+              <a href="#" class="article-card-tag">#人性</a>
+              <a href="#" class="article-card-tag">#AI时代</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const newTheme = isDark ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      document.body.style.backgroundColor = isDark ? '#f8fafc' : '#0b1120';
+      document.body.style.color = isDark ? '#1f2937' : '#e5e7eb';
+      const title = document.querySelector('.preview-title span');
+      title.textContent = isDark ? '明亮模式卡片效果对比预览 (Light Mode Card Preview)' : '暗色模式卡片效果对比预览 (Dark Mode Card Preview)';
+    }
+  </script>
+</body>
+</html>
