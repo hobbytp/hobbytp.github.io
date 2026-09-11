@@ -122,16 +122,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const tocContainer = document.querySelector('.editorial-toc-inner');
   let lastCurrent = -1;
-  let isTocHovered = false;
+  let wasAtBottom = false;
+  let userScrollingTocTimeout = null;
+  let isUserScrollingToc = false;
 
   if (tocContainer) {
-    tocContainer.addEventListener('mouseenter', function () { isTocHovered = true; });
-    tocContainer.addEventListener('mouseleave', function () { isTocHovered = false; });
+    tocContainer.addEventListener('wheel', function () {
+      isUserScrollingToc = true;
+      clearTimeout(userScrollingTocTimeout);
+      userScrollingTocTimeout = setTimeout(function () {
+        isUserScrollingToc = false;
+      }, 2000);
+    }, { passive: true });
+
+    tocContainer.addEventListener('touchstart', function () {
+      isUserScrollingToc = true;
+      clearTimeout(userScrollingTocTimeout);
+      userScrollingTocTimeout = setTimeout(function () {
+        isUserScrollingToc = false;
+      }, 2000);
+    }, { passive: true });
   }
 
   function scrollTocToActive(activeLink, isSmooth, force) {
     if (!tocContainer) return;
-    if (!force && isTocHovered) return;
+    if (!force && isUserScrollingToc) return;
     if (tocContainer.scrollHeight <= tocContainer.clientHeight) return;
 
     const containerRect = tocContainer.getBoundingClientRect();
@@ -140,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Calculate active link's top position relative to scrollable content of tocContainer
     const relativeTop = linkRect.top - containerRect.top + tocContainer.scrollTop;
     // Keep active link comfortably centered vertically within the TOC container
-    const targetScrollTop = relativeTop - (containerRect.clientHeight / 2) + (linkRect.height / 2);
+    const targetScrollTop = relativeTop - (tocContainer.clientHeight / 2) + (linkRect.height / 2);
     const maxScroll = tocContainer.scrollHeight - tocContainer.clientHeight;
     const clampedScrollTop = Math.max(0, Math.min(targetScrollTop, maxScroll));
 
@@ -175,7 +190,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    if (current !== lastCurrent) {
+    const sectionChanged = (current !== lastCurrent);
+    const reachedBottom = (atBottom && !wasAtBottom);
+    wasAtBottom = atBottom;
+
+    if (sectionChanged || reachedBottom) {
       lastCurrent = current;
       const activeLink = links[current];
       if (activeLink) {

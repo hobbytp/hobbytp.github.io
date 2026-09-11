@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文章右侧目录跟随滚动效果预览 (TOC Auto-Scroll Preview)</title>
+  <style>
+    :root {
+      --ei-bg: #f8fafc;
+      --ei-surface: #ffffff;
+      --ei-ink: #0f172a;
+      --ei-muted: #64748b;
+      --ei-line: rgba(148, 163, 184, 0.25);
+      --ei-line-strong: rgba(148, 163, 184, 0.45);
+      --ei-cobalt: #2563eb;
+      --ei-cobalt-deep: #1d4ed8;
+      --ei-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --ei-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    body.dark {
+      --ei-bg: #090d16;
+      --ei-surface: #111827;
+      --ei-ink: #f1f5f9;
+      --ei-muted: #94a3b8;
+      --ei-line: rgba(255, 255, 255, 0.12);
+      --ei-line-strong: rgba(255, 255, 255, 0.28);
+      --ei-cobalt: #38bdf8;
+      --ei-cobalt-deep: #7dd3fc;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--ei-bg);
+      color: var(--ei-ink);
+      font-family: var(--ei-font-sans);
+      line-height: 1.7;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Fixed Control Bar */
+    .preview-header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      z-index: 1000;
+      color: #f8fafc;
+      font-size: 13px;
+    }
+    .preview-title {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+    .preview-badge {
+      background: #2563eb;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+    .preview-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .preview-btn {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .preview-btn:hover {
+      background: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
+    }
+    .preview-btn.primary {
+      background: #2563eb;
+      border-color: #3b82f6;
+    }
+    .preview-btn.primary:hover {
+      background: #1d4ed8;
+    }
+
+    /* Layout Wrapper */
+    .container {
+      max-width: 1200px;
+      margin: 90px auto 60px;
+      padding: 0 24px;
+    }
+    .editorial-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 50px;
+      align-items: start;
+    }
+
+    /* Main Article Content */
+    .article-main {
+      background: var(--ei-surface);
+      border: 1px solid var(--ei-line);
+      border-radius: 12px;
+      padding: 40px;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--ei-line);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .article-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--ei-cobalt);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .article-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin: 0 0 12px;
+      line-height: 1.3;
+    }
+    .article-meta {
+      color: var(--ei-muted);
+      font-size: 13px;
+    }
+    .article-section {
+      margin-bottom: 60px;
+      scroll-margin-top: 90px;
+    }
+    .article-section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ei-ink);
+      border-left: 4px solid var(--ei-cobalt);
+      padding-left: 12px;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    .article-section p {
+      color: var(--ei-muted);
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    /* Right Sidebar Sticky TOC (Matches assets/css/editorial-intelligence.css) */
+    .editorial-toc {
+      position: sticky;
+      top: 90px;
+      align-self: start;
+      min-width: 0;
+    }
+    .editorial-toc-inner {
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      padding-left: 20px;
+      border-left: 1px solid var(--ei-line);
+      scrollbar-width: thin;
+      scrollbar-color: var(--ei-line-strong) transparent;
+      scroll-behavior: smooth;
+    }
+    .editorial-toc-inner::-webkit-scrollbar {
+      width: 4px;
+    }
+    .editorial-toc-inner::-webkit-scrollbar-thumb {
+      background-color: var(--ei-line-strong);
+      border-radius: 4px;
+    }
+    .editorial-toc-label {
+      margin-bottom: 17px;
+      color: var(--ei-ink);
+      font-family: var(--ei-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .editorial-toc-nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .editorial-toc-nav li {
+      margin: 0;
+    }
+    .editorial-toc-nav a {
+      position: relative;
+      display: block;
+      padding: 7px 0;
+      color: var(--ei-muted);
+      font-size: 13px;
+      line-height: 1.45;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .editorial-toc-nav a::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: -21px;
+      width: 2px;
+      background: transparent;
+      transition: background-color 0.2s ease;
+    }
+    .editorial-toc-nav a:hover,
+    .editorial-toc-nav a[aria-current="true"] {
+      color: var(--ei-cobalt-deep);
+      font-weight: 600;
+    }
+    .editorial-toc-nav a[aria-current="true"]::before {
+      background: var(--ei-cobalt);
+    }
+    .editorial-toc-meta {
+      margin: 22px 0 0 !important;
+      padding-top: 18px;
+      color: var(--ei-muted) !important;
+      border-top: 1px solid var(--ei-line);
+      font-family: var(--ei-font-mono);
+      font-size: 10px;
+      line-height: 1.7 !important;
+      letter-spacing: 0.05em;
+    }
+
+    /* Live Tip Toast */
+    .status-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: rgba(15, 23, 42, 0.9);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 999;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="dark">
+
+  <!-- Control Header -->
+  <div class="preview-header-bar">
+    <div class="preview-title">
+      <span>📄 文章右侧目录自动平滑跟随预览</span>
+      <span class="preview-badge">layouts/_default/single.html</span>
+    </div>
+    <div class="preview-actions">
+      <button class="preview-btn" id="btn-toggle-theme">🌓 切换白天/黑夜</button>
+      <button class="preview-btn primary" id="btn-auto-scroll">▶️ 开始自动滚动演示</button>
+      <button class="preview-btn" id="btn-jump-10">📍 跳到第10章</button>
+      <button class="preview-btn" id="btn-jump-20">🏁 跳到底部</button>
+      <button class="preview-btn" id="btn-reset">⬆️ 回到顶部</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="editorial-layout">
+      <!-- Article Body (20 sections to ensure long scroll) -->
+      <main class="article-main">
+        <header class="article-header">
+          <span class="article-tag">AI 技术深度解析</span>
+          <h1 class="article-title">超长文章右侧目录随动定位演示与体验</h1>
+          <div class="article-meta">发布时间: 2026-09-11 · 阅读时间: 15 分钟 · 8,500 字</div>
+        </header>
+
+        <div id="article-content">
+          <!-- 20 Sections generated below -->
+          <div class="article-section" id="section-1">
+            <h2>第 1 章：大语言模型架构演进与前沿综述</h2>
+            <p>本文深入探讨了当下主流的大模型架构演化，从标准 Transformer 架构到混合专家模型 (MoE)，并在多种长序列任务场景下进行了吞吐量与精度的系统性测评。</p>
+            <p>随着模型上下文长度从 8K、32K 扩展至 128K 乃至 1M，注意力机制的显存与计算复杂度呈现平方级增长，促使线性注意力机制、状态空间模型 (SSM 如 Mamba) 以及分块稀疏注意力机制的大规模研发与应用落地。</p>
+          </div>
+
+          <div class="article-section" id="section-2">
+            <h2>第 2 章：多模态表征对齐与跨模态特征融合</h2>
+            <p>在视觉语言模型 (VLM) 中，如何实现高保真度图像特征与文本 Token 空间的无缝投影是当前的核心课题。常见的架构包括使用轻量级投影层 (MLP) 或交叉注意力重采样器 (Perceiver Resampler)。</p>
+            <p>本章节通过对 ViT (Vision Transformer) 提取的高分辨率特征图进行切片分析，解析不同下采样策略对微小物体识别和密集文字 OCR 的保真度影响。</p>
+          </div>
+
+          <div class="article-section" id="section-3">
+            <h2>第 3 章：混合专家模型 (MoE) 动态路由与负载均衡</h2>
+            <p>MoE 架构通过条件计算显著提升了参数容量，同时保持了每个 Token 激活参数量的可控。动态路由器通过 Softmax 分数将输入向量分发至 Top-K 个专家网络。</p>
+            <p>然而专家负载不均衡容易导致“专家瘫痪”与计算节点木桶效应，本节讨论辅助负载均衡损失 (Auxiliary Loss) 与无损路由算法的工程实现。</p>
+          </div>
+
+          <div class="article-section" id="section-4">
+            <h2>第 4 章：长文本推理优化与 KV Cache 压缩算法</h2>
+            <p>在超长生成任务中，键值缓存 (KV Cache) 会迅速吞噬 GPU HBM。PagedAttention 解决了显存碎片化问题，而分组查询注意力 (GQA) 则大幅压缩了 KV 头的数量。</p>
+            <p>进一步的量化技术（如 FP8、INT4 KV Cache）与基于重要度评分的剪枝策略，使得单卡承载 128K 长度的并发请求成为可能。</p>
+          </div>
+
+          <div class="article-section" id="section-5">
+            <h2>第 5 章：强化学习对齐 (PPO, DPO 与 GRPO) 原理解析</h2>
+            <p>RLHF (基于人类反馈的强化学习) 从传统的 PPO 算法演化至无需独立奖励模型的直接偏好优化 (DPO)，极大地提升了训练稳定性和资源利用效率。</p>
+            <p>近期提出的 GRPO (群体相对策略优化) 在数学推理和代码合成中表现卓越，通过群采样均值对比消除了评判模型 (Critic) 的显存开销。</p>
+          </div>
+
+          <div class="article-section" id="section-6">
+            <h2>第 6 章：多智能体协作机制与复杂工作流编排</h2>
+            <p>单一智能体在面对复杂多步骤现实业务时容易产生幻觉累积。通过引入规划者 (Planner)、执行者 (Executor)、评审者 (Critic) 等角色分工，系统的成功率显著提升。</p>
+            <p>我们分析了拓扑图工作流 (DAG)、反应式总线 (Event-Driven) 以及动态自治群聊 (Autogen) 模式的优缺点。</p>
+          </div>
+
+          <div class="article-section" id="section-7">
+            <h2>第 7 章：向量检索与混合搜索 (Hybrid Search) 工程实践</h2>
+            <p>在大规模检索增强生成 (RAG) 场景中，纯稠密向量 (Dense Vector) 容易在专有名词和序列编号上出现匹配偏差。稀疏向量 (BM25/SPLADE) 与稠密向量的混合加权检索成为了行业标配。</p>
+            <p>结合倒数排名融合 (RRF) 与交叉编码器 (Cross-Encoder Re-ranker)，能够有效将 Top-10 召回准确率提升 25% 以上。</p>
+          </div>
+
+          <div class="article-section" id="section-8">
+            <h2>第 8 章：结构化知识图谱与 GraphRAG 范式</h2>
+            <p>传统分块 RAG 缺乏实体间的全局拓扑视野。GraphRAG 通过实体抽取、关系链接与社区检测 (Community Detection)，构建层次化摘要。</p>
+            <p>当面对“跨章节关联推理”与“全局主题归纳”问题时，知识图谱提供了极其稳健的事实锚点。</p>
+          </div>
+
+          <div class="article-section" id="section-9">
+            <h2>第 9 章：自适应分块与文档语义清洗管道</h2>
+            <p>数据质量是 RAG 的天花板。基于规则的简单固定长度切割容易切断句子和表格结构。语义感知的自适应分块通过计算连续句子的嵌入余弦相似度跳变点作为切分边界。</p>
+            <p>本节展示完整的 Markdown、PDF 表格以及 HTML 噪声清洗与富元数据附加流。</p>
+          </div>
+
+          <div class="article-section" id="section-10">
+            <h2>第 10 章：代码生成基准评测与单元测试自动修复</h2>
+            <p>智能代码补全正向全仓库级别演变。通过将 LSP (语言服务器协议) 集成进 Agent 环境，模型可以进行语法诊断、跨文件跳转和自动化测试驱动重构。</p>
+            <p>测试驱动开发 (TDD) 循环使 Agent 能够根据报错堆栈自主迭代直至所有用例通过。</p>
+          </div>
+
+          <div class="article-section" id="section-11">
+            <h2>第 11 章：边缘计算部署与低比特量化实践</h2>
+            <p>将数十亿参数模型部署在手机和嵌入式设备上对内存带宽是极大的考验。AWQ、GPTQ 以及最新的 OmniQuant 等权重激活协同量化技术保证了低延迟与低精度损失。</p>
+            <p>通过结合 NPU 硬件加速算子，本地推断已可达到 30+ tokens/s 的交互流畅度。</p>
+          </div>
+
+          <div class="article-section" id="section-12">
+            <h2>第 12 章：投机采样 (Speculative Decoding) 与推理加速</h2>
+            <p>大模型生成是典型的访存密集型 (Memory-bound) 过程。投机采样利用轻量草稿模型 (Draft Model) 快速推测若干 Token，再由大模型一次前向并行验证。</p>
+            <p>无损加速比可达到 2x 至 3x，大幅降低了推理成本。</p>
+          </div>
+
+          <div class="article-section" id="section-13">
+            <h2>第 13 章：评测基准防作弊与合成数据净化</h2>
+            <p>随着训练数据爬取规模的急剧扩大，公开评测集（如 GSM8K、MMLU）的数据污染问题日益严重。本文介绍了利用可逆密文匹配和同构变换检测污染的方法。</p>
+            <p>同时，利用大模型自我对抗生成的高质量合成数据正在成为后训练阶段最强有力的催化剂。</p>
+          </div>
+
+          <div class="article-section" id="section-14">
+            <h2>第 14 章：系统提示词工程与防御性安全对齐</h2>
+            <p>提示注入 (Prompt Injection) 和越狱攻击层出不穷。防御体系需要建立输入拦截分类器、系统指令沙箱以及输出语义过滤网。</p>
+            <p>本节总结了十种典型越狱手法的对抗策略与形式化防护规约。</p>
+          </div>
+
+          <div class="article-section" id="section-15">
+            <h2>第 15 章：持续学习与灾难性遗忘缓解策略</h2>
+            <p>当在新领域数据上微调时，模型先前具备的基础推理能力可能迅速退化。正交子空间投影与弹性权重整合 (EWC) 能够在保留历史核心权重的前提下容纳新知识。</p>
+            <p>回放缓冲区与参数高效微调 (PEFT 如 LoRA/DoRA) 也是企业私有知识更新的常用手段。</p>
+          </div>
+
+          <div class="article-section" id="section-16">
+            <h2>第 16 章：云原生推理调度架构与动态批处理</h2>
+            <p>在海量并发生产环境中，vLLM、TGI 等现代推理引擎通过连续批处理 (Continuous Batching) 彻底革新了 GPU 调度。只要有 Token 完成生成，新的请求即可插队进入计算批次。</p>
+            <p>结合 Kubernetes 的自定义 GPU 指标自动弹性伸缩，极大平抑了波峰资源浪费。</p>
+          </div>
+
+          <div class="article-section" id="section-17">
+            <h2>第 17 章：可观测性体系与全链路跟踪 (Tracing)</h2>
+            <p>智能体黑盒决策过程的排错极具挑战。通过 OpenTelemetry 规范捕获每一次 Prompt 模板展开、模型调用 Token 消耗、工具调用耗时以及输出质量评分。</p>
+            <p>可视化链路追踪让性能瓶颈和错误成因一目了然。</p>
+          </div>
+
+          <div class="article-section" id="section-18">
+            <h2>第 18 章：企业落地成本精细化核算与治理</h2>
+            <p>API Token 计费模式对企业技术预算提出了新要求。分级路由架构——将简单日常问答分流给低成本轻量模型，仅将复杂推理留给顶尖大模型——可降低 70% 综合账单。</p>
+            <p>结合语义缓存 (Semantic Cache)，重复问题命中率显著提高。</p>
+          </div>
+
+          <div class="article-section" id="section-19">
+            <h2>第 19 章：具身智能 (Embodied AI) 与现实世界交互</h2>
+            <p>AI 正在从屏幕走向物理世界。视触觉大模型与机器人运动控制策略 (VLA) 的融合，使机械臂能够通过自然语言指令完成精细拆装和分拣。</p>
+            <p>物理仿真器 (如 Isaac Sim) 为强化学习提供了无损且可无限并行的训练场。</p>
+          </div>
+
+          <div class="article-section" id="section-20">
+            <h2>第 20 章：未来展望：通向通用人工智能的演进路径</h2>
+            <p>从纯文本预测机器，到具备世界模型、自我修正、长程规划与主动探索能力的数字智能体，AGI 的曙光已在眼前。软硬件协同、数据范式升级与安全伦理对齐将是未来十年的三大主旋律。</p>
+            <p>感谢阅读！请注意观察右侧目录栏：在滚动到底部时，第 20 章已被智能激活并保持在可视区域中央。</p>
+          </div>
+        </div>
+      </main>
+
+      <!-- Right Sidebar TOC (Exact Structure & Classes from Hugo PaperMod single.html) -->
+      <aside class="editorial-toc" aria-label="目录">
+        <div class="editorial-toc-inner">
+          <div class="editorial-toc-label">目录 (TOC)</div>
+          <nav class="editorial-toc-nav">
+            <ul>
+              <li><a href="#section-1">第 1 章：大语言模型架构演进与前沿综述</a></li>
+              <li><a href="#section-2">第 2 章：多模态表征对齐与跨模态特征融合</a></li>
+              <li><a href="#section-3">第 3 章：混合专家模型 (MoE) 动态路由与负载均衡</a></li>
+              <li><a href="#section-4">第 4 章：长文本推理优化与 KV Cache 压缩算法</a></li>
+              <li><a href="#section-5">第 5 章：强化学习对齐 (PPO, DPO 与 GRPO) 原理解析</a></li>
+              <li><a href="#section-6">第 6 章：多智能体协作机制与复杂工作流编排</a></li>
+              <li><a href="#section-7">第 7 章：向量检索与混合搜索 (Hybrid Search) 工程实践</a></li>
+              <li><a href="#section-8">第 8 章：结构化知识图谱与 GraphRAG 范式</a></li>
+              <li><a href="#section-9">第 9 章：自适应分块与文档语义清洗管道</a></li>
+              <li><a href="#section-10">第 10 章：代码生成基准评测与单元测试自动修复</a></li>
+              <li><a href="#section-11">第 11 章：边缘计算部署与低比特量化实践</a></li>
+              <li><a href="#section-12">第 12 章：投机采样 (Speculative Decoding) 与推理加速</a></li>
+              <li><a href="#section-13">第 13 章：评测基准防作弊与合成数据净化</a></li>
+              <li><a href="#section-14">第 14 章：系统提示词工程与防御性安全对齐</a></li>
+              <li><a href="#section-15">第 15 章：持续学习与灾难性遗忘缓解策略</a></li>
+              <li><a href="#section-16">第 16 章：云原生推理调度架构与动态批处理</a></li>
+              <li><a href="#section-17">第 17 章：可观测性体系与全链路跟踪 (Tracing)</a></li>
+              <li><a href="#section-18">第 18 章：企业落地成本精细化核算与治理</a></li>
+              <li><a href="#section-19">第 19 章：具身智能 (Embodied AI) 与现实世界交互</a></li>
+              <li><a href="#section-20">第 20 章：未来展望：通向通用人工智能的演进路径</a></li>
+            </ul>
+          </nav>
+          <p class="editorial-toc-meta">
+            15 分钟阅读<br>
+            8,500 字
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="status-toast" id="status-toast">
+    👀 滚动鼠标滚轮，观察右侧目录栏如何自动平滑居中跟随！
+  </div>
+
+  <!-- Exact JavaScript Algorithm from layouts/_default/single.html -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const links = Array.from(document.querySelectorAll('.editorial-toc a[href^="#"]'));
+    const targets = links.map(function (link) {
+      try {
+        return document.getElementById(decodeURIComponent(link.hash.slice(1)));
+      } catch (_) {
+        return null;
+      }
+    });
+
+    if (!links.length || !targets.some(Boolean)) return;
+
+    const tocContainer = document.querySelector('.editorial-toc-inner');
+    let lastCurrent = -1;
+    let wasAtBottom = false;
+    let userScrollingTocTimeout = null;
+    let isUserScrollingToc = false;
+
+    if (tocContainer) {
+      // Pause auto-follow only if the user explicitly scrolls the TOC itself with wheel or touch
+      tocContainer.addEventListener('wheel', function () {
+        isUserScrollingToc = true;
+        clearTimeout(userScrollingTocTimeout);
+        document.getElementById('status-toast').innerText = '🖱️ 手动翻阅目录中：暂停随动 2 秒';
+        userScrollingTocTimeout = setTimeout(function () {
+          isUserScrollingToc = false;
+          document.getElementById('status-toast').innerText = '🚀 恢复自动随动';
+        }, 2000);
+      }, { passive: true });
+
+      tocContainer.addEventListener('touchstart', function () {
+        isUserScrollingToc = true;
+        clearTimeout(userScrollingTocTimeout);
+        userScrollingTocTimeout = setTimeout(function () {
+          isUserScrollingToc = false;
+        }, 2000);
+      }, { passive: true });
+    }
+
+    function scrollTocToActive(activeLink, isSmooth, force) {
+      if (!tocContainer) return;
+      if (!force && isUserScrollingToc) return;
+      if (tocContainer.scrollHeight <= tocContainer.clientHeight) return;
+
+      const containerRect = tocContainer.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+
+      // Calculate active link's top position relative to scrollable content of tocContainer
+      const relativeTop = linkRect.top - containerRect.top + tocContainer.scrollTop;
+      // Keep active link comfortably centered vertically within the TOC container
+      const targetScrollTop = relativeTop - (tocContainer.clientHeight / 2) + (linkRect.height / 2);
+      const maxScroll = tocContainer.scrollHeight - tocContainer.clientHeight;
+      const clampedScrollTop = Math.max(0, Math.min(targetScrollTop, maxScroll));
+
+      if (Math.abs(tocContainer.scrollTop - clampedScrollTop) > 3) {
+        tocContainer.scrollTo({
+          top: clampedScrollTop,
+          behavior: isSmooth ? 'smooth' : 'auto'
+        });
+      }
+    }
+
+    function updateCurrentSection(isSmooth) {
+      let current = 0;
+      const marker = window.scrollY + 150;
+
+      targets.forEach(function (target, index) {
+        if (!target) return;
+        const targetTop = target.getBoundingClientRect().top + window.scrollY;
+        if (targetTop <= marker) current = index;
+      });
+
+      // If near the bottom of the page, activate the last heading
+      const atBottom = (window.innerHeight + Math.ceil(window.scrollY)) >= (document.documentElement.scrollHeight - 60);
+      if (atBottom) {
+        current = targets.length - 1;
+      }
+
+      links.forEach(function (link, index) {
+        if (index === current) {
+          link.setAttribute('aria-current', 'true');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+
+      const sectionChanged = (current !== lastCurrent);
+      const reachedBottom = (atBottom && !wasAtBottom);
+      wasAtBottom = atBottom;
+
+      if (sectionChanged || reachedBottom) {
+        lastCurrent = current;
+        const activeLink = links[current];
+        if (activeLink) {
+          scrollTocToActive(activeLink, isSmooth !== false);
+          document.getElementById('status-toast').innerText = '📌 当前激活章节：' + activeLink.innerText + '（目录已自动居中）';
+        }
+      }
+    }
+
+    links.forEach(function (link, index) {
+      link.addEventListener('click', function () {
+        lastCurrent = index;
+        links.forEach(function (l, i) {
+          if (i === index) l.setAttribute('aria-current', 'true');
+          else l.removeAttribute('aria-current');
+        });
+        scrollTocToActive(link, true, true);
+        document.getElementById('status-toast').innerText = '🎯 点击跳转到：' + link.innerText;
+      });
+    });
+
+    let scheduled = false;
+    window.addEventListener('scroll', function () {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(function () {
+        updateCurrentSection(true);
+        scheduled = false;
+      });
+    }, { passive: true });
+
+    window.addEventListener('resize', function () {
+      updateCurrentSection(false);
+    });
+
+    // Initial call without smooth animation
+    updateCurrentSection(false);
+
+    // Demonstration Controls
+    let autoScrollInterval = null;
+    const btnAuto = document.getElementById('btn-auto-scroll');
+    btnAuto.addEventListener('click', function () {
+      if (autoScrollInterval) {
+        clearInterval(autoScrollInterval);
+        autoScrollInterval = null;
+        btnAuto.innerText = '▶️ 开始自动滚动演示';
+        btnAuto.classList.add('primary');
+      } else {
+        btnAuto.innerText = '⏸️ 暂停自动滚动';
+        btnAuto.classList.remove('primary');
+        autoScrollInterval = setInterval(function () {
+          window.scrollBy({ top: 4, behavior: 'auto' });
+          if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 5) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+            btnAuto.innerText = '▶️ 开始自动滚动演示';
+            btnAuto.classList.add('primary');
+          }
+        }, 16);
+      }
+    });
+
+    document.getElementById('btn-toggle-theme').addEventListener('click', function () {
+      document.body.classList.toggle('dark');
+    });
+
+    document.getElementById('btn-jump-10').addEventListener('click', function () {
+      document.getElementById('section-10').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('btn-jump-20').addEventListener('click', function () {
+      document.getElementById('section-20').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    document.getElementById('btn-reset').addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+  </script>
+</body>
+</html>
