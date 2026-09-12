@@ -1,3 +1,4 @@
+import html
 import yaml
 from pathlib import Path
 from typing import Dict, Any, List
@@ -165,3 +166,49 @@ class ChapterWriter:
             return self._render_fallback_section(section_name, items)
             
         return result
+
+    def render_overflow_list(self, section_name: str, items: List[BaseItem]) -> str:
+        """将溢出条目渲染为折叠式精简列表（点击展开）"""
+        if not items:
+            return ""
+
+        section_labels = {
+            'focus_news': '焦点',
+            'hf_models': '模型',
+            'arxiv_papers': '论文',
+            'github_projects': '项目',
+            'hacker_news': '热议',
+            'applications': '应用',
+            'perplexity_news': '热搜'
+        }
+        label = section_labels.get(section_name, '内容')
+
+        li_lines = []
+        for item in items:
+            title = html.escape(item.title.strip())
+            url = item.url.strip()
+            desc = (item.description or "").strip()
+
+            # 生成简短标签：截取描述前18字，或用来源
+            if desc and len(desc) > 5:
+                tag_text = desc[:18].rstrip('，。、；：') + '…' if len(desc) > 18 else desc
+                tag = f" — {html.escape(tag_text)}"
+            elif getattr(item, 'source', None):
+                tag = f" — {html.escape(item.source)}"
+            else:
+                tag = ""
+
+            li_lines.append(f'  <li><a href="{url}" target="_blank" rel="noopener">{title}</a>{tag}</li>')
+
+        count = len(li_lines)
+        list_html = "\n".join(li_lines)
+
+        return (
+            f'\n<details class="daily-ai-overflow">\n'
+            f'<summary>📌 更多{label}值得关注（{count} 条，点击展开）</summary>\n'
+            f'<ul>\n'
+            f'{list_html}\n'
+            f'</ul>\n'
+            f'</details>\n'
+        )
+

@@ -115,10 +115,12 @@ class Orchestrator:
             'applications': 3,
             'perplexity_news': 2
         }
+        OVERFLOW_MAX = 8  # 每章节溢出条目上限
 
         for key, items in data.items():
             if not items:
                 processed_data[key] = []
+                processed_data[f"{key}_overflow"] = []
                 continue
                 
             unique_items = self.dedup.process(items)
@@ -126,7 +128,9 @@ class Orchestrator:
             
             top_k = top_k_map.get(key, 3)
             processed_data[key] = scored_items[:top_k]
-            print(f"[INFO] 章节【{key}】: 经过评分雷达精选 Top {len(processed_data[key])} 条内容")
+            processed_data[f"{key}_overflow"] = scored_items[top_k:top_k + OVERFLOW_MAX]
+            overflow_count = len(processed_data[f"{key}_overflow"])
+            print(f"[INFO] 章节【{key}】: 精选 Top {len(processed_data[key])} 条 + 溢出 {overflow_count} 条")
              
         return processed_data
         
@@ -135,13 +139,25 @@ class Orchestrator:
         chapters = {}
         all_written_sections = []
 
-        for key, items in processed_data.items():
+        # 分离主内容键和溢出键
+        main_keys = [k for k in processed_data.keys() if not k.endswith('_overflow')]
+
+        for key in main_keys:
+            items = processed_data.get(key, [])
+            overflow_items = processed_data.get(f"{key}_overflow", [])
+
             if items:
                 content = self.writer.write_section(key, items)
                 chapters[f"{key}_content"] = content
                 all_written_sections.append(f"【{key}】\n{content}")
             else:
                 chapters[f"{key}_content"] = ""
+
+            # 渲染溢出条目为精简列表
+            if overflow_items:
+                chapters[f"{key}_overflow_content"] = self.writer.render_overflow_list(key, overflow_items)
+            else:
+                chapters[f"{key}_overflow_content"] = ""
         
         combined_text = "\n\n".join(all_written_sections)
 
@@ -253,7 +269,7 @@ class Orchestrator:
         
         # 2. Process
         processed_data = self._process_data(aggregated_data)
-        stats = {k: len(v) for k, v in processed_data.items()}
+        stats = {k: len(v) for k, v in processed_data.items() if not k.endswith('_overflow')}
         total_items = sum(stats.values())
         
         if total_items == 0:

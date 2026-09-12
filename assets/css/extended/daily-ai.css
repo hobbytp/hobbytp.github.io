@@ -379,4 +379,135 @@
   color: #60a5fa;
 }
 
+/* 8. Overflow Details (溢出条目折叠列表 - 点击展开) */
+.daily-ai-article details,
+.daily-ai-overflow {
+  margin: 1.5rem 0 2rem 0;
+  border: 1px solid var(--article-border, rgba(226, 232, 240, 0.6));
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
 
+.daily-ai-article details[open],
+.daily-ai-overflow[open] {
+  border-color: var(--color-primary, #2563eb);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.08);
+}
+
+.daily-ai-article details summary,
+.daily-ai-overflow summary {
+  padding: 0.75rem 1.15rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--color-bg-secondary, rgba(248, 250, 252, 0.85));
+  color: var(--color-secondary, #475569);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: background 0.2s ease, color 0.2s ease;
+  user-select: none;
+}
+
+.daily-ai-article details summary::-webkit-details-marker,
+.daily-ai-overflow summary::-webkit-details-marker {
+  display: none;
+}
+
+.daily-ai-article details summary::before,
+.daily-ai-overflow summary::before {
+  content: '▸';
+  display: inline-block;
+  font-size: 0.8rem;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 0.3rem;
+}
+
+.daily-ai-article details[open] summary::before,
+.daily-ai-overflow[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.daily-ai-article details summary:hover,
+.daily-ai-overflow summary:hover {
+  background: var(--color-primary, #2563eb);
+  color: #ffffff;
+}
+
+.daily-ai-article details > ul,
+.daily-ai-article details > p {
+  padding: 0.75rem 1.15rem;
+  margin: 0;
+}
+
+.daily-ai-article details > ul {
+  list-style: none;
+  padding-left: 1.15rem;
+}
+
+.daily-ai-article details > ul > li {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 1rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--color-text, #334155);
+  border-bottom: 1px solid var(--article-border, rgba(226, 232, 240, 0.3));
+}
+
+.daily-ai-article details > ul > li:last-child {
+  border-bottom: none;
+}
+
+.daily-ai-article details > ul > li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--color-primary, #2563eb);
+}
+
+.daily-ai-article details > ul > li a {
+  font-weight: 500;
+  color: var(--color-primary, #2563eb);
+  text-decoration: none;
+}
+
+.daily-ai-article details > ul > li a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] .daily-ai-article details,
+[data-theme="dark"] .daily-ai-overflow {
+  border-color: rgba(148, 163, 184, 0.15);
+}
+
+[data-theme="dark"] .daily-ai-article details summary,
+[data-theme="dark"] .daily-ai-overflow summary {
+  background: rgba(30, 41, 59, 0.7);
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .daily-ai-article details summary:hover,
+[data-theme="dark"] .daily-ai-overflow summary:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .daily-ai-article details > ul > li,
+[data-theme="dark"] .daily-ai-overflow > ul > li {
+  color: #cbd5e1;
+  border-bottom-color: rgba(148, 163, 184, 0.1);
+}
+
+[data-theme="dark"] .daily-ai-article details > ul > li a,
+[data-theme="dark"] .daily-ai-overflow > ul > li a {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .daily-ai-article details > ul > li::before,
+[data-theme="dark"] .daily-ai-overflow > ul > li::before {
+  color: #60a5fa;
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日AI动态 - 章节溢出折叠列表效果预览</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/custom.css">
+  <link rel="stylesheet" href="../assets/css/extended/daily-ai.css">
+  <style>
+    body {
+      background-color: var(--theme, #0b1120);
+      color: var(--color-text, #e2e8f0);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 2rem;
+      margin: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .preview-toolbar {
+      max-width: 860px;
+      margin: 0 auto 1.5rem auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+    }
+    .toolbar-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #93c5fd;
+    }
+    .theme-toggle-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    .theme-toggle-btn:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+    }
+    .preview-container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--entry, #1e293b);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border, #334155);
+    }
+    [data-theme="light"] body {
+      background-color: #f1f5f9;
+      color: #1e293b;
+    }
+    [data-theme="light"] .preview-toolbar {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    [data-theme="light"] .toolbar-title {
+      color: #1d4ed8;
+    }
+    [data-theme="light"] .preview-container {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-toolbar">
+    <span class="toolbar-title">✨ 每日AI动态 - 章节“Top-4 深度精选 + 溢出折叠列表”效果演示</span>
+    <button class="theme-toggle-btn" id="toggleTheme">切换为浅色模式 ☀️</button>
+  </div>
+
+  <div class="preview-container">
+    <div class="daily-ai-article">
+      <h2 id="hf-models">🧠 模型与算法</h2>
+
+      <!-- Top 1 -->
+      <h3>🌟 <a href="#">GLM-5.3-Flash: 极速超轻量中文推理大模型</a></h3>
+      <ul>
+        <li><strong>应用场景</strong>：适用于对响应延迟极度敏感的实时端侧交互与高并发对话。</li>
+        <li><strong>参数量/量化建议</strong>：建议部署 4-bit AWQ 权重，单卡 RTX 4090 即可支撑数百并发。</li>
+        <li><strong>亮点</strong>：首字输出时间（TTFT）降低 45%，在长文本上下文召回测试中达到 99.2% 精度。</li>
+        <li><strong>🏷️ 核心标签</strong>：<code>#大语言模型</code> <code>#端侧推理</code> <code>#低延迟</code></li>
+      </ul>
+
+      <!-- Top 2 -->
+      <h3>🌟 <a href="#">Qwen3.8-Flash-Next-NVFP4: 针对新一代 GPU 优化的量化突破</a></h3>
+      <ul>
+        <li><strong>应用场景</strong>：企业级私有化知识库与复杂工具链编排中枢。</li>
+        <li><strong>参数量/量化建议</strong>：原生适配 NVFP4 精度，吞吐量提升 2.3 倍。</li>
+        <li><strong>亮点</strong>：全面保留全精度模型的数学计算与代码生成能力，P99 抖动降低 60%。</li>
+        <li><strong>🏷️ 核心标签</strong>：<code>#量化优化</code> <code>#企业落地</code> <code>#高吞吐</code></li>
+      </ul>
+
+      <!-- Top 3 -->
+      <h3>🌟 <a href="#">Qwopus3.8-27B-Flash-GGUF: 社区高质量轻量化整合方案</a></h3>
+      <ul>
+        <li><strong>应用场景</strong>：个人开发者本地离线部署及自动化助理系统。</li>
+        <li><strong>参数量/量化建议</strong>：支持 llama.cpp 与 Ollama 零门槛一键拉取运行。</li>
+        <li><strong>亮点</strong>：在 16GB 显存设备上兼具出色的中文语感与多轮工具调用稳定性。</li>
+      </ul>
+
+      <!-- Top 4 -->
+      <h3>🌟 <a href="#">Spark-X2.5-4B: 专注多智能体协同的小钢炮</a></h3>
+      <ul>
+        <li><strong>应用场景</strong>：多 Agent 编排流水线中的中间校验节点与路由器。</li>
+        <li><strong>参数量/量化建议</strong>：仅需 3.5GB 显存，极适合大规模并行化部署。</li>
+        <li><strong>亮点</strong>：JSON 格式遵循准确率 99.8%，函数调用速度超越前代 3 倍。</li>
+      </ul>
+
+      <!-- 溢出列表（默认展开用于直观对比） -->
+      <details class="daily-ai-overflow" open>
+        <summary>📌 更多模型值得关注（5 条，点击展开/收起）</summary>
+        <ul>
+          <li><a href="https://huggingface.co/models" target="_blank" rel="noopener">DeepSeek-V3-0901-GGUF</a> — 72B 中文推理模型 GGUF 社区高保真量化版</li>
+          <li><a href="https://huggingface.co/models" target="_blank" rel="noopener">Qwen3-Embedding-0.6B</a> — 超轻量级嵌入模型，重排速度提升 80%</li>
+          <li><a href="https://huggingface.co/models" target="_blank" rel="noopener">Llama-Guard-4-12B</a> — Meta 官方最新内容安全与价值对齐检测护栏</li>
+          <li><a href="https://huggingface.co/models" target="_blank" rel="noopener">Gemma-3n-E4B-Mobile</a> — 专为移动平台 NPU 优化的极简架构</li>
+          <li><a href="https://huggingface.co/models" target="_blank" rel="noopener">Phi-4-Reasoning-Plus</a> — 微软紧凑型数理逻辑增强微调检查点</li>
+        </ul>
+      </details>
+
+      <h2 id="github-projects">🛠️ 工具与框架</h2>
+
+      <!-- Top 1 -->
+      <h3>🚀 <a href="#">vllm-omni-engine: 新一代异构多模态分布式推理引擎</a></h3>
+      <ul>
+        <li><strong>一句话弄懂</strong>：打通文本、音频、图像统一显存池的高并发服务框架。</li>
+        <li><strong>核心卖点</strong>：动态分块 KV Cache 显存零碎片利用，极致压榨单机算力。</li>
+        <li><strong>热度飙升</strong>：⭐ 当前已斩获 18,450 stars (🔥 增速 +420/天)，社区极客高度好评。</li>
+      </ul>
+
+      <!-- 溢出列表（默认收起，真实生产状态） -->
+      <details class="daily-ai-overflow">
+        <summary>📌 更多项目值得关注（4 条，点击展开）</summary>
+        <ul>
+          <li><a href="https://github.com" target="_blank" rel="noopener">fast-rerank-rs</a> — Rust 编写的高性能向量重排服务</li>
+          <li><a href="https://github.com" target="_blank" rel="noopener">mcp-agent-gateway</a> — 标准化模型上下文协议（MCP）反向代理网关</li>
+          <li><a href="https://github.com" target="_blank" rel="noopener">cursor-rules-hub</a> — 社区策展的高阶 Agent 开发规则与提示词库</li>
+          <li><a href="https://github.com" target="_blank" rel="noopener">rag-eval-suite</a> — 检索增强生成端到端指标自动化评估套件</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('toggleTheme');
+    const htmlEl = document.documentElement;
+
+    toggleBtn.addEventListener('click', () => {
+      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        htmlEl.setAttribute('data-theme', 'light');
+        toggleBtn.textContent = '切换为深色模式 🌙';
+        toggleBtn.style.background = '#1e293b';
+      } else {
+        htmlEl.setAttribute('data-theme', 'dark');
+        toggleBtn.textContent = '切换为浅色模式 ☀️';
+        toggleBtn.style.background = '#3b82f6';
+      }
+    });
+  </script>
+</body>
+</html>
