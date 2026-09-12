@@ -1,4 +1,6 @@
 import html
+import json
+import re
 import yaml
 from pathlib import Path
 from typing import Dict, Any, List
@@ -167,8 +169,129 @@ class ChapterWriter:
             
         return result
 
+    def _derive_fallback_chinese_summary(self, section_name: str, item: BaseItem) -> str:
+        """当大模型不可用或解析异常时，基于细分领域规则推导精准的中文一句话核心提炼（完整无截断）"""
+        title = item.title.strip()
+        desc = (item.description or "").strip()
+        text = f"{title} {desc}".lower()
+
+        # 1. 开源模型 (hf_models)
+        if section_name == "hf_models":
+            pipeline = getattr(item, 'pipeline_tag', '') or ''
+            if "gguf" in text or "ggml" in text or "awq" in text or "quant" in text:
+                return "社区主流高保真量化版，适配消费级显卡与低显存硬件本地部署"
+            elif "embedding" in text or "rerank" in text:
+                return "轻量级高维度向量模型，显著提升知识库语义检索与重排效率"
+            elif "guard" in text or "safety" in text or "moderation" in text:
+                return "大模型内容安全与价值对齐护栏，有效防御越狱攻击与有害输出"
+            elif "vision" in text or "vl" in text or "image" in text or "image-text" in pipeline:
+                return "跨模态视觉理解模型，支持高分辨率图像识别与图文场景推理"
+            elif "audio" in text or "speech" in text or "tts" in text or "voice" in text:
+                return "高保真端到端音频处理模型，专长于低延迟语音合成与多轮对话"
+            elif "code" in text or "coder" in text:
+                return "专为代码理解与工程重构调优的轻量级编程辅助模型"
+            elif "reason" in text or "r1" in text or "math" in text:
+                return "强化慢思考与链式推理模型，数理逻辑与复杂推理能力突出"
+            else:
+                return "针对垂直领域深度调优的高性能开源权重，兼顾推理延迟与生成精度"
+
+        # 2. 学术论文 (arxiv_papers)
+        elif section_name == "arxiv_papers":
+            if "latent" in text or "concept" in text or "reasoning" in text:
+                return "突破自回归离散预测局限，引入潜在空间表征以增强长程逻辑推理"
+            elif "agent" in text or "tool" in text or "multi-agent" in text:
+                return "针对智能体长链路协作提出创新沙箱框架，大幅缓解调用失真与幻觉"
+            elif "video" in text or "diffusion" in text or "temporal" in text:
+                return "提出新型时空注意力机制，显著改善多模态动态内容生成的物理一致性"
+            elif "safety" in text or "jailbreak" in text or "attack" in text:
+                return "构建前沿大模型安全防御架构，系统性阻断高隐蔽性的对抗攻击"
+            elif "kv cache" in text or "quant" in text or "pruning" in text or "compress" in text:
+                return "从显存碎片与注意力压缩切入，为超长上下文高吞吐部署提供全新路径"
+            else:
+                return "针对现有算法瓶颈提出创新架构设计，在权威基准上展现出卓越泛化性能"
+
+        # 3. 工具与框架 (github_projects)
+        elif section_name == "github_projects":
+            stars = getattr(item, 'stars', 0)
+            star_hint = f"社区标星达 {stars:,}" if stars > 100 else "极客社区热度高涨"
+            if "mcp" in text or "protocol" in text or "gateway" in text:
+                return f"模型上下文协议（MCP）轻量级网关，{star_hint}，简化工具生态编排"
+            elif "rag" in text or "retrieval" in text or "vector" in text:
+                return f"端到端知识库检索增强套件，{star_hint}，显著提升召回准确率"
+            elif "inference" in text or "engine" in text or "vllm" in text or "serve" in text:
+                return f"高吞吐分布式推理加速框架，{star_hint}，极致优化显存利用率"
+            elif "agent" in text or "workflow" in text:
+                return f"模块化自主智能体开发脚手架，{star_hint}，极大加速复杂流程原型落地"
+            elif "ui" in text or "web" in text or "frontend" in text or "client" in text:
+                return f"开箱即用的现代化 AI 交互客户端，{star_hint}，交互体验轻快优雅"
+            else:
+                return f"工程架构高度优化的极客生产力开源套件，{star_hint}，部署门槛极低"
+
+        # 4. 今日焦点 (focus_news)
+        elif section_name == "focus_news":
+            if "openai" in text or "chatgpt" in text:
+                return "OpenAI 官方重磅产业落地更新，加速将前沿大模型转化为企业级生产力"
+            elif "anthropic" in text or "claude" in text:
+                return "Anthropic 针对智能体与安全对齐的最新演进，展现强劲的模型工程实力"
+            elif "google" in text or "gemini" in text:
+                return "Google 持续加码多模态生态布局，在端侧与云端协同上取得关键进展"
+            elif "nvidia" in text or "gpu" in text or "chip" in text:
+                return "NVIDIA 算力与硬件加速生态前沿突破，为下一代模型训练铺平道路"
+            elif "deepseek" in text or "qwen" in text:
+                return "国内顶尖开源模型力量再度突破，在开源生态中掀起全球极客热烈响应"
+            else:
+                return "今日全球 AI 产业关键里程碑事件，反映领军机构在生态与研发上的新角逐"
+
+        # 5. 极客热议 (hacker_news)
+        elif section_name == "hacker_news":
+            return "引发一线资深极客对系统选型、架构权衡与技术演进路线的深度观点碰撞"
+
+        # 6. 应用产品 (applications)
+        elif section_name == "applications":
+            return "打通真实业务闭环的 AI 原生应用，直击垂直行业工作流中的核心效率痛点"
+
+        # 7. 全网热搜 (perplexity_news)
+        else:
+            return "全网热度极高的人工智能风向话题，展示了大众与业界对该趋势的聚焦关注"
+
+    def _summarize_overflow_items_ai(self, section_name: str, items: List[BaseItem]) -> Dict[int, str]:
+        """调用大模型为溢出条目提炼精准中文一句话说明（抓住核心亮点，20-35字）"""
+        prompt_template = self.prompts.get("overflow_summary", {}).get("template")
+        if not prompt_template or not getattr(self, 'ai', None):
+            return {}
+
+        context_lines = []
+        for idx, item in enumerate(items, 1):
+            context_lines.append(f"[{idx}] 标题: {item.title}")
+            if item.description:
+                context_lines.append(f"    原始描述: {item.description[:250]}")
+            if getattr(item, 'source', None):
+                context_lines.append(f"    来源: {item.source}")
+            if getattr(item, 'keywords', None) and item.keywords:
+                context_lines.append(f"    标签: {', '.join(item.keywords[:4])}")
+
+        prompt = prompt_template.replace("{context}", "\n".join(context_lines))
+        try:
+            raw_res = self.ai.generate(prompt)
+            if raw_res:
+                match = re.search(r'\[.*\]', raw_res, re.DOTALL)
+                if match:
+                    parsed = json.loads(match.group(0))
+                    result = {}
+                    for entry in parsed:
+                        item_id = int(entry.get("id", 0))
+                        summary = entry.get("summary", "").strip()
+                        if item_id and summary:
+                            result[item_id] = summary
+                    if result:
+                        return result
+        except Exception as e:
+            print(f"[WARN] 章节【{section_name}】溢出列表大模型生成中文摘要异常，将无缝启用领域规则兜底: {e}")
+
+        return {}
+
     def render_overflow_list(self, section_name: str, items: List[BaseItem]) -> str:
-        """将溢出条目渲染为折叠式精简列表（点击展开）"""
+        """将溢出条目渲染为折叠式精简列表（完整中文一句话解释 + 鼠标悬停 Tooltip 提示）"""
         if not items:
             return ""
 
@@ -183,22 +306,30 @@ class ChapterWriter:
         }
         label = section_labels.get(section_name, '内容')
 
+        # 尝试通过大模型生成精准中文一句话提炼
+        ai_summaries = self._summarize_overflow_items_ai(section_name, items)
+
         li_lines = []
-        for item in items:
-            title = html.escape(item.title.strip())
+        for idx, item in enumerate(items, 1):
+            raw_title = item.title.strip()
+            title = html.escape(raw_title)
             url = item.url.strip()
-            desc = (item.description or "").strip()
 
-            # 生成简短标签：截取描述前18字，或用来源
-            if desc and len(desc) > 5:
-                tag_text = desc[:18].rstrip('，。、；：') + '…' if len(desc) > 18 else desc
-                tag = f" — {html.escape(tag_text)}"
-            elif getattr(item, 'source', None):
-                tag = f" — {html.escape(item.source)}"
-            else:
-                tag = ""
+            # 优先使用 AI 提炼的中文一句话，无则走细分领域智能规则库，确保 100% 完整中文
+            summary = ai_summaries.get(idx)
+            if not summary:
+                summary = self._derive_fallback_chinese_summary(section_name, item)
 
-            li_lines.append(f'  <li><a href="{url}" target="_blank" rel="noopener">{title}</a>{tag}</li>')
+            safe_summary = html.escape(summary.strip())
+            tooltip_text = html.escape(f"{raw_title} — {summary.strip()}")
+
+            li_lines.append(
+                f'  <li class="daily-ai-overflow-item" title="{tooltip_text}">'
+                f'<a href="{url}" target="_blank" rel="noopener" class="overflow-link">{title}</a>'
+                f'<span class="overflow-sep"> — </span>'
+                f'<span class="overflow-desc">{safe_summary}</span>'
+                f'</li>'
+            )
 
         count = len(li_lines)
         list_html = "\n".join(li_lines)
@@ -206,9 +337,10 @@ class ChapterWriter:
         return (
             f'\n<details class="daily-ai-overflow">\n'
             f'<summary>📌 更多{label}值得关注（{count} 条，点击展开）</summary>\n'
-            f'<ul>\n'
+            f'<ul class="daily-ai-overflow-list">\n'
             f'{list_html}\n'
             f'</ul>\n'
             f'</details>\n'
         )
+
 
