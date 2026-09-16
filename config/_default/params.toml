@@ -49,6 +49,11 @@ name = "MyDeeperResearch"
 url = "https://github.com/hobbytp/DeeperResearch"
 description = "AI深度调研助手"
 
+[[sidebar.projects]]
+name = "WeiJiaoGe"
+url = "https://github.com/hobbytp/weijiaoge#%E5%BE%AE%E8%95%89%E9%98%81-weijiaoge"
+description = "Nano Banana 资源与案例，从https://hobbytp.github.io/weijiaoge/cases访问"
+
 [comments]
 enable = false
 
