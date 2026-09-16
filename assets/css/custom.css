@@ -595,10 +595,70 @@ body {
 }
 
 .sidebar-projects .project-desc {
-  display: block;
+  display: none;
+}
+
+/* Floating tooltip for project description */
+.sidebar-project-tooltip {
+  position: fixed;
+  z-index: 99999;
+  max-width: 280px;
+  padding: 0.5rem 0.75rem;
   font-size: 0.75rem;
-  color: var(--color-secondary);
-  margin-top: 0.125rem;
+  line-height: 1.45;
+  color: var(--color-text);
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-primary-100);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  word-break: break-word;
+}
+
+[data-theme="dark"] .sidebar-project-tooltip {
+  background-color: #1e293b;
+  border-color: rgba(96, 165, 250, 0.25);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.sidebar-project-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.sidebar-project-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  border-width: 6px 6px 6px 0;
+  border-style: solid;
+  border-color: transparent var(--color-primary-100) transparent transparent;
+}
+
+.sidebar-project-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -5px;
+  transform: translateY(-50%);
+  border-width: 5px 5px 5px 0;
+  border-style: solid;
+  border-color: transparent var(--color-bg-secondary) transparent transparent;
+}
+
+[data-theme="dark"] .sidebar-project-tooltip::before {
+  border-color: transparent rgba(96, 165, 250, 0.25) transparent transparent;
+}
+
+[data-theme="dark"] .sidebar-project-tooltip::after {
+  border-color: transparent #1e293b transparent transparent;
 }
 
 /* Online status */

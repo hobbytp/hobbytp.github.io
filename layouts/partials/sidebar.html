@@ -86,7 +86,7 @@
             {{- if site.Params.sidebar.projects }}
             {{- range site.Params.sidebar.projects }}
             <li>
-                <a href="{{ .url }}" target="_blank" rel="noopener">
+                <a href="{{ .url }}" target="_blank" rel="noopener" class="sidebar-project-link"{{ if .description }} title="{{ .description }}" data-description="{{ .description }}"{{ end }}>
                     <span class="project-name">{{ .name }}</span>
                     {{- if .description }}
                     <span class="project-desc">{{ .description }}</span>
@@ -137,5 +137,66 @@
         </button>
     </div>
     {{- end }}
+
+    <!-- Floating tooltip for sidebar project links -->
+    <script>
+    (function() {
+        const projectLinks = document.querySelectorAll('.sidebar-project-link[data-description]');
+        if (!projectLinks.length) return;
+
+        let tooltip = document.getElementById('sidebar-project-tooltip');
+        if (!tooltip) {
+            tooltip = document.createElement('div');
+            tooltip.id = 'sidebar-project-tooltip';
+            tooltip.className = 'sidebar-project-tooltip';
+            tooltip.setAttribute('role', 'tooltip');
+            tooltip.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(tooltip);
+        }
+
+        function showTooltip(el) {
+            const desc = el.getAttribute('data-description');
+            if (!desc) return;
+            tooltip.textContent = desc;
+
+            if (el.hasAttribute('title')) {
+                el.setAttribute('data-original-title', el.getAttribute('title'));
+                el.removeAttribute('title');
+            }
+
+            const rect = el.getBoundingClientRect();
+            const tooltipHeight = tooltip.offsetHeight || 36;
+            let top = rect.top + (rect.height - tooltipHeight) / 2;
+            const minTop = 8;
+            const maxTop = window.innerHeight - tooltipHeight - 8;
+            top = Math.max(minTop, Math.min(top, maxTop));
+            const left = rect.right + 10;
+
+            tooltip.style.top = top + 'px';
+            tooltip.style.left = left + 'px';
+            tooltip.classList.add('visible');
+        }
+
+        function hideTooltip(el) {
+            tooltip.classList.remove('visible');
+            if (el && el.hasAttribute('data-original-title')) {
+                el.setAttribute('title', el.getAttribute('data-original-title'));
+            }
+        }
+
+        projectLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => showTooltip(link));
+            link.addEventListener('mouseleave', () => hideTooltip(link));
+            link.addEventListener('focus', () => showTooltip(link));
+            link.addEventListener('blur', () => hideTooltip(link));
+        });
+
+        window.addEventListener('scroll', () => hideTooltip(null), { passive: true });
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar) {
+            sidebar.addEventListener('scroll', () => hideTooltip(null), { passive: true });
+        }
+    })();
+    </script>
 </aside>
 
