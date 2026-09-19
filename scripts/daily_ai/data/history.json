@@ -1,220 +1,5 @@
 [
   {
-    "url": "https://news.ycombinator.com/item?id=49657850",
-    "title": "ask hn can we please limit the ai news flood",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://mathandai.org",
-    "title": "a misalignment of ai in mathematics",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.researchagenda.news/articles/the-waymo-effect.html",
-    "title": "the waymo effect how ai is quietly making research less collaborative",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://hcker.news?ai=exclude",
-    "title": "show hn hacker news without ai",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://artificialworlds.net/blog/2026/09/11/feeling-sad-about-ai",
-    "title": "feeling sad about ai",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://system76.com/workstations/thelio-mira-ai",
-    "title": "thelio mira ai linux workstation 192 gb gpu memory",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://sprinklz.io/public/pdwt4dve5uai",
-    "title": "hacker news with reduced priority for ai driven content",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://openai.com/index/perplexity-improving-accuracy-with-astra",
-    "title": "perplexity trusts gpt 6 astra with end to end systems",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one",
-    "title": "rapidly scaling online storage to serve over 1 billion chatgpt users",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://openai.com/index/cognition-devin-testing-with-astra",
-    "title": "cognition helps devin test its own work with gpt 6 astra",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/11/mecka-ai-nears-500m-valuation-in-sequoia-led-deal-amid-rush-for-robot-training-data",
-    "title": "mecka ai nears 500m valuation in sequoia led deal amid rush for robot training data",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too",
-    "title": "y combinator s garry tan wants us open weight ai labs to distill frontier models too",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/11/openais-feud-with-mathematicians-is-only-escalating",
-    "title": "openai s feud with mathematicians is only escalating",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/11/one-week-left-to-book-your-exhibit-table-at-techcrunch-disrupt-2026",
-    "title": "one week left to book your exhibit table at techcrunch disrupt 2026",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/11/final-final-final-call-for-techcrunch-disrupt-2026-side-events",
-    "title": "final final final call for techcrunch disrupt 2026 side events",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/11/kimi-maker-moonshot-ai-targets-2-billion-in-annual-revenue",
-    "title": "kimi maker moonshot ai targets 2b in annual revenue",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://techcrunch.com/podcast/an-anthropic-researchers-doomsday-warning-comes-at-a-very-interesting-time",
-    "title": "an anthropic researcher s doomsday warning comes at a very interesting time",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/11/nscale-adds-former-openai-exec-fidji-simo-to-its-board-ahead-of-potential-ipo",
-    "title": "nscale adds former openai exec fidji simo to its board ahead of potential ipo",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/994207/chatgpt-new-mexico-lawyer-fined-murder-appeal",
-    "title": "lawyer fined 5k over ai hallucinated witnesses in a murder case",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/994064/anthropic-spent-this-week-in-hot-water-over-cybersecurity",
-    "title": "anthropic spent this week in hot water over cybersecurity",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.theverge.com/tech/993974/meta-ai-prompt-invasive-suggestions",
-    "title": "meta says it s changing ai suggestions after posing invasive personal questions",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487631.html",
-    "title": "银行agent上岗 4200万小微经营者可用 信贷 票据 财税一把梭",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487573.html",
-    "title": "啊 anthropic最高320万招销售 只为服务meta",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487415.html",
-    "title": "百度秒哒再升级 让最懂业务的人 亲手造自己的系统",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487282.html",
-    "title": "不简单 吃货快乐榜 也全面ai化了",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487273.html",
-    "title": "墨芯人工智能亮相2026 inclusion 外滩大会 以专用稀疏推理芯片提升算力效能 共创ai新经济",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487176.html",
-    "title": "量子位 meet2027智能未来大会 启动 年度榜单征集进行中",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://news.ycombinator.com/item?id=49650859",
-    "title": "because the core of the issue is that it may well not have solved it",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.openpr.com/news/4629771/gpt-image-2-5-launches-openai-introduces-flare-and-sunburst",
-    "title": "gpt image 2 5 launches openai introduces flare and sunburst",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://finance.yahoo.com/quote/OPAI.PVT",
-    "title": "openai opai pvt valuation history news yahoo finance",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.tbsnews.net/tech/chinas-deepseek-launches-v41-flash-model-1538796",
-    "title": "china s deepseek launches v4 1 flash model",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://www.instagram.com/reel/DdKT9N3MKv9",
-    "title": "animated vertical tv show launches saturday september 12th a",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://timesofindia.indiatimes.com/technology/tech-news/openai-launches-chatgpt-for-financial-services-with-built-in-financial-data-and-gpt-6-astra/amp_articleshow/134044203.cms",
-    "title": "openai launches chatgpt for financial services with built in",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.11317",
-    "title": "mi ripple restoring images degraded by iterative ai editing",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.11412",
-    "title": "x aut progressive audio encoder compression for speech llms with cross scale distillation",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.11561",
-    "title": "memory as plans world action modeling with memory grounded planning",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.01515",
-    "title": "tempcloze can video llms identify the missing middle",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://huggingface.co/Lightricks/LTX-2.5",
-    "title": "lightricks ltx 2 5",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://huggingface.co/m-a-p/YuE2-3B",
-    "title": "m a p yue2 3b",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://github.com/Nehanth/swarmllm",
-    "title": "swarmllm",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://clawfight.ai/agents.md",
-    "title": "clawfight ai mcp driven agentic game play",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://github.com/godot-pty/gpty",
-    "title": "godot and rust based multiplexer terminal panes and more",
-    "date": "2026-09-12"
-  },
-  {
-    "url": "https://hnslop.nilsherzig.com",
-    "title": "extension to filter llm written articles",
-    "date": "2026-09-12"
-  },
-  {
     "url": "https://www.economist.com/interactive/briefing/2026/09/03/nvidia-is-the-central-bank-of-ai",
     "title": "nvidia is the central bank of ai",
     "date": "2026-09-13"
@@ -2508,5 +2293,255 @@
     "url": "https://github.com/xiaYuTian11/maskit",
     "title": "maskit",
     "date": "2026-09-18"
+  },
+  {
+    "url": "https://github.com/ruc-datalab/EvoOntology",
+    "title": "evoontology",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://github.com/elsechord/CyberGuard",
+    "title": "cyberguard",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.cnn.com/2026/09/18/politics/us-military-ai-false-intelligence-china-ship",
+    "title": "us military had close call after using ai for hallucinated intelligence report",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.thebignewsletter.com/p/ai-is-an-elite-crime-spree",
+    "title": "ai is an elite crime spree",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.science.org/content/article/ai-chatbots-are-becoming-experts-changing-people-s-minds-what-s-their-secret",
+    "title": "ai chatbots are becoming experts at changing people s minds",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=49743049",
+    "title": "launch hn skillsync yc w26 ai chat sessions made portable across agents",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm",
+    "title": "how to write with an llm",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.20511",
+    "title": "when eos tokens disagree understanding length inflation in on policy distillation",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2609.17653",
+    "title": "reflect revise reuse training free skill evolution for gui agents",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://huggingface.co/m-a-p/YuE2-3B",
+    "title": "m a p yue2 3b",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://huggingface.co/Lightricks/LTX-2.5",
+    "title": "lightricks ltx 2 5",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://huggingface.co/XingChen-AGI/Xing4.0-29B-A4B",
+    "title": "xingchen agi xing4 0 29b a4b",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://agentgit.co",
+    "title": "agentgit a git host for ai agents no account no token no key",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://scry.io",
+    "title": "scry programmable internet search w congestion pricing",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://skillbay.sh",
+    "title": "craigslist for agent skills curated by a human",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://github.com/demeyer1/Autobot",
+    "title": "autobot live voice control for long running ai work",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://diewithme.co/join",
+    "title": "die with me claude and codex rate limits as aim away messages",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.mcpjam.com",
+    "title": "mcpjam the first testing evaluations platform for mcp servers",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench",
+    "title": "new experts join google s ai economy team",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/technology/ai/google-flow-fashion-week",
+    "title": "co creating the future of fashion with google",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/india-forces-caller-id-apps-to-feed-spam-reports-to-telcos",
+    "title": "india forces caller id apps to feed spam reports to telcos",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/tilly-norwoods-press-tour-is-going-about-as-well-as-youd-expect-for-an-ai",
+    "title": "tilly norwood s press tour is going about as well as you d expect for an ai",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/a-startup-that-builds-other-startups-raised-100m-and-is-all-in-on-physical-ai",
+    "title": "a startup that builds other startups raised 100m and is all in on physical ai",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/anthropic-is-operating-a-lab-that-conducts-biology-experiments",
+    "title": "anthropic is operating a lab that conducts biology experiments",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/ai-hallucination-nearly-triggers-us-military-operation",
+    "title": "ai hallucination nearly triggers us military operation",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/anthropics-first-embedded-evaluator-is-accenture",
+    "title": "anthropic s first embedded evaluator is accenture",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/world-model-companies-are-keeping-a-lot-of-secrets",
+    "title": "world model companies are keeping a lot of secrets",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers",
+    "title": "a new kind of ai model from a chatgpt inventor is thrilling developers",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/disneys-first-cto-led-an-ai-startup-it-once-accused-of-copying-its-characters",
+    "title": "disney s first cto led an ai startup it once accused of copying its characters",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/18/googles-new-cc-is-an-ai-agent-that-helps-families-run-their-households",
+    "title": "google s new cc is an ai agent that helps families run their households",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997633/openai-microsoft-chatgpt-ai-new-york-times-doom-loop-theft-google-zero",
+    "title": "openai and microsoft knew they were starting a doom loop for the web",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.theverge.com/policy/997573/virginia-governor-spanberger-data-center-ai-task-force",
+    "title": "virginia governor creates an ai task force and moves to restrain data centers",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.theverge.com/policy/997516/california-governor-newsom-ai-kill-switch",
+    "title": "gavin newsom is pushing for an ai kill switch",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997358/what-hollywood-thinks-about-existential-ai-warnings",
+    "title": "what hollywood thinks about existential ai warnings",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997444/openai-hack-claude-heif-heist",
+    "title": "security researchers used claude to help them hack into openai",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.theverge.com/science/997083/flash-flood-warning-tacls-satellite-machine-learning",
+    "title": "flash floods can strike without warning this new technology could change that",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492426.html",
+    "title": "无问芯穹与华环电子签署战略合作 共同探索国产异构算力ai基础设施新方向",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492421.html",
+    "title": "达卯科技算电协同2 0平台入选2026国际数字能源展重大成果发布",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492238.html",
+    "title": "具身智能技术路线尚未定型 基础设施却先收敛",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492175.html",
+    "title": "agi新战场谷歌亚马逊巨头激战 杀出个中国limix 2赢了又赢",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492015.html",
+    "title": "白天务农晚上码农 这个斐济农民跨越一万公里来拼多多取经",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/491875.html",
+    "title": "agi最难一战 竟在医院 中国ai登上science 医生不怕失业还催着上线",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://digg.com/tech/d8115eed-73fb-440e-8965-179658c86ac5",
+    "title": "openai launches astra for law for legal research and drafting digg",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://polymarket.com/event/openai-or-anthropic-announces-recursive-self-improvement-by",
+    "title": "openai or anthropic announces recursive self improvement by",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://mashable.com/tech/anthropic-ai-threatens-bioweapons-as-call-for-regulation-mounts",
+    "title": "anthropic s safety report avian flu drone swarms mass surveillance",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=8H-UH8Yw2TY",
+    "title": "google launches project astra grok 2 0 qwen3 8 omni flash",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://kingy.ai/news/openai-model-misalignment-reporting",
+    "title": "openai launches a new transparency framework for reporting",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://openai.com/careers/deputy-general-counsel-commercial-(marketing)-san-francisco",
+    "title": "deputy general counsel commercial marketing openai",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://www.kucoin.com/news/flash/openai-launches-legal-version-of-gpt-6-astra-boosts-legal-research-accuracy-by-40",
+    "title": "openai launches legal version of gpt 6 astra improving kucoin",
+    "date": "2026-09-19"
+  },
+  {
+    "url": "https://benchlm.ai/benchmarks/anthropicossfuzzanycrash",
+    "title": "anthropic oss fuzz crash leaderboard scores september 2026",
+    "date": "2026-09-19"
   }
 ]
