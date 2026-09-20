@@ -1,170 +1,5 @@
 [
   {
-    "url": "https://www.economist.com/interactive/briefing/2026/09/03/nvidia-is-the-central-bank-of-ai",
-    "title": "nvidia is the central bank of ai",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://xeiaso.net/notes/2026/everyone-slowdown-but-me",
-    "title": "everyone should slow down ai development except for me",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://withspecific.com/benchmarks/real-swe",
-    "title": "real swe benchmarking ai models on private real world enterprise codebases",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
-    "title": "qwen qwen3 8 27b",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview",
-    "title": "edge0 edge0 35b a3b preview",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
-    "title": "unsloth qwen3 8 27b gguf",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
-    "title": "davidau qwen3 8 27b turbo fable cold fusion 735 882 heretic uncensored neo coder max mtp gguf",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3",
-    "title": "minimaxai minimax h3",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
-    "title": "sentence transformers all minilm l6 v2",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://liniora.com",
-    "title": "liniora ever thought about replacing your project manager",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://github.com/LuxUmbra697/DSH-Desktop",
-    "title": "dsh desktop",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://github.com/TokenRhythm/NeoHorse",
-    "title": "neohorse",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/12/openais-sam-altman-says-it-would-be-ill-advised-to-go-public-in-2026",
-    "title": "openai s sam altman says it would be ill advised to go public in 2026",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/12/anthropic-ceo-outlines-plan-to-pace-the-frontier",
-    "title": "anthropic ceo outlines plan to slow ai development",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/994383/openais-rogue-ai-rubygems-hack",
-    "title": "openai s rogue ai tried to hack another company in may",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/994384/sam-altman-no-openai-ipo-ill-advised",
-    "title": "sam altman says openai going public in 2026 would be ill advised",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/994337/anthropic-ceo-slow-down-ai-development",
-    "title": "anthropic ceo says it s time to pump the brakes on ai",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/994112/ai-data-center-pollution-health-epa",
-    "title": "trump is giving data centers a pass to pollute",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/994255/openai-millennium-prize-problem-tristan-buckmaster-competition",
-    "title": "openai just wants to win",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/488380.html",
-    "title": "openai年内不上市了 奥特曼支持对手dario呼吁 ai该踩刹车了",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487860.html",
-    "title": "算力中国 年度卓越成就 发布 太初元碁超智融合计算系统入选",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487796.html",
-    "title": "a社承认claude安全对齐存在缺陷 但 尚无解决方案",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487752.html",
-    "title": "探索rsi 生数新世界模型让机器人开始自我进化",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487701.html",
-    "title": "ai数学的最后一道高墙 塌了 gpt 6 astra刷穿frontiermath tier 4",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487688.html",
-    "title": "kimi突发k2 8 性能逼近k3 百万上下文全员开放",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/487653.html",
-    "title": "陶哲轩邓煜究竟在反对什么 ai暴力解题摧毁人类数学精神",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.instagram.com/p/DdM2GQ_zm3I",
-    "title": "ai model release cycles are getting insanely short",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.theguardian.com/technology/openai",
-    "title": "openai the guardian",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://solutionsreview.com/business-intelligence/analytics-and-data-science-news-for-the-week-of-september-11-updates-from-alteryx-openai-university-of-cincinnati-more",
-    "title": "analytics and data science news for the week of september 11",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://english.ahram.org.eg/NewsContentP/3/576528/Business/Anthropic-boss-calls-for-slowing-pace-of-AI-develo.aspx",
-    "title": "anthropic boss calls for slowing pace of ai development tech",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://cual.ai/en/news/deepseek-v41-flash-ia-potente-en-tu-mac-vieja",
-    "title": "deepseek launches ultra fast model that works on your old mac",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://siliconangle.com/2026/09/11/researchers-link-another-hacking-campaign-to-openai-agents",
-    "title": "researchers link another hacking campaign to openai agents",
-    "date": "2026-09-13"
-  },
-  {
-    "url": "https://www.alibabacloud.com/help/en/model-studio/coding-plan",
-    "title": "alibaba cloud model studio coding plan overview",
-    "date": "2026-09-13"
-  },
-  {
     "url": "https://huggingface.co/papers/2609.11115",
     "title": "benchmark radar a living database and search engine for ai benchmarks and evaluation",
     "date": "2026-09-14"
@@ -2543,5 +2378,210 @@
     "url": "https://benchlm.ai/benchmarks/anthropicossfuzzanycrash",
     "title": "anthropic oss fuzz crash leaderboard scores september 2026",
     "date": "2026-09-19"
+  },
+  {
+    "url": "https://github.com/theguysudo/ENZO",
+    "title": "i created an open source locally usable full fledged ai platform",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://john.hartnup.uk/2026/06/07/ai-event-posters.html",
+    "title": "ai generated posters don t have to be horrible",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://erichgrunewald.substack.com/p/why-you-should-almost-never-use-ai",
+    "title": "i think you should almost never use ai to write",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.scmp.com/tech/big-tech/article/3368055/alibaba-open-sources-medical-ai-model-can-detect-cancer-and-nearly-150-conditions",
+    "title": "alibaba open sources ai model that can detect cancer and nearly 150 conditions",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-director-called-ai-scraping-the-largest-theft-of-labor-in-human-history-while-openai-head-brands-chatgpt-an-existential-threat-to-publishers-revelations-come-from-legal-briefs-filed-in-nyt-lawsuit",
+    "title": "microsoft director ai scraping the largest theft of labor in human history",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.reuters.com/business/gemini-hacked-three-companies-first-known-breakout-by-google-ai-wsj-reports-2026-09-18",
+    "title": "gemini hacked three companies in first known breakout by google s ai",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/19/flock-reportedly-tries-to-shrink-workforce-with-employee-buyouts",
+    "title": "flock reportedly tries to shrink workforce with employee buyouts",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/19/trump-suggests-rebranding-ai-with-a-new-name-says-hes-also-creating-an-ai-force",
+    "title": "trump says it s time to rebrand ai with a new name and he s also creating an ai force",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/19/googles-gemini-is-the-latest-ai-model-to-hack-other-companies",
+    "title": "google s gemini is the latest ai model to hack other companies",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/19/petlibros-new-ai-powered-feeder-is-a-game-changer-for-multi-cat-homes",
+    "title": "petlibro s new ai powered feeder is a game changer for multi cat homes",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/19/ai-safety-conversations-have-gotten-unbelievable",
+    "title": "ai safety conversations have gotten unbelievable",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/19/prices-go-up-in-7-days-get-your-disrupt-ticket-now",
+    "title": "prices go up in 7 days get your disrupt ticket now",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/09/19/vals-backed-by-andreessen-horowitz-is-looking-to-become-the-gold-standard-for-ai-benchmarking",
+    "title": "vals backed by andreessen horowitz is looking to become the gold standard for ai benchmarking",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997833/meta-muse-creepy",
+    "title": "meta s muse is creepy but maybe not for the reasons you think",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack",
+    "title": "gemini went rogue hacked three companies and google hid it",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.theverge.com/podcast/997382/openai-microsoft-anthropic-elon-musk-cartel-ai-competition",
+    "title": "does ai need an antitrust exemption so it doesn t kill everyone",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/997706/the-ai-regulation-smackdown-isnt-over",
+    "title": "the ai regulation smackdown isn t over",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492849.html",
+    "title": "网络安全人才实战能力报告 ai赋能篇 正式发布 当ai进入业务深水区安全如何跟上",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492755.html",
+    "title": "留给人类阻止ai的时间不多了",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492661.html",
+    "title": "马斯克批量收购破产公司ing 世界首富脑子是不一样",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492573.html",
+    "title": "27b模型分分钟交付网页 qwen 3 8还是太能了",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492550.html",
+    "title": "nature ai重生到1900 这一世抢先爱因斯坦提出光量子",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492501.html",
+    "title": "千万奖池找 鲸锐 单项奖金200万 只等一个最会用ai讲故事的你",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492476.html",
+    "title": "华为汪涛 华为要打造ai算力底座 只做好一颗芯片远远不够",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492467.html",
+    "title": "陶哲轩代表sair foundation宣布正式启动 开放数学模型计划",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/09/492429.html",
+    "title": "ai离 理解万物 还有多远 先拿癌细胞和行星轨道试试水",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://community.openai.com/t/an-open-source-voice-assistant-on-gpt-live-1-with-a-responses-backend-npx-thursday-agent/1399213",
+    "title": "an open source voice assistant on gpt live 1 with a responses",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.techinasia.com/news/openai-launches-australian-youth-safety-blueprint/amp",
+    "title": "openai launches australian youth safety blueprint tech in asia",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=49760871",
+    "title": "fwiw i am with thariq https x com trq212 status hacker news",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://help.openai.com/en/articles/20001052-using-library-to-manage-files-in-chatgpt",
+    "title": "using library to manage files in chatgpt openai help center",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://www.anthropic.com/institute/measuring-pace-of-ai-development",
+    "title": "measurements for understanding the pace of ai development inside",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://ieeexplore.ieee.org/document/11430449",
+    "title": "llm cave a benchmark and light environment for large language",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://openai.com/devday",
+    "title": "openai devday 2026",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "title": "qwen qwen3 8 27b",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://huggingface.co/convaiinnovations/laya",
+    "title": "convaiinnovations laya",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+    "title": "davidau qwen3 8 27b turbo fable cold fusion 735 882 heretic uncensored neo coder max mtp gguf",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
+    "title": "unsloth qwen3 8 27b gguf",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://huggingface.co/AlexWortega/openjev",
+    "title": "alexwortega openjev",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://huggingface.co/Edge0/Edge0-35B-A3B-preview",
+    "title": "edge0 edge0 35b a3b preview",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://github.com/mizorewww/laya-mlx",
+    "title": "laya mlx",
+    "date": "2026-09-20"
+  },
+  {
+    "url": "https://github.com/hirotomasato/yowes",
+    "title": "yowes",
+    "date": "2026-09-20"
   }
 ]
