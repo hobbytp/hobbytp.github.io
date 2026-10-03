@@ -21,7 +21,7 @@
   .mermaid {
     display: flex;
     justify-content: center;
-    margin: 2rem 0;
+    margin: 2.2rem 0;
     overflow-x: auto;
     background: transparent;
   }
@@ -29,7 +29,7 @@
     max-width: 100% !important;
     height: auto;
   }
-  /* 柔化 Mermaid 节点直角为现代圆角卡片 */
+  /* 柔化直角为现代圆角卡片 */
   .mermaid .node rect {
     rx: 8px !important;
     ry: 8px !important;
@@ -37,6 +37,109 @@
   .mermaid .cluster rect {
     rx: 12px !important;
     ry: 12px !important;
+  }
+
+  /* --- 亮色模式 (Light Mode) 变量与样式 --- */
+  :root, html[data-theme="light"] {
+    --mm-text: #0f172a;
+    --mm-line: #64748b;
+  }
+  html[data-theme="light"] .mermaid .node rect,
+  html[data-theme="light"] .mermaid .node polygon,
+  html[data-theme="light"] .mermaid .node circle,
+  html[data-theme="light"] .mermaid .node path {
+    fill: #ffffff !important;
+    stroke: #94a3b8 !important;
+  }
+  html[data-theme="light"] .mermaid .node.legacyNode rect { fill: #fef2f2 !important; stroke: #ef4444 !important; }
+  html[data-theme="light"] .mermaid .node.jevNode rect,
+  html[data-theme="light"] .mermaid .node.fastNode rect,
+  html[data-theme="light"] .mermaid .node.successNode rect { fill: #ecfdf5 !important; stroke: #10b981 !important; }
+  html[data-theme="light"] .mermaid .node.slowNode rect { fill: #f5f3ff !important; stroke: #8b5cf6 !important; }
+  html[data-theme="light"] .mermaid .node.routerNode polygon,
+  html[data-theme="light"] .mermaid .node.processNode rect { fill: #eef2ff !important; stroke: #6366f1 !important; }
+
+  /* --- 暗色模式 (Dark Mode) 变量与样式：彻底解决白底白字！ --- */
+  html[data-theme="dark"], body.dark {
+    --mm-text: #f8fafc;
+    --mm-line: #94a3b8;
+  }
+  /* 强制暗色模式下所有节点为深色卡片底色，边框清晰 */
+  html[data-theme="dark"] .mermaid .node rect,
+  html[data-theme="dark"] .mermaid .node polygon,
+  html[data-theme="dark"] .mermaid .node circle,
+  html[data-theme="dark"] .mermaid .node path,
+  body.dark .mermaid .node rect,
+  body.dark .mermaid .node polygon,
+  body.dark .mermaid .node circle,
+  body.dark .mermaid .node path {
+    fill: #1e293b !important;
+    stroke: #64748b !important;
+  }
+  /* 暗色模式下语义节点：半透明微光底色 + 亮色边框 */
+  html[data-theme="dark"] .mermaid .node.legacyNode rect,
+  body.dark .mermaid .node.legacyNode rect {
+    fill: rgba(239, 68, 68, 0.2) !important;
+    stroke: #f87171 !important;
+  }
+  html[data-theme="dark"] .mermaid .node.jevNode rect,
+  html[data-theme="dark"] .mermaid .node.fastNode rect,
+  html[data-theme="dark"] .mermaid .node.successNode rect,
+  body.dark .mermaid .node.jevNode rect,
+  body.dark .mermaid .node.fastNode rect,
+  body.dark .mermaid .node.successNode rect {
+    fill: rgba(16, 185, 129, 0.2) !important;
+    stroke: #34d399 !important;
+  }
+  html[data-theme="dark"] .mermaid .node.slowNode rect,
+  body.dark .mermaid .node.slowNode rect {
+    fill: rgba(139, 92, 246, 0.2) !important;
+    stroke: #a78bfa !important;
+  }
+  html[data-theme="dark"] .mermaid .node.routerNode polygon,
+  html[data-theme="dark"] .mermaid .node.processNode rect,
+  body.dark .mermaid .node.routerNode polygon,
+  body.dark .mermaid .node.processNode rect {
+    fill: rgba(99, 102, 241, 0.2) !important;
+    stroke: #818cf8 !important;
+  }
+
+  /* 统一文字高对比度与粗细 */
+  .mermaid .node text,
+  .mermaid .node .nodeLabel,
+  .mermaid .node span,
+  .mermaid .node div {
+    color: var(--mm-text) !important;
+    fill: var(--mm-text) !important;
+    font-weight: 500 !important;
+  }
+  .mermaid .cluster text,
+  .mermaid .cluster span {
+    color: var(--mm-text) !important;
+    fill: var(--mm-text) !important;
+    font-weight: 600 !important;
+  }
+  /* 连线与标签 */
+  .mermaid .edgePath path,
+  .mermaid .flowchart-link {
+    stroke: var(--mm-line) !important;
+    stroke-width: 1.5px !important;
+  }
+  .mermaid .marker {
+    fill: var(--mm-line) !important;
+    stroke: var(--mm-line) !important;
+  }
+  html[data-theme="dark"] .mermaid .edgeLabel,
+  body.dark .mermaid .edgeLabel {
+    background-color: #0f172a !important;
+    color: #e2e8f0 !important;
+  }
+  html[data-theme="light"] .mermaid .edgeLabel {
+    background-color: #f8fafc !important;
+    color: #334155 !important;
+  }
+  .mermaid .edgeLabel rect {
+    fill: transparent !important;
   }
 </style>
 <script>

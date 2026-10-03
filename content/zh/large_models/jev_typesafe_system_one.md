@@ -112,10 +112,10 @@ Jev 彻底重构了这条链路。它并不维护"已生成文本的自回归缓
 
 ```mermaid
 flowchart LR
-    %% 节点样式定义：圆角、高雅色彩映射
-    classDef legacyNode fill:#FEF2F2,stroke:#F87171,stroke-width:1.5px,rx:8,ry:8,color:#991B1B;
-    classDef jevNode fill:#F0FDFA,stroke:#0D9488,stroke-width:1.5px,rx:8,ry:8,color:#115E59;
-    classDef successNode fill:#ECFDF5,stroke:#059669,stroke-width:2px,rx:16,ry:16,color:#065F46;
+    %% 节点样式：由 CSS 负责黑夜/白天自适应背景与高对比度文字
+    classDef legacyNode stroke:#F87171,stroke-width:1.5px,rx:8,ry:8;
+    classDef jevNode stroke:#0D9488,stroke-width:1.5px,rx:8,ry:8;
+    classDef successNode stroke:#059669,stroke-width:2px,rx:16,ry:16;
     classDef subContainer fill:transparent,stroke:#94A3B8,stroke-width:1.2px,stroke-dasharray: 4 4;
 
     subgraph 传统LLM路径["传统 LLM 路径 (自回归逐字生成)"]
@@ -316,11 +316,11 @@ Jev 在生产中最顶级的架构应用，绝非单独拿它替换大模型，�
 
 ```mermaid
 flowchart TD
-    %% 节点样式定义：圆角、胶囊、状态流转
-    classDef startNode fill:#F8FAFC,stroke:#64748B,stroke-width:1.5px,rx:18,ry:18,color:#0F172A;
-    classDef routerNode fill:#EEF2FF,stroke:#6366F1,stroke-width:2px,color:#312E81;
-    classDef fastNode fill:#ECFDF5,stroke:#10B981,stroke-width:1.5px,rx:8,ry:8,color:#065F46;
-    classDef slowNode fill:#F5F3FF,stroke:#8B5CF6,stroke-width:1.5px,rx:8,ry:8,color:#5B21B6;
+    %% 节点样式：由 CSS 负责黑夜/白天自适应背景与高对比度文字
+    classDef startNode stroke:#64748B,stroke-width:1.5px,rx:18,ry:18;
+    classDef routerNode stroke:#6366F1,stroke-width:2px;
+    classDef fastNode stroke:#10B981,stroke-width:1.5px,rx:8,ry:8;
+    classDef slowNode stroke:#8B5CF6,stroke-width:1.5px,rx:8,ry:8;
     classDef subContainer fill:transparent,stroke:#94A3B8,stroke-width:1.2px,stroke-dasharray: 4 4;
 
     Env(["环境输入 (User / Tool / State)"]):::startNode --> JevRouter{"Jev 系统一评估<br/>(One-Pass / 70ms)"}:::routerNode
@@ -509,10 +509,10 @@ Jared Palmer 开源的 **Kev** 最具工程参考价值。它向全世界展示�
 
 ```mermaid
 flowchart TD
-    %% 全局样式定义：圆角、中性微阴影、微边框
-    classDef inputNode fill:#F8FAFC,stroke:#94A3B8,stroke-width:1.5px,rx:8,ry:8,color:#1E293B;
-    classDef processNode fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,rx:8,ry:8,color:#312E81;
-    classDef outputNode fill:#ECFDF5,stroke:#10B981,stroke-width:2px,rx:18,ry:18,color:#065F46;
+    %% 节点样式：由 CSS 负责黑夜/白天自适应背景与高对比度文字
+    classDef inputNode stroke:#94A3B8,stroke-width:1.5px,rx:8,ry:8;
+    classDef processNode stroke:#6366F1,stroke-width:1.5px,rx:8,ry:8;
+    classDef outputNode stroke:#10B981,stroke-width:2px,rx:18,ry:18;
     classDef subContainer fill:transparent,stroke:#94A3B8,stroke-width:1.2px,stroke-dasharray: 4 4;
 
     subgraph 序列构造["1. 序列化输入构造 (Single Sequence)"]
