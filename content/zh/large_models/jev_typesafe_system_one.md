@@ -112,18 +112,26 @@ Jev 彻底重构了这条链路。它并不维护"已生成文本的自回归缓
 
 ```mermaid
 flowchart LR
-    subgraph 传统LLM路径["传统 LLM 模式 (慢速、高耗、脆弱)"]
-        A1["输入状态 / 上下文 Prompt"] --> B1["逐 Token 自回归解码<br/>(依赖 KV Cache 顺序吐字)"]
-        B1 --> C1["生成非结构化文本 / JSON 字符串"]
-        C1 --> D1["正则 / JSON Parser 解析<br/>+ 枚举合法性校验 + 重试"]
-        D1 --> E1["业务可用决策 (可能解析崩溃)"]
-    end
+    %% 节点样式定义：圆角、高雅色彩映射
+    classDef legacyNode fill:#FEF2F2,stroke:#F87171,stroke-width:1.5px,rx:8,ry:8,color:#991B1B;
+    classDef jevNode fill:#F0FDFA,stroke:#0D9488,stroke-width:1.5px,rx:8,ry:8,color:#115E59;
+    classDef successNode fill:#ECFDF5,stroke:#059669,stroke-width:2px,rx:16,ry:16,color:#065F46;
+    classDef subContainer fill:transparent,stroke:#94A3B8,stroke-width:1.2px,stroke-dasharray: 4 4;
 
-    subgraph Jev路径["Jev 系统一模式 (单步、确定、高速)"]
-        A2["输入状态 (State)<br/>+ 问题元数据 (Schema)"] --> B2["单次前向推理 (One-Pass)<br/>问题与选项并行打分"]
-        B2 --> C2["类型安全输出 (严格保形)<br/>+ 输出校准概率 (置信度)"]
-        C2 --> E2["业务可用决策 (0 格式错误)"]
+    subgraph 传统LLM路径["传统 LLM 路径 (自回归逐字生成)"]
+        A1("输入状态 / 上下文 Prompt"):::legacyNode --> B1("逐 Token 自回归解码<br/>(依赖 KV Cache 顺序吐字)"):::legacyNode
+        B1 --> C1("生成非结构化文本 / JSON"):::legacyNode
+        C1 --> D1("正则/Parser 解析 + 校验重试"):::legacyNode
+        D1 --> E1(["可用决策 (可能解析崩溃)"]):::legacyNode
     end
+    class 传统LLM路径 subContainer;
+
+    subgraph Jev路径["Jev 系统一路径 (非自回归单次前向)"]
+        A2("输入状态 (State) + Schema"):::jevNode --> B2("单次前向并行评估<br/>(One-Pass 问题打分)"):::jevNode
+        B2 --> C2("类型安全输出 + 校准概率"):::jevNode
+        C2 --> E2(["可用决策 (0 格式错误)"]):::successNode
+    end
+    class Jev路径 subContainer;
 ```
 
 #### 深度辨析：Jev 与现有结构化输出方案的本质区别
@@ -308,18 +316,27 @@ Jev 在生产中最顶级的架构应用，绝非单独拿它替换大模型，�
 
 ```mermaid
 flowchart TD
-    Env["环境输入 (User / Tool / System State)"] --> JevRouter{"Jev 系统一评估<br/>(One-Pass / 70ms)"}
+    %% 节点样式定义：圆角、胶囊、状态流转
+    classDef startNode fill:#F8FAFC,stroke:#64748B,stroke-width:1.5px,rx:18,ry:18,color:#0F172A;
+    classDef routerNode fill:#EEF2FF,stroke:#6366F1,stroke-width:2px,color:#312E81;
+    classDef fastNode fill:#ECFDF5,stroke:#10B981,stroke-width:1.5px,rx:8,ry:8,color:#065F46;
+    classDef slowNode fill:#F5F3FF,stroke:#8B5CF6,stroke-width:1.5px,rx:8,ry:8,color:#5B21B6;
+    classDef subContainer fill:transparent,stroke:#94A3B8,stroke-width:1.2px,stroke-dasharray: 4 4;
+
+    Env(["环境输入 (User / Tool / State)"]):::startNode --> JevRouter{"Jev 系统一评估<br/>(One-Pass / 70ms)"}:::routerNode
 
     subgraph 快路径["系统一快循环 (处理 85%+ 高频确定性请求)"]
-        JevRouter -->|"置信度 ≥ 0.85<br/>(高置信确认)"| FastAction["极速执行: 工具调用 / 状态流转 / 准入放行"]
+        JevRouter -->|"置信度 ≥ 0.85<br/>(高置信确认)"| FastAction("极速执行: 工具调用 / 状态流转 / 准入放行"):::fastNode
     end
+    class 快路径 subContainer;
 
     subgraph 慢路径["系统二慢循环 (兜底 15% 复杂/模糊/长尾请求)"]
-        JevRouter -->|"置信度 < 0.85<br/>(低置信触发报警)"| Escalator["升级至前沿推理模型 (如 Claude 3.5 Sonnet / o1)"]
-        Escalator --> SlowAction["深度链式推理 (CoT) / 异常博弈 / 复杂代码生成"]
+        JevRouter -->|"置信度 < 0.85<br/>(低置信触发报警)"| Escalator("升级至前沿推理模型 (Claude 3.5 / o1)"):::slowNode
+        Escalator --> SlowAction("深思熟虑 CoT 推理 / 复杂业务仲裁"):::slowNode
     end
+    class 慢路径 subContainer;
 
-    FastAction --> NextState["更新 Agent 内存与上下文状态"]
+    FastAction --> NextState(["更新 Agent 内存与上下文状态"]):::startNode
     SlowAction --> NextState
     NextState --> Env
 ```
@@ -466,7 +483,7 @@ TypeSafe 迄今对底层预训练模型选型保密，仅披露使用了合成�
 └── 端侧代理: typesafe-computer-use (macOS 自动化控制回路单步 $0.0002)
 ```
 
-以知名的智能体浏览器自动化项目 **`browser-use / jev-ultrafast`** 为例：传统实现需要把整个 DOM 树和屏幕截图喂给多模态大模型，询问“下一步该点击屏幕上的哪个坐标或按钮”，单步响应在 3~5 秒以上；改用专用决策模型作为动作决策头后，单个交互动作决策耗时被压缩到 **17~23 ms**，端到端执行流畅度产生质的跃迁。
+以知名的智能体浏览器自动化项目 **`browser-use / jev-ultrafast`** 为例：传统实现需要把整个 DOM 树和屏幕截图喂给多模态大模型，询问“下一步该点击屏幕上的哪个坐标或按钮”，单步响应在 3到5 秒以上；改用专用决策模型作为动作决策头后，单个交互动作决策耗时被压缩到 **17到23 ms**，端到端执行流畅度产生质的跃迁。
 
 ---
 
@@ -492,25 +509,34 @@ Jared Palmer 开源的 **Kev** 最具工程参考价值。它向全世界展示�
 
 ```mermaid
 flowchart TD
-    subgraph 序列构造与分词["1. 序列化输入 (Single Sequence)"]
-        RawState["State 文本"]
-        RawQ["Question 描述"]
-        RawOpts["Options 列表: [A, B, C, ...]"]
-        RawState & RawQ & RawOpts --> UnifiedInput["拼接为结构化单一 Token 序列"]
-    end
+    %% 全局样式定义：圆角、中性微阴影、微边框
+    classDef inputNode fill:#F8FAFC,stroke:#94A3B8,stroke-width:1.5px,rx:8,ry:8,color:#1E293B;
+    classDef processNode fill:#EEF2FF,stroke:#6366F1,stroke-width:1.5px,rx:8,ry:8,color:#312E81;
+    classDef outputNode fill:#ECFDF5,stroke:#10B981,stroke-width:2px,rx:18,ry:18,color:#065F46;
+    classDef subContainer fill:transparent,stroke:#94A3B8,stroke-width:1.2px,stroke-dasharray: 4 4;
 
-    subgraph 冻结底座推理["2. 预训练特征提取 (Frozen Backbone)"]
-        UnifiedInput --> FrozenModel["冻结权重的 Qwen3.5 模型<br/>+ 叠加 Rank-16 LoRA 微调适配层"]
+    subgraph 序列构造["1. 序列化输入构造 (Single Sequence)"]
+        RawState("State 上下文文本"):::inputNode
+        RawQ("Question 决策描述"):::inputNode
+        RawOpts("Options 候选集列表"):::inputNode
+        RawState & RawQ & RawOpts --> UnifiedInput("统一 Token 序列拼接"):::processNode
     end
+    class 序列构造 subContainer;
+
+    subgraph 冻结底座["2. 预训练特征提取 (Frozen Backbone)"]
+        UnifiedInput --> FrozenModel("冻结权重的 Qwen3.5 底座<br/>+ 叠加 Rank-16 LoRA 微调适配层"):::processNode
+    end
+    class 冻结底座 subContainer;
 
     subgraph 指针头打分["3. 决策交互层 (Pointer Head)"]
-        FrozenModel --> H_State["State 隐状态表示"]
-        FrozenModel --> H_Q["Question 隐状态向量 (h_q)"]
-        FrozenModel --> H_Opts["各选项隐状态向量列表: [h_o1, h_o2, ...]"]
-        H_Q & H_Opts --> DotProduct["点积相似度矩阵打分 / 双线性投影<br/>Score_i = h_q · W · h_oi"]
-        DotProduct --> Softmax["Softmax 跨选项归一化"]
-        Softmax --> CalibratedOut["直接输出各选项的校准概率分布<br/>(无任何 Token 解码生成循环)"]
+        FrozenModel --> H_State("State 隐向量"):::inputNode
+        FrozenModel --> H_Q("Question 隐向量 (h_q)"):::inputNode
+        FrozenModel --> H_Opts("各选项隐向量集: [h_o1, h_o2, ...]"):::inputNode
+        H_Q & H_Opts --> DotProduct("双线性点积打分矩阵<br/>Score_i = h_q · W · h_oi"):::processNode
+        DotProduct --> Softmax("Softmax 跨选项归一化"):::processNode
+        Softmax --> CalibratedOut(["直接输出各选项校准概率分布<br/>(无任何 Token 解码生成循环)"]):::outputNode
     end
+    class 指针头打分 subContainer;
 ```
 
 Kev 的巧妙之处在于：

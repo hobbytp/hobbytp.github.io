@@ -17,37 +17,131 @@
 
 {{- /* Mermaid Diagram Support */ -}}
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+  .mermaid {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+    overflow-x: auto;
+    background: transparent;
+  }
+  .mermaid svg {
+    max-width: 100% !important;
+    height: auto;
+  }
+  /* 柔化 Mermaid 节点直角为现代圆角卡片 */
+  .mermaid .node rect {
+    rx: 8px !important;
+    ry: 8px !important;
+  }
+  .mermaid .cluster rect {
+    rx: 12px !important;
+    ry: 12px !important;
+  }
+</style>
 <script>
-  // 等待 Mermaid 加载完成
-  function initMermaid() {
+  function getMermaidTheme(explicitTheme) {
+    if (explicitTheme) return explicitTheme;
+    const isDark = document.documentElement.dataset.theme === 'dark' ||
+                   document.body.classList.contains('dark') ||
+                   (!localStorage.getItem("pref-theme") && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    return isDark ? 'dark' : 'neutral';
+  }
+
+  function initOrUpdateMermaid(explicitTheme) {
     if (typeof mermaid === 'undefined') {
-      setTimeout(initMermaid, 100);
+      setTimeout(function() { initOrUpdateMermaid(explicitTheme); }, 100);
       return;
     }
 
-    // 初始化 Mermaid
+    const theme = getMermaidTheme(explicitTheme);
+    const isDark = (theme === 'dark');
+
     mermaid.initialize({
       startOnLoad: false,
-      theme: 'default'
+      theme: theme,
+      securityLevel: 'loose',
+      fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      fontSize: 14,
+      themeVariables: isDark ? {
+        darkMode: true,
+        background: 'transparent',
+        primaryColor: '#1e293b',
+        primaryBorderColor: '#6366f1',
+        primaryTextColor: '#f8fafc',
+        lineColor: '#94a3b8',
+        secondaryColor: '#1e293b',
+        tertiaryColor: '#0f172a',
+        clusterBkg: 'rgba(30, 41, 59, 0.4)',
+        clusterBorder: '#475569',
+        mainBkg: '#1e293b',
+        textColor: '#f1f5f9',
+        edgeLabelBackground: '#0f172a'
+      } : {
+        darkMode: false,
+        background: 'transparent',
+        primaryColor: '#f8fafc',
+        primaryBorderColor: '#6366f1',
+        primaryTextColor: '#0f172a',
+        lineColor: '#64748b',
+        secondaryColor: '#f1f5f9',
+        tertiaryColor: '#ffffff',
+        clusterBkg: 'rgba(248, 250, 252, 0.7)',
+        clusterBorder: '#cbd5e1',
+        mainBkg: '#ffffff',
+        textColor: '#0f172a',
+        edgeLabelBackground: '#ffffff'
+      },
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
     });
 
-    // 将 Hugo 生成的代码块转换为 Mermaid 可识别的格式
+    // 1. 将预格式化的代码块转换为带 data-raw-code 的 div.mermaid
     document.querySelectorAll('pre code.language-mermaid').forEach(function (codeBlock) {
       const pre = codeBlock.parentElement;
       const mermaidDiv = document.createElement('div');
       mermaidDiv.className = 'mermaid';
+      mermaidDiv.setAttribute('data-raw-code', codeBlock.textContent);
       mermaidDiv.textContent = codeBlock.textContent;
       pre.parentElement.replaceChild(mermaidDiv, pre);
     });
 
-    // 渲染所有 Mermaid 图表
+    // 2. 如果之前已渲染过 SVG，重置为原始代码以便按新主题重绘
+    document.querySelectorAll('.mermaid[data-raw-code]').forEach(function (div) {
+      if (div.getAttribute('data-processed')) {
+        div.removeAttribute('data-processed');
+        div.innerHTML = div.getAttribute('data-raw-code');
+      }
+    });
+
+    // 3. 执行渲染
     mermaid.run();
   }
 
-  // DOMContentLoaded 时执行
+  window.initOrUpdateMermaid = initOrUpdateMermaid;
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMermaid);
+    document.addEventListener('DOMContentLoaded', function() { initOrUpdateMermaid(); });
   } else {
-    initMermaid();
+    initOrUpdateMermaid();
   }
+
+  // 监听主题属性变化，实现明暗自动响应
+  document.addEventListener('DOMContentLoaded', function() {
+    let lastTheme = getMermaidTheme();
+    const observer = new MutationObserver(function() {
+      const currentTheme = getMermaidTheme();
+      if (currentTheme !== lastTheme) {
+        lastTheme = currentTheme;
+        initOrUpdateMermaid(currentTheme);
+      }
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+    if (document.body) {
+      observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    }
+  });
 </script>
