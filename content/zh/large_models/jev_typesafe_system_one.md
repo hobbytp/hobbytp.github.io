@@ -1,11 +1,17 @@
----
-title: "Jev 深度解析：TypeSafe AI 那个「不做聊天、只做判断」的系统一模型"
-date: "2026-10-03T10:30:00+08:00"
-draft: false
-tags: ["AI", "TypeSafe", "Jev", "System One", "决策模型", "RLCD", "Agent", "Kev", "Laya", "开源"]
-categories: ["large_models"]
-description: "TypeSafe AI 于 2026 年 9 月发布的 Jev 是一个不生成文本、只返回带概率的类型化决策的「系统一」（System One）模型。本文系统梳理它走红的背景与动因、核心实现原理、主要功能、现存局限、典型应用场景、开源竞品对比、业界专家评价与未来趋势。"
----
+\---  
+title: "Jev 深度解析：TypeSafe AI 那个「不做聊天、只做判断」的系统一模型"  
+date: "2026-10-03T10:30:00+08:00"  
+draft: false  
+tags: ["AI", "TypeSafe", "Jev", "System One", "决策模型", "RLCD", "Agent", "Kev", "Laya", "开源"]  
+categories: ["large_models"]  
+description: "TypeSafe AI 于 2026 年 9 月发布的 Jev 是一个不生成文本、只返回带概率的类型化决策的「系统一」（System One）模型。本文系统梳理它走红的背景与动因、核心实现原理、主要功能、现存局限、典型应用场景、开源竞品对比、业界专家评价与未来趋势。"  
+wordCount: 6783  
+readingTime: 18  
+\---
+
+## 术语澄清
+
+在展开之前，需要先纠正一个常见误称。TypeSafe AI 于 2026 年 9 月发布的模型名为 **Jev**，并非"Jevm"。检索中出现的 **Jev-Mem** 是第三方研究者基于 Jev 构建的智能体记忆系统论文项目（arXiv: 2609.23986，仓库 github.com/libingzheren/Jev-Mem），并非 TypeSafe 官方发布的模型。本文讨论的对象是 TypeSafe AI 官方模型 Jev。
 
 ## 目录
 
@@ -25,18 +31,18 @@ description: "TypeSafe AI 于 2026 年 9 月发布的 Jev 是一个不生成文�
 
 ### 1.1 一个"不聪明"的卖点
 
-Jev 最反常的地方在于，它的卖点恰恰是"不聪明"。它不写句子、不解释内容、不生成图片，也不做长链条推理。你给它一段状态（state，可以是文本或 JSON）和一组带固定选项的问题，它在一次调用中返回所有问题的**类型化答案（typed answers）**以及每个答案的**校准概率（calibrated probability）**。
+Jev 最反常的地方在于，它的卖点恰恰是"不聪明"。它不写句子、不解释内容、不生成图片，也不做长链条推理。你给它一段状态（state，可以是文本或 JSON）和一组带固定选项的问题，它在一次调用中返回所有问题的**类型化答案（typed answers）**&#x4EE5;及每个答案的**校准概率（calibrated probability）**。
 
 TypeSafe AI 把这类模型称为 **System One Model（系统一模型）**，概念借自丹尼尔·卡尼曼《思考，快与慢》中对"快、直觉、自动"的系统一与"慢、审慎、推理"的系统二的区分。Jev 是这一模型类别的首个公开实例。
 
 ### 1.2 公司背景：从 OpenAI 出来的创始人
 
-| 项目 | 事实 | 来源 |
-|------|------|------|
-| 公司 | TypeSafe AI，旧金山初创，成立于 2024 年 | AI Wiki，2026-09 |
-| 创始人 | Diogo Almeida（前 OpenAI 研究员），联合创始人 Erik Gafni、Sasha Sheng | AI Wiki，2026-09 |
-| 创始人背景 | Almeida 是 2022 年 InstructGPT 论文《Training language models to follow instructions with human feedback》（Ouyang et al.）的第四作者；TypeSafe 团队页称其此前任职于 Google Brain | 官方团队页；InstructGPT 论文 |
-| 融资 | 2026-09-15 宣布结束隐身状态，完成 4000 万美元种子轮，DCVC 领投，DCVC 普通合伙人 James Hardiman 参与 | Business Wire 新闻稿，2026-09-15 |
+| 项目    | 事实                                                                                                                                                        | 来源                           |
+| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| 公司    | TypeSafe AI，旧金山初创，成立于 2024 年                                                                                                                              | AI Wiki，2026-09              |
+| 创始人   | Diogo Almeida（前 OpenAI 研究员），联合创始人 Erik Gafni、Sasha Sheng                                                                                                  | AI Wiki，2026-09              |
+| 创始人背景 | Almeida 是 2022 年 InstructGPT 论文《Training language models to follow instructions with human feedback》（Ouyang et al.）的第四作者；TypeSafe 团队页称其此前任职于 Google Brain | 官方团队页；InstructGPT 论文         |
+| 融资    | 2026-09-15 宣布结束隐身状态，完成 4000 万美元种子轮，DCVC 领投，DCVC 普通合伙人 James Hardiman 参与                                                                                   | Business Wire 新闻稿，2026-09-15 |
 
 需要说明的是，"ChatGPT 共同发明人""RLHF 共同发明人"是公司与 Almeida 本人的自我描述。可独立核实的是他在 InstructGPT 论文中的作者位次，而 RLHF 技术本身早于该论文。这一点在评估其技术权威性时值得注意。
 
@@ -50,12 +56,12 @@ Almeida 对 Jev 的动机有一个清晰的表述。他回忆自己在 OpenAI �
 
 ### 1.4 走红时间线
 
-| 时间 | 事件 | 来源 |
-|------|------|------|
-| 2026-09-15 | TypeSafe AI 结束隐身状态，发布 Jev 与 System One Models 概念，完成 4000 万美元种子轮 | 官方发布帖；Business Wire |
-| 2026-09-16 | The Register 报道；Hacker News 讨论帖达 1901 分、约 500 条评论 | The Register，2026-09-16；Hacker News |
-| 2026-09-18 | TechCrunch 报道：需求过大导致 API 一度无法对外服务 | TechCrunch，2026-09-18 |
-| 2026-09-20 前后 | 清除 waitlist，向所有开发者开放，赠送 5 美元额度 | VentureBeat；AI Wiki |
+| 时间              | 事件                                                                                    | 来源                                                    |
+| --------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| 2026-09-15      | TypeSafe AI 结束隐身状态，发布 Jev 与 System One Models 概念，完成 4000 万美元种子轮                       | 官方发布帖；Business Wire                                   |
+| 2026-09-16      | The Register 报道；Hacker News 讨论帖达 1901 分、约 500 条评论                                     | The Register，2026-09-16；Hacker News                   |
+| 2026-09-18      | TechCrunch 报道：需求过大导致 API 一度无法对外服务                                                     | TechCrunch，2026-09-18                                 |
+| 2026-09-20 前后   | 清除 waitlist，向所有开发者开放，赠送 5 美元额度                                                        | VentureBeat；AI Wiki                                   |
 | 2026-09-24 至 25 | The Information、Financial Times 先后报道：TypeSafe AI 正洽谈 10 亿美元或更高规模融资，部分投资者估值报价超 100 亿美元 | The Information，2026-09-24；Financial Times，2026-09-25 |
 
 关于开放日期，不同来源存在分歧：Gate News 记为 9 月 16 日取消 waitlist 限制，而 VentureBeat 与 AI Wiki 记为 9 月 20 日。本文采用后者，并标注该分歧。
@@ -102,21 +108,21 @@ flowchart LR
 
 Jev 的 API 以三种原语组织问题（来源：TypeSafe 官方文档；The Next Gen Tech Insider，2026-09-28）：
 
-| 原语 | 作用 | 返回 |
-|------|------|------|
+| 原语         | 作用                           | 返回              |
+| ---------- | ---------------------------- | --------------- |
 | **Choice** | 从预先定义的最多 **255** 个选项中选一个（分类） | 每个选项的概率 + 总体置信度 |
-| **Score** | 将状态映射到有序的评分等级（2 至 10 级） | 各等级概率 + 置信度 |
-| **Noul** | 判断一个 yes/no 命题是否为真 | 0 到 1 之间的概率 |
+| **Score**  | 将状态映射到有序的评分等级（2 至 10 级）      | 各等级概率 + 置信度     |
+| **Noul**   | 判断一个 yes/no 命题是否为真           | 0 到 1 之间的概率     |
 
 所有问题在**同一次请求中并行评估同一份状态**，返回结构化答案。输入上下文约为 **32,000 个共享 token**（来源：Experiential Labs 文档，经 The Next Gen Tech Insider 转引）。
 
 ### 2.3 并行采样器与类型安全
 
-| 机制 | 说明 | 结果 |
-|------|------|------|
-| 并行采样器（Parallel Sampler） | 非自回归，一次前向即可产出全部答案，问题之间相互隔离、不能互相窥探 | 增加问题数量带来的延迟增长很小 |
-| 输出 Schema 预定义 | 有效输出由 schema 提前确定 | 模型在数学上**不可能**返回 schema 之外的取值 |
-| 零类型错误 | 由上一条直接推出 | TypeSafe 声称类型错误率为 0 |
+| 机制                      | 说明                                | 结果                           |
+| ----------------------- | --------------------------------- | ---------------------------- |
+| 并行采样器（Parallel Sampler） | 非自回归，一次前向即可产出全部答案，问题之间相互隔离、不能互相窥探 | 增加问题数量带来的延迟增长很小              |
+| 输出 Schema 预定义           | 有效输出由 schema 提前确定                 | 模型在数学上**不可能**返回 schema 之外的取值 |
+| 零类型错误                   | 由上一条直接推出                          | TypeSafe 声称类型错误率为 0          |
 
 这里有一个必须厘清的边界：**类型安全保证的是"答案的形状"，不是"答案的正确性"。** Jev 不会返回一个不在你选项列表里的字符串，但它完全可能在你给定的选项里选错那个正确的。官方文档也明确区分了这两层——输出结构上的零幻觉，与判断意义上的准确性，是两件事。
 
@@ -136,17 +142,17 @@ Jev 使用 TypeSafe 自研的训练方法 **RLCD（Reinforcement Learning for Ca
 
 以下数据来自 TypeSafe 官方评测（发布于 2026-09-15），**均为公司自测**：
 
-| 指标 | Jev | 对照（前沿模型） |
-|------|-----|------------------|
-| 端到端响应时间 | 70 ms – 500 ms | 3 s – 329 s |
-| 系统一查询速度 | 快 40x – 200x | 同等级前沿智能 |
-| 工作流评测：单任务耗时 | 0.114 s | 8.566 s（LLM），慢 193.6x |
-| 工作流评测：单任务成本 | $0.000081 | $0.013880（LLM），贵 444.6x |
+| 指标          | Jev               | 对照（前沿模型）                                                      |
+| ----------- | ----------------- | ------------------------------------------------------------- |
+| 端到端响应时间     | 70 ms – 500 ms    | 3 s – 329 s                                                   |
+| 系统一查询速度     | 快 40x – 200x      | 同等级前沿智能                                                       |
+| 工作流评测：单任务耗时 | 0.114 s           | 8.566 s（LLM），慢 193.6x                                         |
+| 工作流评测：单任务成本 | $0.000081         | $0.013880（LLM），贵 444.6x                                       |
 | 准确性（四工作流平均） | 67.8%，$0.0004/工作流 | GPT-5.6 Terra 67.9% @ $0.0304；Claude Sonnet 5 67.8% @ $0.1174 |
-| 输入 token 价格 | **$0.042 / 百万** | $0.20 – $10 / 百万 |
-| 输出 token 价格 | **免费** | 约为输入价的 5 倍 |
-| 类型错误 / 结构幻觉 | 由输出 schema 保证为零 | LLM 会产生 |
-| 置信度 | 每个答案附带校准概率 | 过度自信且不一致 |
+| 输入 token 价格 | **$0.042 / 百万**   | $0.20 – $10 / 百万                                              |
+| 输出 token 价格 | **免费**            | 约为输入价的 5 倍                                                    |
+| 类型错误 / 结构幻觉 | 由输出 schema 保证为零   | LLM 会产生                                                       |
+| 置信度         | 每个答案附带校准概率        | 过度自信且不一致                                                      |
 
 > 表中"对照（前沿模型）"的基准，按 TypeSafe 发布材料，主要指 **GPT-6 Astra** 与 **Claude Fable 5.1**；准确性一行另引 GPT-5.6 Terra、Claude Sonnet 5；响应时间上限与错误率数据取自 OpenRouter 流量。不同行采用的对照对象并不完全一致，因此本表不宜横向叠加解读。
 
@@ -160,13 +166,13 @@ Jev 最具工程价值的用法之一，是**置信度级联**：高置信（例
 
 ### 3.3 生态接入
 
-| 维度 | 支持情况 |
-|------|---------|
+| 维度  | 支持情况                                                            |
+| --- | --------------------------------------------------------------- |
 | SDK | 官方 Python、TypeScript SDK（2026-09-11 起公开 v0.5.7，09-15 升至 v0.6.0） |
-| 接口 | 直接 POST 至 `/v1/systemone` |
-| 平台 | OpenRouter、Vercel AI Gateway、Cloudflare Workers AI |
-| 框架 | LangChain / LangGraph 的路由与护栏节点、Pydantic AI |
-| 演示 | "Doom demo"：约 10 次查询/秒，成本约 7 美元/小时 |
+| 接口  | 直接 POST 至 `/v1/systemone`                                       |
+| 平台  | OpenRouter、Vercel AI Gateway、Cloudflare Workers AI              |
+| 框架  | LangChain / LangGraph 的路由与护栏节点、Pydantic AI                      |
+| 演示  | "Doom demo"：约 10 次查询/秒，成本约 7 美元/小时                              |
 
 ## 四、现存局限与争议
 
@@ -208,28 +214,28 @@ TypeSafe 认定的核心资产是**任务定义与数据**（即"让模型只做
 
 Jev 面向的核心是**智能体循环中那几百个微小判断**——真正拖慢或搞崩一个 agent 的，往往不是困难推理，而是步骤之间的琐碎决策。
 
-| 决策类型 | 具体问题 | 原语 |
-|---------|---------|------|
-| 工具路由 | 下一步该调用哪个工具？ | Choice |
-| 安全护栏 | 这条用户命令是否安全、可否执行？ | Noul |
-| 检索相关性 | 检索到的段落是否真的相关？ | Noul / Score |
-| 停止条件 | 任务是否已完成？ | Noul |
-| 工单分流 | 这条消息该进哪个队列？ | Choice |
-| 风险核保 | 保险/信贷风险等级评估 | Score / Choice |
-| 数据标记 | PII 检测、内容审核、分类打标 | Noul / Choice |
+| 决策类型  | 具体问题             | 原语             |
+| ----- | ---------------- | -------------- |
+| 工具路由  | 下一步该调用哪个工具？      | Choice         |
+| 安全护栏  | 这条用户命令是否安全、可否执行？ | Noul           |
+| 检索相关性 | 检索到的段落是否真的相关？    | Noul / Score   |
+| 停止条件  | 任务是否已完成？         | Noul           |
+| 工单分流  | 这条消息该进哪个队列？      | Choice         |
+| 风险核保  | 保险/信贷风险等级评估      | Score / Choice |
+| 数据标记  | PII 检测、内容审核、分类打标 | Noul / Choice  |
 
 **真实落地案例**（来源：madewithjev.com 资源库，2026-09；Gate News，2026-09-16）：
 
-| 项目 | 说明 | 可量化指标 / 状态 |
-|------|------|--------|
-| jev-trader（jarrodwatts） | Monad 首席 AI 工程师用 Jev 结合价格数据，每约 300 ms 在 Kuru 链上订单簿提交限价单 | 300 ms 决策窗口，已开源 |
-| jev-ultrafast（browser-use） | 浏览器 agent 的"下一步点击哪个元素"决策改由 Jev 完成 | 约 2.1 万 star |
-| DocJev（jerryjliu） | 文档分类与拆分 | 比 gpt-5.6-luna 快 6 倍 |
-| fast-jev-compaction | Claude Code 上下文压缩：由 Jev 给"已耗尽的对话轮次"打分后删除，而非摘要 | 约 6100 star |
-| jev-codex-router | 每一轮 Codex 调用前，由 Jev 决定用哪个模型、多少思考强度 | 约 200 star |
-| typesafe-computer-use | macOS 计算机使用，每一步一次 Jev 决策 | 单步约 $0.0002 |
-| jev-review | 代码评审工作流：用 Jev 给 diff 打分 | 本地看板展示 |
-| Jev-Mem（论文项目） | 用 Jev 做记忆分类、检索预算、查询路由与停止条件，复杂推理仍交给 LLM | LoCoMo 上记忆构建时间降至 158 秒，较最快对照系统加速 6.6 倍 |
+| 项目                         | 说明                                                      | 可量化指标 / 状态                             |
+| -------------------------- | ------------------------------------------------------- | -------------------------------------- |
+| jev-trader（jarrodwatts）    | Monad 首席 AI 工程师用 Jev 结合价格数据，每约 300 ms 在 Kuru 链上订单簿提交限价单 | 300 ms 决策窗口，已开源                        |
+| jev-ultrafast（browser-use） | 浏览器 agent 的"下一步点击哪个元素"决策改由 Jev 完成                       | 约 2.1 万 star                           |
+| DocJev（jerryjliu）          | 文档分类与拆分                                                 | 比 gpt-5.6-luna 快 6 倍                   |
+| fast-jev-compaction        | Claude Code 上下文压缩：由 Jev 给"已耗尽的对话轮次"打分后删除，而非摘要           | 约 6100 star                            |
+| jev-codex-router           | 每一轮 Codex 调用前，由 Jev 决定用哪个模型、多少思考强度                      | 约 200 star                             |
+| typesafe-computer-use      | macOS 计算机使用，每一步一次 Jev 决策                                | 单步约 $0.0002                            |
+| jev-review                 | 代码评审工作流：用 Jev 给 diff 打分                                 | 本地看板展示                                 |
+| Jev-Mem（论文项目）              | 用 Jev 做记忆分类、检索预算、查询路由与停止条件，复杂推理仍交给 LLM                  | LoCoMo 上记忆构建时间降至 158 秒，较最快对照系统加速 6.6 倍 |
 
 一个值得注意的共性：这些项目**都是把某个已有工具中"答案固定的重复决策"抽出来交给 Jev**，把需要成文的内容留给语言模型，或者干脆不留。这是"AI-to-software"范式的一个具体注脚。
 
@@ -237,17 +243,18 @@ Jev 面向的核心是**智能体循环中那几百个微小判断**——真正
 
 Jev 发布后，开源社区在极短时间内涌现出多个复刻与替代实现。以下为可核实的三个主要项目。
 
-| 维度 | Jev（官方托管） | Kev | Laya |
-|------|----------------|-----|------|
-| 主体 | TypeSafe AI | Jared Palmer | NandhaKishorM |
-| 许可 | 闭源托管 | Apache-2.0 | Apache-2.0 |
-| 底座 | 未公开 | Qwen3.5（+ 少量 Qwen2.5-0.5B 版本） | 421M 双向编码器 |
-| 结构 | 未公开 | rank-16 LoRA + pointer head，冻结底座权重 | 非自回归编码器 |
-| 规模 | — | 0.5B / 0.8B / 4B / 9B / 27B | 421M |
-| 发布 | 2026-09-15 | 2026-09-20 | 2026-09 |
-| 兼容性 | 官方 SDK | 服务端实现与 System One API 字段级一致，官方 Python SDK 改 base_url 即可直连 | 提供 `/v1/systemone` 兼容 HTTP 服务、MCP server |
-| 精度对照 | 新源 dev 0.857 | Kev-27B 新源 dev 0.848；Kev-9B 0.822 | 零样本接近随机，需微调 |
-| MMLU 4 选 1 | 0.90 | Kev-27B 0.84；Kev-9B 0.74 | — |
+| 维度         | Jev（官方托管）    | Kev                                                       | Laya                                     |
+| ---------- | ------------ | --------------------------------------------------------- | ---------------------------------------- |
+| 主体         | TypeSafe AI  | Jared Palmer                                              | NandhaKishorM                            |
+| 许可         | 闭源托管         | Apache-2.0                                                | Apache-2.0                               |
+| 底座         | 未公开          | Qwen3.5（+ 少量 Qwen2.5-0.5B 版本）                             | 421M 双向编码器                               |
+| 结构         | 未公开          | rank-16 LoRA + pointer head，冻结底座权重                        | 非自回归编码器                                  |
+| 规模         | —            | 0.5B / 0.8B / 4B / 9B / 27B                               | 421M                                     |
+| 发布         | 2026-09-15   | 2026-09-20                                                | 2026-09                                  |
+| 兼容性        | 官方 SDK       | 服务端实现与 System One API 字段级一致，官方 Python SDK 改 base_url 即可直连 | 提供 `/v1/systemone` 兼容 HTTP 服务、MCP server |
+| 精度对照       | 新源 dev 0.857 | Kev-27B 新源 dev 0.848；Kev-9B 0.822                         | 零样本接近随机，需微调                              |
+| MMLU 4 选 1 | 0.90         | Kev-27B 0.84；Kev-9B 0.74                                  | —                                        |
+
 
 此外，社区还出现了若干从接口类型反推架构、可自行训练的实现（如 vinnylarouge 的 jevlike），由于公开信息有限，未纳入上表对比。
 
@@ -268,13 +275,13 @@ Jev 发布后，开源社区在极短时间内涌现出多个复刻与替代实�
 
 ## 七、业界专家评价
 
-| 评价者 | 身份 | 观点 | 来源 |
-|--------|------|------|------|
-| Andrej Karpathy | OpenAI 联合创始人，近期加入 Anthropic | Jev 似乎抓住了市场对"简单、便宜、快速决策模型"的潜在需求；前沿 AI 公司长期专注追求更高智能，这一领域"投入不足" | 社交平台，经新浪财经转引，2026-09-25 |
-| Armin Ronacher | 开源模型工具公司 Earendil CTO | 行业早该想到这类方案，但由于前沿大模型价格低廉且有补贴，开发者一直没动力另寻出路；Jev 的用处显现后，竞争者会很快出现 | DeepTech 转引，2026-09-26 |
-| Anastasios Angelopoulos | 模型评测平台 Arena 联合创始人兼 CEO | "看不出 Jev 与标准零样本分类器有何不同"，后者已是成熟技术，Meta/谷歌/HuggingFace 都有 | 新浪财经编译，2026-09-25 |
-| James Hardiman | DCVC 普通合伙人（种子轮领投方） | 由于 Jev 大幅降低了计算成本，公司目前**已实现盈利**（公司未公开收入或利润数据，该说法暂无法核实）；Jev 让"AI 末日"讨论变得更理性 | Financial Times，2026-09-25 |
-| Diogo Almeida | TypeSafe AI 联合创始人兼 CEO | "ChatGPT 比我聪明得多，但那些最该自动化的工作现在没有被自动化"；"前沿实验室的主要产品是恐惧或炒作"，公司不打算"在数据中心里造神" | 新浪财经编译，2026-09-25 |
+| 评价者                     | 身份                          | 观点                                                                        | 来源                         |
+| ----------------------- | --------------------------- | ------------------------------------------------------------------------- | -------------------------- |
+| Andrej Karpathy         | OpenAI 联合创始人，近期加入 Anthropic | Jev 似乎抓住了市场对"简单、便宜、快速决策模型"的潜在需求；前沿 AI 公司长期专注追求更高智能，这一领域"投入不足"             | 社交平台，经新浪财经转引，2026-09-25    |
+| Armin Ronacher          | 开源模型工具公司 Earendil CTO       | 行业早该想到这类方案，但由于前沿大模型价格低廉且有补贴，开发者一直没动力另寻出路；Jev 的用处显现后，竞争者会很快出现              | DeepTech 转引，2026-09-26     |
+| Anastasios Angelopoulos | 模型评测平台 Arena 联合创始人兼 CEO     | "看不出 Jev 与标准零样本分类器有何不同"，后者已是成熟技术，Meta/谷歌/HuggingFace 都有                   | 新浪财经编译，2026-09-25          |
+| James Hardiman          | DCVC 普通合伙人（种子轮领投方）          | 由于 Jev 大幅降低了计算成本，公司目前**已实现盈利**（公司未公开收入或利润数据，该说法暂无法核实）；Jev 让"AI 末日"讨论变得更理性 | Financial Times，2026-09-25 |
+| Diogo Almeida           | TypeSafe AI 联合创始人兼 CEO      | "ChatGPT 比我聪明得多，但那些最该自动化的工作现在没有被自动化"；"前沿实验室的主要产品是恐惧或炒作"，公司不打算"在数据中心里造神"   | 新浪财经编译，2026-09-25          |
 
 ## 八、未来发展趋势
 
@@ -313,24 +320,33 @@ Jev 的价值不在于它有多聪明，而在于它提出了一个尖锐的问�
 
 **一级信源（官方）**
 
-- TypeSafe AI 官方发布帖《Introducing System One Models & Jev》，2026-09-15：https://typesafe.ai/blog/introducing-system-one-models-and-jev
-- TypeSafe AI 官方文档（Models / Primitives / Confidence）：https://docs.typesafe.ai
+- TypeSafe AI 官方发布帖《Introducing System One Models & Jev》，2026-09-15：<https://typesafe.ai/blog/introducing-system-one-models-and-jev>
+- TypeSafe AI 官方文档（Models / Primitives / Confidence）：<https://docs.typesafe.ai>
 - TypeSafe AI 博客《关于苦涩的教训》（the bitterest lesson），2026-09-10
 - Business Wire 新闻稿（结束隐身状态、4000 万美元种子轮），2026-09-15
-- Kev 仓库：https://github.com/jaredpalmer/kev
-- Laya 仓库：https://github.com/NandhaKishorM/laya
-- jev-cookbook（中文教程，Datawhale）：https://github.com/datawhalechina/jev-cookbook
-- awesome-jev（资源列表）：https://github.com/kraayenjon/awesome-jev
-- Jev-Mem 论文：https://arxiv.org/abs/2609.23986；仓库 https://github.com/libingzheren/Jev-Mem
+- Kev 仓库：<https://github.com/jaredpalmer/kev>
+- Laya 仓库：<https://github.com/NandhaKishorM/laya>
+- jev-cookbook（中文教程，Datawhale）：<https://github.com/datawhalechina/jev-cookbook>
+- awesome-jev（资源列表）：<https://github.com/kraayenjon/awesome-jev>
+- Jev-Mem 论文：<https://arxiv.org/abs/2609.23986；仓库> <https://github.com/libingzheren/Jev-Mem>
 
 **二级信源（权威媒体）**
 
-- The Register，2026-09-16：https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711
-- TechCrunch，2026-09-18：https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/
-- The Information，2026-09-24：https://www.theinformation.com/newsletters/dealmaker/jev-fervor-leads-talk-big-valuation-boost
-- Financial Times，2026-09-25：https://www.ft.com/content/456884ea-2558-4648-8036-a77b73733430
-- Bloomberg，2026-09-25：https://www.bloomberg.com/news/articles/2026-09-25/jev-an-ai-model-that-can-t-chat-takes-on-bigger-rivals
+- The Register，2026-09-16：<https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711>
+- TechCrunch，2026-09-18：<https://techcrunch.com/2026/09/18/a-new-kind-of-ai-model-from-a-chatgpt-inventor-is-thrilling-developers/>
+- The Information，2026-09-24：<https://www.theinformation.com/newsletters/dealmaker/jev-fervor-leads-talk-big-valuation-boost>
+- Financial Times，2026-09-25：<https://www.ft.com/content/456884ea-2558-4648-8036-a77b73733430>
+- Bloomberg，2026-09-25：<https://www.bloomberg.com/news/articles/2026-09-25/jev-an-ai-model-that-can-t-chat-takes-on-bigger-rivals>
 - 新浪财经（编译报道），2026-09-25
 - 网易科技 / DeepTech 深科技，2026-09-26
 - Ground Truth（校准审计报道），2026-09
 
+**待核实项**
+
+- 用户提及的 "WaytoAGI 飞书文档" 在本次检索中未定位到可核实的原始链接；
+- TypeSafe AI 新一轮融资的最终估值、投资方与是否落地，截至目前仍处于报道阶段；
+- DCVC 关于公司"已盈利"的说法，公司未公开收入或利润数据，暂无法独立核实。
+
+---
+
+免责声明：本文内容基于公开信息整理，仅供参考，不构成任何投资建议或专业指导。文中观点仅代表作者个人立场，数据来源已尽量标注，如有疏漏欢迎指正。AI 技术发展迅速，具体情况请以官方最新信息为准。
