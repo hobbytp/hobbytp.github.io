@@ -1,145 +1,5 @@
 [
   {
-    "url": "https://github.com/mizorewww/laya-mlx",
-    "title": "laya mlx",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://github.com/breakstageaxe61/genspark-claw",
-    "title": "genspark claw",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/26/google-tests-buying-from-walmart-owned-flipkart-through-gemini-and-ai-mode-in-india",
-    "title": "google tests buying from walmart owned flipkart through gemini and ai mode in india",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/26/insurers-claim-ai-is-already-increasing-healthcare-costs",
-    "title": "insurers claim ai is already increasing healthcare costs",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://techcrunch.com/2026/09/26/i-created-an-interactive-digital-avatar-of-myself-and-you-can-talk-to-it",
-    "title": "i created an interactive digital avatar of myself and you can talk to it",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1001049/openai-training-pause",
-    "title": "openai pauses training of its most capable models",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.theverge.com/podcast/1000344/cloudflare-matthew-prince-google-zero-ai-web-advertising",
-    "title": "can cloudflare ceo matthew prince save the web from ai",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/498478.html",
-    "title": "索辰科技加码世界模型 与战略投资企业美梦空间联合发布具身模型与物理测评标准",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/498271.html",
-    "title": "ai开始研究physical ai fsd级团队亮出首版模型simate beta 空降robodojo",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/497624.html",
-    "title": "笔记本跑7000亿参数glm 无gpu也行 ssd当显存用火爆github",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/497613.html",
-    "title": "在云栖大会 我终于看懂了米哈游千亿ai野心",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/497425.html",
-    "title": "谷歌tpu跑kimi比英伟达gpu快57 用的还是deepseek推理框架",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/09/497382.html",
-    "title": "openai失控agent还找deepseek kimi当外援 近百万条作案短链曝光",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://artificialanalysis.ai/models/releases/claude-opus-5-5",
-    "title": "claude opus 5 5 release intelligence performance price",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://help.openai.com/en/articles/20001339-creating-and-managing-chatgpt-sites",
-    "title": "creating and managing chatgpt sites openai help center",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://community.openai.com/t/feature-proposal-a-free-household-purchasing-optimizer-built-into-chatgpt/1401134",
-    "title": "a free household purchasing optimizer built into chatgpt",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.getreadyforagents.com/news/anthropic-founder-voting-control-ipo",
-    "title": "anthropic seeks 50 1 founder voting control ahead of ipo",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://myclaw.ai/blog/grok-bot-vs-hermes-agent",
-    "title": "grok bot vs hermes agent 2026 pricing models hosting myclaw",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.threads.com/@meta.ai/post/DdwR65UiGbY/youre-right-and-ep-fs-own-new-benchmark-proves-it-rm-m-in-years-on-rm-k-month",
-    "title": "you re right and epf s own new benchmark proves it rm1m in 10",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.instagram.com/p/Ddv8C-PlPXl",
-    "title": "openai revealed that autonomous research agents instagram",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://uctoday.com/ai-safety-cyber-resilience-and-the-risks-of-agentic-systems-take-cent",
-    "title": "cyber roundup cut price ai intel gaps expanded monitoring",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://blog.bustikiller.com/2026/09/25/one-month-without-ai.html",
-    "title": "one month without ai",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.lemonde.fr/en/economy/article/2026/09/24/arthur-mensch-ceo-of-french-start-up-mistral-ai-ai-is-software-it-can-be-controlled_6757890_19.html",
-    "title": "ceo of mistral ai is software it can be controlled",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.theguardian.com/environment/2026/sep/25/didnt-need-air-conditioning-airport-cooled-natural-ventilation-reunion",
-    "title": "an airport cooled by natural ventilation",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.reuters.com/business/ftc-chair-pushes-back-treating-ai-agents-independent-actors-2026-09-25",
-    "title": "ftc chair suggests ai developers should be liable for conduct of agents",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://discourse.haskell.org/t/how-to-keep-enjoying-programming-in-a-world-of-llms/14705",
-    "title": "how to keep enjoying programming in a world of llms",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "http://allanrbo.blogspot.com/2026/09/a-jev-like-wrapper-for-llms-including.html",
-    "title": "a single function jev like wrapper for llms including vision models",
-    "date": "2026-09-27"
-  },
-  {
-    "url": "https://www.privatemode.ai/blog/system-one-from-glm-flash",
-    "title": "turning glm 5 3 flash into a jev like decision model",
-    "date": "2026-09-27"
-  },
-  {
     "url": "https://huggingface.co/papers/2609.31620",
     "title": "fusereg regularizing layer fusion mitigates the reconstruction generation gap in representation autoencoders",
     "date": "2026-09-28"
@@ -3033,5 +2893,150 @@
     "url": "https://huggingface.co/nvidia/Nemotron-3-Diarization",
     "title": "nvidia nemotron 3 diarization",
     "date": "2026-10-03"
+  },
+  {
+    "url": "https://www.neowin.net/news/system76-bans-ai-generated-code-across-many-of-its-cosmic-codebases",
+    "title": "pop _os bans ai generated code from much of its codebase",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded",
+    "title": "lecun has zero concerns about ai wiping out humanity recent rogue incidents",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.bbc.com/news/articles/cwgkvygg5nzvo",
+    "title": "us killer s sentence quashed because of ai video of victim shown in court",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.astralcodexten.com/p/our-ai-midwife",
+    "title": "our ai midwife",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason",
+    "title": "don t be fooled llms don t reason",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://pipod.dev",
+    "title": "pi pod run your pi coding agent in sandboxes on your own server",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://github.com/QingYunA/answer-me-with-html",
+    "title": "answer me with html",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://github.com/Jakeschincariol/replica-skill",
+    "title": "replica skill",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://github.com/whirlchat/whirl",
+    "title": "whirl",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://huggingface.co/blog/microsoft/thinkingbox",
+    "title": "the agent said it was done the database disagreed",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas",
+    "title": "amazon responds to data center backlash says it no longer uses ndas",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken",
+    "title": "openai safety employee resigns claiming the company s culture is broken",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/03/all-the-ai-agents-that-can-live-in-your-text-messages",
+    "title": "all the ai agents that can live in your text messages",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.theverge.com/games/1004418/capcom-ai-game-development",
+    "title": "capcom is preparing for a future where we create games together with ai",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.theverge.com/entertainment/1004162/splice-ceo-kakul-srivastava-ai-interview",
+    "title": "splice ceo kakul srivastava thinks ai emails are killing conversations",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1004408/openai-safety-quits-sounding-the-alarm",
+    "title": "an openai safety employee has quit and is sounding the alarm",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/501451.html",
+    "title": "gpt 6要 吃掉 3d公司 这家公司不到2年arr翻百倍 破1亿美元",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/501381.html",
+    "title": "deepseek扩招 弹性计算团队大量hc 尤其需要资深工程师",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/501368.html",
+    "title": "openai安全团队持续地震 负责人离职 三名员工因泄密被开",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://github.com/anthropics/claude-code/releases",
+    "title": "releases anthropics claude code github",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://openai.com/codex-originals",
+    "title": "codex originals openai",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://github.com/can1357/oh-my-pi/releases",
+    "title": "releases can1357 oh my pi github",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://cryptobriefing.com/ai-benchmark-flaws-impact-anthropics-market-odds-for-october-2026",
+    "title": "ai benchmark flaws impact anthropic s market odds for october 2026",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.radardigital.ai/en/articles/anthropic-100-million-10-thousand-ai-engineers",
+    "title": "anthropic invests us 100 million in training ai engineers",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.saastr.com/20vc-x-saastr-anthropics-s-1-leaks-instinct-hits-10-billion-in-33-days-amd-buys-world-labs-and-meta-poaches-mongodbs-ceo",
+    "title": "20vc x saastr anthropic s s 1 leaks instinct hits 10 billion in 33",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://ollama.com/library/qwen3.5",
+    "title": "qwen3 5 ollama",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://memeburn.com/grok-4-6-vs-gpt-5-6-sol-2026-which-ai-model-wins",
+    "title": "grok 4 6 vs gpt 5 6 sol 2026 which ai model wins memeburn",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://www.theguardian.com/technology/openai",
+    "title": "openai the guardian",
+    "date": "2026-10-04"
+  },
+  {
+    "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1",
+    "title": "aleph alpha kolibri 1",
+    "date": "2026-10-04"
   }
 ]
