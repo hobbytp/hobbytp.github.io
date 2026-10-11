@@ -1,150 +1,5 @@
 [
   {
-    "url": "https://www.neowin.net/news/system76-bans-ai-generated-code-across-many-of-its-cosmic-codebases",
-    "title": "pop _os bans ai generated code from much of its codebase",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://fortune.com/2026/10/01/ai-godfather-yann-lecun-has-zero-concerns-about-human-extinction-says-anthropic-ceo-dario-amodei-is-deuded",
-    "title": "lecun has zero concerns about ai wiping out humanity recent rogue incidents",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.bbc.com/news/articles/cwgkvygg5nzvo",
-    "title": "us killer s sentence quashed because of ai video of victim shown in court",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.astralcodexten.com/p/our-ai-midwife",
-    "title": "our ai midwife",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.technologyreview.com/2026/10/02/1145639/dont-be-fooled-llms-dont-reason",
-    "title": "don t be fooled llms don t reason",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://pipod.dev",
-    "title": "pi pod run your pi coding agent in sandboxes on your own server",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://github.com/QingYunA/answer-me-with-html",
-    "title": "answer me with html",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://github.com/Jakeschincariol/replica-skill",
-    "title": "replica skill",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://github.com/whirlchat/whirl",
-    "title": "whirl",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://huggingface.co/blog/microsoft/thinkingbox",
-    "title": "the agent said it was done the database disagreed",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/03/amazon-responds-to-data-center-backlash-says-it-no-longer-uses-ndas",
-    "title": "amazon responds to data center backlash says it no longer uses ndas",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/03/openai-safety-employee-resigns-claiming-the-companys-culture-is-broken",
-    "title": "openai safety employee resigns claiming the company s culture is broken",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/03/all-the-ai-agents-that-can-live-in-your-text-messages",
-    "title": "all the ai agents that can live in your text messages",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.theverge.com/games/1004418/capcom-ai-game-development",
-    "title": "capcom is preparing for a future where we create games together with ai",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.theverge.com/entertainment/1004162/splice-ceo-kakul-srivastava-ai-interview",
-    "title": "splice ceo kakul srivastava thinks ai emails are killing conversations",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1004408/openai-safety-quits-sounding-the-alarm",
-    "title": "an openai safety employee has quit and is sounding the alarm",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/501451.html",
-    "title": "gpt 6要 吃掉 3d公司 这家公司不到2年arr翻百倍 破1亿美元",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/501381.html",
-    "title": "deepseek扩招 弹性计算团队大量hc 尤其需要资深工程师",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/501368.html",
-    "title": "openai安全团队持续地震 负责人离职 三名员工因泄密被开",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://github.com/anthropics/claude-code/releases",
-    "title": "releases anthropics claude code github",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://openai.com/codex-originals",
-    "title": "codex originals openai",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://github.com/can1357/oh-my-pi/releases",
-    "title": "releases can1357 oh my pi github",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://cryptobriefing.com/ai-benchmark-flaws-impact-anthropics-market-odds-for-october-2026",
-    "title": "ai benchmark flaws impact anthropic s market odds for october 2026",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.radardigital.ai/en/articles/anthropic-100-million-10-thousand-ai-engineers",
-    "title": "anthropic invests us 100 million in training ai engineers",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.saastr.com/20vc-x-saastr-anthropics-s-1-leaks-instinct-hits-10-billion-in-33-days-amd-buys-world-labs-and-meta-poaches-mongodbs-ceo",
-    "title": "20vc x saastr anthropic s s 1 leaks instinct hits 10 billion in 33",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://ollama.com/library/qwen3.5",
-    "title": "qwen3 5 ollama",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://memeburn.com/grok-4-6-vs-gpt-5-6-sol-2026-which-ai-model-wins",
-    "title": "grok 4 6 vs gpt 5 6 sol 2026 which ai model wins memeburn",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://www.theguardian.com/technology/openai",
-    "title": "openai the guardian",
-    "date": "2026-10-04"
-  },
-  {
-    "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1",
-    "title": "aleph alpha kolibri 1",
-    "date": "2026-10-04"
-  },
-  {
     "url": "https://github.com/allenv0/SCM",
     "title": "ai search for every photo and every frame of video on macos",
     "date": "2026-10-05"
@@ -3033,5 +2888,135 @@
     "url": "https://oss.lsantos.dev/proton-drive-linux-fs",
     "title": "proton drive for linux",
     "date": "2026-10-10"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/10/microsofts-satya-nadella-says-ai-models-need-an-emergency-brake",
+    "title": "microsoft s satya nadella says ai models need an emergency brake",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe",
+    "title": "apple discloses deal to hire team and license tech from personalized podcast startup huxe",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/10/3-days-to-disrupt-2026-meet-the-startups-before-they-hit-mainstream",
+    "title": "3 days to techcrunch disrupt 2026 meet the startups before they hit mainstream",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/10/all-the-ai-agents-that-can-live-in-your-text-messages",
+    "title": "here are the top ai agents that can live in your text messages",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1009286/anthropic-is-cutting-off-its-internal-evaluations-from-the-internet",
+    "title": "anthropic is cutting off its internal evaluations from the internet",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1009051/privacy-ai-agent-promises-openai-meta-muse-dots",
+    "title": "ai agent makers are promising privacy will they deliver",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/502467.html",
+    "title": "特斯拉fsd 在欧洲被打回原形",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://github.com/openclaw/openclaw/releases",
+    "title": "releases openclaw openclaw github",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/2026_cyberattacks_by_rogue_OpenAI_agents",
+    "title": "2026 cyberattacks by rogue openai agents wikipedia",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://arize.com/blog/decision-model-benchmark",
+    "title": "decision model benchmark jev kev liquid d1 more arize ai",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://opencode.ai/data/compare/alibaba/qwen-plus/alibaba/qwen3-8-max-prime",
+    "title": "qwen plus vs qwen 3 8 max prime ai model comparison",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=JBj72ts6q0w",
+    "title": "anthropic s new haiku just beats gpt 6 luna on every benchmark",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://www.dqindia.com/data-and-ai/openai-launches-gpt-6-with-interactive-tools-and-faster-answers-12660252",
+    "title": "openai launches gpt 6 with interactive tools and faster answers",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://huggingface.co/Aleph-Alpha/Kolibri-1",
+    "title": "aleph alpha kolibri 1",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://huggingface.co/AtomicChat/Qwen-Image-2.1-Turbo-Uncensored-GGUF",
+    "title": "atomicchat qwen image 2 1 turbo uncensored gguf",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2",
+    "title": "nerkyor qwen3 8 27b coder390 efficientthink opus5 5 gpt6astra grok4 7 dsv4pro k3 sft rloo mtp dflash2",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://github.com/rociiu/talorys",
+    "title": "talorys a self hosted personal ai agent on cloudflare s free tier",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://terrytao.wordpress.com/2026/10/09/what-mathematicians-should-know-about-the-lean-theorem-proverquestions-of-reliability-and-ai",
+    "title": "what mathematicians should know about the lean theorem prover reliability ai",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
+    "title": "nvidia in talks to acquire us open model startup reflection ai",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://epoch.ai/publications/innovationeval",
+    "title": "recent ai models struggled to match a human algorithmic innovation",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://momo5502.com/posts/2026-10-09-game-decompilation",
+    "title": "500b tokens later letting ai agents decompile a first person shooter",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://celeryman.fun",
+    "title": "a functioning celery man computer",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://github.com/QingYunA/answer-me-with-html",
+    "title": "answer me with html",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://github.com/Jakeschincariol/replica-skill",
+    "title": "replica skill",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://github.com/Ayzzz123/mcd-coupon-strategist",
+    "title": "mcd coupon strategist",
+    "date": "2026-10-11"
+  },
+  {
+    "url": "https://github.com/FeiZhuLulu/DeepSeek-Bot",
+    "title": "deepseek bot",
+    "date": "2026-10-11"
   }
 ]
