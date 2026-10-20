@@ -1,230 +1,5 @@
 [
   {
-    "url": "https://huggingface.co/papers/2610.13166",
-    "title": "scaling agentic data for long horizon terminal intelligence",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.39601",
-    "title": "groundingpi a grounding foundation model towards physical intelligence with visual primitives",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.13630",
-    "title": "multi stream attention residuals",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.13361",
-    "title": "agentswe can coding agents build the agent you actually want",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.39600",
-    "title": "groundanything reconciling parallel decoding with precise visual grounding at flash speed",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.35965",
-    "title": "systematic multi agent vision and language navigation formulation benchmark and method",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.11765",
-    "title": "thinking inertia llms keep thinking when told not to",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.03308",
-    "title": "t3lescope arbitrary resolution high fidelity generative surface reconstruction from images",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/papers/2609.33304",
-    "title": "relevance does not imply applicability experience activation for personal gui agents",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://github.com/SaarthurR/atticus-mac",
-    "title": "atticus hold to talk voice assistant for macos that runs on claude p",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.shpyrd.io",
-    "title": "shpyrd a new type of cloud for ai era",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://titan-ai.co",
-    "title": "i m a 14 year old building my first startup titan",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://github.com/tester-army/e2e",
-    "title": "e2e open source agentic testing framework for web ios and android",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/12/meta-releases-its-first-frontier-model-muse-wonder",
-    "title": "meta releases its first frontier model muse wonder",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/12/windborne-wins-a-hefty-us-air-force-contract-for-its-balloon-data",
-    "title": "windborne wins a hefty us air force contract for its balloon data",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/12/honeyjar-offers-ai-tools-to-improve-pr-and-comms-at-every-company",
-    "title": "honeyjar offers ai tools to improve pr and comms at every company",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/12/microsoft-president-says-uk-is-best-placed-to-drive-ai-regulation",
-    "title": "microsoft president says uk is best placed to drive ai regulation",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/12/this-ai-startup-says-it-can-generate-permit-ready-blueprints-in-minutes",
-    "title": "this ai startup says it can generate permit ready blueprints in minutes",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/12/techcrunch-disrupt-2026-starts-tomorrow-your-final-chance-to-secure-up-to-100-ticket-savings",
-    "title": "techcrunch disrupt 2026 starts tomorrow your final chance to secure up to 100 ticket savings",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/12/former-plaud-exec-raises-26m-for-ai-app-that-listens-to-you-in-the-background",
-    "title": "former plaud exec raises 26m for ai app that listens to you in the background",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1009479/meta-muse-wonder-full-ai-model",
-    "title": "meta has some wonder full new ai models",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout",
-    "title": "microsoft s new ai chip makes it less reliant on nvidia s gpus",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/502654.html",
-    "title": "华为ai靠rsi通关25款游戏 操作次数比人类少56",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/502649.html",
-    "title": "智谱新模型 490 tokens s",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.vals.ai/benchmarks/hlab",
-    "title": "harvey s legal agent benchmark leaderboard vals ai",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "http://www.emirates247.com/world/meta-releases-muse-wonder-ai-models-to-challenge-anthropic-and-openai/6657",
-    "title": "meta releases muse wonder ai models to challenge anthropic and",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.edtechinnovationhub.com/news/openai-commits-1-billion-to-help-defend-the-water-power-and-banking-systems-people-rely-on",
-    "title": "openai commits 1bn to daybreak cyber defense and training",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://x.ai",
-    "title": "xai",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://eu.36kr.com/en/p/4023452816134019",
-    "title": "astra smashes multiple integer multiplication records ai swarm",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://github.com/openai/math",
-    "title": "github openai math",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://news.ycombinator.com/item?id=50066797",
-    "title": "this new openai result is thus less a mathematical breakthrough",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://aipolix.com/en-us/news/xai-x-subscription-grok-cursor-bundle",
-    "title": "xai introduces the x subscription bundling grok grok bot cursor",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://github.com/qgis/QGIS-Enhancement-Proposals/pull/387",
-    "title": "qgis enacts moratorium on ai contributions",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://yyhh.org/blog/2026/10/ai-is-a-tool",
-    "title": "ai is a tool and using it well takes skill",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://arstechnica.com/ai/2026/10/ai-coding-agents-generate-more-code-but-not-more-software",
-    "title": "ai coding agents generate more code but not more software",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://mortoray.com/why-arent-ai-companies-being-charged-for-hacking",
-    "title": "why aren t ai companies being charged for hacking",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.linkedin.com/pulse/ai-tool-rich-hickey-kjl8e",
-    "title": "ai is not a tool by rich hickey",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://taylor.town/kk-ai-2026",
-    "title": "kevin kelly s 2016 ai predictions 10 years later",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://www.intel.com/content/www/us/en/products/details/discrete-gpus/data-center-gpu/d-series.html",
-    "title": "intel d270 gpu ai accelerator up to 480 gb lpddr5x",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/jialinyyzz/humanizer",
-    "title": "jialinyyzz humanizer",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
-    "title": "abenzerps qwen image 2 1 uncensored quantized",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/speridlabs/iris-3b",
-    "title": "speridlabs iris 3b",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://huggingface.co/baidu/Unlimited-OCR",
-    "title": "baidu unlimited ocr",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://github.com/onehumanbeing/esp32-iphone-agent",
-    "title": "esp32 iphone agent",
-    "date": "2026-10-13"
-  },
-  {
-    "url": "https://github.com/deeplethe/solid-glass",
-    "title": "solid glass",
-    "date": "2026-10-13"
-  },
-  {
     "url": "https://openai.com/index/higgsfield-longer-videos-voice",
     "title": "higgsfield takes ai video from 1 minute to over 10",
     "date": "2026-10-14"
@@ -2818,5 +2593,545 @@
     "url": "https://blog.picheta.me/post/killswitch-lang",
     "title": "i built a programming language that llms can t use",
     "date": "2026-10-19"
+  },
+  {
+    "url": "https://github.com/onehumanbeing/esp32-iphone-agent",
+    "title": "esp32 iphone agent",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://github.com/deeplethe/solid-glass",
+    "title": "solid glass",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://github.com/C4rohan/Lampline",
+    "title": "lampline",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://github.com/MemTensor/MemT-1.0",
+    "title": "memt 1 0",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://100toolkit.com/blog/deslop-model",
+    "title": "qwen3 4b with the ai writing tics trained out",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://github.com/kividbio/kividb",
+    "title": "kividb a faster redis compatible memory database and vector cache",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://3anddoneapp.com/try",
+    "title": "i built a task system to handle the drudgery so i could focus on tasks",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://github.com/strot-ai/Project-STROT",
+    "title": "strot compile an llm s intent once run decisions locally",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://yila.ai",
+    "title": "yila a codex for scientific research",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=50151036",
+    "title": "ask hn how to deal with shipping ai written code you don t understand",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://simpleflying.com/chicago-ohare-digs-up-50-ton-boulder-public-names",
+    "title": "chicago o hare digs up 50 ton boulder under airfield asks public for name ideas",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://jrdsgl.com/if-you-dont-run-your-own-llm-proxy-how-the-fuck-do-you-even-know-whats-going-on",
+    "title": "if you don t run your own llm proxy how do you know whats going on",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/jialinyyzz/humanizer",
+    "title": "jialinyyzz humanizer",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/abenzerps/Qwen-Image-2.1-Uncensored-Quantized",
+    "title": "abenzerps qwen image 2 1 uncensored quantized",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/baidu/Unlimited-OCR",
+    "title": "baidu unlimited ocr",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/Comfy-Org/MOSS-Image",
+    "title": "comfy org moss image",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://openai.com/index/low-resource-programming-languages",
+    "title": "advancing coding in low resource programming languages",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/blog/hf-torchneuron",
+    "title": "torchneuron running hf models on aws trainium is easier than ever",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/mamdani-says-feds-have-abdicated-on-ai-urges-new-yorkers-to-push-back",
+    "title": "mamdani says feds have abdicated on ai urges new yorkers to push back",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/nscale-and-anthropic-are-reportedly-in-talks-for-yet-another-45-billion-compute-deal",
+    "title": "nscale and anthropic are reportedly in talks for yet another 45b compute deal",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/embedded-ai-evaluators-wont-be-an-easy-solution-hugging-faces-policy-chief-says",
+    "title": "embedded ai evaluators won t be an easy solution hugging face s policy chief says",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/microsoft-says-ai-agents-are-like-insider-threats-as-frontier-models-cant-be-trusted",
+    "title": "microsoft says ai agents are like insider threats as frontier models can t be trusted",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/amazon-is-taking-its-biggest-shot-at-nvidia-yet-with-new-torchneuron-dev-tool",
+    "title": "amazon is taking its biggest shot at nvidia yet with new torchneuron dev tool",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/hackers-hit-ai-coding-tool-opencode-running-up-charges-on-users-ai-accounts",
+    "title": "hackers hit ai coding tool opencode running up charges on users ai accounts",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/tolan-snags-30m-for-its-ai-companion-that-helps-users-navigate-life",
+    "title": "tolan snags 30m for its ai companion that helps users navigate life",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/replikas-founder-built-the-ai-assistant-she-pitched-at-disrupt-12-years-ago",
+    "title": "replika s founder built the ai assistant she pitched at disrupt 12 years ago",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/tenstorrent-hits-6-2b-valuation-to-scale-open-weight-ai-chips",
+    "title": "tenstorrent hits 6 2b valuation to scale open weight ai chips",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/19/people-are-using-ai-to-make-their-smart-tvs-dumb-again",
+    "title": "people are using ai to make their smart tvs dumb again",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.theverge.com/science/1013954/fossil-fuel-power-infrastructure-data-centers-report",
+    "title": "the fossil fuel comeback is here",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1014045/coreweave-stock-debt-sector-ai",
+    "title": "coreweave s debt is becoming the whole ai industry s problem",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.theverge.com/podcast/1012839/pritzker-ai-privacy-data-centers-flock-congress-laws",
+    "title": "jb pritzker thinks ai could help us live to 100 or threaten us like nukes",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1013643/ai-agents-hack-john-deere-shark-ninja-cummins",
+    "title": "a hacker broke into john deere and sharkninja with an army of ai agents",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.theverge.com/policy/1013113/democrats-ai-midterms",
+    "title": "democrats think cracking down on ai could give them an edge",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504314.html",
+    "title": "claude新模型曝光 能跳出思维定势 修bug治标又治本",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504277.html",
+    "title": "从百比特芯片到整机交付 这家量子计算公司正将量子算力推向可调用服务",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504294.html",
+    "title": "通研院孵化的团队 也盯上了rsi",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504266.html",
+    "title": "2026物理ai与世界模型大会医疗健康世界模型分会场在南京举行",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504225.html",
+    "title": "全栈自研 国产高端互连芯片 稳了",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504242.html",
+    "title": "ai 开始挑战最复杂的系统 生命",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504238.html",
+    "title": "达摩院玄铁出席risc v中国峰会 首发车规产品路线图",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504199.html",
+    "title": "赛场交卷 未来已来 首届全球具身智能应用创新挑战赛暨2026中国机器人大赛闭幕",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504188.html",
+    "title": "日均6万亿token服务背后 商汤大装置如何提升推理效能",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504184.html",
+    "title": "谷歌开源rsi新成果 华人浓度爆表",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://siliconangle.com/2026/10/19/trump-administration-orders-ban-on-deepseek-in-federal-agencies",
+    "title": "trump administration orders ban on deepseek in federal agencies",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://mashable.com/tech/meta-launches-muse-wonder-ai-model-family",
+    "title": "meta launches muse wonder catching openai anthropic mashable",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.kucoin.com/news/flash/openai-launches-new-benchmarks-for-ai-programming-in-low-resource-languages",
+    "title": "openai launches new benchmarks for ai programming in low",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://github.com/openai/codex/releases",
+    "title": "releases openai codex github",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arena.ai/leaderboard/chat/vision",
+    "title": "vlm leaderboard best vision models arena ai",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.cryptopolitan.com/openai-30-billion-before-anthropic-ipo",
+    "title": "openai races to raise 30 billion before anthropic ipo cryptopolitan",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://www.azcentral.com/press-release/story/139845/netsys-announces-participation-in-anthropics-cyber-verification-program",
+    "title": "netsys announces participation in anthropic s cyber verification",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.25404",
+    "title": "mt forcing towards stable and consistent multi turn image editing with autoregressive diffusion",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.22791",
+    "title": "self evolving coding agents via harness policy optimization",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.26216",
+    "title": "roar vae improving latent diffusability through robust prediction",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.25690",
+    "title": "scalenav scalable internet video pretraining for language conditioned local navigation",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.24087",
+    "title": "or license evaluating llm agents as real world operations research practitioners",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.26860",
+    "title": "openvlharness real world visual agentic tool use with multimodal memory",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.24960",
+    "title": "coworkenv synthesizing training environments for long horizon cowork agents",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.26844",
+    "title": "anygoal on world model generalization beyond expert rollouts",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.25666",
+    "title": "frechet forcing training long horizon streaming world models from short clips",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.26770",
+    "title": "harnesspro recursive harness self improvement with pareto optimization for performance cost trade offs",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26863v1",
+    "title": "text to image generative modeling without language pretraining",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26861v1",
+    "title": "can it actually work synthesizing functional cad mechanisms",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26856v1",
+    "title": "reinforcement learning with visually attributable on policy self distillation",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26857v1",
+    "title": "videomama temporally consistent video matting via preserve and refine token",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26855v1",
+    "title": "ropedia w0 scaling loco manipulation world models across embodiments with human experience",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26853v1",
+    "title": "infinidream open ended photorealistic 3d worlds through procedural generation",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26852v1",
+    "title": "coopuq robust multi robot social navigation via uncertainty aware cooperative forecasting",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26851v1",
+    "title": "manga2animate an agentic framework for faithful manga animation with script and storyboard planning",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26850v1",
+    "title": "genolympiad benchmarking frontier image models at their capability boundaries",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26848v1",
+    "title": "where is physical rsi capability from an observational scaling law of llm as policy",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26847v1",
+    "title": "weact dynamic weight switching as agent actions",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26845v1",
+    "title": "train an imaginative agent",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26840v1",
+    "title": "latcomm reusable context compression for latent communication between large language models",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26839v1",
+    "title": "newton based methods for bilevel optimization beyond lower level strong convexity",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26837v1",
+    "title": "speckcast spectral kalman forecasting for diffusion acceleration",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26836v1",
+    "title": "same simulation different evidence where retrieved tool output costs llm agents accuracy",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26834v1",
+    "title": "kronecker delta rule for long context linear attention",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26833v1",
+    "title": "supervised learning with quantum hamiltonian embeddings",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26830v1",
+    "title": "competing learning in hybrid architectures",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26829v1",
+    "title": "proteingeobench frontier structural biology agents are fluent at lookup but lost in geometry",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26828v1",
+    "title": "agent world model in the wild computer use agent environment synthesis",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26827v1",
+    "title": "keep bench evaluating evidence preservation in context compression",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26826v1",
+    "title": "refcraft benchmarking visual reference conditioned agentic generation through web development",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26825v1",
+    "title": "memt 1 0 towards memory native evolution",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26824v1",
+    "title": "specmrl redesign matryoshka representation learning within parametric spectrum",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26821v1",
+    "title": "afribed a speech recognition bias evaluation dataset for low resource african languages",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26820v1",
+    "title": "open form geometric style transfer",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26819v1",
+    "title": "astor benchmarking and improving autoformulation for soft constraint optimization with a formal grammar",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26817v1",
+    "title": "next best action causal constrained offline rl for business action targeting",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26816v1",
+    "title": "real time radar semantic and panoptic scene understanding",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26813v1",
+    "title": "pica wam visual perturbation invariance via cross appearance self alignment in world action models",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26811v1",
+    "title": "state world models execute the rules generate the pixels",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26809v1",
+    "title": "safety mid training internalizing llm safety as a foundational capability",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26805v1",
+    "title": "what language adds and at what cost four controlled probes of pathology vision language models",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26802v1",
+    "title": "scaling parameter efficient fine tuning for brain encoding",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26801v1",
+    "title": "mise en video fine grained 3d control for multi shot video generation",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26800v1",
+    "title": "learning to refer inference time collaboration in decentralized federated learning",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26797v1",
+    "title": "teacher supervision fixed representations and calibration exact risk calculations for candidate scoring decision models",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26795v1",
+    "title": "two hidden layer suffice the caterpillar net",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26794v1",
+    "title": "on data scaling in tabular ml more data better generalization",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26793v1",
+    "title": "soma continuous monitoring and intervention for system two reasoning with system one models",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26790v1",
+    "title": "training with ml labeled data via stochastic first and zeroth order optimization",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26789v1",
+    "title": "cooperative multi agent reinforcement learning for market making on prediction market order books",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26787v1",
+    "title": "lg bench a graph structured evaluation benchmark for life sciences",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26782v1",
+    "title": "resin multi chain reasoning with entity structured indexing",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26781v1",
+    "title": "game of phones harnessing game theory and llms in bot wars to counteract phone scams",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26780v1",
+    "title": "v jepa hand simple accurate and fast 3d hand and camera trajectory recovery from egocentric videos",
+    "date": "2026-10-20"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2610.26777v1",
+    "title": "topological sheaves of irreducibility a theoretical framework for multi agent task obstructions",
+    "date": "2026-10-20"
   }
 ]
