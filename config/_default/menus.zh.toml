@@ -34,6 +34,13 @@ weight = 5
 icon = "star"
 
 [[main]]
+name = "硅基问道"
+url = "/categories/silicon_inquiries"
+weight = 6
+[main.params]
+icon = "cpu"
+
+[[main]]
 name = "论文解读"
 url = "/categories/papers"
 weight = 7
