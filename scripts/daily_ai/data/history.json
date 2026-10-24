@@ -1,270 +1,5 @@
 [
   {
-    "url": "https://www.mercor.com/research/labor-index/benchmark-map",
-    "title": "90 of us working hours are spent on tasks not covered well by ai benchmarks",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.theregister.com/databases/2026/10/16/postgres-19-delayed-after-ai-reviewers-find-more-bugs-than-humans-can-fix/5303471",
-    "title": "postgres 19 delayed after ai reviewers find more bugs than humans can fix",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.reuters.com/business/finance/market-selloff-rising-rates-test-ai-data-centre-deal-boom-2026-10-15",
-    "title": "market selloff rising rates test ai data centre deal boom",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://starskirmish.com/bench/v0-2",
-    "title": "show hn gemini 4 argon plays starcraft",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://github.com/cobanov/PS5LM",
-    "title": "llama cpp on a jailbroken ps5 run any gguf model natively on the console",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://lwn.net/Articles/1097760",
-    "title": "last rites for gentoo s chromium package",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://github.com/LosaLosSantos/aurelio-finance",
-    "title": "aurelio finance",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://github.com/thesysdev/open-intelligent-ui",
-    "title": "open intelligent ui",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/Lightricks/LTX-2.5",
-    "title": "lightricks ltx 2 5",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/ConwayResearch/Underdog-Saluki-27B-1.0",
-    "title": "conwayresearch underdog saluki 27b 1 0",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/vllm-sr/d3",
-    "title": "vllm sr d3",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://rstation.ai",
-    "title": "rstation a shared research lab for your ai agents",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://stoke.money",
-    "title": "stoke money personal finance app built around a cash flow forecast",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://github.com/Moshik21/weatherdeck",
-    "title": "weatherdeck a read only status board for ai coding agent lanes",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://openai.com/index/itau-generative-ai",
-    "title": "how itaú is building generative ai for its entire customer base",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://openai.com/index/stack-overflow-chatgpt-plugin",
-    "title": "stack overflow for agents triples signups with chatgpt plugin",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/blog/reflection-beam",
-    "title": "welcome beam a 501b open model you can own customize and scale",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/16/replit-is-no-longer-working-with-anthropic-ceo-says",
-    "title": "replit is no longer working with anthropic ceo says",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/16/india-becomes-the-latest-country-to-report-rogue-ai-agent-activity",
-    "title": "india becomes the latest country to report rogue ai agent activity",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/video/a-nvidia-insider-turned-vc-on-why-robotics-hasnt-hit-its-chatgpt-moment-yet",
-    "title": "an nvidia insider turned vc on why robotics hasn t hit its chatgpt moment yet",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/podcast/physical-ai-is-more-than-robots-says-the-nvidia-veteran-now-investing-in-it",
-    "title": "physical ai is more than robots says the nvidia veteran now investing in it",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/16/elorians-first-ai-model-wants-to-reason-with-images-not-just-about-them",
-    "title": "elorian s first ai model wants to reason with images not just about them",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/16/jev-is-vercels-fastest-adopted-ai-model-ever",
-    "title": "jev is vercel s fastest adopted ai model ever",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/16/mark-wahlberg-on-using-ai-in-film-the-right-way-and-being-open-to-an-ai-clone-carrying-on-his-legacy",
-    "title": "mark wahlberg on using ai in film the right way and being open to an ai clone carrying on his legacy",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/16/veritas-is-building-a-chip-to-verify-luxury-goods",
-    "title": "veritas expands its anti counterfeit chip to jewelry trophies and fragrance bottles",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/16/replits-ceo-says-the-future-of-work-is-the-self-driving-company",
-    "title": "replit s ceo says the future of work is the self driving company",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.theverge.com/tech/1012748/nvidia-rtx-spark-windows-arm-laptops-asus-hp-lenovo-impressions",
-    "title": "a week with rtx spark everything we ve learned using nvidia s new laptops",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.theverge.com/tech/1012846/meta-business-terms-scrape-news-publishers",
-    "title": "meta s new terms may allow it to train ai on news sites for free",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503880.html",
-    "title": "清华特奖得主ai创业再 1 geopt一作入局物理世界模型",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503865.html",
-    "title": "从 看懂世界 到 预演下一步 世界模型与 vla 如何让机器人拥有真正的 具身大脑",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503861.html",
-    "title": "说真话就能拿10万 网易叭哥说重金求 真需求 不卡专业学历",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503843.html",
-    "title": "霸榜三大基准 优必选 thinker wm 多模态统一表征 单模型实现六大能力",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503829.html",
-    "title": "范式智能联合睿思智联推出开源一站式 生产级 ai 部署平台 模域modelsphere",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503815.html",
-    "title": "68岁亚马逊cto 别让恐惧 替企业做ai决策",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503782.html",
-    "title": "超1亿元融资砸向四川具身科技 要把 情绪价值 卖进千家万户",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503779.html",
-    "title": "百度世界2026五大亮点曝光 企业和开发者值得关注什么",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503756.html",
-    "title": "中国机器人羽毛球连打1452拍 拿下吉尼斯 波士顿动力大佬被硬控",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/503701.html",
-    "title": "刚刚 gemini 4终于来了 谷歌重回御三家 api限时半价",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.threads.com/@choi.openai/post/DekxdG6Cvrc",
-    "title": "문서 https developers openai com api docs guides decisions voice",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://polymarket.com/event/next-grok-model-4pt8-released-by",
-    "title": "next grok model 4 8 released by polymarket",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://arena.ai/leaderboard/code/webdev",
-    "title": "webdev arena best ai for web development",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://benchlm.ai/compare/qwen3-5-35b-a3b-vs-qwen3-6-max-preview",
-    "title": "qwen3 5 35b a3b vs qwen 3 6 max preview benchmarks cost",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://opencode.ai/data/compare/alibaba/qwen3-8-max-0902/mistral/mistral-small-2506",
-    "title": "qwen3 8 max 0902 vs mistral small 3 2 ai model comparison",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.datastudios.org/post/mistral-timestral-time-series-forecasting-5m-28m-123m-209m",
-    "title": "mistral timestral time series forecasting models from 5m to 209m",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://www.science.org/content/article/openai-just-changed-math-forever-exactly-how-no-one-yet-knows",
-    "title": "openai just changed math forever exactly how no one yet knows",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://openai.com/careers/content-studio-lead-san-francisco",
-    "title": "content studio lead openai",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.21601",
-    "title": "waypoint opd transferring rl induced policy shifts via gated on policy distillation",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.22200",
-    "title": "opengcua toward a fully open stack for generalist computer use",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.17665",
-    "title": "rota bench evaluating 3d spatial reasoning through interactive projection alignment",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.18813",
-    "title": "self evolving agent harness",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.22276",
-    "title": "mjev spatial system one spatial intelligence via native attention matching",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.14993",
-    "title": "learning where to split dynamic band splitting for audio source separation",
-    "date": "2026-10-17"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.20341",
-    "title": "infinisplat v2 analyzing and improving feed forward 3dgs from any views",
-    "date": "2026-10-17"
-  },
-  {
     "url": "https://www.kapwing.com/ai/prompt-generator/camera",
     "title": "camera controls and motion for ai video prompts",
     "date": "2026-10-18"
@@ -3088,5 +2823,230 @@
     "url": "https://arxiv.org/pdf/2610.31529v1",
     "title": "an empirical study of recent large language models for knowledge graph to text generation on standard benchmarks",
     "date": "2026-10-23"
+  },
+  {
+    "url": "https://huggingface.co/Lightricks/LTX-2.5",
+    "title": "lightricks ltx 2 5",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+    "title": "minimaxai minimax m3 1 flash",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/InternScience/Sage-A1.5",
+    "title": "internscience sage a1 5",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/lodestones/Kromoss",
+    "title": "lodestones kromoss",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0",
+    "title": "orcarouter orcacyber nano 1 0",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://github.com/QuickButlerPace65/AnythingLLM-Desktop",
+    "title": "anythingllm desktop",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://github.com/liuda30201/AI-Coding",
+    "title": "ai coding",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://github.com/stockedge/manga-generator",
+    "title": "manga generator",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.thisandthat.chat/enron",
+    "title": "we had ai write a wiki from 45k enron emails every fact cited",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
+    "title": "catt 0 2 1 test agents services against a muse instinct alike in ci",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://berget.ai/en/blog/per-request-co2-press-release",
+    "title": "the same ai request emits 8 5 times more co2 in texas than in sweden",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://abcnews.com/Politics/americans-ai-bad-society-oppose-data-centers-abcpostipsos/story?id=137414085",
+    "title": "most americans say ai is bad for society oppose more data centers",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.jefftk.com/p/air-purifiers-as-white-noise-machines",
+    "title": "air purifiers as white noise machines",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://jamesyu.org/award-winning-ai-literature",
+    "title": "award winning ai literature",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.anthropic.com/research/formal-verification",
+    "title": "llms are making formal software verification feasible at a much larger scale",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.31329",
+    "title": "wevisone vl unified visual perception from objects to pixels",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.24738",
+    "title": "editing images into reusable layers via compositional edit prior distillation",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.30949",
+    "title": "iquest q1 advancing foundation capabilities for agentic cli systems",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.29677",
+    "title": "toward recursive self improvement in physical ai",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.23987",
+    "title": "what generation knows unlocking fine grained understanding in unified multimodal models",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+    "title": "rapidly scaling online storage to serve over 1 billion chatgpt users part ii",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
+    "title": "securing our frontier model training environment",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
+    "title": "openai and poland s nask partner to advance ai safety and security",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/blog/allenai/litpivot",
+    "title": "litpivot developing research ideas through dynamic contextualization within the literature landscape",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://huggingface.co/blog/torch-neuronx-model-support",
+    "title": "does your model run on aws trainium look it up",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks",
+    "title": "openai says it will no longer train its ai models on the live internet citing significant risks",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell",
+    "title": "hottest toy for christmas nvidia ceo plays with adorable microduck robots 20 000 sell",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/23/from-toast-to-bessemer-who-founders-will-hear-from-at-techcrunch-founder-summit-2026",
+    "title": "from toast to bessemer who founders will hear from at techcrunch founder summit 2026",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia",
+    "title": "uber rival indrive eyes 2027 robotaxi tests in central asia with pony ai and nvidia",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet",
+    "title": "openai now trains its frontier ai models with no internet access",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1017906/jack-dorsey-block-dessa-ai-voice-speech",
+    "title": "jack dorsey s block made an ai model that talks to you like an awkward new friend",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.theverge.com/podcast/1017447/iphone-duo-ipad-review-score-vergecast",
+    "title": "the iphone duo should have been an ipad",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update",
+    "title": "now google says it might use your gmail and google photos data to target ads",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1017450/meta-business-terms-delayed-ai-scraping",
+    "title": "meta delays new business terms after publisher pushback on ai scraping",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1015430/ai-retro-games-decomp-recomp-port",
+    "title": "retro gaming is being overrun with ai",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/504901.html",
+    "title": "百度世界2026前瞻 10 重磅分论坛 全面解码ai时代的智能组织进化路径",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://code.claude.com/docs/en/changelog",
+    "title": "claude code changelog claude code docs",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.yottalabs.ai/post/qwen-4-release-date-what-is-known-how-to-prepare-2026",
+    "title": "qwen 4 release date what s confirmed and how to prepare 2026",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.centraloregondaily.com/news/consumer/chinas-minimax-completes-export-registration-for-open-source-overseas-ai-model-licensing/article_0f11277d-f534-5cf6-9ab2-06be36f22b57.html",
+    "title": "china s minimax completes export registration for open source",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://skycmedia.com/en/science/openai-launches-locked-chats-chatgpt-9635",
+    "title": "openai launches locked chats for chatgpt skyc media",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://propakistani.pk/2026/10/23/canva-launches-its-own-ai-image-generator-to-take-on-google-and-openai",
+    "title": "canva launches its own ai image generator to take on google",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.youtube.com/shorts/IpJ8wUEYhoU",
+    "title": "openai launches locked chats in chatgpt letting users hide",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://opencode.ai/data/compare/mistral/mistral-large-4/nvidia/nemotron-3-5-super-vl-120b-a12b",
+    "title": "mistral large 4 vs nemotron 3 5 super vl 120b a12b opencode",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.myitcon.com/blog/post/grok-bot-weekly-users-double-as-partner-program-launches",
+    "title": "grok bot weekly users double as partner program launches",
+    "date": "2026-10-24"
+  },
+  {
+    "url": "https://www.structureresearch.net/2026/10/23/everwind-announces-420-mw-nova-scotia-campus-with-anthropic-as-anchor-tenant",
+    "title": "everwind announces 420mw nova scotia campus with anthropic",
+    "date": "2026-10-24"
   }
 ]
