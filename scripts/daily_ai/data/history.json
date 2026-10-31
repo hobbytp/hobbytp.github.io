@@ -1,230 +1,5 @@
 [
   {
-    "url": "https://huggingface.co/Lightricks/LTX-2.5",
-    "title": "lightricks ltx 2 5",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
-    "title": "minimaxai minimax m3 1 flash",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/InternScience/Sage-A1.5",
-    "title": "internscience sage a1 5",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/lodestones/Kromoss",
-    "title": "lodestones kromoss",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0",
-    "title": "orcarouter orcacyber nano 1 0",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://github.com/QuickButlerPace65/AnythingLLM-Desktop",
-    "title": "anythingllm desktop",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://github.com/liuda30201/AI-Coding",
-    "title": "ai coding",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://github.com/stockedge/manga-generator",
-    "title": "manga generator",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.thisandthat.chat/enron",
-    "title": "we had ai write a wiki from 45k enron emails every fact cited",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://github.com/Coverage-Cat/consumer-agent-testing-tool",
-    "title": "catt 0 2 1 test agents services against a muse instinct alike in ci",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://berget.ai/en/blog/per-request-co2-press-release",
-    "title": "the same ai request emits 8 5 times more co2 in texas than in sweden",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://abcnews.com/Politics/americans-ai-bad-society-oppose-data-centers-abcpostipsos/story?id=137414085",
-    "title": "most americans say ai is bad for society oppose more data centers",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.jefftk.com/p/air-purifiers-as-white-noise-machines",
-    "title": "air purifiers as white noise machines",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://jamesyu.org/award-winning-ai-literature",
-    "title": "award winning ai literature",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.anthropic.com/research/formal-verification",
-    "title": "llms are making formal software verification feasible at a much larger scale",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.31329",
-    "title": "wevisone vl unified visual perception from objects to pixels",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.24738",
-    "title": "editing images into reusable layers via compositional edit prior distillation",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.30949",
-    "title": "iquest q1 advancing foundation capabilities for agentic cli systems",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.29677",
-    "title": "toward recursive self improvement in physical ai",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.23987",
-    "title": "what generation knows unlocking fine grained understanding in unified multimodal models",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
-    "title": "rapidly scaling online storage to serve over 1 billion chatgpt users part ii",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://openai.com/index/securing-our-frontier-model-training-environment",
-    "title": "securing our frontier model training environment",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://openai.com/index/openai-nask-ai-safety-security-partnership",
-    "title": "openai and poland s nask partner to advance ai safety and security",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/blog/allenai/litpivot",
-    "title": "litpivot developing research ideas through dynamic contextualization within the literature landscape",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://huggingface.co/blog/torch-neuronx-model-support",
-    "title": "does your model run on aws trainium look it up",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/23/openai-says-it-will-no-longer-train-its-ai-models-on-the-live-internet-citing-significant-risks",
-    "title": "openai says it will no longer train its ai models on the live internet citing significant risks",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell",
-    "title": "hottest toy for christmas nvidia ceo plays with adorable microduck robots 20 000 sell",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/23/from-toast-to-bessemer-who-founders-will-hear-from-at-techcrunch-founder-summit-2026",
-    "title": "from toast to bessemer who founders will hear from at techcrunch founder summit 2026",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/22/uber-rival-indrive-eyes-2027-robotaxi-tests-in-central-asia-with-pony-ai-and-nvidia",
-    "title": "uber rival indrive eyes 2027 robotaxi tests in central asia with pony ai and nvidia",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1018021/openai-training-top-ai-models-no-internet",
-    "title": "openai now trains its frontier ai models with no internet access",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1017906/jack-dorsey-block-dessa-ai-voice-speech",
-    "title": "jack dorsey s block made an ai model that talks to you like an awkward new friend",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.theverge.com/podcast/1017447/iphone-duo-ipad-review-score-vergecast",
-    "title": "the iphone duo should have been an ipad",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update",
-    "title": "now google says it might use your gmail and google photos data to target ads",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.theverge.com/tech/1017450/meta-business-terms-delayed-ai-scraping",
-    "title": "meta delays new business terms after publisher pushback on ai scraping",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1015430/ai-retro-games-decomp-recomp-port",
-    "title": "retro gaming is being overrun with ai",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/504901.html",
-    "title": "百度世界2026前瞻 10 重磅分论坛 全面解码ai时代的智能组织进化路径",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://code.claude.com/docs/en/changelog",
-    "title": "claude code changelog claude code docs",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.yottalabs.ai/post/qwen-4-release-date-what-is-known-how-to-prepare-2026",
-    "title": "qwen 4 release date what s confirmed and how to prepare 2026",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.centraloregondaily.com/news/consumer/chinas-minimax-completes-export-registration-for-open-source-overseas-ai-model-licensing/article_0f11277d-f534-5cf6-9ab2-06be36f22b57.html",
-    "title": "china s minimax completes export registration for open source",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://skycmedia.com/en/science/openai-launches-locked-chats-chatgpt-9635",
-    "title": "openai launches locked chats for chatgpt skyc media",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://propakistani.pk/2026/10/23/canva-launches-its-own-ai-image-generator-to-take-on-google-and-openai",
-    "title": "canva launches its own ai image generator to take on google",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.youtube.com/shorts/IpJ8wUEYhoU",
-    "title": "openai launches locked chats in chatgpt letting users hide",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://opencode.ai/data/compare/mistral/mistral-large-4/nvidia/nemotron-3-5-super-vl-120b-a12b",
-    "title": "mistral large 4 vs nemotron 3 5 super vl 120b a12b opencode",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.myitcon.com/blog/post/grok-bot-weekly-users-double-as-partner-program-launches",
-    "title": "grok bot weekly users double as partner program launches",
-    "date": "2026-10-24"
-  },
-  {
-    "url": "https://www.structureresearch.net/2026/10/23/everwind-announces-420-mw-nova-scotia-campus-with-anthropic-as-anchor-tenant",
-    "title": "everwind announces 420mw nova scotia campus with anthropic",
-    "date": "2026-10-24"
-  },
-  {
     "url": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it",
     "title": "the ai graveyard a running list of projects and startups that didn t make it",
     "date": "2026-10-25"
@@ -2498,5 +2273,255 @@
     "url": "https://kotaku.com/now-that-the-shoe-is-on-the-other-foot-microsoft-and-epic-games-suddenly-agree-that-ai-is-theft-2000749316",
     "title": "microsoft and epic games suddenly agree that ai is theft",
     "date": "2026-10-30"
+  },
+  {
+    "url": "https://openai.com/index/helping-websites-express-ai-training-preferences",
+    "title": "making it easier for websites to express ai training preferences",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://openai.com/index/community-safety-report-and-new-protections-for-teens",
+    "title": "community safety report and new protections for teens",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://openai.com/index/fair-use-benefits-everyone",
+    "title": "fair use benefits everyone",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/blog/nvidia/nemotron-halloween",
+    "title": "nemotron halloween",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/nvidia-weighs-playing-the-cosigner-for-nscales-ai-data-center-in-west-virginia",
+    "title": "nvidia weighs playing the cosigner for nscale s ai data center in west virginia",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/ollie-a-privacy-focused-ai-assistant-is-shutting-down",
+    "title": "ollie a privacy focused ai assistant is shutting down",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/intels-stock-crashes-knocking-12b-from-governments-stake",
+    "title": "intel s stock crashes knocking 12b from government s stake",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says",
+    "title": "anthropic expected to receive high junk rating from credit agencies following ipo ft report says",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/last-minute-halloween-costumes-for-tech-nerds",
+    "title": "last minute halloween costumes for tech nerds",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/cracks-are-emerging-in-the-ai-spending-boom",
+    "title": "cracks are emerging in the ai spending boom",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/zests-new-ai-agent-finds-restaurants-and-books-reservations-over-text",
+    "title": "zest s new ai agent finds restaurants and books reservations over text",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/googles-first-data-center-satellite-is-online-and-writing-poetry",
+    "title": "google s first data center satellite is online and writing poetry",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/theranos-whistleblower-tyler-shultz-warns-that-the-ai-boom-is-a-great-opportunity-to-go-deceive-people",
+    "title": "theranos whistleblower tyler shultz warns that the ai boom is a great opportunity to go deceive people",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/30/skip-the-small-talk-make-game-changing-connections-at-techcrunch-founder-summit-with-braindate",
+    "title": "skip the small talk make game changing connections at techcrunch founder summit with braindate",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1023974/apple-intelligence-china-ios-27-3",
+    "title": "apple intelligence is finally coming to china with ios 27 3",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1023820/sam-altman-ram-shortage-cloud-servers",
+    "title": "sam altman says it s better for ram to be in a data center than on your desk",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1023763/openai-google-microsoft-ai-scraping-standard-opt-out",
+    "title": "the biggest names in ai are backing a new way to opt out of scraping",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1023528/google-project-suncatcher-ai-satellite-transmission",
+    "title": "google s satellite ai server transmits its first response to earth",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1023440/starbucks-ai-personalized-menu-drive-thru",
+    "title": "starbucks wants to use ai to show you a personalized digital menu at the drive thru",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1023188/pope-leo-disarm-ai",
+    "title": "pope leo calls for the disarmament of ai machines are tools not persons",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1023070/anthropic-ipo-risk-factors-filing-miracles",
+    "title": "silicon valley wants you to invest in miracles",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1023054/altman-cheeky-pint-ai-math-interview",
+    "title": "sam altman sympathizes with mathematicians but says openai s math onslaught won t stop",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1021080/maine-senate-race-susan-collins-ai-data-centers",
+    "title": "maine s data center revolt will decide who controls the senate",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.theverge.com/policy/1022880/wikipedia-openai-new-york-times-copyright",
+    "title": "wikipedia s operator says a bad ai copyright ruling could threaten the open web",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/506743.html",
+    "title": "英伟达团队基于 minimax h3 开源视频增强方案 最高支持 4k 重生成",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/506686.html",
+    "title": "rsi立大功 国产开源登顶全球第一 1 3b oxr重塑ocr",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/506674.html",
+    "title": "claude新模型曝光 新fable 新opus",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://af.net/realtime/mistral-ai-releases-1-05-trillion-parameter-mistral-large-4-weights",
+    "title": "mistral ai releases 1 05 trillion parameter mistral large 4 weights",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.microsoft.com/en-us/investor/earnings/fy-2027-q1/press-release-webcast",
+    "title": "fy27 q1 press releases investor relations microsoft",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://dataphoenix.info/news/openai-violence-safeguards-teen-weapons-limits",
+    "title": "openai announces violence and teen weapons safeguards",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://community.openai.com/c/community/21",
+    "title": "topic openai developer community",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.shopifreaks.com/anthropic-launches-smart-reports-for-claude-enterprise-that-show-admins-what-each-teams-ai-spend-produced-and-where-work-stalled",
+    "title": "anthropic launches smart reports for claude enterprise that show",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://newsletter.signoz.io/p/ai-isnt-replacing-sres-its-deskilling",
+    "title": "ai isn t replacing sres it s deskilling them",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.404media.co/protons-ceo-cancels-ai-re-interviews",
+    "title": "proton s ceo cancels ai re interviews",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://www.bbc.co.uk/news/articles/cvwy72e0n72yo",
+    "title": "us tech stocks see sharp falls over ai cost fears",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=50301479",
+    "title": "ask hn are you tired too in this ai era",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://fortune.com/2026/10/30/cisco-president-jeetu-patel-gen-z-27-year-old-unlimited-ai-tokens-rewrite-legacy-code-entry-level-jobs",
+    "title": "cisco gives engineer unlimited ai tokens to rewrite legacy code",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://twitter.com/sgondala2/status/2115832070274723875",
+    "title": "building an ai native engineering org",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/Lightricks/LTX-2.5",
+    "title": "lightricks ltx 2 5",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/Pika-Labs/Pika-H3-Flex",
+    "title": "pika labs pika h3 flex",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+    "title": "minimaxai minimax m3 1 flash",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.39633",
+    "title": "intrinsic distribution matching",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.38568",
+    "title": "a rsi adaptive task refresh for zero data multimodal self improvement",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.39301",
+    "title": "youtu parsing omni one encoder one schema all modalities",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.36671",
+    "title": "look only when needed certificate guided visual routing for efficient diffusion vlms",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://huggingface.co/papers/2610.39302",
+    "title": "proving and improving the platonic representation hypothesis with jepas",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://github.com/N1nEmAn/sapper-v2",
+    "title": "sapper v2",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://github.com/jackwener/DSH-Android",
+    "title": "dsh android",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://github.com/aa1143/NamiAgent",
+    "title": "namiagent",
+    "date": "2026-10-31"
+  },
+  {
+    "url": "https://sketch.wakeshift.ai/games/q5ucru",
+    "title": "sketch stadium watch your agent play pictionary",
+    "date": "2026-10-31"
   }
 ]
