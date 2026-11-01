@@ -1,145 +1,5 @@
 [
   {
-    "url": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it",
-    "title": "the ai graveyard a running list of projects and startups that didn t make it",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human",
-    "title": "block s new voice model sounds eerily human",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats",
-    "title": "forced to pick grok s ai model chooses republicans openai s picks democrats",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/24/all-the-ai-agents-that-can-live-in-your-text-messages",
-    "title": "here are the top ai agents that can live in your text messages",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1018205/blue-planet-iii-authentic-organic-ai",
-    "title": "blue planet iii is keeping the rough edges in the age of ai",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1018187/pennsylvania-ai-deceptive-advertising-act",
-    "title": "pennsylvania will require labels on ai generated ads",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.vals.ai/benchmarks/vibe-code",
-    "title": "vibe code bench leaderboard and methodology vals ai",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://github.com/deepseek-ai/deepseek-harness/tree/master",
-    "title": "deepseek harness github",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://geotoolbox.ai/blog/best-open-source-llms",
-    "title": "the 11 best open source llms in october 2026 ranked",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.youtube.com/watch?v=fF3XslvK4YM",
-    "title": "deepseek fires again new 1 open source coder beats claude",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.voiceoverherald.com/elevenlabs-realtime-translation-mistral-voxtral-3-voice-clone-languages",
-    "title": "elevenlabs and mistral make voices speak any language",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.marktechpost.com/2026/10/24/anthropic-sandbox-runtime-ai-agent-sandbox?amp=1",
-    "title": "os level sandboxing for ai agents no containers marktechpost",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.paloaltonetworks.com/blog/2026/10/palo-alto-networks-brings-continuous-ai-defense-and-prisma-airs-to-the-openai-marketplace",
-    "title": "palo alto networks brings continuous ai defense and prisma airs",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.tiktok.com/@malikontech/video/7700050401533496606",
-    "title": "day 19 of openai s 28 days and tibo calls it small updates tiktok",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://mashable.com/article/anthropic-releases-new-claude-haiku-4-5-update",
-    "title": "anthropic launches claude haiku 4 5 mashable",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://apps.apple.com/us/app/orisuji/id6817092898",
-    "title": "orisuji a maze you solve by folding your phone",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://github.com/swrdfish/narro",
-    "title": "narro read web pages and kindle books using local ai voices",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.apollo.com/wealth/insights-news/insights/daily-spark/no-signs-of-ai-payoff-outside-the-tech-sector",
-    "title": "no signs of ai payoff outside the tech sector",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://www.apricitas.io/p/ai-and-the-fall-of-the-creative-class",
-    "title": "america has lost 200k of jobs in media film and the arts how much is ai",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://arxiv.org/abs/2610.29162",
-    "title": "why is ai generated language so hard to understand",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://torrentfreak.com/ai-assisted-paper-on-z-library-cites-a-torrentfreak-article-that-doesnt-exist",
-    "title": "ai assisted paper on z library cites a torrentfreak article that doesn t exist",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://gizmodo.com/microsoft-says-its-new-ai-is-more-than-twice-as-good-at-diagnosing-diseases-as-doctors-2000829562",
-    "title": "new ai is more than twice as good at diagnosing diseases as doctors",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://blog.alexewerlof.com/p/rise-and-fall-of-jev-eval-hype-vs-llm",
-    "title": "the rise and fall of jev hype",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://nitter.click/AikidoSecurity/status/2113759110625906950?__galadriel=lPmlGl9id4oAd5UeBwMhlYKArHyr6lR2IDGujPwB5HV2kQ1aLoPWFd5A9sGuzNcmrp8fUso8qygmHcKTDZ8MNHWqQ3bDJcycV87xp_0VypzQLYj6O_RRHlZuQqj33oASGY2YLSoAiMjeOZN40h7Stf8AG7DPrGZbAPVKUXy36HoMudRbvwF3_r2uYNmfJMhpKzywQDM6Ab8",
-    "title": "evolving threat http2shell is an rce in node python and more",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://github.com/liyupi/dafeiyu-cleaner",
-    "title": "dafeiyu cleaner",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
-    "title": "deepseek ai deepseek v4 1 flash 1017",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT",
-    "title": "openmoss team moss image sft",
-    "date": "2026-10-25"
-  },
-  {
-    "url": "https://huggingface.co/unsloth/flint-GGUF",
-    "title": "unsloth flint gguf",
-    "date": "2026-10-25"
-  },
-  {
     "url": "https://github.com/jadezane6634-ops/dsh-purge-flash",
     "title": "dsh purge flash",
     "date": "2026-10-26"
@@ -2523,5 +2383,160 @@
     "url": "https://sketch.wakeshift.ai/games/q5ucru",
     "title": "sketch stadium watch your agent play pictionary",
     "date": "2026-10-31"
+  },
+  {
+    "url": "https://github.com/Koppar-AI/koppar-lte-modem",
+    "title": "a usb c lte modem that gives my computer a phone line",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://bbrouter.com/bbrouter/ben-eater-sap-1",
+    "title": "bbrouter ben eater s 8 bit computer simulated on 3d breadboards",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.jointter.com",
+    "title": "jointter a daily word puzzle using dots and lines",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://dl.acm.org/doi/full/10.1145/3706598.3713778",
+    "title": "the impact of generative ai on critical thinking self reported 2025",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked",
+    "title": "anthropic s claude ai blocks video game cloning and reverse engineering",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer",
+    "title": "malware uses llms to rank victims by how much they re worth",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://vitalik.eth.limo/general/2026/10/31/digital_minimalism.html",
+    "title": "digital minimalism",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://frvr.com/blog/news/openai-ceo-sam-altman-says-its-terrible-to-have-everybody-have-a-bunch-of-the-worlds-limited-supply-of-dram-instead-of-shoving-it-all-in-datacentres",
+    "title": "sam altman thinks you re wasting dram",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+    "title": "deepseek ai deepseek v4 1 flash 1017",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://huggingface.co/speridlabs/idol",
+    "title": "speridlabs idol",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://huggingface.co/facebook/sam3",
+    "title": "facebook sam3",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake",
+    "title": "apple ceo says the company doesn t want to ship ai for ai s sake",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/31/4-days-left-how-techcrunch-founder-summit-helps-you-make-more-useful-connections-to-scale",
+    "title": "4 days left how techcrunch founder summit helps you make more useful connections to scale",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward",
+    "title": "judge allows naacp lawsuit over xai data center pollution to move forward",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round",
+    "title": "openai reportedly lowers funding target for new round",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code",
+    "title": "i built an ai tamagotchi before meta could",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/506884.html",
+    "title": "你的8g ipad里有12g内存 库克走了但他的刀法追着我砍",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/506866.html",
+    "title": "世界模型首次指导设计芯片 超大核npu700tops 99 算力可用",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/10/506855.html",
+    "title": "刚刚 claude宣布取消5小时限制 首批ultra用户已 解封",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.audacy.com/podcasts/cffd036cb55cc663b33dde881525b927/episodes/expectations_and_tensions_are_-8891454",
+    "title": "expectations and tensions are high as anthropic launches ipo",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.youtube.com/shorts/zceZh29qQGc",
+    "title": "open source vs closed source vs local ai youtube",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://plotly.com/blog/particle-1-plotly-data-analytics-bench",
+    "title": "particle 1 benchmark results for data analysis plotly",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.instagram.com/p/DfL1upuGy0E",
+    "title": "openai ceo sam altman says people having ram in their personal",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.cohenmilstein.com/case-study/state-of-arizona-v-openai-global-llc",
+    "title": "state of arizona v openai global llc cohen milstein",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://community.openai.com/t/awen-lang-an-open-hand-off-format/1411499",
+    "title": "awen lang an open hand off format openai developer community",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://hotai.news/en/news/items/69527890b1d3a635",
+    "title": "openai announces that starting in december plus pro and",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://openai.com/fr-FR/index/introducing-gpt-6-1-terra",
+    "title": "présentation de gpt 6 1 terra openai",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://www.kucoin.com/news/flash/openai-announces-chatgpt-and-codex-to-share-usage-quotas-starting-december",
+    "title": "openai announces chatgpt and codex will share usage quotas",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://github.com/tavern-labs-ai/persona-ai-sdk",
+    "title": "persona ai sdk",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://github.com/Aevonix/FlashAlign",
+    "title": "flashalign",
+    "date": "2026-11-01"
+  },
+  {
+    "url": "https://github.com/ProphetTitanhub21008/prove-the-resp-ui",
+    "title": "prove the resp ui",
+    "date": "2026-11-01"
   }
 ]
