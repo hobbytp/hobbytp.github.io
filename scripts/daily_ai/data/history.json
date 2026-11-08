@@ -1,160 +1,5 @@
 [
   {
-    "url": "https://github.com/Koppar-AI/koppar-lte-modem",
-    "title": "a usb c lte modem that gives my computer a phone line",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://bbrouter.com/bbrouter/ben-eater-sap-1",
-    "title": "bbrouter ben eater s 8 bit computer simulated on 3d breadboards",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.jointter.com",
-    "title": "jointter a daily word puzzle using dots and lines",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://dl.acm.org/doi/full/10.1145/3706598.3713778",
-    "title": "the impact of generative ai on critical thinking self reported 2025",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/anthropics-ai-model-is-now-blocking-attempts-at-video-game-recreation-and-cloning-users-also-claim-non-malicious-generic-reverse-engineering-tasks-are-blocked",
-    "title": "anthropic s claude ai blocks video game cloning and reverse engineering",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer",
-    "title": "malware uses llms to rank victims by how much they re worth",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://vitalik.eth.limo/general/2026/10/31/digital_minimalism.html",
-    "title": "digital minimalism",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://frvr.com/blog/news/openai-ceo-sam-altman-says-its-terrible-to-have-everybody-have-a-bunch-of-the-worlds-limited-supply-of-dram-instead-of-shoving-it-all-in-datacentres",
-    "title": "sam altman thinks you re wasting dram",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
-    "title": "deepseek ai deepseek v4 1 flash 1017",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://huggingface.co/speridlabs/idol",
-    "title": "speridlabs idol",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://huggingface.co/facebook/sam3",
-    "title": "facebook sam3",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/31/apple-ceo-says-the-company-doesnt-want-to-ship-ai-for-ais-sake",
-    "title": "apple ceo says the company doesn t want to ship ai for ai s sake",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/31/4-days-left-how-techcrunch-founder-summit-helps-you-make-more-useful-connections-to-scale",
-    "title": "4 days left how techcrunch founder summit helps you make more useful connections to scale",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/31/judge-allows-naacp-lawsuit-over-xai-data-center-pollution-to-move-forward",
-    "title": "judge allows naacp lawsuit over xai data center pollution to move forward",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round",
-    "title": "openai reportedly lowers funding target for new round",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code",
-    "title": "i built an ai tamagotchi before meta could",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/506884.html",
-    "title": "你的8g ipad里有12g内存 库克走了但他的刀法追着我砍",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/506866.html",
-    "title": "世界模型首次指导设计芯片 超大核npu700tops 99 算力可用",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/10/506855.html",
-    "title": "刚刚 claude宣布取消5小时限制 首批ultra用户已 解封",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.audacy.com/podcasts/cffd036cb55cc663b33dde881525b927/episodes/expectations_and_tensions_are_-8891454",
-    "title": "expectations and tensions are high as anthropic launches ipo",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.youtube.com/shorts/zceZh29qQGc",
-    "title": "open source vs closed source vs local ai youtube",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://plotly.com/blog/particle-1-plotly-data-analytics-bench",
-    "title": "particle 1 benchmark results for data analysis plotly",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.instagram.com/p/DfL1upuGy0E",
-    "title": "openai ceo sam altman says people having ram in their personal",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.cohenmilstein.com/case-study/state-of-arizona-v-openai-global-llc",
-    "title": "state of arizona v openai global llc cohen milstein",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://community.openai.com/t/awen-lang-an-open-hand-off-format/1411499",
-    "title": "awen lang an open hand off format openai developer community",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://hotai.news/en/news/items/69527890b1d3a635",
-    "title": "openai announces that starting in december plus pro and",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://openai.com/fr-FR/index/introducing-gpt-6-1-terra",
-    "title": "présentation de gpt 6 1 terra openai",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://www.kucoin.com/news/flash/openai-announces-chatgpt-and-codex-to-share-usage-quotas-starting-december",
-    "title": "openai announces chatgpt and codex will share usage quotas",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://github.com/tavern-labs-ai/persona-ai-sdk",
-    "title": "persona ai sdk",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://github.com/Aevonix/FlashAlign",
-    "title": "flashalign",
-    "date": "2026-11-01"
-  },
-  {
-    "url": "https://github.com/ProphetTitanhub21008/prove-the-resp-ui",
-    "title": "prove the resp ui",
-    "date": "2026-11-01"
-  },
-  {
     "url": "https://techcrunch.com/2026/11/01/openai-might-rebrand-its-data-centers-as-ai-compute-campuses",
     "title": "openai might rebrand its data centers as ai compute campuses",
     "date": "2026-11-02"
@@ -3188,5 +3033,180 @@
     "url": "https://github.com/dmellok/tesserae-widget-overhead",
     "title": "overhead the planes overhead painted on an e ink frame",
     "date": "2026-11-07"
+  },
+  {
+    "url": "https://huggingface.co/speridlabs/idol",
+    "title": "speridlabs idol",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+    "title": "xtools at deepseek v4 pro qwen3 5 9b uncensored heretic",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://huggingface.co/NousResearch/Arete-27B",
+    "title": "nousresearch arete 27b",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://huggingface.co/unsloth/Qwen3.8-Flash-Next-GGUF",
+    "title": "unsloth qwen3 8 flash next gguf",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://huggingface.co/webAI-Official/TwIL-8B",
+    "title": "webai official twil 8b",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+    "title": "deepseek ai deepseek v4 1 flash 1017",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://huggingface.co/PrunaAI/P-H3-Image-Comfy",
+    "title": "prunaai p h3 image comfy",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://github.com/meshapplied/Goethe",
+    "title": "goethe the infrastructure for self hosted ai",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://eyesrhythm.com",
+    "title": "an offline desktop companion to help maintain a healthy blink rhythm",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/07/after-the-midterms-things-are-looking-rocky-for-elon-musk-and-data-centers",
+    "title": "after the midterms things are looking rocky for elon musk and data centers",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/07/chinese-exec-was-recruited-to-spy-on-nvidia-ceo-according-to-us-intelligence-memo",
+    "title": "megaspeed exec was recruited to spy on nvidia ceo according to us intelligence memo",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1029489/nyt-cooking-ai-assistant-review",
+    "title": "nyt cooking s ai assistant saved my weeknight chicken but almost ruined my cake",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1029483/nvidia-ai-chips-china-blacklist-government",
+    "title": "the us let nvidia sell chips to an empty office in china",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.theverge.com/podcast/1029038/ai-cybersecurity-hackers-data-breach-dark-age-alex-stamos",
+    "title": "ai broke the cybersecurity world what s next",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1029126/anthropic-metr-report-accelerating-ai-development",
+    "title": "why a new report on anthropic automating ai development is alarming researchers",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/508466.html",
+    "title": "资本正在撤离 世界模型",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/508449.html",
+    "title": "github不堪重负 openai收购替代品 a社原地自研 马斯克也要搞",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/508344.html",
+    "title": "openai新融资到账110亿美元 不及原计划一半",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/508330.html",
+    "title": "为了去ai味 人类开始主动写烂文章了",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/508264.html",
+    "title": "抢跑deepseek 硅谷华人把下一代agent harness造出来了",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/508236.html",
+    "title": "浙大00后博士生再交卷 把十几种物理要素装进一个世界模型 华为昇腾原生",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://benchlm.ai/compare/claude-sonnet-5-5-vs-grok-4-7",
+    "title": "claude sonnet 5 5 vs grok 4 7 benchmarks cost benchlm ai",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://ddnews.gov.in/en/frances-mistral-launches-ai-model-it-says-outperforms-some-chinese-rivals",
+    "title": "france s mistral launches ai model it says outperforms some",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://af.net/realtime/openai-launches-gpt-image-2-6-flare-and-sunburst-apis",
+    "title": "openai launches gpt image 2 6 flare and sunburst apis aifod",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://wabetainfo.com/whatsapp-introduces-smart-message-text-actions-for-chats",
+    "title": "whatsapp introduces smart message text actions for chats",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.neoteo.com/en/openai-launches-gpt-6-cyber-for-authorized-vulnerability-research",
+    "title": "openai launches gpt 6 cyber for authorized vulnerability research",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=50399340",
+    "title": "2 the capital equation is still favoring more spend anthropic s",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.youtube.com/shorts/zh8Yv_z3KU4",
+    "title": "training custom object detection models on aws with openai",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.yottalabs.ai/post/qwen-4-release-date-what-is-known-how-to-prepare-2026",
+    "title": "qwen 4 release date what s confirmed and how to prepare 2026",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://aclanthology.org/2026.emnlp-main.988",
+    "title": "from generation to creation in text to image evaluation",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://hunch.net?p=13764006",
+    "title": "the end of microsoft research s ai frontiers group",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://www.kadoa.com/companies/insights/ai-selloff-perspective",
+    "title": "the ai sell off compared to well known stock market crashes",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://hightouch.com/blog/llm-judges-identity-resolution",
+    "title": "a jev that can ask opus for help gives opus accuracy at 4x lower cost",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://jhr.pensoft.net/articles.php?id=9096",
+    "title": "living beyond the limits of survival wood ants trapped in a gigantic pitfall 2016",
+    "date": "2026-11-08"
+  },
+  {
+    "url": "https://swipeblocked.com",
+    "title": "swipeblocked the phrases your iphone won t suggest",
+    "date": "2026-11-08"
   }
 ]
