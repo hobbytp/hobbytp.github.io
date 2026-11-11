@@ -1,0 +1,467 @@
+{{ define "main" }}
+{{- $metrics := site.Data.ai_projects.metrics | default dict -}}
+{{- $eventsData := site.Data.ai_projects.events | default dict -}}
+{{- $curated := site.Data.ai_projects.curated | default dict -}}
+{{- $weekly := site.Data.ai_projects.weekly_latest | default dict -}}
+{{- $summary := $metrics.summary | default dict -}}
+{{- $projects := $metrics.projects_list | default slice -}}
+{{- $events := $eventsData.events | default slice -}}
+{{- $categories := $curated.categories | default slice -}}
+{{- $scenarios := $curated.scenarios | default slice -}}
+{{- $generatedAt := $metrics.generated_at | default "" -}}
+
+<div class="main-container">
+  {{- partial "sidebar.html" . }}
+
+  <div class="main-content-with-sidebar">
+    <div class="aiwb-wrapper" id="ai-workbench-app" data-generated-at="{{ $generatedAt }}">
+
+      {{- /* 顶部新鲜度预警条（当采集时间超过 48 小时由 JS 自动激活） */ -}}
+      <div class="aiwb-stale-banner" id="aiwb-stale-banner" hidden role="status">
+        <span>⚠️ <strong>数据新鲜度提示：</strong>当前展示的快照生成于 <span id="aiwb-stale-hours">48+</span> 小时前，定时采集任务可能延迟，指标以标注的采集时间为准。</span>
+      </div>
+
+      {{- /* 头部区域 */ -}}
+      <header class="aiwb-hero">
+        <div class="aiwb-hero-top">
+          <div>
+            <p class="aiwb-eyebrow">OPEN-SOURCE AI RADAR &amp; WORKBENCH</p>
+            <h1 class="aiwb-title">{{ .Title }}</h1>
+          </div>
+          <div class="aiwb-meta-pills">
+            <span class="aiwb-pill aiwb-pill-live" title="直接同步自 GitHub @{{ $metrics.github_user | default "hobbytp" }} 的公开 Stars 与博客文章">
+              <span class="aiwb-dot"></span> 数据源: @{{ $metrics.github_user | default "hobbytp" }} Stars + 本站评测
+            </span>
+            {{- if $generatedAt }}
+            <span class="aiwb-pill" id="aiwb-updated-label" title="最新快照生成时间: {{ $generatedAt }}">
+              🕒 更新于 {{ substr $generatedAt 0 10 }}
+            </span>
+            {{- end }}
+            <a class="aiwb-pill aiwb-pill-link" href="{{ "/ai-workbench/index.xml" | relLangURL }}" target="_blank" rel="noopener">
+              📡 RSS 订阅
+            </a>
+            <a class="aiwb-pill aiwb-pill-link" href="{{ "/ai-workbench/index.json" | relLangURL }}" target="_blank" rel="noopener">
+              { } JSON
+            </a>
+          </div>
+        </div>
+
+        <p class="aiwb-subtitle">
+          了解一个开源项目的真实生态生命力，判断它能否解决你的工程问题，关联本站源码级深度解读，也记下什么时候该重新考虑。
+        </p>
+
+        <div class="aiwb-hero-actions">
+          {{- if $weekly.url }}
+          <a class="aiwb-btn aiwb-btn-primary" href="{{ $weekly.url }}">
+            📰 阅读最新开源周报 ({{ $weekly.week }})
+          </a>
+          {{- end }}
+          <button type="button" class="aiwb-btn" data-switch-view="scenarios">
+            🧭 按实战场景选型
+          </button>
+          <button type="button" class="aiwb-btn" id="aiwb-open-stars-compare">
+            ↓ 导入我的 GitHub Stars 对照
+          </button>
+          <button type="button" class="aiwb-btn" id="aiwb-open-export">
+            💾 导出/恢复本地记录
+          </button>
+        </div>
+      </header>
+
+      {{- /* 五维核心统计卡片 */ -}}
+      <section class="aiwb-stats" aria-label="研究台核心指标统计">
+        <div class="aiwb-stat-card">
+          <span class="aiwb-stat-label">收录开源项目</span>
+          <strong class="aiwb-stat-val">{{ $summary.total_projects | default (len $projects) }}</strong>
+          <small>同步自 @{{ $metrics.github_user | default "hobbytp" }} GitHub Stars</small>
+        </div>
+        <div class="aiwb-stat-card">
+          <span class="aiwb-stat-label">近 30 天活跃维护</span>
+          <strong class="aiwb-stat-val">{{ $summary.active_count | default 0 }}</strong>
+          <small>近期有代码提交或推送</small>
+        </div>
+        <div class="aiwb-stat-card">
+          <span class="aiwb-stat-label">近 30 天版本发布</span>
+          <strong class="aiwb-stat-val">{{ $summary.recent_releases_30d | default 0 }}</strong>
+          <small>附 AI 提炼中文更新要点</small>
+        </div>
+        <div class="aiwb-stat-card">
+          <span class="aiwb-stat-label">本站深度文章覆盖</span>
+          <strong class="aiwb-stat-val">{{ $summary.with_blog_posts | default 0 }}</strong>
+          <small>含架构剖析与实测证据</small>
+        </div>
+        <div class="aiwb-stat-card">
+          <span class="aiwb-stat-label">我的本地关注</span>
+          <strong class="aiwb-stat-val" id="aiwb-watched-stat">0</strong>
+          <small>浏览器持久化 · 变动提醒</small>
+        </div>
+      </section>
+
+      {{- /* 最新一期开源周报横幅 */ -}}
+      {{- if $weekly.url }}
+      <section class="aiwb-weekly-banner" aria-label="最新一期 AI 开源周报">
+        <div class="aiwb-weekly-info">
+          <span class="aiwb-weekly-tag">📅 每周自动生成 · {{ $weekly.week }}</span>
+          <h2 class="aiwb-weekly-title">
+            <a href="{{ $weekly.url }}">{{ $weekly.title }}</a>
+          </h2>
+          <p class="aiwb-weekly-desc">{{ $weekly.description }}</p>
+        </div>
+        <div class="aiwb-weekly-cta">
+          <a class="aiwb-btn aiwb-btn-primary" href="{{ $weekly.url }}">阅读周报全文 →</a>
+          <a class="aiwb-btn" href="{{ "/categories/projects/" | relLangURL }}">全部开源项目文章</a>
+        </div>
+      </section>
+      {{- end }}
+
+      {{- /* 四个一级入口视图切换 */ -}}
+      <nav class="aiwb-tabs" aria-label="研究台主视图">
+        <button type="button" class="aiwb-tab active" data-view="directory" aria-selected="true">
+          🗂️ 项目库与选型 <span class="aiwb-tab-badge">{{ len $projects }}</span>
+        </button>
+        <button type="button" class="aiwb-tab" data-view="feed" aria-selected="false">
+          📡 变化信号流 <span class="aiwb-tab-badge">{{ len $events }}</span>
+        </button>
+        <button type="button" class="aiwb-tab" data-view="scenarios" aria-selected="false">
+          🧭 实战场景包 <span class="aiwb-tab-badge">{{ len $scenarios }}</span>
+        </button>
+        <button type="button" class="aiwb-tab" data-view="watched" aria-selected="false">
+          ⭐ 我的关注与 Stars 对照 <span class="aiwb-tab-badge" id="aiwb-watched-tab-count">0</span>
+        </button>
+      </nav>
+
+      {{- /* ==================== 视图 1: 项目库 (Directory) ==================== */ -}}
+      <section class="aiwb-view-panel" id="aiwb-view-directory">
+        {{- /* 领域分类胶囊栏 */ -}}
+        <div class="aiwb-cat-bar" id="aiwb-cat-bar" role="toolbar" aria-label="按开源领域筛选">
+          <button type="button" class="aiwb-cat-btn active" data-cat="all">
+            全部领域 <span>{{ len $projects }}</span>
+          </button>
+          {{- range $categories }}
+          {{- $cid := .id -}}
+          {{- $cnt := index ($summary.category_counts | default dict) $cid | default 0 -}}
+          <button type="button" class="aiwb-cat-btn" data-cat="{{ $cid }}" title="{{ .desc }}">
+            {{ .icon }} {{ .name }} <span>{{ $cnt }}</span>
+          </button>
+          {{- end }}
+        </div>
+
+        {{- /* 多维筛选与排序工具栏 */ -}}
+        <div class="aiwb-filters">
+          <input
+            type="search"
+            id="aiwb-search"
+            class="aiwb-input aiwb-search-input"
+            placeholder="搜索项目名、owner/repo、中文定位、标签或技术关键词…"
+            aria-label="搜索开源项目"
+          >
+          <select id="aiwb-filter-verdict" class="aiwb-select" aria-label="按选型判断筛选">
+            <option value="all">全部选型状态</option>
+            <option value="curated">🎯 已有作者实测判断</option>
+            <option value="has_posts">📝 已有本站深度文章</option>
+            <option value="recommend">🏆 主力推荐</option>
+            <option value="trial">🧪 值得试用</option>
+            <option value="watch">👀 持续观察</option>
+          </select>
+          <select id="aiwb-filter-lang" class="aiwb-select" aria-label="按编程语言筛选">
+            <option value="all">全部主要语言</option>
+            <option value="Python">Python</option>
+            <option value="TypeScript">TypeScript</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Rust">Rust</option>
+            <option value="Go">Go</option>
+            <option value="C++">C++ / C</option>
+          </select>
+          <select id="aiwb-filter-status" class="aiwb-select" aria-label="按维护状态筛选">
+            <option value="all">全部维护状态</option>
+            <option value="active">🟢 近 30 天活跃推送</option>
+            <option value="has_release">🚀 有正式版本发布</option>
+            <option value="risk">⚠️ 停更 / 归档预警</option>
+          </select>
+          <select id="aiwb-sort" class="aiwb-select" aria-label="排序方式">
+            <option value="featured">排序：评测优先 + 最新收藏</option>
+            <option value="starred_at">排序：按作者 Star 时间 (最新)</option>
+            <option value="health">排序：按 CHAOSS 健康度</option>
+            <option value="velocity">排序：按 7 日 Star 增速</option>
+            <option value="stars">排序：按总 Stars 数量</option>
+            <option value="pushed_at">排序：按最近代码提交</option>
+          </select>
+          <div class="aiwb-layout-switch" role="group" aria-label="布局切换">
+            <button type="button" class="aiwb-layout-btn active" data-layout="cards" title="卡片视图">卡片</button>
+            <button type="button" class="aiwb-layout-btn" data-layout="table" title="紧凑表格视图">表格</button>
+          </div>
+        </div>
+
+        <div class="aiwb-result-bar">
+          <span id="aiwb-result-summary" aria-live="polite">
+            当前展示 <strong>{{ len $projects }}</strong> 个开源项目（勾选最多 3 个项目可进行横向对比）
+          </span>
+          <button type="button" class="aiwb-link-btn" id="aiwb-reset-filters" hidden>清除筛选条件 ↺</button>
+        </div>
+
+        {{- /* 服务端渲染首屏项目卡片（无 JS 亦可完整浏览，SEO 友好） */ -}}
+        <div class="aiwb-cards-grid" id="aiwb-projects-container">
+          {{- range first 36 $projects }}
+          {{- $p := . -}}
+          <article class="aiwb-card" data-project-id="{{ $p.id }}">
+            <div class="aiwb-card-header">
+              <div class="aiwb-card-title-group">
+                <a class="aiwb-card-title" href="{{ $p.page_url }}">{{ $p.name }}</a>
+                <span class="aiwb-card-repo">{{ $p.repo }}</span>
+              </div>
+              <div class="aiwb-card-badges">
+                <span class="aiwb-badge aiwb-verdict-{{ $p.verdict | default "unrated" }}">
+                  {{ $p.verdict_label | default "已收藏待评" }}
+                </span>
+                {{- range $p.risks }}
+                <span class="aiwb-badge aiwb-risk-{{ .level }}" title="{{ .label }}">⚠️ {{ .label }}</span>
+                {{- end }}
+              </div>
+            </div>
+
+            <p class="aiwb-card-summary">{{ $p.summary_zh | default $p.description }}</p>
+
+            <div class="aiwb-card-tags">
+              <span class="aiwb-tag aiwb-tag-cat">{{ $p.category_name }}</span>
+              {{- range first 3 $p.tags }}
+              <span class="aiwb-tag">#{{ . }}</span>
+              {{- end }}
+            </div>
+
+            <div class="aiwb-card-metrics">
+              <div class="aiwb-metric-cell">
+                <span class="aiwb-metric-k">⭐ Stars</span>
+                <strong class="aiwb-metric-v">{{ $p.stars }}</strong>
+                <small class="aiwb-metric-sub">+{{ $p.stars_7d | default 0 }} / 7d</small>
+              </div>
+              <div class="aiwb-metric-cell">
+                <span class="aiwb-metric-k">📦 最新版本</span>
+                {{- if $p.release }}
+                <strong class="aiwb-metric-v">{{ $p.release.tag }}</strong>
+                <small class="aiwb-metric-sub">{{ substr ($p.release.published_at | default "") 0 10 }}</small>
+                {{- else }}
+                <strong class="aiwb-metric-v">主干交付</strong>
+                <small class="aiwb-metric-sub">推送 {{ substr ($p.pushed_at | default "") 0 10 }}</small>
+                {{- end }}
+              </div>
+              <div class="aiwb-metric-cell">
+                <span class="aiwb-metric-k">🩺 健康度</span>
+                <strong class="aiwb-metric-v">{{ $p.health.score }}/100</strong>
+                <small class="aiwb-metric-sub">{{ $p.language }} · {{ $p.license | default "未声明" }}</small>
+              </div>
+            </div>
+
+            <div class="aiwb-card-footer">
+              <div class="aiwb-card-links">
+                <a class="aiwb-card-link" href="{{ $p.page_url }}">项目档案 →</a>
+                {{- if $p.posts }}
+                {{- $firstPost := index $p.posts 0 }}
+                <a class="aiwb-card-link aiwb-card-link-post" href="{{ $firstPost.url }}" title="{{ $firstPost.title }}">
+                  📝 本站深度解读 ({{ len $p.posts }})
+                </a>
+                {{- end }}
+                <a class="aiwb-card-link" href="https://github.com/{{ $p.repo }}" target="_blank" rel="noopener noreferrer">
+                  GitHub ↗
+                </a>
+              </div>
+              <div class="aiwb-card-controls">
+                <label class="aiwb-compare-check" title="勾选加入横向对比（最多3项）">
+                  <input type="checkbox" data-compare-id="{{ $p.id }}"> 对比
+                </label>
+                <button type="button" class="aiwb-watch-btn" data-watch-id="{{ $p.id }}" aria-label="关注 {{ $p.name }}">☆</button>
+              </div>
+            </div>
+          </article>
+          {{- end }}
+        </div>
+
+        {{- /* 紧凑表格容器（由 JS 切换渲染） */ -}}
+        <div class="aiwb-table-wrap" id="aiwb-table-container" hidden></div>
+
+        {{- /* 分页控制器 */ -}}
+        <div class="aiwb-pagination" id="aiwb-pagination"></div>
+      </section>
+
+      {{- /* ==================== 视图 2: 变化信号流 (Feed) ==================== */ -}}
+      <section class="aiwb-view-panel" id="aiwb-view-feed" hidden>
+        <div class="aiwb-feed-header">
+          <div>
+            <h2>📡 开源生态变化信号流</h2>
+            <p class="aiwb-muted">自动捕捉 @{{ $metrics.github_user | default "hobbytp" }} 新 Star 入库、重要版本发布、本站新发深度解读与热度异动。</p>
+          </div>
+          <div class="aiwb-feed-filters" id="aiwb-feed-filters">
+            <button type="button" class="aiwb-cat-btn active" data-event-type="all">全部信号</button>
+            <button type="button" class="aiwb-cat-btn" data-event-type="newly_starred">🌟 新收入库</button>
+            <button type="button" class="aiwb-cat-btn" data-event-type="release">🚀 版本发布</button>
+            <button type="button" class="aiwb-cat-btn" data-event-type="blog_published">📝 本站解读</button>
+            <button type="button" class="aiwb-cat-btn" data-event-type="star_surge">🔥 热度飙升</button>
+            <button type="button" class="aiwb-cat-btn" data-event-type="verdict_changed">⚖️ 选型判断</button>
+          </div>
+        </div>
+
+        <div class="aiwb-feed-list" id="aiwb-feed-list">
+          {{- range first 40 $events }}
+          <article class="aiwb-event-card aiwb-event-{{ .importance }}" data-event-type="{{ .type }}">
+            <div class="aiwb-event-meta">
+              <span class="aiwb-event-badge">{{ .type_label }}</span>
+              <time class="aiwb-event-date">{{ .date }}</time>
+              <span class="aiwb-event-repo">{{ .repo }}</span>
+            </div>
+            <h3 class="aiwb-event-title">
+              <a href="{{ .url }}">{{ .title }}</a>
+            </h3>
+            <p class="aiwb-event-summary">{{ .summary }}</p>
+            <div class="aiwb-event-actions">
+              <a href="{{ .url }}">查看站内档案 →</a>
+              {{- if .external_url }}
+              <a href="{{ .external_url }}" target="_blank" rel="noopener noreferrer">来源链接 ↗</a>
+              {{- end }}
+            </div>
+          </article>
+          {{- end }}
+        </div>
+      </section>
+
+      {{- /* ==================== 视图 3: 实战场景包 (Scenarios) ==================== */ -}}
+      <section class="aiwb-view-panel" id="aiwb-view-scenarios" hidden>
+        <div class="aiwb-scenarios-intro">
+          <h2>🧭 从一个真实工程任务开始选型</h2>
+          <p class="aiwb-muted">不要孤立地看单个项目的 Star 数。以下场景包梳理了每个组件在完整方案中的职责分工、推荐主力与可替换备选。</p>
+        </div>
+
+        <div class="aiwb-scenarios-grid">
+          {{- range $scenarios }}
+          {{- $sc := . -}}
+          <article class="aiwb-scenario-card">
+            <header class="aiwb-scenario-header">
+              <h3>{{ $sc.title }}</h3>
+              <p class="aiwb-scenario-goal">{{ $sc.goal }}</p>
+              {{- if $sc.not_for }}
+              <p class="aiwb-scenario-notfor"><strong>🚫 不适用场景：</strong>{{ $sc.not_for }}</p>
+              {{- end }}
+            </header>
+
+            <div class="aiwb-scenario-stack">
+              {{- range $sc.stack }}
+              <div class="aiwb-stack-row">
+                <div class="aiwb-stack-role">{{ .role }}</div>
+                <div class="aiwb-stack-main">
+                  <button type="button" class="aiwb-stack-proj-btn" data-open-repo="{{ .project }}">
+                    <strong>{{ .project }}</strong> <span>查看档案 →</span>
+                  </button>
+                  {{- if .alternatives }}
+                  <div class="aiwb-stack-alts">
+                    备选方案：
+                    {{- range .alternatives }}
+                    <button type="button" class="aiwb-link-btn" data-open-repo="{{ . }}">{{ . }}</button>
+                    {{- end }}
+                  </div>
+                  {{- end }}
+                </div>
+              </div>
+              {{- end }}
+            </div>
+
+            <footer class="aiwb-scenario-footer">
+              <button type="button" class="aiwb-btn" data-compare-scenario="{{ $sc.id }}">
+                ⚖️ 一键对比该场景核心项目
+              </button>
+            </footer>
+          </article>
+          {{- end }}
+        </div>
+      </section>
+
+      {{- /* ==================== 视图 4: 我的关注与 Stars 对照 (Watched) ==================== */ -}}
+      <section class="aiwb-view-panel" id="aiwb-view-watched" hidden>
+        <div class="aiwb-watched-grid">
+          <div class="aiwb-panel">
+            <h2>⭐ 我关注与标记的项目</h2>
+            <p class="aiwb-muted">你的关注列表、个人采用状态（想试 / 在用 / 放弃）与私人笔记仅保存在当前浏览器本地，支持随时导出 JSON 备份。</p>
+            <div id="aiwb-watched-list" class="aiwb-watched-list"></div>
+          </div>
+
+          <div class="aiwb-panel">
+            <h2>🔍 导入你的 GitHub Stars 与本站对照</h2>
+            <p class="aiwb-muted">输入任意 GitHub 用户名，纯前端读取公开 Stars（无需任何 Token），自动分析你与本站项目库的重合度，并发现你独有的宝藏项目。</p>
+            <form id="aiwb-visitor-stars-form" class="aiwb-stars-form">
+              <input
+                type="text"
+                name="username"
+                id="aiwb-visitor-username"
+                class="aiwb-input"
+                placeholder="输入 GitHub 用户名，例如 hobbytp"
+                maxlength="39"
+                required
+              >
+              <button type="submit" class="aiwb-btn aiwb-btn-primary" id="aiwb-visitor-fetch-btn">
+                读取公开 Stars 并对照
+              </button>
+            </form>
+            <p id="aiwb-visitor-status" class="aiwb-muted" role="status"></p>
+            <div id="aiwb-visitor-result"></div>
+          </div>
+        </div>
+      </section>
+
+      {{- /* 底部方法论与口径说明 */ -}}
+      <footer class="aiwb-methodology">
+        <details>
+          <summary>📐 关于本页：收录标准、CHAOSS 健康度计算口径与数据声明（点击展开）</summary>
+          <div class="aiwb-methodology-body">
+            <p><strong>1. 数据来源：</strong>项目池直接同步自作者 GitHub 账号（<code>@{{ $metrics.github_user | default "hobbytp" }}</code>）的公开 Stars 列表及本站在 <code>content/zh/projects/</code> 撰写的深度解读文章。作者在 GitHub 点 Star 后，定时工作流会自动拉取仓库元数据、增量生成 AI 中文定位并加入研究台。</p>
+            <p><strong>2. 事实、AI 摘要与作者判断三层分离：</strong>客观指标来自 GitHub REST/GraphQL API；一句话中文定位与适用边界若未经人工覆写，则由大模型或结构化规则从仓库元数据提炼；「主力推荐 / 值得试用」等选型标签均由作者人工维护在 <code>data/ai_projects/curated.yaml</code> 中，自动化脚本绝不篡改。</p>
+            <p><strong>3. CHAOSS 风格健康度公式：</strong><code>综合健康度 = 0.35×活跃度(近期推送与90天提交密度) + 0.25×社区响应(规模与Issue关闭率) + 0.20×发布节奏(近期Release频率) + 0.20×持续合规(开源许可证与维护周期)</code>。点击任意项目详情均可查看各分项原始数值。</p>
+          </div>
+        </details>
+      </footer>
+
+      {{- /* 悬浮横向对比栏 (最多 3 项) */ -}}
+      <div class="aiwb-compare-bar" id="aiwb-compare-bar" hidden>
+        <div class="aiwb-compare-info">
+          <span>已选择对比项目 (<strong id="aiwb-compare-count">0</strong>/3)：</span>
+          <span id="aiwb-compare-names" class="aiwb-compare-names"></span>
+        </div>
+        <div class="aiwb-compare-actions">
+          <button type="button" class="aiwb-link-btn" id="aiwb-compare-clear">清空</button>
+          <button type="button" class="aiwb-btn aiwb-btn-primary" id="aiwb-compare-open" disabled>
+            再选 1 个项目开始对比
+          </button>
+        </div>
+      </div>
+
+      {{- /* 通用模态弹窗（用于项目快速档案、3项横向对比、本地数据导入导出） */ -}}
+      <dialog class="aiwb-dialog" id="aiwb-dialog" aria-labelledby="aiwb-dialog-title">
+        <div class="aiwb-dialog-header">
+          <h2 id="aiwb-dialog-title">项目详情</h2>
+          <button type="button" class="aiwb-dialog-close" id="aiwb-dialog-close" aria-label="关闭弹窗">×</button>
+        </div>
+        <div class="aiwb-dialog-body" id="aiwb-dialog-body"></div>
+      </dialog>
+
+      <div class="aiwb-toast" id="aiwb-toast" role="status" hidden></div>
+    </div>
+  </div>
+</div>
+
+{{- /* 内嵌研究台结构化数据供前端即时筛选、对比与详情渲染 */ -}}
+<script id="aiwb-data-payload" type="application/json">
+{{ dict
+  "generated_at" $generatedAt
+  "github_user" ($metrics.github_user | default "hobbytp")
+  "categories" $categories
+  "scenarios" $scenarios
+  "verdict_levels" ($curated.verdict_levels | default dict)
+  "projects" $projects
+  "events" $events
+  | jsonify | safeJS }}
+</script>
+
+{{- $js := resources.Get "js/ai-workbench.js" -}}
+{{- if $js -}}
+  {{- $secureJS := $js | resources.Minify | resources.Fingerprint -}}
+  <script src="{{ $secureJS.RelPermalink }}" integrity="{{ $secureJS.Data.Integrity }}" defer></script>
+{{- end -}}
+
+{{ end }}
+

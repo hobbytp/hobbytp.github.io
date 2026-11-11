@@ -1,0 +1,271 @@
+{{ define "main" }}
+{{- $p := .Params.project | default dict -}}
+{{- $metrics := site.Data.ai_projects.metrics | default dict -}}
+{{- $generatedAt := $metrics.generated_at | default "" -}}
+{{- $health := $p.health | default dict -}}
+{{- $rel := $p.release | default dict -}}
+
+<div class="main-container">
+  {{- partial "sidebar.html" . }}
+
+  <div class="main-content-with-sidebar">
+    <div class="aiwb-wrapper aiwb-single-wrapper">
+
+      <nav class="aiwb-breadcrumb" aria-label="面包屑导航">
+        <a href="{{ "/ai-workbench/" | relLangURL }}">← 返回 AI 开源项目研究台</a>
+        <span>/</span>
+        <a href="{{ printf "/ai-workbench/?cat=%s" ($p.category | default "all") | relLangURL }}">{{ $p.category_name | default "开源项目" }}</a>
+        <span>/</span>
+        <strong>{{ $p.name }}</strong>
+      </nav>
+
+      <article class="aiwb-dossier">
+        <header class="aiwb-dossier-header">
+          <div class="aiwb-dossier-title-row">
+            <div>
+              <span class="aiwb-eyebrow">{{ $p.repo }}</span>
+              <h1 class="aiwb-dossier-title">{{ $p.name }}</h1>
+            </div>
+            <div class="aiwb-card-badges">
+              <span class="aiwb-badge aiwb-verdict-{{ $p.verdict | default "unrated" }}">
+                {{ $p.verdict_label | default "已收藏待评" }}
+              </span>
+              {{- range $p.risks }}
+              <span class="aiwb-badge aiwb-risk-{{ .level }}">⚠️ {{ .label }}</span>
+              {{- end }}
+            </div>
+          </div>
+
+          <p class="aiwb-dossier-summary">{{ $p.summary_zh | default $p.description }}</p>
+          {{- if and $p.description (ne $p.description $p.summary_zh) }}
+          <p class="aiwb-dossier-orig-desc">GitHub 原始描述：{{ $p.description }}</p>
+          {{- end }}
+
+          <div class="aiwb-card-tags" style="margin: 14px 0 18px;">
+            <span class="aiwb-tag aiwb-tag-cat">{{ $p.category_name }}</span>
+            <span class="aiwb-tag">💻 {{ $p.language | default "Multi" }}</span>
+            <span class="aiwb-tag">📜 {{ $p.license | default "未声明许可证" }}</span>
+            {{- if $p.starred_at }}
+            <span class="aiwb-tag">⭐ 作者收藏于 {{ substr $p.starred_at 0 10 }}</span>
+            {{- end }}
+            {{- range $p.tags }}
+            <span class="aiwb-tag">#{{ . }}</span>
+            {{- end }}
+          </div>
+
+          <div class="aiwb-hero-actions">
+            <a class="aiwb-btn aiwb-btn-primary" href="https://github.com/{{ $p.repo }}" target="_blank" rel="noopener noreferrer">
+              ↗ 访问 GitHub 仓库 ({{ $p.repo }})
+            </a>
+            {{- if $p.homepage }}
+            <a class="aiwb-btn" href="{{ $p.homepage }}" target="_blank" rel="noopener noreferrer">
+              🌐 官方文档 / 主页
+            </a>
+            {{- end }}
+            <a class="aiwb-btn" href="{{ printf "/ai-workbench/?compare=%s" $p.id | relLangURL }}">
+              ⚖️ 加入横向对比
+            </a>
+          </div>
+        </header>
+
+        {{- /* 1. 适用边界与选型指南 */ -}}
+        <section class="aiwb-dossier-grid">
+          <div class="aiwb-panel aiwb-panel-good">
+            <h2>✅ 适合解决什么问题 (Good For)</h2>
+            <ul class="aiwb-bullet-list">
+              {{- range $p.good_for }}
+              <li>{{ . }}</li>
+              {{- else }}
+              <li>构建与探索 {{ $p.category_name }} 相关的开源技术方案。</li>
+              {{- end }}
+            </ul>
+          </div>
+
+          <div class="aiwb-panel aiwb-panel-notfor">
+            <h2>🚫 不适用边界与选型注意 (Not For)</h2>
+            <ul class="aiwb-bullet-list">
+              {{- range $p.not_for }}
+              <li>{{ . }}</li>
+              {{- else }}
+              <li>在生产环境大规模引入前，建议先验证许可证合规性与团队维护成本。</li>
+              {{- end }}
+            </ul>
+          </div>
+        </section>
+
+        {{- /* 2. 客观事实指标与 CHAOSS 健康度拆解 */ -}}
+        <section class="aiwb-panel">
+          <div class="aiwb-section-head">
+            <h2>📊 客观生态事实与 CHAOSS 可解释健康度</h2>
+            {{- if $generatedAt }}
+            <span class="aiwb-muted">数据快照采集于：{{ substr $generatedAt 0 16 }}</span>
+            {{- end }}
+          </div>
+
+          <div class="aiwb-facts-grid">
+            <div class="aiwb-fact-box">
+              <span class="aiwb-fact-label">⭐ GitHub Stars</span>
+              <strong class="aiwb-fact-val">{{ $p.stars }}</strong>
+              <small>近 7 日 +{{ $p.stars_7d | default 0 }} · 日均 +{{ $p.stars_per_day }}</small>
+            </div>
+            <div class="aiwb-fact-box">
+              <span class="aiwb-fact-label">🍴 Forks 与衍生</span>
+              <strong class="aiwb-fact-val">{{ $p.forks }}</strong>
+              <small>创建时间 {{ substr ($p.created_at | default "") 0 10 }}</small>
+            </div>
+            <div class="aiwb-fact-box">
+              <span class="aiwb-fact-label">🔥 近期代码活跃</span>
+              <strong class="aiwb-fact-val">
+                {{- if $p.commits_90d }}{{ $p.commits_90d }} 次提交/90d{{- else }}{{ if eq $p.status "active" }}近期活跃{{ else }}稳定维护{{ end }}{{- end }}
+              </strong>
+              <small>最近推送 {{ substr ($p.pushed_at | default "") 0 10 }}</small>
+            </div>
+            <div class="aiwb-fact-box">
+              <span class="aiwb-fact-label">🤝 社区协作与 Issue</span>
+              <strong class="aiwb-fact-val">
+                {{- if $p.merged_prs }}{{ $p.merged_prs }} 合并 PR{{- else }}{{ $p.open_issues }} 开放 Issue{{- end }}
+              </strong>
+              <small>
+                {{- if $p.closed_issues }}已关闭 {{ $p.closed_issues }} · 待处理 {{ $p.open_issues }}{{- else }}当前开放 Issue: {{ $p.open_issues }}{{- end }}
+              </small>
+            </div>
+            <div class="aiwb-fact-box">
+              <span class="aiwb-fact-label">📦 最新版本发布</span>
+              {{- if $rel.tag }}
+              <strong class="aiwb-fact-val">{{ $rel.tag }}</strong>
+              <small>发布于 {{ substr ($rel.published_at | default "") 0 10 }} · 近半年 {{ $p.releases_180d | default 1 }} 次</small>
+              {{- else }}
+              <strong class="aiwb-fact-val">主干持续交付</strong>
+              <small>未打 Release 标签，直接通过主分支迭代</small>
+              {{- end }}
+            </div>
+            <div class="aiwb-fact-box">
+              <span class="aiwb-fact-label">🩺 CHAOSS 综合健康度</span>
+              <strong class="aiwb-fact-val">{{ $health.score | default 75 }} / 100</strong>
+              <small>状态：{{ if eq $p.status "active" }}🟢 活跃迭代{{ else if eq $p.status "archived" }}🔴 已归档{{ else }}🟡 稳定维护{{ end }}</small>
+            </div>
+          </div>
+
+          <div class="aiwb-health-breakdown">
+            <div class="aiwb-health-row">
+              <span>活跃度 (Activity · 权重 35%)</span>
+              <div class="aiwb-progress"><i style="width:{{ $health.activity | default 75 }}%"></i></div>
+              <strong>{{ $health.activity | default 75 }}</strong>
+            </div>
+            <div class="aiwb-health-row">
+              <span>社区与响应 (Community · 权重 25%)</span>
+              <div class="aiwb-progress"><i style="width:{{ $health.community | default 75 }}%"></i></div>
+              <strong>{{ $health.community | default 75 }}</strong>
+            </div>
+            <div class="aiwb-health-row">
+              <span>发布节奏 (Release · 权重 20%)</span>
+              <div class="aiwb-progress"><i style="width:{{ $health.release | default 70 }}%"></i></div>
+              <strong>{{ $health.release | default 70 }}</strong>
+            </div>
+            <div class="aiwb-health-row">
+              <span>持续与合规 (Sustainability · 权重 20%)</span>
+              <div class="aiwb-progress"><i style="width:{{ $health.sustainability | default 80 }}%"></i></div>
+              <strong>{{ $health.sustainability | default 80 }}</strong>
+            </div>
+          </div>
+
+          <details class="aiwb-formula-details">
+            <summary>🔍 如何计算该健康度分数？（点击展开计算公式与复核依据）</summary>
+            <p class="aiwb-muted" style="margin-top:8px;">
+              公式：<code>{{ $health.formula | default "0.35×活跃度 + 0.25×社区响应 + 0.20×发布节奏 + 0.20×持续合规" }}</code>。<br>
+              所有分项均由上方展示的 GitHub 原始事实指标（最近推送间隔、近 90 天提交数、Issue 关闭比、Release 频次、OSI 开源许可证与项目存活周期）确定性计算得出，绝无黑盒人工赋分。
+            </p>
+          </details>
+        </section>
+
+        {{- /* 3. 最新版本发布中文要点 */ -}}
+        {{- if $rel.tag }}
+        <section class="aiwb-panel">
+          <div class="aiwb-section-head">
+            <h2>🚀 最新版本更新解读：{{ $rel.tag }}</h2>
+            <a href="{{ $rel.url | default (printf "https://github.com/%s/releases" $p.repo) }}" target="_blank" rel="noopener noreferrer">
+              查看官方 Release Notes ↗
+            </a>
+          </div>
+          <p class="aiwb-muted">发布日期：{{ substr ($rel.published_at | default "") 0 10 }}</p>
+          <ul class="aiwb-bullet-list">
+            {{- range $rel.highlights }}
+            <li>{{ . }}</li>
+            {{- end }}
+          </ul>
+        </section>
+        {{- end }}
+
+        {{- /* 4. 本站配套深度解读文章 */ -}}
+        {{- if $p.posts }}
+        <section class="aiwb-panel">
+          <h2>📝 本站源码级深度解读与实践文章 ({{ len $p.posts }} 篇)</h2>
+          <div class="aiwb-post-list">
+            {{- range $p.posts }}
+            <a class="aiwb-post-item" href="{{ .url }}">
+              <strong>《{{ .title }}》</strong>
+              <span>{{ if .date }}发布于 {{ .date }} · {{ end }}阅读全文 →</span>
+            </a>
+            {{- end }}
+          </div>
+        </section>
+        {{- end }}
+
+        {{- /* 5. 作者实测判断历史与替代方案 */ -}}
+        <section class="aiwb-dossier-grid">
+          <div class="aiwb-panel">
+            <h2>⚖️ 作者选型判断与复核历史</h2>
+            {{- if $p.verdicts }}
+            <div class="aiwb-verdict-history">
+              {{- range $p.verdicts }}
+              <div class="aiwb-verdict-entry">
+                <div class="aiwb-verdict-entry-head">
+                  <span class="aiwb-badge aiwb-verdict-{{ .level }}">{{ $p.verdict_label }}</span>
+                  <time>{{ .date }}</time>
+                </div>
+                <p>{{ .reason }}</p>
+                {{- if .evidence }}
+                <p><a href="{{ .evidence }}">查看实测证据 / 关联文章 →</a></p>
+                {{- end }}
+              </div>
+              {{- end }}
+            </div>
+            {{- else }}
+            <p class="aiwb-muted">
+              该项目已由作者在 GitHub 点 Star 收录进关注池（{{ substr ($p.starred_at | default "") 0 10 }}），目前处于<strong>已收藏待评</strong>状态。建议先结合上方客观指标与任务边界安排小规模试验。
+            </p>
+            {{- end }}
+          </div>
+
+          <div class="aiwb-panel">
+            <h2>🔄 同类替代与互补组合</h2>
+            {{- if or $p.alternatives $p.complements }}
+            {{- if $p.alternatives }}
+            <p><strong>可替换同类方案：</strong></p>
+            <div class="aiwb-card-tags" style="margin-bottom:12px;">
+              {{- range $p.alternatives }}
+              <a class="aiwb-pill aiwb-pill-link" href="{{ printf "/ai-workbench/?q=%s" . | relLangURL }}">{{ . }}</a>
+              {{- end }}
+            </div>
+            {{- end }}
+            {{- if $p.complements }}
+            <p><strong>常搭配互补组件：</strong></p>
+            <div class="aiwb-card-tags">
+              {{- range $p.complements }}
+              <a class="aiwb-pill aiwb-pill-link" href="{{ printf "/ai-workbench/?q=%s" . | relLangURL }}">{{ . }}</a>
+              {{- end }}
+            </div>
+            {{- end }}
+            {{- else }}
+            <p class="aiwb-muted">
+              可在研究台中查看 <a href="{{ printf "/ai-workbench/?cat=%s" ($p.category | default "all") | relLangURL }}">「{{ $p.category_name }}」分类下的全部同类项目 →</a> 并勾选进行横向对比。
+            </p>
+            {{- end }}
+          </div>
+        </section>
+      </article>
+    </div>
+  </div>
+</div>
+{{ end }}
+

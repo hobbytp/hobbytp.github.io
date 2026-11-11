@@ -1,0 +1,734 @@
+{
+  "version": 1,
+  "projects": {},
+  "releases": {
+    "saos-3624/dsh-see-now@v0.2.2": {
+      "tag": "v0.2.2",
+      "highlights": [
+        "交付时同步定下会话（`watch` 用开始等待前锁定的 owner，`peek` 用这次调用的会话），",
+        "30 秒节流从**一个全局时间戳**改成**按会话记** —— 以前 A 刚检查过，B 交的图 30 秒内",
+        "入口只收**本机文件的绝对路径**：绝对、存在、普通文件，否则报一句能照做的话、",
+        "Windows 上两个分隔符开头的一律在 `stat` 之前拒（UNC / `\\\\?\\` / `\\\\.\\`）——"
+      ]
+    },
+    "nicobailon/visual-explainer@v0.15.0": {
+      "tag": "v0.15.0",
+      "highlights": [
+        "**Skipped questions stay skipped.** An untouched suggested answer now comes back as \"no answer\", so an agent can't start work on an \"Approve\" you never clicked.",
+        "**Pages read well with no page CSS.** Text keeps a readable width, code blocks are framed and lists are indented. Long pages get a section menu that stays at the top.",
+        "**Choose where Pi saves pages.** Use your own folder, or a folder inside each project.",
+        "**Works in single-binary Pi builds.** The Pi extension now loads in Pi builds made with Bun, such as Pi-Bolt, instead of stopping Pi from starting."
+      ]
+    },
+    "wheresryan22/anatomy@v1.1.0": {
+      "tag": "v1.1.0",
+      "highlights": [
+        "**More agents.** Anatomy runs in OpenCode and Codex as well as Claude Code, and the gallery knows Antigravity too.",
+        "**Browser checks** start on Linux, fail when a page doesn't load or a step throws, time out cleanly, reject unknown or misspelled actions, and clean up after Chrome exits early.",
+        "**The geometry audit** measures transformed, arced, clipped and tapered shapes by their true bounds, converges on large figures, and keeps sliding parts and pipe clearances honest.",
+        "**Reduced motion** is respected by the arcade cabinet and the turning dial, even when switched on while the page is open."
+      ]
+    },
+    "hkuds/deeptutor@v1.7.2": {
+      "tag": "v1.7.2",
+      "highlights": [
+        "DeepTutor v1.7.2 Release Notes Release Date: 2026.11.06 Building on [v1.7.1](ver1-7-1.md), v1.7.2 adds selected-text read-aloud, easier model setup, and more re"
+      ]
+    },
+    "longqt-sea/containerized-proxmox@v2.5.0": {
+      "tag": "v2.5.0",
+      "highlights": [
+        "发布版本 v2.5.0，包含常规功能迭代与问题修复。"
+      ]
+    },
+    "credativ/proxlb@v2.4.0": {
+      "tag": "v2.4.0",
+      "highlights": [
+        "fix: Reevaluate and restart the run when there is a connection",
+        "Fix pipeline error",
+        "fix: Implement anti-affinity logic for guest node selection and add unit tests",
+        "Add solver.method to select solver-only balancing methods"
+      ]
+    },
+    "panniantong/agent-reach@v1.6.1": {
+      "tag": "v1.6.1",
+      "highlights": [
+        "全网搜索、Reddit、小红书、B站在 1.6.0 里会出现的几种\"明明能查却报错\"或\"显示成功但内容是空的\"，这版都修好了。",
+        "电脑上别的软件占用了浏览器端口时，可以换一个端口，不用关掉那个软件。",
+        "复制登录失败时会如实告诉你，不再假装成功。",
+        "Windows 上小红书带特殊符号的链接能正常打开了。"
+      ]
+    },
+    "google-labs-code/design.md@0.4.0": {
+      "tag": "0.4.0",
+      "highlights": [
+        "**CSS `color-mix()` requires explicit percentage weight values.** Bare numbers are now rejected instead of producing inaccurate color blends. (#120, @rmyndharis)",
+        "**Line terminators in font family names are escaped in Tailwind v4 exports.** (#122, @rmyndharis)",
+        "**Primitive types render correctly directly from specification configuration.** (#131, @juliosuas)",
+        "**Bounded token validation performance on adversarial inputs.** Cap dimension string parsing lengths, limit recursion depth in nested col"
+      ]
+    },
+    "dmtrkovalenko/fframes@v1.3.0": {
+      "tag": "v1.3.0",
+      "highlights": [
+        "perf: streamline NEON YUV420 conversion",
+        "fix: Respect video color metadata during RGBA conversion",
+        "chore: Add Discord link to fframes.studio landing page",
+        "chore: Fix clippy doc_markdown error in fframes-intro"
+      ]
+    },
+    "graphicle-ai/graphicle@v0.1.14": {
+      "tag": "v0.1.14",
+      "highlights": [
+        "Nothing to do if you do not set `GRAPHICLE_DATABASE_URL`: the store",
+        "To move a data folder to PostgreSQL, set `GRAPHICLE_DATABASE_URL` and",
+        "A server on another machine is reached only over TLS, with its",
+        "The address and password never appear in errors, logs or files"
+      ]
+    },
+    "alphaxiv/openresearch@v0.2.26": {
+      "tag": "v0.2.26",
+      "highlights": [
+        "<!-- desktop-downloads:start -- Download OpenResearch Install the desktop app to get everything you need. No separate installation or terminal setup required. <"
+      ]
+    },
+    "ningzimu/codex-ppt-skill@v0.6.0": {
+      "tag": "v0.6.0",
+      "highlights": [
+        "Default image requests to GPT Image 2.5 Flare, support Sunburst, xhigh/max quality and transparent PNG/WebP, and retain legacy model validation.",
+        "Refresh image backend guidance across all languages without claiming a fixed model for built-in tools.",
+        "Add Codia NoteSlide sponsor cards and links across Chinese, English, and Korean READMEs and documentation homepages.",
+        "Add a Korean translation of the README (`README_ko.md`) and a language badge linking to it from `README.md` and `README_en.md`."
+      ]
+    },
+    "wuyoscar/gpt-image2-skill@v0.3.0": {
+      "tag": "v0.3.0",
+      "highlights": [
+        "Native GIF generation/reference editing with frame-count and timing controls.",
+        "Community-inspired 2.6 examples, a fire-sword animation and an interactive illustrated website. The Reference Gallery now contains 171 numbered entries across 31 categories.",
+        "Claude Code and Codex plugin packaging, `gpt-image --version`, and installation-specific remote update commands.",
+        "A single agent-readable installation/update guide, inspired by Agent Reach, linked from both READMEs."
+      ]
+    },
+    "glanderness/beeftv@v2.2.0": {
+      "tag": "v2.2.0",
+      "highlights": [
+        "升级须知：升级后官方算力需要重新连接一次。重连后旧的官方服务会自动去掉，老画布不用重新选模型。",
+        "升级须知：不再自动读取其他工具装在 `~/.agents/skills` 的技能。之前自动出现在「我的技能」里的这些技能会被移除，需要的话用「导入文件」重新添加，电脑上的原文件不会删除。",
+        "创作助手：改善连续对话的缓存复用，支持缓存的模型有机会回复更快、费用更低；只做你要求的事，守住你定的数量；分镜草稿可以按技能命名；改完画布后会列出连带改动的节点和字段。",
+        "视频生成：关闭声音、画面比例真正生效，竖屏不会再变成横屏；助手可以设置分辨率。"
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.1": {
+      "tag": "v2.100.1",
+      "highlights": [
+        "Show a spinner while telemetry consent and profile actions wait",
+        "Publish the verified npm tarball as a local path",
+        "Start the 2.100.0 changelog at the reviewed legacy baseline",
+        "Rank Fable accounts by its share of the weekly limit"
+      ]
+    },
+    "gml-mmgroup/adcraft@recommended-assets-v1.0.0": {
+      "tag": "recommended-assets-v1.0.0",
+      "highlights": [
+        "AdCraft Recommended Assets v1.0.0 Contains 61 entities and 61 original members with JPEG previews. License: CC0-1.0. Extract the ZIP below data/assets/catalogs/"
+      ]
+    },
+    "hkuds/cli-anything@v0.4.0": {
+      "tag": "v0.4.0",
+      "highlights": [
+        "**4 security hardenings** — routing untrusted XML through `defusedxml`, owner-only token/config permissions, and restricting token-file resolution against arbitrary file access.",
+        "**Docs & i18n** — new German README (`README_DE.md`), expanded troubleshooting, and contributor-guide fixes.",
+        "**42 new contributors** joined this release. 🎉",
+        "Feature/cli matrix multi approach"
+      ]
+    },
+    "xiaoduoya/codex-with-chatgpt@v0.1.4": {
+      "tag": "v0.1.4",
+      "highlights": [
+        "#412 — record which executor ran an iteration",
+        "#416 — Quick Tunnel DNS negative-cache trap",
+        "#448 — search truncation accuracy",
+        "#446 — Windows Named Tunnel credential diagnostics"
+      ]
+    },
+    "multimodal-art-projection/yue@yue2-v0.1.6": {
+      "tag": "yue2-v0.1.6",
+      "highlights": [
+        "Install the Python wheel below, or clone the repository and run `pip install .` with Python 3.12.",
+        "Download `yue2-music.zip` to install the portable agent skill.",
+        "Download `yue2_infer-0.1.6.tar.gz` for the source distribution. `SHA256SUMS` covers all three artifacts.",
+        "Model weights are available under [m-a-p on Hugging Face]("
+      ]
+    },
+    "volcengine/openviking@v0.5.4": {
+      "tag": "v0.5.4",
+      "highlights": [
+        "**MCP 与实时上下文**：注册 Streamable HTTP MCP Server，检索、调用工具，并把工具挂载为可读取的 Markdown 节点。提供 REST、CLI 和 SDK 入口；同步上游工具后可查看受影响的挂载。[#6263](",
+        "**Agent 规则查询**：多种 Agent 集成增加 Rule Search 入口，在执行操作前按需查找适用规则。升级插件或重连 MCP 客户端后生效；这不会自动增加每轮拦截。[#7005](",
+        "**Watch 多节点运行**：增加 MySQL Watch 存储和列表分页；Connector 授权撤销后自动暂停，重新授权时只恢复此前自动暂停的任务。[#6756](",
+        "**会话恢复与记忆整理**：失败或失去执行任务的归档支持带内容哈希的显式重试；可用 `ov compile memory` 整理当前用户的已有记忆。[#5802]("
+      ]
+    },
+    "debpalash/voicestudio@v0.5.7": {
+      "tag": "v0.5.7",
+      "highlights": [
+        "First, an apology. This release took much longer than it should have. Urgent family matters kept me away for a while, and I'm sorry for the wait and for the iss"
+      ]
+    },
+    "tencent/teamai-cli@v0.29.0": {
+      "tag": "v0.29.0",
+      "highlights": [
+        "feat(tool-launch): one launcher for every AI call, from the tool descriptor",
+        "fix(init): refuse --scope user in single-repo mode",
+        "fix(import): same-basename --dir checkouts no longer share one evidence slug",
+        "fix(status): surface unconfirmed automatic reports"
+      ]
+    },
+    "lifeprompt-team/remotion-scenes@v1.0.0": {
+      "tag": "v1.0.0",
+      "highlights": [
+        "201+ professional motion graphics scenes for Remotion"
+      ]
+    },
+    "dietrichgebert/ponytail@v5.3.3": {
+      "tag": "v5.3.3",
+      "highlights": [
+        "fix(band): show the level again after /clear and /resume",
+        "fix(map): raise the git ls-files buffer so large repos keep tracked files",
+        "ci: run agentic benchmark selftest in test workflow",
+        "docs: clarify Cursor mode state scope"
+      ]
+    },
+    "thu-maic/openmaic@v1.4.2": {
+      "tag": "v1.4.2",
+      "highlights": [
+        "1.4.2 is a regular patch release. Its main addition is course-level undo: one undo/redo line per course that covers manual edits, page add/delete/reorder, narra"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.135": {
+      "tag": "v0.9.135",
+      "highlights": [
+        "worktree-audit.mjs now reads the .jsonl.zst rollouts under Codex's sessions and archived_sessions. It used to skip them, so a worktree whose latest chat sat in "
+      ]
+    },
+    "tt-a1i/archify@v3.2.0": {
+      "tag": "v3.2.0",
+      "highlights": [
+        "**Reading:**",
+        "Steps sit beside the diagram they walk through, and you can step through them.",
+        "Text and diagram nodes highlight each other.",
+        "Clicking a node opens the full Viewer focused on it."
+      ]
+    },
+    "amap-ml/longhorizon-harness@v0.1.8": {
+      "tag": "v0.1.8",
+      "highlights": [
+        "**CLI output decoding:** tolerate invalid bytes in agent version/help probes, model discovery, and npm helper output instead of crashing subprocess readers. [#71]( fixes [#64]("
+      ]
+    },
+    "agricidaniel/claude-obsidian@v3.0.1": {
+      "tag": "v3.0.1",
+      "highlights": [
+        "In a live session, all 15 skills and 3 agents l"
+      ]
+    },
+    "earendil-works/pi@v1.5.2": {
+      "tag": "v1.5.2",
+      "highlights": [
+        "Fixed Anthropic OAuth requests reporting an outdated Claude Code version"
+      ]
+    },
+    "yc-software/qm@v0.1.17": {
+      "tag": "v0.1.17",
+      "highlights": [
+        "Users table: the admin Users list, offboarding record and sign-in links",
+        "Move model route resolution into a shared module and route decision rules through it",
+        "Run the browser tool on the session's model route",
+        "Label models served by company ChatGPT access as org-billed in the runtime listing"
+      ]
+    },
+    "mukul975/anthropic-cybersecurity-skills@v1.3.0": {
+      "tag": "v1.3.0",
+      "highlights": [
+        "Supply Chain Security (5 skills) covers SBOM generation, dependency confusion, malicious npm package triage, typosquatting detection, and SLSA/Sigstore provenance.",
+        "Hardware and Firmware Security (4 skills) covers CHIPSEC UEFI audits, Secure Boot bypass detection, TPM measured-boot attestation, and bootkit hunting in the EFI System Partition.",
+        "Cloud-native: 8 skills (Stratus Red Team, Pacu, CloudFox, container escape, Kubernetes RBAC, Falco, Trivy, kube-bench).",
+        "Offensive C2 and lateral movement: 6 skills (Sliver, Havoc, NetExec, DPAPI, NTLM relay to ESC8, redirector infrastructure)."
+      ]
+    },
+    "duolahypercho/codex-router@v0.6.0": {
+      "tag": "v0.6.0",
+      "highlights": [
+        "feat: add safe generic OpenAI-compatible providers",
+        "Fix Homebrew Core source installation",
+        "fix: complete provider API-key pools after Windows repair",
+        "Fix model controls overflow and Hy4 branding"
+      ]
+    },
+    "twigpine/openclaude@v0.35.1": {
+      "tag": "v0.35.1",
+      "highlights": [
+        "**opengateway:** cache the live model list for an hour, not a day ([#2490]( ([96fb014]("
+      ]
+    },
+    "egonex-ai/understand-anything@v2.9.0": {
+      "tag": "v2.9.0",
+      "highlights": [
+        "**Dart**  and **C++ test/benchmark ignore patterns** (#480, #466) —",
+        "**Scala** (#553, from #493) and **Swift**  —",
+        "**Kotlin**  —",
+        "Modern TS type-declaration extraction fixes  —"
+      ]
+    },
+    "deusdata/codebase-memory-mcp@v0.12.1": {
+      "tag": "v0.12.1",
+      "highlights": [
+        "**npm `next`.** The `next` dist-tag no longer points to an old release candidate; a stable release moves it.",
+        "**Docs.** winget and Chocolatey were listed as install channels but are not published; they are removed until they are. Windows arm64 builds ship and are now listed."
+      ]
+    },
+    "alchaincyf/nuwa-skill@v2.0.1": {
+      "tag": "v2.0.1",
+      "highlights": [
+        "**运行纪律第 2 条拆开**：问到本人亲身经历过、但案例库没收的往事，照模型确实记得的讲全，不再降格成「按思路推的」。乔布斯的封存题因此从 4 分回到 7 分（满分 8）。",
+        "**案例编号不写进回答**。",
+        "**验证更严**：被测 Skill 拷到隔离目录再测；升级时把旧版作为第三臂；封存题先让裸答试答，全对的换掉；任务题评分分两步，先不给评分方案例库；盲评前多清两类会暴露身份的字样。",
+        "**封存件别把新材料全封掉**：升级时补搜到的新材料，封存和进案例库各一半；验证完可以解封。"
+      ]
+    },
+    "yizhiyanhua-ai/fireworks-tech-graph@v1.2.0": {
+      "tag": "v1.2.0",
+      "highlights": [
+        "Version: `v1.2.0`",
+        "Version date: 2026-07-17",
+        "Tag commit: [`ea534c2d`](",
+        "Previous version: [`v1.1.0`]("
+      ]
+    },
+    "joeseesun/qiaomu-anything-to-notebooklm@v1.0.1": {
+      "tag": "v1.0.1",
+      "highlights": [
+        "🌐 任意网页链接",
+        "🎬 YouTube 视频",
+        "📄 Office 文档（Word/PPT/Excel）",
+        "📚 电子书（PDF/EPUB）"
+      ]
+    },
+    "codewhale-hq/codewhale@v0.10.2": {
+      "tag": "v0.10.2",
+      "highlights": [
+        "What's in v0.10.2 Codewhale v0.10.2 adds an animated pet view (/pet on), a live Terminal work dock, per-chat composer colors (/color) and a one-time note on the"
+      ]
+    },
+    "othmanadi/planning-with-files@v3.28.1": {
+      "tag": "v3.28.1",
+      "highlights": [
+        "Control characters in an echoed `PLAN_ID`, `PWF_PLAN_ROOT` or target print as `?` on both routes, so a newline or escape sequence cannot print a fake status line (PR #362, #358).",
+        "`attest-plan` reports the multiple-plans refusal once, exits 1 and attests nothing, without the extra `No task_plan.md found` line (PR #362, #358).",
+        "`attest-plan.sh` no longer stores a hash prefixed with a backslash when `PWF_PLAN_ROOT` is a native Windows path, which made the hook report the plan as tampered (PR #362).",
+        "The shipped-file validators read the tracked inventory, so an old copy under the gitignored `.planning/` no longer fails them (PR #353, #352)."
+      ]
+    },
+    "everyinc/compound-engineering-plugin@compound-engineering-v3.37.1": {
+      "tag": "compound-engineering-v3.37.1",
+      "highlights": [
+        "**ce-babysit-pr:** ignore fork PRs in manual parent/dependent discovery ([#2041]( ([45ccf35](",
+        "**ce-code-review:** drop swift-ios, put agent-native on findings ([#2036]( ([18c2be5](",
+        "**ce-code-review:** narrow agent-native, widen frontend-races to any UI ([#2034]( ([6e7655a](",
+        "**ce-debug:** stop the edge failures a 45-run usage audit found ([#2039]( ([8e5d1c8]("
+      ]
+    },
+    "teng-lin/notebooklm-py@v0.8.6": {
+      "tag": "v0.8.6",
+      "highlights": [
+        "**Deferred audio generation .** Queue audio overviews with `later=True`",
+        "**Deferred Studio generation .** Queue videos, reports (including study",
+        "**Experimental Android Live Voice .** Android clients can open",
+        "**The Windows CLI runs on asyncio's default event loop .** The"
+      ]
+    },
+    "warpdotdev/warp@v0.2026.06.03.09.49.stable_00": {
+      "tag": "v0.2026.06.03.09.49.stable_00",
+      "highlights": [
+        "Warp Stable release"
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.6": {
+      "tag": "v6.19.6",
+      "highlights": [
+        "patch: Advertise Claude Fable 5.2 shortcut"
+      ]
+    },
+    "refactoringhq/tolaria@v2026-11-10": {
+      "tag": "v2026-11-10",
+      "highlights": [
+        "🇷🇺 **Clearer Russian translations** — A few leftover English labels in the Russian localization, including Name and Diff, are now translated.",
+        "Pasting formatted text into a quote block now stays inside the quote.",
+        "Pasting markdown-style emphasis in the editor is more reliable on macOS.",
+        "Undo after pasting a filename works as expected again."
+      ]
+    },
+    "garrytan/gbrain@v0.60.655.0": {
+      "tag": "v0.60.655.0",
+      "highlights": [
+        "QM, the AI helper that uses gbrain as one of its memories, can now read a person's own brain safely, read shared rooms only as the room's audience, and suggest "
+      ]
+    },
+    "gsd-build/gsd-2@v3.0.0": {
+      "tag": "v3.0.0",
+      "highlights": [
+        "**gsd**: add /gsd verdict command for milestone override recovery",
+        "**gsd**: add visual brief command",
+        "**subagent**: add random tracking names",
+        "**subagent**: add resumable isolated launch records"
+      ]
+    },
+    "mattpocock/skills@v1.3.2": {
+      "tag": "v1.3.2",
+      "highlights": [
+        "Patch Changes - [1194](https://github.com/mattpocock/skills/pull/1194) [b645f47](https://github.com/mattpocock/skills/commit/b645f47de3e17ed3bf60586c9bebb8092e0"
+      ]
+    },
+    "hkuds/nanobot@v0.4.1": {
+      "tag": "v0.4.1",
+      "highlights": [
+        "Fix TLS certificate verification, sandboxed shell execution and workspace permissions for queued inputs.",
+        "Add a file-context graph with file previews, local Markdown links and recent context snapshots. Switching topics keeps each conversation's context separate.",
+        "Share syntax highlighting across code, source previews and read-only diffs, with complete source copying and plain-text fallbacks.",
+        "Reduce unnecessary memory copies in file reads, session history and provider requests. Improve navigation, context-usage display, history loading and skill-source identification."
+      ]
+    },
+    "openclaw/openclaw@v2026.11.3": {
+      "tag": "v2026.11.3",
+      "highlights": [
+        "**Private task results:** Keep private subagent completions out of streamed chat replies.  Thanks @fuller-stack-dev.",
+        "**Visible tool failures:** Report unanswered tool failures instead of silently ending a user-addressed turn as a success. (#182458; related #99645) Authored",
+        "**Bounded authentication:** Stop stalled provider authentication at the run deadline and propagate cancellation through authentication work.  Thanks @amittell.",
+        "**Credential redac"
+      ]
+    },
+    "slopus/happy@cli-1.2.5": {
+      "tag": "cli-1.2.5",
+      "highlights": [
+        "Preserve and recover resumable sessions after daemon state is lost.",
+        "Prevent duplicate owners during concurrent or cancelled resumes.",
+        "Recover transcripts that appear late or after watcher restart.",
+        "Keep closed sessions closed."
+      ]
+    },
+    "promptfoo/promptfoo@0.125.1": {
+      "tag": "0.125.1",
+      "highlights": [
+        "restore the authentic Discord invite ([#11967]( ([98000c4]("
+      ]
+    },
+    "anomalyco/opencode@v1.19.5": {
+      "tag": "v1.19.5",
+      "highlights": [
+        "Failed TUI worker requests now return an error instead of leaving the caller hanging. (@Nowaker)",
+        "@Nowaker:",
+        "fix(opencode): answer a failed TUI worker request instead of hanging"
+      ]
+    },
+    "langchain-ai/langchain@langchain-core==1.7.7": {
+      "tag": "langchain-core==1.7.7",
+      "highlights": [
+        "Changes since langchain-core==1.7.6 release(core): 1.7.7 (41776) fix(core): cap nesting depth in load() (41742) chore(deps): patch newer-python security lock re"
+      ]
+    },
+    "mem0ai/mem0@ts-v3.3.1": {
+      "tag": "ts-v3.3.1",
+      "highlights": [
+        "Bug Fixes: - Config (OSS): ConfigManager no longer injects OpenAI's default baseURL and model into non-OpenAI LLM providers. The defaults now apply only to open"
+      ]
+    },
+    "foundationagents/openmanus@v0.3.0": {
+      "tag": "v0.3.0",
+      "highlights": [
+        "发布版本 v0.3.0，包含常规功能迭代与问题修复。"
+      ]
+    },
+    "numman-ali/openskills@v1.5.0": {
+      "tag": "v1.5.0",
+      "highlights": [
+        "**`openskills update`** - Refresh installed skills from their recorded source (default: all)",
+        "**Source metadata tracking** - Install now records origin info for reliable updates",
+        "**Multi-skill read** - `openskills read` supports comma-separated names",
+        "**Generated usage text** - Clarified read invocation for shell usage"
+      ]
+    },
+    "openai/codex@rust-v0.167.1": {
+      "tag": "rust-v0.167.1",
+      "highlights": [
+        "Changelog Full Changelog: https://github.com/openai/codex/compare/rust-v0.167.0...rust-v0.167.1"
+      ]
+    },
+    "yusufkaraaslan/skill_seekers@v3.10.0": {
+      "tag": "v3.10.0",
+      "highlights": [
+        "**Path traversal in the `fetch_config` MCP tool (CWE-22)** (#462 reported"
+      ]
+    },
+    "kbwo/ccmanager@v4.4.11": {
+      "tag": "v4.4.11",
+      "highlights": [
+        "perf: load the worktree list without blocking the event loop"
+      ]
+    },
+    "steipete/claude-code-mcp@v1.10.2": {
+      "tag": "v1.10.2",
+      "highlights": [
+        "Fix critical startup issue where Node.js CLI was incorrectly run through bash",
+        "Replace dynamic package.json import with hardcoded version to fix test failures",
+        "Performance improvement: faster startup by removing dynamic module loading"
+      ]
+    },
+    "wonderwhy-er/desktopcommandermcp@v0.3.2": {
+      "tag": "v0.3.2",
+      "highlights": [
+        "fix(windows): commands get ProgramData when the app leaves it out",
+        "feat: add public remote device launchers",
+        "fix: install Node 24 in remote launchers",
+        "test(helpers): one set of shared test helpers in place of the tests' own copies"
+      ]
+    },
+    "getzep/graphiti@v0.31.2": {
+      "tag": "v0.31.2",
+      "highlights": [
+        "chore(mcp): require graphiti-core 0.31.1 and set MCP version to 1.1.1",
+        "chore(ci): add the Devin bot to the CLA allowlist",
+        "docs: state the security scope of the reference MCP and REST servers",
+        "fix(servers): listen only on localhost by default"
+      ]
+    },
+    "oraios/serena@v2.1.0": {
+      "tag": "v2.1.0",
+      "highlights": [
+        "See [change log](https://github.com/oraios/serena/blob/main/CHANGELOG.md)"
+      ]
+    },
+    "tadata-org/fastapi_mcp@v0.4.0": {
+      "tag": "v0.4.0",
+      "highlights": [
+        "**`mount()` method is deprecated** and will be removed in a future version. Use `mount_http()` for HTTP transport (recommended) or `mount_sse()` for SSE transport.",
+        "🎉 **Streamable HTTP Transport Support** - New `mount_http()` method implementing the MCP Streamable HTTP specification",
+        "🎉 **Stateful Session Management** - For both HTTP and SSE transports",
+        "Add streamable http support"
+      ]
+    },
+    "obra/superpowers@v7.0.2": {
+      "tag": "v7.0.2",
+      "highlights": [
+        "**When you haven't said why you want something, that's the first thing it asks.** It asks openly, with no example answers to pick from.",
+        "**It reads from how you talk whether you want to discuss the technical choices,** and when your request leaves nothing open, its first message is a short design for you to approve.",
+        "**`start-server.sh --project-dir .` now works.** The script `cd`s into its own directory before starting the server, so every path it derived from a relative `--pr"
+      ]
+    },
+    "comfy-org/comfyui@v0.45.0": {
+      "tag": "v0.45.0",
+      "highlights": [
+        "Bump comfyui-frontend-package to 1.58.5",
+        "Add better error for when pixel_space VAE wrongly selected.",
+        "Make SeedVR2 VAE slice length adaptive to free memory",
+        "[Partner Nodes] feat(Pika): add Pika H3 Flex nodes"
+      ]
+    },
+    "microsoft/playwright-mcp@v0.0.85": {
+      "tag": "v0.0.85",
+      "highlights": [
+        "✨ Highlights - 🌙 Keep the browser in the background ([microsoft/playwright42973](https://github.com/microsoft/playwright/issues/42973)) — connecting through the"
+      ]
+    },
+    "microsoft/qlib@v0.9.8": {
+      "tag": "v0.9.8",
+      "highlights": [
+        "Keep high-frequency cache paths inside the configured artifact root and replace the bundled HIST example artifact with a data-only format.",
+        "Replace evaluation of feature expressions with a restricted parser, and use explicit mappings for built-in TRA backbones and model-performance graph names.",
+        "Require explicit `trusted: true` for configuration-driven local `.py` imports. Package imports and class objects are unchanged. See the [configuration migration guide]("
+      ]
+    },
+    "cursortouch/windows-mcp@v0.8.8": {
+      "tag": "v0.8.8",
+      "highlights": [
+        "chore(deps): bump platformdirs from 4.12.0 to 4.12.1 in the all-dependencies group",
+        "chore(deps): bump urllib3 from 2.7.0 to 2.8.0",
+        "chore(deps): bump pyjwt from 2.14.0 to 2.15.0",
+        "Show AI control, temporarily block physical input, and allow user takeover"
+      ]
+    },
+    "upstash/context7@@upstash/context7-mcp@4.6.0": {
+      "tag": "@upstash/context7-mcp@4.6.0",
+      "highlights": [
+        "Minor Changes - 2111b92: Add the query-code MCP tool and the ctx7 code command. They search and read a library's source code at the version its docs describe: g"
+      ]
+    },
+    "davila7/claude-code-templates@v1.29.7": {
+      "tag": "v1.29.7",
+      "highlights": [
+        "**Fix command injection in the analytics Console Bridge** (port 3334) —",
+        "**Same class, found by the follow-up audit**: `--health-check`,",
+        "Mods: removed the early-access warning and the"
+      ]
+    },
+    "bmad-code-org/bmad-method@v6.12.4": {
+      "tag": "v6.12.4",
+      "highlights": [
+        "🐛 Fixes A module pinned in the registry (TEA, at v1.27.2) no longer shows the channel picker, since stable or next would pick a version this installer cannot in"
+      ]
+    },
+    "chromedevtools/chrome-devtools-mcp@chrome-devtools-mcp-v1.12.0": {
+      "tag": "chrome-devtools-mcp-v1.12.0",
+      "highlights": [
+        "add --maxNavigationSaved flag to configure retained navigation history ([#3018]( ([a580d13](",
+        "add Kimi Code plugin manifest ([#3029]( ([cd00b64](",
+        "Analyze heap snapshots without a browser connection ([#3156]( ([78c8320](",
+        "**config:** add --watchConfig to reload config file changes ([#3248]( ([b48561f]("
+      ]
+    },
+    "microsoft/rd-agent@v1.0.0": {
+      "tag": "v1.0.0",
+      "highlights": [
+        "UI_SERVER_AUTH_TOKEN is required for localhost deployments. General Model uploads require an actual report file; URL and server-path inputs are no longer supported.",
+        "[AutoRL-Bench] Update DeepSearchQA split and translate task instructions to English ([#1368]( ([471eb30](",
+        "add a web UI server ([#1345]( ([be47e5b](",
+        "add LLM-finetune scenario ([#1314]( ([1824e1c]("
+      ]
+    },
+    "github/spec-kit@v1.4.0": {
+      "tag": "v1.4.0",
+      "highlights": [
+        "chore: bump version to 1.4.0",
+        "Use handle-based reads in FileHelper",
+        "chore: limit automatic Python 3.11 tests to Linux",
+        "Harden initial URL validation in HTTP helpers"
+      ]
+    },
+    "langchain-ai/langgraph@sdk==0.4.14": {
+      "tag": "sdk==0.4.14",
+      "highlights": [
+        "release(sdk-py): 0.4.14",
+        "feat(sdk-py): add strict_resume to runs.create, stream and wait",
+        "feat(sdk-py): add tools and lifecycle to StreamMode"
+      ]
+    },
+    "microsoft/autogen@python-v0.7.5": {
+      "tag": "python-v0.7.5",
+      "highlights": [
+        "Fix docs dotnet core typo",
+        "Fix loading streaming Bedrock response with tool usage with empty argument",
+        "Support linear memory in RedisMemory",
+        "Fix message ID for correlation between streaming chunks and final mes…"
+      ]
+    },
+    "superclaude-org/superclaude_framework@v4.3.0": {
+      "tag": "v4.3.0",
+      "highlights": [
+        "**Security hardened**: Removed `shell=True` code execution vector, added SHA-256 integrity verification for downloads",
+        "**Implementation gaps filled**: ConfidenceChecker, intelligent_execute(), ReflexionPattern mindbase — all placeholders replaced with real code",
+        "**Agent installation**: `superclaude install` now deploys 20 agents to `~/.claude/agents/`",
+        "**62 new tests**: Comprehensive coverage for execution engine (136 total, all passing)"
+      ]
+    },
+    "anthropics/claude-code-action@v1": {
+      "tag": "v1",
+      "highlights": [
+        "**Automatic mode detection** - No more manual `mode` configuration. The action intelligently determines whether to run in interactive or automation mode based on your setup",
+        "**Unified interface** - All prompts now go through a single `prompt` input, and all CLI options through `claude_args`",
+        "**Better SDK alignment** - Closer integration with the Claude Code CLI for a consistent experience",
+        "Direct access to all Claude Code CLI capabilities through `claude_args`"
+      ]
+    },
+    "anthropics/claude-code@v2.1.322": {
+      "tag": "v2.1.322",
+      "highlights": [
+        "Added fast mode on Vertex in the global, us and eu regions, falling back to standard speed if Vertex refuses it"
+      ]
+    },
+    "google-gemini/gemini-cli@v0.68.0": {
+      "tag": "v0.68.0",
+      "highlights": [
+        "Changelog for v0.67.0-preview.0",
+        "Changelog for v0.66.0",
+        "docs(readme): clarify Gemini CLI scope, limitations, and tool landscape",
+        "fix(cli): bound inline history re-render after terminal width changes"
+      ]
+    },
+    "tauricresearch/tradingagents@v0.7.1": {
+      "tag": "v0.7.1",
+      "highlights": [
+        "Docker images no longer include `.env.enterprise`. For Azure OpenAI in Docker, put its keys in `.env`.",
+        "A backtest reports the failures of its last settlement pass, and two started in the same second no longer share one run. (#1557, #1549)",
+        "Prices keep their significant digits: a sub-cent close no longer prints as 0.00, and a currency pair keeps its pips.",
+        "Saving a report to a folder used before removes the earlier run's sections."
+      ]
+    },
+    "eyaltoledano/claude-task-master@task-master-ai@0.43.1": {
+      "tag": "task-master-ai@0.43.1",
+      "highlights": [
+        "[#1676]( [`6a11438`]( Thanks [@Crunchyman-ralph]( - Stop setting up `hamster` and `ham` shell aliases during `task-master init`. Existing aliases are automatically cleaned up."
+      ]
+    },
+    "bytedance/deer-flow@v2.2.0": {
+      "tag": "v2.2.0",
+      "highlights": [
+        "**Local dev binds loopback** — `make dev` / `make start` no longer listen on",
+        "**Stored credentials are encrypted at rest** — a new env-only",
+        "**The multi-process gate is stricter** — `GATEWAY_WORKERS > 1` (or"
+      ]
+    },
+    "agentgateway/agentgateway@v1.7.0": {
+      "tag": "v1.7.0",
+      "highlights": [
+        "`cr.agentgateway.dev/agentgateway:v1.7.0`",
+        "`cr.agentgateway.dev/controller:v1.7.0`",
+        "`cr.agentgateway.dev/charts/agentgateway:v1.7.0`",
+        "`cr.agentgateway.dev/charts/agentgateway-crds:v1.7.0`"
+      ]
+    },
+    "deepseek-ai/deepseek-v3@v1.0.0": {
+      "tag": "v1.0.0",
+      "highlights": [
+        "This release is created for archival purposes and DOI generation."
+      ]
+    },
+    "skyworkai/deepresearchagent@v2.0.0": {
+      "tag": "v2.0.0",
+      "highlights": [
+        "发布版本 v2.0.0，包含常规功能迭代与问题修复。"
+      ]
+    },
+    "microsoft/pyrit@v1.1.0": {
+      "tag": "v1.1.0",
+      "highlights": [
+        "Scores can now be undetermined. Check `score.is_undetermined` before reading `score_value` or calling `get_value()` ([#2491](",
+        "Partial blocked responses are now scored by default. Set `should_score_blocked_content=False` to retain the previous behavior.",
+        "Authenticated CoPyRIT deployments now use Microsoft Graph and require an allowed group configuration ([#2281](",
+        "The new fixed-egress CoPyRIT deployment requires a parallel Azure Container Apps environment. Azure SQL deployments also require the new migrations ([#2438]("
+      ]
+    },
+    "musistudio/claude-code-router@v3.1.3": {
+      "tag": "v3.1.3",
+      "highlights": [
+        "Rebuild the bundled model catalog and publish it to [models.ccrdesk.top]( The catalog refreshes from the CDN at startup and hourly, with bundled and cached data available offline.",
+        "Improve routing script token estimation, gateway restart recovery, and raw trace delivery.",
+        "Fix Codex session affinity, protocol-specific provider aliases, and upstream streaming resets.",
+        "Add the Y-API provider preset and bound OpenRouter catalog requests with a timeout."
+      ]
+    },
+    "stanford-oval/storm@v1.1.0": {
+      "tag": "v1.1.0",
+      "highlights": [
+        "#309  STORM & Co-STORM now accept language models that are supported by LiteLLM",
+        "#236 Serper retriever bug fix",
+        "#198 Add Azure AI search"
+      ]
+    },
+    "garrytan/gbrain@v0.60.656.0": {
+      "tag": "v0.60.656.0",
+      "highlights": [
+        "gbrain upgrade finishes on hosts where autopilot runs outside launchd and systemd, instead of refusing every time. The upgrade restarted autopilot only through "
+      ]
+    }
+  }
+}

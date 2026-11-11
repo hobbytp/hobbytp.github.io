@@ -8,7 +8,7 @@
     {{- if .IsHome }}
     {{- /* Homepage: two-column article cards */ -}}
     <div class="article-grid">
-      {{- $pages := site.RegularPages }}
+      {{- $pages := where site.RegularPages "Section" "ne" "ai-workbench" }}
       {{- /* Remove mainSections filtering to show all content on homepage */ -}}
       
       {{- $paginator := .Paginate $pages }}

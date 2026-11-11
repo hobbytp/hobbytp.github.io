@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI 项目研究台 · 交互原型</title><style>
+:root{--bg:#faf9f6;--paper:#fff;--ink:#282d35;--muted:#747982;--line:#e6e7e8;--blue:#285fa8;--wash:#edf3fb;--green:#42715d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #83afe8;outline-offset:3px}
+.site-header{max-width:1400px;margin:auto;padding:25px 38px;display:flex;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line)}
+.brand{color:var(--ink);font-size:21px;font-weight:750;letter-spacing:-.5px}.site-header nav{display:flex;gap:26px;align-items:center}.nav-button{background:none;border:0;color:var(--muted);padding:0}
+.workspace{max-width:1400px;margin:auto;padding:34px 38px 100px;display:grid;grid-template-columns:190px minmax(0,1fr);gap:40px}
+.sidebar h2{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:1px;margin:0 0 18px}
+#categories{display:grid;gap:6px}#categories button{border:0;background:transparent;color:#656b73;text-align:left;padding:11px 12px;border-radius:6px;display:flex;justify-content:space-between;gap:12px;font-size:14px}
+#categories button:hover{background:#f0f0ed}#categories button.active{background:var(--wash);color:var(--blue);font-weight:650}#categories button span{font-size:12px;color:var(--muted)}
+.sidebar-note{border-top:1px solid var(--line);margin-top:32px;padding-top:18px;font-size:12px;color:var(--muted)}
+.eyebrow{font-size:11px;letter-spacing:2px;color:var(--muted);margin:0 0 10px}.title-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+h1{font-size:32px;letter-spacing:-.6px;line-height:1.35;margin:0}h2{font-size:18px;margin:0 0 10px}h3{font-size:16px;margin:0 0 12px}
+.subtitle{color:var(--muted);margin:14px 0 20px;max-width:760px}.pill{display:inline-block;font-size:12px;border:1px solid #d7e4f5;border-radius:5px;background:var(--wash);color:var(--blue);padding:5px 9px;white-space:nowrap}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.button{border:1px solid #d9dfe6;border-radius:6px;background:var(--paper);color:var(--ink);padding:9px 14px;white-space:nowrap;font-size:13px}
+.button:hover{border-color:#9baec7}.button.primary{background:var(--blue);color:white;border-color:var(--blue)}
+.demo-note{font-size:12px;color:#747065;background:#f5f2eb;border:1px solid #e8e2d6;border-radius:6px;padding:12px 15px;margin:20px 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:24px 0 30px}.stat{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px 22px}
+.stat span{font-size:12px;color:var(--muted)}.stat strong{display:block;font-size:27px;font-weight:650;line-height:1.4;margin-top:4px}.stat small{color:var(--muted);font-size:11px}
+.tabs{display:flex;gap:25px;border-bottom:1px solid var(--line)}.tabs button{border:0;border-bottom:2px solid transparent;background:none;color:var(--muted);padding:11px 0;font-size:14px}
+.tabs button.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:650}.filters{display:flex;gap:10px;margin:20px 0 10px;flex-wrap:wrap}
+input[type=search]{flex:1;min-width:200px}input,select,textarea{border:1px solid #dfe2e6;border-radius:5px;background:white;color:var(--ink);padding:9px 10px;font-size:13px}
+.filters select{max-width:190px}.result-line{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px;margin:16px 0 12px;gap:15px}
+.table-wrap{overflow:auto;background:white;border:1px solid var(--line);border-radius:7px}table{border-collapse:collapse;width:100%;min-width:830px;font-size:13px}th{text-align:left;font-size:11px;color:var(--muted);background:#fcfcfb;font-weight:500;padding:13px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:16px 12px;border-bottom:1px solid #efeff0;vertical-align:middle}tr:last-child td{border-bottom:0}tbody tr:hover{background:#fcfdfe}td:first-child{width:35px}input[type=checkbox]{accent-color:var(--blue)}
+.project-name{border:0;background:none;color:var(--ink);font-size:14px;font-weight:650;padding:0;text-align:left}.project-name:hover{color:var(--blue)}
+td small{display:block;color:var(--muted);font-size:10px;margin-top:5px;max-width:235px}.score{display:inline-flex;flex-direction:column;gap:5px;min-width:40px}.score b{font-size:13px;font-weight:600}
+.track{display:block;width:40px;height:3px;background:#e8edf3;border-radius:3px}.track i{display:block;height:100%;background:#809bbb;border-radius:3px}
+td select{max-width:120px;font-size:11px;padding:5px 6px}.watch{border:0;background:none;color:#b0b5bc;font-size:22px;padding:2px 5px}.watch.on{color:#ac824b}
+.empty{text-align:center;padding:35px;color:var(--muted)}.lower-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.panel{border:1px solid var(--line);background:white;border-radius:7px;padding:20px;margin-bottom:16px}.panel p{font-size:13px;margin:8px 0;line-height:1.85}.muted{color:var(--muted);font-size:12px}
+.text-button{border:0;background:none;color:var(--blue);font-size:13px;padding:0}.event{display:grid;gap:5px;width:100%;text-align:left;border:1px solid var(--line);border-radius:6px;background:white;padding:15px;margin-top:10px}.event span{font-size:13px}.event small{color:var(--muted);font-size:11px}
+footer{color:var(--muted);font-size:11px;margin-top:20px}
+.comparebar{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);max-width:calc(100% - 32px);width:650px;display:flex;align-items:center;gap:16px;padding:14px 18px;border:1px solid #d6e2f0;background:#fff;box-shadow:0 4px 22px #21334815;border-radius:9px;z-index:5}
+.comparebar span{flex:1;min-width:0;font-size:12px;color:var(--muted)}.comparebar b{display:block;color:var(--ink);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+dialog{border:1px solid #d7dee8;border-radius:12px;width:850px;max-width:calc(100vw - 32px);max-height:88vh;padding:28px;color:var(--ink);box-shadow:0 20px 80px #15233b25;background:var(--bg)}dialog::backdrop{background:#1a273b66}
+.dialog-header{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:12px}.dialog-header h2{font-size:22px;margin:0}.dialog-header button{border:0;background:none;font-size:24px;color:var(--muted)}
+.detail-grid,.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.metric{display:flex;justify-content:space-between;margin-top:15px;font-size:13px}.metric .track{width:100px}
+.comparison{min-width:580px}.comparison th,.comparison td{width:33%;font-size:13px;white-space:normal;line-height:1.8;vertical-align:top}.comparison th:first-child,.comparison td:first-child{width:25%;font-weight:600}
+.scenario{display:grid;gap:8px;border:1px solid var(--line);border-radius:7px;background:white;text-align:left;color:var(--ink);padding:20px}.scenario:hover{border-color:#86a8d2}.scenario b{font-size:16px}.scenario span{font-size:13px;color:var(--muted)}.scenario small{color:var(--blue);font-size:12px}
+.candidate-list{display:grid;gap:12px;margin:20px 0}.field{display:grid;gap:6px;font-size:13px;margin:18px 0}.field input,.field textarea{width:100%}.error{color:#a54040;font-size:13px}
+#toast{position:fixed;bottom:95px;left:50%;transform:translateX(-50%);background:#283c57;color:#fff;padding:10px 18px;border-radius:6px;font-size:13px;z-index:20;max-width:90%}
+[hidden]{display:none!important}
+@media(max-width:1100px){.workspace{gap:24px;grid-template-columns:165px minmax(0,1fr);padding:26px 24px 95px}.site-header{padding:22px 24px}}
+@media(max-width:720px){.site-header{padding:18px;gap:12px}.brand{font-size:17px}.site-header nav{gap:15px;font-size:12px}.workspace{display:block;padding:22px 16px 110px}.sidebar h2,.sidebar-note{display:none}#categories{display:flex;overflow:auto;margin:0 0 24px;gap:5px}#categories button{white-space:nowrap;padding:9px 10px;font-size:12px}#categories button span{display:none}h1{font-size:27px}.subtitle{font-size:13px}.stats{gap:8px;margin:20px 0}.stat{padding:13px}.stat strong{font-size:23px}.stat small{font-size:10px}.tabs{gap:20px}.filters input[type=search]{flex-basis:100%}.filters select{flex:1;max-width:none}.lower-grid,.detail-grid,.scenario-grid{grid-template-columns:1fr}.comparebar{bottom:10px;gap:9px;padding:11px}.comparebar .button{padding:8px 10px}.comparebar span{max-width:155px}dialog{padding:20px}.title-row .actions{width:100%}}
+</style></head>
+<body>
+<header class="site-header"><a class="brand" href="https://hobbytp.github.io/zh/">Peng Tan's AI Blog</a><nav><a href="https://hobbytp.github.io/zh/">博客</a><button class="nav-button" id="toolbox">我的关注</button></nav></header>
+<div class="workspace"><aside class="sidebar"><h2>探索领域</h2><nav id="categories" aria-label="项目分类"></nav><div class="sidebar-note">研究笔记 · 第一版<br>2026.10.11<br><br>从一个任务开始，记录证据、体验和判断。</div></aside>
+<main>
+<p class="eyebrow">PROJECT EXPLORER</p>
+<div class="title-row"><h1>AI 项目研究台</h1><span class="pill">交互原型 · 演示数据</span></div>
+<p class="subtitle">了解一个项目的生态，判断它能否解决你的问题，也记下什么时候该重新考虑。</p>
+<div class="actions"><button class="button primary" id="add-project">＋ 添加项目</button><button class="button" id="inbox">候选收件箱</button><button class="button" id="scenarios">从使用场景开始 →</button></div>
+<p class="demo-note">所有评分、变化事件和判断均为演示。关注、优先级和候选草稿只保留在当前会话；尚未接入自动采集或 AI 推荐。</p>
+<div class="stats"><div class="stat"><span>我的关注</span><strong id="watched-count">—</strong><small>持续研究的项目</small></div><div class="stat"><span>变化待复核</span><strong id="changes-count">—</strong><small>演示事件</small></div><div class="stat"><span>安排试用</span><strong id="trial-count">—</strong><small>采用优先级</small></div></div>
+<nav class="tabs" aria-label="项目视图"><button data-view="all">全部项目</button><button data-view="watched">我的关注</button><button data-view="changes">变化与复核</button></nav>
+<div class="filters"><input id="search" type="search" aria-label="搜索项目或任务" placeholder="搜索项目、类别、任务…"><select id="priority-filter" aria-label="采用优先级筛选"><option value="all">全部采用优先级</option><option value="try">安排试用</option><option value="watch">持续观察</option><option value="hold">暂缓采用</option><option value="none">尚未判断</option></select><select id="sort" aria-label="排序"><option value="priority">按采用优先级</option><option value="activity">按活跃度（演示）</option><option value="community">按社区（演示）</option><option value="impact">按影响力（演示）</option><option value="sustainability">按持续性（演示）</option><option value="name">按名称</option></select></div>
+<div class="result-line"><span id="result-count" aria-live="polite"></span><span>四项评分均为演示值</span></div>
+<div class="table-wrap"><table><thead><tr><th>选择</th><th>项目 / 任务线索</th><th>活跃度</th><th>社区</th><th>影响力</th><th>持续性</th><th>采用优先级</th><th>关注</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty" hidden><p>当前条件下没有项目。</p><button class="button" id="reset">清除筛选</button></div></div>
+<section id="change-feed" hidden><h2 style="margin-top:24px">变化信号 · 演示</h2><p class="muted">每条信号都应回到原判断：它是否改变你的使用选择？</p><div id="change-items"></div></section>
+<div class="lower-grid"><section class="panel"><h3>每次变化，复核一次判断</h3><p>模型能力、任务需求或维护状态改变时，比较原方案与替代方案，留下证据与决策历史。</p><button class="text-button" id="review-example">查看一次复核示例 →</button></section><section class="panel"><h3>从项目档案到实践</h3><p>把生态状态、任务边界、验证问题放在一起。先做一个小试验，再决定采用顺序。</p><button class="text-button" id="detail-example">查看项目档案示例 →</button></section></div>
+<footer>早期界面验证：搜索筛选 · 关注 · 优先级 · 两项比较 · 项目档案 · 候选草稿。候选流程：提交 → 补全事实 → 人工审核；原型目前支持提交草稿。刷新后恢复演示初始状态。</footer>
+</main></div>
+<div id="comparebar" class="comparebar" hidden><span>已选择<b id="selected-names"></b></span><button class="text-button" id="clear">清空</button><button class="button primary" id="compare" disabled>再选择 1 个项目</button></div>
+<dialog id="dialog" aria-labelledby="dialog-title"><div class="dialog-header"><h2 id="dialog-title"></h2><button id="close-dialog" aria-label="关闭窗口">×</button></div><p class="demo-note">原型演示 · 无实时采集 · 无实测结论</p><div id="dialog-body"></div></dialog>
+<div id="toast" role="status" hidden></div>
+<script>
+'use strict';
+const categories=[['all','全部项目'],['agent','Agent 与执行'],['skills','Skills 与规范'],['knowledge','知识与上下文'],['apps','信息与工作应用'],['media','图像与视频'],['training','训练与推理'],['eval','评测与可观测性'],['security','安全与治理']];
+const labels={try:'安排试用',watch:'持续观察',hold:'暂缓采用',none:'尚未判断'};
+const scoreKeys=['activity','community','impact','sustainability'];
+const scoreLabels=['活跃度','社区','影响力','持续性'];
+const rows=[
+['langgraph','LangGraph','langchain-ai/langgraph','agent','Agent 工作流 研究',[88,84,92,86],'try',true,'多步骤任务与状态管理','验证暂停、恢复、人工介入是否满足任务要求。','演示：执行机制变化'],
+['codex','Codex','openai/codex','agent','编程 终端 代码',[92,86,94,88],'watch',true,'代码工作流与任务执行','用同一个真实仓库任务检验修改质量与验证步骤。','演示：工具边界变化'],
+['spec-kit','Spec Kit','github/spec-kit','skills','规范 编码 工作流',[81,83,86,79],'none',false,'从需求到实施的规范流程','检验规范文档能否减少返工而不会增加维护负担。',''],
+['uiux','UI UX Pro Max','nextlevelbuilder/ui-ux-pro-max-skill','skills','设计 Skills 界面',[80,77,84,75],'none',false,'界面设计与设计知识辅助','对照现有博客风格，检验建议是否具体且可执行。',''],
+['graphiti','Graphiti','getzep/graphiti','knowledge','知识图谱 记忆 研究',[83,79,85,82],'watch',true,'关系与时序知识的组织','检验变更记录能否追溯证据与历史判断。',''],
+['haystack','Haystack','deepset-ai/haystack','knowledge','RAG 检索 研究',[82,84,86,89],'none',false,'检索与问答流程','用中文资料验证引用正确性与检索效果。',''],
+['trendradar','TrendRadar','sansan0/TrendRadar','apps','信息收集 热点 研究',[80,76,83,75],'none',false,'信息收集与聚合','检验信息源覆盖、重复内容与人工阅读成本。',''],
+['comfyui','ComfyUI','Comfy-Org/ComfyUI','media','图像 视频 创作',[89,93,95,88],'try',true,'图像与视频工作流','用自己的素材检查质量、耗时与插件兼容性。','演示：插件兼容性变化'],
+['wan','Wan2.2','Wan-Video/Wan2.2','media','视频 生成 创作',[85,81,88,80],'none',false,'视频生成','在自己的硬件上验证显存、耗时与画面稳定性。',''],
+['llamafactory','LLaMA-Factory','hiyouga/LLaMA-Factory','training','微调 训练 模型',[86,89,91,86],'none',false,'模型微调流程','比较微调收益、资源成本与数据准备投入。',''],
+['promptfoo','promptfoo','promptfoo/promptfoo','eval','评测 测试 研究',[87,82,86,84],'none',false,'系统化评测','把真实失败案例转成可重复的评测任务。',''],
+['pyrit','PyRIT','microsoft/PyRIT','security','安全 红队 评测',[83,80,85,87],'hold',false,'安全测试与风险评估','验证测试范围、结果复现与修复回归。','']
+];
+const projects=rows.map(([id,name,repo,cat,tags,scores,priority,watched,boundary,question,change])=>({id,name,repo,cat,tags,scores,priority,watched,boundary,question,change}));
+const scenarios=[
+{title:'构建中文研究助手',desc:'从信息收集到检索，再到研究流程与评测。',ids:['langgraph','trendradar','haystack','graphiti','promptfoo']},
+{title:'改进代码工作流',desc:'从规范、执行到设计辅助，寻找组合。',ids:['codex','langgraph','spec-kit','uiux']},
+{title:'制作技术视频',desc:'考察素材生成、工作流与制作成本。',ids:['comfyui','wan','uiux']},
+{title:'搭建个人知识库',desc:'考察检索、关系组织与答案可靠性。',ids:['haystack','graphiti','promptfoo']}
+];
+const state={cat:'all',view:'all',query:'',priority:'all',sort:'priority',scenario:null,selected:new Set()};
+const priorityOrder={try:0,watch:1,none:2,hold:3};
+function filtered(){
+const q=state.query.trim().toLowerCase();
+return projects.filter(p=>(state.cat==='all'||p.cat===state.cat)&&(state.view!=='watched'||p.watched)&&(state.view!=='changes'||Boolean(p.change))&&(state.priority==='all'||p.priority===state.priority)&&(state.scenario===null||scenarios[state.scenario].ids.includes(p.id))&&[p.name,p.repo,p.tags,p.boundary].join(' ').toLowerCase().includes(q)).sort((a,b)=>{
+if(state.sort==='name')return a.name.localeCompare(b.name);
+if(state.sort==='priority')return priorityOrder[a.priority]-priorityOrder[b.priority]||a.name.localeCompare(b.name);
+return b.scores[scoreKeys.indexOf(state.sort)]-a.scores[scoreKeys.indexOf(state.sort)];
+});
+}
+function toggleWatch(id){const p=projects.find(p=>p.id===id);p.watched=!p.watched;}
+function toggleSelected(id,on){if(on&&state.selected.size>=2&&!state.selected.has(id))return false;on?state.selected.add(id):state.selected.delete(id);return true;}
+const candidates=[
+{repo:'huggingface/smolagents',name:'smolagents',source:'演示：自动发现',note:'希望了解轻量 Agent 框架。'},
+{repo:'qdrant/qdrant',name:'Qdrant',source:'演示：手动提交',note:'希望比较个人知识库的检索方案。'}
+];
+function parseRepository(value){
+const match=String(value).trim().match(/^https:\/\/github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)\/*(?:[?#].*)?$/i);
+if(!match||[match[1],match[2]].some(p=>p==='.'||p==='..'))return null;
+const name=match[2].replace(/\.git$/,'');return name?match[1]+'/'+name:null;
+}
+const el=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function score(n){return '<span class="score"><b>'+n+'</b><span class="track"><i style="width:'+n+'%"></i></span></span>';}
+function options(value){return Object.entries(labels).map(([k,v])=>'<option value="'+k+'"'+(value===k?' selected':'')+'>'+v+'</option>').join('');}
+function render(){
+el('categories').innerHTML=categories.map(([id,label])=>'<button data-category="'+id+'" class="'+(state.cat===id?'active':'')+'" aria-pressed="'+(state.cat===id)+'">'+label+'<span>'+projects.filter(p=>id==='all'||p.cat===id).length+'</span></button>').join('');
+document.querySelectorAll('[data-view]').forEach(b=>{const selected=b.dataset.view===state.view;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));});
+el('watched-count').textContent=projects.filter(p=>p.watched).length;
+el('changes-count').textContent=projects.filter(p=>p.change).length;
+el('trial-count').textContent=projects.filter(p=>p.priority==='try').length;
+const items=filtered();
+el('result-count').textContent=items.length+' 个项目'+(state.scenario!==null?' · 场景：'+scenarios[state.scenario].title:'');
+el('rows').innerHTML=items.map(p=>'<tr><td><input aria-label="选择 '+esc(p.name)+' 进行比较" type="checkbox" data-select="'+p.id+'" '+(state.selected.has(p.id)?'checked':'')+'></td><td><button class="project-name" data-detail="'+p.id+'">'+esc(p.name)+'</button><small>'+esc(p.repo.split('/')[0])+' · '+esc(p.tags)+'</small></td>'+p.scores.map(n=>'<td>'+score(n)+'</td>').join('')+'<td><select aria-label="'+esc(p.name)+' 的采用优先级" data-priority="'+p.id+'">'+options(p.priority)+'</select></td><td><button class="watch '+(p.watched?'on':'')+'" data-watch="'+p.id+'" aria-pressed="'+p.watched+'" aria-label="'+(p.watched?'取消关注':'关注')+' '+esc(p.name)+'">'+(p.watched?'★':'☆')+'</button></td></tr>').join('');
+el('empty').hidden=items.length>0;
+el('change-feed').hidden=state.view!=='changes';
+el('change-items').innerHTML=items.filter(p=>p.change).map(p=>'<button class="event" data-detail="'+p.id+'"><b>'+esc(p.name)+'</b><span>'+esc(p.change)+' · 待复核建议</span><small>虚构事件，用于演示判断复核流程</small></button>').join('');
+el('comparebar').hidden=state.selected.size===0;
+el('selected-names').textContent=projects.filter(p=>state.selected.has(p.id)).map(p=>p.name).join(' / ');
+el('compare').disabled=state.selected.size!==2;
+el('compare').textContent=state.selected.size===2?'比较这两个项目':'再选择 1 个项目';
+}
+function show(title,html){el('dialog-title').textContent=title;el('dialog-body').innerHTML=html;if(!el('dialog').open)el('dialog').showModal();}
+function repoLink(p){return '<a target="_blank" rel="noopener noreferrer" href="https://github.com/'+p.repo+'">查看官方仓库 ↗</a>';}
+function detail(id){
+const p=projects.find(p=>p.id===id);
+show(p.name+' · 项目档案','<p class="muted">'+esc(p.repo)+' · '+esc(p.tags)+'</p><div class="detail-grid"><section class="panel"><h3>生态状态</h3><p class="muted">以下四个分数均为演示值。</p>'+p.scores.map((n,i)=>'<div class="metric"><span>'+scoreLabels[i]+'</span>'+score(n)+'</div>').join('')+'</section><section class="panel"><h3>个人采用判断</h3><p><span class="pill">'+labels[p.priority]+'</span></p><p><b>任务边界：</b>'+esc(p.boundary)+'</p><p><b>第一次试用：</b>'+esc(p.question)+'</p><p class="muted">实测：尚未进行 · 证据：待收集</p></section></div><section class="panel"><h3>什么时候重新考虑？</h3><p>任务需求变化、关键依赖升级、维护节奏变化，或替代方案在相同条件下表现更好时，重新验证采用判断。</p><p>'+repoLink(p)+'</p><p class="muted">正式版本应附抓取时间、指标口径、具体来源与判断历史。</p></section>');
+}
+function compare(){
+const pair=projects.filter(p=>state.selected.has(p.id));if(pair.length!==2)return;
+const [a,b]=pair;
+const comparisons=[['任务边界',a.boundary,b.boundary],...scoreLabels.map((s,i)=>[s+'（演示）',String(a.scores[i]),String(b.scores[i])]),['采用优先级',labels[a.priority],labels[b.priority]],['待验证问题',a.question,b.question],['证据与实测','待收集 · 尚未实测','待收集 · 尚未实测']];
+show('项目比较','<p>先比较任务边界，再决定采用顺序。不同职责的项目也可能组成一个方案。</p><div class="table-wrap"><table class="comparison"><thead><tr><th>维度</th><th>'+esc(a.name)+'</th><th>'+esc(b.name)+'</th></tr></thead><tbody>'+comparisons.map(row=>'<tr>'+row.map(s=>'<td>'+esc(s)+'</td>').join('')+'</tr>').join('')+'<tr><td>来源入口</td><td>'+repoLink(a)+'</td><td>'+repoLink(b)+'</td></tr></tbody></table></div><p class="muted">这是比较界面的演示，不构成对上述项目的实际推荐。</p>');
+}
+let toastTimer;
+function toast(message){el('toast').textContent=message;el('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>el('toast').hidden=true,2600);}
+function resetFilters(){state.cat='all';state.query='';state.priority='all';state.scenario=null;el('search').value='';el('priority-filter').value='all';render();}
+document.addEventListener('click',event=>{
+const b=event.target.closest('button');if(!b)return;
+if(b.dataset.category!==undefined){state.cat=b.dataset.category;render();}
+if(b.dataset.view!==undefined){state.view=b.dataset.view;render();}
+if(b.dataset.detail!==undefined)detail(b.dataset.detail);
+if(b.dataset.watch!==undefined){toggleWatch(b.dataset.watch);render();toast('关注状态已在当前会话更新');}
+if(b.dataset.scenario!==undefined){resetFilters();state.view='all';state.scenario=Number(b.dataset.scenario);el('dialog').close();render();}
+});
+document.addEventListener('change',event=>{
+const t=event.target;
+if(t.dataset.select!==undefined){if(!toggleSelected(t.dataset.select,t.checked)){t.checked=false;toast('第一版支持同时比较 2 个项目');}render();}
+if(t.dataset.priority!==undefined){projects.find(p=>p.id===t.dataset.priority).priority=t.value;render();toast('采用优先级已在当前会话更新');}
+});
+el('search').addEventListener('input',e=>{state.query=e.target.value;render();});
+el('priority-filter').addEventListener('change',e=>{state.priority=e.target.value;render();});
+el('sort').addEventListener('change',e=>{state.sort=e.target.value;render();});
+el('compare').addEventListener('click',compare);
+el('clear').addEventListener('click',()=>{state.selected.clear();render();});
+el('reset').addEventListener('click',resetFilters);
+el('close-dialog').addEventListener('click',()=>el('dialog').close());
+el('dialog').addEventListener('click',e=>{if(e.target!==el('dialog'))return;const r=el('dialog').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)el('dialog').close();});
+el('scenarios').addEventListener('click',()=>show('从一个真实任务开始','<p class="muted">场景组合为演示候选，实际采用前需要验证。</p><div class="scenario-grid">'+scenarios.map((s,i)=>'<button class="scenario" data-scenario="'+i+'"><b>'+s.title+'</b><span>'+s.desc+'</span><small>'+s.ids.length+' 个候选 · 查看 →</small></button>').join('')+'</div>'));
+el('toolbox').addEventListener('click',()=>{resetFilters();state.view='watched';render();});
+el('detail-example').addEventListener('click',()=>detail('langgraph'));
+el('review-example').addEventListener('click',()=>show('一次判断复核 · 虚构案例','<p class="muted">以下情境完全虚构，用于演示原型的研究方式。</p><section class="panel"><h3>原判断</h3><p>为一个多步骤研究任务安排框架试用，并记录当时的需求与理由。</p></section><section class="panel"><h3>变化信号</h3><p>模型原生能力改善，原任务可能用更少的组件完成。</p></section><section class="panel"><h3>复核方式</h3><p>固定资料、模型、预算与成功标准，重跑原方案与简化方案，比较结果和维护成本。</p></section><section class="panel"><h3>更新判断</h3><p>依据实测调整采用优先级，保留原判断与证据。项目的生态状态独立评估。</p></section>'));
+function inbox(){
+show('候选收件箱','<p class="muted">收录前先补全证据与使用场景。这里的示例和新草稿只保留在当前会话，尚未访问仓库或发布。</p><div class="candidate-list">'+candidates.map((p,i)=>'<button class="scenario" data-candidate="'+i+'"><b>'+esc(p.name)+'</b><span>'+esc(p.repo)+' · '+esc(p.source)+'</span><small>待采集事实 · 待分类 · 待人工审核 →</small></button>').join('')+'</div><div class="actions"><button class="button" id="add-from-inbox">手动添加</button></div>');
+el('add-from-inbox').addEventListener('click',addForm);
+}
+function addForm(){
+show('添加一个开源项目','<p class="muted">粘贴仓库地址，先记录你为什么关注它。正式版本会在这个步骤采集仓库事实；原型仅创建草稿。</p><form id="candidate-form"><label class="field">GitHub 仓库地址<input type="url" name="repo" required placeholder="https://github.com/owner/repo" maxlength="300"></label><label class="field">项目名称（可选）<input name="name" maxlength="80" placeholder="留空时使用仓库名称"></label><label class="field">你想用它解决什么问题？<textarea name="note" maxlength="600" rows="3" placeholder="例如：收集信息、构建知识库、改善代码工作流"></textarea></label><p id="form-error" class="error" role="alert"></p><button class="button primary" type="submit">保存候选草稿</button><p class="muted">保存后进入候选箱，尚不会成为公开项目档案。</p></form>');
+}
+function candidateDetail(index){
+const p=candidates[index];
+show(p.name+' · 候选草稿','<p class="muted">'+esc(p.source)+' · '+esc(p.repo)+'</p><section class="panel"><h3>关注理由</h3><p>'+esc(p.note||'尚未补充')+'</p></section><section class="panel"><h3>等待补全的事实</h3><p>许可证、归档状态、版本节奏、贡献者与维护者、问题响应、来源链接及采集时间。</p><p class="muted">仓库地址未核验 · 指标未采集 · 使用体验待实测</p></section><section class="panel"><h3>收录前的研究判断</h3><p>选择类别与使用场景，说明适合与不适合的边界，决定研究优先级。采用优先级留到试用后判断。</p><p>'+repoLink(p)+'</p></section>');
+}
+document.addEventListener('click',event=>{const b=event.target.closest('button');if(b&&b.dataset.candidate!==undefined)candidateDetail(Number(b.dataset.candidate));});
+document.addEventListener('submit',event=>{
+if(event.target.id!=='candidate-form')return;event.preventDefault();
+const form=new FormData(event.target);const repo=parseRepository(String(form.get('repo')));
+if(!repo){el('form-error').textContent='请输入完整的 HTTPS GitHub 仓库地址，例如 https://github.com/owner/repo。';return;}
+if(projects.some(p=>p.repo.toLowerCase()===repo.toLowerCase())){el('form-error').textContent='这个项目已经在演示研究台里，可直接查看项目档案。';return;}
+if(candidates.some(p=>p.repo.toLowerCase()===repo.toLowerCase())){el('form-error').textContent='候选箱里已经有这个仓库，请查看已有草稿。';return;}
+candidates.push({repo,name:String(form.get('name')).trim()||repo.split('/')[1],note:String(form.get('note')).trim(),source:'手动提交 · 本次会话'});
+inbox();toast('候选草稿已保存到本次会话');
+});
+el('add-project').addEventListener('click',addForm);
+el('inbox').addEventListener('click',inbox);
+render();
+</script>
+<script src="github-stars-import.js"></script>
+</body></html>
+

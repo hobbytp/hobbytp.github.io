@@ -1,0 +1,27 @@
+{{- $eventsData := site.Data.ai_projects.events | default dict -}}
+{{- $events := $eventsData.events | default slice -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ .Title }} · 变化信号流 | {{ site.Title }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>追踪 @hobbytp GitHub Stars 新收录 AI 开源项目、重要版本发布与本站深度评测动态</description>
+    <language>{{ site.Language.Lang }}</language>
+    {{- with $eventsData.generated_at }}
+    <lastBuildDate>{{ (time .).Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
+    {{- end }}
+    {{- with .OutputFormats.Get "RSS" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{- range first 50 $events }}
+    <item>
+      <title>[{{ .type_label }}] {{ .title }}</title>
+      <link>{{ .url | absURL }}</link>
+      <pubDate>{{ (time (printf "%sT08:00:00+08:00" .date)).Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+      <guid isPermaLink="false">{{ .id }}</guid>
+      <description>{{ .summary | html }} (仓库: https://github.com/{{ .repo }})</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>
+

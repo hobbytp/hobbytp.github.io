@@ -132,9 +132,13 @@ CLAUDE.md
 .serena/
 .trae/
 .cursor/
-
+bmad/
 .wrangler
 
 .tbd/
 .codex-home/
 .hugo*/
+
+openspec/
+.obsidian/
+.planning/

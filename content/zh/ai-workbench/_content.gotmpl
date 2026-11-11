@@ -1,0 +1,22 @@
+{{- $metrics := site.Data.ai_projects.metrics -}}
+{{- if $metrics -}}
+  {{- range $metrics.projects_list -}}
+    {{- if .has_static_page -}}
+      {{- $page := dict
+        "kind" "page"
+        "path" .id
+        "title" (printf "%s (%s) · AI 开源项目研究档案" .name .repo)
+        "type" "ai-workbench"
+        "params" (dict
+          "project" .
+          "description" (or .summary_zh .description)
+          "tags" .tags
+          "repo" .repo
+          "robotsNoIndex" false
+        )
+      -}}
+      {{- $.AddPage $page -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+

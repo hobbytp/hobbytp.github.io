@@ -90,6 +90,13 @@ weight = 13
 icon = "code"
 
 [[main]]
+name = "AI项目研究台"
+url = "/ai-workbench/"
+weight = 13.5
+[main.params]
+icon = "compass"
+
+[[main]]
 name = "开源项目"
 url = "/categories/projects"
 weight = 14

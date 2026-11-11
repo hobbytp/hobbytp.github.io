@@ -1,0 +1,12 @@
+{{- $metrics := site.Data.ai_projects.metrics | default dict -}}
+{{- $eventsData := site.Data.ai_projects.events | default dict -}}
+{{- $weekly := site.Data.ai_projects.weekly_latest | default dict -}}
+{{- dict
+  "generated_at" ($metrics.generated_at | default "")
+  "github_user" ($metrics.github_user | default "hobbytp")
+  "summary" ($metrics.summary | default dict)
+  "weekly_latest" $weekly
+  "recent_events" (first 50 ($eventsData.events | default slice))
+  "projects" ($metrics.projects_list | default slice)
+  | jsonify -}}
+

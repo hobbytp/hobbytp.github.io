@@ -1,0 +1,368 @@
+# AI 开源项目研究台 · 人工策展与评注叠加层 (Curated Overlay)
+# 说明：
+# 1. 项目全集直接来自 GitHub 用户 hobbytp 的公开 Stars 及博客文章引用的仓库（由 scripts/ai_projects/collect.py 自动同步）。
+# 2. 本文件仅存放人工分类修正、场景包配置、以及作者实测判断（verdicts），自动采集脚本绝不覆盖本文件。
+
+github_user: hobbytp
+
+categories:
+  - id: agent
+    name: Agent 与多智能体
+    icon: "🤖"
+    desc: 智能体编排框架、多智能体协同、自主执行与强化学习环境
+  - id: coding
+    name: AI 编程与终端
+    icon: "💻"
+    desc: 终端编码代理、规范驱动开发、会话管理与多仓库工程线束
+  - id: skills
+    name: Skills 与 MCP 协议
+    icon: "🔌"
+    desc: Agent Skills、MCP Server、工具网关与跨平台能力扩展
+  - id: knowledge
+    name: 知识、记忆与 RAG
+    icon: "🧠"
+    desc: 知识图谱、智能体长期记忆、向量检索与上下文工程
+  - id: apps
+    name: 深度研究与信息应用
+    icon: "🔭"
+    desc: 热点监控、自动化深度研究 (Deep Research)、个人知识工作台與智能导师
+  - id: media
+    name: 视觉解释与多模态创作
+    icon: "🎨"
+    desc: 架构图与可视化解释、代码生成视频、图像视频工作流
+  - id: training
+    name: 模型训练与推理加速
+    icon: "⚡"
+    desc: 大模型微调框架、强化学习对齐、高性能推理引擎与底层算子
+  - id: eval
+    name: 评测与可观测性
+    icon: "📐"
+    desc: 系统化 Prompt/Agent 评测、长上下文基准测试与链路追踪
+  - id: security
+    name: 安全与红队治理
+    icon: "🛡️"
+    desc: AI 红队测试、越狱防护、隐私合规与安全执行边界
+  - id: infra
+    name: 系统与基础设施
+    icon: "🏗️"
+    desc: 容器与虚拟化、云原生编排、网络与算力基础设施
+
+verdict_levels:
+  recommend:
+    label: 主力推荐
+    badge_class: verdict-recommend
+    desc: 已在真实工作流中深度使用并验证高价值，建议优先采用
+  trial:
+    label: 值得试用
+    badge_class: verdict-trial
+    desc: 解决特定痛点效果突出，建议在对应场景安排小规模实测
+  watch:
+    label: 持续观察
+    badge_class: verdict-watch
+    desc: 理念或势头亮眼，但生态或稳定性仍在快速演进，保持跟踪
+  caution:
+    label: 谨慎评估
+    badge_class: verdict-caution
+    desc: 存在维护放缓、工程复杂度过高或替代方案更优的情况
+  avoid:
+    label: 暂不推荐
+    badge_class: verdict-avoid
+    desc: 已归档、停止维护或实测投入产出比过低
+  unrated:
+    label: 已收藏待评
+    badge_class: verdict-unrated
+    desc: 来自作者 GitHub Stars 自动同步，尚未人工写入实测结论
+
+scenarios:
+  - id: ai-coding-harness
+    title: 打造企业级 AI 编程与多仓协同工作流
+    goal: 解决复杂多代码库下的上下文漂移、规范对齐、多代理并行会话管理与符号级代码检索痛点
+    not_for: 单文件一次性脚本或无需长期维护的临时 Demo
+    stack:
+      - project: openai/codex
+        role: 终端编码与多仓任务执行主代理
+        alternatives: [sst/opencode, google-gemini/gemini-cli]
+      - project: github/spec-kit
+        role: 需求到实施的规范驱动开发 (Spec-Driven)
+        alternatives: [Pimzino/claude-code-spec-workflow]
+      - project: oraios/serena
+        role: 基于 LSP 的符号级代码理解与编辑 MCP
+        alternatives: [upstash/context7]
+      - project: kbwo/ccmanager
+        role: 多 AI 编码助手会话与 Worktree 并行管理
+        alternatives: [musistudio/claude-code-router]
+
+  - id: deep-research-assistant
+    title: 构建中文深度研究 (Deep Research) 与情报雷达
+    goal: 从多源高信噪比热点采集、多视角文献深挖到结构化长文报告与可视化生成
+    not_for: 毫秒级低延迟在线客服问答
+    stack:
+      - project: sansan0/TrendRadar
+        role: 多平台热点聚合与自定义信息流追踪
+        alternatives: [Panniantong/Agent-Reach]
+      - project: bytedance/deer-flow
+        role: 多步骤深度研究编排与报告合成
+        alternatives: [stanford-oval/storm, SkyworkAI/DeepResearchAgent]
+      - project: HKUDS/DeepTutor
+        role: 交互式深度知识拆解与研究辅导
+        alternatives: []
+      - project: nicobailon/visual-explainer
+        role: 将复杂技术概念转化为直观可视化解释
+        alternatives: [OneMoh/html-explainer]
+
+  - id: agent-memory-mcp
+    title: 组装带长期记忆与安全工具总线的 Agent 底座
+    goal: 为长周期运行的智能体提供状态机控制、时序知识图谱记忆与标准化 MCP 工具网关
+    not_for: 无状态单次 Prompt 调用即可完成的简单文本处理
+    stack:
+      - project: langchain-ai/langgraph
+        role: 图状态机编排、断点恢复与人工介入 (HITL)
+        alternatives: [microsoft/autogen, camel-ai/camel]
+      - project: getzep/graphiti
+        role: 时序感知知识图谱与动态关系记忆
+        alternatives: [mem0ai/mem0, deepset-ai/haystack]
+      - project: agentgateway/agentgateway
+        role: MCP 与 Agent 工具调用统一安全网关
+        alternatives: [tadata-org/fastapi_mcp]
+      - project: promptfoo/promptfoo
+        role: 回归评测与工具调用可靠性验证
+        alternatives: [microsoft/PyRIT]
+
+  - id: visual-content-studio
+    title: 技术视觉叙事与代码驱动视频创作流水线
+    goal: 用代码和节点流生成高质感技术演示视频、交互式 HTML 图解与教学素材
+    not_for: 纯文字笔记记录
+    stack:
+      - project: OpenSenseNova/SenseNova-6.8-Code2Video
+        role: 代码直接驱动生成高质量技术讲解视频
+        alternatives: [Wan-Video/Wan2.2]
+      - project: Comfy-Org/ComfyUI
+        role: 节点式图像与视频多模态工作流引擎
+        alternatives: []
+      - project: nicobailon/visual-explainer
+        role: 概念图解与交互式视觉叙事生成
+        alternatives: [nextlevelbuilder/ui-ux-pro-max-skill]
+
+overrides:
+  langchain-ai/langgraph:
+    category: agent
+    tags: [工作流, 状态机, 人工介入, 多智能体]
+    summary_zh: 以有向图和显式状态机编排复杂多步骤 Agent，原生支持持久化断点续跑与人工介入（HITL）
+    good_for:
+      - 需要长链路状态控制、循环反思与人工审批节点的生产级 Agent
+      - 跨步骤可观测、可重放的复杂研究与编码流水线
+    not_for:
+      - 单轮问答或简单线性链式调用（直接用原生 SDK 更轻量）
+    alternatives: [microsoft/autogen, camel-ai/camel]
+    complements: [getzep/graphiti, promptfoo/promptfoo]
+    verdicts:
+      - date: "2026-10-11"
+        level: recommend
+        reason: 状态控制粒度与持久化恢复机制在同类框架中最稳健，适合生产环境精细编排
+        evidence: /zh/projects/langgraph/
+
+  openai/codex:
+    category: coding
+    tags: [AI编程, CLI, 多代码库, Harness]
+    summary_zh: OpenAI 开源终端编码智能体，支持沙箱执行、AGENTS.md 规范约束、技能按需加载与多仓协同
+    good_for:
+      - 结合 Harness² 线束规范在大型多代码库中执行确定性开发与测试闭环
+      - 终端原生工作流与自动化脚本联动
+    not_for:
+      - 完全依赖纯图形界面点选、不习惯终端工作流的场景
+    alternatives: [sst/opencode, google-gemini/gemini-cli]
+    complements: [github/spec-kit, oraios/serena]
+    verdicts:
+      - date: "2026-10-21"
+        level: recommend
+        reason: 在企业级多代码库（Java + Python + E2E）实践中配合 AGENTS.md 与确定性脚本表现极佳
+        evidence: /zh/ai_programming/harness2_codex_multi_repo_practice/
+
+  github/spec-kit:
+    category: coding
+    tags: [规范驱动开发, Spec-Driven, 工作流, AI编程]
+    summary_zh: GitHub 官方规范驱动开发工具包，将需求拆解为可验证的 Spec、设计契约与任务清单后再交由 AI 实现
+    good_for:
+      - 中大型功能开发前对齐架构边界，显著减少 AI 返工与幻觉
+    not_for:
+      - 几行代码的微小样式或文案修改
+    alternatives: [Pimzino/claude-code-spec-workflow]
+    complements: [openai/codex]
+    verdicts:
+      - date: "2026-10-11"
+        level: recommend
+        reason: 把“先对齐契约再写代码”结构化，是解决 AI 编码偏航的核心手段
+        evidence: /zh/projects/code_assistant/spec-kit/
+
+  oraios/serena:
+    category: skills
+    tags: [MCP, LSP, 符号检索, 代码理解]
+    summary_zh: 基于语言服务器协议（LSP）的编码代理工具箱，为 LLM 提供符号级代码查找、引用分析与精准编辑能力
+    good_for:
+      - 大型代码库中替代盲目全文 grep，按类/函数符号精准定位与重构
+    not_for:
+      - 无 LSP 支持的纯配置或冷门脚本文件
+    alternatives: [upstash/context7]
+    complements: [openai/codex]
+    verdicts:
+      - date: "2026-10-15"
+        level: recommend
+        reason: 符号级语义检索大幅节省上下文 Token 并提升跨文件修改准确率
+        evidence: /zh/projects/mcp/serena_mcp/
+
+  upstash/context7:
+    category: skills
+    tags: [MCP, 文档检索, 实时API, 防幻觉]
+    summary_zh: 为编码 AI 实时拉取最新第三方库官方文档与代码示例的 MCP 与 CLI 工具，根治训练数据过期导致的 API 幻觉
+    good_for:
+      - 调用快速迭代的前端框架、云 SDK 或新版库时获取准确 API 签名
+    not_for:
+      - 纯项目内部私有业务逻辑查询
+    alternatives: []
+    complements: [oraios/serena, openai/codex]
+    verdicts:
+      - date: "2026-10-01"
+        level: recommend
+        reason: 已作为全局规则集成到日常编码工作流，查新版 SDK 文档极其实用
+        evidence: /zh/projects/mcp/mcp_context7/
+
+  getzep/graphiti:
+    category: knowledge
+    tags: [知识图谱, 时序记忆, Agent记忆, RAG]
+    summary_zh: 面向动态环境的时序感知知识图谱引擎，支持实体关系随时间演进的增量更新与历史状态追溯
+    good_for:
+      - 需要记录“事实何时发生、何时失效”的长期演进知识库与 Agent 记忆
+    not_for:
+      - 只需静态文档分块检索的简单问答系统
+    alternatives: [mem0ai/mem0, deepset-ai/haystack]
+    complements: [langchain-ai/langgraph]
+    verdicts:
+      - date: "2026-10-11"
+        level: trial
+        reason: 时序边（Temporal Edges）设计非常适合跟踪不断变化的项目判断与证据链
+        evidence: /zh/projects/mcp/graphiti/
+
+  mem0ai/mem0:
+    category: knowledge
+    tags: [Agent记忆, 个性化, 上下文管理]
+    summary_zh: 面向 AI 智能体的通用记忆层，自动提取、合并且检索用户偏好与跨会话历史状态
+    good_for:
+      - 个性化助手、跨会话记忆保持与用户画像沉淀
+    not_for:
+      - 需要严格图谱推理与复杂时序溯源的场景
+    alternatives: [getzep/graphiti]
+    complements: [langchain-ai/langgraph]
+    verdicts:
+      - date: "2026-09-20"
+        level: trial
+        reason: 接入简单，提供开箱即用的 MCP 与 SDK 记忆管理能力
+        evidence: /zh/projects/memory/mem0/
+
+  sansan0/TrendRadar:
+    category: apps
+    tags: [信息收集, 热点监控, 情报聚合, 推送]
+    summary_zh: 轻量级多源热点资讯聚合与关键词监控工具，支持权重筛选与多渠道定时推送
+    good_for:
+      - 每日行业情报自动巡检与特定技术关键词追踪
+    not_for:
+      - 需要深度学术文献全文解析的场景
+    alternatives: [Panniantong/Agent-Reach]
+    complements: [bytedance/deer-flow]
+    verdicts:
+      - date: "2026-10-11"
+        level: trial
+        reason: 部署轻量，适合作为个人情报工作台的前置信息收集器
+        evidence: /zh/projects/info_collect/trendradar/
+
+  bytedance/deer-flow:
+    category: apps
+    tags: [DeepResearch, 多智能体, 深度研究, 字节跳动]
+    summary_zh: 字节跳动开源的深度研究（Deep Research）多智能体框架，结合规划、搜索、爬虫、Python 执行与报告撰写
+    good_for:
+      - 针对复杂技术课题自动执行多轮检索、交叉验证并输出结构化研究长文
+    not_for:
+      - 简单事实速查（耗时与 Token 成本较高）
+    alternatives: [stanford-oval/storm, SkyworkAI/DeepResearchAgent]
+    complements: [sansan0/TrendRadar]
+    verdicts:
+      - date: "2026-09-15"
+        level: recommend
+        reason: 架构清晰，多智能体分工与人工介入结合紧密，二次开发友好
+        evidence: /zh/projects/deerflow/
+
+  stanford-oval/storm:
+    category: apps
+    tags: [DeepResearch, 维基百科, 多视角提问, 斯坦福]
+    summary_zh: 斯坦福开源的知识综述系统，通过模拟不同专家视角的多轮提问驱动检索，从零生成带完整引用的维基级文章
+    good_for:
+      - 新领域系统性文献综述、多视角调研大纲与可溯源报告生成
+    not_for:
+      - 实时性极强的突发新闻简报
+    alternatives: [bytedance/deer-flow]
+    complements: []
+    verdicts:
+      - date: "2026-09-10"
+        level: recommend
+        reason: 多视角提问机制是提升 AI 研究深度的经典范式
+        evidence: /zh/projects/storm/
+
+  Comfy-Org/ComfyUI:
+    category: media
+    tags: [图像生成, 视频生成, 节点工作流, 多模态]
+    summary_zh: 最主流的节点式开源多模态生成引擎，支持图像、视频、音频模型的精细化管线编排与复现
+    good_for:
+      - 可复现的视觉素材生产管线、新开源视觉模型第一时间实验
+    not_for:
+      - 无独立显卡或仅需极简一键文生图的轻量需求
+    alternatives: []
+    complements: [Wan-Video/Wan2.2]
+    verdicts:
+      - date: "2026-10-11"
+        level: trial
+        reason: 开源视觉模型生态的事实标准底座，插件与工作流极其丰富
+
+  hiyouga/LLaMA-Factory:
+    category: training
+    tags: [微调, SFT, DPO, LoRA, 训练框架]
+    summary_zh: 一站式大模型高效微调框架，支持百余种主流开源模型的 LoRA/QLoRA、SFT、DPO、PPO 训练与评测
+    good_for:
+      - 垂直领域私有数据微调实验、低门槛对比不同微调超参与算法
+    not_for:
+      - 超大规模预训练集群底层定制
+    alternatives: []
+    complements: [promptfoo/promptfoo]
+    verdicts:
+      - date: "2026-10-11"
+        level: recommend
+        reason: 中文文档与生态极佳，新模型支持速度快，微调实验首选
+
+  promptfoo/promptfoo:
+    category: eval
+    tags: [评测, Prompt测试, 红队测试, CI/CD]
+    summary_zh: 面向开发者的高效 Prompt、Agent 与 RAG 系统化评测与红队测试工具，支持声明式配置与矩阵对比
+    good_for:
+      - 把线上真实失败案例转化为可重复执行的回归评测套件，对比不同模型与提示词
+    not_for:
+      - 无需量化评估的一次性探索对话
+    alternatives: []
+    complements: [langchain-ai/langgraph, microsoft/PyRIT]
+    verdicts:
+      - date: "2026-10-11"
+        level: trial
+        reason: 本地优先、配置直观，非常适合在修改 Prompt 或升级模型前做定量回归对比
+
+  microsoft/PyRIT:
+    category: security
+    tags: [AI安全, 红队测试, 越狱检测, 微软]
+    summary_zh: 微软开源的生成式 AI 风险识别与自动化红队测试框架，用于系统性探测提示注入、越狱与有害输出漏洞
+    good_for:
+      - 企业级 AI 应用上线前的自动化对抗测试与安全基线评估
+    not_for:
+      - 内部脱敏离线小工具
+    alternatives: []
+    complements: [promptfoo/promptfoo]
+    verdicts:
+      - date: "2026-10-11"
+        level: watch
+        reason: 策略完备，适合在进入生产安全合规阶段时集中引入
+

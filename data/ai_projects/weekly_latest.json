@@ -1,0 +1,18 @@
+{
+  "week": "2026-W46",
+  "date": "2026-11-11",
+  "title": "AI 开源项目周报 (2026-W46)：dsh-see-now、SenseNova-6.8-Code2Video、visual-explainer 等新锐项目入库与生态追踪",
+  "description": "汇总 2026-W46 周期内 @hobbytp GitHub Stars 最新收录的 AI 开源项目（dsh-see-now、SenseNova-6.8-Code2Video、visual-explainer 等）、核心框架版本迭代要点与 CHAOSS 健康度追踪。",
+  "url": "/zh/projects/weekly/2026-w46/",
+  "newly_starred_sample": [
+    "dsh-see-now",
+    "SenseNova-6.8-Code2Video",
+    "visual-explainer",
+    "anatomy"
+  ],
+  "release_sample": [
+    "gbrain v0.60.656.0",
+    "pstack-claude v0.9.135",
+    "OpenResearch v0.2.26"
+  ]
+}

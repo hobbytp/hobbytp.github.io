@@ -1,0 +1,77 @@
+name: 每日同步 AI 开源项目研究台与周报生成
+
+on:
+  schedule:
+    # 每天北京时间早上 06:30 运行 (UTC 22:30)
+    - cron: "30 22 * * *"
+  workflow_dispatch:
+    inputs:
+      generate_weekly:
+        description: "是否强制生成/更新本周《AI 开源项目周报》"
+        required: false
+        default: "auto"
+        type: choice
+        options:
+          - "auto"
+          - "true"
+          - "false"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-ai-projects:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MY_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: 设置 Python 环境
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml requests google-genai openai
+
+      - name: 同步 @hobbytp GitHub Stars 与计算 CHAOSS 健康度及 AI 摘要
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python scripts/ai_projects/collect.py
+
+      - name: 生成《AI 开源项目周报》(每周一或手动触发时)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FORCE_WEEKLY: ${{ github.event.inputs.generate_weekly || 'auto' }}
+        run: |
+          day_of_week=$(TZ='Asia/Shanghai' date +%u)
+          if [ "$FORCE_WEEKLY" = "true" ] || { [ "$FORCE_WEEKLY" = "auto" ] && [ "$day_of_week" = "1" ]; }; then
+            echo "📰 正在生成/更新本周《AI 开源项目周报》..."
+            python scripts/ai_projects/weekly_digest.py
+          else
+            echo "ℹ️ 非周一且未强制开启周报生成，仅更新研究台实时指标与信号流。"
+          fi
+
+      - name: 提交并推送数据更新
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ai_projects/ content/zh/projects/weekly/
+          if git diff --staged --quiet; then
+            echo "✅ 无新增数据变更需要提交"
+          else
+            git commit -m "🤖 自动同步 AI 开源项目研究台数据 ($(TZ='Asia/Shanghai' date +%Y-%m-%d))"
+            git push
+          fi
+
