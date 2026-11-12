@@ -729,6 +729,112 @@
       "highlights": [
         "gbrain upgrade finishes on hosts where autopilot runs outside launchd and systemd, instead of refusing every time. The upgrade restarted autopilot only through "
       ]
+    },
+    "saos-3624/dsh-see-now@v0.2.3": {
+      "tag": "v0.2.3",
+      "highlights": [
+        "一版只修帧率：采集跑在 12fps 以外的机器上，阈值和三个\"帧数\"窗口会整体偏 —— 8fps 的出图张数掉到 5（正常 9），24/30fps 的积分帧直接归零。fps: 12 的老配置逐位不变。 Fixed — 阈值与窗口不再随 fps 漂（timeNormalizeFrames） integralNeed 原来"
+      ]
+    },
+    "graphicle-ai/graphicle@v0.1.15": {
+      "tag": "v0.1.15",
+      "highlights": [
+        "The bundled SQLite is now 3.54.1 (rusqlite 0.41.1, libsqlite3-sys",
+        "The AST cache schema goes from 10 to 11 for the new extraction rules,",
+        "To get the new Claude Code hook that restores the nudge budget after a",
+        "`update` re-extracts only the files whose content differs from the"
+      ]
+    },
+    "glanderness/beeftv@v2.2.1": {
+      "tag": "v2.2.1",
+      "highlights": [
+        "新增「银盛云枢壹算」内置渠道插件：在插件或模型服务里填入 API Key，即可一键添加 32 款文本、图片和视频模型，本地参考图、参考视频与音频会自动上传；按官方文档补齐各模型的画面比例、分辨率、时长、生成数量和结果读取规则。",
+        "插件页面与账户设置改版：统一「插件」页面与技能、资产页的卡片布局，精选推荐优先使用本地缓存秒开并在后台刷新；左侧栏底部整合「登录 BeefTV」账户入口与「联系我们」，在账户设置里集中管理账号与余额、通用设置、模型和内置插件（在线充值目前仅展示预览，标明「暂未开放」）。"
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.2": {
+      "tag": "v2.100.2",
+      "highlights": [
+        "Complete manual pause and resume for API key pools",
+        "Add bounded waits for stored Codex replies",
+        "Persist target cooldowns across restarts",
+        "Strip named hosted tools only beside client tools"
+      ]
+    },
+    "volcengine/openviking@v0.5.4.1": {
+      "tag": "v0.5.4.1",
+      "highlights": [
+        "**资源 write**：修正文件处理与父目录刷新的衔接，保留每个文件自身的摘要和索引工作；父目录独立刷新，不替代尚未完成的文件索引。`wait=true` 等待文件自身的处理完成，不等待父目录 L0/L1 和目录索引刷新，请求参数不变。[#7383](",
+        "**目录摘要**：待刷新期间复用已有文件摘要；恢复 `semantic.overview_sample_limit` 默认 32 项的稳定采样，文件自身仍完整建立索引。[#7380](",
+        "**存储稳定性**：修复 `stat` 按记录 ID 查询的兼容性、向量 Collection 生命周期，以及多写元数据不完整时的启动问题。[#7377](",
+        "**Connector 与流式响应**：支持带作用域的 OAuth 引用，原生导入保留 Connector Watch；修复 Gateway 流式错误的结束标记。[#7259]("
+      ]
+    },
+    "tencent/teamai-cli@v0.30.0": {
+      "tag": "v0.30.0",
+      "highlights": [
+        "feat(scorers)!: judge every pass and session through teamai-score, a default workflow a team can override",
+        "fix(cli): preserve Windows PATH directory precedence",
+        "feat(workflow)!: let a workflow own its copy, hand runs to a person, clean up run branches, and read a step's PR",
+        "test(scorers): cover skill-routing captures, controls and batching"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.136": {
+      "tag": "v0.9.136",
+      "highlights": [
+        "poteto-mode now reads project playbooks from ~/.agents/playbooks/ as well as from the repository's .agents/playbooks/, so a playbook that extends a bundled one "
+      ]
+    },
+    "yc-software/qm@v0.1.18": {
+      "tag": "v0.1.18",
+      "highlights": [
+        "Move agent-run turn helpers into focused modules",
+        "Turn on ALB access logs in the AWS scaffold",
+        "Keep HTTP keep-alive sockets open longer than the ALB idle timeout",
+        "Remove model and timezone limits nobody chose"
+      ]
+    },
+    "everyinc/compound-engineering-plugin@compound-engineering-v3.38.0": {
+      "tag": "compound-engineering-v3.38.0",
+      "highlights": [
+        "**ce-plan,ce-brainstorm:** configurable reasoning effort for model elevation (rebase of [#1554]( ([#2054]( ([74df0e0](",
+        "**ce-retro:** look back over agent sessions and fix what slowed them ([#2060]( ([d6d0062](",
+        "**ce-work:** run fully specified units on cheaper worker models ([#2051]( ([b19fca4](",
+        "**cross-model:** support Pi as a cross-model host and target ([#2050]( ([fae57f5]("
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.9": {
+      "tag": "v6.19.9",
+      "highlights": [
+        "patch: bump the dependencies group across 1 directory with 13 updates"
+      ]
+    },
+    "garrytan/gbrain@v0.60.685.0": {
+      "tag": "v0.60.685.0",
+      "highlights": [
+        "remember now tells the truth about a fact saved for something that has no page yet, a source that lives in Git keeps that fact in Git, and the brain owner's own"
+      ]
+    },
+    "langchain-ai/langchain@langchain-core==1.8.0": {
+      "tag": "langchain-core==1.8.0",
+      "highlights": [
+        "langchain-core 1.8.0 drops support for Python 3.10, which has reached end-of-life. The minimum supported version is now Python 3.11. Users on Python 3.10 will c"
+      ]
+    },
+    "openai/codex@rust-v0.167.2": {
+      "tag": "rust-v0.167.2",
+      "highlights": [
+        "New Features - Codex now sends tool updates incrementally by default on Google Cloud Vertex AI. To opt out, set incremental_tools_legacy_gcp = false under [feat"
+      ]
+    },
+    "chromedevtools/chrome-devtools-mcp@chrome-devtools-mcp-v1.13.0": {
+      "tag": "chrome-devtools-mcp-v1.13.0",
+      "highlights": [
+        "add logpoints built on the DevTools BreakpointManager ([#3211]( ([0877ee0](",
+        "add page-scoped network mocks ([#3384]( ([1d692d3](",
+        "support upstream network mock responses ([#3420]( ([c4bf342](",
+        "**config:** accept config files with a UTF-8 BOM ([#3365]( ([63170b1]("
+      ]
     }
   }
 }
