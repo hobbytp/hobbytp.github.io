@@ -835,6 +835,111 @@
         "support upstream network mock responses ([#3420]( ([c4bf342](",
         "**config:** accept config files with a UTF-8 BOM ([#3365]( ([63170b1]("
       ]
+    },
+    "graphicle-ai/graphicle@v0.1.16": {
+      "tag": "v0.1.16",
+      "highlights": [
+        "The reference comparison environment of the graph engine",
+        "PostgreSQL 17 and 18 can hold a store: since 17, `JSON` (a keyword since",
+        "A connection the server ended (a server restart, `pg_terminate_backend`)",
+        "`graphicle-graph extract --no-cluster` with a new `--exclude` writes the"
+      ]
+    },
+    "glanderness/beeftv@v2.2.2": {
+      "tag": "v2.2.2",
+      "highlights": [
+        "账户实时余额与在线充值、生成前预计价格显示：账户设置「账号与余额」开放实时人民币余额同步与在线充值，支持微信支付、支付宝与国际银行卡，在系统浏览器完成支付后自动或手动查询入账并更新余额；画布单节点、独立创作页与批量分镜表在生成前统一显示预计费用与区间上限，随参数变更实时刷新。",
+        "画布视频处理与参考模式体验优化：新增画布视频去字幕处理，并接入服务端动态视频超分模型目录；切换视频模型时按实际能力自动切换全能参考并清理失效首尾帧，隐藏静态素材左侧假输入口并区分上下游创建菜单。",
+        "长耗时任务与分镜稳定性修复：长耗时与可取回任务按服务端权威状态持续等待；托管媒体失败原样展示服务端具体原因；内置助手超过 8 行分镜自动分批准备，整片提案单批上限扩展至 24 个目标。"
+      ]
+    },
+    "volcengine/openviking@python-sdk@0.1.20": {
+      "tag": "python-sdk@0.1.20",
+      "highlights": [
+        "支持上下文使用次数与最近使用时间标签更新",
+        "支持批量设置上下文标签",
+        "支持 Python 同步与异步客户端调用 `batch_set_tags`"
+      ]
+    },
+    "debpalash/voicestudio@v0.5.8": {
+      "tag": "v0.5.8",
+      "highlights": [
+        "OmniVoice GGUF uses AMD, Intel and NVIDIA GPUs through Vulkan on Windows and Linux, and Intel Arc GPUs run OmniVoice",
+        "Setup falls back to a smaller CPU build when PyTorch downloads fail, and the app falls back to the CPU when the GPU fails",
+        "Windows loads models one file at a time, and an engine crash names its cause and offers Restart on CPU"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.138": {
+      "tag": "v0.9.138",
+      "highlights": [
+        "The REMOTE column of worktree-audit.mjs counted only the commits a worktree had that its pushed branch lacked. A worktree whose pushed branch someone else had a"
+      ]
+    },
+    "twigpine/openclaude@v0.36.0": {
+      "tag": "v0.36.0",
+      "highlights": [
+        "**opengateway:** default new setups to auto smart routing ([#2508]( ([77a96c2](",
+        "**usage:** add a Local view to /usage ([#2506]( ([b9ec49b](",
+        "**usage:** record a local per-request usage ledger ([#2504]( ([ac81fcc](",
+        "address reported AI code quality findings ([#2511]( ([2d98d10]("
+      ]
+    },
+    "everyinc/compound-engineering-plugin@compound-engineering-v3.38.1": {
+      "tag": "compound-engineering-v3.38.1",
+      "highlights": [
+        "**skills:** decode doc and git text as UTF-8 in validator and review-scope scripts ([#2063]( ([3cdf53d]("
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.11": {
+      "tag": "v6.19.11",
+      "highlights": [
+        "patch: Buffer complete tool calls before protocol translation"
+      ]
+    },
+    "garrytan/gbrain@v0.60.706.0": {
+      "tag": "v0.60.706.0",
+      "highlights": [
+        "A database-wins file-drift repair no longer discards a newer file edit gbrain repair file-drift --prefer database and gbrain sources reconcile --apply could ove"
+      ]
+    },
+    "wonderwhy-er/desktopcommandermcp@v0.3.3": {
+      "tag": "v0.3.3",
+      "highlights": [
+        "Security Fix: Remote MCP Authentication Fixed a security vulnerability in Remote MCP and improved authentication security with additional validation and safegua"
+      ]
+    },
+    "cursortouch/windows-mcp@v0.8.9": {
+      "tag": "v0.8.9",
+      "highlights": [
+        "fix: make desktop control optional and idle timeout configurable",
+        "fix: resolve the PowerShell executable against the child's PATH",
+        "fix(tools): parse FileSystem and MultiSelect boolean flags through as_bool",
+        "fix: recover stale desktop input after missed release events"
+      ]
+    },
+    "upstash/context7@@upstash/context7-tools-ai-sdk@1.0.4": {
+      "tag": "@upstash/context7-tools-ai-sdk@1.0.4",
+      "highlights": [
+        "Patch Changes - bdd9bf7: resolveLibraryId returns the SDK's \"No libraries found\" message when nothing matches, and queryDocs returns its \"No documentation found"
+      ]
+    },
+    "langchain-ai/langgraph@1.2.21": {
+      "tag": "1.2.21",
+      "highlights": [
+        "release(langgraph): 1.2.21",
+        "chore(deps): bump the minor-and-patch group across 1 directory with 9 updates",
+        "fix(langgraph): match whole namespace segments in get_subgraphs",
+        "fix(langgraph): read an undeclared subgraph namespace with the parent graph"
+      ]
+    },
+    "anthropics/claude-code@v2.1.323": {
+      "tag": "v2.1.323",
+      "highlights": [
+        "Added Code Mode, an experimental opt-in in which Claude writes JavaScript to call its tools; see  to turn it on, or to turn it off for an organization",
+        "Added type checking of a plugin's TypeScript hooks module to `claude plugin validate`; each finding is a warning, and `--strict` fails on it",
+        "Added to `claude plugin validate` the `$` nouns a mod's `engine.create` hook adds, withholds or replaces",
+        "Added support for `CLAUDE_CODE_AUTO_MODE_MODEL` in managed settings for Claude Desktop sessions on third-party providers (takes effect once Claude Desktop includes this version)"
+      ]
     }
   }
 }
