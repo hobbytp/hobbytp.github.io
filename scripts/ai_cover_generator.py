@@ -6,6 +6,7 @@ AI Cover Image Generator for Hugo Blog
 """
 
 import os
+import re
 import hashlib
 import requests  # type: ignore[import-untyped]
 import json
@@ -105,6 +106,200 @@ class ImageGenConfig:
     max_description_length: int = 1000
     style_suffix: str = ", abstract geometric pattern, professional blog cover, clean design, minimal, technology theme, no text, no letters, no words, no people, no faces, no portraits, landscape orientation, widescreen format"
 
+
+# ===== Category Visual Identity System (CVIS) =====
+CATEGORY_TRACKS: Dict[str, Dict] = {
+    "courses_learning": {
+        "name": "课程与体系化学习",
+        "style": "现代社论几何矢量插画风格（Editorial Geometric Vector Illustration，灵感源自 Anthropic Engineering 与 MIT Technology Review 封面），细腻版画噪点肌理，线条洗练克制",
+        "materials": "温润羊皮纸与哑光卡纸质感、几何切面组件、精密教学沙盘模型",
+        "base_palette": "暖米白与浅砂岩底色，配深炭灰与学院派浓郁点缀色",
+        "default_props": [
+            "学院派阶梯讲堂微缩沙盘与装帧精美的工程手稿",
+            "相互咬合的几何教具模块与模块化知识阶梯",
+        ],
+    },
+    "papers_science": {
+        "name": "论文解读与数理前沿",
+        "style": "《Nature / Science》期刊封面级科学可视化与微距光学蓝图风格（Scientific Visualization & Optical Blueprint），高精度几何拓扑与坐标网格",
+        "materials": "高折射率光学棱镜、半透明水晶多面体、精细金属刻度线与激光光路",
+        "base_palette": "深邃星空靛蓝与曜石黑底色，配琥珀金与青色光谱折射",
+        "default_props": [
+            "折射多维光谱的精密光学水晶棱镜与空间坐标网格",
+            "悬停于拓扑曲面上的金色几何多面体与测微仪",
+        ],
+    },
+    "agents_engineering": {
+        "name": "智能体、工程架构与编程",
+        "style": "工业级精密模块化等距 3D 架构风格（Dieter Rams & Bauhaus Modular Isometric 3D），理性、硬核、结构化系统美学",
+        "materials": "阳极氧化钛铝合金、哑光碳纤模块、精密滑轨、发光数据导管与机械卡扣",
+        "base_palette": "工作室浅钛灰与暖银底色，配工业橙、电光青与哑光黑对比",
+        "default_props": [
+            "精密咬合的模块化铝合金工程底座与标准化接口插槽",
+            "沿精密导轨流转的透明能量导管与机械控制阀门",
+        ],
+    },
+    "models_flagship": {
+        "name": "大模型与大厂产品线",
+        "style": "未来主义 3D 磨砂玻璃与流光雕塑风格（Futuristic 3D Glassmorphism & Studio Caustics，Octane Render 影棚级渲染）",
+        "materials": "多层半透明磨砂玻璃、拉丝金属内核、柔光焦散光斑与丝滑流体曲面",
+        "base_palette": "高级影棚明暗过渡底色，配纯净高光与品牌标志性流光色",
+        "default_props": [
+            "多层悬浮堆叠的半透明磨砂玻璃透镜与拉丝钛金属核心",
+            "经过精密曲面折射投射出焦散光影的悬浮流体雕塑",
+        ],
+    },
+    "opensource_tools": {
+        "name": "开源项目与动手工具",
+        "style": "3D 体素积木与极客创客工坊微缩模型风格（Tactile Voxel & Clay Maker Workbench Diorama），触感真实、模块可拼装",
+        "materials": "高质感圆角积木块、微缩创客工作台、精细机械小工具与柔和漫反射材质",
+        "base_palette": "明快高饱和创客撞色（活力橙、薄荷绿、克莱因蓝与暖白工作台）",
+        "default_props": [
+            "可自由插拔拼装的彩色模块化积木矩阵与微缩创客工作台",
+            "排列整齐的精密机械小工具、齿轮箱与开源连接件",
+        ],
+    },
+    "insights_philosophy": {
+        "name": "个人洞察、名人观点与思辨",
+        "style": "《The New Yorker》概念超现实主义社论画作风格（Conceptual Surrealism & Philosophical Metaphor Art），戏剧性光影与诗意隐喻",
+        "materials": "古典建筑阶梯、青铜星盘、沙漏、镜面几何体与光影剪影",
+        "base_palette": "沉静矿物色系（赭石、墨绿、深褐与象牙白），大面积呼吸感留白",
+        "default_props": [
+            "矗立在静谧长廊尽头的青铜天文星盘与通往云端的几何阶梯",
+            "折射出不同时间维度的镜面立方体与极简主义光影沙漏",
+        ],
+    },
+    "news_pulse": {
+        "name": "每日 AI 与行业快讯",
+        "style": "新波普棱镜折光与现代动态视觉图表风格（Kinetic Prism & Modern Pop Graphic），节奏明快、信息张力强",
+        "materials": "折光玻璃三棱镜、高频脉冲波纹、几何信息切片与动态光束",
+        "base_palette": "高对比电光蓝、活力珊瑚红与纯净白，极具现代数字媒体快讯感",
+        "default_props": [
+            "将多道彩色信号光束汇聚再分发的悬浮玻璃三棱镜阵列",
+            "错落排布的现代信息切片卡片与动态扩散脉冲波纹",
+        ],
+    },
+}
+
+SLUG_TO_TRACK: Dict[str, str] = {
+    # 1. courses_learning
+    "courses": "courses_learning",
+    "interviews": "courses_learning",
+    "base": "courses_learning",
+    "课程": "courses_learning",
+    "教程": "courses_learning",
+    "面试": "courses_learning",
+    # 2. papers_science
+    "papers": "papers_science",
+    "imo": "papers_science",
+    "worldlab": "papers_science",
+    "validation": "papers_science",
+    "论文解读": "papers_science",
+    "数学": "papers_science",
+    "论文": "papers_science",
+    # 3. agents_engineering
+    "mas": "agents_engineering",
+    "context_engineering": "agents_engineering",
+    "ai_programming": "agents_engineering",
+    "rag": "agents_engineering",
+    "ai_spec": "agents_engineering",
+    "evaluate": "agents_engineering",
+    "training": "agents_engineering",
+    "technologies": "agents_engineering",
+    "camel": "agents_engineering",
+    "search": "agents_engineering",
+    "多智能体": "agents_engineering",
+    "上下文工程": "agents_engineering",
+    "ai编程": "agents_engineering",
+    "训练微调技术": "agents_engineering",
+    "技术栈": "agents_engineering",
+    "ai标准规范": "agents_engineering",
+    # 4. models_flagship
+    "large_models": "models_flagship",
+    "llm_providers": "models_flagship",
+    "openai": "models_flagship",
+    "claude": "models_flagship",
+    "google": "models_flagship",
+    "deepseek": "models_flagship",
+    "qwen": "models_flagship",
+    "kimi": "models_flagship",
+    "minimax": "models_flagship",
+    "glm": "models_flagship",
+    "nvidia": "models_flagship",
+    "apple": "models_flagship",
+    "meta": "models_flagship",
+    "microsoft": "models_flagship",
+    "bytedancing": "models_flagship",
+    "tencent": "models_flagship",
+    "baidu": "models_flagship",
+    "huawei": "models_flagship",
+    "xai": "models_flagship",
+    "llama": "models_flagship",
+    "companies": "models_flagship",
+    "基础模型": "models_flagship",
+    "大厂产品线": "models_flagship",
+    # 5. opensource_tools
+    "projects": "opensource_tools",
+    "ai-workbench": "opensource_tools",
+    "mydemos": "opensource_tools",
+    "products": "opensource_tools",
+    "multimedia": "opensource_tools",
+    "robot": "opensource_tools",
+    "开源项目": "opensource_tools",
+    "ai工具箱": "opensource_tools",
+    # 6. insights_philosophy
+    "my_insights": "insights_philosophy",
+    "celebrity_insights": "insights_philosophy",
+    "silicon_inquiries": "insights_philosophy",
+    "agi": "insights_philosophy",
+    "个人洞察": "insights_philosophy",
+    "名人洞察": "insights_philosophy",
+    # 7. news_pulse
+    "daily_ai": "news_pulse",
+    "news": "news_pulse",
+    "reports": "news_pulse",
+    "posts": "news_pulse",
+    "行业动态": "news_pulse",
+}
+
+COMPOSITION_STRATEGIES = [
+    "等距 45 度全景微缩沙盘构图（Isometric 45° Diorama View），俯瞰完整的系统协作生态，层次分明",
+    "精密机械爆炸拆解悬浮构图（Exploded Technical Cutaway View），将核心模块沿轴线分层拉开悬浮展示，内部结构清晰可见",
+    "黄金三分法大留白构图（Rule-of-Thirds with Generous Negative Space），视觉主体置于画面右侧黄金分割点，左侧保留呼吸感肌理背景",
+    "对角线动态流水线构图（Diagonal Pipeline Flow），模块沿左上至右下对角线递进连接，展现数据流转与演进张力",
+    "微距浅景深特写构图（Macro Tilt-Shift Close-up），聚焦核心精密组件纹理与光影交汇，背景柔和虚化",
+]
+
+BRAND_PALETTES = [
+    (r"\b(?:stanford|cs329z?|cs224[nuv]?|cs336)\b|斯坦福", "融入斯坦福标志性的深红（Stanford Cardinal Red）与温暖砂岩金（Warm Sandstone）作为核心点缀色"),
+    (r"\bmit\b|麻省理工", "融入 MIT 标志性的深绯红（MIT Crimson）与太空钛银灰作为点缀色"),
+    (r"\b(?:claude|anthropic)\b", "融入 Anthropic 标志性的温暖陶土橙（Warm Terracotta）、羊皮纸米白与深炭黑配色"),
+    (r"\bdeepseek\b|深度求索", "融入深海湛蓝（Abyssal Ocean Blue）与生物荧光青（Bioluminescent Cyan）作为点缀色"),
+    (r"\b(?:openai|gpt-?\d*|chatgpt|o1|o3)\b", "融入翡翠薄荷绿（Emerald Mint）与曜石黑高对比点缀色"),
+    (r"\b(?:google|gemini|deepmind)\b", "融入宝石蓝、琥珀黄、珊瑚红与翠绿的四色光谱折光点缀"),
+    (r"\b(?:nvidia|cuda)\b|英伟达", "融入算力荧光绿（Compute Neon Green）与哑光碳黑金属点缀"),
+    (r"\b(?:meta|llama)\b", "融入地平线钴蓝（Cobalt Horizon Blue）与电光银点缀"),
+    (r"\b(?:qwen|alibaba)\b|通义|阿里", "融入紫罗兰靛蓝（Violet Indigo）与暖金点缀"),
+]
+
+VISUAL_PROP_RULES = [
+    (r"\b(?:rag|retrieval|colbert|bm25|hnsw|vector|embedding)\b|检索|向量", "带有发光索引标签的精密微型档案检索柜与光学放大镜"),
+    (r"\b(?:mcp|tool\s*use|function\s*calling|api|rest|grpc|protocol|a2a)\b|工具调用|协议|接口", "模块化精密机械扳手、万向齿轮与标准化接口插槽"),
+    (r"\b(?:eval|evaluation|benchmark|4-tuple|judge|swe-bench|terminal-bench|bfcl)\b|评测|基准|评分", "带有精密刻度盘的黄金天平检定仪、校准标尺与隔离测试沙盒"),
+    (r"\b(?:memory|memgpt|context|compaction|working\s*memory)\b|记忆|上下文", "分层堆叠的半透明记忆晶体盒与长卷磁带归档轴"),
+    (r"\b(?:multi-agent|mas|swarm|orchestrat|handoff)\b|多智能体|编排|协同", "多个各司其职的精密几何节点通过光轨围绕中央调度台协同运转"),
+    (r"\b(?:optim|rl|grpo|ppo|dspy|gepa|mipro|flywheel|distill|sft|fine-?tun)\b|微调|优化|飞轮|蒸馏", "高速旋转的动能数据飞轮、自适应反馈陀螺仪与螺旋上升轨道"),
+    (r"\b(?:safety|guardrail|security|privacy|injection|sandbox|red-?team)\b|安全|护栏|隐私|沙箱", "半透明六边形光学防护棱镜屏障与精密机械权限锁"),
+    (r"\b(?:coding|code|swe-agent|openhands|harness|claude\s*code|terminal)\b|编程|代码|终端", "自动运转的精密活字印刷机械臂与结构化工程蓝图工作台"),
+    (r"\b(?:course|lecture|syllabus|stanford|mit|academy)\b|课程|讲义|教学", "学院派阶梯讲堂微缩沙盘、装帧精美的工程手稿与几何教具模型"),
+    (r"\b(?:paper|arxiv|theorem|math|proof|imo|topology)\b|论文|定理|数学|证明", "镌刻几何拓扑曲线的透明多面体与精密科学手稿卷轴"),
+    (r"\b(?:vision|multimodal|video|audio|speech|image)\b|多模态|视觉|图像|音频", "多层光学相机镜头组、分光三棱镜与声波谐振音叉"),
+    (r"\b(?:robot|embodied|humanoid|actuator)\b|具身|机器人", "精密多轴仿生机械臂在工作台上校准微缩传感组件"),
+    (r"\b(?:open-?source|github|stars?|workbench|weekly)\b|开源|周报", "开放式模块化拼装积木塔与相互连接的星轨指南针"),
+    (r"\b(?:world\s*model|simulation|3d|spatial|marble)\b|世界模型|空间智能|仿真", "悬浮在精密底座上的全息微缩地形沙盘与光学投影仪"),
+    (r"\b(?:data|synthetic|trace|annotation|dataset|flywheel)\b|数据|合成|标注", "经过多层水晶滤网提纯并汇入透明玻璃容器的发光数据晶粒"),
+]
+
 class CoverImageGenerator:
     """封面图片生成器"""
 
@@ -137,154 +332,132 @@ class CoverImageGenerator:
         content = f"{title}|{description}"
         return hashlib.md5(content.encode('utf-8')).hexdigest()
 
-    def _generate_prompt_with_llm(self, title: str, article_content: str, category: str = "") -> Optional[str]:
-        """使用LLM(如Gemini)根据博客全文生成图片提示词"""
-        
+    def _resolve_track(self, category: str = "", title: str = "", description: str = "", tags: str = "") -> Dict:
+        """将文章分类/目录/标签映射到 7 大 CVIS 视觉赛道"""
+        cat_clean = category.strip().lower()
+        if cat_clean in SLUG_TO_TRACK:
+            track_key = SLUG_TO_TRACK[cat_clean]
+            return {"key": track_key, **CATEGORY_TRACKS[track_key]}
+
+        # 兼容多分类或路径中包含目录名的情况
+        for token in re.split(r"[\s,;/|]+", cat_clean):
+            if token in SLUG_TO_TRACK:
+                track_key = SLUG_TO_TRACK[token]
+                return {"key": track_key, **CATEGORY_TRACKS[track_key]}
+
+        # 回退：从 tags + title + description 中匹配赛道关键词
+        fallback_text = f"{category} {tags} {title} {description}".lower()
+        for slug, track_key in SLUG_TO_TRACK.items():
+            if len(slug) >= 3 and re.search(rf"(?:^|[^a-z0-9_]){re.escape(slug)}(?:$|[^a-z0-9_])", fallback_text):
+                return {"key": track_key, **CATEGORY_TRACKS[track_key]}
+
+        return {"key": "agents_engineering", **CATEGORY_TRACKS["agents_engineering"]}
+
+    def _resolve_brand_palette(self, title: str, description: str, category: str = "", tags: str = "") -> str:
+        """识别名校/机构/品牌基因并注入点缀色（保持赛道画风不变）"""
+        text = f"{title} {category} {tags} {description}".lower()
+        matched = []
+        for pattern, accent in BRAND_PALETTES:
+            if re.search(pattern, text, re.IGNORECASE):
+                matched.append(accent)
+        return "；".join(matched[:2])
+
+    def _extract_visual_props(
+        self,
+        title: str,
+        description: str,
+        article_content: str = "",
+        tags: str = "",
+        track_key: str = "agents_engineering",
+        seed: int = 0,
+    ) -> list:
+        """从标题、小标题、标签与摘要中提取 2-3 个具体实体视觉道具，避免千篇一律"""
+        headings = ""
+        if article_content:
+            heading_lines = re.findall(r"^#{1,3}\s+(.+)$", article_content, flags=re.MULTILINE)
+            headings = " ".join(heading_lines[:15])
+
+        combined_text = f"{title} {tags} {description} {headings}".lower()
+        scored_props = []
+        for idx, (pattern, prop_desc) in enumerate(VISUAL_PROP_RULES):
+            hits = len(re.findall(pattern, combined_text, re.IGNORECASE))
+            if hits > 0:
+                # 标题命中权重更高，避免单靠正文词干扰主题
+                title_hits = len(re.findall(pattern, f"{title} {tags}".lower(), re.IGNORECASE))
+                score = hits + title_hits * 2
+                scored_props.append((score, (idx + seed) % 97, prop_desc))
+
+        scored_props.sort(key=lambda item: (-item[0], item[1]))
+
+        selected = []
+        for _, _, prop_desc in scored_props:
+            if prop_desc not in selected:
+                selected.append(prop_desc)
+            if len(selected) >= 3:
+                break
+
+        defaults = CATEGORY_TRACKS.get(track_key, CATEGORY_TRACKS["agents_engineering"])["default_props"]
+        for d in defaults:
+            if len(selected) >= 2:
+                break
+            if d not in selected:
+                selected.append(d)
+
+        return selected[:3]
+
+    def _generate_prompt_with_llm(self, title: str, article_content: str, category: str = "", tags: str = "") -> Optional[str]:
+        """使用LLM(如Gemini/OpenAI)在 CVIS 规范下根据博客全文生成图片提示词"""
+
         # 截取文章内容（避免超过token限制）
         max_content_length = 8000
         if len(article_content) > max_content_length:
             article_content = article_content[:max_content_length] + "...[truncated]"
-        
-        system_prompt = """
-You are an expert Art Director and Prompt Engineer specializing in abstract, high-concept imagery for blog covers using the 'Tongyi Wanxiang' model.
 
-YOUR GOAL:
-Translate technical concepts into CONCRETE, PHYSICAL VISUAL METAPHORS with DYNAMIC, CINEMATIC COMPOSITIONS.
-You must aggressively avoid the "single object in the dead center" cliché.
-
-CORE RULES:
-1. Output Language: Chinese (Simplified).
-2. CONTENT RESTRICTIONS: NO text, letters, numbers, logos, or human faces.
-3. FORMAT: 16:9 Widescreen.
-4. OUTPUT FORMAT: Return ONLY the prompt string.
-
-COMPOSITION STRATEGIES (CRITICAL - MUST VARY):
-Do NOT default to centering the subject. Choose one of the following for each prompt:
-- **Rule of Thirds (三分法)**: Place the focal point at the intersection of grid lines, leaving negative space.
-- **Leading Lines (引导线)**: Use lines (roads, wires, light beams) to draw the eye from the corner into the distance.
-- **Isometric/Orthographic (等距视角)**: A 3D map-like view from a high angle (good for systems/architecture).
-- **Low Angle/Worm's Eye (低角度仰视)**: Make the subject look massive and imposing.
-- **Macro/Close-up (微距特写)**: Focus on texture and detail, blurring the background heavily (Depth of Field).
-- **Diagonal Composition (对角线构图)**: Create movement and tension across the frame.
-- **Framing (框架式构图)**: View the subject through a "window" or opening in the foreground.
-
-STEP-BY-STEP GENERATION LOGIC:
-1. **Analyze**: Identify the core conflict or flow of the article.
-2. **Metaphor**: Brainstorm a physical scene (e.g., "Data flow" -> "A complex system of glass pipes transporting glowing liquid").
-3. **Style**: Select an art style (Surrealism, Bauhaus, Claymorphism, Cyberpunk, Ukiyo-e, Paper Art, Industrial Design).
-4. **Composition**: Select a STRATEGY from the list above to ensure the image is NOT centered.
-5. **Color**: Define a palette that matches the mood (e.g., Warm Amber & Teal for stability, Neon Purple & Black for mystery).
-
-PROMPT STRUCTURE TO GENERATE:
-[Art Style] + [Composition Strategy Description] + [Complex Scene/Interaction of Objects] + [Detailed Texture/Material] + [Lighting/Atmosphere] + [Color Palette] + "高品质，8k分辨率，电影级构图，无文字"
-
-Example of "Composition Strategy Description" in output:
-- Instead of "A robot", use "右下角放置一个微型机器人，左侧大面积留白(Rule of Thirds)"
-- Instead of "A bridge", use "从低角度仰视一座跨越天际的半透明光桥(Low Angle)"
-"""
-
-        user_prompt = f"""
-请阅读以下博客文章，并基于其核心逻辑，构思一个极具创意的视觉隐喻，生成绘画提示词。
-
-文章元数据：
-- 标题: {title}
-- 分类: {category}
-
-文章正文（摘要或全文）:
-{article_content}
-
-生成要求：
-1. **拒绝平庸**：绝对不要出现电脑、手机、服务器机柜、电路板、0和1的代码雨。
-2. **实体化**：如果文章讲的是“网络安全”，不要画盾牌，可以画“一座被水晶墙保护的微缩玻璃花园”。如果讲“Python学习”，不要画蛇，可以画“由乐高积木搭建的复杂机械结构”。
-3. **详细描述**：包含具体的材质（如磨砂玻璃、丝绸、木质）、光影（体积光、丁达尔效应）和配色。
-4. **纯中文输出**，直接给出提示词即可。
-"""
+        seed = int(hashlib.md5(f"{title}|{category}".encode("utf-8")).hexdigest()[:8], 16)
+        track = self._resolve_track(category, title, "", tags)
+        composition = COMPOSITION_STRATEGIES[seed % len(COMPOSITION_STRATEGIES)]
+        brand_accent = self._resolve_brand_palette(title, "", category, tags)
+        candidate_props = self._extract_visual_props(title, "", article_content, tags, track["key"], seed)
+        props_text = "、".join(candidate_props)
 
         system_prompt = """
 You are an expert Art Director and Prompt Engineer for an AI technology blog.
-Your goal is to generate specific, high-quality image prompts for the 'Tongyi Wanxiang' model based on the blog article's category and content.
+Your goal is to generate ONE image generation prompt that STRICTLY follows the assigned Category Visual Identity System (CVIS):
+- Keep the Art Style, Material Texture, and Base Color Palette 100% LOCKED to the assigned Category Track so posts in the same category look visually cohesive.
+- Vary the scene using the assigned Composition Strategy, Brand Accent Palette (if any), and concrete Physical Visual Props extracted from the article content.
 
 CORE RULES:
 1. Output Language: Chinese (Simplified).
-2. RESTRICTIONS: NO text, letters, numbers, logos, or human faces.
+2. STRICT NEGATIVE CONSTRAINTS: NO text, letters, numbers, logos, watermarks, human faces, messy circuit boards, binary rain, or cliché floating glowing brains in space.
 3. FORMAT: 16:9 Widescreen.
 4. OUTPUT FORMAT: Return ONLY the prompt string.
-
----
-COMPOSITION STRATEGIES (CRITICAL - MUST VARY):
-Do NOT default to centering the subject. Choose one of the following for each prompt:
-- **Rule of Thirds (三分法)**: Place the focal point at the intersection of grid lines, leaving negative space.
-- **Leading Lines (引导线)**: Use lines (roads, wires, light beams) to draw the eye from the corner into the distance.
-- **Isometric/Orthographic (等距视角)**: A 3D map-like view from a high angle (good for systems/architecture).
-- **Low Angle/Worm's Eye (低角度仰视)**: Make the subject look massive and imposing.
-- **Macro/Close-up (微距特写)**: Focus on texture and detail, blurring the background heavily (Depth of Field).
-- **Diagonal Composition (对角线构图)**: Create movement and tension across the frame.
-- **Framing (框架式构图)**: View the subject through a "window" or opening in the foreground.
-
----
-### STYLE MAPPING LOGIC (CRITICAL)
-First, identify which category the user's article belongs to, then select a style from that specific group.
-
-**GROUP A: Architecture & Hard Tech**
-*Categories: [基础模型, 训练微调技术, 技术栈, AI编程, 大厂产品线]*
-*Visual Theme: Structural, Precise, Modular.*
-*Select one Style:*
-- **Isometric 3D (等距视角3D)**: Clean, god-like view of systems.
-- **Bauhaus Style (包豪斯风格)**: Geometric, primary colors, functional shapes.
-- **Blueprint Schematic (工程蓝图)**: Dark blue background, white technical lines.
-
-**GROUP B: Logic, Agents & Flow**
-*Categories: [多智能体, 上下文工程, 论文解读, AI标准规范]*
-*Visual Theme: Interconnected, Fluid, Transparent.*
-*Select one Style:*
-- **Glassmorphism (磨砂玻璃质感)**: Floating translucent layers, soft shadows.
-- **Data Pointillism (数据点彩派)**: Images formed by thousands of glowing dots/nodes.
-- **Abstract Line Art (极简线条)**: Complex logic represented by clean, flowing lines.
-
-**GROUP C: Insights & Future**
-*Categories: [个人洞察, 名人洞察, 行业动态]*
-*Visual Theme: Deep, Philosophical, Metaphorical.*
-*Select one Style:*
-- **Surrealism (超现实主义)**: Dreamlike, juxtaposing unrelated objects (e.g., a clock melting on a server).
-- **Ukiyo-e (浮世绘风格)**: Traditional waves/mountains meeting cybernetic elements.
-- **Cinematic Macro (电影级微距)**: Extreme close-up of an abstract object with shallow depth of field.
-
-**GROUP D: Tools, Open Source & Learning**
-*Categories: [开源项目, AI工具箱, 课程]*
-*Visual Theme: Playful, Tactile, Accessible.*
-*Select one Style:*
-- **Claymorphism (3D软泥/粘土风格)**: Cute, soft, rounded edges, friendly.
-- **Lego/Voxel Art (乐高/体素风格)**: Building blocks, pixelated 3D.
-- **Pop Art (波普艺术)**: High contrast, vibrant colors, comic book dots.
-
----
-### STEP-BY-STEP GENERATION:
-1. **Classify**: Match the input `category` to Group A, B, C, or D.
-2. **Select Style**: Randomly pick ONE style from that Group.
-3. **Metaphor**: Create a physical object metaphor for the content (e.g., "Multi-Agent" -> "A swarm of glowing mechanical bees building a hive").
-4. **Composition**: Apply a non-centered composition (Rule of Thirds, Leading Lines, Low Angle).
-5. **Construct Prompt**:
-   "[Selected Style] + [Composition Strategy] + [Visual Metaphor Scene] + [Lighting/Atmosphere] + [Color Palette] + 高品质，8k分辨率，无文字"
 """
-        user_prompt = f"""        
-文章标题: {title}
-文章分类: {category}
-文章内容摘要:
+
+        user_prompt = f"""
+请严格遵循以下「分类视觉识别系统（CVIS）」约束，为博客文章生成一条高品质 16:9 封面绘画提示词：
+
+文章信息：
+- 标题: {title}
+- 分类: {category}（所属视觉赛道：{track['name']}）
+- 标签: {tags or '无'}
+
+【必须严格锁定的赛道风格（不可擅自更换画风）】：
+- 艺术风格: {track['style']}
+- 质感材质: {track['materials']}
+- 基础色调: {track['base_palette']}
+- 品牌/机构点缀色: {brand_accent or '按基础色调自然延展'}
+
+【本篇指定镜头与构图（严禁正中对称呆板摆拍）】：
+- {composition}
+
+【可融入的实体视觉道具参考（请围绕文章内容有机组合成一个场景）】：
+- {props_text}
+
+文章正文参考：
 {article_content}
 
-请根据System Prompt中的逻辑，为这篇文章生成封面提示词。
+请直接输出一条完整、画面感极强的纯中文绘画提示词，末尾附带“16:9宽屏横版，8K超高清，纯视觉艺术作品，禁止出现任何文字、字母、数字、Logo或人脸”。
 """
-        """
-        import random, datetime
-        current_hour = datetime.datetime.now().hour
-        styles = ["浮世绘风格", "赛博朋克", "乐高积木风格", "蒸汽朋克", "极简线条画"]
-        time_vibe = "清晨阳光" if current_hour < 12 else "午夜霓虹"
-
-        # 在发送给Gemini之前，先在System Prompt里注入这个随机选出的风格
-        injected_style = random.choice(styles)
-
-        system_prompt = system_prompt + f"\nConstraint: You MUST use the art style: {injected_style} combined with {time_vibe}."
-        """
         try:
             if self.config.llm_provider == "gemini":
                 return self._call_gemini(system_prompt, user_prompt)
@@ -391,200 +564,55 @@ First, identify which category the user's article belongs to, then select a styl
             logger.error(f"OpenAI API call failed: {e}")
             return None
 
-    def _optimize_description(self, description: str, title: str, category: str = "") -> str:
-        """优化描述为适合图片生成的prompt，增加多样性和内容相关性"""
-        import random
+    def _optimize_description(
+        self,
+        description: str,
+        title: str,
+        category: str = "",
+        article_content: str = "",
+        tags: str = "",
+    ) -> str:
+        """基于 4 支柱 CVIS 体系生成“同类别风格统一、跨类别风格鲜明、单图内容丰富”的封面 Prompt"""
+        seed_text = f"{title}|{description}|{category}"
+        seed = int(hashlib.md5(seed_text.encode("utf-8")).hexdigest()[:8], 16)
 
-        # 使用标题+描述的哈希值作为随机种子，确保同一篇文章生成稳定但不同文章有差异
-        seed_text = f"{title}|{description}"
-        seed = int(hashlib.md5(seed_text.encode()).hexdigest()[:8], 16)
-        random.seed(seed)
+        if len(description) > 240:
+            description = description[:240]
 
-        # 截断描述
-        if len(description) > 200:
-            description = description[:200]
+        # 1. 锁定所属分类赛道与艺术画风
+        track = self._resolve_track(category, title, description, tags)
 
-        # 提取关键词以决定风格倾向
-        text = f"{title} {description} {category}".lower()
+        # 2. 构图轮盘（确定性切分视角，打破千篇一律居中呆板感）
+        composition = COMPOSITION_STRATEGIES[seed % len(COMPOSITION_STRATEGIES)]
 
-        # ===== 1. 主题场景库 (更具体、更有画面感) =====
-        theme_scenes = {
-            'math': {
-                'scenes': [
-                    "漂浮在虚空中的金色正十二面体，表面刻满神秘符文",
-                    "无限延伸的分形隧道，螺旋下降的黄金分割线",
-                    "悬浮的水晶棱镜折射出彩虹光谱，几何体环绕",
-                    "巨大的莫比乌斯环在星空中缓缓旋转",
-                ],
-                'colors': ["深邃宝蓝与金色", "紫水晶色与银白", "墨黑与琥珀金"],
-                'keywords': ['math', 'imo', 'number', 'logic', 'reasoning', 'geometry', '数学', '推理', '逻辑', '几何', '证明', 'theorem']
-            },
-            'code': {
-                'scenes': [
-                    "无数行代码如瀑布般倾泻而下，汇聚成发光的河流",
-                    "巨型CPU芯片的微观世界，晶体管如城市般排列",
-                    "悬浮的终端窗口矩阵，绿色光标闪烁",
-                    "由0和1组成的DNA双螺旋结构",
-                ],
-                'colors': ["黑客绿与深黑", "赛博朋克霓虹蓝粉", "矩阵绿与暗金"],
-                'keywords': ['code', 'programming', 'software', 'github', 'linux', 'terminal', '代码', '编程', '开发', '源码', 'python', 'javascript', 'rust']
-            },
-            'ai_brain': {
-                'scenes': [
-                    "巨大的发光大脑悬浮在太空中，神经元连接闪烁如银河",
-                    "机械蜂鸟与有机花朵的融合，金属与生命的交界",
-                    "无数光点汇聚成人形轮廓，代表意识的诞生",
-                    "镜面球体反射出无限的自我，AI觉醒的隐喻",
-                ],
-                'colors': ["电光蓝与洋红渐变", "粉紫与青色", "暖橙与冷蓝对比"],
-                'keywords': ['brain', 'neural', 'cognitive', 'think', 'llm', 'gpt', 'claude', 'gemini', '大脑', '神经网络', '认知', '思考', '模型', 'transformer', 'agent']
-            },
-            'cloud_data': {
-                'scenes': [
-                    "云端之上的水晶数据中心，光纤如藤蔓缠绕",
-                    "数据流如极光般在夜空中流动",
-                    "无限延伸的服务器机房，蓝光LED阵列",
-                    "透明的云朵中藏着微型城市，代表云计算",
-                ],
-                'colors': ["天空蓝与纯净白", "极光绿与深空蓝", "科技青与浅灰"],
-                'keywords': ['cloud', 'server', 'data', 'network', 'api', '云', '服务器', '数据', '网络', '连接', 'kubernetes', 'docker', 'aws']
-            },
-            'security': {
-                'scenes': [
-                    "数字堡垒在虚空中矗立，盾牌反射着攻击",
-                    "锁链与密钥在黑暗中发光",
-                    "病毒代码如红色闪电被防火墙阻挡",
-                    "指纹扫描光束穿透黑暗",
-                ],
-                'colors': ["深灰与警示红", "银色与电光蓝", "暗黑与金色防护罩"],
-                'keywords': ['security', 'hack', 'privacy', 'lock', '安全', '黑客', '隐私', '加密', 'encryption', 'firewall']
-            },
-            'robot': {
-                'scenes': [
-                    "优雅的机器人手指轻触蝴蝶翅膀",
-                    "机械臂在星空下组装微型宇宙",
-                    "人形机器人静坐冥想，周围环绕数据光环",
-                    "齿轮与电路交织的机械心脏",
-                ],
-                'colors': ["钛金属银与暖光", "工业橙与深蓝", "白色机甲与霓虹点缀"],
-                'keywords': ['robot', 'automation', 'mechanical', '机器人', '自动化', 'humanoid', 'android']
-            },
-            'vision': {
-                'scenes': [
-                    "巨大的机械眼睛扫描城市天际线",
-                    "像素化的世界逐渐变得清晰",
-                    "无数摄像头编织成监控网络",
-                    "眼睛中反射出数字世界的倒影",
-                ],
-                'colors': ["视网膜红与瞳孔黑", "扫描绿与数据蓝", "光学棱镜彩虹色"],
-                'keywords': ['vision', 'image', 'recognition', 'camera', '视觉', '图像', '识别', 'cv', 'detection']
-            },
-            'nlp': {
-                'scenes': [
-                    "文字如星辰般漂浮在宇宙中，形成星座",
-                    "巨大的书籍打开，文字飞出形成光带",
-                    "对话气泡交织成复杂的网络",
-                    "古老卷轴与现代全息投影的融合",
-                ],
-                'colors': ["墨水蓝与羊皮纸黄", "荧光绿与深紫", "渐变彩虹与纯白"],
-                'keywords': ['nlp', 'language', 'text', 'chat', 'conversation', '语言', '文本', '对话', 'gpt', 'bert', 'embedding']
-            },
-            'product': {
-                'scenes': [
-                    "产品蓝图如全息图般展开",
-                    "用户旅程化作发光的路径",
-                    "交互界面元素在空中优雅排列",
-                    "设计稿逐渐具象化的过程",
-                ],
-                'colors': ["产品白与交互蓝", "极简黑与点缀橙", "渐变紫与科技银"],
-                'keywords': ['product', 'design', 'ux', 'ui', '产品', '设计', '交互', 'interface', 'user']
-            },
-            'research': {
-                'scenes': [
-                    "论文页面化作飞翔的纸鹤群",
-                    "实验室中悬浮的分子结构模型",
-                    "知识图谱如神经网络般延展",
-                    "放大镜下的微观世界与宏观宇宙对照",
-                ],
-                'colors': ["学术蓝与论文白", "实验绿与试管透明", "知识金与智慧紫"],
-                'keywords': ['research', 'paper', 'study', 'experiment', '研究', '论文', '实验', 'academic', 'science']
-            },
-            'protocol': {
-                'scenes': [
-                    "多个发光节点通过光束相互连接形成网络",
-                    "不同颜色的数据包在管道中高速传输",
-                    "握手协议可视化为两只光之手相握",
-                    "层层叠加的协议栈如透明的摩天大楼",
-                ],
-                'colors': ["协议蓝与连接绿", "数据橙与节点白", "网络紫与通信青"],
-                'keywords': ['protocol', 'a2a', 'mcp', 'api', 'http', 'grpc', '协议', '通信', 'agent', 'communication', 'interop']
-            },
-        }
-
-        # ===== 2. 匹配主题 =====
-        matched_theme = None
-        for theme_name, theme_data in theme_scenes.items():
-            if any(k in text for k in theme_data['keywords']):
-                matched_theme = theme_data
-                break
-
-        # 默认主题
-        if not matched_theme:
-            matched_theme = {
-                'scenes': [
-                    "抽象的能量波在空间中扩散",
-                    "几何形状在虚空中缓缓旋转",
-                    "光与影交织的未来空间",
-                    "数字粒子汇聚成神秘图案",
-                ],
-                'colors': ["科技蓝与未来银", "渐变紫与星空黑", "极光色与深空蓝"],
-            }
-
-        # ===== 3. 随机选择场景和配色 =====
-        scene = random.choice(matched_theme['scenes'])
-        color = random.choice(matched_theme['colors'])
-
-        # ===== 4. 随机艺术风格组合 =====
-        art_styles = [
-            "C4D 3D渲染，Octane Render，体积光",
-            "虚幻引擎5画质，光线追踪，超写实",
-            "赛博朋克风格，霓虹灯光，未来都市",
-            "极简主义，留白艺术，干净利落",
-            "抽象表现主义，流体动态，能量感",
-        ]
-        
-        lighting_effects = [
-            "Tyndall effect丁达尔效应",
-            "逆光剪影效果",
-            "柔和的漫射光",
-            "戏剧性的明暗对比",
-            "梦幻般的光晕效果",
-        ]
-        
-        perspectives = [
-            "俯瞰视角，宏大场景",
-            "微距特写，细节丰富",
-            "正面对称构图",
-            "动态斜角构图",
-            "深远透视，空间感强",
-        ]
-
-        art_style = random.choice(art_styles)
-        lighting = random.choice(lighting_effects)
-        perspective = random.choice(perspectives)
-
-        # ===== 5. 构建最终Prompt =====
-        prompt = (
-            f"【重要】这是一张纯视觉艺术作品，禁止出现任何文字、字母、数字、符号、Logo、水印。"
-            f"画面主体：{scene}。"
-            f"融入'{title}'的概念进行抽象艺术表达。"
-            f"色彩方案：{color}。"
-            f"艺术风格：{art_style}，{lighting}，{perspective}。"
-            f"画质要求：8K超高清，细节精致，专业级博客封面。"
-            f"构图：16:9宽屏横版，大气磅礴。"
-            f"再次强调：纯图案背景，绝对不要包含任何文字元素。"
+        # 3. 品牌/名校点缀色联动
+        brand_accent = self._resolve_brand_palette(title, description, category, tags)
+        palette_text = (
+            f"{track['base_palette']}；并{brand_accent}"
+            if brand_accent
+            else track["base_palette"]
         )
 
+        # 4. 正文与摘要实体道具提取（2-3 个具体视觉隐喻协作）
+        props = self._extract_visual_props(
+            title=title,
+            description=description,
+            article_content=article_content,
+            tags=tags,
+            track_key=track["key"],
+            seed=seed,
+        )
+        props_scene = "，协同交互组成有机场景的实体意象包括：" + "、".join(props)
+
+        prompt = (
+            f"【艺术画风】{track['style']}。"
+            f"【镜头构图】{composition}。"
+            f"【画面主体与实体道具】围绕主题《{title}》展开具体隐喻{props_scene}。"
+            f"【材质与光影】采用{track['materials']}，光影层次通透高级。"
+            f"【色彩方案】{palette_text}。"
+            f"【画面规范】16:9 宽屏横版，8K 超高清细节，专业博客封面。"
+            f"禁止出现任何文字、字母、数字、符号、Logo、水印、人脸，禁止庸俗的太空发光大脑或杂乱电路板代码雨。"
+        )
         return prompt
 
     def _extract_keywords(self, description: str, title: str) -> str:
@@ -1234,7 +1262,7 @@ First, identify which category the user's article belongs to, then select a styl
             logger.error(f"Image download/convert error: {e}")
             return False
 
-    def generate_cover(self, title: str, description: str, category: str = "", force: bool = False, article_content: str = "") -> Optional[str]:
+    def generate_cover(self, title: str, description: str, category: str = "", force: bool = False, article_content: str = "", tags: str = "") -> Optional[str]:
         """
         生成封面图片
 
@@ -1243,7 +1271,8 @@ First, identify which category the user's article belongs to, then select a styl
             description: 文章描述
             category: 文章分类
             force: 是否强制重新生成
-            article_content: 文章全文（用于LLM生成提示词）
+            article_content: 文章全文（用于LLM与视觉道具提取）
+            tags: 文章标签字符串
 
         Returns:
             图片URL路径（相对于static目录）
@@ -1262,14 +1291,16 @@ First, identify which category the user's article belongs to, then select a styl
         prompt = None
         if self.config.use_llm_prompt and article_content:
             logger.info("🤖 Using LLM to generate image prompt...")
-            prompt = self._generate_prompt_with_llm(title, article_content, category)
+            prompt = self._generate_prompt_with_llm(title, article_content, category, tags=tags)
             if prompt:
                 logger.info(f"✅ LLM generated prompt successfully")
             else:
                 logger.warning("⚠️ LLM prompt generation failed, falling back to rule-based prompt")
         
         if not prompt:
-            prompt = self._optimize_description(description, title, category)
+            prompt = self._optimize_description(
+                description, title, category, article_content=article_content, tags=tags
+            )
         
         logger.info(f"Generating image with prompt: {prompt[:500]}...")
 
@@ -2017,15 +2048,32 @@ def main():
         title = ""
         description = ""
         category = ""
+        tags = ""
+
+        parts_path = Path(article_path).parts
+        path_category = ""
+        for lang_dir in ("zh", "en"):
+            if lang_dir in parts_path:
+                idx = parts_path.index(lang_dir)
+                if idx + 1 < len(parts_path) - 1:
+                    path_category = parts_path[idx + 1]
+                    break
 
         for line in front_matter.split('\n'):
-            if line.startswith('title:'):
-                title = line.split(':', 1)[1].strip().strip('"\'')
-            elif line.startswith('description:'):
-                description = line.split(':', 1)[1].strip().strip('"\'')
-            elif line.startswith('categories:'):
-                if '[' in line:
-                    category = line.split('[', 1)[1].split(']', 1)[0].split(',')[0].strip().strip('"\'')
+            stripped_line = line.strip()
+            if stripped_line.startswith('title:'):
+                title = stripped_line.split(':', 1)[1].strip().strip('"\'')
+            elif stripped_line.startswith('description:'):
+                description = stripped_line.split(':', 1)[1].strip().strip('"\'')
+            elif stripped_line.startswith('categories:'):
+                if '[' in stripped_line:
+                    category = stripped_line.split('[', 1)[1].split(']', 1)[0].split(',')[0].strip().strip('"\'')
+            elif stripped_line.startswith('tags:'):
+                if '[' in stripped_line:
+                    raw_tags = stripped_line.split('[', 1)[1].split(']', 1)[0]
+                    tags = " ".join(t.strip().strip('"\'') for t in raw_tags.split(',') if t.strip())
+
+        effective_category = category or path_category
 
         if title and description:
             # 检查是否已有AI封面
@@ -2033,11 +2081,12 @@ def main():
                 logger.info(f"Skipping {article_path} - already has AI cover (use --force to override)")
                 continue
 
-            # 生成封面 (传递文章全文用于LLM生成提示词)
+            # 生成封面 (传递文章全文与标签用于 CVIS 提示词生成)
             image_path = generator.generate_cover(
-                title, description, category, 
+                title, description, effective_category,
                 force=force_regenerate,
-                article_content=article_body
+                article_content=article_body,
+                tags=tags,
             )
 
             if image_path:

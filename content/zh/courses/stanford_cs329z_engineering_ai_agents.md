@@ -7,6 +7,12 @@ categories: ["courses"]
 description: "斯坦福大学 2026 秋季新课 CS329Z《Engineering AI Agents》，系统讲授从基础 LLM 流水线、复合 AI 系统到自主智能体的工程构建、优化、数据飞轮、评测与安全。"
 wordCount: 2513
 readingTime: 7
+
+ai_cover: "/images/generated-covers/stanford_cs329z_engineering_ai_agents.webp"
+cover:
+  image: "/images/generated-covers/stanford_cs329z_engineering_ai_agents.webp"
+  alt: "Stanford CS329Z：Engineering AI Agents"
+  ai_generated: true
 ---
 
 ## **Stanford CS329Z：Engineering AI Agents（AI 智能体工程）**

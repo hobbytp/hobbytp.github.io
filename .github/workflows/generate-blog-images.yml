@@ -5,34 +5,34 @@ on:
     branches:
       - main
     paths:
-      - 'content/**/*.md'
+      - "content/**/*.md"
   workflow_dispatch:
     inputs:
       image_service:
-        description: 'AI service to use'
+        description: "AI service to use"
         required: false
-        default: 'modelscope'
+        default: "modelscope"
         type: choice
         options:
-        - modelscope
-        - gemini
-        - both
+          - modelscope
+          - gemini
+          - both
       target_type:
-        description: 'Generation target'
+        description: "Generation target"
         required: false
-        default: 'both'
+        default: "both"
         type: choice
         options:
-        - covers
-        - articles
-        - both
+          - covers
+          - articles
+          - both
       force_regenerate:
-        description: 'Force regenerate existing images'
+        description: "Force regenerate existing images"
         required: false
         default: false
         type: boolean
       auto_generate:
-        description: 'Auto-generate for new/updated articles only'
+        description: "Auto-generate for new/updated articles only"
         required: false
         default: true
         type: boolean
@@ -116,8 +116,7 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          cd scripts
-          # 确保文件路径存在
+          # 确保文件路径存在（从仓库根目录执行）
           echo "Checking file paths..."
           for file in ${{ steps.detect-changes.outputs.changed_files }}; do
             if [ -f "$file" ]; then
@@ -126,15 +125,14 @@ jobs:
               echo "Missing: $file"
             fi
           done
-          python generate_image.py ${{ steps.detect-changes.outputs.changed_files }}
+          python scripts/generate_image.py ${{ steps.detect-changes.outputs.changed_files }}
 
       - name: Generate images for all blogs (manual trigger)
         if: github.event_name == 'workflow_dispatch'
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          cd scripts
-          python generate_image.py --backfill
+          python scripts/generate_image.py --backfill
 
       - name: Auto-generate ModelScope AI Covers for new blogs
         if: github.event_name == 'push' && steps.detect-changes.outputs.need_ai_cover != ''
@@ -144,7 +142,6 @@ jobs:
           WORKFLOW_MODE: true
           FORCE_REGENERATE: false
         run: |
-          cd scripts
           echo "🤖 Auto-generating ModelScope AI covers for new blogs..."
           echo "Files needing AI covers: ${{ steps.detect-changes.outputs.need_ai_cover }}"
 
@@ -156,7 +153,7 @@ jobs:
           for file in $NEED_COVER_FILES; do
             if [ -f "$file" ] && [ $file_count -lt $max_files ]; then
               echo "Processing: $file"
-              python ai_cover_generator.py --workflow-mode --target=covers --specific-file="$file"
+              python scripts/ai_cover_generator.py --workflow-mode --target=covers --specific-file="$file"
               file_count=$((file_count + 1))
             elif [ $file_count -ge $max_files ]; then
               echo "Reached limit of $max_files files, skipping remaining files"
@@ -174,14 +171,17 @@ jobs:
           WORKFLOW_MODE: true
           FORCE_REGENERATE: ${{ github.event.inputs.force_regenerate }}
         run: |
-          cd scripts
           echo "🤖 Generating ModelScope AI covers..."
           echo "Target: ${{ github.event.inputs.target_type }}"
           echo "Force regenerate: $FORCE_REGENERATE"
 
           # Generate covers if target includes covers
           if [[ "${{ github.event.inputs.target_type }}" == "covers" || "${{ github.event.inputs.target_type }}" == "both" ]]; then
-            python ai_cover_generator.py --workflow-mode --target=covers --force=${FORCE_REGENERATE}
+            if [ "$FORCE_REGENERATE" = "true" ]; then
+              python scripts/ai_cover_generator.py --workflow-mode --target=covers --force
+            else
+              python scripts/ai_cover_generator.py --workflow-mode --target=covers
+            fi
           else
             echo "Skipping cover generation (target: articles only)"
           fi
@@ -243,12 +243,14 @@ jobs:
           if [ -d "static/images/articles" ] && [ "$(ls -A static/images/articles 2>/dev/null)" ]; then
             echo "| Filename | Size | Type |" >> $GITHUB_STEP_SUMMARY
             echo "|----------|------|------|" >> $GITHUB_STEP_SUMMARY
-            cd static/images/articles
-            ls -lh *.jpg *.png *.webp 2>/dev/null | while read -r line; do
-              filename=$(echo $line | awk '{print $9}')
-              size=$(echo $line | awk '{print $5}')
-              echo "| $filename | $size | Image |" >> $GITHUB_STEP_SUMMARY
-            done
+            (
+              cd static/images/articles
+              ls -lh *.jpg *.png *.webp 2>/dev/null | while read -r line; do
+                filename=$(echo $line | awk '{print $9}')
+                size=$(echo $line | awk '{print $5}')
+                echo "| $filename | $size | Image |" >> $GITHUB_STEP_SUMMARY
+              done
+            )
           else
             echo "No article images generated" >> $GITHUB_STEP_SUMMARY
           fi
@@ -258,12 +260,14 @@ jobs:
           if [ -d "static/images/generated-covers" ] && [ "$(ls -A static/images/generated-covers 2>/dev/null)" ]; then
             echo "| Filename | Size | AI Service |" >> $GITHUB_STEP_SUMMARY
             echo "|----------|------|-----------|" >> $GITHUB_STEP_SUMMARY
-            cd static/images/generated-covers
-            ls -lh *.jpg *.png *.webp 2>/dev/null | while read -r line; do
-              filename=$(echo $line | awk '{print $9}')
-              size=$(echo $line | awk '{print $5}')
-              echo "| $filename | $size | ModelScope |" >> $GITHUB_STEP_SUMMARY
-            done
+            (
+              cd static/images/generated-covers
+              ls -lh *.jpg *.png *.webp 2>/dev/null | while read -r line; do
+                filename=$(echo $line | awk '{print $9}')
+                size=$(echo $line | awk '{print $5}')
+                echo "| $filename | $size | ModelScope |" >> $GITHUB_STEP_SUMMARY
+              done
+            )
           else
             echo "No AI covers generated" >> $GITHUB_STEP_SUMMARY
           fi
@@ -285,4 +289,3 @@ jobs:
           else
             echo "ℹ️ **No Generation**: No new images were generated" >> $GITHUB_STEP_SUMMARY
           fi
-
