@@ -940,6 +940,87 @@
         "Added to `claude plugin validate` the `$` nouns a mod's `engine.create` hook adds, withholds or replaces",
         "Added support for `CLAUDE_CODE_AUTO_MODE_MODEL` in managed settings for Claude Desktop sessions on third-party providers (takes effect once Claude Desktop includes this version)"
       ]
+    },
+    "openai/codex-security@npm-v0.10.0": {
+      "tag": "npm-v0.10.0",
+      "highlights": [
+        "<!-- codex-security-release-summary:start -- <!-- release-section: highlights:start -- Highlights Codex Security 0.10.0 gives clearer guidance when a patch is b"
+      ]
+    },
+    "alphaxiv/openresearch@v0.2.27": {
+      "tag": "v0.2.27",
+      "highlights": [
+        "<!-- desktop-downloads:start -- Download OpenResearch Install the desktop app to get everything you need. No separate installation or terminal setup required. <"
+      ]
+    },
+    "glanderness/beeftv@v2.2.4": {
+      "tag": "v2.2.4",
+      "highlights": [
+        "修复桌面端「Eagle 素材库」插件无法加载缩略图、下载原文件或导入画布报错的问题，支持直接保存原文件到本机并优化多图浏览时的内存释放。",
+        "自定义模型服务支持无 `/v1` 版本前缀地址与手动模型管理：服务地址末尾加 `#`（如 ` `/v1` 的网关；手动添加的模型支持直接改名或删除；补齐外部渠道 `seedance-2-5` 型号最高 30 秒时长识别。",
+        "画布文本与提示词编辑修复：修复提示词输入框长按退格键时偶发中断、多出空行或删空后误触发页面后退的问题；修复图片和视频「反推提示词」生成的文本节点清空内容后仍残留旧文字或重复弹出编辑栏的问题。",
+        "个人资产库分页计数与生成历史视频预览修复：个人资产库改为在分页前完成筛选与计数，修复每页显示数量偏少、分类计数与总页数不一致及关键词误匹配的问题；生成历史中的已保存视频优先读取本机文件预览和插入画布，不再因临时下载链接过期而显示预览失败。"
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.3": {
+      "tag": "v2.100.3",
+      "highlights": [
+        "Carry Claude Code's Advisor server tool on the translated Messages path",
+        "Record the Anthropic pool account tag on each attempt",
+        "Say why an API-key balance is unknown and when it was last read",
+        "Opt-in admit policy for curated selections and honest arrival status"
+      ]
+    },
+    "volcengine/openviking@v0.5.5": {
+      "tag": "v0.5.5",
+      "highlights": [
+        "**多节点协调**：新增 `storage.agfs.coordination`（`memory` / `sqlite` / `cache`），统一负责 Watch 选主和语义任务版本；只有已持久化的工作才会取代旧任务，按 key 的状态保留一天后过期。[#7466](",
+        "**快照路径历史索引**：`snapshot/log?paths=...` 改用派生索引查找改动过指定路径的提交，默认为 SQLite，多实例部署可选 MySQL，设为 `none` 则保持原来的扫描方式。快照提交、文件内容和 API 响应都不变。[#7505](",
+        "**Gateway Context Profile**：新增 `recall_peer_scope`（`all` / `actor`），可把召回限制在当前 peer；新增 `capture_memory_types`，限制 capture 抽取的记忆类型；capture 会话保留用户自己的记忆策略。[#7389](",
+        "**导入与检索**：首次非严格导入允许部分成功（此前任一文件失败即整体失败）；支持 Wiki 托管的飞书文件和原生飞书幻灯片导入；远程 PathGlob 由 `storage.vectordb.enable_path_glob` 控制，未设置时沿用各适配器的默认值。[#7427]("
+      ]
+    },
+    "garrytan/gbrain@v0.60.715.0": {
+      "tag": "v0.60.715.0",
+      "highlights": [
+        "Skills and harness: skills that match the CLI and update safely, OpenClaw and claude-cli fixes, and skill resolver additions. This release carries three PRs: 89"
+      ]
+    },
+    "openai/codex@rust-v0.169.0": {
+      "tag": "rust-v0.169.0",
+      "highlights": [
+        "Search older tasks from the agent command center by name, prompt preview, or working directory.",
+        "Press `Ctrl+S` in the terminal report editor to save a diagnostic ZIP locally, even when uploads are disabled.",
+        "**Yes, clear context and implement** now hands the full approved plan to the fresh session and keeps the current session open if the handoff fails.",
+        "Fixed Windows sandbox handling for quoted `cmd.exe` paths and for PowerShell sessions whose working directory has an unreadable parent. (#60624, #60647)"
+      ]
+    },
+    "langchain-ai/langgraph@1.2.22": {
+      "tag": "1.2.22",
+      "highlights": [
+        "release(langgraph): 1.2.22",
+        "release(checkpoint-postgres): 3.2.1",
+        "release(prebuilt): 1.1.2",
+        "release(checkpoint): 4.3.2"
+      ]
+    },
+    "anthropics/claude-code@v2.1.325": {
+      "tag": "v2.1.325",
+      "highlights": [
+        "Fixed a security issue in how zstd-compressed responses are decoded",
+        "Added a spinner tip in VS Code and similar integrated terminals about re-running a notebook cell, shown once Claude has read or edited a Jupyter notebook",
+        "Added a line under the error shown when your organization's policy blocks a request, saying how to continue: run `/rewind` and change the message, or run `/clear`",
+        "Added a note for Claude when a sandboxed `git checkout`, `git stash` or autostash pull cannot update protected files such as those in `.claude`"
+      ]
+    },
+    "microsoft/pyrit@v1.2.0": {
+      "tag": "v1.2.0",
+      "highlights": [
+        "**A major CoPyRIT GUI update** brings scan launch, live progress, history, scoring, comparison, and review into one workflow.",
+        "**Scenario presets and suites** make assessments reusable and allow related scenario configurations to be launched together.",
+        "**Operations and Findings** organize engagements, capture human-reviewed issues and evidence, and support reporting.",
+        "**New attacks and targets** expand coverage with GOAT, role-play and jailbreak techniques, A2A, HackAPrompt, and GitHub Copilot."
+      ]
     }
   }
 }
