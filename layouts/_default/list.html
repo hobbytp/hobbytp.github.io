@@ -101,14 +101,14 @@
     {{- /* Category/Tag/Section pages: use card grid too */ -}}
     
     <div style="padding: 2rem; max-width: 1400px; margin: 0 auto;">
-      {{- if not .IsHome | and .Title }}
-      <header class="page-header" style="margin-bottom: 2rem;">
-        {{- partial "breadcrumbs.html" . }}
-        <h1 style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">
-          {{ if eq .Kind "term" }}{{ i18n .Data.Term | default (i18n .Title | default .Title) }}{{ else }}{{ i18n .Title | default .Title }}{{ end }}
+      {{- $isCategoryTerm := and (eq .Kind "term") (eq .Data.Plural "categories") -}}
+      {{- if and (not .IsHome) (not $isCategoryTerm) .Title }}
+      <header class="page-header" style="margin-bottom: 1.5rem;">
+        <h1 style="font-size: 1.5rem; font-weight: 650; margin: 0;">
+          {{ if eq .Kind "term" }}#{{ i18n .Data.Term | default (i18n .Title | default .Title) }}{{ else }}{{ i18n .Title | default .Title }}{{ end }}
         </h1>
         {{- if .Description }}
-        <div class="post-description" style="color: var(--color-secondary); margin-top: 0.5rem;">
+        <div class="post-description" style="color: var(--color-secondary); margin-top: 0.4rem;">
           {{ .Description | markdownify }}
         </div>
         {{- end }}
