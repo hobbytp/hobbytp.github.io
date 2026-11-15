@@ -74,3 +74,10 @@ url = "/categories/news"
 weight = 11
 [main.params]
 icon = "globe"
+
+[[main]]
+name = "我的开源"
+url = "/my-projects/"
+weight = 12
+[main.params]
+icon = "github"

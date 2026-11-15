@@ -1,0 +1,391 @@
+{{ define "main" }}
+<div class="main-container">
+  {{- partial "sidebar.html" . }}
+
+  <div class="main-content-with-sidebar">
+    {{- $projects := site.Params.sidebar.projects | default slice -}}
+    <div class="projects-container">
+      <header class="projects-hero">
+        <div class="projects-hero-top">
+          <div>
+            <div class="projects-kicker-row">
+              <span class="projects-kicker-pill">OPEN SOURCE · HOBBYTP</span>
+              <span class="projects-count-pill">共 {{ len $projects }} 个开源项目</span>
+            </div>
+            <h1 class="projects-title">{{ .Title }}</h1>
+            {{- with .Description }}
+            <p class="projects-description">{{ . }}</p>
+            {{- end }}
+          </div>
+          <div class="projects-hero-actions">
+            <a class="projects-btn projects-btn-primary" href="https://github.com/hobbytp" target="_blank" rel="noopener noreferrer">
+              {{- partial "icon.html" (dict "name" "github" "size" "15") }}
+              <span>GitHub @hobbytp ↗</span>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {{- if gt (len $projects) 0 }}
+      <section class="projects-grid" aria-label="{{ .Title }}">
+        {{- range $index, $project := $projects }}
+        {{- $repoPath := replaceRE `^https?://github\.com/([^#?]+).*$` "$1" $project.url -}}
+        <article class="project-card" onclick="window.open('{{ $project.url }}', '_blank', 'noopener,noreferrer')">
+          <div class="project-card-top">
+            <span class="project-icon-badge" aria-hidden="true">
+              {{- partial "icon.html" (dict "name" "github" "size" "18") }}
+            </span>
+            <span class="project-index">{{ printf "%02d" (add $index 1) }}</span>
+          </div>
+
+          <h2 class="project-card-title">
+            <a href="{{ $project.url }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">{{ $project.name }}</a>
+          </h2>
+
+          {{- if ne $repoPath $project.url }}
+          <div class="project-card-repo">{{ $repoPath }}</div>
+          {{- end }}
+
+          {{- with $project.description }}
+          <p class="project-card-desc">{{ . }}</p>
+          {{- end }}
+
+          {{- if or $project.language $project.tags }}
+          <div class="project-card-tags">
+            {{- with $project.language }}
+            <span class="project-tag">{{ . }}</span>
+            {{- end }}
+            {{- range $project.tags }}
+            <span class="project-tag">#{{ . }}</span>
+            {{- end }}
+          </div>
+          {{- end }}
+
+          <div class="project-card-footer">
+            <a class="project-card-link" href="{{ $project.url }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+              <span>访问 GitHub 仓库</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            {{- with $project.demo_url }}
+            <a class="project-card-demo" href="{{ . }}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
+              <span>在线预览 ↗</span>
+            </a>
+            {{- end }}
+          </div>
+        </article>
+        {{- end }}
+      </section>
+      {{- else }}
+      <div class="projects-empty">
+        <p>暂无已配置的开源项目，可在 <code>config/_default/params.toml</code> 的 <code>[[sidebar.projects]]</code> 中添加。</p>
+      </div>
+      {{- end }}
+
+      {{- with .Content }}
+      <section class="projects-extra-content">
+        <div class="post-content">
+          {{- . -}}
+        </div>
+      </section>
+      {{- end }}
+    </div>
+  </div>
+</div>
+
+<style>
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 2.5vw, 2.25rem) clamp(1rem, 2.5vw, 2rem) 4rem;
+}
+
+.projects-hero {
+  background: var(--glass-surface);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  padding: clamp(1.4rem, 2.6vw, 2.2rem);
+  margin-bottom: 1.5rem;
+}
+
+.projects-hero-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+.projects-kicker-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.projects-kicker-pill,
+.projects-count-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.24rem 0.72rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.projects-kicker-pill {
+  color: var(--color-primary);
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-100);
+}
+
+[data-theme="dark"] .projects-kicker-pill,
+body.dark .projects-kicker-pill {
+  color: var(--color-primary-light);
+}
+
+.projects-count-pill {
+  color: var(--color-secondary);
+  background: var(--glass-hover);
+  border: 1px solid var(--glass-border);
+}
+
+.projects-title {
+  margin: 0 0 0.55rem;
+  font-size: clamp(1.85rem, 3vw, 2.45rem);
+  font-weight: 760;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--color-heading-strong);
+}
+
+.projects-description {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--color-secondary);
+}
+
+.projects-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.projects-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.05rem;
+  border-radius: 9999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.18s ease;
+}
+
+.projects-btn-primary {
+  background: var(--color-primary);
+  color: #ffffff;
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 8px 20px -8px rgba(0, 113, 227, 0.55);
+}
+
+.projects-btn-primary:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .projects-btn-primary:hover,
+body.dark .projects-btn-primary:hover {
+  background: var(--color-primary-light);
+  border-color: var(--color-primary-light);
+  color: #0b0b0d;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.35rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-surface);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow);
+  padding: 1.4rem 1.45rem 1.25rem;
+  cursor: pointer;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--glass-shadow-hover);
+  border-color: var(--glass-border-hover);
+}
+
+.project-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.project-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  color: var(--color-primary);
+  background: var(--color-primary-50);
+  border: 1px solid var(--color-primary-100);
+}
+
+[data-theme="dark"] .project-icon-badge,
+body.dark .project-icon-badge {
+  color: var(--color-primary-light);
+}
+
+.project-index {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary);
+}
+
+.project-card-title {
+  margin: 0 0 0.28rem;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  color: var(--color-heading-strong);
+}
+
+.project-card-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.project-card:hover .project-card-title a {
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .project-card:hover .project-card-title a,
+body.dark .project-card:hover .project-card-title a {
+  color: var(--color-primary-light);
+}
+
+.project-card-repo {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.85rem;
+  word-break: break-all;
+}
+
+.project-card-desc {
+  margin: 0 0 1rem;
+  flex: 1;
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: var(--color-text);
+  word-break: break-word;
+}
+
+.project-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.16rem 0.55rem;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-secondary);
+  background: var(--glass-hover);
+  border: 1px solid var(--glass-border);
+}
+
+.project-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.project-card-link,
+.project-card-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+[data-theme="dark"] .project-card-link,
+[data-theme="dark"] .project-card-demo,
+body.dark .project-card-link,
+body.dark .project-card-demo {
+  color: var(--color-primary-light);
+}
+
+.project-card-link:hover,
+.project-card-demo:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.projects-empty,
+.projects-extra-content {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--glass-shadow);
+}
+
+@media (max-width: 768px) {
+  .projects-container {
+    padding: 1rem 0.85rem 2.5rem;
+  }
+  .projects-hero {
+    border-radius: 16px;
+    padding: 1.2rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+</style>
+{{ end }}

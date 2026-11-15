@@ -77,10 +77,14 @@ This blog pairs **Apple Human Interface Guidelines (macOS Sequoia / iCloud / App
   - Fixed `220px` frosted-glass rail on desktop (`>= 769px`), sliding off-canvas on mobile (`<= 768px`).
   - Content offset: `.main-content-with-sidebar { padding-left: 220px; }` and aligned footer offset.
   - Navigation items use `10px` pill radius; active state uses soft blue tint (`--color-primary-50`) + `--color-primary` text rather than harsh solid blocks.
+  - **Appearance Segmented Control (`.sidebar-theme-segmented`)**: Sticky bottom Apple Control Center-style pill track containing explicit `浅色 / Light` and `深色 / Dark` buttons (`[data-theme-value]`), synced with `html[data-theme]`, `localStorage["pref-theme"]`, and `Alt + T` on sidebar pages.
 - **Article Cards (`.article-card`)**:
   - Radius: `16px` (`--radius-card: 16px`).
   - Glass border (`1px solid var(--glass-border)`) and ambient layered shadow (`0 10px 28px -10px rgba(0, 0, 0, 0.08)` light / `0 12px 32px -10px rgba(0, 0, 0, 0.6)` dark).
   - Hover: `translateY(-3px)` with soft Apple Blue hairline focus (`rgba(0, 113, 227, 0.32)` light / `rgba(41, 151, 255, 0.38)` dark).
+- **Open-Source Showcase & About Pages**:
+  - **My Open Source (`layouts/_default/my-projects.html`)**: Uses `body.has-sidebar` with `.projects-hero` + responsive `.projects-grid` frosted `.project-card` tiles (`16px` radius, `01/02/...` tabular monospace indices, reading `site.Params.sidebar.projects`).
+  - **About Page (`layouts/_default/about.html`)**: Uses `body.has-sidebar` with `.about-hero-card` spatial glass header, E1 pill badges (`.about-focus-pill`), and structured profile cards inheriting E1 tokens.
 - **Fallback Generated Covers (`.ai-generated-cover`)**:
   - Soft Apple Frosted Titanium-Blue surface (`#eef3f9 -> #e5ecf4 -> #eaecef` light; `#151820 -> #19202b -> #151619` dark) with subtle concentric SVG geometric rings (`.cover-apple-geometry`), frosted category pill (`.cover-category`), and crisp two-line clamp title.
 - **Long-Form Reading Pages (`.editorial-article`)**:

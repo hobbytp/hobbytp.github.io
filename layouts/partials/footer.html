@@ -10,28 +10,53 @@
     document.addEventListener("DOMContentLoaded", function () {
         // Sidebar Theme Toggle - Extended functionality
         // This extends PaperMod's theme toggle to support multiple buttons
-        function toggleTheme() {
-            const html = document.querySelector("html");
-            const currentTheme = html.dataset.theme;
-            const newTheme = currentTheme === "dark" ? "light" : "dark";
+        function syncSidebarThemeButtons(theme) {
+            const buttons = document.querySelectorAll("#sidebar-theme-toggle [data-theme-value]");
+            buttons.forEach(function (btn) {
+                btn.setAttribute("aria-pressed", String(btn.dataset.themeValue === theme));
+            });
+        }
 
+        function applyTheme(newTheme) {
+            const html = document.querySelector("html");
             html.dataset.theme = newTheme;
             localStorage.setItem("pref-theme", newTheme);
+            syncSidebarThemeButtons(newTheme);
 
             if (window.initOrUpdateMermaid) {
                 window.initOrUpdateMermaid(newTheme);
             }
         }
 
-        // Add event listener to sidebar theme toggle button
+        function toggleTheme() {
+            const html = document.querySelector("html");
+            const currentTheme = html.dataset.theme;
+            applyTheme(currentTheme === "dark" ? "light" : "dark");
+        }
+
         const sidebarThemeToggle = document.getElementById("sidebar-theme-toggle");
         if (sidebarThemeToggle) {
-            sidebarThemeToggle.addEventListener("click", toggleTheme);
-            sidebarThemeToggle.addEventListener("keydown", function (event) {
-                if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    toggleTheme();
+            syncSidebarThemeButtons(document.querySelector("html").dataset.theme === "dark" ? "dark" : "light");
+
+            sidebarThemeToggle.querySelectorAll("[data-theme-value]").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    applyTheme(btn.dataset.themeValue);
+                });
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (!document.body.classList.contains("has-sidebar")) {
+                    return;
                 }
+                if (!event.altKey || event.ctrlKey || event.metaKey || event.key.toLowerCase() !== "t") {
+                    return;
+                }
+                const tag = event.target && event.target.tagName;
+                if (tag === "INPUT" || tag === "TEXTAREA" || (event.target && event.target.isContentEditable)) {
+                    return;
+                }
+                event.preventDefault();
+                toggleTheme();
             });
         }
 
