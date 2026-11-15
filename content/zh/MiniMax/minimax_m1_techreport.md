@@ -4,7 +4,7 @@ date: "2025-07-02T21:20:00+08:00"
 draft: false
 description: "MiniMax-M1 模型技术报告"
 tags: ["AI", "MiniMax", "M1"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 wordCount: 1713
 readingTime: 5
 ---

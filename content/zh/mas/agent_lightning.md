@@ -3,7 +3,7 @@ title: "Agent Lightning"
 date: "2025-08-27T20:10:00+08:00"
 draft: false
 tags: ["AI", "Agent", "强化学习", "RL"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 cover:
     image: "images/cover/agent_lightning.png"
     alt: "Agent Lightning"

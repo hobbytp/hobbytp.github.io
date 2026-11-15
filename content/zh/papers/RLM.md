@@ -3,7 +3,7 @@ title: "MIT RLM(递归语言模型)-克服LLM上下文窗口限制和性能衰�
 date: "2026-01-20T22:18:36+08:00"
 draft: false
 tags: ["paper", "research"]
-categories: ["papers"]
+categories: ["papers", "large_models"]
 description: "MIT 递归语言模型（RLM）模型，旨在攻克大语言模型在处理超长文本时的上下文衰减与窗口限制难题。"
 cover:
   image: "/images/optimized/png/RLM.webp"

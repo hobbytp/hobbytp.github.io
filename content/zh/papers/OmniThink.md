@@ -3,7 +3,7 @@ title: "OmniThink: Expanding Knowledge Boundaries in Machine Writing through Thi
 date: "2025-06-01T22:20:00+08:00"
 draft: false
 tags: ["machine_writing"]
-categories: ["papers"]
+categories: ["papers", "large_models"]
 description: "本文介绍了OmniThink: Expanding Knowledge Boundaries in Machine Writing through Thinking。"
 wordCount: 5625
 readingTime: 15

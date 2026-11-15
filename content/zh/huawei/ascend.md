@@ -5,7 +5,7 @@ lastmod: "2025-05-20T22:20:00+08:00"
 draft: false
 description: "昇腾AI芯片与英伟达GPU的技术对比"
 tags: ["GPU", "昇腾", "Huawei"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 wordCount: 1107
 readingTime: 3
 ---

@@ -3,7 +3,7 @@ title: 智能体元设计与元优化设计模式详解
 date: "2025-11-05T10:10:00+08:00"
 draft: false
 tags: ["AI", "多智能体", "设计模式", "design pattern", "meta-pattern", "agentic"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "智能体元设计与元优化设计模式详解: 智能体元设计与元优化模式是一种元模式，它超越了传统智能体的执行层面，将大型语言模型（LLM）的推理能力提升到架构设计师和提示工程师的层级。该模式的核心在于让 AI 系统具备自主生成、评估、优化其内部多智能体（MAS）架构和协作配置的能力，以实现针对每个问题实例的自适应和最优性能。"
 wordCount: 3220
 readingTime: 9

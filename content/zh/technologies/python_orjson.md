@@ -3,7 +3,7 @@ title: "Python 的 orjson 库"
 date: "2025-04-22T10:34:00+08:00"
 description: "Python 的 orjson 库"
 tags: ["Python", "orjson"]
-categories: ["technologies"]
+categories: ["technologies", "ai_programming"]
 wordCount: 1170
 readingTime: 3
 ---

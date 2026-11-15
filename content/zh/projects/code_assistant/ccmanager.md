@@ -3,7 +3,7 @@ title: "CCManager：多AI编码助手会话管理工具"
 date: "2025-10-29T14:20:00+08:00"
 draft: false
 tags: ["ccmanager", "code_assistant", "git"]
-categories: ["projects","code_assistant"]
+categories: ["projects", "ai_programming"]
 description: "CCManager：多AI编码助手会话管理工具，无需借助tmux，完全独立运行"
 wordCount: 398
 readingTime: 1

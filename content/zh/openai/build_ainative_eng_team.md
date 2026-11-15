@@ -4,7 +4,7 @@ date: "2025-11-29T23:14:00+08:00"
 description: "OpenAI关于通过将复杂的编码智能体集成到软件开发生命周期（SDLC）中，来实现构建人工智能原生工程团队的转变。涵盖了从规划和设计蓝图到生成完整的构建实施、测试以及操作维护。通过将起草测试、处理样板代码和进行初步代码审查等机械性工作授权给智能体，团队的工作效率得到大幅提升。这种转变使工程师能够将注意力集中于高级架构、系统推理和产品意图，保持对关键战略决策和最终代码质量的最终所有权。"
 tags: ["AI","Coding Agent","SDLC"]
 author: "OpenAI for Developers"
-categories: ["big_companies","ai_programming"]
+categories: ["big_companies", "ai_programming", "products"]
 wordCount: 7539
 readingTime: 19
 ---

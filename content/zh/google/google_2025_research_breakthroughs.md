@@ -3,7 +3,7 @@ title: "Google 2025 年度回顾：年度研究突破"
 date: 2025-12-23T00:00:00+08:00
 draft: false
 tags: ["Google", "AI", "Gemini 3", "Research", "2025", "Breakthroughs", "Gemini 3 Pro", "Gemini 3 Flash", "Gemma 3", "AI Agents"]
-categories: ["Google", "AI Research", "大模型"]
+categories: ["big_companies", "papers", "large_models", "products"]
 author: "Google"
 description: "Google 2025 年 AI 研究突破全面回顾：Gemini 3 Pro/Flash 登顶 LMArena，AI Agent 重塑产品矩阵，量子计算实现可验证优势，Earth AI 应对全球挑战。"
 

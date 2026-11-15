@@ -3,7 +3,7 @@ title: "Google I/O 2025 大会亮点"
 date: "2025-05-21T23:10:00+08:00"
 draft: false
 tags: ["AI", "google", "google_io_2025", "技术"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 description: "本文介绍了Google I/O 2025 大会亮点。"
 wordCount: 2315
 readingTime: 6

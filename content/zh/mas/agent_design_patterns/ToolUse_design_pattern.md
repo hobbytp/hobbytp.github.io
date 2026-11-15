@@ -3,7 +3,7 @@ title: Agentic设计模式：Tool Use
 date: "2025-11-06T18:10:00+08:00"
 draft: false
 tags: ["AI", "Tool Use", "设计模式", "design pattern", "agentic"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "Tool Use模式使智能体能够通过集成外部能力来执行超越其训练数据范围的行动。"
 wordCount: 2356
 readingTime: 6

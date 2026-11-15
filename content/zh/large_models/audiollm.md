@@ -3,7 +3,7 @@ title: "AudioLLM - 李沐亲自解说语音大模型训练的底层思路"
 date: "2025-07-29T17:10:00+08:00"
 draft: false
 tags: ["AI", "AudioLLM", "李沐", "语音大模型", "训练"]
-categories: ["models", "large_models", "audio_models"]
+categories: ["large_models"]
 description: "李沐亲自解说语音大模型AudioLLM训练的底层思路"
 wordCount: 3142
 readingTime: 8

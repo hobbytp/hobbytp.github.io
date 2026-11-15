@@ -3,7 +3,7 @@ title: Agentic设计模式：Router
 date: "2025-11-06T22:10:00+08:00"
 draft: false
 tags: ["AI", "Router", "设计模式", "design pattern", "agentic"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "Router模式为智能体操作框架引入了**条件逻辑**，使其能够根据**环境状态、用户输入或前序操作结果**等因素，在多个潜在的专用函数、工具或子流程之间进行**仲裁和动态决策**。"
 wordCount: 2862
 readingTime: 8

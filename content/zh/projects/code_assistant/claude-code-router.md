@@ -3,7 +3,7 @@ title: "Claude-Code-Router：AI 时代的智能路由中枢"
 date: "2025-08-12T22:10:00+08:00"
 draft: false
 tags: ["Claude-Code-Router", "LLM", "AI"]
-categories: ["code_assistant"]
+categories: ["ai_programming"]
 wordCount: 13929
 readingTime: 35
 ---

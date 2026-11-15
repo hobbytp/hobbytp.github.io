@@ -4,7 +4,7 @@ date: 2025-11-09T00:00:00+08:00
 draft: false
 updated: 2025-11-09T00:00:00+08:00
 tags: ["oolong", "long context", "evaluation"]
-categories: ["evaluation"]
+categories: ["large_models"]
 description: "Oolong 是一个针对长上下文模型的挑战性聚合基准测试项目，包括相关代码和评估脚本（完整版本即将发布）。其目标是评估模型的长上下文推理和聚合能力。"
 wordCount: 218
 readingTime: 1

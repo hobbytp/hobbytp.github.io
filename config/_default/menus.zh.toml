@@ -34,113 +34,43 @@ weight = 5
 icon = "star"
 
 [[main]]
-name = "硅基问道"
-url = "/categories/silicon_inquiries"
-weight = 6
-[main.params]
-icon = "cpu"
-
-[[main]]
-name = "论文解读"
-url = "/categories/papers"
-weight = 7
-[main.params]
-icon = "book-open"
-
-[[main]]
-name = "基础模型"
-url = "/categories/large_models"
-weight = 8
-[main.params]
-icon = "brain"
-
-[[main]]
-name = "训练微调技术"
-url = "/categories/training"
-weight = 9
-[main.params]
-icon = "settings"
-
-[[main]]
-name = "上下文工程"
-url = "/categories/context_engineering"
-weight = 10
-[main.params]
-icon = "message-square"
-
-[[main]]
-name = "多智能体"
-url = "/categories/mas/"
-weight = 11
-[main.params]
-icon = "users"
-
-[[main]]
-name = "AI标准规范"
-url = "/categories/ai_spec"
-weight = 12
-[main.params]
-icon = "file-text"
-
-[[main]]
-name = "AI编程"
+name = "智能体与编程"
 url = "/categories/ai_programming"
-weight = 13
+weight = 6
 [main.params]
 icon = "code"
 
 [[main]]
+name = "模型与研究"
+url = "/categories/large_models"
+weight = 7
+[main.params]
+icon = "brain"
+
+[[main]]
 name = "AI项目研究台"
 url = "/ai-workbench/"
-weight = 13.5
+weight = 8
 [main.params]
 icon = "compass"
 
 [[main]]
 name = "开源项目"
 url = "/categories/projects"
-weight = 14
+weight = 9
 [main.params]
 icon = "rocket"
 
 [[main]]
-name = "AI工具箱"
-url = "/categories/ai_tools"
-weight = 15
-[main.params]
-icon = "tool"
-
-[[main]]
-name = "AI产品"
+name = "产品与大厂"
 url = "/categories/products/"
-weight = 15.1
+weight = 10
 [main.params]
 icon = "package"
 
 [[main]]
-name = "大厂产品线"
-url = "/categories/big_companies"
-weight = 15.2
-[main.params]
-icon = "briefcase"
-
-[[main]]
-name = "技术栈"
-url = "/categories/technologies/"
-weight = 16
-[main.params]
-icon = "terminal"
-
-[[main]]
-name = "行业动态"
+name = "每日AI动态"
 url = "/categories/news"
-weight = 17
+weight = 11
 [main.params]
 icon = "globe"
-
-[[main]]
-name = "课程"
-url = "/categories/courses"
-weight = 18
-[main.params]
-icon = "graduation-cap"

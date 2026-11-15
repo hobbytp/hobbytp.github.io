@@ -3,7 +3,7 @@ title: "Agent2Agent (A2A) 协议"
 date: "2025-04-12T16:10:00+08:00"
 draft: false
 tags: ["AI", "google", "A2A", "技术"]
-categories: ["ai_spec"]
+categories: ["ai_spec", "ai_programming"]
 description: "Google公司A2A协议是一种旨在实现人工智能代理之间无缝通信和协作的开放标准。它定义了一套通用的消息传递格式和交互模式，使得不同的 AI 代理能够相互发现、协商能力、执行任务并共享结果，从而更有效地完成复杂的最终用户请求。该协议旨在促进构建更强大、更通用的代理系统，这些系统可以跨越不同的环境和平台协同工作"
 wordCount: 8137
 readingTime: 21

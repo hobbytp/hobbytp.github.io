@@ -3,7 +3,7 @@ title: "Every联合创始人Dan Shipper：AI-first工作流程深度访谈"
 date: "2025-07-27T15:00:00+08:00"
 draft: false
 tags: ["Claude Code", "startup", "workflow", "entrepreneur"]
-categories: ["celebrity_insights","interview"]
+categories: ["celebrity_insights"]
 description: "Every联合创始人兼CEO Dan Shipper分享AI-first工作流程，解析为什么每家公司都需要AI运营主管"
 wordCount: 3644
 readingTime: 10

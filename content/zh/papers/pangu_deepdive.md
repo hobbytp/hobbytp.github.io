@@ -3,7 +3,7 @@ title: "Pangu Deep Dive - 论文深度解析"
 date: 2024-01-01T00:00:00+08:00
 draft: false
 tags: ["论文", "Pangu", "深度学习", "AI"]
-categories: ["论文解读"]
+categories: ["papers", "large_models"]
 author: "Peng Tan"
 description: "Pangu相关论文的深度解析和资源链接"
 wordCount: 8

@@ -4,7 +4,7 @@ date: 2025-08-02T00:00:00+08:00
 draft: false
 tags: ["Python", "lib"]
 author: "Peng Tan"
-categories: ["technologies"]
+categories: ["technologies", "ai_programming"]
 description: "Python 库学习"
 wordCount: 1029
 readingTime: 3

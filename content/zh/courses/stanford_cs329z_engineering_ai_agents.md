@@ -3,7 +3,7 @@ title: "Stanford CS329Z：Engineering AI Agents"
 date: "2026-11-13T13:35:00+08:00"
 draft: false
 tags: ["AI", "Agent", "Stanford", "LLM", "系统工程"]
-categories: ["courses"]
+categories: ["courses", "large_models"]
 description: "斯坦福大学 2026 秋季新课 CS329Z《Engineering AI Agents》，系统讲授从基础 LLM 流水线、复合 AI 系统到自主智能体的工程构建、优化、数据飞轮、评测与安全。"
 wordCount: 2513
 readingTime: 7

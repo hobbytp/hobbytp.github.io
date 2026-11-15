@@ -3,7 +3,7 @@ title: "A Practical Guide for Designing, Developing, and Deploying Production-Gr
 date: "2025-12-11T20:10:00+08:00"
 draft: false
 tags: ["AI", "paper", "agentic"]
-categories: ["papers", "mas"]
+categories: ["papers", "mas", "large_models", "ai_programming"]
 description: "论文介绍了生产级智能体AI工作流的设计、开发与部署指南。"
 wordCount: 2819
 readingTime: 8

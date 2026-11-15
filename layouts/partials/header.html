@@ -86,13 +86,6 @@
                 </a>
             </li>
             {{- end }}
-            {{- if (and site.Params.search.enable (ne .Kind "section")) }}
-            <li>
-                <a href="/search/" title="{{ T "search" | default "搜索" }}">
-                    {{- T "search" | default "搜索" }}
-                </a>
-            </li>
-            {{- end }}
         </ul>
 
         {{- if (not site.Params.disableThemeToggle) }}

@@ -24,7 +24,7 @@
           {{- with .Params.categories }}
           {{- $category := index . 0 }}
           <a href="{{ "/categories/" | absLangURL }}{{ $category | urlize }}" class="article-card-category" onclick="event.stopPropagation()">
-            {{ $category }}
+            {{ i18n $category | default $category }}
           </a>
           {{- end }}
 
@@ -104,7 +104,7 @@
       <header class="page-header" style="margin-bottom: 2rem;">
         {{- partial "breadcrumbs.html" . }}
         <h1 style="font-size: 2rem; font-weight: 700; margin: 1rem 0;">
-          {{ .Title }}
+          {{ if eq .Kind "term" }}{{ i18n .Data.Term | default (i18n .Title | default .Title) }}{{ else }}{{ i18n .Title | default .Title }}{{ end }}
         </h1>
         {{- if .Description }}
         <div class="post-description" style="color: var(--color-secondary); margin-top: 0.5rem;">
@@ -130,7 +130,7 @@
             {{- with .Params.categories }}
             {{- $category := index . 0 }}
             <a href="{{ "/categories/" | absLangURL }}{{ $category | urlize }}" class="article-card-category" onclick="event.stopPropagation()">
-              {{ $category }}
+              {{ i18n $category | default $category }}
             </a>
             {{- end }}
 

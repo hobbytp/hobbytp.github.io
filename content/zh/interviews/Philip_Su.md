@@ -3,7 +3,7 @@ title: "微软/Meta/OpenAI工程师Philip Su访谈"
 date: "2025-05-27T18:30:00+08:00"
 draft: false
 tags: ["engineer", "career"]
-categories: ["celebrity_insights","interview"]
+categories: ["celebrity_insights"]
 description: "微软/Meta/OpenAI Distinguished Engineer- Philip Su访谈"
 wordCount: 6600
 readingTime: 17

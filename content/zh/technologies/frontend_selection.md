@@ -3,7 +3,7 @@ title: ⚔️ React UI 库江湖大比拼：全栈选型指南
 date: 2025-11-15T14:03:00+08:00
 draft: false
 tags: [React, UI, Ant Design, Fluent UI, MUI, Shadcn/ui, Mantine, HeroUI]
-categories: ["technologies"]
+categories: ["technologies", "ai_programming"]
 description: 本文基于深度技术视角，分析 Fluent UI、MUI、Ant Design、Shadcn/ui 以及新兴势力 Mantine、HeroUI（原NextUI） 的江湖地位、核心优劣势及未来 AI 驱动的 UI 演进方向。
 wordCount: 2901
 readingTime: 8

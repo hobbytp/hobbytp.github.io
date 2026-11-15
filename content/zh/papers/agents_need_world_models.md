@@ -3,7 +3,7 @@ title: "Gemini - 通用智能体是否需要世界模型"
 date: "2025-06-05T22:20:00+08:00"
 draft: false
 tags: ["world_model"]
-categories: ["papers"]
+categories: ["papers", "large_models"]
 description: "本文探讨了通用智能体是否需要世界模型才能实现灵活的、面向目标的行为"
 wordCount: 3645
 readingTime: 10

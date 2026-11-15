@@ -3,7 +3,7 @@ title: Agentic设计模式：Reflection
 date: "2025-11-03T19:10:00+08:00"
 draft: false
 tags: ["AI", "Reflection", "设计模式", "design pattern", "agentic"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "Reflection模式为智能体增加了一个**自我评估和迭代改进的层次**，使其能够对其自身的工作、输出或内部状态进行批判性审查，并利用评估结果来提升性能或优化响应。"
 wordCount: 3605
 readingTime: 10

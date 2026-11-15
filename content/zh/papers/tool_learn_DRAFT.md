@@ -3,7 +3,7 @@ title: "从人工标注到自我迭代：大模型工具学习的动态文档优
 date: "2025-05-25T22:20:00+08:00"
 draft: false
 tags: ["tool_learning", "tool_document"]
-categories: ["papers"]
+categories: ["papers", "large_models"]
 description: "本文介绍了从人工标注到自我迭代：大模型工具学习的动态文档优化新范式。"
 wordCount: 913
 readingTime: 3

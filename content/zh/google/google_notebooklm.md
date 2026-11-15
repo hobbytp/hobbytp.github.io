@@ -4,7 +4,7 @@ date: "2025-10-21T23:10:00+08:00"
 lastmod: "2025-12-17T18:10:00+08:00"
 draft: false
 tags: ["AI", "Google", "NotebookLM"]
-categories: ["ai_tools","big_companies"]
+categories: ["ai_tools", "big_companies", "products"]
 description: "Google NotebookLM 是Google开发的一种用于处理和生成笔记本内容的基于大型语言模型的笔记类（知识库类）网页应用。它能够理解和生成结构化的笔记本数据，支持代码、文本和图形元素的混合处理。本文主要分享我的个人使用心得。"
 wordCount: 4958
 readingTime: 13

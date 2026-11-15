@@ -3,7 +3,7 @@ title: "OpenAI 官方课程"
 date: 2025-09-02T17:00:00+08:00
 draft: false
 tags: ["openai", "课程", "官方课程"]
-categories: ["course"]
+categories: ["courses", "large_models"]
 description: "OpenAI 官方课程，覆盖从基础到高级的AI技术与应用"
 wordCount: 632
 readingTime: 2

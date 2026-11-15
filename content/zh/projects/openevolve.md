@@ -3,7 +3,7 @@ title: "OpenEvolve - 开源进化算法项目"
 date: 2025-05-20T00:00:00+08:00
 draft: false
 tags: ["开源", "进化算法", "AI", "项目"]
-categories: ["开源项目"]
+categories: ["projects"]
 author: "Peng Tan"
 description: "OpenEvolve相关开源项目和资源链接"
 wordCount: 348

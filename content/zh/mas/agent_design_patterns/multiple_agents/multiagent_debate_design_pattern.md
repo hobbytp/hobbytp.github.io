@@ -3,7 +3,7 @@ title: 多智能体群组对话与辩论模式详解
 date: "2025-11-07T10:10:00+08:00"
 draft: false
 tags: ["AI", "多智能体", "设计模式", "design pattern", "agentic"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "多智能体群组对话与辩论模式详解: 多智能体群组对话与辩论模式旨在通过模拟人类团队的讨论和辩论过程，利用多个专业智能体之间的相互批判和协作，共同解决复杂问题或达成高置信度的决策。该模式的核心价值在于冗余验证和多角度论证，从而显著提升最终输出的质量和可靠性。"
 wordCount: 4230
 readingTime: 11

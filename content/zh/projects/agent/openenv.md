@@ -3,7 +3,7 @@ title: "OpenEnv: 智能体安全执行环境"
 date: "2025-12-04T22:10:00+08:00"
 draft: false
 tags: ["OpenEnv", "agentic environments", "agent"]
-categories: ["projects", "mas"]
+categories: ["projects", "mas", "ai_programming"]
 description: "Meta和Hugging Face正在合作推出**OpenEnv Hub**，这是一个共享和开放的社区中心，用于开发、分享和探索兼容OpenEnv的智能体环境，以支持下一波智能体开发浪潮。这些环境可以用于训练和部署，并作为可扩展智能体开发的基石。"
 wordCount: 4748
 readingTime: 12

@@ -3,7 +3,7 @@ title: "Kaggle 5-Day AI Agents Intensive（Google）课程笔记"
 date: "2025-12-21T22:00:00+08:00"
 draft: false
 tags: ["Kaggle", "Google", "AI Agents", "Gemini", "ADK", "MCP", "A2A", "课程"]
-categories: ["courses"]
+categories: ["courses", "large_models"]
 description: "Kaggle Learn Guide：Google 5 天 AI Agents 强化课程中文整理（Setup + Day1~Day5），覆盖 agents 基础、工具与 MCP、上下文工程、质量评估与可观测性、从原型到生产与 A2A 协议，并保留原始资源链接。"
 wordCount: 2711
 readingTime: 7

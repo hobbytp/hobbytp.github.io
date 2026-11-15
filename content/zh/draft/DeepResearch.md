@@ -12,7 +12,7 @@ changelog:
 draft: false
 description: "Deep Research 深度研究"
 tags: ["AI", "Ascent", "Agent", "红杉资本"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 wordCount: 12970
 readingTime: 33
 ---

@@ -3,7 +3,7 @@ title: "多智能体强化学习（MARL）在多智能体系统（MAS）中的�
 date: "2025-04-26T20:10:00+08:00"
 draft: false
 tags: ["AI", "多智能体", "强化学习", "MARL", "MAS", "论文", "技术"]
-categories: ["mas", "training"]
+categories: ["mas", "training", "ai_programming", "large_models"]
 description: "本文介绍了多智能体强化学习（MARL）在多智能体系统（MAS）中的应用：理论、算法、应用与展望。"
 wordCount: 16955
 readingTime: 43

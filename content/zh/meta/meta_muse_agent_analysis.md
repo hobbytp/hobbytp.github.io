@@ -3,7 +3,7 @@ title: "Meta Muse 深度解析：一个「替你动手」的 Agent 为何两周�
 date: 2026-10-03T19:30:00+08:00
 draft: false
 tags: ["AI", "Meta", "Muse", "Agent", "Muse Spark", "Secure VM", "Sentinel", "AI Agent", "产品分析"]
-categories: ["meta", "products"]
+categories: ["big_companies", "products"]
 description: "Meta 于 2026 年 9 月 8 日上线的个人 AI 智能体 Muse，两周内登顶美区 App Store 免费榜。本文从技术架构出发，拆解 Muse Secure VM 与 Sentinel 的安全设计、真实可用边界、四家第三方数据的口径分歧、火爆的结构性成因，并给出四个尚未被证伪的隐忧：留存悬崖、人工兜底、平台围墙，以及一笔没有公开数据的单位经济账。"
 wordCount: 10007
 readingTime: 26

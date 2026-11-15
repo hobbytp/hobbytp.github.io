@@ -5,7 +5,7 @@ lastmod: "2025-07-02T14:20:00+08:00"
 draft: false
 description: "MiniMax"
 tags: ["AI", "MiniMax"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 wordCount: 1184
 readingTime: 3
 ---

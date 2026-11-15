@@ -3,7 +3,7 @@ title: "OpenAI: AI in the Enterprise"
 date: "2025-05-06T20:14:00+08:00"
 description: "OpenAI关于企业级AI应用的详细简报"
 tags: ["AI","企业级AI","经验教训"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 wordCount: 2782
 readingTime: 7
 ---

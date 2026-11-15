@@ -3,7 +3,7 @@ title: "AI课程集合（持续更新中...）"
 date: "2025-11-15T16:10:00+08:00"
 draft: false
 tags: ["AI", "教育", "社区"]
-categories: ["courses"]
+categories: ["courses", "large_models"]
 description: "搜集到的网络上的各种AI课程合集"
 wordCount: 90
 readingTime: 1

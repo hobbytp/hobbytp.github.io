@@ -11,13 +11,13 @@ other = "论文解读"
 other = "技术解析"
 
 [projects]
-other = "项目分享"
+other = "开源项目"
 
 [interviews]
 other = "人物访谈"
 
 [news]
-other = "行业动态"
+other = "每日AI动态"
 
 [navigation]
 other = "导航"
@@ -34,9 +34,12 @@ other = "关于我"
 [search]
 other = "搜索"
 
-# 新增分类翻译
+# 分类翻译
 [my_insights]
 other = "个人洞察"
+
+[silicon_inquiries]
+other = "硅基问道"
 
 [celebrity_insights]
 other = "名人洞察"
@@ -48,28 +51,34 @@ other = "AI标准规范"
 other = "大厂产品线"
 
 [large_models]
-other = "大模型"
+other = "模型与研究"
 
 [training]
-other = "训练微调技术"
+other = "训练微调"
 
 [context_engineering]
 other = "上下文工程"
 
 [mas]
-other = "多代理技术"
+other = "多智能体"
 
 [ai_programming]
-other = "AI编程"
+other = "智能体与编程"
 
 [ai_tools]
 other = "AI工具箱"
+
+[products]
+other = "产品与大厂"
 
 [courses]
 other = "课程"
 
 [cat_my_insights]
 other = "个人洞察"
+
+[cat_silicon_inquiries]
+other = "硅基问道"
 
 [cat_celebrity_insights]
 other = "名人洞察"
@@ -87,28 +96,31 @@ other = "论文解读"
 other = "技术解析"
 
 [cat_large_models]
-other = "大模型"
+other = "模型与研究"
 
 [cat_training]
-other = "训练微调技术"
+other = "训练微调"
 
 [cat_context_engineering]
 other = "上下文工程"
 
 [cat_mas]
-other = "多代理技术"
+other = "多智能体"
 
 [cat_ai_programming]
-other = "AI编程"
+other = "智能体与编程"
 
 [cat_ai_tools]
 other = "AI工具箱"
+
+[cat_products]
+other = "产品与大厂"
 
 [cat_projects]
 other = "开源项目"
 
 [cat_news]
-other = "行业动态"
+other = "每日AI动态"
 
 [cat_courses]
 other = "课程"

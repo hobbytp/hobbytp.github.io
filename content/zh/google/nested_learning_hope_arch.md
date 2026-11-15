@@ -3,7 +3,7 @@ title: "Google Nested Learning原理剖析与Hope架构：迈向持续学习的�
 date: 2025-12-01T00:00:00+08:00
 draft: false
 tags: ["Nested Learning", "Hope架构", "持续学习"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 description: "Google Nested Learning原理剖析与Hope架构：迈向持续学习的新范式"
 wordCount: 4933
 readingTime: 13

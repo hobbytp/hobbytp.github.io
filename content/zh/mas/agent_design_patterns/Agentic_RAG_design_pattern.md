@@ -3,7 +3,7 @@ title: Agentic设计模式：Agentic RAG
 date: "2025-11-03T20:10:00+08:00"
 draft: false
 tags: ["AI", "Agentic RAG", "设计模式", "design pattern", "agentic"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "Agentic RAG模式是基础检索增强生成（RAG）模式的**高级演进**，它在传统的检索-生成流程中**嵌入了推理和决策层**（即智能体），从而将 RAG 从一个被动的数据管道转变为一个**主动的问题解决框架**。它显著提升了信息提取的**可靠性和深度**。"
 wordCount: 3666
 readingTime: 10

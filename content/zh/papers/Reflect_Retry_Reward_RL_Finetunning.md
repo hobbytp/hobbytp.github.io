@@ -4,7 +4,7 @@ date: "2025-07-04T22:30:00+08:00"
 lastmod: "2025-07-04T22:30:00+08:00"
 draft: false
 tags:  ["Reflect, Retry, Reward","LLM","training"]
-categories: ["papers","training"]
+categories: ["papers", "training", "large_models"]
 description: "Reflect, Retry, Reward: 大型语言模型的自我进化新范式"
 wordCount: 2385
 readingTime: 6

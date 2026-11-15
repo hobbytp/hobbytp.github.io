@@ -2,7 +2,7 @@
 title: "Electron 内存泄露诊断实战指南"
 date: 2026-01-11T08:27:40+08:00
 tags: ["Electron", "MemoryLeak", "Diagnostic"]
-categories: ["technologies"]
+categories: ["technologies", "ai_programming"]
 description: "Electron 内存泄露诊断实战指南：本文总结了本人在开发ShuTong（一个基于Electron的跨平台桌面应用，通过抓屏来对用户进行认知分析并给出建议以便用户改进的软件）时，对内存泄露的诊断和解决过程。"
 wordCount: 2134
 readingTime: 6

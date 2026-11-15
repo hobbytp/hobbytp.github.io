@@ -3,7 +3,7 @@ title: Agentic设计模式：Human-in-the-Loop
 date: "2025-11-05T18:10:00+08:00"
 draft: false
 tags: ["AI", "Human-in-the-Loop", "设计模式", "design pattern", "agentic"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "Human-in-the-Loop模式是一种智能系统设计，它将人类输入直接集成到智能体的自主工作流程中。"
 wordCount: 3011
 readingTime: 8

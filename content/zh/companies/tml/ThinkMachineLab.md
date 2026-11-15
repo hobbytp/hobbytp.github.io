@@ -3,7 +3,7 @@ title: "Thinking Machine Lab的定位与商业模式"
 date: 2025-12-05T20:10:00+08:00
 draft: false
 tags: ["TML", "定位", "商业模式"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 description: 前OpenAI首席技术官穆拉蒂创立的初创公司Thinking Machines Lab， 其核心战略就是：**Commoditize the Base Model, Monetize the Customization.**（让基座模型商品化/基础设施化，通过定制化服务来变现。）
 
 ai_cover: "/images/generated-covers/9d02843782ad5d6b16ca86cff71927c7.webp"

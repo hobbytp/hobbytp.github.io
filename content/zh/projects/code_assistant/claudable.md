@@ -3,7 +3,7 @@ title: "Claudable：基于Next.js的强大网页应用构建工具"
 date: "2025-10-29T14:20:00+08:00"
 draft: false
 tags: ["claudable", "code_assistant", "git"]
-categories: ["projects","code_assistant"]
+categories: ["projects", "ai_programming"]
 description: "Claudable：基于Next.js的强大网页应用构建工具"
 wordCount: 311
 readingTime: 1

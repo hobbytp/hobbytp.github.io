@@ -3,7 +3,7 @@ title: "腾讯AI产品线收集"
 date: "2025-09-29T10:10:00+08:00"
 draft: false
 tags: ["AI", "腾讯","产品线"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 description: "腾讯AI产品线收集整理分析"
 wordCount: 1283
 readingTime: 4

@@ -3,7 +3,7 @@ title: "Claude AI新宪章"
 date: "2026-01-23T15:35:09+08:00"
 draft: false
 tags: ["claude", "constitution"]
-categories: ["ai_spec"]
+categories: ["ai_spec", "ai_programming"]
 description: "Claude AI新宪章: Anthropic 为其 AI 模型 Claude 设定的核心价值观、行为准则及其被称为“宪章”的训练愿景。"
 cover:
   image: "/images/optimized/png/claude_new_constitution.webp"

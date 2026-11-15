@@ -2,7 +2,7 @@
 title: Language Server Protocol (LSP)
 date: "2025-02-23T15:03:00+08:00"
 tags: ["lsp", "language server", "protocol"]
-categories: ["technologies"]
+categories: ["technologies", "ai_programming"]
 draft: false
 description: Language Server Protocol (LSP) 是一种标准化协议，用于让编辑器和语言能力解耦。
 wordCount: 2821

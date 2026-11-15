@@ -3,7 +3,7 @@ title: "Agent 相关课程收集"
 date: "2025-08-28T20:10:00+08:00"
 draft: false
 tags: ["AI", "Agent", "多模态", "生成式AI"]
-categories: ["courses"]
+categories: ["courses", "large_models"]
 description: "搜集网络上来自各知名机构的Agent相关课程。"
 wordCount: 185
 readingTime: 1

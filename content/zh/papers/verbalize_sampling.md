@@ -3,7 +3,7 @@ title: "Verbalized Sampling: 言语采样提升模型多样性"
 date: "2025-10-27T20:22:48+08:00"
 draft: false
 tags: ["LLM", "Prompt", "Mode Collapse", "Verbalized Sampling", "Diversity"]
-categories: ["papers"]
+categories: ["papers", "large_models"]
 description: "Verbalized Sampling: 言语采样提升模型多样性"
 wordCount: 2038
 readingTime: 6

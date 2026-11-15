@@ -3,7 +3,7 @@ title: "模型上下文协议（MCP）深度解析：Agent互操作性的新纪�
 date: "2025-04-29T20:10:00+08:00"
 draft: false
 tags: ["AI", "Agent", "MCP", "Protocol"]
-categories: ["ai_spec"]
+categories: ["ai_spec", "ai_programming"]
 description: "本文介绍了模型上下文协议（MCP），并对其技术原理、主要贡献、当前优劣、生态系统现状，并与Google A2A等相关技术进行比较，展望其未来发展趋势。"
 wordCount: 11550
 readingTime: 29

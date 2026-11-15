@@ -5,7 +5,7 @@ lastmod: "2026-10-21T10:30:00+08:00"
 draft: false
 description: "一次与AI进行的递进式经济学对谈：从就业与收入的日常困惑出发，经由生产率、产业竞争、人力资本、服务业、消费、分配、储蓄与资本配置，一路追问到财政制度、外部约束、社会心理预期与中国增长模式的结构性转型。"
 tags: ["经济学", "就业", "收入分配", "消费", "资本配置", "地方财政", "增长模式", "行为经济学", "AI对谈", "硅基问道"]
-categories: ["silicon_inquiries"]
+categories: ["silicon_inquiries", "my_insights"]
 wordCount: 21000
 readingTime: 53
 ShowToc: true

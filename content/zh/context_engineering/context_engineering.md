@@ -3,7 +3,7 @@ title: "Context Engineering"
 date: "2025-08-12T22:10:00+08:00"
 draft: false
 tags: ["Context Engineering", "LLM", "AI"]
-categories: ["context_engineering"]
+categories: ["context_engineering", "ai_programming"]
 description: "Context Engineering 是大型语言模型（LLM）应用中的系统性技术，旨在通过动态构建、管理和优化输入模型的信息负载（包括指令、记忆、工具输出、外部知识等），提升模型在复杂任务中的性能、稳定性和可靠性。"
 wordCount: 4026
 readingTime: 11

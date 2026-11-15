@@ -3,7 +3,7 @@ title: "深度研究智能体：系统性审查与路线图"
 date: "2025-07-01T23:10:00+08:00"
 draft: false
 tags: ["deep_research_agents", "systematic_examination", "roadmap"]
-categories: ["papers"]
+categories: ["papers", "large_models"]
 description: "本文介绍了深度研究智能体：系统性审查与路线图。"
 wordCount: 3930
 readingTime: 10

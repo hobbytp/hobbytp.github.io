@@ -3,7 +3,7 @@ title: "智谱AI(GLM)"
 date: "2025-10-03T10:10:00+08:00"
 draft: false
 tags: ["AI", "智谱AI","GLM"]
-categories: ["big_companies"]
+categories: ["big_companies", "products"]
 description: "智谱AI(GLM)产品线收集整理分析"
 wordCount: 3152
 readingTime: 8

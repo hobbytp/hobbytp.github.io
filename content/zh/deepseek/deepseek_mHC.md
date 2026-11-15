@@ -3,7 +3,7 @@ title: "mHC: Redefining Deep Learning Scalability - DeekSeek"
 author: "DeepSeek"
 date: "2026-01-01T23:20:00+08:00"
 tags: ["AI", "DeepSeek", "mHC", "Hyper Connections"]
-categories: ["large_model"]
+categories: ["large_models"]
 description: "2026年伊始，DeepSeek团队带来了mHC（流形约束超连接）,这项技术完美解决了传统残差连接提升性能的超连接技术因破坏稳定性而难以实用的阿喀琉斯之踵."
 wordCount: 2907
 readingTime: 8

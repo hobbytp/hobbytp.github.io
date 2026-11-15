@@ -3,7 +3,7 @@ title: "ChatGPT智能体：核心技术解析与应用场景"
 date: "2025-07-17T20:10:00+08:00"
 draft: false
 tags: ["ChatGPT", "智能体", "OpenAI"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "本文全面梳理了ChatGPT智能体的核心技术架构、功能特点及应用场景，综合自OpenAI官方发布及权威媒体报道。"
 wordCount: 1243
 readingTime: 4

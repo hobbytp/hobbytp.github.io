@@ -3,7 +3,7 @@ title: "Manus项目经验：上下文工程精华内容"
 date: "2025-07-21T20:10:00+08:00"
 draft: false
 tags: ["Context Engineer", "Manus", "项目经验"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "本文介绍了Manus项目经验的上下文工程精华内容,总结为6个问题和解决方案。"
 wordCount: 1337
 readingTime: 4

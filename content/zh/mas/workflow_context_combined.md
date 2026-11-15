@@ -3,7 +3,7 @@ title: "AI Agent 深度解析：二维四象限法则与架构演进"
 date: "2025-09-26T20:10:00+08:00"
 draft: false
 tags: ["AI", "workflow", "context", "mas"]
-categories: ["mas"]
+categories: ["mas", "ai_programming"]
 description: "本文介绍了多智能体强化学习（MARL）在多智能体系统（MAS）中的应用：理论、算法、应用与展望。"
 wordCount: 2643
 readingTime: 7

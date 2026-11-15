@@ -3,7 +3,7 @@ title: "SuperClaude: 打造Claude Code成一个企业级的开发团队"
 date: "2025-10-25T11:30:00+08:00"
 draft: false
 tags: ["claude", "code", "superclaude"]
-categories: ["projects","code_assistant"]
+categories: ["projects", "ai_programming"]
 description: "SuperClaude: 打造Claude Code成一个全副武装的团队"
 wordCount: 3166
 readingTime: 8

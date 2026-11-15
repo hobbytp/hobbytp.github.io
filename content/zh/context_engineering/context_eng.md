@@ -3,7 +3,7 @@ title: "从“念咒语”到“造世界”：提示工程退位，上下文工
 date: "2025-08-10T20:10:00+08:00"
 draft: false
 tags: ["Context Engineering"]
-categories: ["context_engineering"] 
+categories: ["context_engineering", "ai_programming"]
 description: "从“念咒语”到“造世界”：提示工程退位，上下文工程登场"
 wordCount: 2560
 readingTime: 7
