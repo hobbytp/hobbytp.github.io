@@ -10,9 +10,7 @@ AI Cover Image Generator - Hugo原生实现
 {{- end -}}
 
 {{- /* 生成唯一ID */ -}}
-{{- $contentHash := printf "%s|%s" $title $description | strings.Truncate 100 -}}
-{{- $imageId := printf "cover-%s" (replace $contentHash " " "-" | replace ":" "-" | replace "." "-" | replace "/" "-") -}}
-{{- $imageId = $imageId | lower | truncate 20 "" -}}
+{{- $imageId := printf "cover-%s" (md5 $title | truncate 8 "") -}}
 
 {{- /* 如果已有封面图片，直接使用 */ -}}
 {{- $coverImage := "" }}
@@ -27,20 +25,35 @@ AI Cover Image Generator - Hugo原生实现
 {{- /* 转换Windows路径为web路径 */ -}}
 {{- $webPath := replace $coverImage "\\" "/" -}}
 
+{{- $catLabel := "" -}}
+{{- $catCode := "ARCHIVE" -}}
+{{- if $category -}}
+  {{- $catLabel = i18n $category | default $category -}}
+  {{- $catCode = (replace $category "_" " ") | upper -}}
+{{- end -}}
+
 {{- if $coverImage }}
   {{- if eq .Params.ai_generated true -}}
   <img src="{{ $webPath | absURL }}" alt="{{ .Params.cover.alt | default $title }}" loading="lazy" class="ai-generated">
-    <div class="ai-generated-badge">🤖 AI生成</div>
+    <div class="ai-generated-badge">AI COVER</div>
 {{- else }}
   <img src="{{ $webPath | absURL }}" alt="{{ .Params.cover.alt | default $title }}" loading="lazy">
 {{- end }}
 {{- else -}}
-  {{- /* 生成CSS艺术封面 */ -}}
-  <div class="ai-generated-cover category-{{ $category | lower }}" id="{{ $imageId }}" style="--base-hue: {{ mod (len $title) 360 }};">
+  {{- /* Apple Spatial Glass CSS & SVG 封面 */ -}}
+  <div class="ai-generated-cover category-{{ $category | lower }}" id="{{ $imageId }}">
+    <svg class="cover-apple-geometry" viewBox="0 0 360 180" fill="none" aria-hidden="true">
+      <circle cx="304" cy="42" r="68" stroke="currentColor" stroke-opacity="0.16" stroke-width="1" />
+      <circle cx="304" cy="42" r="42" stroke="currentColor" stroke-opacity="0.24" stroke-width="1" />
+      <line x1="224" y1="42" x2="356" y2="42" stroke="currentColor" stroke-opacity="0.12" stroke-width="1" />
+      <line x1="304" y1="0" x2="304" y2="112" stroke="currentColor" stroke-opacity="0.12" stroke-width="1" />
+    </svg>
     <div class="cover-content">
-      <div class="cover-category">{{ $category }}</div>
+      <div class="cover-meta-row">
+        {{- if $catLabel }}<span class="cover-category">{{ $catLabel }}</span>{{ end }}
+        <span class="cover-code">{{ $catCode }}</span>
+      </div>
       <h3 class="cover-title">{{ $title }}</h3>
-      <div class="cover-description">{{ $description | strings.Truncate 120 }}</div>
     </div>
   </div>
 {{- end -}}

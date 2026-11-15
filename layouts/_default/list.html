@@ -53,17 +53,18 @@
             {{- if eq (printf "%T" $displayDate) "string" -}}
               {{- $displayDate = $displayDate | time -}}
             {{- end -}}
-            <span class="article-card-meta-item">
-              📅 {{ $displayDate.Format "2006-01-02" }}
+            <span class="article-card-meta-item article-card-date">
+              {{ $displayDate.Format "2006.01.02" }}
             </span>
-            {{- if (or .Params.readingTime .ReadingTime) }}
-            <span class="article-card-meta-item">
-              ⏱️ {{ or .Params.readingTime .ReadingTime }} 分钟
-            </span>
-            {{- end }}
-            {{- if (or .Params.wordCount .WordCount) }}
-            <span class="article-card-meta-item">
-              📝 {{ or .Params.wordCount .WordCount }} 字
+            {{- if (or .Params.readingTime .ReadingTime .Params.wordCount .WordCount) }}
+            <span class="article-card-meta-item article-card-stats">
+              {{- if (or .Params.readingTime .ReadingTime) -}}
+                {{ or .Params.readingTime .ReadingTime }} MIN
+              {{- end -}}
+              {{- if and (or .Params.readingTime .ReadingTime) (or .Params.wordCount .WordCount) }} · {{ end -}}
+              {{- if (or .Params.wordCount .WordCount) -}}
+                {{ or .Params.wordCount .WordCount }} 字
+              {{- end -}}
             </span>
             {{- end }}
           </div>
@@ -159,17 +160,18 @@
               {{- if eq (printf "%T" $displayDate) "string" -}}
                 {{- $displayDate = $displayDate | time -}}
               {{- end -}}
-              <span class="article-card-meta-item">
-                📅 {{ $displayDate.Format "2006-01-02" }}
+              <span class="article-card-meta-item article-card-date">
+                {{ $displayDate.Format "2006.01.02" }}
               </span>
-              {{- if (or .Params.readingTime .ReadingTime) }}
-              <span class="article-card-meta-item">
-                ⏱️ {{ or .Params.readingTime .ReadingTime }} 分钟
-              </span>
-              {{- end }}
-              {{- if (or .Params.wordCount .WordCount) }}
-              <span class="article-card-meta-item">
-                📝 {{ or .Params.wordCount .WordCount }} 字
+              {{- if (or .Params.readingTime .ReadingTime .Params.wordCount .WordCount) }}
+              <span class="article-card-meta-item article-card-stats">
+                {{- if (or .Params.readingTime .ReadingTime) -}}
+                  {{ or .Params.readingTime .ReadingTime }} MIN
+                {{- end -}}
+                {{- if and (or .Params.readingTime .ReadingTime) (or .Params.wordCount .WordCount) }} · {{ end -}}
+                {{- if (or .Params.wordCount .WordCount) -}}
+                  {{ or .Params.wordCount .WordCount }} 字
+                {{- end -}}
               </span>
               {{- end }}
             </div>

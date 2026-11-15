@@ -38,10 +38,10 @@ services:
       - HUGO_NUMWORKERMULTIPLIER=8
     # 极速模式：
     # --renderStaticToDisk=false: 静态文件直接从源目录服务，不复制到 public
-    # --disableKinds: 跳过 RSS/sitemap/分类/标签页
+    # --disableKinds: 跳过 RSS/sitemap（保留分类/标签页）
     # --ignoreCache=false: 使用缓存
     # --printMemoryUsage=false: 不打印内存使用
-    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --noHTTPCache --gc --minify=false --disableKinds=RSS,sitemap,taxonomy,term --renderStaticToDisk=false --printMemoryUsage=false
+    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --noHTTPCache --gc --minify=false --disableKinds=RSS,sitemap --renderStaticToDisk=false --printMemoryUsage=false
     profiles:
       - fast
 
@@ -67,7 +67,7 @@ services:
       - HUGO_NUMWORKERMULTIPLIER=8
       - HUGO_DISABLELANGUAGES=en
     # 涡轮模式：仅中文，跳过 PDF 等大文件
-    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --gc --minify=false --disableKinds=RSS,sitemap,taxonomy,term,404 --renderStaticToDisk=false --printMemoryUsage=false
+    command: server --bind 0.0.0.0 --watch=false --disableLiveReload --gc --minify=false --disableKinds=RSS,sitemap,404 --renderStaticToDisk=false --printMemoryUsage=false
     profiles:
       - turbo
 
