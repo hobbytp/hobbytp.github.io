@@ -1021,6 +1021,43 @@
         "**Operations and Findings** organize engagements, capture human-reviewed issues and evidence, and support reporting.",
         "**New attacks and targets** expand coverage with GOAT, role-play and jailbreak techniques, A2A, HackAPrompt, and GitHub Copilot."
       ]
+    },
+    "googlechrome/modern-web-guidance@v1.0.0": {
+      "tag": "v1.0.0",
+      "highlights": [
+        "**UI components (8)**: [accordion]( [app-menus]("
+      ]
+    },
+    "graphicle-ai/graphicle@v0.1.17": {
+      "tag": "v0.1.17",
+      "highlights": [
+        "Python SDK: `Tools` leaves out a tool that does not declare",
+        "An existing Qdrant collection must use cosine distance, the distance",
+        "Backup archives: `verify` and `restore` refuse an archive whose trailer",
+        "An agent file's backup is written to a temporary file and published by a"
+      ]
+    },
+    "glanderness/beeftv@v2.2.5": {
+      "tag": "v2.2.5",
+      "highlights": [
+        "画布素材上传与替换修复：修复图片、视频上传完成后偶发重新出现「上传中」遮罩的问题，减少生成轮询期间无改动的重复保存；对已有节点执行本地文件替换、素材库替换、在线链接导入或剧本文档导入时立即停止原生成请求，不再被滞后返回的旧任务覆盖，上传后的文本与剧本节点仍可继续发起 AI 改写和分镜生成。",
+        "桌面端缩略图显示、分镜脚本与批量下载修复：修复桌面端画布历史节点、参考栏、`@引用`、文件夹预览及导演台立牌与 3D 模型资源加载破损或空白的问题，上传失败直接显示具体原因并在取消后自动清除进度提示；分镜脚本节点连接上游故事文本后可直接点击「生成分镜」（独立分镜不再强制连接画风板）；修复画布节点错落摆放时批量下载编号顺序不稳定的问题。",
+        "画布视频截帧与音视频分离升级：桌面端视频首尾帧、关键帧截取与音视频分离优先调用本机原生处理，解决尾帧落入无画面音轨区间导致黑图、带起始偏移视频分离出空音轨以及网页解码异常后后续操作受阻的问题，并在诊断包中补充处理记录。",
+        "内置助手大型技能与长文档读取升级：放开内置助手选用技能的单文件大小与同时选用数量限制（保留压缩包 200 MB 解压安全上限），改为按行分段读取并自动补全技能版本信息；内置助手读取超长文本节点时识别总字数并按需分段读取。"
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.22": {
+      "tag": "v6.19.22",
+      "highlights": [
+        "patch: Request correction decides, the attempt loop applies"
+      ]
+    },
+    "garrytan/gbrain@v0.60.722.0": {
+      "tag": "v0.60.722.0",
+      "highlights": [
+        "`gbrain pages purge-deleted --dry-run` now lists exactly what `--yes` would purge, including parked pages a consented run would release, and nothing is written before consent.",
+        "A purge held to keep derived pages p"
+      ]
     }
   }
 }
