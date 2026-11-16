@@ -1058,6 +1058,52 @@
         "`gbrain pages purge-deleted --dry-run` now lists exactly what `--yes` would purge, including parked pages a consented run would release, and nothing is written before consent.",
         "A purge held to keep derived pages p"
       ]
+    },
+    "margrop/wrong-notebook@v2026.11.15": {
+      "tag": "v2026.11.15",
+      "highlights": [
+        "真题库改由管理员导入和管理，个人备份不含题库",
+        "真题库改为全站共享",
+        "抽屉式组卷支持题数、上次作答结果与知识点均衡",
+        "识别任务与批次按保留期定时清理"
+      ]
+    },
+    "pbakaus/impeccable@cli-v4.9.2": {
+      "tag": "cli-v4.9.2",
+      "highlights": [
+        "**Loop 0.1.3.** `loop install` and `loop update` verify it against its pinned checksum.",
+        "**Your taste in every agent.** `loop connect` offers to add your Impeccable taste to your agents' rule files. Answer ahead of time with `--taste` or `--no-taste`.",
+        "**Signing in does more.** `login` offers Loop when your plan includes it, and the first sign-in inside a repository adds that repository to your account."
+      ]
+    },
+    "hkuds/deeptutor@v1.7.3": {
+      "tag": "v1.7.3",
+      "highlights": [
+        "DeepTutor v1.7.3 Release Notes Release Date: 2026.11.16 Building on [v1.7.2](past_releases/ver1-7-2.md), v1.7.3 makes reading and book editing more flexible, ex"
+      ]
+    },
+    "egonex-ai/understand-anything@v2.9.8": {
+      "tag": "v2.9.8",
+      "highlights": [
+        "Source-evidence checks protect existing symbols during incremental updates, and failed finalization restores the saved graph and fingerprints (#683, #753).",
+        "Fingerprints match methods by their enclosing owner and name, keeping same-named methods in different classes distinct  —",
+        "The dashboard and graph-consuming skills report when saved analysis is stale  —",
+        "PostToolUse hooks read tool inpu"
+      ]
+    },
+    "garrytan/gbrain@v0.60.723.0": {
+      "tag": "v0.60.723.0",
+      "highlights": [
+        "`src/commands/access-rules.ts`: `rule add` checks the owner before previewing or writing; new `--allow-without-owner` flag, named in `gbrain access --help`.",
+        "`src/core/access/owner.ts`: the owner lookup and the `readers_omit_owner` error now live here and are shared with `src/core/repair/readers.ts`.",
+        "Docs: `docs/guides/access-designations.md` and the setup skill name the flag."
+      ]
+    },
+    "langchain-ai/langchain@langchain-core==1.8.1": {
+      "tag": "langchain-core==1.8.1",
+      "highlights": [
+        "Changes since langchain-core==1.8.0 release(core): 1.8.1 (41855) chore(deps): bump soupsieve from 4.0 to 4.1 in /libs/core (41850) feat(core): per-context LangS"
+      ]
     }
   }
 }
