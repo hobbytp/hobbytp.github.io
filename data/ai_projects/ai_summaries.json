@@ -1104,6 +1104,93 @@
       "highlights": [
         "Changes since langchain-core==1.8.0 release(core): 1.8.1 (41855) chore(deps): bump soupsieve from 4.0 to 4.1 in /libs/core (41850) feat(core): per-context LangS"
       ]
+    },
+    "googlechrome/modern-web-guidance@v1.0.1": {
+      "tag": "v1.0.1",
+      "highlights": [
+        "Introduced a new guide for **[js]( providing best practices and modern architectural patterns for writing clean, efficient, and maintainable JavaScript in web applications.",
+        "Updated the **[modern-web-guidance]( skill to specify English action-oriented queries and updated the skill version hash.",
+        "Updated the **[translator]( guide to mandate applying the `lang` attribute to the container element with the matching BCP 47 language code for translated content.",
+        "Updated the **[css-layout]( guide to recommend `flip-block, flip-inline, flip-block flip-inline` as a robust default for `position-try-fallbacks` in anchor positioning."
+      ]
+    },
+    "saos-3624/dsh-see-now@v0.2.4": {
+      "tag": "v0.2.4",
+      "highlights": [
+        "`_minimize()` 只 `withdraw()` 了窗口，**没有停抓屏线程**：`live` 样式下 `mss`",
+        "现在 `_minimize()` 收尾调 `_stop_worker()`（连 `mss` 句柄一起释放，不是让线程",
+        "`_work()` 的循环判据补 `or self._hidden` 作为第三道闸 —— 防别的路径设了",
+        "改动在上游 `dsh-watch-together`，包内 `examples/floating-chat/window.py` 是"
+      ]
+    },
+    "graphicle-ai/graphicle@v0.1.18": {
+      "tag": "v0.1.18",
+      "highlights": [
+        "OpenCode: `graphicle setup` finds OpenCode (its `~/.config/opencode`",
+        "`GRAPHICLE_PROFILE=1` also times an update's read of the stored graph,",
+        "Invalidation: a walk that reaches the 100,000-artifact limit used to stop",
+        "Updates of large graphs: matching each new community to the previous"
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.4": {
+      "tag": "v2.100.4",
+      "highlights": [
+        "Skip repeated scans of fragmented frames",
+        "Route video_gen to images.videoProvider",
+        "Headless Windows Desktop updater (ocx update --desktop)",
+        "Add machine-readable cause fields to combo_unavailable"
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.35": {
+      "tag": "v6.19.35",
+      "highlights": [
+        "patch: make provider retry attempts configurable, default 5"
+      ]
+    },
+    "garrytan/gbrain@v0.60.728.0": {
+      "tag": "v0.60.728.0",
+      "highlights": [
+        "The refresh-barrier TLA+ nightly now runs in its own job and checks the adoption-p"
+      ]
+    },
+    "openclaw/openclaw@v2026.11.4": {
+      "tag": "v2026.11.4",
+      "highlights": [
+        "[Release notes]( — formatted for people.",
+        "[Changelog]( — plain Markdown for AI agents and tools."
+      ]
+    },
+    "upstash/context7@ctx7@0.12.1": {
+      "tag": "ctx7@0.12.1",
+      "highlights": [
+        "Patch Changes - 3ec0de0: ctx7 reads the deployment URL from CONTEXT7_BASE_URL when --base-url is not passed, so on-premise users set it once instead of on every"
+      ]
+    },
+    "github/spec-kit@v1.4.1": {
+      "tag": "v1.4.1",
+      "highlights": [
+        "chore: bump version to 1.4.1",
+        "Add Elephant-Goldfish Model extension to community catalog",
+        "Add Spec Kit lifecycle for Jira extension to community catalog",
+        "[preset] Add OKR Bet Spec Section preset to community catalog"
+      ]
+    },
+    "anthropics/claude-code@v2.1.326": {
+      "tag": "v2.1.326",
+      "highlights": [
+        "Added support for turning on Code Mode while agent teams are enabled; if you already turned it on, sessions with teams on now start in Code Mode",
+        "Added a startup warning when an `--allowedTools`, `--disallowedTools` or `--tools` value has an entry that doesn't look like a complete rule",
+        "Added a message explaining why MCP servers stop loading when an administrator adds `managed-mcp.json` during a session",
+        "Added a row to `/status` that says when your provider or an environment variable such as `DISABLE_TELEMETRY` turns features off"
+      ]
+    },
+    "musistudio/claude-code-router@v3.1.5": {
+      "tag": "v3.1.5",
+      "highlights": [
+        "Fix provider credential fallback, vendor-qualified model routing, stale profile model selections, and context-window/reasoning metadata discovery.",
+        "Fix Codex workspace routing, shared-account credential refresh visibility, legacy per-profile auth copies and native desktop backend connections.",
+        "Update Electron to 42.11.18 and retain non-root Docker service execution."
+      ]
     }
   }
 }
