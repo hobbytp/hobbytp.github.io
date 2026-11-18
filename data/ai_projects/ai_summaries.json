@@ -1191,6 +1191,97 @@
         "Fix Codex workspace routing, shared-account credential refresh visibility, legacy per-profile auth copies and native desktop backend connections.",
         "Update Electron to 42.11.18 and retain non-root Docker service execution."
       ]
+    },
+    "glanderness/beeftv@v2.3.0": {
+      "tag": "v2.3.0",
+      "highlights": [
+        "升级须知：「Eagle 素材库」「AI 提示词优化器」「AI 审美批改」「媒体转换节点」四款社区插件改为在插件市场精选推荐中按需安装；之前保存的 Eagle 服务地址与「默认写入文件夹」会自动保留，打开包含这些节点的旧画布时如尚未安装会直接提示前往插件中心安装。",
+        "ComfyUI 与 AutoDL 工作流更新：本机与局域网「ComfyUI」插件支持含注释或跳转节点的工作流、画布画面比例与时长自动带入以及自定义采样流程的正向提示词识别，工作流在远端增删节点后重新读取即可原地更新；云端「AutoDL ComfyUI」内置连接更新至新版工作流列表。",
+        "画布图片抽卡历史与看图工作台：同一图片节点重新生成时保留历次结果叠放在后方，双击可进入看图工作台切换回看或双图并排对比，右侧新增生成信息栏显示模型、比例、分辨率、像素尺寸、文件大小、完整提示词与生成时间；底部参考图栏改为点击缩略图预览原图、点击名称插入 `@图片` 引用。",
+        "视频处理、参考顺序与音视频分离：新增画布视频智能擦除（支持去字幕增强、字幕提取翻译、去水印与隐私打码）；视频全能参考固定按画布参考槽位顺序编号，区分首尾帧与固定槽位角标，不再随提示词书写顺序变动；音视频分离输出可直接用于参考生成的音频格式并补充右键菜单入口；修复部分自定义视频渠道结果地址嵌套时取不回及模型专属参数串用的问题。"
+      ]
+    },
+    "twigpine/openclaude@v0.37.0": {
+      "tag": "v0.37.0",
+      "highlights": [
+        "/scroll-speed and /tui commands, unattended retry, idle compaction ([#2525]( ([766d48d](",
+        "add /todos, /cd, /reload-skills and four CLAUDE_CODE_* env toggles ([#2521]( ([d8a35c4](",
+        "**buddy:** procedural hero art with moods that follow the agent ([#2515]( ([b932e2b](",
+        "**buddy:** sharp image tier for terminals with kitty graphics, and Keynote ([#2516]( ([0c6b6f9]("
+      ]
+    },
+    "alchaincyf/nuwa-skill@v2.0.2": {
+      "tag": "v2.0.2",
+      "highlights": [
+        "Trigger phrases now also match \"what would X think\", \"X's take\", \"channel X\", \"in X's voice\", \"think like\".",
+        "Source groups now also accept \"first-hand\" / \"second-hand\" headings."
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.37": {
+      "tag": "v6.19.37",
+      "highlights": [
+        "patch: Preserve tool calls in automatic WebSearch"
+      ]
+    },
+    "garrytan/gbrain@v0.60.734.0": {
+      "tag": "v0.60.734.0",
+      "highlights": [
+        "The upkeep consolidate step no longer ends a fact at the next copy of the same claim. A fact now ends at the next fact in"
+      ]
+    },
+    "openclaw/openclaw@v2026.11.5": {
+      "tag": "v2026.11.5",
+      "highlights": [
+        "**Restart-safe conversations:** Queued messages, send permissions, and final chat writes are retained across Gateway restarts. (#196923, #196540, #196493) Authored",
+        "**Telegram widgets:** Interactive widgets now render in Telegram messages, including private-chat topics. (#196991, #198022). Related #197923 Thanks @obviyus and @dankarization.",
+        "**Compaction:**"
+      ]
+    },
+    "anomalyco/opencode@v1.19.6": {
+      "tag": "v1.19.6",
+      "highlights": [
+        "Sessions with many images no longer send oversized requests. When the images in a session's history pass 25 MiB, the oldest are replaced with a placeholder.",
+        "A provider error for a request body that is too large now starts compaction and a retry instead of failing the turn."
+      ]
+    },
+    "langchain-ai/langchain@langchain-core==1.8.2": {
+      "tag": "langchain-core==1.8.2",
+      "highlights": [
+        "Changes since langchain-core==1.8.1 feat(core): add headers to langsmith_gateway and ignore proxies (41900) docs(core): clarify when to override aparse_result ("
+      ]
+    },
+    "openai/codex@rust-v0.170.0": {
+      "tag": "rust-v0.170.0",
+      "highlights": [
+        "Added WebRTC negotiation for realtime voice calls in the TUI.",
+        "Added automatically refreshed authentication headers for OpenTelemetry HTTP exporters.",
+        "Added experimental support for using identically named MCP servers across environments.",
+        "Oversized WebSocket requests now fall back to HTTP without unnecessary retries. (#60840, #60841)"
+      ]
+    },
+    "upstash/context7@@upstash/context7-opencode@0.2.2": {
+      "tag": "@upstash/context7-opencode@0.2.2",
+      "highlights": [
+        "Patch Changes - 7fe6e09: The rules and skills that ctx7 setup and the plugins install are back to their text from before the source code and upgrade guide tools"
+      ]
+    },
+    "github/spec-kit@v1.4.2": {
+      "tag": "v1.4.2",
+      "highlights": [
+        "chore: bump version to 1.4.2",
+        "fix(extensions): omit config hint when no scaffolding fails",
+        "fix(powershell): write -Json output of the PowerShell helpers as ASCII",
+        "Add ghp community bundle entry"
+      ]
+    },
+    "anthropics/claude-code@v2.1.327": {
+      "tag": "v2.1.327",
+      "highlights": [
+        "Added a confirmation before `/install-github-app` changes a repository",
+        "Added `claude mcp add-json <name> -` to read the server's JSON from stdin, so tokens can stay off the command line; not available inside a Claude Code session",
+        "Added a line when a resumed session's earlier messages can't be loaded",
+        "Added a note in `/config` when other settings override a row"
+      ]
     }
   }
 }
