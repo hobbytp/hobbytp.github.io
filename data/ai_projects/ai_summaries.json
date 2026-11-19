@@ -1282,6 +1282,144 @@
         "Added a line when a resumed session's earlier messages can't be loaded",
         "Added a note in `/config` when other settings override a row"
       ]
+    },
+    "nexu-io/openmotion@v0.1.1": {
+      "tag": "v0.1.1",
+      "highlights": [
+        "Drop in a clip, cut to the best moment, and give it captions. OpenMotion 0.1.1 brings caption editing and export into Studio, makes clip placement easier to see"
+      ]
+    },
+    "pbakaus/impeccable@skill-v4.10.0": {
+      "tag": "skill-v4.10.0",
+      "highlights": [
+        "**Drift you can act on.** When the code contradicts DESIGN.md, Impeccable names what it contradicts.",
+        "**Motion you can check.** `animate` captures the motion it built and reviews it from that evidence.",
+        "**Finished world runs.** A world run ends with the site, walks its direction over the captures before the final review, and records DESIGN.md from what shipped.",
+        "**Steadier Live.** The Live bar stays still under the pointer, and the missing PRODUCT.md notice shows once."
+      ]
+    },
+    "openai/codex-security@npm-v0.10.1": {
+      "tag": "npm-v0.10.1",
+      "highlights": [
+        "**Deep Scan.** When Codex blocks a worker request because of a misalignment policy violation, Deep Scan now stops and reports the refusal without retrying the request.",
+        "**Threat modeling.** When a route appears in a test or on a deleted line, the threat-modeling instructions now ask the scanner to verify that the application still serves it."
+      ]
+    },
+    "saos-3624/dsh-see-now@v0.2.5": {
+      "tag": "v0.2.5",
+      "highlights": [
+        "路由改成声明 `auth: 'required'`：认证由内核做，`peer` 作为 handler 的第三个参数交进来。",
+        "复刻判据对齐内核的 `isTrustedApiRequest()`：只看 Host / `sec-fetch-site` / Origin，**不看 Referer**。",
+        "`/status` 多一个 `trust.path`（`peer` / `legacy`）。退到兜底时面板上写一行灰字：",
+        "新增 `test/settings-trust.test.mjs`（7 项）—— 这个模块此前零测试覆盖，"
+      ]
+    },
+    "alphaxiv/openresearch@v0.2.28": {
+      "tag": "v0.2.28",
+      "highlights": [
+        "<!-- desktop-downloads:start -- Download OpenResearch Install the desktop app to get everything you need. No separate installation or terminal setup required. <"
+      ]
+    },
+    "glanderness/beeftv@v2.3.1": {
+      "tag": "v2.3.1",
+      "highlights": [
+        "MCP 调用记录与账号、模型、提示词设置升级：左侧导航「插件」下方整合 MCP 管理入口，新增近期调用记录（展示时间、客户端、工具、模型与已结算费用）并简化连接配置布局；模型服务支持搜索筛选模型，账号设置补充切换账号、带确认的退出登录与问题诊断页；画布提示词预设支持重命名并修复深色模式保存按钮显示，偏好设置新增图片与视频自定义反推提示词及生成完成提示音开关。"
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.5": {
+      "tag": "v2.100.5",
+      "highlights": [
+        "Add Kimi (Responses) as its own row under the Kimi login",
+        "Add GPT-6.2 Sol and Astra and upgrade subagent defaults",
+        "Stream the Linux listener table so a busy host is not refused",
+        "Refuse Anthropic redirects, keep chat caller restrictions, gate explicit SSH routes"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.141": {
+      "tag": "v0.9.141",
+      "highlights": [
+        "watch-pr no longer reads a fork PR whose workflows wait for maintainer approval as a repository with no checks. GitHub shows no check runs and no rollup for suc"
+      ]
+    },
+    "everyinc/compound-engineering-plugin@compound-engineering-v3.38.2": {
+      "tag": "compound-engineering-v3.38.2",
+      "highlights": [
+        "**ce-babysit-pr:** hold a failed check while its rerun is still running ([#2077]( ([0f7ae5e](",
+        "**ce-debug:** fix every site that repeats the root-cause mistake ([#2080]( ([a3d6a8e](",
+        "**ce-explain:** answer plain why/how questions from the record ([#2079]( ([8d9796f](",
+        "**ce-noslop:** keep passing sentences unchanged in edit mode ([#2069]( ([41216b7]("
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.39": {
+      "tag": "v6.19.39",
+      "highlights": [
+        "patch: Restore release publishing"
+      ]
+    },
+    "garrytan/gbrain@v0.60.739.0": {
+      "tag": "v0.60.739.0",
+      "highlights": [
+        "gbrain auth create <name> --member <id> without --scopes now mints a key with read and write only.",
+        "gbrain setup claude-code|codex --serves several --members <ids> --shape company"
+      ]
+    },
+    "promptfoo/promptfoo@code-scan-action-0.2.3": {
+      "tag": "code-scan-action-0.2.3",
+      "highlights": [
+        "The action now uses Undici 7.30.2, which includes fixes for handling credentials across redirects and for response integrity. [#12437]("
+      ]
+    },
+    "langchain-ai/langchain@langchain-core==1.8.3": {
+      "tag": "langchain-core==1.8.3",
+      "highlights": [
+        "Changes since langchain-core==1.8.2 release(core): 1.8.3 (41942) fix(core): keep warning suppression context-local (41881) chore(infra): update vulnerable devel"
+      ]
+    },
+    "wonderwhy-er/desktopcommandermcp@v0.3.4": {
+      "tag": "v0.3.4",
+      "highlights": [
+        "Feature flag for transport layers +  rollout flags listeners"
+      ]
+    },
+    "comfy-org/comfyui@v0.46.0": {
+      "tag": "v0.46.0",
+      "highlights": [
+        "[Partner Nodes] feat(LTX): add AlphaGen, SDR to HDR, Reframe and Upscale nodes",
+        "[Partner Nodes] feat(MiniMax): add MiniMax H3 Image node",
+        "Update workflow templates to v0.11.106",
+        "Fix for some workflows not working properly."
+      ]
+    },
+    "microsoft/playwright-mcp@v0.0.86": {
+      "tag": "v0.0.86",
+      "highlights": [
+        "✨ Highlights - 🗂️ Resume extension tab groups — the connection page now lets you select a whole tab group or several individual tabs, rather than one tab at a t"
+      ]
+    },
+    "anthropics/claude-code@v2.1.328": {
+      "tag": "v2.1.328",
+      "highlights": [
+        "Added `\"onFailure\": \"block\"` for `mcp_tool` hooks, as for command and HTTP hooks: a hook whose call fails blocks the action",
+        "Added a warning when a message from a session that skips permission prompts may be held and dropped by a cloud session",
+        "Added a notice in `/status` and `claude doctor` when an OpenTelemetry exporter has no endpoint and its data would likely be lost",
+        "Added `CLAUDE_CODE_DISABLE_DEFERRED_TOOL_RESUME`, which lets a host stop `claude -p --resume` and `--continue` from running a tool call that a hook deferred"
+      ]
+    },
+    "google-gemini/gemini-cli@v0.69.0": {
+      "tag": "v0.69.0",
+      "highlights": [
+        "fix(core,cli): preserve literal `$` characters during template placeholder replacement",
+        "feat(cli): add /stats heatmap subcommand for daily token usage",
+        "fix(core): prevent __GCLI_EXPAND_TARGET__ env collision in expandEnvVars",
+        "chore(release): bump version to 0.69.0-nightly.20261104.g89e9d25d6"
+      ]
+    },
+    "microsoft/pyrit@v1.2.1": {
+      "tag": "v1.2.1",
+      "highlights": [
+        "Corrected package metadata so declared license files, third-party notices, and provenance files are included in wheel distributions ([#4257](",
+        "Included the ComicJailbreak MIT license in the declared license files."
+      ]
     }
   }
 }
