@@ -1,280 +1,5 @@
 [
   {
-    "url": "https://huggingface.co/moonshotai/Kimi-K3.1-Pro",
-    "title": "moonshotai kimi k3 1 pro",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
-    "title": "davidau qwen3 8 27b turbo fable cold fusion 735 882 heretic uncensored neo coder max mtp gguf",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/ccore/Qwen3.5-4B-3D-Coder",
-    "title": "ccore qwen3 5 4b 3d coder",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/mradermacher/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic-i1-GGUF",
-    "title": "mradermacher deepseek v4 pro qwen3 5 9b uncensored heretic i1 gguf",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/VideoRebirthAI/hyperflow-h3-flash",
-    "title": "videorebirthai hyperflow h3 flash",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/mradermacher/gemma-4-31B-it-ARA-heretic-GGUF",
-    "title": "mradermacher gemma 4 31b it ara heretic gguf",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/tencent/Qwen3.8-27B-DSpine-b16",
-    "title": "tencent qwen3 8 27b dspine b16",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://github.com/SsKanDon/blender-ai-mcp-addon",
-    "title": "blender ai mcp addon",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://github.com/agentes-chat/agentes-chat",
-    "title": "agentes chat",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://github.com/ferhatcore/claude-codex-project-os",
-    "title": "claude codex project os",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://github.com/huawei-csl/MACaQ",
-    "title": "macaq",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://github.com/FrigadeHQ/yogurt",
-    "title": "yogurt free private open source alternative to granola",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://github.com/klad-app/klad",
-    "title": "klad a paint app your coding agent can drive source available",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://taipeiledger.com/gpu",
-    "title": "daily gpu rental prices across aws azure runpod and vast ai",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://pietromiotti.com/latest/maya-site",
-    "title": "my ai agents found an unmapped maya site",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.cbsnews.com/news/united-airlines-bans-ai-agents-booking-flights",
-    "title": "united airlines bans ai agents from booking flights on behalf of travelers",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://lpeproject.org/blog/your-retirement-savings-are-fueling-the-ai-bubble",
-    "title": "retirement savings are fueling the ai bubble",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://cabird.com/talks/shipping-faster",
-    "title": "ai activity and outcomes in software engineering",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.activtrak.com/news/productivity-lab-ai-users-longer-workdays",
-    "title": "ai users have workdays up to 90 min longer than non users",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://osssaysno.com",
-    "title": "oss projects banning ai generated contributions",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.39671",
-    "title": "incentivizing self learning in large language models via reinforcement learning",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2610.40394",
-    "title": "scaling mathematical proof supervision from structured textbooks",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2611.13028",
-    "title": "gtagym real aaa game tasks environment for evaluation and reinforcement learning",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2607.24999",
-    "title": "cogbattery human referenced evaluation of cognitive task behavior and structure in language models",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2603.27343",
-    "title": "wmip a working memory inspired programmable probe of cumulative state tracking in large language models",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/papers/2611.10193",
-    "title": "ensemble routing for prompt adaptive cost aware llm inference",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://openai.com/index/jiostar-vijay-seshadri",
-    "title": "jiostar s chief architect on ai discovery at 500m user scale",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://deepmind.google/blog/alphagenome-2-deciphering-how-cells-read-dna-to-better-understand-disease",
-    "title": "alphagenome 2 deciphering how cells read dna to better understand disease",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api",
-    "title": "gemini decisions api fast calibrated multimodal decisions",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://blog.google/innovation-and-ai/models-and-research/google-labs/tabletop",
-    "title": "try tabletop customizable collaborative spaces for groups to plan play and do more together",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://blog.google/company-news/outreach-and-initiatives/arts-culture/esther-mahlangu",
-    "title": "experience the art and legacy of dr esther mahlangu",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://huggingface.co/blog/token-pooling",
-    "title": "token pooling aware training for multi vector embedding models",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/11/who-could-replace-jensen-huang-a-highly-unscientific-list-of-possible-successors",
-    "title": "who could replace jensen huang a highly unscientific list of possible successors",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/11/nvidia-ceo-jensen-huangs-affair-with-alleged-chinese-spy-a-timeline",
-    "title": "the unfolding jensen huang scandal a timeline",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/11/nvidias-stock-drops-as-board-reportedly-preps-to-oust-ceo-jensen-huang",
-    "title": "nvidia s stock drops as board reportedly preps to oust ceo jensen huang",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/11/jensen-huang-accused-of-having-another-affair-with-a-nvidia-exec",
-    "title": "jensen huang accused of having another affair with an nvidia exec",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/video/why-the-data-center-you-dread-might-never-even-be-built",
-    "title": "why the data center you dread might never even be built",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/11/meta-is-losing-its-longtime-head-of-infrastructure",
-    "title": "meta is losing its longtime head of infrastructure",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/podcast/how-backlash-and-red-tape-continue-to-slow-data-centers-post-blue-wave",
-    "title": "how backlash and red tape continue to slow data centers post blue wave",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/11/coreweave-turns-to-customer-prepayments-shorter-contracts-to-fund-ai-growth",
-    "title": "coreweave turns to customer prepayments shorter contracts to fund ai growth",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/11/with-720m-round-britains-fractile-gets-a-leg-up-in-the-race-for-ai-chips",
-    "title": "with 720m round britain s fractile gets a leg up in the race for ai chips",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/11/congress-to-call-jensen-huang-in-to-answer-for-alleged-chinese-spy-affair",
-    "title": "congress to call jensen huang in to answer for alleged chinese spy affair",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.theverge.com/tech/1031652/jensen-huang-rumor",
-    "title": "nvidia is reportedly preparing to fire jensen huang",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1031623/united-unauthorized-ai-agents",
-    "title": "united won t let your ai agent book your flight",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.theverge.com/tech/1031526/google-tabletop-ai-experiment-waitlist-availability",
-    "title": "google s tabletop ai experiment lets you build custom collaboration apps",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1031524/google-deepmind-alphagenome-2-genetic-ai-model",
-    "title": "google s alphagenome 2 zooms in on the cellular roots of disease",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.theverge.com/tech/1031505/adobe-max-2026-sneaks-experiments-ai",
-    "title": "adobe s ai experiments let you walk around in photos and interview your characters",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509146.html",
-    "title": "双11直播间爆改ai秀场 罗永浩上手trae 秒变ai coding的大众嘴替",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509088.html",
-    "title": "从 卖token 到 卖结果 科技有 联想 沙龙激辩token经济三大议题",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509085.html",
-    "title": "卷起来了 11月11日 大模型厂商在天猫打5折",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://openai.com",
-    "title": "openai research deployment",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://www.breakingviews.com/podcasts/viewsroom/anthropic-heads-ultimate-ai-benchmark-2026-11-12",
-    "title": "anthropic heads for the ultimate ai benchmark reuters",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://inferencex.semianalysis.com/run/deepseek-v41-flash-on-b300",
-    "title": "running deepseek v4 1 flash on b300 inferencex semianalysis",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://qwenlm.github.io/qwen-code-docs/en/users/overview",
-    "title": "qwen code overview qwen code docs",
-    "date": "2026-11-12"
-  },
-  {
-    "url": "https://mojodojo.io/blog/openai-business-hub-chatgpt-click-data",
-    "title": "openai launches business hub in chatgpt with click data mojo dojo",
-    "date": "2026-11-12"
-  },
-  {
     "url": "https://yourairedlines.com",
     "title": "ai red lines write down what would make you act on ai",
     "date": "2026-11-13"
@@ -2678,5 +2403,640 @@
     "url": "https://huggingface.co/huihui-ai/Huihui-Qwen3.8-27B-abliterated-GGUF",
     "title": "huihui ai huihui qwen3 8 27b abliterated gguf",
     "date": "2026-11-18"
+  },
+  {
+    "url": "https://nicolasbouliane.com/blog/death-by-ai",
+    "title": "ai is killing all about berlin",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://europeanbusinessmagazine.com/ai-agents-better-questions-kpmg",
+    "title": "ai agents ask better questions than kpmg accountants in audit trial",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.businesswire.com/news/home/20261118974464/en/Anthropic-is-Not-a-Safe-AI-Company---Broad-Coalition-of-Scientists-Legal-Scholars-and-Tech-Leaders-Challenge-Anthropics-Safety-Branding-Ahead-of-IPO",
+    "title": "anthropic is not a safe ai company coalition challenges anthropic safety",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://colossus.com/article/ai-will-not-make-you-rich",
+    "title": "ai will not make you rich 2025",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.lawyerscommittee.org/lawyers-committee-files-lawsuit-on-behalf-of-black-students-detained-and-searched-due-to-ai-alert-falsely-identifying-a-bag-of-chips-as-a-firearm",
+    "title": "black high school students sue after ai mistakes doritos bag for gun",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.sas.upenn.edu/~jesusfv/Peer_Review.pdf",
+    "title": "can peer review survive ai generated text pdf",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/tencent/Hy4-flash",
+    "title": "tencent hy4 flash",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/apple/FastFrames-L",
+    "title": "apple fastframes l",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/DavidAU/Qwen3.8-27B-TURBO-Fable-Cold-Fusion-735-882-Heretic-Uncensored-NEO-CODER-MAX-MTP-GGUF",
+    "title": "davidau qwen3 8 27b turbo fable cold fusion 735 882 heretic uncensored neo coder max mtp gguf",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/internlm/Sage-S2.1-Flash",
+    "title": "internlm sage s2 1 flash",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB",
+    "title": "nvidia nvidia nemotron 3 5 bolt e4b 4gb",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/inworld/voice-isolator",
+    "title": "inworld voice isolator",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://openai.com/index/the-silent-consensus",
+    "title": "the silent consensus",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://openai.com/index/research-acceleration-jagged-frontier",
+    "title": "research acceleration the jagged frontier",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://openai.com/business/customer-stories/sumitomo-life",
+    "title": "how sumitomo life s leaders helped teams adopt chatgpt enterprise",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://openai.com/index/inside-the-codex-sandbox",
+    "title": "inside the codex sandbox",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://openai.com/index/managing-frontier-ai-risk",
+    "title": "managing frontier ai risk from training to deployment",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://openai.com/index/le-groupe-figaro-and-openai-announce-partnership",
+    "title": "le groupe figaro and openai partner to bring le figaro journalism to chatgpt",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://openai.com/index/advancing-chip-design-with-our-models",
+    "title": "advancing chip design with openai models",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://deepmind.google/blog/genie-4-is-now-available",
+    "title": "genie 4 is now available",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-lower-memory-devices",
+    "title": "the gemini app is now available on lower memory android devices",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/blog/RadixArk/daisyrose-27b-pushing-the-frontier-of-post-trainin",
+    "title": "daisyrose 27b pushing the frontier of post training efficiency",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/blog/Dharma-AI/predicting-fine-tuning-time",
+    "title": "why your fine tuning job takes longer than the flops say",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/blog/ibm-research/time-series-powered-streamhouse",
+    "title": "time series models in the streamhouse a new frontier and use cases",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/blog/moe-expert-streaming",
+    "title": "180b parameters 32gb of ram pushing moe inference to the limit with transformers",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/blog/rumble-2-flash",
+    "title": "rumble 2 flash an open 0 5b speech model for 40 languages",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/microsoft-ceo-satya-nadella-explains-why-he-asked-60k-employees-to-quit",
+    "title": "microsoft ceo satya nadella explains why he asked 60k employees to quit",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/amidst-fears-of-ai-cyberattacks-satya-nadella-says-lots-of-critical-infrastructure-is-unpatchable",
+    "title": "amidst fears of ai cyberattacks satya nadella says lots of critical infrastructure is unpatchable",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/elon-musk-says-ousting-jensen-huang-is-like-kicking-michael-jordan-off-your-team",
+    "title": "elon musk says ousting jensen huang is like kicking michael jordan off your team",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/microsoft-ceo-satya-nadella-remains-confident-in-nvidia-after-huangs-exit",
+    "title": "microsoft ceo satya nadella remains confident in nvidia after huang s exit",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/satya-nadella-predicts-ai-agents-will-reshuffle-the-economics-of-the-web",
+    "title": "satya nadella predicts ai agents will reshuffle the economics of the web",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/anthropic-reportedly-prices-ipo-at-83-a-share-above-projected-range",
+    "title": "anthropic prices ipo at 83 a share above projected range",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/nvidia-created-a-weird-bit-of-intrigue-by-not-filing-a-routine-sec-report",
+    "title": "nvidia created a weird bit of intrigue by not filing a routine sec report",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/palmer-luckey-warns-ai-powered-cyberattacks-are-outpacing-defenses-its-time-to-start-running",
+    "title": "palmer luckey warns ai powered cyberattacks are outpacing defenses it s time to start running",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/palmer-luckey-thinks-china-is-thrilled-to-have-jensen-out-so-he-wants-the-ousted-nvidia-ceo-reinstated",
+    "title": "palmer luckey thinks china is thrilled to have jensen out so he wants the ousted nvidia ceo reinstated",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/18/sam-altman-says-his-life-is-so-weird-that-hes-unfazed-by-andrew-garfield-portraying-him-in-upcoming-movie",
+    "title": "sam altman says his life is so weird that he s unfazed by andrew garfield portraying him in upcoming movie",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1037151/school-districts-ditching-google",
+    "title": "the nation s largest school districts consider ditching google search",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/policy/1036749/trump-ai-chip-data-center-us-philippines-pax-silica",
+    "title": "trump s latest land grab is an ai hub in the philippines",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1035924/nvidia-visualized-revenue-profit-earnings-after-huang",
+    "title": "nvidia s rise visualized",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/policy/1036935/congress-forced-arbitration-deepfakes-defiance-act",
+    "title": "tech lawsuits defined 2026 and lawmakers want more",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1036776/nvidia-earnings-kress-jensen-huang-petition",
+    "title": "what is nvidia without ai s sugar daddy in charge",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1036729/disney-star-wars-anzellans-animatronic-amazon-aws-cloud-ai",
+    "title": "disney s new star wars animatronics interact with guests using ai",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1036549/nvidia-amd-earnings-fall-2026-chips-pause-frontier-models",
+    "title": "remember the frontier ai pause chip companies don t either",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/games/1036140/will-wright-mymems-ai-game-interview",
+    "title": "will wright s next game uses ai to map your memories",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1036445/nvidia-h200-ai-chips-china-stop-selling",
+    "title": "nvidia isn t selling any more ai chips to china",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1036415/suno-visuals-ai-generated-video-images-feature",
+    "title": "suno now lets you make ai videos for your ai music",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/511088.html",
+    "title": "ai基建大潮方兴未艾 联想集团最佳财季诞生",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/511079.html",
+    "title": "安谋科技深度解析arm cortex m42 发布 星辰100e aiot原型平台 助力打造ai性能更强的嵌入式设计",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/511071.html",
+    "title": "范式下场做基模了 国产算力全链路训练 双模型同步亮相",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/510947.html",
+    "title": "初中毕业烘焙师 1 人搓出单集千万播放科幻剧 中国ai长片杀疯了",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/510922.html",
+    "title": "gemini新模型neon箭在弦上 网友 遍历元素周期表",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/510914.html",
+    "title": "gpt 6 2难产 openai怕了",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/510916.html",
+    "title": "全球首个医疗健康ai独立评测与分析平台inclusionmed正式上线",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.mv-voice.com/calmatters/2026/11/18/newsom-touts-an-ai-kill-switch-to-halt-dangerous-openai-anthropic-releases",
+    "title": "newsom touts an ai kill switch to halt dangerous openai anthropic",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://enterpriseai.economictimes.indiatimes.com/news/industry/ai-models-deliver-up-to-14-chip-design-gains-in-amd-collaboration-openai-says/135976326",
+    "title": "openai and amd achieve 14 breakthrough in chip design et ai",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.nctreasurer.gov/news/press-releases/2026/11/18/ncia-discusses-2027-investment-gains-anticipates-profits-anthropic-ipo",
+    "title": "ncia discusses 2027 investment gains anticipates profits from",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://cryptobriefing.com/openai-chatgpt-for-accounting-plugin-launch",
+    "title": "openai launches chatgpt for accounting with plugins for",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://community.openai.com/t/on-modernizing-the-model-development-field/1418055",
+    "title": "on modernizing the model development field community",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://abcnews.com/Business/anthropic-announces-price-83-share-ipo/story?id=138245320",
+    "title": "anthropic announces price of 83 per share for ipo abc news",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.thepaymentscorner.com/signals/new-news-brief-headline-for-web-openai-launches-chatgpt-wall-215",
+    "title": "new news brief headline for web openai launches chatgpt",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.vals.ai/benchmarks/legal_research",
+    "title": "legal research bench leaderboard and methodology vals ai",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.wclk.com/2026-11-18/openai-announces-new-ai-safety-program-researchers-worry-it-wont-be-enough",
+    "title": "openai announces new ai safety program researchers worry it won",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://github.com/agentes-chat/agentes-chat",
+    "title": "agentes chat",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://assess.poh.org",
+    "title": "can an ai agent bypass your website security",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://www.kradle.ai",
+    "title": "kradlebench multi agent ai evals in minecraft",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://news.ycombinator.com/item?id=50548660",
+    "title": "mastra factory the open source software factory we use to build mastra",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://springcraft-ai.github.io/springrep",
+    "title": "robotics needs better cad so i wrote a b rep kernel and 3 487 tests",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://gobeat.ai/auth/login",
+    "title": "beat a to do list that completes its own tasks",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.11318",
+    "title": "prola principal orthogonal low rank adaptation for predictive spatiotemporal weather downscaling",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.24154",
+    "title": "game2player scaling gameplay experience for visual agents through environment player co development",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.23068",
+    "title": "the resolution hypothesis agent evolution s key is identifying improvements",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.24869",
+    "title": "worldruler interactive world modeling under configurable rules",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.24738",
+    "title": "jeveration system one models now generate",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.21366",
+    "title": "alive making streaming video models interactive",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.22925",
+    "title": "code world model 2 0 towards infinite controllable video generation",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.24098",
+    "title": "roughcut bench a benchmark for automatic video rough cut with large vision language models",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.24733",
+    "title": "mechanistic critics for sample efficient npu design space exploration",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.14848",
+    "title": "tideway phase aware tiered memory management for moe inference on consumer devices",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24941v1",
+    "title": "ultratex aligning physical knowledge for high fidelity pbr texture generation",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24940v1",
+    "title": "z sight unifying vision language action and latent world modeling",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24936v1",
+    "title": "jailbreak detection on large language models via contrastive prototype structures",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24932v1",
+    "title": "knowing what you know a trait theory of reviewer value in human ai cognitive systems",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24927v1",
+    "title": "mapping the ai supply chain dependencies vulnerabilities and market concentration in the ai ecosystem",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24924v1",
+    "title": "agentic harness engineering beta requirement centered evolution of agent harnesses",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24917v1",
+    "title": "unified law for visual tasks the four laws of computer vision",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24915v1",
+    "title": "prismrestore a compact restoration toolbox for agentic image restoration",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24908v1",
+    "title": "decomposing sgd dynamics in neural networks teacher induced spikes and variance inflation",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24904v1",
+    "title": "shadowtransfer a geographic transfer benchmark for overhead shadow detection",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24896v1",
+    "title": "equivariant modeling with polynomial features via minimal homogeneous generators",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24892v1",
+    "title": "on evaluating user simulators for interactive agents",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24891v1",
+    "title": "cap and track optimizing llm inference request dispatch across shifting capacity",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24888v1",
+    "title": "who are you the personal imitation game",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24887v1",
+    "title": "ground iterate trace decomposing ai research ideation",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24881v1",
+    "title": "monoculture robust learning",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24880v1",
+    "title": "local ai agents in power electronics simulation deployment measurements and costs",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24877v1",
+    "title": "auditing black box clinical prediction models with a large language model through queries alone a blinded test with planted flaws",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24876v1",
+    "title": "learning to interact in multi agent self play for controllable autonomous driving scenario generation",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24873v1",
+    "title": "tangentpde learning local operator responses with sparse finite difference supervision",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24867v1",
+    "title": "choosing what to observe budget paired counterfactual audits for credible evaluation of visual agents",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24864v1",
+    "title": "nereidvla learning to understand and navigate the underwater world",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24862v1",
+    "title": "gaspard expressive unified speech and gesture synthesis with continuous autoregressive flow matching and decoupled classifier free guidance",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24849v1",
+    "title": "can programs replace llm judges executable program judges for scalable and efficient relevance labeling",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24846v1",
+    "title": "atomic mathreasoner instance level composition of atomic reasoning skills for mathematical llms",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24845v1",
+    "title": "vibe trading towards agent native trading",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24844v1",
+    "title": "general progress substitutes for specific training data in language models",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24843v1",
+    "title": "measuring and improving transfer of neural surrogates for vehicle aerodynamics",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24840v1",
+    "title": "does the action matter probing action conditioned semantic forecasting as a world model for autonomous driving",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24839v1",
+    "title": "kaer security aware replanning for multi agent systems",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24837v1",
+    "title": "what survival benchmarks don t tell you impact of model selection and dataset regimes",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24831v1",
+    "title": "overlooked and underutilized prototypes are the missing piece in tabular xai",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24830v1",
+    "title": "a foundation model to measure and predict human behaviour",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24827v1",
+    "title": "synthesizing hyperspectral data using generative models to train spectral unmixing methods for low cost crop residue cover mapping",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24810v1",
+    "title": "laadt dss decision support for non experts on rooftop pv incentive and grid simulations under turkish tariff rules",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24809v1",
+    "title": "on policy morphing into hybrid attention models",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24806v1",
+    "title": "recoco from patches to compositions for visual representation learning",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24805v1",
+    "title": "edge efficient joint raw image compression and restoration for smart wearable devices",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24799v1",
+    "title": "prognosis without prediction the intrinsic geometry of survival",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24798v1",
+    "title": "soft mixture of quantum experts for hybrid quantum classical learning",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24797v1",
+    "title": "bias only training dynamics in relu networks",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24795v1",
+    "title": "ultimate3d teaching multimodal llms 3d camera object relations by large scale visual instruction data",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24793v1",
+    "title": "the elephant in the question unified models picture the concepts behind their answers",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24792v1",
+    "title": "training free motion statistics match self supervised behavior encoders",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24788v1",
+    "title": "isabelle pool server a pooled verification service for prover training and multi agent proving",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24785v1",
+    "title": "read together answer apart how earlier questions help vision language models look",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24782v1",
+    "title": "learning trajectories leave decodable traces in neural network weight space and internal representations",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24781v1",
+    "title": "reconstruction vs prediction pre training of discrete video representations for continuous control",
+    "date": "2026-11-19"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2611.24778v1",
+    "title": "counterfactual world models jepas that reason about what if",
+    "date": "2026-11-19"
   }
 ]
