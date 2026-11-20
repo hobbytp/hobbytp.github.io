@@ -1420,6 +1420,113 @@
         "Corrected package metadata so declared license files, third-party notices, and provenance files are included in wheel distributions ([#4257](",
         "Included the ComicJailbreak MIT license in the declared license files."
       ]
+    },
+    "margrop/wrong-notebook@v2026.11.19": {
+      "tag": "v2026.11.19",
+      "highlights": [
+        "新增 OpenAI Responses API 通用渠道",
+        "新增 MiniMax Code 国际站渠道",
+        "新增硅基流动国内站与国际站渠道",
+        "MCP 配图参数与 SVG 内嵌位图支持"
+      ]
+    },
+    "pbakaus/impeccable@engine-v0.1.28": {
+      "tag": "engine-v0.1.28",
+      "highlights": [
+        "Prebuilt impeccable engine binaries (engine-v0.1.28). The launcher, the npm shim and impeccable install download these on first run. Docs: https://impeccable.st"
+      ]
+    },
+    "glanderness/beeftv@v2.3.2": {
+      "tag": "v2.3.2",
+      "highlights": [
+        "Windows 内置创作助手画布读写修复：修复升级至 `v2.3.1` 后 Windows 桌面端内置创作助手无法读取或修改画布（提示请求被中断、返回失败）的问题；本地命名管道连接正确归一化读超时与关闭错误，连续对话复用同一连接时不再提前取消后续画布读写请求。",
+        "合作伙伴展示更新：特别鸣谢新增「Infistar 无限星河」合作伙伴与一键接入说明。"
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.6": {
+      "tag": "v2.100.6",
+      "highlights": [
+        "Decide effort on every pinned turn with sessionPin.effort per-turn",
+        "Add LLMTR to the free directory",
+        "Support Business/Enterprise group-based spend_control quota",
+        "Expose native Claude passthrough as a dashboard, CLI and API setting"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.143": {
+      "tag": "v0.9.143",
+      "highlights": [
+        "watch-pr no longer calls a fork PR ready while its Actions workflows wait for maintainer approval and another app, such as a CLA bot, has reported a passing che"
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.40": {
+      "tag": "v6.19.40",
+      "highlights": [
+        "patch: bump the dependencies group across 1 directory with 9 updates"
+      ]
+    },
+    "garrytan/gbrain@v0.60.743.0": {
+      "tag": "v0.60.743.0",
+      "highlights": [
+        "The plugin now finds OpenClaw's `assertActive` check under `ctx.hookInvocation`, so a run that OpenClaw already ended no longer counts toward the session.",
+        "An upgrade does not rewrite the plugin on its own. To install the fixed plugin, run `gbrain setup openclaw --skill-loading resolve` (or `shadow`) again, then restart the gateway."
+      ]
+    },
+    "openclaw/openclaw@v2026.11.6": {
+      "tag": "v2026.11.6",
+      "highlights": [
+        "**Smoother upgrades:** bridge the 2026.11.5 updater to the current release path and validate staged plugin dependencies correctly on Windows. (#200662, #200595) Authored",
+        "**Git updates:** skip unnecessary declaration builds during ordinary Git updates while preserving explicit build settings and release-build behavior.  Thanks @vincentkoc.",
+        "**Responses recovery:** recover saved conversation item conflicts before output and across run"
+      ]
+    },
+    "langchain-ai/langchain@langchain-core==1.8.4": {
+      "tag": "langchain-core==1.8.4",
+      "highlights": [
+        "Changes since langchain-core==1.8.3 release(core): 1.8.4 (41964) feat(core): standardize finish reason on message-finish events (41926) feat(langchain): tag syn"
+      ]
+    },
+    "openai/codex@rust-v0.171.0": {
+      "tag": "rust-v0.171.0",
+      "highlights": [
+        "Added GPT-6.2 Sol and Astra to model catalogs, with Sol as the default catalog selection.",
+        "Added configurable undo and redo shortcuts to the non-Vim prompt composer, including restoration of attachments and large pastes.",
+        "Added `codex exec --remote <ADDR>` to start or resume noninteractive sessions on an existing app server.",
+        "Added `/rc` and `/remote` to manage local remote control and display device pairing codes from the TUI."
+      ]
+    },
+    "github/spec-kit@v1.4.3": {
+      "tag": "v1.4.3",
+      "highlights": [
+        "chore: bump version to 1.4.3",
+        "fix(extensions): report missing command files on install",
+        "test(integrations): make unknown integration checks independent of network",
+        "fix(git): handle non-ASCII branches over legacy pipes in create_new_feature_branch.py"
+      ]
+    },
+    "langchain-ai/langgraph@1.2.24": {
+      "tag": "1.2.24",
+      "highlights": [
+        "release(langgraph): 1.2.24",
+        "fix(langgraph): handle `REMOVE_ALL_MESSAGES` in `_messages_delta_reducer` and `None` checkpoints in `DeltaChannel`"
+      ]
+    },
+    "anthropics/claude-code@v2.1.329": {
+      "tag": "v2.1.329",
+      "highlights": [
+        "Added a trust dialog warning that says where a folder's hooks are declared",
+        "Added a warning in the conversation, in Claude Desktop and other non-interactive hosts, when hooks in managed settings fail to load",
+        "Added this session's scheduled tasks, `/loop` wakeups, the goal and this conversation's forks to `/tasks`; x stops one after asking",
+        "Added a \"Server message\" row to a server's page in `/mcp` that shows the JSON-RPC error message of a remote HTTP MCP server that refuses the connection"
+      ]
+    },
+    "google-gemini/gemini-cli@v0.70.0": {
+      "tag": "v0.70.0",
+      "highlights": [
+        "Changelog for v0.69.0-preview.0",
+        "Changelog for v0.68.0",
+        "chore(release): bump version to 0.70.0-nightly.20261110.g1603e9bab",
+        "test(cli): remove redundant lowercase restart test in AdminSettingsChangedDialog"
+      ]
     }
   }
 }
