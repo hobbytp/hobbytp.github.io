@@ -1,245 +1,5 @@
 [
   {
-    "url": "https://github.com/datrify/ai--manus",
-    "title": "ai manus",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://github.com/qweqeqeqweqeqwe/manus--ai",
-    "title": "manus ai",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://scottjg.com/posts/2026-11-11-reverse-engineering-my-coway-air-purifier-to-ditch-the-cloud",
-    "title": "reverse engineering my coway air purifier to ditch the cloud",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://status.claude.com/incidents/nn11wk485zfn",
-    "title": "elevated errors on claude ai claude code and platform claude com",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths",
-    "title": "ai unlocks gödel s notebooks said to contain hundreds of proved theorems",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.theatlantic.com/books/2026/11/ai-literary-scams-amazon/689391",
-    "title": "ai is destroying the trust between writers and readers",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://orcasairband.com",
-    "title": "live airband on all frequencies from kors victoria ca also ground stopped",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus",
-    "title": "nvidia allegedly engineered scarcity by funding ai startups to buy its gpus",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.youtube.com/watch?v=IRK8h67ol7Q",
-    "title": "jonathan blow if ai solved coding why is my software still the same video",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://huggingface.co/Lightricks/LTX-2.5",
-    "title": "lightricks ltx 2 5",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://huggingface.co/thinkingmachines/Inkling-2-Small",
-    "title": "thinkingmachines inkling 2 small",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://huggingface.co/papers/2611.16748",
-    "title": "physloop harnessing llms physics awareness for self improving video generation models",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://huggingface.co/papers/2611.15844",
-    "title": "open vision banana a fully open recipe for generative visual perception",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://huggingface.co/papers/2611.17060",
-    "title": "ropedia xperience 2 a gold standard for scaling physical ai environments and behaviors",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://github.com/langfuse/langfuse/tree/main/ai-gateway",
-    "title": "langfuse ai gateway open source rust gateway to trace every llm call",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://openai.com/index/introducing-chatgpt-wallet",
-    "title": "introducing chatgpt wallet",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://openai.com/business/customer-stories/shield",
-    "title": "shield helps technicians hand off legacy portal work with openai",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://huggingface.co/blog/nvidia/simready-assets-robot-pick-and-place",
-    "title": "build a robot pick and place simulation with simready assets",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://huggingface.co/blog/allenai/xybench",
-    "title": "xybench helping with the problem behind the question",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://huggingface.co/blog/ggml-org/llama-cpp-v1",
-    "title": "llama cpp v1 0 0 a stronger foundation for the local ai ecosystem",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/13/jensen-huangs-departure-blasts-big-hole-in-ai-startup-funding-vcs-and-founders-say",
-    "title": "jensen huang s departure blasts big hole in ai startup funding vcs and founders say",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/13/ai-agent-startup-langchain-hits-3b-valuation",
-    "title": "ai agent startup langchain hits 3b valuation",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/13/export-banned-nvidia-chips-are-behind-chinas-most-powerful-ai-models-uh-oh-jensen",
-    "title": "export banned nvidia chips are behind china s most powerful ai models uh oh jensen",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/13/chatgpts-new-wallet-lets-ai-agents-shop-and-check-out-for-you",
-    "title": "chatgpt s new wallet lets ai agents shop and check out for you",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/13/elevenlabs-new-app-combines-meeting-note-taking-and-dictation-for-teams",
-    "title": "elevenlabs new app combines meeting note taking and dictation for teams",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/13/israels-vcs-see-opportunity-for-challengers-in-nvidias-turmoil",
-    "title": "israel s vcs see opportunity for challengers in nvidia s turmoil",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/13/jensen-huang-didnt-show-confidence-in-his-successor-report-says",
-    "title": "jensen huang didn t show confidence in his successor report says",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.theverge.com/tech/1033697/amazon-world-product-graph-ai-search",
-    "title": "amazon has a plan to index the world s online shopping data",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1033425/openai-chatgpt-wallet",
-    "title": "chatgpt wallet lets openai s dots agents make purchases for you",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.theverge.com/podcast/1032866/jensen-huang-nvidia-china-trump-vergecast",
-    "title": "what s really at stake in the jensen huang saga",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1032518/claude-duet-ai-agent-hands-on",
-    "title": "claude s duet agent is a little neurotic and surprisingly helpful",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1032339/lets-talk-about-the-nvidia-shitshow",
-    "title": "let s talk about jensen huang s many affairs",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509995.html",
-    "title": "黄仁勋辞职 英伟达33年首换帅 市值蒸发超3万亿",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509827.html",
-    "title": "meet2027含金量再加码 ai4s 量子计算 ai infra 第二批嘉宾强势来袭",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509796.html",
-    "title": "中国ai突破复杂肺癌诊疗 中美医疗圈集体坐不住了",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509730.html",
-    "title": "比亚迪第1900万辆新能源汽车下线 科技新奢旗舰suv方程豹钛9开启预订",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509716.html",
-    "title": "从仰望极速新纪录和鼎曜全球发布 看比亚迪的国际化与高端化之路",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509710.html",
-    "title": "比亚迪与神州租车首批闪充车及闪充站投放仪式顺利举行 战略合作落地兑现 闪充中国再次提速",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509663.html",
-    "title": "高难盲测超越gpt 6 astra与opus 5 无界前沿开源fx bio 1031 把rsi带进生命科学",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509653.html",
-    "title": "openjiuwen发布rsi原生agentos 让agent自由变身 持续迭代",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509613.html",
-    "title": "特斯拉和spacex最快下月合并",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/509614.html",
-    "title": "中国机器人学会隔墙 递眼色 成功率从0飙到100 组队干活不烧心",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.youtube.com/shorts/yVii9b8IHLs",
-    "title": "openai launches chatgpt wallet for ai purchases youtube",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.businesstoday.in/amp/technology/story/your-chatbot-just-got-a-credit-card-openai-launches-chatgpt-wallet-for-autonomous-shopping-567446-2026-11-14",
-    "title": "your chatbot just got a credit card openai launches chatgpt wallet",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://community.openai.com/t/appxdeployment-persisting-0x80073d02-errors-openai-codexprimaryruntime-appmodel-runtime-0x800706d9-error/1416119",
-    "title": "appxdeployment persisting 0x80073d02 errors openai",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.youtube.com/shorts/uxIP90GDlbQ",
-    "title": "openai launches daybreak red team and defense factory",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://sdtimes.com/ai/anthropic-introduces-claude-fable-5-2-mythos-5-2",
-    "title": "anthropic introduces claude fable 5 2 mythos 5 2 sd times",
-    "date": "2026-11-14"
-  },
-  {
-    "url": "https://www.threads.com/@stocksharks/post/DfsRCSGCm3W/open-ai-launches-chat-gpt-wallet-allowing-ai-to-make-payments-on-users-behalf",
-    "title": "openai launches chatgpt wallet allowing ai to make payments",
-    "date": "2026-11-14"
-  },
-  {
     "url": "https://techcrunch.com/2026/11/14/where-was-nvidias-security-team",
     "title": "where was nvidia s security team",
     "date": "2026-11-15"
@@ -2988,5 +2748,215 @@
     "url": "https://arxiv.org/pdf/2611.26447v1",
     "title": "scaling classical hardware for accurate real time quantum error correction",
     "date": "2026-11-20"
+  },
+  {
+    "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+    "title": "thinkingmachines inkling 2 mini",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/Sentinel7/h3",
+    "title": "sentinel7 h3",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
+    "title": "unsloth inkling 2 mini gguf",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/Lightricks/LTX-2.5",
+    "title": "lightricks ltx 2 5",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/apple/DepthPro2",
+    "title": "apple depthpro2",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/tencent/Hy4",
+    "title": "tencent hy4",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://architectlabs.com/blog/frostbite",
+    "title": "frostbite a new cpu architecture discovered designed and verified by ai",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://signal.org/blog/protecting-your-privacy",
+    "title": "restricting ai agents in mobile operating systems platforms from capturing data",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition",
+    "title": "google workers tell their employer not to punish schools that don t want ai",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off",
+    "title": "nasdaq erases all 2026 gains as ai sell off dampens anthropic s second day",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://openai.com/index/combatting-adversarial-distillation",
+    "title": "combatting adversarial distillation",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://openai.com/business/customer-stories/hebbia",
+    "title": "hebbia sees improvements in financial research with gpt 6 astra",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://openai.com/index/introducing-medchembench",
+    "title": "can ai help scientists identify promising drug candidates",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/blog/inkling2mini",
+    "title": "welcome inkling 2 mini cutting edge performance for your local setup",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/blog/harness-adapters-at-scale",
+    "title": "introducing harness adapters adapt your favorite model to your harness to improve performance and cost",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/20/daniel-ek-backs-ai-researchers-fusion-power-startup-heres-what-theyre-building",
+    "title": "daniel ek backs ai researcher s fusion power startup here s what they re building",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too",
+    "title": "ai claimed a solution to the 167 year old riemann hypothesis and a human did too",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/20/chips-can-survive-the-space-environment-can-their-financing",
+    "title": "chips can survive the space environment can their financing",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://techcrunch.com/podcast/the-fallout-from-nvidias-jensen-huang-scandal-continues",
+    "title": "the fallout from nvidia s jensen huang scandal continues",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://techcrunch.com/2026/11/20/6-ai-powered-gadgets-that-could-make-your-home-office-smarter",
+    "title": "six ai powered gadgets that could make your home office smarter",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.theverge.com/policy/1038892/trump-foreign-data-centers-tax",
+    "title": "trump threatens tremendous tax for moving ai data centers outside the us",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1010051/anthropic-riemann-hypothesis-millennium-prize-problem",
+    "title": "anthropic mathematician claims to have solved prestigious millennium prize problem with claude",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.theverge.com/podcast/1038419/outage-outlook-ground-stop-tech-failure-vergecast",
+    "title": "the week everything fell apart",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.theverge.com/ai-artificial-intelligence/1038390/signal-blocking-ai-agent-screenshots-mobile-app",
+    "title": "signal is blocking gemini and siri ai from reading your screen",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/511610.html",
+    "title": "昇腾算力训出了双榜sota的具身世界模型 华为云这次想把整套底座开放出来",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/511603.html",
+    "title": "新浪新闻 2026探索大会在京举行 虚实交融共探智能时代共生新图景",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://ng.investing.com/news/technology-news/anthropics-claude-ai-claims-breakthrough-in-150yearold-math-problem-2822181",
+    "title": "anthropic s claude ai claims breakthrough in 150 year old math",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://mashable.com/tech/openai-launches-chatgpt-wallet",
+    "title": "openai launches chatgpt wallet to have ai shop for you mashable",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://markets.businessinsider.com/news/currencies/startrader-launches-anthropic-stock-cfds-following-nasdaq-debut-1036787464",
+    "title": "startrader launches anthropic stock cfds following nasdaq",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.anthropic.com/news/ipo-close",
+    "title": "anthropic announces closing of initial public offering including full",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.tradingview.com/news/reuters.com,2026:newsml_FWN47113R:0-openai-introduces-medchembench",
+    "title": "openai introduces medchembench tradingview news",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://www.afr.com/markets/equity-markets/asx-markets-live-wall-street-surges-on-back-of-massive-anthropic-ipo-20261120-p61ft1",
+    "title": "asx notches worst week since covid 19 pandemic megaport dives",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://adalytica.com/news/deepseek-open-source-v3-2-models-df3d0603",
+    "title": "deepseek releases open source v3 2 ai models adalytica",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://github.com/han938/open-webui-private-ai-desk",
+    "title": "open webui private ai desk",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://github.com/chase1225/anythingllm-verona-document-chat",
+    "title": "anythingllm verona document chat",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://github.com/AI4XE/ai4ai",
+    "title": "ai4ai",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://github.com/Dodaios/ste80-humanizer",
+    "title": "ste80 humanizer",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://hippomaps.ch?q=cafes+by+the+Limmat+100+m+from+the+lake+in+zurich",
+    "title": "fast deterministic natural language search for openstreetmap data",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://cherwellvalleymotorclub.app",
+    "title": "drive around my village in 3d",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.26444",
+    "title": "mind2act world a diagnostic benchmark for embodied mind physical action and mind action composition in robotic manipulation",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.26380",
+    "title": "egocaptioner towards comprehensive and fine grained egocentric video captioning",
+    "date": "2026-11-21"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.26107",
+    "title": "hiuni harmonizing understanding and generation in shared visual space",
+    "date": "2026-11-21"
   }
 ]
