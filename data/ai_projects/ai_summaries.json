@@ -1527,6 +1527,78 @@
         "chore(release): bump version to 0.70.0-nightly.20261110.g1603e9bab",
         "test(cli): remove redundant lowercase restart test in AdminSettingsChangedDialog"
       ]
+    },
+    "nexu-io/openmotion@v0.2.0": {
+      "tag": "v0.2.0",
+      "highlights": [
+        "🎥 **A clearer home for video creation.** Find camera control, multi-shot video, native audio and model-specific video options in Cinema Studio. [#738](",
+        "🏷️ **152 Brand Kits for a consistent look.** Explore reusable brand identities and carry colors, typography and visual direction into the next cut. [#480]( · [#714](",
+        "🧩 **One workspace across more creative modes.** Explore now connects media studios, templates, Skills and project entry points so you can move f"
+      ]
+    },
+    "hkuds/deeptutor@v1.7.4": {
+      "tag": "v1.7.4",
+      "highlights": [
+        "**Windows:** Quit DeepTutor and use the v1.7.4 installer or portable ZIP. The Windows installer and portable app use the same new runtime verification key."
+      ]
+    },
+    "glanderness/beeftv@v2.4.0": {
+      "tag": "v2.4.0",
+      "highlights": [
+        "桌面端批量下载原生直拷与文件命名同步：桌面端多选批量下载素材改由原生后台流式直拷到所选目录，不再把大视频与高清图塞进页面内存或误跳报错页，重名自动追加序号防覆盖；导入本地文件时画布节点自动沿用原文件主名，单图与单视频下载及全屏预览保存同步沿用节点名与原格式后缀。",
+        "创作工作台统一体验、Windows 更新加固与前端依赖安全升级：统一图片/视频生成面板、模型供应商选择、参数记忆与全屏预览菜单，修复 macOS 多轨剪辑面板折叠与片段分割时长截短问题；Windows 自动更新准备阶段新增文件占用重试、早退检测与清晰中文失败诊断码；升级并加固前端依赖中的已知安全漏洞。"
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.7": {
+      "tag": "v2.100.7",
+      "highlights": [
+        "Run StepCode as a Step Plan transport",
+        "Drop Start at Login from the desktop Getting started and let Home hide it",
+        "Switch models on/off from Providers and an Overall tab in Models",
+        "Collapse account pool settings to title and switch; stack quota rows again"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.146": {
+      "tag": "v0.9.146",
+      "highlights": [
+        "watch-pr --expect-app <slug names a GitHub App that runs the repository's CI. The watcher used to skip any check suite that an app other than Actions had queued"
+      ]
+    },
+    "earendil-works/pi@v1.6.0": {
+      "tag": "v1.6.0",
+      "highlights": [
+        "Added `qwen4-max-preview` to the Qwen Token Plan Individual providers ([#12259](",
+        "Qwen Token Plan providers now use the current gateways (`tok"
+      ]
+    },
+    "othmanadi/planning-with-files@v3.29.0": {
+      "tag": "v3.29.0",
+      "highlights": [
+        "Completion reports count statuses inside each phase. Fenced examples and quoted statuses stay out of the count. UTF-8 byte-order marks and indented headings no longer hide phases.",
+        "@kuei51307-hub for phase-scoped counting and shared fixtures in #381.",
+        "@ankitjha1405 for the checkbox-only proposal and initial implementation in #367."
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.41": {
+      "tag": "v6.19.41",
+      "highlights": [
+        "patch: Stop re-running failed background message deliveries"
+      ]
+    },
+    "garrytan/gbrain@v0.60.748.0": {
+      "tag": "v0.60.748.0",
+      "highlights": [
+        "From 40 shards up, the largest shard is `test/setup.test.ts` on its own, so more shards cannot make it smaller."
+      ]
+    },
+    "anthropics/claude-code@v2.1.330": {
+      "tag": "v2.1.330",
+      "highlights": [
+        "Added `CLAUDE_CODE_FULL_SIGN_IN_LINK=1` to print the full sign-in link, if the short one shows an error or a script reads values from it",
+        "Self-hosted runner: Added `--start-dir` / `SELF_HOSTED_RUNNER_START_DIR` to have Claude start its work in a folder of a repository, while settings and hooks load as without it",
+        "Added a notice in cloud and self-hosted runner sessions when a plugin marketplace can't be fetched because its repository isn't one of the session's",
+        "Self-hosted runner: Added a notice when Anthropic-managed git refuses a plugin's own repository, naming the plugin and what to do"
+      ]
     }
   }
 }
