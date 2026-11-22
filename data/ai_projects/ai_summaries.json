@@ -1599,6 +1599,87 @@
         "Added a notice in cloud and self-hosted runner sessions when a plugin marketplace can't be fetched because its repository isn't one of the session's",
         "Self-hosted runner: Added a notice when Anthropic-managed git refuses a plugin's own repository, naming the plugin and what to do"
       ]
+    },
+    "nexu-io/openmotion@v0.2.1": {
+      "tag": "v0.2.1",
+      "highlights": [
+        "🎞️ **Start your next cut in Cinema Studio.** Browse Cinema templates, inspect generation presets and jump straight into a video project with a stronger starting point. [#729]("
+      ]
+    },
+    "saos-3624/dsh-see-now@v0.2.6": {
+      "tag": "v0.2.6",
+      "highlights": [
+        "`openWindow` 现在走一道\"同时只开一次\"的闸：启动在飞时，后到的调用直接拿同一个 promise。",
+        "收旧窗改用 `killWindowTree()`（Windows 走 `taskkill /T /F`）：原来 `process.kill(pid)` 杀的只是",
+        "窗口脚本同步上游（dsh-watch-together）：`chat.jsonl` 撞 `EACCES` 时 `append_user` 会用"
+      ]
+    },
+    "graphicle-ai/graphicle@v0.1.19": {
+      "tag": "v0.1.19",
+      "highlights": [
+        "zlib: libz-sys goes from 1.1.31 to 1.1.33 in every crate, for",
+        "Read-only mode: `--read-only` on any command, or `GRAPHICLE_READ_ONLY=1`,",
+        "Releases check known vulnerabilities: a `vulnerabilities` workflow ranks",
+        "A folder n"
+      ]
+    },
+    "alphaxiv/openresearch@v0.2.29": {
+      "tag": "v0.2.29",
+      "highlights": [
+        "<!-- desktop-downloads:start -- Download OpenResearch Install the desktop app to get everything you need. No separate installation or terminal setup required. <"
+      ]
+    },
+    "glanderness/beeftv@v2.4.1": {
+      "tag": "v2.4.1",
+      "highlights": [
+        "本地 SQLite 单源存储、冷启动按需加载与画布交互优化：项目列表升级为按需摘要加载，大量重画布项目冷启动时不再逐张拉取完整详情，并修复桌面冷启动偶发清空画布摘要或未保存草稿的问题；画布文件夹、画板、创作对话与素材库收敛为本机 SQLite 单源读写，清理旧版浏览器镜像与历史废弃代码；支持画布标题原位编辑并优化窗口切回后的同步恢复。",
+        "模型能力驱动与内置助手升级：已声明视频模型的能力控件、参考素材约束与预计费用改由服务端实时目录与统一估价接口驱动，移除 H3 与人像档模型的客户端能力与报价硬编码，单张连线图给不支持参考模式的视频模型提交时自动匹配首帧生视频；移除内置创作助手官方渠道模型白名单限制，支持直接选用目录内所有具备文本对话能力的官方模型。"
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.8": {
+      "tag": "v2.100.8",
+      "highlights": [
+        "Grok Imagine 2.0/Video 1.5 bridges and quota/reset parity",
+        "Reuse normalized tools for text recovery",
+        "Publish local opt-out catalog status once",
+        "Live quota updates for provider account lists"
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.46": {
+      "tag": "v6.19.46",
+      "highlights": [
+        "patch: Show FCC's failure category in provider error messages"
+      ]
+    },
+    "garrytan/gbrain@v0.60.753.0": {
+      "tag": "v0.60.753.0",
+      "highlights": [
+        "The check is now worked out once per query instead of once per fact row, so these reads do no extra lookups per row."
+      ]
+    },
+    "hkuds/nanobot@v0.4.2": {
+      "tag": "v0.4.2",
+      "highlights": [
+        "Long messages you send can collapse to keep the conversation easier to scan. Expand them with **Show more**, or copy the full text without expanding. [#6739](",
+        "Align the footer controls in the settings sidebar, and keep the model picker open when you reopen it quickly after switching presets. [Settings sidebar fix]( [#6743](",
+        "Dream can organize detailed knowledge in a Markdown wiki and keep a short memory summary in context. Existing memory files and custom Dream guides remain supported. [#4477]("
+      ]
+    },
+    "cursortouch/windows-mcp@v0.9.0": {
+      "tag": "v0.9.0",
+      "highlights": [
+        "fix(tree): skip windows that close during a capture instead of retrying them",
+        "fix(screenshot): add the capture origin to the image-to-screen conversion",
+        "fix(input): check that every MultiEdit text is a string before typing",
+        "fix(tree): sleep each window retry delay once instead of twice"
+      ]
+    },
+    "musistudio/claude-code-router@v3.1.6": {
+      "tag": "v3.1.6",
+      "highlights": [
+        "View CCR provider usage in the Codex desktop app.",
+        "Fix signed Node runtime discovery in current macOS Codex app layouts."
+      ]
     }
   }
 }
