@@ -1,18 +1,18 @@
 {
-  "week": "2026-W47",
-  "date": "2026-11-16",
-  "title": "AI 开源项目周报 (2026-W47)：wrong-notebook、modern-web-guidance-src、impeccable 等新锐项目入库与生态追踪",
-  "description": "汇总 2026-W47 周期内 @hobbytp GitHub Stars 最新收录的 AI 开源项目（wrong-notebook、modern-web-guidance-src、impeccable 等）、核心框架版本迭代要点与 CHAOSS 健康度追踪。",
-  "url": "/zh/projects/weekly/2026-w47/",
+  "week": "2026-W48",
+  "date": "2026-11-23",
+  "title": "AI 开源项目周报 (2026-W48)：estella、openmotion、wrong-notebook 等新锐项目入库与生态追踪",
+  "description": "汇总 2026-W48 周期内 @hobbytp GitHub Stars 最新收录的 AI 开源项目（estella、openmotion、wrong-notebook 等）、核心框架版本迭代要点与 CHAOSS 健康度追踪。",
+  "url": "/zh/projects/weekly/2026-w48/",
   "newly_starred_sample": [
+    "estella",
+    "openmotion",
     "wrong-notebook",
-    "modern-web-guidance-src",
-    "impeccable",
-    "modern-web-guidance"
+    "modern-web-guidance-src"
   ],
   "release_sample": [
-    "impeccable cli-v4.9.2",
-    "DeepTutor v1.7.3",
-    "langchain langchain-core==1.8.1"
+    "pstack-claude v0.9.151",
+    "openclaw v2026.11.7",
+    "OpenResearch v0.2.30"
   ]
 }

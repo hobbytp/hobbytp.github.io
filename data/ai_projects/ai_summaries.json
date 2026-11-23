@@ -1680,6 +1680,75 @@
         "View CCR provider usage in the Codex desktop app.",
         "Fix signed Node runtime discovery in current macOS Codex app layouts."
       ]
+    },
+    "esengine/estella@v0.113.0": {
+      "tag": "v0.113.0",
+      "highlights": [
+        "Added - GPU compute jobs can overlap independent graphics passes on Metal. Enable asyncCompute in the app options or set Renderer.consoleVariables['r.rdg.asyncc"
+      ]
+    },
+    "margrop/wrong-notebook@v2026.11.22": {
+      "tag": "v2026.11.22",
+      "highlights": [
+        "MCP 补充记录作答、生成变式与判题工具",
+        "手机底栏第4项支持试卷和复习切换",
+        "接入题型专属讲解规则",
+        "文字分题缺口限制为 2 题，避免 OCR 错号并入前一题"
+      ]
+    },
+    "alphaxiv/openresearch@v0.2.30": {
+      "tag": "v0.2.30",
+      "highlights": [
+        "<!-- desktop-downloads:start -- Download OpenResearch Install the desktop app to get everything you need. No separate installation or terminal setup required. <"
+      ]
+    },
+    "glanderness/beeftv@v2.4.2": {
+      "tag": "v2.4.2",
+      "highlights": [
+        "内置创作助手整片提案崩溃修复与跨版本兼容：修复通过内置创作助手发起不含参考图的整片生成提案（例如文生图节点）后，再次打开画布触发页面报错异常的问题；后端新建提案统一输出空参考数组并归一化历史提案与任务校验比对，升级前已保存的历史提案、确认授权与进行中任务在升级后均可正常打开、确认与续跑。",
+        "画布顶栏长标题与素材接口修复：修复 macOS 与 Windows 上画布名较长时左上角画布切换按钮文字向左右溢出、与项目标题及保存状态图标重叠的问题（长名称自动省略并保留完整悬停提示）；修复删除不存在的素材记录时误返回 500 的问题，改为返回清晰的 404 提示。"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.151": {
+      "tag": "v0.9.151",
+      "highlights": [
+        "A Claude Code cloud session refuses GitHub GraphQL, so gh pr checks, gh pr merge, ship-pr, and watch-pr fail there. When gh pr checks fails with that refusal, f"
+      ]
+    },
+    "tt-a1i/archify@v3.3.0": {
+      "tag": "v3.3.0",
+      "highlights": [
+        "Sync labs/code-analysis with dev (3.1.x)",
+        "Sync labs/code-analysis with dev and address #998 review findings",
+        "release: enable v3.2.0 update notice and fix demo card clipping",
+        "Code Analysis module  synced with labs/code-analysis"
+      ]
+    },
+    "codewhale-hq/codewhale@v0.10.3": {
+      "tag": "v0.10.3",
+      "highlights": [
+        "What's in v0.10.3 Codewhale v0.10.3 brings a unified Plugins surface with Creator mode ([features] plugin_creator) and unmodified DeepSeek Harness (@deepseek-ai"
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.47": {
+      "tag": "v6.19.47",
+      "highlights": [
+        "patch: Keep Claude sessions on FCC when Claude settings set env"
+      ]
+    },
+    "garrytan/gbrain@v0.60.761.0": {
+      "tag": "v0.60.761.0",
+      "highlights": [
+        "A history read that timed out used to drop everything it had read for its group of notes. It now keeps the versions it found, so those notes can still clear.",
+        "`gbrain book-mirror` marks a chapter the provider refused, or whose output filter stopped it, as failed with \"provider refusal or output fil"
+      ]
+    },
+    "openclaw/openclaw@v2026.11.7": {
+      "tag": "v2026.11.7",
+      "highlights": [
+        "**Conversation recovery:** Recover interrupted replies and child results across Gateway restarts without losing pending work. (#198905, #201544, #200924, #200967) Authored",
+        "**Talk transcription:** Use a saved Deepgram, ElevenLabs, or Mistral API key for live transcription.  Relat"
+      ]
     }
   }
 }
