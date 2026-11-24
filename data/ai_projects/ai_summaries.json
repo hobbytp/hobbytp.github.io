@@ -1749,6 +1749,118 @@
         "**Conversation recovery:** Recover interrupted replies and child results across Gateway restarts without losing pending work. (#198905, #201544, #200924, #200967) Authored",
         "**Talk transcription:** Use a saved Deepgram, ElevenLabs, or Mistral API key for live transcription.  Relat"
       ]
+    },
+    "esengine/estella@v0.115.0": {
+      "tag": "v0.115.0",
+      "highlights": [
+        "Added - The Content Browser's columns can be sized. In the Columns view, drag the edge between two column headers to move it: the column on its left takes the w"
+      ]
+    },
+    "pbakaus/impeccable@loop-v0.2.2": {
+      "tag": "loop-v0.2.2",
+      "highlights": [
+        "With nothing waiting, Loop's first card copies a short prompt so your agent can say hi, and its hello arrives as its first card. Loop no longer wakes a Codex se"
+      ]
+    },
+    "googlechrome/modern-web-guidance@v1.0.2": {
+      "tag": "v1.0.2",
+      "highlights": [
+        "Updated the **[modern-web-guidance]( skill to list `js` among the broader discipline guides to retrieve alongside use-case guides and updated the skill version hash.",
+        "Updated the **[conditional-async-dependencies]( guide to fix a typo in the conditional polyfill pattern description.",
+        "Updated the **[passkey-authentication]( guide to give every sign-in input a visible `<label>` associated through"
+      ]
+    },
+    "glanderness/beeftv@v2.4.4": {
+      "tag": "v2.4.4",
+      "highlights": [
+        "视频超分纯元数据估价与统一零拷贝预检：视频超分估价改为纯元数据单路径，移除估价期静默上传兜底，并与字幕擦除共用单次打开零拷贝预检及真实宽高/时长回填；统一单源大小限额校验与 4xx/5xx 真实中文报错透传，环境检查补充 `ffprobe` 可执行性检测。"
+      ]
+    },
+    "volcengine/openviking@v0.5.6": {
+      "tag": "v0.5.6",
+      "highlights": [
+        "**QueueFS 任务顺序与恢复**：后台消息新增按目标串行和按组固定处理归属的调度能力。External、Compile 和 Memory 任务在忙碌、重试、取消与进程恢复时保留原消息及顺序，SessionCommit 会等待已接受的记忆批次真正落稳后再确认队列消息。[#7584](",
+        "**Compile 配置、执行与快照分离**：Compile 现在以 `compile_name` 管理持久配置，每次执行使用独立任务 ID、冻结输入、增量基线和 Git 快照；复杂模式改为隔离的 Markdown 文件 worker，VikingBot 另增简单编译模式。配置、定时触发、运行、输出和回滚的职责更清楚。[#7737](",
+        "**Privacy 安全执行外部命令**：新增 `ov privacy run`，可在环境变量、env 文件或命令参数中解析 `{{ov_privacy:...}}` 引用，并在子进程标准输出和错误输出中重新遮蔽敏感值；解析失败时不会启动子进程。隐私检测也统一了匹配逻辑并减少误报。[#7760](",
+        "**检索与 MCP**：MCP 检索工具支持标签过滤，关键词搜索开放高级参数，召回会用剩余上下文预算补齐摘要；Grep 达到结果上限时会明确告知调用方。[#7808]("
+      ]
+    },
+    "thu-maic/openmaic@v1.5.0": {
+      "tag": "v1.5.0",
+      "highlights": [
+        "Coming from 1.5.0-rc.3, there are no new migrations.",
+        "Read **Behavior Changes** below: the package canvases become the default for slide editing and playback, and conversation compaction is on by default where the agent runtime runs."
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.153": {
+      "tag": "v0.9.153",
+      "highlights": [
+        "On Windows, open-pstack launches a harness installed as a .cmd or .bat shim through cmd.exe. It wrapped each argument in double quotes, which leave %NAME% open "
+      ]
+    },
+    "codewhale-hq/codewhale@v0.10.4": {
+      "tag": "v0.10.4",
+      "highlights": [
+        "What's in v0.10.4 Codewhale v0.10.4 is a hotfix release. Ctrl+V no longer pastes text twice in Windows Terminal, which also doubled API keys pasted into /provid"
+      ]
+    },
+    "othmanadi/planning-with-files@v3.29.1": {
+      "tag": "v3.29.1",
+      "highlights": [
+        "Arian Valdivieso (@arianvaldivieso) wrote the evaluation guide correction, submitted",
+        "@inverteum corrected the named-plan walkthrough ."
+      ]
+    },
+    "garrytan/gbrain@v0.60.766.0": {
+      "tag": "v0.60.766.0",
+      "highlights": [
+        "perplexity-research sends only the topic and public facts by default and asks before sending page content; its example keeps the API key off the command line.",
+        "brain-pdf hands back the file and sends it elsewhere only to a recipient the user confirms.",
+        "meeting-ingestion, two-tier-extraction, research-compendium and company-brainify say what paid or scheduled work they start, and ask first.",
+        "Examples use placeholder names, paths and sizes, and leftover provenance tags and test-only notes are gone from skill files."
+      ]
+    },
+    "openai/codex@rust-v0.172.0": {
+      "tag": "rust-v0.172.0",
+      "highlights": [
+        "Follow thread links from search results and transcripts to open saved conversations and nested agents in the terminal.",
+        "Press `Tab` to complete arguments for supported slash commands. For example, `/mcp lo` completes to `/mcp login`.",
+        "Jump between task groups in the agent command center with `Shift+Up` and `Shift+Down`.",
+        "Optional stdio MCP servers with cached tool lists now start on their first tool call by default."
+      ]
+    },
+    "getzep/graphiti@mcp-v1.1.4": {
+      "tag": "mcp-v1.1.4",
+      "highlights": [
+        "The `--temperature` help text states that the Anthropic provider ignores it.",
+        "The combined FalkorDB guide uses the correct Compose file name, and its port example keeps the `127.0.0.1` bindings.",
+        "MCP server 1.1.4 requires `graphiti-core>=0.32.0`. The Docker images use graphiti-core 0.32.0 (#2178, #2203).",
+        "Upgraded Pillow, aiohttp, OpenTelemetry, setuptools, and nbconvert for Dependabot alerts ."
+      ]
+    },
+    "github/spec-kit@v1.4.4": {
+      "tag": "v1.4.4",
+      "highlights": [
+        "chore: bump version to 1.4.4",
+        "Update T-Shirt Sizing Gate to v0.2.1",
+        "Exit non-zero from integration upgrade when no integration is installed",
+        "fix: prevent integration catalog removal under environment override"
+      ]
+    },
+    "anthropics/claude-code@v2.1.331": {
+      "tag": "v2.1.331",
+      "highlights": [
+        "Added Code Mode support in terminal sessions on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and Claude Platform on AWS",
+        "Added `oidc.groups_jsonpath` to the Claude apps gateway, to read groups from the matching entries of a list of objects with a small subset of JSONPath (RFC 9535)",
+        "Added an API connectivity section to `claude doctor` that reports whether the API can be reached, with the HTTP status or the error, or says why it wasn't tested",
+        "Added a notice when tap-mode voice dictation stops by itself, after 15 seconds without recognized speech or at its 2-minute limit"
+      ]
+    },
+    "google-gemini/gemini-cli@v0.71.1": {
+      "tag": "v0.71.1",
+      "highlights": [
+        "fix(patch): cherry-pick aafdfdf to release/v0.71.0-pr-30420 to patch version v0.71.0 and create version 0.71.1"
+      ]
     }
   }
 }
