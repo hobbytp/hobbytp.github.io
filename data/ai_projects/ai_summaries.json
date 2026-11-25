@@ -1861,6 +1861,128 @@
       "highlights": [
         "fix(patch): cherry-pick aafdfdf to release/v0.71.0-pr-30420 to patch version v0.71.0 and create version 0.71.1"
       ]
+    },
+    "esengine/estella@v0.116.0": {
+      "tag": "v0.116.0",
+      "highlights": [
+        "Added - A stop clip can land where the character stops. An animator state gains distanceParameter: a float saying how far the character has left to go, and the "
+      ]
+    },
+    "pbakaus/impeccable@skill-v4.11.0": {
+      "tag": "skill-v4.11.0",
+      "highlights": [
+        "**Every save says where it went.** A critique, audit or scan ends with `Saved to Impeccable` and its link, or says plainly why it wasn't saved.",
+        "**Critiques carry their pictures.** A saved critique names the page it viewed, so Impeccable can show that page on desktop and phone beside the findings.",
+        "**Taste for the kind of work.** Your agent reads the design rules for what it is making (web, slides or motion), not all of them at once."
+      ]
+    },
+    "openai/codex-security@npm-v0.11.0": {
+      "tag": "npm-v0.11.0",
+      "highlights": [
+        "**Deep Scan on Windows.** Deep Scan retries a heartbeat or receipt update when another process briefly holds the file open. If the write fails, the previous file stays intact.",
+        "**Workbench.** Listing global findings no longer"
+      ]
+    },
+    "saos-3624/dsh-see-now@v0.2.8": {
+      "tag": "v0.2.8",
+      "highlights": [
+        "没有功能变化，是 0.2.7 的收尾 0.2.7 发布的那一版，工具 description 超了项目自己的常驻文案预算（3946 3800 字符）， CI 在两个 Node 版本上都红。 这一版把那段总开关说明从 350 字压成三句 —— 「这是什么 reason / 你打不开 / 请用户开」—— 细节留在 see_"
+      ]
+    },
+    "glanderness/beeftv@v2.4.5": {
+      "tag": "v2.4.5",
+      "highlights": [
+        "官方算力无感热同步、声音克隆参考与有声无画视频兼容回退：BeefTV 官方算力模型目录与价格升级为 `ETag/304` 与内联价格静默热更新，无需手动刷新即可获取最新模型和实时计费；声音克隆与音频全能参考按服务端能力动态放行参考音轨，补齐画布连线与本地音频直传；视频播放器新增有声无画与不可解码视频轨检测，统一自动回退兼容 H.264 转码播放。",
+        "插件隔离、大画布稳定性与自定义渠道修复：加固插件异常 OOM 隔离与安装目录布局，修复自定义渠道（BYOK）生成确认卡死、切画布偶发丢节点、大画布读取超时及托管视频约束校验问题。"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.155": {
+      "tag": "v0.9.155",
+      "highlights": [
+        "`/poteto-help` lists `/reframe` in its table of skills."
+      ]
+    },
+    "tt-a1i/archify@v3.3.1": {
+      "tag": "v3.3.1",
+      "highlights": [
+        "release: publish stable 3.3.0 update manifest",
+        "chore: sync dev with main and start v3.3.1-dev.1 cycle",
+        "feat(dsh): prepare 1.2.0 bundling Archify 3.3.0 for DSH 0.2.2-rc.5",
+        "docs(dsh): record published 1.2.0 release"
+      ]
+    },
+    "byoungd/up@v1.1.0": {
+      "tag": "v1.1.0",
+      "highlights": [
+        "**中文版**：455 页 PDF · 88 章 EPUB 3.3 · 中文为主版本。",
+        "**Covers** carry the new titles; EPUB metadata now includes a subtitle, UUID identifier, date, subjects, edition 1.1.0 and series information. No ISBN or publisher was invented.",
+        "EPUBCheck error: the NCX `dtb:uid` now matches the OPF unique identifier.",
+        "English PDF rendered Chinese glossary terms as black squares; both editions now embed the OFL Noto subsets and check glyph coverage."
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.54": {
+      "tag": "v6.19.54",
+      "highlights": [
+        "patch: Accept unsigned thinking from native Messages providers"
+      ]
+    },
+    "garrytan/gbrain@v0.60.768.0": {
+      "tag": "v0.60.768.0",
+      "highlights": [
+        "gbrain repair ghost-pages now soft-deletes a page only when a commit deleted its file, because only then does Git still hold what the file held.",
+        "The skill resolver's per-session budget for skill lists, skills.resolver.session_token_budget, now defaults to 8,000 tokens instead of 2,000."
+      ]
+    },
+    "openclaw/openclaw@v2026.11.9": {
+      "tag": "v2026.11.9",
+      "highlights": [
+        "[Release notes]( — formatted for people.",
+        "[Changelog]( — plain Markdown for AI agents and tools.",
+        "npm package:",
+        "registry tarball:"
+      ]
+    },
+    "getzep/graphiti@mcp-v1.1.5": {
+      "tag": "mcp-v1.1.5",
+      "highlights": [
+        "The combined FalkorDB image builds in one stage on `falkordb/falkordb:latest`, and it does not run apt. Before, the apt step failed because the FalkorDB image has no perl .",
+        "The `--temperature` help text states that the Anthropic provider ignores it.",
+        "The combined FalkorDB guide uses the correct Compose file name, and its port example keeps the `127.0.0.1` bindings.",
+        "MCP server 1.1.5 requires `graphiti-core>=0.32.0`. The Docker images use graphiti-core 0.32.1 (#2178, #2203, #2208)."
+      ]
+    },
+    "upstash/context7@@upstash/context7-pi@0.2.0": {
+      "tag": "@upstash/context7-pi@0.2.0",
+      "highlights": [
+        "Minor Changes - 32dccfd: Agents pass the version a project uses as its own value, not as a suffix of the library ID. query-docs (MCP and pi) takes a version inp"
+      ]
+    },
+    "chromedevtools/chrome-devtools-mcp@chrome-devtools-mcp-v1.14.0": {
+      "tag": "chrome-devtools-mcp-v1.14.0",
+      "highlights": [
+        "add --backgroundNewPages to keep new_page tabs in the background ([#3539]( ([7a39d6d](",
+        "add abort and allow-origin network mocks ([#3421]( ([eb4b53d](",
+        "add inspect-in-devtools skill and claude plugin command ([#2696]( ([aa977a6](",
+        "add network requests from service workers ([#3554]( ([11162da]("
+      ]
+    },
+    "anthropics/claude-code@v2.1.332": {
+      "tag": "v2.1.332",
+      "highlights": [
+        "Added skills from MCP servers (beta). They show as `server:skill` in the `/` menu; other skills keep their names",
+        "Added \"Always deliver\" to the prompt for held messages from other sessions",
+        "Added a footer line that stays while a flagged message has your session on a different model, until you pick one with `/model`",
+        "Added an OpenTelemetry `assistant_response` event for text Claude sends through SendUserMessage or Cowork's message tool, when response logging is on"
+      ]
+    },
+    "tauricresearch/tradingagents@v1.0.0": {
+      "tag": "v1.0.0",
+      "highlights": [
+        "TradingAgents: Towards Agentic Finance Research.",
+        "Agents: Equity Research, Macro Strategy, Quant Research and Risk Analysis research in parallel and report back.",
+        "Skills: sixteen built-in research methods, from an earnings review to a DCF valuation.",
+        "Your own agents and skills, as Markdown files."
+      ]
     }
   }
 }
