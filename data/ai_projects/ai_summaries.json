@@ -1983,6 +1983,112 @@
         "Skills: sixteen built-in research methods, from an earnings review to a DCF valuation.",
         "Your own agents and skills, as Markdown files."
       ]
+    },
+    "pbakaus/impeccable@skill-v4.11.1": {
+      "tag": "skill-v4.11.1",
+      "highlights": [
+        "**Init gets straight to your product.** `/impeccable init` opens with its first question."
+      ]
+    },
+    "saos-3624/dsh-see-now@v0.2.9": {
+      "tag": "v0.2.9",
+      "highlights": [
+        "`mic.py` 写死 `D:/asr-local/models-sherpa`；",
+        "`window.py` 把子进程 stderr 丢掉；",
+        "`_poll_chat()` 每 250ms 把状态清空。"
+      ]
+    },
+    "nicobailon/visual-explainer@v0.16.0": {
+      "tag": "v0.16.0",
+      "highlights": [
+        "**Figures number themselves.** Leave a caption's number empty and the page writes `Fig. 1`, `Fig. 2`, … in order, and links to a figure get its number too.",
+        "**A sidebar for long pages.** On a wide screen, the section list can sit in a left column with subsections indented under their section. Phones keep the bar across the top.",
+        "**Diagrams with fewer misplaced labels.** Plain box-and-arrow diagrams are laid out automatically; diagrams that need more are still drawn by hand.",
+        "**The page check sees every figure.** Figures in collapsed sections are checked and pictured, and figures that don't fit on the contact sheets are saved as their own images."
+      ]
+    },
+    "lidge-jun/opencodex@v2.100.10": {
+      "tag": "v2.100.10",
+      "highlights": [
+        "Follow Codex GPT-Live defaults and gpt-transcribe fields",
+        "RunAPI Standard sponsor preset, README row and docs",
+        "Relay public GPT-Live sessions for API-key providers",
+        "Opt the legacy opencodex provider table into Cyber access programs"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.157": {
+      "tag": "v0.9.157",
+      "highlights": [
+        "On Codex, codex-tools.md now says how to save a resume checkpoint under the workspace-write sandbox, which makes .git read-only and so blocked every checkpoint "
+      ]
+    },
+    "tt-a1i/archify@v3.3.2": {
+      "tag": "v3.3.2",
+      "highlights": [
+        "release: publish stable 3.3.1 update manifest",
+        "fix(story): keep playback seeking usable on narrow screens",
+        "chore: sync dev with main and start v3.3.2-dev.1 cycle",
+        "fix(seo): resolve Bing SEO warnings and ship GEO v4 v3.3 capabilities & 100k drafts"
+      ]
+    },
+    "earendil-works/pi@v1.6.1": {
+      "tag": "v1.6.1",
+      "highlights": [
+        "New Features - Decision models in codemode: GitHub Copilot's gpt-6-luna-decisions and Radius decision models can be called from codemode models.classify(), and "
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.55": {
+      "tag": "v6.19.55",
+      "highlights": [
+        "patch: Skip replay for unsigned Messages thinking in Chat output"
+      ]
+    },
+    "garrytan/gbrain@v0.60.772.0": {
+      "tag": "v0.60.772.0",
+      "highlights": [
+        "chat_fallback_on_refusal now defaults to false.",
+        "`gbrain doctor --only chat_fallback_chain` says when refusal fallback is off by default and names the command that turns it on."
+      ]
+    },
+    "openclaw/openclaw@v2026.11.10": {
+      "tag": "v2026.11.10",
+      "highlights": [
+        "[Release notes]( — formatted for people.",
+        "[Changelog]( — plain Markdown for AI agents and tools."
+      ]
+    },
+    "langchain-ai/langchain@langchain-core==1.8.5": {
+      "tag": "langchain-core==1.8.5",
+      "highlights": [
+        "Changes since langchain-core==1.8.4 release(core): 1.8.5 (42103) fix(core): reuse provider message id on later stream chunks (42050) docs(core): clarify v3 runt"
+      ]
+    },
+    "github/spec-kit@v1.4.5": {
+      "tag": "v1.4.5",
+      "highlights": [
+        "chore: bump version to 1.4.5",
+        "fix(extensions): keep TOML command prompts identical to the body",
+        "fix(scripts): reconfigure setup_plan.py streams as UTF-8",
+        "Update SpecKit Grill Me extension to v1.0.3"
+      ]
+    },
+    "langchain-ai/langgraph@cli==0.4.44": {
+      "tag": "cli==0.4.44",
+      "highlights": [
+        "feat(cli): add url to deploy list --json",
+        "release(cli): 0.4.44",
+        "fix(cli): omit an empty secrets list when updating a deployment",
+        "chore(deps): bump opentelemetry-api from 1.45.1 to 1.45.2 in /libs/cli"
+      ]
+    },
+    "tauricresearch/tradingagents@v1.0.1": {
+      "tag": "v1.0.1",
+      "highlights": [
+        "Plan mode: the PDF report shows the question you asked, with what you added while planning, instead of \"Carry out the plan\".",
+        "Reports: the report starts with the answer; progress notes written along the way are left out.",
+        "Price history: a one-year window that spans February 29 is no longer refused.",
+        "Correlation: returns over only three shared dates are refused instead of reported as a perfect +1 or -1; four dates are the minimum."
+      ]
     }
   }
 }
