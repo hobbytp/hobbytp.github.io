@@ -2089,6 +2089,36 @@
         "Price history: a one-year window that spans February 29 is no longer refused.",
         "Correlation: returns over only three shared dates are refused instead of reported as a perfect +1 or -1; four dates are the minimum."
       ]
+    },
+    "esengine/estella@v0.118.0": {
+      "tag": "v0.118.0",
+      "highlights": [
+        "Added - VR is switched on in Project Settings, and Play offers Enter VR. Project Settings Rendering has a VR headsets (WebXR) switch, so features.rendering.vr n"
+      ]
+    },
+    "glanderness/beeftv@v2.5.0": {
+      "tag": "v2.5.0",
+      "highlights": [
+        "画布媒体工作流、本地素材自动导出与批量下载升级：桌面端支持按项目自动保存生成结果到本地目录及一键下载全部项目素材，画布批量下载默认沿用节点原名、不再强制拼接序号前缀；整合优化图层拆分排布、画布内视频快捷裁剪与局部重拍、AI 画质提升节点交互及活跃任务面板；修复视频全屏退出与空格键播放、竖图缩放比例、个人素材库文件夹筛选、停止取回与多角度编辑器图片预览问题。"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.158": {
+      "tag": "v0.9.158",
+      "highlights": [
+        "On Pi, a pi agent host: t3 line in the sheet runs each agent without a worktree as a T3 Code child thread of the session's thread, when the session runs inside "
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.56": {
+      "tag": "v6.19.56",
+      "highlights": [
+        "patch: decode DuckDuckGo result URLs and titles once"
+      ]
+    },
+    "upstash/context7@@upstash/context7-mcp@4.9.0": {
+      "tag": "@upstash/context7-mcp@4.9.0",
+      "highlights": [
+        "4c98769: The hosted HTTP server serves the Agent Skills a teamspace installed in the Context7 dashboard over the MCP skills extension, next to the `context7-mcp` skill."
+      ]
     }
   }
 }
