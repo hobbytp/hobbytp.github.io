@@ -1,215 +1,5 @@
 [
   {
-    "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
-    "title": "thinkingmachines inkling 2 mini",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/Sentinel7/h3",
-    "title": "sentinel7 h3",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
-    "title": "unsloth inkling 2 mini gguf",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/Lightricks/LTX-2.5",
-    "title": "lightricks ltx 2 5",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/apple/DepthPro2",
-    "title": "apple depthpro2",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/tencent/Hy4",
-    "title": "tencent hy4",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://architectlabs.com/blog/frostbite",
-    "title": "frostbite a new cpu architecture discovered designed and verified by ai",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://signal.org/blog/protecting-your-privacy",
-    "title": "restricting ai agents in mobile operating systems platforms from capturing data",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.motherjones.com/politics/2026/11/google-alphabet-union-school-ai-protest-gemini-workers-petition",
-    "title": "google workers tell their employer not to punish schools that don t want ai",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.theguardian.com/business/2026/nov/20/global-stock-markets-slump-anthropic-ipo-ai-sell-off",
-    "title": "nasdaq erases all 2026 gains as ai sell off dampens anthropic s second day",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://openai.com/index/combatting-adversarial-distillation",
-    "title": "combatting adversarial distillation",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://openai.com/business/customer-stories/hebbia",
-    "title": "hebbia sees improvements in financial research with gpt 6 astra",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://openai.com/index/introducing-medchembench",
-    "title": "can ai help scientists identify promising drug candidates",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/blog/inkling2mini",
-    "title": "welcome inkling 2 mini cutting edge performance for your local setup",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/blog/harness-adapters-at-scale",
-    "title": "introducing harness adapters adapt your favorite model to your harness to improve performance and cost",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/20/daniel-ek-backs-ai-researchers-fusion-power-startup-heres-what-theyre-building",
-    "title": "daniel ek backs ai researcher s fusion power startup here s what they re building",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/20/ai-claimed-a-solution-to-the-167-year-old-riemann-hypothesis-and-a-human-did-too",
-    "title": "ai claimed a solution to the 167 year old riemann hypothesis and a human did too",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/20/chips-can-survive-the-space-environment-can-their-financing",
-    "title": "chips can survive the space environment can their financing",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://techcrunch.com/podcast/the-fallout-from-nvidias-jensen-huang-scandal-continues",
-    "title": "the fallout from nvidia s jensen huang scandal continues",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://techcrunch.com/2026/11/20/6-ai-powered-gadgets-that-could-make-your-home-office-smarter",
-    "title": "six ai powered gadgets that could make your home office smarter",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.theverge.com/policy/1038892/trump-foreign-data-centers-tax",
-    "title": "trump threatens tremendous tax for moving ai data centers outside the us",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1010051/anthropic-riemann-hypothesis-millennium-prize-problem",
-    "title": "anthropic mathematician claims to have solved prestigious millennium prize problem with claude",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.theverge.com/podcast/1038419/outage-outlook-ground-stop-tech-failure-vergecast",
-    "title": "the week everything fell apart",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.theverge.com/ai-artificial-intelligence/1038390/signal-blocking-ai-agent-screenshots-mobile-app",
-    "title": "signal is blocking gemini and siri ai from reading your screen",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/511610.html",
-    "title": "昇腾算力训出了双榜sota的具身世界模型 华为云这次想把整套底座开放出来",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.qbitai.com/2026/11/511603.html",
-    "title": "新浪新闻 2026探索大会在京举行 虚实交融共探智能时代共生新图景",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://ng.investing.com/news/technology-news/anthropics-claude-ai-claims-breakthrough-in-150yearold-math-problem-2822181",
-    "title": "anthropic s claude ai claims breakthrough in 150 year old math",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://mashable.com/tech/openai-launches-chatgpt-wallet",
-    "title": "openai launches chatgpt wallet to have ai shop for you mashable",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://markets.businessinsider.com/news/currencies/startrader-launches-anthropic-stock-cfds-following-nasdaq-debut-1036787464",
-    "title": "startrader launches anthropic stock cfds following nasdaq",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.anthropic.com/news/ipo-close",
-    "title": "anthropic announces closing of initial public offering including full",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.tradingview.com/news/reuters.com,2026:newsml_FWN47113R:0-openai-introduces-medchembench",
-    "title": "openai introduces medchembench tradingview news",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://www.afr.com/markets/equity-markets/asx-markets-live-wall-street-surges-on-back-of-massive-anthropic-ipo-20261120-p61ft1",
-    "title": "asx notches worst week since covid 19 pandemic megaport dives",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://adalytica.com/news/deepseek-open-source-v3-2-models-df3d0603",
-    "title": "deepseek releases open source v3 2 ai models adalytica",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://github.com/han938/open-webui-private-ai-desk",
-    "title": "open webui private ai desk",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://github.com/chase1225/anythingllm-verona-document-chat",
-    "title": "anythingllm verona document chat",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://github.com/AI4XE/ai4ai",
-    "title": "ai4ai",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://github.com/Dodaios/ste80-humanizer",
-    "title": "ste80 humanizer",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://hippomaps.ch?q=cafes+by+the+Limmat+100+m+from+the+lake+in+zurich",
-    "title": "fast deterministic natural language search for openstreetmap data",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://cherwellvalleymotorclub.app",
-    "title": "drive around my village in 3d",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/papers/2611.26444",
-    "title": "mind2act world a diagnostic benchmark for embodied mind physical action and mind action composition in robotic manipulation",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/papers/2611.26380",
-    "title": "egocaptioner towards comprehensive and fine grained egocentric video captioning",
-    "date": "2026-11-21"
-  },
-  {
-    "url": "https://huggingface.co/papers/2611.26107",
-    "title": "hiuni harmonizing understanding and generation in shared visual space",
-    "date": "2026-11-21"
-  },
-  {
     "url": "https://techcrunch.com/2026/11/21/signal-restricts-mobile-screenshots-as-it-confronts-existential-threat-of-ai-surveillance",
     "title": "signal restricts mobile screenshots as it confronts existential threat of ai surveillance",
     "date": "2026-11-22"
@@ -2483,5 +2273,175 @@
     "url": "https://worksinprogress.co/issue/the-greatest-architect-youve-never-heard-of-is-in-pakistan",
     "title": "kamil khan mumtaz pakistani architect admired at home almost invisible abroad",
     "date": "2026-11-27"
+  },
+  {
+    "url": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+    "title": "thinkingmachines inkling 2 mini",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/unsloth/Inkling-2-Mini-GGUF",
+    "title": "unsloth inkling 2 mini gguf",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/Lightricks/LTX-2.5",
+    "title": "lightricks ltx 2 5",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/apple/DepthPro2",
+    "title": "apple depthpro2",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/kandinskylab/Kandinsky-ImageSR-2.0",
+    "title": "kandinskylab kandinsky imagesr 2 0",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview",
+    "title": "baidu ernie 5 5 flash preview",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/Sentinel7/h3",
+    "title": "sentinel7 h3",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/Lakonik/pi-H3",
+    "title": "lakonik pi h3",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://bouncemarket.minhanhday.com",
+    "title": "bouncemarket a live prediction market game for a bouncing ball",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/blog/video-trainium3",
+    "title": "taking trainium3 to the track generating videos with ltx 2 5",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.theverge.com/tech/1041801/android-intelligence-create-my-widget-gemini",
+    "title": "android s diy widgets are a bit of vibe coding fun",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/513428.html",
+    "title": "亏贼 卡帕西用claude搓出 美国版 文明 网友直接玩成全球接力赛",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/513352.html",
+    "title": "人形机器人开发者集合 众擎开放大小脑 10亿产业级生态支持计划也来了",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/513346.html",
+    "title": "全国首批首家 商汤大装置获token工厂智算能力最高评级",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/513320.html",
+    "title": "韦东奕再获大奖 攻克近140年数学难题 获两位院士共同提名",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.qbitai.com/2026/11/513305.html",
+    "title": "deepseek app突然更新账单 网友 要收费了",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.moomoo.com/community/feed/anthropic-s-recovery-can-business-fundamentals-catch-up-with-market-117692237545478",
+    "title": "anthropic s recovery can business fundamentals catch up wit",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://community.openai.com/t/feature-request-improve-chatgpts-memory-conversation-history-and-cross-model-continuity/1421966",
+    "title": "feature request improve chatgpt s memory conversation history",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.moomoo.com/community/feed/anthropic-climbs-above-90-can-the-recovery-be-sustained-117692233089030",
+    "title": "anthropic climbs above 90 can the recovery be sustained",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://community.openai.com/latest?no_definitions=true&page=1",
+    "title": "latest topics openai developer community",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://youtu.be/_rUMZwo_bY0",
+    "title": "n8n just took on grok bot and dots and it s open source youtube",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=_rUMZwo_bY0",
+    "title": "you need to try nod right now n8n s open source ai agent",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.instagram.com/p/DgQ98IsFU9x",
+    "title": "n8n is coming for grok bot dots and duet with their own open",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://construct22.com",
+    "title": "group chat where your ai talks behind your back",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://news.sky.com/story/us-air-forces-cloud-computing-platform-hacked-13617163",
+    "title": "us air force s cloud computing platform hacked",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://thesoapbox.email/archive/3",
+    "title": "i m scared of ai",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://drmahfouz.substack.com/p/woman-evicted-after-landlords-ai",
+    "title": "woman evicted after landlord s ai assistant told her she could delay rent",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://www.thetimes.com/uk/technology-uk/article/ai-making-online-security-useless-smr73d3n8",
+    "title": "ai on brink of making online security useless mathematicians fear",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://github.com/Ndarrr07/pro-llm-api-hub",
+    "title": "pro llm api hub",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://github.com/titisseptian-SS/omniroute-explorer",
+    "title": "omniroute explorer",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://github.com/Niruthiya04/echomind-voice-assistant",
+    "title": "echomind voice assistant",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://github.com/khalilur14103026/crypto-accumulation-scanner",
+    "title": "crypto accumulation scanner",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://github.com/SenpaiSpide664/ai-visual-prompt-cookbook",
+    "title": "ai visual prompt cookbook",
+    "date": "2026-11-28"
+  },
+  {
+    "url": "https://huggingface.co/papers/2611.30494",
+    "title": "revisiting llms as context engineers",
+    "date": "2026-11-28"
   }
 ]
