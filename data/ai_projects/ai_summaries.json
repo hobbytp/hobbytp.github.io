@@ -2119,6 +2119,78 @@
       "highlights": [
         "4c98769: The hosted HTTP server serves the Agent Skills a teamspace installed in the Context7 dashboard over the MCP skills extension, next to the `context7-mcp` skill."
       ]
+    },
+    "margrop/wrong-notebook@v2026.11.28": {
+      "tag": "v2026.11.28",
+      "highlights": [
+        "错题打印支持关闭原题图片",
+        "支持批量修改来源与年级，多题预览页统一设置来源",
+        "试卷批改进度按已批改题数显示",
+        "MCP 错题工具兼容 6 位短 ID"
+      ]
+    },
+    "pbakaus/impeccable@engine-v0.1.32": {
+      "tag": "engine-v0.1.32",
+      "highlights": [
+        "Prebuilt impeccable engine binaries (engine-v0.1.32). The launcher, the npm shim and impeccable install download these on first run. Docs: https://impeccable.st"
+      ]
+    },
+    "glanderness/beeftv@v2.5.1": {
+      "tag": "v2.5.1",
+      "highlights": [
+        "- Midjourney v8.2 风格参数面板与默认 2K 生图尺寸调整：新增 Midjourney v8.2 风格参数面板（支持 Raw、质量、风格化、构图多样性、排除词与风格/个性化码，提交时自动拼接且提示词手写参数优先），扩展 1K/2K（--hd）16 档尺寸预设（含 21:9），支持提示词输入 --ar /"
+      ]
+    },
+    "michael-denyer/pstack-claude@v0.9.159": {
+      "tag": "v0.9.159",
+      "highlights": [
+        "On Windows with pi agent host: hc, /pstack-agents now reports an agent as finished when its run ends. A compiled Pi binary reports its script as a path under Bu"
+      ]
+    },
+    "earendil-works/pi@v1.7.0": {
+      "tag": "v1.7.0",
+      "highlights": [
+        "**[Terminal session resume]( Compatible terminals can reopen the current pi session after a restart with its original profile, tool restrictions, and instructions.",
+        "**[Image generation in codemode]( Generate images with Radius, or set the aspect ratio and size when using OpenRouter image models.",
+        "Added optional `{ aspectRatio, size }` as the third argument to codemode `models.generateImages()`"
+      ]
+    },
+    "alishahryar1/free-claude-code@v6.19.58": {
+      "tag": "v6.19.58",
+      "highlights": [
+        "patch: Continue streams after unsigned Messages thinking"
+      ]
+    },
+    "garrytan/gbrain@v0.60.778.0": {
+      "tag": "v0.60.778.0",
+      "highlights": [
+        "The built-in model defaults now name the newest models in each family.",
+        "search and query now widen a hit on a long page to its matching section by default."
+      ]
+    },
+    "yusufkaraaslan/skill_seekers@v3.11.0": {
+      "tag": "v3.11.0",
+      "highlights": [
+        "The OpenAI extras require SDK 1.76.0 or newer for Responses API file search. Installing from `requirements.txt` now uses the package’s Anthropic SDK minimum of 0.76.0.",
+        "The Chinese README clarifies terminology for scraping, source merging, and quality checks .",
+        "Video setup can create a virtual environment with a uv-managed Python 3.10 installation on POSIX systems.",
+        "OpenAI upload publishes an indexed Responses API knowledge base. The returned `skill_id` is a vector store ID (`vs_...`). Store metadata contains the model and instructions file"
+      ]
+    },
+    "upstash/context7@@upstash/context7-mcp@4.9.1": {
+      "tag": "@upstash/context7-mcp@4.9.1",
+      "highlights": [
+        "41f84a1: The hosted HTTP server sends the version of the snapshots it holds in `X-Context7-Snapshot-Version`, so polls without a change skip the download again."
+      ]
+    },
+    "superclaude-org/superclaude_framework@v4.3.1": {
+      "tag": "v4.3.1",
+      "highlights": [
+        "Fixed the broken AIRIS MCP Gateway Docker Compose download URL. (#564, #584)",
+        "Added automatic setup of AIRIS configuration files and bind-mount directories to prevent Docker from creating root-owned paths.",
+        "Fixed API key handling for the 21st.dev Magic MCP server using `TWENTY_FIRST_API_KEY`.",
+        "Made Sequential and Context7 MCP references conditional in command files."
+      ]
     }
   }
 }
